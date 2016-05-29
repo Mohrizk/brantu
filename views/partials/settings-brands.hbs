@@ -1,0 +1,83 @@
+<div>
+    <div id="yourBrands" class="b-b text-center bg-master-light padding-1v">
+            <h3>Mina märken</h3>
+
+
+        {{#if userBrands}}
+            <ul id="brandUser" class="no-style">
+                {{#each userBrands}}
+                    <li><input class="input value" type="checkbox" id="{{this.key}}userBrand" key="{{this.key}}" name="{{this.name}}" checked/> <label class="label" for="{{this.key}}userBrand"> <div class="name"> {{this.name}} </div> </label></li>
+                {{/each}}
+            </ul>
+
+        <div>
+            <div class="clearfix padding-1v" id="removeBrandsFormWrapper" style="display: none;">
+                <div class="pull-right">
+                    <div class="btn btn-info inline" id="removeBrandsCancel">Avbryt</div>
+                    <form class="inline" id="removeBrandsForm" action="removeBrands" method="post">
+                        <div class="btn btn-info inline" id="removeBrandsSubmit">Spara</div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+        {{else}}
+            <p>Du följer inga varumärken, kom igång nu!</p>
+
+        {{/if}}
+        <script>
+            var userInitialBrands =  {};
+            userInitialBrands.brands = {{{json userBrands}}};
+        </script>
+
+    </div>
+
+
+
+    <div id="brandSelection" class=" text-center padding-1v">
+        <h3 class="bold">Välj märken</h3>
+        <div id="brandSelectionWrapper" class="auto-margin">
+            <input class="search" placeholder="Sök varumärken" id="brandQueryInput"/>
+            <ul class="list no-style" id="brandSelectionList">
+
+            </ul>
+
+            <ul class="list no-style" style="display: none;" id="brandSelectionQuery">
+
+
+            </ul>
+
+            <div id="brandQueryLoading" style="display: none;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="fetching text-center">
+                            <h5 class="text-center bold" style="color:#f1f2f2;">Loading</h5>
+                            <img src="/images/loading.svg" style="width:4vw;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="bg-master-lightest padding-1v row" style="position: fixed; right:0; bottom: 0; left: 0; z-index: 0;">
+            <div class="pull-right m-r-1v">
+                <div class="inline">
+                    <div id="addBrandsFormWrapper"  style="display: none;">
+                        <div class="inline m-r-1v inline"><button class=" btn no-border" > <i class="fa fa-close"></i> Avbryt</button></div>
+                        <form id="addBrandsForm" action="addBrands" method="post" class="inline">
+                           <div id="addBrandsSubmit"  class="inline m-r-1v btn btn-info">Spara</div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="inline m-r-1v" style="font-size: 2.8vw; vertical-align: top" id="goToTop"> <i class="fa  fa-chevron-circle-up"></i></div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</div>

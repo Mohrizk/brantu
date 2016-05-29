@@ -1,0 +1,74 @@
+
+<div class="page-container ">
+    <!-- START PAGE CONTENT WRAPPER -->
+    <div class="page-content-wrapper">
+        <section class="no-overflow" id="mainSection">
+            <!-- START PAGE CONTENT -->
+            <div class="content">
+
+                <div class="registerContainer " style="margin-top: 30px;">
+                    <div class="registerCard">
+                        <h1 class="title text-center">
+                            Login
+                        </h1>
+                        <div class="button-container padding-1v">
+                            <a  href="/auth/facebook">
+                                <button id="facebookAccess">
+                                    <span> <i class="fa fa-facebook"></i></span>
+                                </button>
+                            </a>
+                        </div>
+                        <div style="margin-top: 30px;">
+                            <form id="loginFormPage" role="form" action="/loginUser" method="post">
+                                <div class="input-container">
+                                    <input type="email" name="email" id="loginEmailPage" required="required"/>
+                                    <label for="loginEmailPage">Email</label>
+                                    <div class="bar"></div>
+                                </div>
+                                <div class="input-container">
+                                    <input type="password" name="password" id="loginPasswordPage" required="required"/>
+                                    <label for="loginPasswordPage">Password</label>
+                                    <div class="bar"></div>
+                                </div>
+                                {{debug errorMessage}}
+
+                                {{#if errorMessage}}
+                                    {{#if (compareStrings errorMessage 'nouser')}}
+                                    <div id="loginError" class="col-sm-12">
+                                        <p  class="text-red text-center" > Your account is not registed <a href="/signup">Register Now</a></p>
+                                    </div>
+                                    {{else}}
+                                        <div id="loginError" class="col-sm-12">
+                                            <p  class="text-red text-center" > Your password is wrong <a href="/">Hav You forgot your password?</a></p>
+                                        </div>
+                                    {{/if}}
+                                {{/if}}
+
+
+
+                                    <div class="button-container" id="submitLogin">
+                                    <button type="submit"><span>Login</span></button>
+                                </div>
+                                <div class="footer" style="padding-bottom: 20px; padding-top: 20px;"><a href="#">Forgot your Password</a></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {{>search}}
+        {{>footer}}
+        <!-- END PAGE CONTENT -->
+    </div>
+    <!-- END PAGE CONTENT WRAPPER -->
+
+</div>
+
+
+<script type="text/javascript" src="/javascripts/search.js"> </script>
+<script type="text/javascript" src="/javascripts/navbar.js"> </script>
+<script type="text/javascript" src="/javascripts/register.js"> </script>
+<script type="text/javascript" src="/javascripts/generic.js"> </script>
+
+
+

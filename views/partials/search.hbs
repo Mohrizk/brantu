@@ -1,0 +1,113 @@
+
+<section id="searchSection" style="display: none">
+    <div class="content" id="searchPane" style="">
+        <div class="searchWelcome relative">
+            <h2 class="capitalize text-spaced text-center"> Search Result</h2>
+            <div class="text-center p-b-1v top-right">
+                <div style="font-size: 24px; " class="cursor padding-1v" id="closeSearch"><i class="pg-close_line"></i> </div>
+            </div>
+        </div>
+        <div id="searchLoading">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="fetching text-center">
+                        <h5 class="text-center bold" style="color:#f1f2f2;">Loading</h5>
+                        <img src="/images/loading.svg" style="width:4vw;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       <!-- <div class="brandSuggestionContainer bg-master b-t">
+            <h5 class="sbold text-spaced all-caps text-center font-GothamMedium" style="color:#d9909d;"> Suggested Brands</h5>
+            <ul class="suggestions circle mini " id="brandSuggestions">
+
+            </ul>
+        </div>-->
+        <div class="resultSearchContainer b-b b-t">
+            <div class="facetSearchPane" id="searchFacetPane">
+                <div class="facetSearchContainer" id="searchFacetContainer">
+                    <div class="facetSearchWrapper padding-1v">
+                        <div class="facetSearchHeader "></div>
+                        <div class="searchFacets">
+                            <div class="searchBrands refinement" >
+                                <h5>
+                                    <span class="bg-white text-left all-caps ">Välj  märken</span>
+                                </h5>
+                                <div id="brandSearchList">
+                                    <ul class="list " style="max-height: 100px; overflow: scroll;">
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="searchPrices refinement" >
+                                <h5>
+                                    <span class="bg-white text-left all-caps ">Pris</span>
+                                </h5>
+                                <div id="priceSearchBar">
+                                    <input type="text" id="priceSearchRange" name="example_name" value="" />
+                                </div>
+                                <div id="saleSearchBox">
+                                </div>
+                                <div class="searchDiscounts">
+                                    <h6 class="bold ">Rea %</h6>
+                                    <div id="discountSearchList">
+                                        <ul class="list bg-master-lightest" style="max-height: 100px; overflow: scroll;">
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="searchSizes refinement" >
+                                <h5>
+                                    <span class="bg-white text-left all-caps ">Välj  Storlekar</span>
+                                </h5>
+                                <div id="sizeSearchList">
+                                    <ul class="list bg-master-lightest" style="max-height: 100px; overflow: scroll;">
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="searchColors refinement " >
+                                <h5>
+                                    <span class="bg-white text-left all-caps ">Välj  färg</span>
+                                </h5>
+                                <div id="colorSearchList">
+
+                                </div>
+
+                            </div>
+                            <div class="searchShop refinements" >
+                                <h5>
+                                    <span class="bg-white text-left all-caps ">välj  Butiker</span>
+                                </h5>
+                                <div id="shopSearchList">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="searchPane">
+                <div class="searchPreview">
+                    <!--<input class="filtertags"/>-->
+                    <ol class="itemSearchList vertical">
+                    </ol>
+                </div>
+
+                <div class="jawBoneSearchContent" id="searchJawbone">
+                    <div class="jawBoneSearchOpenContainer">
+                        <div class="jawBoneSearchFadeInPlaceContainer">
+                            <div class="jawBoneSearchContainer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

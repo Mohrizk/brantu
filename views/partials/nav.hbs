@@ -1,0 +1,303 @@
+<div class="header  no-margin" >
+
+    <div class="pull-left full-height visible-sm visible-xs">
+         <div class="sm-action-bar">
+           <a href="#" class="btn-link toggle-sidebar" data-toggle="sidebar">
+             <span class="icon-set menu-hambuger"></span>
+           </a>
+         </div>
+       </div>
+    <div class="pull-right full-height bg-white">
+         <div class="sm-action-bar visible-xs">
+           <a href="#" class="btn-link" data-toggle="quickview" data-toggle-element="#quickview">
+             <span class="icon-set menu-hambuger-plus visible-xs"></span>
+           </a>
+         </div>
+       </div>
+
+    <div class="container b-b bg-white" id="header-Dropdown">
+        <div class="row">
+            <div class="relative col-xs-1">
+                <div class="p-t-1v">
+                <img src="/images/cashback-to-society/cashbacktosociety.svg" style="width:100%; vertical-align: middle">
+                </div>
+            </div>
+            <div class="p-t-5 p-l-30 col-xs-8">
+                <h6 class=" bold  no-padding">BRANTU är en platform för nätshopping inom mode, där en del av inköpspriset alltid går till valfri välgörenhetsorganisation.</h6>
+                <h6 class=" bold  text-red no-padding">The website is currently serving dummy data and the sole propose is demonstration</h6>
+            </div>
+            <div class="relative col-xs">
+                <a href="/cashback-to-society">
+                    <div class="padding-05v pull-right">
+                        <div style="position: absolute; z-index: 0; top: 5px; bottom: 0; right: 4%;">
+                            <img src="/images/heart.svg" style="width:60px;"/>
+                        </div>
+                            <h5 class=" font-milestone all-caps">Läs Mer</h5>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-top: 10px;">
+            <div class="pull-left">
+              <div class=" sm-table">
+                  <div class="header-inner auto-margin" style="text-align: center !important;">
+                      <div class="brand" style="width: auto;">
+                          <ul class="nav navbar-nav no-padding">
+                              <li><div class="auto-margin block" style="width: 180px; height: auto; padding-top: 5px;">
+                                  <a href="/">
+                                      <img src="/images/logo-b-sogan.png" alt="logo" width="160" />
+                                  </a>
+                              </div>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+            <div class=" pull-right">
+             <!-- START User Info-->
+               {{debug user}}
+             {{#if user}}
+            <div class="visible-lg visible-md pull-right">
+               <div class="dropdown pull-right" style="padding-top:8px;">
+                 <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     {{#if user.facebook.name}}
+                              <span class="thumbnail-wrapper circular d32  bold  inline all-caps" style="font-size:16px; border:2px solid rgba(0,0,0,0.7); color:#e5a3ad; padding-top:4px;" id="avatar">
+                               {{trimForAvatar user.facebook.name}}
+                               </span>
+
+                     {{else}}
+                           <span class="thumbnail-wrapper circular d32  bold   inline all-caps " style="font-size:16px; border:3px solid rgba(111,111,111,0.7); color:#ffb6c1; padding-top:4px; " id="avatar">
+                            {{trimForAvatar user.local.email}}
+                            </span>
+                     {{/if}}
+
+                 </button>
+                 <ul class="dropdown-menu profile-dropdown" role="menu">
+                    <li>
+                       <a href="/settings" class="bold" style="color:#ff6a80;">
+                        <i style="width: 15px;">
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	                        width="15px" height="15px" viewBox="0 0 48.501 48.501" enable-background="new 0 0 48.501 48.501" xml:space="preserve">
+                            <g>
+                                <path fill="none" stroke="#010101" stroke-width="3.7825" stroke-miterlimit="10" d="M45.057,19.261
+                                    c2.242,9.317-2.024,19.313-10.904,23.951C25.21,47.882,14.48,45.607,8.13,38.32"/>
+                                <path fill="none" stroke="#010101" stroke-width="3.7825" stroke-miterlimit="10" d="M3.346,28.814
+                                    C1.333,19.62,5.603,9.856,14.347,5.289c8.658-4.522,18.991-2.533,25.402,4.209"/>
+                                <polyline fill="none" stroke="#010101" stroke-width="3.7825" stroke-miterlimit="10" points="40.639,2.864 40.223,10.406
+                                    33.01,10.435 	"/>
+                                <polyline fill="none" stroke="#010101" stroke-width="3.7825" stroke-miterlimit="10" points="6.686,44.699 7.102,37.157
+                                    14.315,37.128 	"/>
+                            </g>
+                            </svg>
+                        </i>
+                        Inställningar
+                       </a>
+                    </li>
+                    <li class="bold"><a href="#" style="color:#ff6a80;" class="bold">
+                       <i class="inline" style="width:15px;">
+                           <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             width="15px" height="15px" viewBox="0 0 48.501 48.501" enable-background="new 0 0 48.501 48.501" xml:space="preserve">
+                        <g>
+
+                                <path fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                                M42.997,2.169H5.886C3.74,2.169,2,3.847,2,5.916v28.949c0,2.07,1.74,3.747,3.886,3.747H8.66l-4.146,8.44l12.018-8.44h26.465
+                                c2.146,0,3.886-1.678,3.886-3.747V5.916C46.883,3.847,45.143,2.169,42.997,2.169z"/>
+                            <g>
+                                <path fill="#010101" stroke-width="4" d="M22.659,24.094l-0.055-0.713c-0.164-1.48,0.329-3.098,1.7-4.742c1.233-1.453,1.919-2.522,1.919-3.756
+                                    c0-1.399-0.877-2.33-2.604-2.358c-0.987,0-2.084,0.329-2.769,0.85l-0.657-1.728c0.904-0.657,2.467-1.096,3.92-1.096
+                                    c3.153,0,4.578,1.946,4.578,4.029c0,1.865-1.041,3.208-2.357,4.77c-1.206,1.425-1.645,2.632-1.563,4.03l0.027,0.713H22.659z
+                                     M22.057,27.932c0-1.015,0.685-1.727,1.645-1.727c0.959,0,1.617,0.712,1.617,1.727c0,0.96-0.631,1.7-1.645,1.7
+                                    C22.714,29.631,22.057,28.891,22.057,27.932z"/>
+                            </g>
+                        </g>
+                        </svg>
+                        </i>
+                       Feedback</a >
+                    </li>
+                     <li class="bold"><a href="#" class="bold" style="color:#ff6a80;">
+                         <i class="inline" style="width:15px;">
+                             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 width="15px" height="15px" viewBox="0 0 48.501 48.501" enable-background="new 0 0 48.501 48.501" xml:space="preserve">
+                            <g>
+                                <circle fill="none" stroke="#010101" stroke-width="3.8304" stroke-miterlimit="10" cx="7.827" cy="19.691" r="5.576"/>
+                                <circle fill="none" stroke="#010101" stroke-width="3.8304" stroke-miterlimit="10" cx="24.275" cy="7.777" r="5.576"/>
+                                <circle fill="none" stroke="#010101" stroke-width="3.8304" stroke-miterlimit="10" cx="40.724" cy="21.005" r="5.576"/>
+                                <circle fill="none" stroke="#010101" stroke-width="3.8304" stroke-miterlimit="10" cx="25.344" cy="40.674" r="5.576"/>
+
+                                    <line fill="none" stroke="#010101" stroke-width="3.8304" stroke-miterlimit="10" x1="12.229" y1="16.276" x2="19.767" y2="11.056"/>
+
+                                    <line fill="none" stroke="#010101" stroke-width="3.8304" stroke-miterlimit="10" x1="29.026" y1="11.056" x2="36.342" y2="17.562"/>
+
+                                    <line fill="none" stroke="#010101" stroke-width="3.8304" stroke-miterlimit="10" x1="37.131" y1="25.267" x2="29.026" y2="36.494"/>
+                            </g>
+                            </svg>
+                         </i>
+                         How it Works</a>
+                     </li>
+                     <li class="bold "><a href="#" class="bold" style="color:#ff6a80;">
+                         <i class="inline " style="width:15px;">
+                             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 width="15px" height="15px" viewBox="0 0 48.501 48.501" enable-background="new 0 0 48.501 48.501" xml:space="preserve">
+                            <g>
+                                <path fill="none" stroke="#010101" stroke-width="3" stroke-miterlimit="10" d="M39.44,16.924c0-8.173-6.626-14.799-14.799-14.799
+                                    c-8.173,0-14.799,6.626-14.799,14.799c0,6.261,4.08,8.885,7.403,13.764c0.849,1.247,1.984,6.033,1.984,6.033h10.824
+                                    c0,0,1.135-4.787,1.984-6.034C35.361,25.809,39.44,23.185,39.44,16.924z"/>
+                                <line fill="none" stroke="#010101" stroke-width="2" stroke-miterlimit="10" x1="18.62" y1="39.868" x2="30.662" y2="39.868"/>
+                                <line fill="none" stroke="#010101" stroke-width="3" stroke-miterlimit="10" x1="19.036" y1="43.043" x2="30.246" y2="43.043"/>
+                                <path fill="none" stroke="#010101" stroke-width="3" stroke-miterlimit="10" d="M27.975,43.043c0,1.841-1.492,3.333-3.333,3.333
+                                    c-1.841,0-3.333-1.492-3.333-3.333"/>
+                            </g>
+                            </svg>
+                         </i>
+                         About</a>
+                     </li>
+                     <li class="bold bg-master-lighter"><a href="/logout" class="bold" style="">
+                         <i class="pg-power">
+                         </i>
+                         Logga Ut</a>
+                     </li>
+                 </ul>
+               </div>
+             </div>
+             {{else}}
+             <div class="visible-lg visible-md pull-right">
+               <ul class="nav navbar-nav">
+                 <li id="login"><a class=" dark" >Logga In </a></li>
+                 <li id="signup"><a class="dark" >Bli medlem</a></li>
+             </ul>
+             </div>
+             {{/if}}
+
+               {{#if user}}
+                   <div class="visible-lg visible-md pull-left hidden-sm hidden-xs  " style=" height:50px; margin-right:0px; padding-top:6px;" >
+                       <ul class="notification-list no-margin  no-style p-l-15 p-r-15 inline">
+                           <li class="p-l-30 p-r-25 inline relative" >
+                               <a href="#"  id="preference-center" >
+                                   <div style="width: 23px;">
+                                       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                             width="100%" height="100%" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve">
+                                        <g>
+                                            <path fill="none" stroke="#e5a3ad" stroke-width="4" stroke-miterlimit="10" d="M29.978,46.071
+                                                c-1.419,1.419-3.812,1.874-5.267,0.946C15.335,41.043,7.458,33.166,1.484,23.79c-0.928-1.455-0.472-3.846,0.946-5.267
+                                                c1.146-1.146,2.292-2.291,3.437-3.437c1.421-1.421,3.289-1.35,4.217,0.104c5.975,9.375,13.852,17.252,23.228,23.227
+                                                c1.453,0.926,1.523,2.795,0.103,4.216C32.269,43.78,31.123,44.925,29.978,46.071z"/>
+                                            <g>
+                                                <path fill="none" stroke="#e5a3ad" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" d="M39.998,8.72
+                                                    c0,0-4.043-7.057-10.873-2.892c-6.83,4.165-11.839,7.676-19.306,9.005"/>
+
+                                                <path fill="none" stroke="#e5a3ad" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" d="M39.781,8.503
+                                                    c0,0,7.056,4.042,2.892,10.873c-4.164,6.83-7.676,11.839-9.005,19.306"/>
+                                            </g>
+
+                                                <circle fill="none" stroke="#e5a3ad" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" cx="43.153" cy="5.348" r="4.348"/>
+
+                                            <path fill="none" stroke="#e5a3ad" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" d="M16.995,41.852
+                                                c-2.857,2.857-7.489,2.857-10.348,0c-2.856-2.857-2.856-7.489,0.001-10.347"/>
+                                        </g>
+                                        </svg>
+                                   </div>
+                                   <div class="bubble"> <span>25</span></div>
+                               </a>
+                           </li>
+                           <li class="p-l-25 p-r-25 inline relative" >
+                               <a href="#" id="preference-center" >
+                                   <div style="width: 23px;">
+                                       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                             width="100%" height="100%" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+
+                                        <path fill="none" stroke="#e5a3ad" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                                            M34.381,3.423c-4.08,0-7.725,1.862-10.131,4.783c-2.406-2.921-6.051-4.783-10.131-4.783C6.874,3.423,1,9.296,1,16.543
+                                            s11.274,16.56,23.25,28.535C36.846,32.483,47.5,23.789,47.5,16.543S41.626,3.423,34.381,3.423z"/>
+                                        </svg>
+                                   </div>
+                                   <div class="bubble"> <span>25</span></div>
+                               </a>
+                           </li>
+
+                       </ul>
+                   </div>
+               {{/if}}
+
+
+             <!-- END User Info-->
+           </div>
+            <div class="">
+                <div class="auto-margin block relative" style="width: 500px;" >
+                    <div class="search-link">
+                                <input type="text" placeholder="Sök märken, produkt och m.m" id="search"/>
+                    </div>
+                    <button class="search-button"><i class="fa text-black fa-search"></i></button>
+                </div>
+            </div>
+    </div>
+    <div class="full-width bg-white" id="containerAC">
+        <span id="h1234"></span>
+        <script type="text/template" id="my-custom-menu-template">
+            <div class="my-custom-menu">
+
+                <div class="row padding-2v">
+                    <div class="col-sm-1"><h1 class="light">Your Search Result</h1></div>
+                    <div class="col-sm-4 col-sm-offset-1 text-center">
+                        <h5 class="text-left b-b bold text-pink-darker">Products</h5>
+
+                        <div class="aa-dataset-0">
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-3 col-sm-offset-1 text-center">
+                        <div>
+                            <h5 class="text-left b-b bold text-pink-darker" >Brands</h5>
+
+
+                        </div>
+                        <div class="aa-dataset-1"></div>
+                        <div class="aa-dataset-2"></div>
+                    </div>
+                </div>
+            </div>
+        </script>
+    </div>
+    <div class="container" style="  background: rgba(251,251,251,0.93);" id="navbar-categories">
+            <div class="pull-left">
+                <div class=" sm-table">
+                    <div class="header-inner auto-margin" style="text-align: center !important;">
+                        <div class="brand" style="width: auto;">
+                            <ul class="nav navbar-nav" id="navbar-categories">
+                                {{#each categoryTree}}
+                                    <li class=" p-r-80 inline">
+                                        <a class="capitalize dark text-spaced medium {{#if ../selectedDepartmentName}}{{#if (compareStrings this.department.name ../selectedDepartmentName)}}active{{/if}}{{/if}}" style="font-size:15px; line-height: 3px;" key="{{this.department.key}}" href="/{{this.department.name}}">{{this.department.name}}</a>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+       <div class="bg-white pull-left">
+           {{#each categoryTree}}
+               <div class=" category-expand-container hidden  padding-1v" expand-parentKey="{{this.department.key}}">
+                   {{#each categories}}
+                       <div class="category-expand ">
+                           <h5 class="bold all-caps text-spaced "><a class="dark" href="/shop/{{category.key}}">{{andfixer category.name}}</a></h5>
+                           <ul>
+                               {{#each subCategory}}
+                                   <a class="dark" href="/shop/{{this.key}}"><li>
+                                       {{andfixer this.name}}
+                                   </li></a>
+                               {{/each}}
+                           </ul>
+                       </div>
+                   {{/each}}
+               </div>
+           {{/each}}
+
+
+
+       </div>
+    </div>
+
+</div>

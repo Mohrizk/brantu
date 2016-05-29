@@ -1,0 +1,72 @@
+<head>
+    <title>{{title}}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="description" content="Bringing brands to you, customize your shopping experience and find out the flash offers from your favourite brands."  />
+    <meta content="Brantu" name="author" />
+
+    <meta name="verification" content="f851a1b5b1329e21b3fe0e610bb66367" />
+    <!-- TradeDoubler site verification 2845825 -->
+
+
+    <!--***********************************************************************
+    **********************************  STYLE SHEETS ***************************
+    ************************************************************************-->
+
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
+    <!--Plugins / THIRDPARY-->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/stylesheets/flexboxgrid.min.css"/>
+
+    <link rel="stylesheet" href="/plugins/bootstrap-select/css/bootstrap-select.css"/>
+    <link rel="stylesheet" href="/plugins/bootstrap-tag/bootstrap-tagsinput.css"/>
+    <link rel="stylesheet" href="/plugins/ion.rangeSlider/css/normalize.css" />
+    <link rel="stylesheet" href="/plugins/ion.rangeSlider/css/ion.rangeSlider.css" />
+    <link rel="stylesheet" href="/plugins/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css" />
+    <link rel="stylesheet" href="/plugins/bootstrap-select2/select2.css" />
+    <link href="/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/pages-icons.css" rel="stylesheet" type="text/css"/>
+
+    <!--VENDOR-->
+    <link  href="/stylesheets/pages.css" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/search.css" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/settings.css" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/generic.css" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/register.css" rel="stylesheet" type="text/css" />
+
+    <!--********************* CONDITIONAL STYLING ***************************-->
+    <script type="text/javascript" src='/plugins/jquery/jquery-1.11.1.min.js'></script>
+    <script type="text/javascript" src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/plugins/ion.rangeSlider/js/ion.rangeSlider.js"></script>
+    <script type="text/javascript" src="/plugins/jquery-bez/jquery.bez.min.js"></script>
+    <script type="text/javascript" src="/plugins/bootstrap-tag/bootstrap-tagsinput.js"></script>
+
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
+    <script src="//cdn.jsdelivr.net/hogan.js/3.0/hogan.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/list.js/1.2.0/list.min.js"></script>
+    <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+
+    <script>
+        var USER =  {};
+        {{#if user}}
+            USER = {{{json user}}};
+        {{/if}}
+
+        var DEPARTMENT = {};
+            {{#if selectedDepartment}}
+              DEPARTMENT = {{{json selectedDepartment}}};
+            {{/if}}
+
+        var CATEGORY_TREE = {};
+            {{#if categoryTree}}
+            CATEGORY_TREE = {{{json categoryTree}}};
+            {{/if}}
+        console.log(CATEGORY_TREE)
+    </script>
+</head>

@@ -1,0 +1,47 @@
+
+.fixed-header .header{
+
+    background: white !important;
+    opacity: 0.96;
+    height: 50px;
+    border-bottom-color: #efefef;
+    display: none;
+
+}
+
+#header-logo{
+	width:15%;
+}
+
+#back{
+	-webkit-transition: all 0.2s; /* Safari */
+    transition: all 0.2s;
+    color:white;
+}
+#back:hover{
+	color:#333;
+	
+}
+
+#header-container{
+	background: -webkit-linear-gradient(to top left, rgba(131,164,212,0.9), rgba(133,206,236,0.9)); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top left, rgba(131,164,212,0.9) , rgba(133,206,236,0.9)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	border-radius:8px;
+	padding-top: 20px;
+}
+
+
+
+
+.dotted {
+  
+  background-image: -webkit-repeating-radial-gradient(center center, rgba(255,255,255,.4), rgba(255,255,255,.4) 1px, transparent 1px, transparent 100%);
+  background-image: -moz-repeating-radial-gradient(center center, rgba(255,255,255,.4), rgba(255,255,255,.4) 1px, transparent 1px, transparent 100%);
+  background-image: -ms-repeating-radial-gradient(center center, rgba(255,255,255,.4), rgba(255,255,255,.4) 1px, transparent 1px, transparent 100%);
+  background-image: repeating-radial-gradient(center center, rgba(255,255,255,.4), rgba(255,255,255,.4) 1px, transparent 1px, transparent 100%);
+  -webkit-background-size: 3px 3px;
+  -moz-background-size: 3px 3px;
+  background-size: 3px 3px;
+  }
+
+

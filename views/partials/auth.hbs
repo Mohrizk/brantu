@@ -1,0 +1,124 @@
+<div id="AuthenticationPopUp" class="hidden authenticationPopUp" style="position: fixed; left:0; right:0; top:0; bottom:0; z-index:1000; background:rgba(0,0,0,0.6);">
+   			<div class=" bg-black" style="position: relative; margin:auto;  padding:1vw; margin-top:4vh; max-width:60vw;">
+   			<div class="close top-right " style="margin-right:2vw; margin-top:2vw;" id="close-AuthenticationPopUp"><i class="pg-close_line text-white"></i></div>
+        <div class="text-center m-b-1v m-t-1v">
+          <img src="/images/logo_2x.png" alt="logo" data-src="/images/logo_2x.png" data-src-retina="/images/logo_2x.png"  style="width:15vw"/>
+        </div>
+         <a  href="/auth/facebook">
+          <button class="btn btn-block btn-default " id="facebookAccess"  style="padding-top:1.4vw !important;padding-bottom:1.4vw !important;">
+              <span class="pull-left"><i class="fa fa-facebook"></i>
+					</span>
+					<span class="bold" >Bli Medlem med Facebook</span>
+          </button>
+         </a>
+   			 <h5 class="text-center" style="text-align: center;border-bottom: 1px solid #ddd;line-height: 0;padding: 0; margin:2vw 0vw;">
+           <span class="bg-black padding-1v all-caps bold text-white">Eller</span>
+         </h5>
+			 <div class="panel-group m-t-1v" id="accordion" role="tablist" aria-multiselectable="true">
+
+				<div class="panel panel-default ">
+						<div class="panel-heading" role="tab" id="signupTab">
+						<h4 class="panel-title text-center"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">GÅ MED</a></h4>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="registrationTab">
+							<div class="panel-body" id="RegisterBody">
+                <div class="row">
+                          <div class="col-md-12" id="signupContainer" style="background:rgba(255,255,255,0.85); border-radius:4px;">
+                            <form id="signupForm" class="form-horizontal" role="form" autocomplete="off" novalidate="novalidate" action="/signupUser" method="post" >
+                            <div class="form-group">
+                                <div class="col-sm-6 col-sm-offset-3 m-b-1v">
+                                  <span class="input input--madoka">
+                                <input class="input__field input__field--madoka" data-for="registration" type="text" id="name" required="required" data-placement="right" title="Please fill in this field!" data-toggle="tooltip" data-original-title="Please fill in this field" data-trigger="manual" autocomplete="off"/>
+                                 <label class="" for="name"><i class="fa fa-user"></i>Din Namn</label>
+                               </span>
+                                </div>
+                                <div class="col-sm-6 col-sm-offset-3 m-b-1v">
+                                  <span class="input input--madoka">
+                                <input class="input__field input__field--madoka" data-for="registration" type="email" id="email" required="required" data-placement="right" title="Please fill in this field!" data-toggle="tooltip" data-original-title="Please fill in this field" data-trigger="manual" autocomplete="off"/>
+                                 <label class="" for="email"><i class="fa fa-user"></i>Din e-postadress</label>
+                               </span>
+                              </div>
+                              <div class="col-sm-6 col-sm-offset-3 m-b-1v">
+                                   <span class="input input--madoka">
+                                 <input class="input__field input__field--madoka registration" data-for="registration" type="password" id="password" required="required" data-placement="right" title="Please fill in this field!" data-toggle="tooltip" data-original-title="Please fill in this field" data-trigger="manual" autocomplete="off"/>
+                                 <label class="" for="password"><i class="fa fa-lock"></i> Lösenord</label>
+                               </span>
+                              </div>
+
+                                <div class="col-sm-6 col-sm-offset-3">
+                                 <div class="radio radio-complete auto-margin block" id="genderSelection" required="required" data-placement="top" title="Please select your gender!" data-toggle="tooltip" data-original-title="Please select your gender!" data-trigger="manual" autocomplete="off">
+                                    <input type="radio" class="registration"  value="female" data-for="registration" name="gender" id="female" />
+                                   <label for="female"  class="fs-14 ">Kvinna</label>
+                                   <input type="radio" class="registration" value="male" data-for="registration" name="gender" id="male" />
+                                  <label for="male"  class="fs-14 ">Man</label>
+                                 </div>
+                              </div>
+                              <div id="registerError" class="col-sm-12" style="display:none;">
+                                    <p  class="text-red text-center" > It seems that this account is already in use</p>
+                              </div>
+                             </div>
+
+
+                             <div class="pull-left clearfix">
+                             <p class="fs-11">By clicking Sign Up, you agree to our  <a target="_blank" href="http://www.brantu.com/terms-and-conditions"> Terms &amp; Conditions</a> and that you have read our <a target="_blank" href="http://www.brantu.com/privacy-policy">Privacy Policy</a></p>
+                           </div>
+                             <button id="submitRegistration" class="btn btn-info btn-cons btn-animated from-left fa fa-check-circle pull-right" type="button">  <span>Välkommen In</span>  </button>
+                             </form>
+                        </div>
+                    </div>
+                <div id="successSignup" style="display:none;"><h2 class="text-center"><i class="fa fa-check-circle-o text-red"></i> Thank You for the Submission</h2></div>
+                </div>
+              </div>
+						</div>
+
+				<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="loginTab">
+							<h4 class="panel-title text-center">
+							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							Logga In
+							</a>
+							</h4>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="loginTab">
+    						<div class="panel-body" id="LoginBody">
+                  <div class="row">
+                           <div class="col-md-12 " style="background:rgba(255,255,255,0.85); border-radius:4px;">
+                           <form id="loginForm" class="form-horizontal" role="form" autocomplete="off" novalidate="novalidate" action="/loginUser" method="post" >
+                           <div class="form-group">
+                               <div class="col-sm-12" style="padding:0; margin:0;">
+                                     <div class="col-sm-6 col-sm-offset-3 m-b-1v">
+                                     <span class="input input--madoka">
+                                 <input class="input__field input__field--madoka" data-for="login" type="email" id="loginEmail" required="required" data-placement="right" title="Please fill in this field!" data-toggle="tooltip" data-original-title="Please fill in this field" data-trigger="manual" />
+                                 <label class="" for="loginEmail">
+                                   <span class=""><i class="fa fa-envelope"></i> Din e-postadress</span>
+                                 </label>
+                                 </span>
+                                 </div>
+                                </div>
+                                <div class="col-sm-12 " style="padding:0; margin:0;">
+                                     <div class="col-sm-6 col-sm-offset-3 m-b-1v">
+                                    <span class="input input--madoka">
+                                 <input class="input__field input__field--madoka" data-for="login" type="password" id="loginPassword" required="required" data-placement="right" title="Please fill in this field!" data-toggle="tooltip" data-original-title="Please fill in this field" data-trigger="manual" />
+                                 <label class="" for="loginPassword">
+                                   <i class="fa fa-lock"></i> Lösenord
+                                 </label>
+                                 </span>
+                                 </div>
+                                </div>
+                                <div class="col-sm-offset-3"><p class=" fs-11 inform cursor m-l-10"><u>Glömt ditt Lösenord?</u></p></div>
+                                <div id="loginError" class="col-sm-12" style="display:none;">
+                                      <p  class="text-red text-center" > Your email or password are not correct</p>
+                                </div>
+                             </div>
+                           </div>
+                           <div >
+                               <button id="submitLogin" class="btn btn-info btn-cons btn-animated from-left fa fa-check-circle pull-right m-b-20" type="button">  <span>Välkommen In</span>  </button>
+                           </div>
+                           </form>
+                         </div>
+                </div>
+						</div>
+				</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,81 @@
+#brandUser{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#brandUser li {
+    flex:0 0 10%;
+}
+
+#brandSelection input.search{
+    width:100%;
+    border-radius: 12px;
+    margin-bottom: 1vw;
+    height: 3vw;
+    text-align: center;
+    background: rgba(211,211,211,0.3);
+    border:0;
+    font-weight: 700;
+    font-size: 1.5vw;
+}
+
+#brandSelection input.search:focus{
+
+    background: rgba(0,0,0,0.2);
+    color:#fff;
+}
+
+#brandSelection .list{
+    padding:0;
+    border-radius: 4px;
+    min-height: 40vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#brandSelection  label, #brandUser label{
+    flex:0 0 10%;
+    border-radius: 50%;
+    height: 8em;
+    width:  8em;
+    line-height: 8em;
+    margin: 1em;
+    float: left;
+    position: relative;
+    background: #f1f2f2;
+    font-size:1.1em ;
+    text-align: center;
+
+}
+#brandSelection label div, #brandUser label div{
+    max-width: 8em;
+    max-height: 6em;
+    overflow: hidden;
+    white-space: pre-line;
+    line-height: 1em;
+    text-overflow: ellipsis;
+    padding-top: 3em;
+
+}
+
+#brandSelection label:hover, #brandUser label:hover{
+    transform: scale(1.01, 1.01);
+    z-index: 9;
+    box-shadow: 0 0 0 0.2em #fff, 0 0.1em 0.6em 0.2em rgba(0, 0, 0, 0.2);
+}
+
+
+#brandSelection input[type=checkbox], #brandUser input[type=checkbox]{display: none}
+#brandSelection input[type=checkbox] + label, #brandUser input[type=checkbox] + label{
+    flex:1 1 auto;
+
+}
+
+#brandSelection input[type=checkbox]:checked + label, #brandUser input[type=checkbox]:checked + label{
+    background: #333;
+    color:white;
+    font-weight: bold;
+}
