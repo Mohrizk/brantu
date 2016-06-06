@@ -636,7 +636,7 @@ ol.itemList.vertical.jbMode .item>.original-price,  ol.itemList.jbMode .item>.di
 
 
     .selectedItemZoomPicture{top:0; right:0; left:0; bottom:0;  position:absolute; }
-    .selectedItemZoomPicture img{max-height:25vw; margin:auto; display:block; width:auto;
+    .selectedItemZoomPicture img{max-height:30vw; margin:auto; display:block; width:auto;
      transition: opacity 1s ease-in-out;
      opacity:1;
     }
@@ -725,8 +725,14 @@ ol.itemList.vertical.jbMode .item>.original-price,  ol.itemList.jbMode .item>.di
 .facets h5{
     border-bottom: 1px solid #ccc; text-align: center;line-height: 0;padding: 0; margin:1vw 0vw;
 }
-#brandList input[type=checkbox], #colorList input[type=checkbox], #discountList input[type=checkbox], #sizeList input[type=checkbox]{display: none}
-#brandList input[type=checkbox] + label, #discountList input[type=checkbox] + label, #sizeList input[type=checkbox] + label{
+
+
+.categoryList li{
+    padding:7px 0;
+
+}
+.list input[type=checkbox], .colorList input[type=checkbox]{display: none !important;}
+.list input[type=checkbox] + label{
     display: block;
     font-weight: 400;
     padding: 3px 5px;
@@ -736,26 +742,26 @@ ol.itemList.vertical.jbMode .item>.original-price,  ol.itemList.jbMode .item>.di
     text-align: left;
 
 }
-#brandList input[type=checkbox] + label span.name, #discountList input[type=checkbox] + label span.name, #sizeList input[type=checkbox] + label span.name{
+.list input[type=checkbox] + label span.name{
     font-size:12px ;
     text-align: left;
 }
-#brandList input[type=checkbox] + label span.count, #discountList input[type=checkbox] + label span.count, #sizeList input[type=checkbox] + label span.count{
+.list input[type=checkbox] + label span.count, .categoryList li a span{
     font-size:10px ;
     vertical-align: middle;
     color:#888;
     font-weight: normal;
     float: right;
 }
-#brandList input[type=checkbox]:checked + label, #discountList input[type=checkbox]:checked + label, #sizeList input[type=checkbox]:checked + label{
+.list input[type=checkbox]:checked + label{
     background: #333;
     color:white;
     font-weight: bold;
 }
 
 
-#colorList{margin-bottom: 2vw;}
-#colorList input[type=checkbox] + label{
+.colorList{margin-bottom: 2vw;}
+.colorList input[type=checkbox] + label{
     margin:0.5vw;
     width:2vw;
     height: 2vw;
@@ -763,7 +769,7 @@ ol.itemList.vertical.jbMode .item>.original-price,  ol.itemList.jbMode .item>.di
     text-align: center;
     border:3px solid transparent;
 }
-#colorList input[type=checkbox] + label span.name{
+.colorList input[type=checkbox] + label span.name{
     display: block;
     font-size:10px;
     text-align: center;
@@ -772,7 +778,7 @@ ol.itemList.vertical.jbMode .item>.original-price,  ol.itemList.jbMode .item>.di
     overflow: hidden;
     font-weight: bold;
 }
-#colorList input[type=checkbox]:checked + label{
+.colorList input[type=checkbox]:checked + label{
     border:3px solid #333;
 }
 

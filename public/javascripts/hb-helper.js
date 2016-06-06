@@ -23,7 +23,6 @@ var register = function(Handlebars) {
             return;
         },
         compareStrings: function(passedString, secondString) {
-            console.log(passedString,'------',secondString);
             if(passedString!=null &&  secondString!=null){
                 if(passedString.toLowerCase() === secondString.toLowerCase()){
                     return true;
@@ -33,6 +32,24 @@ var register = function(Handlebars) {
         },
         json: function(context){
             return JSON.stringify(context);
+        },
+        indexPlusConstant:function(index, constant){
+            console.log(index, constant)
+            return index+constant;
+        },
+        getTrueOrFalse:function(array){
+            var bArray= [];
+            for(var a in array)
+            if(array[a] == '' || array[a] == null || array[a] == false) bArray.push(false);
+            else bArray.push(true);
+
+            var returnedValue= true;
+
+            for(var b in bArray){
+                if(bArray && returnedValue) returnedValue=true;
+                else returnedValue=false;
+            }
+            return returnedValue;
         }
 
     };
@@ -49,8 +66,6 @@ else {
         return helpers;
       }     
 }
-
-
 // client
 if (typeof window !== "undefined") {
     register(Handlebars);

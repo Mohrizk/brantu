@@ -28,94 +28,7 @@
                         </ul>
                     </div>
                 </div>
-
-                 <div class="resultContainer">
-                    <div class="facetPane " id="mainFacetPane">
-                        <div class="facetContainer" id="mainFacetContainer">
-                            <div class="facetWrapper padding-1v" style="">
-                                <div class="facet-header">
-
-                                </div>
-                                <div class="facets">
-                                    <div class="brands refinement" >
-                                        <h5>
-                                            <span class="bg-white text-left all-caps ">Välj  märken</span>
-                                        </h5>
-                                        <div id="brandList">
-                                            <!--<input class="search" placeholder="Search" />-->
-                                            <ul class="list " style="max-height: 100px; overflow: scroll;">
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="prices refinement" >
-                                        <h5 style="">
-                                            <span class=" bg-white all-caps ">Pris</span>
-                                        </h5>
-                                        <div id="priceBar">
-                                            <input type="text" id="pricerange" name="example_name" value="" />
-                                        </div>
-                                        <div id="saleBox">
-
-                                        </div>
-                                        <div class="discounts">
-                                            <h6 class="bold">Rea % </h6>
-                                            <div id="discountList">
-                                                <ul class="list bg-master-lightest" style="max-height: 100px; overflow: scroll;">
-
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sizes refinement" >
-                                        <h5 >
-                                            <span class=" bg-white all-caps ">Välj  Storlekar</span>
-                                        </h5>
-                                        <div id="sizeList">
-                                            <ul class="list bg-master-lightest" style="max-height: 100px; overflow: scroll;">
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="colors refinement" >
-                                        <h5>
-                                            <span class=" bg-white all-caps ">Välj  färg</span>
-                                        </h5>
-                                        <div id="colorList">
-
-                                        </div>
-
-                                    </div>
-                                    <div class="shops refinement" >
-                                        <h5 >
-                                            <span class=" bg-white all-caps ">välj  Butiker</span>
-                                        </h5>
-                                        <div id="shopList">
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="productPane">
-                        <div class="productPreview">
-                            <!--<input class="filtertags"/>-->
-                            <ol class="itemList vertical">
-                            </ol>
-                        </div>
-
-                        <div class="jawBoneContent" id="jawbone">
-                            <div class="jawBoneOpenContainer">
-                                <div class="jawBoneFadeInPlaceContainer">
-                                    <div class="jawBoneContainer">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                {{> productView}}
             </div>
       </section>
       {{>search}}
@@ -123,7 +36,6 @@
     <!-- END PAGE CONTENT -->
     </div>
   <!-- END PAGE CONTENT WRAPPER -->
-
 </div>
 
 

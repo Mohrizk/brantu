@@ -16,22 +16,11 @@ var i18n = require('i18n-2');//Internationalization
 
 var app = express();//INITIATE A
 
- /*var path = require('path');
- global.appRoot = path.resolve(__dirname);
- var map = require('./data/mapping/data_mapper')
- map('./data/vendor-data/zalando/original/products.json','./data/vendor-data/zalando/mapped/unbranded_products.json')
-*/
-
 //CONNECT DB
-
 if (app.get('env') === 'development')
-    mongoose.connect(require('./config/database.js').local);
+    mongoose.connect(require('./config/database.js').remote);
 else
     mongoose.connect(process.env.MONGOLAB_URI ||require('./config/database.js').remote);
-
-
-
-
 
 app.use(logger('dev'));
 app.use(bodyParser.json());

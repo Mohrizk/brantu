@@ -8,6 +8,7 @@ var Category = mongoose.Schema({
     key                   :  {type: String, required: true},
     name                  :  {type: String, required: true} ,           // Human Name of the category
     parentKey             :  {type: String, required: true},
+    breadcrumb            :  [{_id:false, name: String, key: String}],
     childKeys             :  [String],
     type                  :  String ,           // Url Name of the category
     outlet                :  Boolean, //(boolean, optional): Containing articles are from last seasons ,

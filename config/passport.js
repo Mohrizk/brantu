@@ -18,12 +18,6 @@ else{
 
 module.exports = function(passport) {
   // =========================================================================
-  // LOCAL ================================================================
-  // =========================================================================
-/*  passport.use(new LocalStrategy(User.authenticate()));
-  passport.serializeUser(User.serializeUser);
-  passport.deserializeUser(User.deserializeUser);*/
-  // =========================================================================
     // passport session setup ==================================================
     // =========================================================================
     // required for persistent login sessions

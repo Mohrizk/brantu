@@ -99,8 +99,7 @@ var colors = [
 
 var client2 = algoliasearch("D3IWZXC0AH", '3d6a60c228b6e8058770fdf8eab2f652');
 
-
-var itemQuery = algoliasearchHelper(client2,'products_sv', {
+var itemQuery = algoliasearchHelper(client2,'product_sweden', {
 	facets:['categoryKeys', 'sale', 'price.value'],
 	disjunctiveFacets:['color','brand.name','shop.name','sizes', 'discount']
 });
@@ -109,12 +108,12 @@ var itemQuery = algoliasearchHelper(client2,'products_sv', {
 var newQuery = false;
 
 
-var productIndex = client2.initIndex('products_sv');
+var productIndex = client2.initIndex('product_sweden');
 var brandIndex = client2.initIndex('brands_sv');
 
-var templateProduct = Hogan.compile(
+var templateProduct = Handlebars.compile(
 	'<a class="dark" href="{{{shopUrl}}}"><div class="productsAC m-b-5 text-left">'+
-	'<div><img src="{{{picture.smallUrl}}}" width="40" height="auto"/></div>'+
+	'<div><img src="{{{mainPicture.smallUrl}}}" width="40" height="auto"/></div>'+
 	'<div class="b-b b-grey" style="font-size:12px;"> ' +
 	'<div class="brand bold">{{{ brand.name}}}</div>' +
 	'<div class="name medium">{{{ _highlightResult.name.value }}}</div>' +
@@ -122,7 +121,8 @@ var templateProduct = Hogan.compile(
 	'</div></div></a>'
 );
 
-var templateBrand = Hogan.compile('<a class="dark" href="/brand/{{{name}}}"><div class="brandsAC text-left">' +
+
+var templateBrand = Handlebars.compile('<a class="dark" href="/brand/{{{name}}}"><div class="brandsAC text-left">' +
 	'<div>{{#logoUrl}}<img src="{{logoUrl}}" width="40" height="auto"/>{{/logoUrl}}</div>'+
 	'<div class="b-b b-grey p-l-10"><div class="name medium"><span class="">{{{ _highlightResult.name.value }}}</span></div></div>' +
 	'</div></a>');
@@ -131,7 +131,7 @@ autocomplete('#search', {
 	dropdownMenuContainer: '#containerAC',
 	hints:true,
 	templates: {
-		dropdownMenu: '#my-custom-menu-template'
+		dropdownMenu: '#brantu-dropdown-template'
 		}
 	},
 	[
@@ -140,7 +140,7 @@ autocomplete('#search', {
 				displayKey: 'name',
 				templates: {
 					suggestion: function(suggestion) {
-						return templateProduct.render(suggestion);
+						return templateProduct(suggestion);
 					},
 					empty: function(empty) {
 						return '<h5 class="text-left">No Items Found</h5>';
@@ -152,7 +152,7 @@ autocomplete('#search', {
 					displayKey: 'name',
 					templates: {
 						suggestion: function(suggestion, answer) {
-						return templateBrand.render(suggestion);
+						return templateBrand(suggestion);
 						},
 						empty: function(empty) {
 							return '<h5 class="text-left">No Items Found</h5>';
@@ -791,18 +791,6 @@ $(document).ready( function() {
 	var downStateChanged = false;
 	var upStateChanged = false;
 	function searchFacetPaneScroll(){
-		/*var currentScroll2 = $(this).scrollTop();
-		var filterPosition = searchFacetSelector.offset();
-		if (currentScroll2 + searchFacetContainer.height() >= $('#footer').offset().top -40 ) {
-			searchFacetContainer.addClass('pull-bottom').removeClass('fixedFacet');
-		}
-		else if (currentScroll2 > (filterPosition.top - 100)) {
-			searchFacetContainer.addClass('fixedFacet').removeClass('pull-bottom');
-		}
-		else if (currentScroll2 < (filterPosition.top - 100)) {
-			searchFacetContainer.removeClass('fixedFacet').removeClass('pull-bottom');
-		}*/
-
 		var currentScroll = $(document).scrollTop();
 		var footerPosition = $('#footer').offset();
 		var filterPosition = searchFacetSelector.offset();
