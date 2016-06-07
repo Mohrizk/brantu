@@ -20,7 +20,7 @@ var app = express();//INITIATE A
 if (app.get('env') === 'development')
     mongoose.connect(require('./config/database.js').remote);
 else
-    mongoose.connect(process.env.MONGOLAB_URI ||require('./config/database.js').remote);
+    mongoose.connect(require('./config/database.js').remote);
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
