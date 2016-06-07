@@ -4,7 +4,7 @@
  * @type {string}
  */
 var client = algoliasearch("D3IWZXC0AH", '3d6a60c228b6e8058770fdf8eab2f652');
-var helper = algoliasearchHelper(client,'product_sweden', {
+var helper   = algoliasearchHelper(client,'product_sweden', {
 	hierarchicalFacets: [{
 		name: 'products',
 		attributes: ['categories.lvl0', 'categories.lvl1', 'categories.lvl2', 'categories.lvl3'],
@@ -13,6 +13,85 @@ var helper = algoliasearchHelper(client,'product_sweden', {
 	facets:[  'sale', 'price.value'],
 	disjunctiveFacets:['color','brand.name','shop.name','sizes', 'discount']
 });
+var searcher = algoliasearchHelper(client,'product_sweden', {
+	hierarchicalFacets: [{
+		name: 'products',
+		attributes: ['categories.lvl0', 'categories.lvl1', 'categories.lvl2', 'categories.lvl3'],
+		sortBy: ['count:desc', 'name:asc']
+	}],
+	facets:[  'sale', 'price.value'],
+	disjunctiveFacets:['color','brand.name','shop.name','sizes', 'discount']
+});
+//_________AUTCOMPLETE
+autocomplete('#search', {
+		dropdownMenuContainer: '#containerAC',
+		hints:true,
+		templates: {
+			dropdownMenu: '#brantu-dropdown-template'
+		}
+	},
+	[
+		{
+			//source: autocomplete.sources.hits(productIndex, {hitsPerPage: 7}),
+			source: function(query, callback) {
+				var index = client.initIndex('product_sweden');
+				var options = {hitsPerPage: 7}
+				console.log(DEPARTMENT.name);
+				if( DEPARTMENT!==null){
+					if( DEPARTMENT.name !== null){
+						options.facetFilters = 'categories.lvl0:'+DEPARTMENT.name;
+					}
+				}
+				console.log(options);
+				index.search(query, options).then(function(answer) {
+					callback(answer.hits);
+				}, function() {
+					callback([]);
+				});
+			},
+			displayKey: 'name',
+			templates: {
+				suggestion: function(suggestion) {
+					return ACTemplateProduct(suggestion);
+				},
+				empty: function(empty) {
+					return '<h5 class="text-left">No Items Found</h5>';
+				}
+			}
+		} ,
+		{
+			source: function(query, callback) {
+				var index = client.initIndex('brands_sv');
+				var options = {hitsPerPage: 5}
+				console.log(DEPARTMENT.name);
+				if( DEPARTMENT!==null){
+					if( DEPARTMENT.name !== null){
+						options.facetFilters = 'genders:'+DEPARTMENT.name;
+					}
+				}
+				console.log(options);
+				index.search(query, options).then(function(answer) {
+					callback(answer.hits);
+				}, function() {
+					callback([]);
+				});
+			},
+			displayKey: 'name',
+			templates: {
+				suggestion: function(suggestion, answer) {
+					return ACTemplateBrand(suggestion);
+				},
+				empty: function(empty) {
+					return '<h5 class="text-left">No Items Found</h5>';
+				}
+			}
+		}
+	]
+).on('autocomplete:selected', function(event, suggestion, dataset) {
+	console.log(suggestion, dataset);
+	//window.location ='/brand/'+suggestion.name;
+});
+
 
 /*****Render Shop LIST*******/
 switch (TYPE.name) {
@@ -72,191 +151,182 @@ function getRecommendations(itemId){
 }
 
 //********BEGINING of Change view********************
-function changeView (){
-	var list = $('.itemList');
-	var container = $('.resultContainer');
-	if(!list.hasClass('jbMode')){
-		if(list.hasClass('vertical')){
-			list.toggleClass('horizontal').toggleClass('vertical');
-			container.addClass('noFilter');
-		}
-		else {
-			//$('.itemList').removeClass('vertical').addClass('horizontal');
-			list.toggleClass('horizontal').toggleClass('vertical');
-			container.removeClass('noFilter');
-		}
-		//$('html, body').animate({scrollTop: list.closest('.preference').offset().top-45 },100 , $.bez([.5,0,.1,1]));
-	}
-	
-}
-
-
 /**
  * Ensure that a tag is not filtering the results
  * @param {string} tag tag to remove from the filter
  * @return {AlgoliaSearchHelper}
  * @fires change
  */
+console.log('department ',DEPARTMENT.name);
 $(document).ready( function() {
+	var currentInstance = helper;
+	helper.on  ('result', function(content) {currentInstance = helper;  RENDER(content, false); })
+	searcher.on('result', function(content) { currentInstance = searcher; RENDER(content, true); })
 
 
 	var productArray=[];
 	var mainSection = $('#mainSection');
+	var mainContainer = $('.resultContainer');
 	var filterSelector = $('#mainFacetPane');
 	var facetContainer = $('#mainFacetContainer');
-
+	var productList = $('.itemList');
+	var jawboneContainer = $('.jawBoneContainer');
+	var jawboneContent = $('.jawBoneContent');
+	var searchBar =  $('#search');
+	var priceBarInput = $("#pricerange")
     var priceLimitsChange = true;
-   $("#pricerange").ionRangeSlider({
+
+	priceBarInput.ionRangeSlider({
         type: "double",
         prefix: "SEK", onFinish: function (data) {
             priceLimitsChange= false;
-            helper.removeNumericRefinement('price.value')
+			currentInstance.removeNumericRefinement('price.value')
                 .addNumericRefinement('price.value','>', data.from)
                 .addNumericRefinement('price.value','<', data.to)
                 .search();
         }
     });
-    var priceBar = $("#pricerange").data("ionRangeSlider");
+    var priceBar = priceBarInput.data("ionRangeSlider");
 
 
-	helper.on('result', function(content) {
+	function RENDER (content, isSearch){
+		console.log(content);
 		productArray = content.hits;
-		$('.itemList').html(productTemplate(productArray));
-
+		productList.html(productTemplate(productArray));
 		//Prices
         var newPrice = content.getFacetStats('price.value');
-        if(priceLimitsChange) priceBar.update({min: newPrice.min, max: newPrice.max, from: newPrice.min, to:  newPrice.max})
+        if(priceLimitsChange && newPrice!=null) priceBar.update({min: newPrice.min, max: newPrice.max, from: newPrice.min, to:  newPrice.max})
 		else priceLimitsChange= true;
-        $('.sale').html(onlySaleBoxFacetTemplate({header: HEADERTEXT.facets.sale.header,   content: productHelper.mapWithout(content.getFacetValues('sale'),['true'])}));
+		$('.welcome').html(welcomeTemplate(productHelper.getWelcomeMessage(currentInstance.getHierarchicalFacetBreadcrumb('products'), content, isSearch)));
+        $('.sale').html(onlySaleBoxFacetTemplate({header: HEADERTEXT.facets.sale.header,   content: productHelper.mapWithout(content.getFacetValues('sale'),['false'])}));
         $('.discounts').html(listFacetTemplate(  {header: HEADERTEXT.disjunctionFacets.discount.header, content: productHelper.mapWithout(content.getFacetValues('discount'), ['0'])} ));
         $('.sizes').html(listFacetTemplate(      {header: HEADERTEXT.disjunctionFacets.size.header , content:content.getFacetValues('sizes')}));
         $('.brands').html(listFacetTemplate(     {header: HEADERTEXT.disjunctionFacets.brand.header, content: content.getFacetValues('brand.name')}));
         $('.shops').html(listFacetTemplate(      {header: HEADERTEXT.disjunctionFacets.shop.header ,content: content.getFacetValues('shop.name')}));
 		$('.colors').html(colorFacetTemplate(    {header: HEADERTEXT.disjunctionFacets.color.header , content: productHelper.mapColor(content.getFacetValues('color'),COLORS)}));
-		$('.filterTags').html(filterTagsTemplate(productHelper.getAllRefinements(helper.getState(['attribute:*']), HEADERTEXT)));
-		$('.category').html(categoryFacetTemplate(productHelper.categoryRefinement(content.hierarchicalFacets, helper.getHierarchicalFacetBreadcrumb('products'))));
+		$('.filterTags').html(filterTagsTemplate(productHelper.getAllRefinements(currentInstance.getState(['attribute:*']), HEADERTEXT)));
+		$('.category').html(categoryFacetTemplate(productHelper.categoryRefinement(content.hierarchicalFacets, currentInstance.getHierarchicalFacetBreadcrumb('products'))));
+		$('.paginate').html(pagingTemplate(productHelper.pagination(content.page, content.nbPages)));
+	}
 
-	});
+	function SEARCH (){
+			var q = searchBar.val();
+			searchBar.blur();
+			if(q.length ==  0){
+				helper.search();
+				return;
+			}
+			searcher.clearRefinements().setQuery(q);
+			if(!jQuery.isEmptyObject(DEPARTMENT)) searcher.toggleRefinement('products', DEPARTMENT.name);
+			searcher.search();
+	}
 //*******************************************Filter Actions
-	$('.category').on( 'click', 'li a', function (event) {
+	var productEngine = $('#productEngine ')
+	productEngine.on( 'click', '.category li a', function (event) {
 		var value = $(this).attr('value');
-		console.log('value ', value)
-		helper.clearRefinements('products').toggleRefinement('products', value).search();
+		currentInstance.clearRefinements('products').toggleRefinement('products', value).search();
 	});
-	$('.breadcrumb').on( 'click', 'li a', function (event) {
+	productEngine.on( 'click', '.breadcrumb li a', function (event) {
 		var value = $(this).attr('value');
-		helper.clearRefinements('products').toggleRefinement('products', value).search();
+		currentInstance.clearRefinements('products').toggleRefinement('products', value).search();
 	});
-    $('.brands').on( 'click', 'input', function (event) {
+	productEngine.on( 'click', '.brands input', function (event) {
 		var value = $(this).attr('value');
 		console.log(value);
 		if($(this).prop('checked')){
-			helper.addDisjunctiveFacetRefinement('brand.name', value).search();
+			currentInstance.addDisjunctiveFacetRefinement('brand.name', value).search();
 		}
 		else{
-			helper.removeDisjunctiveFacetRefinement('brand.name', value).search();
+			currentInstance.removeDisjunctiveFacetRefinement('brand.name', value).search();
 		}
 	});
-    $('.sizes').on( 'change', ' input', function (event) {
+	productEngine.on( 'change', '.sizes input', function (event) {
 		var value = $(this).attr('value');
 		if($(this).prop('checked')){
-			helper.addDisjunctiveFacetRefinement('sizes', value).search();
+			currentInstance.addDisjunctiveFacetRefinement('sizes', value).search();
 		}
 		else{
-			helper.removeDisjunctiveFacetRefinement('sizes', value).search();
+			currentInstance.removeDisjunctiveFacetRefinement('sizes', value).search();
 		}
 	});
-    $('.discounts').on( 'change', ' input', function (event) {
+	productEngine.on( 'change', '.discounts input', function (event) {
 		var value = $(this).attr('value');
 		if( $(this).prop('checked')){
-			helper.addDisjunctiveFacetRefinement('discount', value).search();
+			currentInstance.addDisjunctiveFacetRefinement('discount', value).search();
 		}
 		else{
-			helper.removeDisjunctiveFacetRefinement('discount', value).search();
+			currentInstance.removeDisjunctiveFacetRefinement('discount', value).search();
 		}
 	});
-    $('.colors').on( 'change', 'input', function (event) {
+	productEngine.on( 'change', '.colors input', function (event) {
 		var value = $(this).attr('value');
 		//console.log(value)
 
 		if( $(this).prop('checked')){
-			helper.addDisjunctiveFacetRefinement('color', value).search();
+			currentInstance.addDisjunctiveFacetRefinement('color', value).search();
 		}
 		else{
-			helper.removeDisjunctiveFacetRefinement('color', value).search();
+			currentInstance.removeDisjunctiveFacetRefinement('color', value).search();
 		}
 	});
-    $('.shops').on( 'change', 'input', function (event) {
+	productEngine.on( 'change', '.shops input', function (event) {
         console.log('mmmm')
 		var value = $(this).attr('value');
 		//console.log(value)
 
 		if( $(this).prop('checked')){
-			helper.addDisjunctiveFacetRefinement('shop.name', value).search();
+			currentInstance.addDisjunctiveFacetRefinement('shop.name', value).search();
 		}
 		else{
-			helper.removeDisjunctiveFacetRefinement('shop.name', value).search();
+			currentInstance.removeDisjunctiveFacetRefinement('shop.name', value).search();
 		}
 	});
-    $('.sale').on( 'change', 'input', function (event) {
+	productEngine.on( 'change', '.sale input', function (event) {
 		var value = $(this).attr('value');
 		//console.log(value)
 
 		if( $(this).prop('checked')){
-			helper.addFacetRefinement('sale', value).search();
+			currentInstance.addFacetRefinement('sale', value).search();
 		}
 		else{
-			helper.removeFacetRefinement('sale', value).search();
+			currentInstance.removeFacetRefinement('sale', value).search();
 		}
 	});
+	productEngine.on( 'click', '.filterTags button', function (event) {
+		var value = $(this).attr('value');
+		var facet = $(this).attr('facet');
+		var type = $(this).attr('type');
+		productHelper.removeFilterTag(type, facet, value, currentInstance);
 
+	});
+	productEngine.on( 'click', '.paginate a', function (event) {
+		currentInstance.setPage($(this).attr('value')).search();
+
+	});
+//***************************************SEARCH
+	searchBar.on( 'change', SEARCH)
+	$('#searchSubmit').on( 'click', SEARCH)
+	$('#closeSearch').on( 'click', function(event){
+		helper.search()
+	})
   //***********************USER ACTIONS
 	mainSection.on( 'click','.changeView' , function (event) {
-		var preference = $(this).attr('preference');
-		changeView();
+		productHelper.changeView(productList,mainContainer);
 	});
-	//**********************************************************************JAWBONE ACTIONS - Create and Remove
-	//Item Create Jawbone
-	$('.itemList').on( 'click','.item .preview-image, .item .moreInfo' , function (event) {
-		//console.log('*******')
-		var itemcontainer = $('.itemList');
-		var jawboneLocation = $('#jawbone');
-		var selecteditem = productArray[$(this).attr('index')];
-		console.log(selecteditem)
-		if(itemcontainer.hasClass("vertical")) {
-			changeView();
-			isVertical = true;
-		}
-		else if (itemcontainer.hasClass("horizontal") && !itemcontainer.hasClass("jbMode")){
-			isVertical = false;
-		}
+	productList.on( 'click','.item .preview-image, .item .moreInfo' , function (event) {
+		productHelper.openDDViewProductInfo(
+			mainContainer, productList, $('#jawbone'), jawboneContainer, productArray[$(this).attr('index')]);
 
-		jawboneLocation.addClass( "open");
-		$('html, body').animate({scrollTop: itemcontainer.offset().top-100 }, 1, $.bez([.5,0,.1,1]));
-		var html = jawBoneTemplate(selecteditem);
-		$('.jawBoneContainer').html(html);
-		itemcontainer.addClass("jbMode");
 	});
-
-	//Remove Jawbone
 	mainSection.on( 'click','.jawBone .delete' , function () {
-		$('.itemList').removeClass("jbMode");
-		if(isVertical){
-			changeView();
-		}
-		$('.jawBoneContent').removeClass( "open");
-		$('.jawBone').remove();
+		productHelper.closeDDViewProductInfo(mainContainer, productList,jawboneContent);
 	});
-
-	//*******************************************JAWBONE ACTIONS - Product Showcase
-	//******Hover over mini images
 	mainSection.on( 'mouseover','.jawBone .selectedItemImageColoumn ol li img' , function (event) {
 		var newImage = $(this).attr('src').replace('catalog','large');
 		var location = $(this).closest('.selectedItemImageWrapper').find('.selectedItemPictureContainer').find('.selectedItemZoomPicture');
 		location.find('img:first').remove();
 		location.append('<img imageorder = "'+$(this).attr('imageorder') +'" src="'+newImage+'"/>');
 	});
-
 	//******CLICK NEXT
 	mainSection.on( 'click','.jawBone .next-item' , function (event) {
 		var currentImage = $(this).closest('.selectedItemZoomPicture').find('img');
@@ -274,7 +344,6 @@ $(document).ready( function() {
 		currentImage.remove();
 		$(this).closest('.selectedItemZoomPicture').append('<img imageorder = "'+newImageLocation+'" src="'+newImageSrc+'"/>');
 	});
-	
 	//******CLICK PREV
 	mainSection.on( 'click','.jawBone .prev-item' , function (event) {
 		var currentImage = $(this).closest('.selectedItemZoomPicture').find('img');
@@ -292,7 +361,6 @@ $(document).ready( function() {
 		currentImage.remove();
 		$(this).closest('.selectedItemZoomPicture').append('<img imageorder = "'+newImageLocation+'" src="'+newImageSrc+'"/>');
 	});
-
 
     var previousScroll = 0;
 	var downStateChanged = false;
@@ -360,7 +428,4 @@ $(document).ready( function() {
 			mainFacetPaneScroll()
 		}
     });
-
-
 });
-

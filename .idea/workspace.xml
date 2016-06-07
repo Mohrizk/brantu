@@ -5,35 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="319a9c44-cb0a-494b-a470-9e86d210bc29" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/hb-partial.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/templates.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/services/models/picture.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/partials/productView.hbs" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/ComplexRegister.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/OldRegister.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/create-offer.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/discover.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/form_elements.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/home.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/new-in.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/services/api.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.js" afterPath="$PROJECT_DIR$/config/database.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/passport.js" afterPath="$PROJECT_DIR$/config/passport.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/generic.js" afterPath="$PROJECT_DIR$/public/javascripts/generic.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/hb-helper.js" afterPath="$PROJECT_DIR$/public/javascripts/hb-helper.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/hb-partial.js" afterPath="$PROJECT_DIR$/public/javascripts/hb-partial.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/search.js" afterPath="$PROJECT_DIR$/public/javascripts/search.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/templates.js" afterPath="$PROJECT_DIR$/public/javascripts/templates.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/generic.css" afterPath="$PROJECT_DIR$/public/stylesheets/generic.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/pages.css" afterPath="$PROJECT_DIR$/public/stylesheets/pages.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/models/category.js" afterPath="$PROJECT_DIR$/services/models/category.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/models/product.js" afterPath="$PROJECT_DIR$/services/models/product.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/models/shop.js" afterPath="$PROJECT_DIR$/services/models/shop.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/category.hbs" afterPath="$PROJECT_DIR$/views/category.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/head.hbs" afterPath="$PROJECT_DIR$/views/partials/head.hbs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layouts/single.hbs" afterPath="$PROJECT_DIR$/views/layouts/single.hbs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/nav.hbs" afterPath="$PROJECT_DIR$/views/partials/nav.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/settings.hbs" afterPath="$PROJECT_DIR$/views/settings.hbs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/productView.hbs" afterPath="$PROJECT_DIR$/views/partials/productView.hbs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/search.hbs" afterPath="$PROJECT_DIR$/views/partials/search.hbs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/women.hbs" afterPath="$PROJECT_DIR$/views/women.hbs" />
     </list>
     <ignored path="brantu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,89 +36,69 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="search.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/search.js">
+      <file leaf-file-name="productView.hbs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/partials/productView.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="792" column="36" selection-start-line="792" selection-start-column="36" selection-end-line="792" selection-end-column="36" />
+            <state vertical-scroll-proportion="-1.3846154">
+              <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
               <folding>
-                <element signature="e#18#1256#0" expanded="false" />
-                <element signature="n#!!block;n#searchLoading#0" expanded="false" />
-                <element signature="n#!!block;n#renderSearchBrands#0" expanded="false" />
-                <element signature="n#!!block;n#renderSearchSizes#0" expanded="false" />
-                <element signature="n#!!block;n#Array2ObjectColorMatchSearch#0" expanded="false" />
-                <element signature="n#!!block;n#renderSearchColors#0" expanded="false" />
-                <element signature="n#!!block;n#renderSearchShops#0" expanded="false" />
-                <element signature="n#!!block;n#createJawBoneSearchLoader#0" expanded="false" />
-                <element signature="e#13153#13513#0" expanded="false" />
-                <element signature="e#13542#13646#0" expanded="false" />
-                <element signature="e#13654#14008#0" expanded="false" />
-                <element signature="n#!!block;n#closeJawbone#0" expanded="false" />
-                <element signature="e#18846#19376#0" expanded="false" />
-                <element signature="e#19520#19606#0" expanded="false" />
-                <element signature="e#24080#24862#0" expanded="false" />
-                <element signature="e#24984#27088#0" expanded="false" />
-                <marker date="1465151442000" expanded="true" signature="1840:2184" placeholder="..." />
-                <marker date="1465151442000" expanded="true" signature="1957:1972" placeholder="..." />
-                <marker date="1465151442000" expanded="true" signature="3657:3668" placeholder="..." />
-                <marker date="1465151442000" expanded="true" signature="3729:3739" placeholder="..." />
-                <marker date="1465151442000" expanded="true" signature="7967:8004" placeholder="..." />
-                <marker date="1465151442000" expanded="true" signature="8264:8301" placeholder="..." />
-                <marker date="1465151442000" expanded="true" signature="12470:12486" placeholder="..." />
-                <marker date="1465151442000" expanded="true" signature="18657:18670" placeholder="..." />
+                <element signature="n#div#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="head.hbs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/partials/head.hbs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.0">
-              <caret line="48" column="63" selection-start-line="48" selection-start-column="63" selection-end-line="48" selection-end-column="63" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="templates.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="templates.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/javascripts/templates.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45945945">
-              <caret line="275" column="29" selection-start-line="275" selection-start-column="29" selection-end-line="275" selection-end-column="29" />
+            <state vertical-scroll-proportion="6.4444447">
+              <caret line="341" column="21" selection-start-line="341" selection-start-column="21" selection-end-line="341" selection-end-column="21" />
               <folding>
                 <element signature="e#13#1683#0" expanded="false" />
-                <element signature="e#9774#10035#0" expanded="false" />
-                <element signature="e#10078#10284#0" expanded="false" />
-                <element signature="e#10348#11168#0" expanded="false" />
-                <element signature="e#11217#14456#0" expanded="false" />
-                <marker date="1465232321000" expanded="true" signature="6398:6899" placeholder="..." />
-                <marker date="1465232321000" expanded="true" signature="6407:6888" placeholder="..." />
-                <marker date="1465232321000" expanded="true" signature="6430:6685" placeholder="..." />
-                <marker date="1465232321000" expanded="true" signature="6525:6551" placeholder="..." />
-                <marker date="1465232321000" expanded="true" signature="6727:6885" placeholder="..." />
-                <marker date="1465232321000" expanded="true" signature="7000:7847" placeholder="..." />
-                <marker date="1465232321000" expanded="true" signature="7125:7833" placeholder="..." />
-                <marker date="1465232321000" expanded="true" signature="7158:7194" placeholder="..." />
-                <marker date="1465232321000" expanded="true" signature="7195:7819" placeholder="..." />
-                <marker date="1465232321000" expanded="true" signature="8768:8794" placeholder="..." />
-                <marker date="1465232321000" expanded="true" signature="8987:9013" placeholder="..." />
-                <marker date="1465232321000" expanded="true" signature="9207:9667" placeholder="..." />
-                <marker date="1465232321000" expanded="true" signature="9207:9675" placeholder="..." />
-                <marker date="1465232321000" expanded="true" signature="9265:9667" placeholder="..." />
-                <marker date="1465232321000" expanded="true" signature="9424:9661" placeholder="..." />
-                <marker date="1465232321000" expanded="true" signature="9424:9667" placeholder="..." />
+                <element signature="e#12952#13257#0" expanded="false" />
+                <element signature="e#13300#13546#0" expanded="false" />
+                <element signature="e#13611#15281#0" expanded="false" />
+                <element signature="e#15332#19435#0" expanded="false" />
+                <element signature="e#19496#19905#0" expanded="false" />
+                <element signature="e#19958#22064#0" expanded="false" />
+                <element signature="e#22124#22720#0" expanded="false" />
+                <element signature="e#22831#23206#0" expanded="false" />
+                <element signature="e#23290#23447#0" expanded="false" />
+                <marker date="1465303873000" expanded="true" signature="6856:7367" placeholder="..." />
+                <marker date="1465303873000" expanded="true" signature="6865:7356" placeholder="..." />
+                <marker date="1465303873000" expanded="true" signature="6888:7143" placeholder="..." />
+                <marker date="1465303873000" expanded="true" signature="6983:7009" placeholder="..." />
+                <marker date="1465303873000" expanded="true" signature="7185:7353" placeholder="..." />
+                <marker date="1465303873000" expanded="true" signature="7458:8291" placeholder="..." />
+                <marker date="1465303873000" expanded="true" signature="7583:8277" placeholder="..." />
+                <marker date="1465303873000" expanded="true" signature="7616:7652" placeholder="..." />
+                <marker date="1465303873000" expanded="true" signature="7653:8263" placeholder="..." />
+                <marker date="1465303873000" expanded="true" signature="9212:9238" placeholder="..." />
+                <marker date="1465303873000" expanded="true" signature="9431:9457" placeholder="..." />
+                <marker date="1465303873000" expanded="true" signature="9651:10281" placeholder="..." />
+                <marker date="1465303873000" expanded="true" signature="9651:10289" placeholder="..." />
+                <marker date="1465303873000" expanded="true" signature="9709:10281" placeholder="..." />
+                <marker date="1465303873000" expanded="true" signature="9769:9791" placeholder="..." />
+                <marker date="1465303873000" expanded="true" signature="9949:10275" placeholder="..." />
+                <marker date="1465303873000" expanded="true" signature="9949:10281" placeholder="..." />
+                <marker date="1465303873000" expanded="true" signature="10093:10115" placeholder="..." />
+                <marker date="1465303873000" expanded="true" signature="10362:10518" placeholder="..." />
+                <marker date="1465303873000" expanded="true" signature="10362:11266" placeholder="..." />
+                <marker date="1465303873000" expanded="true" signature="10441:10518" placeholder="..." />
+                <marker date="1465303873000" expanded="true" signature="11555:11570" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pages.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/stylesheets/pages.css">
+      <file leaf-file-name="footer.hbs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/partials/footer.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.12">
-              <caret line="3730" column="14" selection-start-line="3730" selection-start-column="14" selection-end-line="3730" selection-end-column="14" />
-              <folding />
+            <state vertical-scroll-proportion="72.434784">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -144,22 +106,72 @@
       <file leaf-file-name="generic.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/javascripts/generic.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.5">
-              <caret line="278" column="11" selection-start-line="278" selection-start-column="11" selection-end-line="278" selection-end-column="11" />
+            <state vertical-scroll-proportion="-3.8888888">
+              <caret line="95" column="30" selection-start-line="95" selection-start-column="30" selection-end-line="95" selection-end-column="30" />
               <folding>
+                <element signature="e#214#510#0" expanded="false" />
+                <element signature="e#573#863#0" expanded="false" />
+                <element signature="e#913#1036#0" expanded="false" />
+                <element signature="e#1039#2508#0" expanded="false" />
+                <element signature="e#1043#1811#0" expanded="false" />
+                <element signature="e#1500#1535#0" expanded="false" />
+                <element signature="e#2188#2223#0" expanded="false" />
+                <element signature="e#2576#2661#0" expanded="false" />
+                <element signature="e#2697#2952#0" expanded="false" />
                 <element signature="n#!!block;n#getRecommendations#0" expanded="false" />
-                <element signature="n#!!block;n#changeView#0" expanded="false" />
-                <element signature="e#2982#3331#0" expanded="false" />
-                <element signature="e#5128#5284#0" expanded="false" />
-                <element signature="e#5343#5468#0" expanded="false" />
-                <element signature="e#5527#5782#0" expanded="false" />
-                <element signature="e#5842#6065#0" expanded="false" />
-                <element signature="e#6129#6359#0" expanded="false" />
-                <element signature="e#6419#6667#0" expanded="false" />
-                <element signature="e#6726#7010#0" expanded="false" />
-                <element signature="e#7068#7292#0" expanded="false" />
-                <element signature="e#10082#10870#0" expanded="false" />
-                <element signature="e#10994#13436#0" expanded="false" />
+                <element signature="e#4166#4326#0" expanded="false" />
+                <element signature="e#4401#16154#0" expanded="false" />
+                <element signature="e#7433#7710#0" expanded="false" />
+                <element signature="e#10853#10912#0" expanded="false" />
+                <element signature="e#10999#11145#0" expanded="false" />
+                <element signature="e#11206#11293#0" expanded="false" />
+                <element signature="e#11391#11728#0" expanded="false" />
+                <element signature="e#11817#12607#0" expanded="false" />
+                <element signature="e#12696#13484#0" expanded="false" />
+                <element signature="e#13607#16049#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="women.hbs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/women.hbs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-26.608696">
+              <caret line="137" column="0" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="single.hbs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/layouts/single.hbs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.16393442">
+              <caret line="8" column="53" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/javascripts/search.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hb-partial.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/javascripts/hb-partial.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8" column="64" selection-start-line="8" selection-start-column="64" selection-end-line="8" selection-end-column="64" />
+              <folding>
+                <marker date="1465297250000" expanded="true" signature="335:346" placeholder="..." />
+                <marker date="1465297250000" expanded="true" signature="420:430" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -168,65 +180,19 @@
       <file leaf-file-name="search.hbs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/partials/search.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.38">
-              <caret line="81" column="88" selection-start-line="81" selection-start-column="85" selection-end-line="81" selection-end-column="88" />
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="productView.hbs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/partials/productView.hbs">
+      <file leaf-file-name="nav.hbs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/partials/nav.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.608696">
-              <caret line="27" column="14" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
+            <state vertical-scroll-proportion="-4.4347825">
+              <caret line="236" column="40" selection-start-line="236" selection-start-column="40" selection-end-line="236" selection-end-column="40" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="hb-helper.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/hb-helper.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.4074073">
-              <caret line="42" column="30" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="32" />
-              <folding>
-                <element signature="e#619#833#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/services/routes.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-              <folding>
-                <element signature="e#638#1020#0" expanded="false" />
-                <element signature="e#1127#1307#0" expanded="false" />
-                <element signature="e#1442#1813#0" expanded="false" />
-                <element signature="e#1923#2097#0" expanded="false" />
-                <element signature="e#2159#2234#0" expanded="false" />
-                <element signature="e#2314#2578#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="generic.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/stylesheets/generic.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.043478">
-              <caret line="748" column="48" selection-start-line="748" selection-start-column="48" selection-end-line="748" selection-end-column="48" />
-              <folding>
-                <element signature="e#25948#26104#0" expanded="false" />
-                <element signature="e#26149#26195#0" expanded="false" />
-                <element signature="e#26420#26485#0" expanded="false" />
-                <element signature="e#26559#26694#0" expanded="false" />
-                <element signature="e#26744#26901#0" expanded="false" />
-                <element signature="e#26949#26979#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -247,7 +213,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/javascripts/register.js" />
         <option value="$PROJECT_DIR$/services/middleware/categoryTree.js" />
         <option value="$PROJECT_DIR$/services/middleware/render-category.js" />
         <option value="$PROJECT_DIR$/services/middleware/mw-getCategoryTree.js" />
@@ -270,12 +235,10 @@
         <option value="$PROJECT_DIR$/public/stylesheets/search.css" />
         <option value="$PROJECT_DIR$/views/partials/settings-brands.hbs" />
         <option value="$PROJECT_DIR$/views/join-shop.hbs" />
-        <option value="$PROJECT_DIR$/views/partials/search.hbs" />
         <option value="$PROJECT_DIR$/public/images/home/cashbackheart.svg" />
         <option value="$PROJECT_DIR$/views/partials/register2.hbs" />
         <option value="$PROJECT_DIR$/public/stylesheets/flex.css" />
         <option value="$PROJECT_DIR$/views/partials/footer.hbs" />
-        <option value="$PROJECT_DIR$/views/women.hbs" />
         <option value="$PROJECT_DIR$/views/men.hbs" />
         <option value="$PROJECT_DIR$/data/mapping/nlly/nlly_changes.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -285,19 +248,22 @@
         <option value="$PROJECT_DIR$/services/models/category.js" />
         <option value="$PROJECT_DIR$/services/models/shop.js" />
         <option value="$PROJECT_DIR$/views/settings.hbs" />
-        <option value="$PROJECT_DIR$/views/partials/nav.hbs" />
         <option value="$PROJECT_DIR$/views/category.hbs" />
         <option value="$PROJECT_DIR$/views/partials/head.hbs" />
-        <option value="$PROJECT_DIR$/public/javascripts/hb-partial.js" />
-        <option value="$PROJECT_DIR$/public/javascripts/search.js" />
         <option value="$PROJECT_DIR$/config/database.js" />
         <option value="$PROJECT_DIR$/public/javascripts/home.js" />
-        <option value="$PROJECT_DIR$/public/javascripts/hb-helper.js" />
-        <option value="$PROJECT_DIR$/public/stylesheets/generic.css" />
-        <option value="$PROJECT_DIR$/views/partials/productView.hbs" />
-        <option value="$PROJECT_DIR$/public/javascripts/generic.js" />
-        <option value="$PROJECT_DIR$/public/javascripts/templates.js" />
         <option value="$PROJECT_DIR$/public/stylesheets/pages.css" />
+        <option value="$PROJECT_DIR$/public/stylesheets/generic.css" />
+        <option value="$PROJECT_DIR$/public/javascripts/hb-partial.js" />
+        <option value="$PROJECT_DIR$/views/partials/search.hbs" />
+        <option value="$PROJECT_DIR$/public/javascripts/hb-helper.js" />
+        <option value="$PROJECT_DIR$/views/partials/nav.hbs" />
+        <option value="$PROJECT_DIR$/public/javascripts/templates.js" />
+        <option value="$PROJECT_DIR$/public/javascripts/search.js" />
+        <option value="$PROJECT_DIR$/public/javascripts/generic.js" />
+        <option value="$PROJECT_DIR$/views/women.hbs" />
+        <option value="$PROJECT_DIR$/views/partials/productView.hbs" />
+        <option value="$PROJECT_DIR$/views/layouts/single.hbs" />
       </list>
     </option>
   </component>
@@ -309,8 +275,9 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="y" value="23" />
+    <option name="width" value="1429" />
+    <option name="height" value="873" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -426,6 +393,24 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="views">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="layouts">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="brantu">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="services">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
@@ -458,7 +443,7 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="stylesheets">
+            <PATH_ELEMENT USER_OBJECT="javascripts">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -488,7 +473,6 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
-    <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -578,16 +562,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="23" width="1429" height="873" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15574348" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23224431" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.060179256" sideWeight="0.5025974" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.47339323" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.025791325" sideWeight="0.72291666" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24928977" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32950193" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39976552" sideWeight="0.49722221" order="3" side_tool="false" content_ui="tabs" />
@@ -621,11 +605,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/public/javascripts/search.js</url>
-          <line>700</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/services/middleware/mw-userBrands.js</url>
           <line>14</line>
           <option name="timeStamp" value="17" />
@@ -636,23 +615,8 @@
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/public/javascripts/search.js</url>
-          <line>278</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/public/javascripts/search.js</url>
-          <line>591</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/public/javascripts/search.js</url>
-          <line>267</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/javascripts/generic.js</url>
-          <line>310</line>
+          <line>378</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -660,27 +624,17 @@
           <line>62</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/public/javascripts/hb-helper.js</url>
+          <line>41</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="27" />
+      <option name="time" value="28" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/generic.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="721" column="19" selection-start-line="721" selection-start-column="9" selection-end-line="721" selection-end-column="19" />
-          <folding>
-            <element signature="e#25948#26104#0" expanded="false" />
-            <element signature="e#26149#26195#0" expanded="false" />
-            <element signature="e#26420#26485#0" expanded="false" />
-            <element signature="e#26559#26694#0" expanded="false" />
-            <element signature="e#26744#26901#0" expanded="false" />
-            <element signature="e#26949#26979#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/shop.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.10245901">
@@ -823,13 +777,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/footer.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.39240506">
-          <caret line="51" column="16" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/men.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -901,13 +848,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/women.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-68.478264">
-          <caret line="105" column="56" selection-start-line="105" selection-start-column="56" selection-end-line="105" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/category.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.65163934">
@@ -937,23 +877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/nav.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.1">
-          <caret line="233" column="6" selection-start-line="233" selection-start-column="6" selection-end-line="233" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/hb-partial.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5">
-          <caret line="27" column="32" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
-          <folding>
-            <marker date="1465147202000" expanded="true" signature="595:627" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/database.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -961,50 +884,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/search.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="792" column="36" selection-start-line="792" selection-start-column="36" selection-end-line="792" selection-end-column="36" />
-          <folding>
-            <element signature="e#18#1256#0" expanded="false" />
-            <element signature="n#!!block;n#searchLoading#0" expanded="false" />
-            <element signature="n#!!block;n#renderSearchBrands#0" expanded="false" />
-            <element signature="n#!!block;n#renderSearchSizes#0" expanded="false" />
-            <element signature="n#!!block;n#Array2ObjectColorMatchSearch#0" expanded="false" />
-            <element signature="n#!!block;n#renderSearchColors#0" expanded="false" />
-            <element signature="n#!!block;n#renderSearchShops#0" expanded="false" />
-            <element signature="n#!!block;n#createJawBoneSearchLoader#0" expanded="false" />
-            <element signature="e#13153#13513#0" expanded="false" />
-            <element signature="e#13542#13646#0" expanded="false" />
-            <element signature="e#13654#14008#0" expanded="false" />
-            <element signature="n#!!block;n#closeJawbone#0" expanded="false" />
-            <element signature="e#18846#19376#0" expanded="false" />
-            <element signature="e#19520#19606#0" expanded="false" />
-            <element signature="e#24080#24862#0" expanded="false" />
-            <element signature="e#24984#27088#0" expanded="false" />
-            <marker date="1465151442000" expanded="true" signature="1840:2184" placeholder="..." />
-            <marker date="1465151442000" expanded="true" signature="1957:1972" placeholder="..." />
-            <marker date="1465151442000" expanded="true" signature="3657:3668" placeholder="..." />
-            <marker date="1465151442000" expanded="true" signature="3729:3739" placeholder="..." />
-            <marker date="1465151442000" expanded="true" signature="7967:8004" placeholder="..." />
-            <marker date="1465151442000" expanded="true" signature="8264:8301" placeholder="..." />
-            <marker date="1465151442000" expanded="true" signature="12470:12486" placeholder="..." />
-            <marker date="1465151442000" expanded="true" signature="18657:18670" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/generic.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.043478">
-          <caret line="748" column="48" selection-start-line="748" selection-start-column="48" selection-end-line="748" selection-end-column="48" />
+        <state vertical-scroll-proportion="20.49091">
+          <caret line="462" column="0" selection-start-line="462" selection-start-column="0" selection-end-line="462" selection-end-column="0" />
           <folding>
-            <element signature="e#25948#26104#0" expanded="false" />
-            <element signature="e#26149#26195#0" expanded="false" />
-            <element signature="e#26420#26485#0" expanded="false" />
-            <element signature="e#26559#26694#0" expanded="false" />
-            <element signature="e#26744#26901#0" expanded="false" />
-            <element signature="e#26949#26979#0" expanded="false" />
+            <element signature="e#26005#26161#0" expanded="false" />
+            <element signature="e#26206#26252#0" expanded="false" />
+            <element signature="e#26477#26542#0" expanded="false" />
+            <element signature="e#26616#26751#0" expanded="false" />
+            <element signature="e#26801#26958#0" expanded="false" />
+            <element signature="e#27006#27036#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1020,54 +910,6 @@
             <element signature="e#1923#2097#0" expanded="false" />
             <element signature="e#2159#2234#0" expanded="false" />
             <element signature="e#2314#2578#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/hb-helper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.4074073">
-          <caret line="42" column="30" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="32" />
-          <folding>
-            <element signature="e#619#833#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/search.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.38">
-          <caret line="81" column="88" selection-start-line="81" selection-start-column="85" selection-end-line="81" selection-end-column="88" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/productView.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.608696">
-          <caret line="27" column="14" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/generic.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.5">
-          <caret line="278" column="11" selection-start-line="278" selection-start-column="11" selection-end-line="278" selection-end-column="11" />
-          <folding>
-            <element signature="n#!!block;n#getRecommendations#0" expanded="false" />
-            <element signature="n#!!block;n#changeView#0" expanded="false" />
-            <element signature="e#2982#3331#0" expanded="false" />
-            <element signature="e#5128#5284#0" expanded="false" />
-            <element signature="e#5343#5468#0" expanded="false" />
-            <element signature="e#5527#5782#0" expanded="false" />
-            <element signature="e#5842#6065#0" expanded="false" />
-            <element signature="e#6129#6359#0" expanded="false" />
-            <element signature="e#6419#6667#0" expanded="false" />
-            <element signature="e#6726#7010#0" expanded="false" />
-            <element signature="e#7068#7292#0" expanded="false" />
-            <element signature="e#10082#10870#0" expanded="false" />
-            <element signature="e#10994#13436#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1088,33 +930,157 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/hb-helper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.111111">
+          <caret line="38" column="10" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
+          <folding>
+            <element signature="e#257#576#0" expanded="false" />
+            <element signature="e#896#1136#0" expanded="false" />
+            <element signature="e#1169#1224#0" expanded="false" />
+            <element signature="e#1463#1889#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/nav.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.4347825">
+          <caret line="236" column="40" selection-start-line="236" selection-start-column="40" selection-end-line="236" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/search.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/hb-partial.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="64" selection-start-line="8" selection-start-column="64" selection-end-line="8" selection-end-column="64" />
+          <folding>
+            <marker date="1465297250000" expanded="true" signature="335:346" placeholder="..." />
+            <marker date="1465297250000" expanded="true" signature="420:430" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/footer.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="72.434784">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/women.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-26.608696">
+          <caret line="137" column="0" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/generic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.8888888">
+          <caret line="95" column="30" selection-start-line="95" selection-start-column="30" selection-end-line="95" selection-end-column="30" />
+          <folding>
+            <element signature="e#214#510#0" expanded="false" />
+            <element signature="e#573#863#0" expanded="false" />
+            <element signature="e#913#1036#0" expanded="false" />
+            <element signature="e#1039#2508#0" expanded="false" />
+            <element signature="e#1043#1811#0" expanded="false" />
+            <element signature="e#1500#1535#0" expanded="false" />
+            <element signature="e#2188#2223#0" expanded="false" />
+            <element signature="e#2576#2661#0" expanded="false" />
+            <element signature="e#2697#2952#0" expanded="false" />
+            <element signature="n#!!block;n#getRecommendations#0" expanded="false" />
+            <element signature="e#4166#4326#0" expanded="false" />
+            <element signature="e#4401#16154#0" expanded="false" />
+            <element signature="e#7433#7710#0" expanded="false" />
+            <element signature="e#10853#10912#0" expanded="false" />
+            <element signature="e#10999#11145#0" expanded="false" />
+            <element signature="e#11206#11293#0" expanded="false" />
+            <element signature="e#11391#11728#0" expanded="false" />
+            <element signature="e#11817#12607#0" expanded="false" />
+            <element signature="e#12696#13484#0" expanded="false" />
+            <element signature="e#13607#16049#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/templates.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45945945">
-          <caret line="275" column="29" selection-start-line="275" selection-start-column="29" selection-end-line="275" selection-end-column="29" />
+        <state vertical-scroll-proportion="6.4444447">
+          <caret line="341" column="21" selection-start-line="341" selection-start-column="21" selection-end-line="341" selection-end-column="21" />
           <folding>
             <element signature="e#13#1683#0" expanded="false" />
-            <element signature="e#9774#10035#0" expanded="false" />
-            <element signature="e#10078#10284#0" expanded="false" />
-            <element signature="e#10348#11168#0" expanded="false" />
-            <element signature="e#11217#14456#0" expanded="false" />
-            <marker date="1465232321000" expanded="true" signature="6398:6899" placeholder="..." />
-            <marker date="1465232321000" expanded="true" signature="6407:6888" placeholder="..." />
-            <marker date="1465232321000" expanded="true" signature="6430:6685" placeholder="..." />
-            <marker date="1465232321000" expanded="true" signature="6525:6551" placeholder="..." />
-            <marker date="1465232321000" expanded="true" signature="6727:6885" placeholder="..." />
-            <marker date="1465232321000" expanded="true" signature="7000:7847" placeholder="..." />
-            <marker date="1465232321000" expanded="true" signature="7125:7833" placeholder="..." />
-            <marker date="1465232321000" expanded="true" signature="7158:7194" placeholder="..." />
-            <marker date="1465232321000" expanded="true" signature="7195:7819" placeholder="..." />
-            <marker date="1465232321000" expanded="true" signature="8768:8794" placeholder="..." />
-            <marker date="1465232321000" expanded="true" signature="8987:9013" placeholder="..." />
-            <marker date="1465232321000" expanded="true" signature="9207:9667" placeholder="..." />
-            <marker date="1465232321000" expanded="true" signature="9207:9675" placeholder="..." />
-            <marker date="1465232321000" expanded="true" signature="9265:9667" placeholder="..." />
-            <marker date="1465232321000" expanded="true" signature="9424:9661" placeholder="..." />
-            <marker date="1465232321000" expanded="true" signature="9424:9667" placeholder="..." />
+            <element signature="e#12952#13257#0" expanded="false" />
+            <element signature="e#13300#13546#0" expanded="false" />
+            <element signature="e#13611#15281#0" expanded="false" />
+            <element signature="e#15332#19435#0" expanded="false" />
+            <element signature="e#19496#19905#0" expanded="false" />
+            <element signature="e#19958#22064#0" expanded="false" />
+            <element signature="e#22124#22720#0" expanded="false" />
+            <element signature="e#22831#23206#0" expanded="false" />
+            <element signature="e#23290#23447#0" expanded="false" />
+            <marker date="1465303873000" expanded="true" signature="6856:7367" placeholder="..." />
+            <marker date="1465303873000" expanded="true" signature="6865:7356" placeholder="..." />
+            <marker date="1465303873000" expanded="true" signature="6888:7143" placeholder="..." />
+            <marker date="1465303873000" expanded="true" signature="6983:7009" placeholder="..." />
+            <marker date="1465303873000" expanded="true" signature="7185:7353" placeholder="..." />
+            <marker date="1465303873000" expanded="true" signature="7458:8291" placeholder="..." />
+            <marker date="1465303873000" expanded="true" signature="7583:8277" placeholder="..." />
+            <marker date="1465303873000" expanded="true" signature="7616:7652" placeholder="..." />
+            <marker date="1465303873000" expanded="true" signature="7653:8263" placeholder="..." />
+            <marker date="1465303873000" expanded="true" signature="9212:9238" placeholder="..." />
+            <marker date="1465303873000" expanded="true" signature="9431:9457" placeholder="..." />
+            <marker date="1465303873000" expanded="true" signature="9651:10281" placeholder="..." />
+            <marker date="1465303873000" expanded="true" signature="9651:10289" placeholder="..." />
+            <marker date="1465303873000" expanded="true" signature="9709:10281" placeholder="..." />
+            <marker date="1465303873000" expanded="true" signature="9769:9791" placeholder="..." />
+            <marker date="1465303873000" expanded="true" signature="9949:10275" placeholder="..." />
+            <marker date="1465303873000" expanded="true" signature="9949:10281" placeholder="..." />
+            <marker date="1465303873000" expanded="true" signature="10093:10115" placeholder="..." />
+            <marker date="1465303873000" expanded="true" signature="10362:10518" placeholder="..." />
+            <marker date="1465303873000" expanded="true" signature="10362:11266" placeholder="..." />
+            <marker date="1465303873000" expanded="true" signature="10441:10518" placeholder="..." />
+            <marker date="1465303873000" expanded="true" signature="11555:11570" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/productView.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.3846154">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding>
+            <element signature="n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layouts/single.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16393442">
+          <caret line="8" column="53" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
+          <folding />
         </state>
       </provider>
     </entry>

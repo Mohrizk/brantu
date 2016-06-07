@@ -454,8 +454,8 @@ ol.itemList.horizontal .item:hover>.main-options button{ opacity:1; }
 
 
 
-ol.itemList.horizontal.jbMode .item{margin: 0 1.5vw 0 0; height:8vw; width:8vw; border:0; transition-delay:0.2s;}
-ol.itemList.horizontal.jbMode .item>img{height:7.5vw; transition-delay:0.2s;}
+ol.itemList.horizontal.jbMode .item{margin: 0 1.5vw 0 0; height:10vw; width:8vw; border:0; transition-delay:0.2s;}
+ol.itemList.horizontal.jbMode .item>img{height:9.5vw; transition-delay:0.2s;}
 ol.itemList.horizontal.jbMode .item>.main-options, ol.itemList.jbMode .item:hover>.main-options, ol.itemList.jbMode .item:hover>.small-options, ol.itemList.jbMode .item>.item-name, ol.itemList.jbMode .item>.discounted-percentage {display:none;}
 ol.itemList.horizontal.jbMode .item>.item-brand {max-width:6vw; white-space: nowrap;overflow: hidden;o-text-overflow: ellipsis; text-overflow: ellipsis; transition-delay:0.2s;}
 ol.itemList.horizontal.jbMode .item>.original-price,  ol.itemList.jbMode .item>.discounted-price {line-height:0.15vw; margin:0; padding:0.1vw; font-size:0.5vw; transition-delay:0.2s;}
@@ -730,6 +730,10 @@ ol.itemList.vertical.jbMode .item>.original-price,  ol.itemList.jbMode .item>.di
 .categoryList li{
     padding:7px 0;
 
+}
+
+.facets .breadcrumb{
+    font-size: 12px !important;
 }
 .list input[type=checkbox], .colorList input[type=checkbox]{display: none !important;}
 .list input[type=checkbox] + label{

@@ -34,8 +34,10 @@ var register = function(Handlebars) {
             return JSON.stringify(context);
         },
         indexPlusConstant:function(index, constant){
-            console.log(index, constant)
             return index+constant;
+        },
+        indexMinusConstant:function(index, constant){
+            return index-constant;
         },
         getTrueOrFalse:function(array){
             var bArray= [];
@@ -50,6 +52,12 @@ var register = function(Handlebars) {
                 else returnedValue=false;
             }
             return returnedValue;
+        },
+        idGenerator:function(object){
+            var S4 = function() {
+                return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+            };
+            return object.theID=(S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
         }
 
     };
