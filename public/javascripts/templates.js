@@ -1,119 +1,13 @@
-var COLORS = [
-    {
-        "key": "black",
-        "displayName": "Svart",
-        'hex':'#000000'
-    },
-    {
-        "key": "brown",
-        "displayName": "Brun",
-        'hex':'#471413'
-    },
-    {
-        "key": "beige",
-        "displayName": "Beige",
-        'hex':'#F5F5DC'
-    },
-    {
-        "key": "gray",
-        "displayName": "Grå",
-        hex:'#919096'
-    },
-    {
-        "key": "white",
-        "displayName": "Vit",
-        hex:'#ffffff'
-    },
-    {
-        "key": "blue",
-        "displayName": "Blå",
-        hex:'#6f6fff'
-    },
-    {
-        "key": "petrol",
-        "displayName": "Petrol",
-        hex:"#10627a"
-
-    },
-    {
-        "key": "turquoise",
-        "displayName": "Turkos",
-        hex:'#19e7ef'
-    },
-    {
-        "key": "green",
-        "displayName": "Grön",
-        'hex':'#008000'
-    },
-    {
-        "key": "olive",
-        "displayName": "Oliv",
-        'hex':'#008000'
-    },
-    {
-        "key": "yellow",
-        "displayName": "Gul",
-        'hex':'#008000'
-    },
-    {
-        "key": "orange",
-        "displayName": "Orange",
-        'hex':'#008000'
-    },
-    {
-        "key": "red",
-        "displayName": "Röd",
-        'hex':'#f41414'
-    },
-    {
-        "key": "pink",
-        "displayName": "Rosa",
-        'hex':'#FFC0CB'
-    },
-    {
-        "key": "purple",
-        "displayName": "Lila",
-        'hex':'#800080'
-    },
-    {
-        "key": "gold",
-        "displayName": "Guld",
-        'hex':'#FFD700'
-    },
-    {
-        "key": "silver",
-        "displayName": "Silver",
-        'hex':'#C0C0C0'
-    },
-    {
-        "key": "multicolored",
-        "displayName": "Flerfärgad",
-        'hex':'#FFC0CB'
-    }
-]
-var HEADERTEXT = {
-    hierarchicalFacets: { header: ''},
-    disjunctionFacets: {
-        color:{header: 'Välj  färgen', filter:'färg'},
-        brand:{header: 'Välj  märken', filter:'märken'},
-        shop:{header:'Välj  butiken', filter:'butik'},
-        size:{header:'Välj  Storlekar', filter:'Storlek'},
-        discount:{header:'Rea%', filter:'Rea'}
-    },
-    facets:{
-        sale:{header: 'Bara Rea', filter:'Bara Rea'},
-        price:{header: 'Pris'   , filter:'pris'},
-    },
-    search:{header:'Sökresultat', found: 'vi hittade', product:'styles'}
-}
 
 
 var welcomeTemplate = Handlebars.compile(
     '{{#if search}}' +
     '<div class="pull-right closeSearch"><i class="pg-close_line fa-2x"></i></div>' +
-    '<h3 class="all-caps text-spaced text-center font-GothamMedium">{{department}}/ {{name}} "{{query}}"</h3>' +
+    '<h3 class="all-caps text-spaced text-center font-GothamMedium">{{#if department}}{{department}}/{{/if}} {{name}} "{{query}}"</h3>' +
     '<h5 class="all-caps text-spaced text-center font-GothamMedium">{{{nbHits}}}</h5>' +
-    '{{else}}<h1 class="all-caps text-spaced text-center font-GothamMedium">{{name}} </h1>' +
+    '{{else}}' +
+    '{{debug name}}' +
+    '<h1 class="all-caps text-spaced text-center font-GothamMedium">{{name}} </h1>' +
     '{{/if}}'
 )
 
@@ -339,6 +233,7 @@ var productHelper;
 productHelper = {
     getWelcomeMessage: function(breadcrumb, content, isSearch){
         var rObject = {}
+        console.log(breadcrumb);
         if(isSearch){
             rObject.search = true;
             rObject.department = breadcrumb[0]
@@ -583,7 +478,6 @@ productHelper = {
         }
         return rObject;
     },
-
     openDDViewProductInfo: function (mainContainer, productList, jawboneLocation, jawboneContainer, content, paginate) {
         if (productList.hasClass("vertical")) {
             productList.toggleClass('horizontal').toggleClass('vertical');

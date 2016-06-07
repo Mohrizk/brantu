@@ -36,8 +36,8 @@
     <!--********************* CONDITIONAL STYLING ***************************-->
     <script type="text/javascript" src='/plugins/jquery/jquery-1.11.1.min.js'></script>
     <script type="text/javascript" src="/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/plugins/ion.rangeSlider/js/ion.rangeSlider.js"></script>
     <script type="text/javascript" src="/plugins/jquery-bez/jquery.bez.min.js"></script>
+    <script type="text/javascript" src="/plugins/ion.rangeSlider/js/ion.rangeSlider.js"></script>
 
 
     <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
@@ -75,6 +75,115 @@
             {{#if categoryTree}}
             CATEGORY_TREE = {{{json categoryTree}}};
             {{/if}}
-        console.log(CATEGORY_TREE)
+
+        var COLORS = [
+            {
+                "key": "black",
+                "displayName": "Svart",
+                'hex':'#000000'
+            },
+            {
+                "key": "brown",
+                "displayName": "Brun",
+                'hex':'#471413'
+            },
+            {
+                "key": "beige",
+                "displayName": "Beige",
+                'hex':'#F5F5DC'
+            },
+            {
+                "key": "gray",
+                "displayName": "Grå",
+                hex:'#919096'
+            },
+            {
+                "key": "white",
+                "displayName": "Vit",
+                hex:'#ffffff'
+            },
+            {
+                "key": "blue",
+                "displayName": "Blå",
+                hex:'#6f6fff'
+            },
+            {
+                "key": "petrol",
+                "displayName": "Petrol",
+                hex:"#10627a"
+
+            },
+            {
+                "key": "turquoise",
+                "displayName": "Turkos",
+                hex:'#19e7ef'
+            },
+            {
+                "key": "green",
+                "displayName": "Grön",
+                'hex':'#008000'
+            },
+            {
+                "key": "olive",
+                "displayName": "Oliv",
+                'hex':'#008000'
+            },
+            {
+                "key": "yellow",
+                "displayName": "Gul",
+                'hex':'#008000'
+            },
+            {
+                "key": "orange",
+                "displayName": "Orange",
+                'hex':'#008000'
+            },
+            {
+                "key": "red",
+                "displayName": "Röd",
+                'hex':'#f41414'
+            },
+            {
+                "key": "pink",
+                "displayName": "Rosa",
+                'hex':'#FFC0CB'
+            },
+            {
+                "key": "purple",
+                "displayName": "Lila",
+                'hex':'#800080'
+            },
+            {
+                "key": "gold",
+                "displayName": "Guld",
+                'hex':'#FFD700'
+            },
+            {
+                "key": "silver",
+                "displayName": "Silver",
+                'hex':'#C0C0C0'
+            },
+            {
+                "key": "multicolored",
+                "displayName": "Flerfärgad",
+                'hex':'#FFC0CB'
+            }
+        ]
+        var HEADERTEXT = {
+            hierarchicalFacets: { header: ''},
+            disjunctionFacets: {
+                color:{header: 'Välj  färgen', filter:'färg'},
+                brand:{header: 'Välj  märken', filter:'märken'},
+                shop:{header:'Välj  butiken', filter:'butik'},
+                size:{header:'Välj  Storlekar', filter:'Storlek'},
+                discount:{header:'Rea%', filter:'Rea'}
+            },
+            facets:{
+                sale:{header: 'Bara Rea', filter:'Bara Rea'},
+                price:{header: 'Pris'   , filter:'pris'},
+            },
+            search:{header:'Sökresultat', found: 'vi hittade', product:'styles'}
+        }
+
     </script>
 </head>

@@ -179,11 +179,11 @@ body.dashboard .page-container {
   padding:0 4%;
     width:100%;
 }
-.header a.dark {
-  color: #555;
+.header a.dark, #footer a.dark{
+  color: #333;
   border-bottom: 2px solid transparent;
 }
-.header a.dark:hover {
+.header a.dark:hover, #footer a.dark:hover {
   color: #000;
   border-bottom: 2px solid #ee99ae;
   background: transparent;

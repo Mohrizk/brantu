@@ -22,6 +22,32 @@ var searcher = algoliasearchHelper(client,'product_sweden', {
 	facets:[  'sale', 'price.value'],
 	disjunctiveFacets:['color','brand.name','shop.name','sizes', 'discount']
 });
+
+var typeVerified = true, departmentVerified= false;
+if(TYPE !=null){
+	switch (TYPE.name) {
+		case 'category':
+			helper.toggleRefinement('products','Kvinna').search();
+			break;
+		case 'brand':
+			helper.addDisjunctiveFacetRefinement('brand.name', TYPE.value.name).search();
+			break;
+		default:
+			typeVerified = false;
+			//helper.search();
+			break;
+	}
+}
+console.log(DEPARTMENT)
+if( DEPARTMENT!==null){
+	if( DEPARTMENT.name !== null) {
+		if (DEPARTMENT.name == 'Kvinna' || DEPARTMENT.name == 'Man') {
+			console.log('aaaa')
+			departmentVerified = true;
+		}
+	}
+}
+
 //_________AUTCOMPLETE
 autocomplete('#search', {
 		dropdownMenuContainer: '#containerAC',
@@ -36,12 +62,7 @@ autocomplete('#search', {
 			source: function(query, callback) {
 				var index = client.initIndex('product_sweden');
 				var options = {hitsPerPage: 7}
-
-				if( DEPARTMENT!==null){
-					if( DEPARTMENT.name !== null){
-						options.facetFilters = 'categories.lvl0:'+DEPARTMENT.name;
-					}
-				}
+				if(departmentVerified)options.facetFilters = 'categories.lvl0:'+DEPARTMENT.name;
 				index.search(query, options).then(function(answer) {
 					callback(answer.hits);
 				}, function() {
@@ -62,11 +83,7 @@ autocomplete('#search', {
 			source: function(query, callback) {
 				var index = client.initIndex('brands_sv');
 				var options = {hitsPerPage: 5}
-				if( DEPARTMENT!==null){
-					if( DEPARTMENT.name !== null){
-						options.facetFilters = 'genders:'+DEPARTMENT.name;
-					}
-				}
+				if(departmentVerified)options.facetFilters = 'genders:'+DEPARTMENT.name;
 				index.search(query, options).then(function(answer) {
 					callback(answer.hits);
 				}, function() {
@@ -91,42 +108,12 @@ autocomplete('#search', {
 
 
 /*****ADD INITIAL FACETS TO HELPER*******/
-var typeVerified = true;
-if(TYPE !=null){
-	switch (TYPE.name) {
-		case 'category':
-			helper.toggleRefinement('products','Kvinna').search();
-			break;
-		case 'brand':
-			helper.addDisjunctiveFacetRefinement('brand.name', TYPE.value.name).search();
-			break;
-		default:
-			typeVerified = false;
-			//helper.search();
-			break;
-	}
-}
+
 
 
 //********BEGNING GET & ATTACH JAWBONE RECOMMENDATION
-function getRecommendations(itemId){
-	var html='';
-	$.ajax({
-		url: 'https://api.zalando.com/recommendations/'+itemId,
-		type: 'get',
-		dataType: 'json',
-		error: function(data){
-
-		},
-		success: function(data){
-			var recommendedItems='';
-			if(data.length>0)
-			{
-				$.each(data, function(i,item) {
-					var name = item.name.split("-");
-					recommendedItems += '<li productID= "'+item.id+'"><img src="'+item.media.images[0].mediumUrl+'" alt="'+item.name+'"/> <div class="brandName">'+name[0]+'</div></li>';
-				});
-				
+/*function getRecommendations(itemId){
+				var recommendedItems = '<li productID= "'+item.id+'"><img src="'+item.media.images[0].mediumUrl+'" alt="'+item.name+'"/> <div class="brandName">'+name[0]+'</div></li>';
 				html = '<h5>Similar Products</h5><div class=" frame similarProducts" id="sly_'+itemId+'"><ol class="slidee">'+recommendedItems+'</ol></div>';
 				location.find('.recommendedProducts').html(html);	
 				
@@ -146,10 +133,9 @@ function getRecommendations(itemId){
 				    touchDragging: 1
 				}).init();
 				sly.reload();	
-			}
-		}
+
 	});
-}
+}*/
 
 //********BEGINING of Change view********************
 /**
@@ -194,8 +180,8 @@ $(document).ready( function() {
 	function RENDER (content, isSearch){
 		productArray = content.hits;
 		productList.html(productTemplate(productArray));
-		var breadCrumb = currentInstance.getHierarchicalFacetBreadcrumb('products');
-
+		var breadCrumb = [];
+		if(departmentVerified) breadCrumb=currentInstance.getHierarchicalFacetBreadcrumb('products');
 		//Prices
         var newPrice = content.getFacetStats('price.value');
         if(priceLimitsChange && newPrice!=null) priceBar.update({min: newPrice.min, max: newPrice.max, from: newPrice.min, to:  newPrice.max})
@@ -213,8 +199,7 @@ $(document).ready( function() {
 		$('.paginate').html(pagingTemplate(productHelper.pagination(content.page, content.nbPages)));
 	}
 	function SEARCH (){
-			var q = searchBar.val();
-			searchBar.blur();
+			var q = searchBar.val(); searchBar.blur();
 			if(q.length ==  0){
 				closeSearch();
 				return;
@@ -233,7 +218,6 @@ $(document).ready( function() {
 			mainSection.show();
 			searchSection.hide();
 		}
-		console.log('type', typeVerified)
 		if(typeVerified) helper.search();
 	}
 //*******************************************Filter Actions
