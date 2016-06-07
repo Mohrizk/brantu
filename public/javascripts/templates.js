@@ -109,8 +109,8 @@ var HEADERTEXT = {
 
 
 var welcomeTemplate = Handlebars.compile(
-
     '{{#if search}}' +
+    '<div class="pull-right closeSearch"><i class="pg-close_line fa-2x"></i></div>' +
     '<h3 class="all-caps text-spaced text-center font-GothamMedium">{{department}}/ {{name}} "{{query}}"</h3>' +
     '<h5 class="all-caps text-spaced text-center font-GothamMedium">{{{nbHits}}}</h5>' +
     '{{else}}<h1 class="all-caps text-spaced text-center font-GothamMedium">{{name}} </h1>' +
@@ -383,7 +383,6 @@ productHelper = {
     },
     categoryRefinement: function (categoryContent, breadcrumb) {
         var breadcrumbHref = [], returnArray = [], data = categoryContent[0].data;
-        console.log(categoryContent , breadcrumb)
         for (var b = 0; b < breadcrumb.length + 1; b++) {
             var c = 0, isRefined = false;
             if (data != null) {
@@ -584,24 +583,12 @@ productHelper = {
         }
         return rObject;
     },
-    //JAWEBONE
-    changeView: function (list, container) {
-        if (!list.hasClass('jbMode')) {
-            if (list.hasClass('vertical')) {
-                list.toggleClass('horizontal').toggleClass('vertical');
-                container.addClass('noFilter');
-            }
-            else {
-                //$('.itemList').removeClass('vertical').addClass('horizontal');
-                list.toggleClass('horizontal').toggleClass('vertical');
-                container.removeClass('noFilter');
-            }
-            //$('html, body').animate({scrollTop: list.closest('.preference').offset().top-45 },100 , $.bez([.5,0,.1,1]));
-        }
-    },
-    openDDViewProductInfo: function (mainContainer, productList, jawboneLocation, jawboneContainer, content) {
+
+    openDDViewProductInfo: function (mainContainer, productList, jawboneLocation, jawboneContainer, content, paginate) {
         if (productList.hasClass("vertical")) {
-            productHelper.changeView(productList, mainContainer);
+            productList.toggleClass('horizontal').toggleClass('vertical');
+            mainContainer.addClass('noFilter');
+            paginate.addClass('hide');
         }
         jawboneLocation.addClass("open");
         $('html, body').animate({scrollTop: productList.offset().top - 100}, 1, $.bez([.5, 0, .1, 1]));
@@ -609,9 +596,11 @@ productHelper = {
         productList.addClass("jbMode");
 
     },
-    closeDDViewProductInfo: function (mainContainer, productList, jawboneContent) {
+    closeDDViewProductInfo: function (mainContainer, productList, jawboneContent, paginate) {
+        paginate.removeClass('hide');
         productList.removeClass("jbMode");
-        productHelper.changeView(productList, mainContainer);
+        productList.removeClass('horizontal').addClass('vertical');
+        mainContainer.removeClass('noFilter');
         jawboneContent.removeClass("open");
 
     }

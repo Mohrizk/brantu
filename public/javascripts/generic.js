@@ -36,13 +36,12 @@ autocomplete('#search', {
 			source: function(query, callback) {
 				var index = client.initIndex('product_sweden');
 				var options = {hitsPerPage: 7}
-				console.log(DEPARTMENT.name);
+
 				if( DEPARTMENT!==null){
 					if( DEPARTMENT.name !== null){
 						options.facetFilters = 'categories.lvl0:'+DEPARTMENT.name;
 					}
 				}
-				console.log(options);
 				index.search(query, options).then(function(answer) {
 					callback(answer.hits);
 				}, function() {
@@ -63,13 +62,11 @@ autocomplete('#search', {
 			source: function(query, callback) {
 				var index = client.initIndex('brands_sv');
 				var options = {hitsPerPage: 5}
-				console.log(DEPARTMENT.name);
 				if( DEPARTMENT!==null){
 					if( DEPARTMENT.name !== null){
 						options.facetFilters = 'genders:'+DEPARTMENT.name;
 					}
 				}
-				console.log(options);
 				index.search(query, options).then(function(answer) {
 					callback(answer.hits);
 				}, function() {
@@ -93,17 +90,21 @@ autocomplete('#search', {
 });
 
 
-/*****Render Shop LIST*******/
-switch (TYPE.name) {
-	case 'category':
-		helper.toggleRefinement('products','Kvinna > Skor').search();
-		break;
-	case 'brand':
-		helper.addDisjunctiveFacetRefinement('brand.name', TYPE.value.name).search();
-		break;
-	default:
-		helper.search();
-		break;
+/*****ADD INITIAL FACETS TO HELPER*******/
+var typeVerified = true;
+if(TYPE !=null){
+	switch (TYPE.name) {
+		case 'category':
+			helper.toggleRefinement('products','Kvinna').search();
+			break;
+		case 'brand':
+			helper.addDisjunctiveFacetRefinement('brand.name', TYPE.value.name).search();
+			break;
+		default:
+			typeVerified = false;
+			//helper.search();
+			break;
+	}
 }
 
 
@@ -155,9 +156,8 @@ function getRecommendations(itemId){
  * Ensure that a tag is not filtering the results
  * @param {string} tag tag to remove from the filter
  * @return {AlgoliaSearchHelper}
- * @fires change
+ * @fires
  */
-console.log('department ',DEPARTMENT.name);
 $(document).ready( function() {
 	var currentInstance = helper;
 	helper.on  ('result', function(content) {currentInstance = helper;  RENDER(content, false); })
@@ -166,6 +166,7 @@ $(document).ready( function() {
 
 	var productArray=[];
 	var mainSection = $('#mainSection');
+	var searchSection = $('#searchSection');
 	var mainContainer = $('.resultContainer');
 	var filterSelector = $('#mainFacetPane');
 	var facetContainer = $('#mainFacetContainer');
@@ -174,6 +175,7 @@ $(document).ready( function() {
 	var jawboneContent = $('.jawBoneContent');
 	var searchBar =  $('#search');
 	var priceBarInput = $("#pricerange")
+	var paginate = $('.paginate');
     var priceLimitsChange = true;
 
 	priceBarInput.ionRangeSlider({
@@ -190,14 +192,16 @@ $(document).ready( function() {
 
 
 	function RENDER (content, isSearch){
-		console.log(content);
 		productArray = content.hits;
 		productList.html(productTemplate(productArray));
+		var breadCrumb = currentInstance.getHierarchicalFacetBreadcrumb('products');
+
 		//Prices
         var newPrice = content.getFacetStats('price.value');
         if(priceLimitsChange && newPrice!=null) priceBar.update({min: newPrice.min, max: newPrice.max, from: newPrice.min, to:  newPrice.max})
 		else priceLimitsChange= true;
-		$('.welcome').html(welcomeTemplate(productHelper.getWelcomeMessage(currentInstance.getHierarchicalFacetBreadcrumb('products'), content, isSearch)));
+
+		$('.welcome').html(welcomeTemplate(productHelper.getWelcomeMessage(breadCrumb, content, isSearch)));
         $('.sale').html(onlySaleBoxFacetTemplate({header: HEADERTEXT.facets.sale.header,   content: productHelper.mapWithout(content.getFacetValues('sale'),['false'])}));
         $('.discounts').html(listFacetTemplate(  {header: HEADERTEXT.disjunctionFacets.discount.header, content: productHelper.mapWithout(content.getFacetValues('discount'), ['0'])} ));
         $('.sizes').html(listFacetTemplate(      {header: HEADERTEXT.disjunctionFacets.size.header , content:content.getFacetValues('sizes')}));
@@ -205,23 +209,36 @@ $(document).ready( function() {
         $('.shops').html(listFacetTemplate(      {header: HEADERTEXT.disjunctionFacets.shop.header ,content: content.getFacetValues('shop.name')}));
 		$('.colors').html(colorFacetTemplate(    {header: HEADERTEXT.disjunctionFacets.color.header , content: productHelper.mapColor(content.getFacetValues('color'),COLORS)}));
 		$('.filterTags').html(filterTagsTemplate(productHelper.getAllRefinements(currentInstance.getState(['attribute:*']), HEADERTEXT)));
-		$('.category').html(categoryFacetTemplate(productHelper.categoryRefinement(content.hierarchicalFacets, currentInstance.getHierarchicalFacetBreadcrumb('products'))));
+		$('.category').html(categoryFacetTemplate(productHelper.categoryRefinement(content.hierarchicalFacets, breadCrumb)));
 		$('.paginate').html(pagingTemplate(productHelper.pagination(content.page, content.nbPages)));
 	}
-
 	function SEARCH (){
 			var q = searchBar.val();
 			searchBar.blur();
 			if(q.length ==  0){
-				helper.search();
+				closeSearch();
 				return;
 			}
 			searcher.clearRefinements().setQuery(q);
 			if(!jQuery.isEmptyObject(DEPARTMENT)) searcher.toggleRefinement('products', DEPARTMENT.name);
 			searcher.search();
+		   if(searchSection.length !=0){
+			   mainSection.hide();
+			   searchSection.show()
+		   }
+	}
+	function closeSearch(){
+		currentInstance = helper;
+		if(searchSection.length !=0) {
+			mainSection.show();
+			searchSection.hide();
+		}
+		console.log('type', typeVerified)
+		if(typeVerified) helper.search();
 	}
 //*******************************************Filter Actions
 	var productEngine = $('#productEngine ')
+
 	productEngine.on( 'click', '.category li a', function (event) {
 		var value = $(this).attr('value');
 		currentInstance.clearRefinements('products').toggleRefinement('products', value).search();
@@ -232,7 +249,6 @@ $(document).ready( function() {
 	});
 	productEngine.on( 'click', '.brands input', function (event) {
 		var value = $(this).attr('value');
-		console.log(value);
 		if($(this).prop('checked')){
 			currentInstance.addDisjunctiveFacetRefinement('brand.name', value).search();
 		}
@@ -270,10 +286,7 @@ $(document).ready( function() {
 		}
 	});
 	productEngine.on( 'change', '.shops input', function (event) {
-        console.log('mmmm')
 		var value = $(this).attr('value');
-		//console.log(value)
-
 		if( $(this).prop('checked')){
 			currentInstance.addDisjunctiveFacetRefinement('shop.name', value).search();
 		}
@@ -283,8 +296,6 @@ $(document).ready( function() {
 	});
 	productEngine.on( 'change', '.sale input', function (event) {
 		var value = $(this).attr('value');
-		//console.log(value)
-
 		if( $(this).prop('checked')){
 			currentInstance.addFacetRefinement('sale', value).search();
 		}
@@ -301,13 +312,14 @@ $(document).ready( function() {
 	});
 	productEngine.on( 'click', '.paginate a', function (event) {
 		currentInstance.setPage($(this).attr('value')).search();
+		$('html, body').animate({scrollTop: productList.offset().top - 100}, 100, $.bez([.5, 0, .1, 1]));
 
 	});
 //***************************************SEARCH
 	searchBar.on( 'change', SEARCH)
 	$('#searchSubmit').on( 'click', SEARCH)
-	$('#closeSearch').on( 'click', function(event){
-		helper.search()
+	$('.welcome').on( 'click','.closeSearch', function(event){
+		closeSearch();
 	})
   //***********************USER ACTIONS
 	mainSection.on( 'click','.changeView' , function (event) {
@@ -315,20 +327,20 @@ $(document).ready( function() {
 	});
 	productList.on( 'click','.item .preview-image, .item .moreInfo' , function (event) {
 		productHelper.openDDViewProductInfo(
-			mainContainer, productList, $('#jawbone'), jawboneContainer, productArray[$(this).attr('index')]);
+			mainContainer, productList, $('#jawbone'), jawboneContainer, productArray[$(this).attr('index')],paginate);
 
 	});
-	mainSection.on( 'click','.jawBone .delete' , function () {
-		productHelper.closeDDViewProductInfo(mainContainer, productList,jawboneContent);
+	mainContainer.on( 'click','.jawBone .delete' , function () {
+		productHelper.closeDDViewProductInfo(mainContainer, productList,jawboneContent, paginate);
 	});
-	mainSection.on( 'mouseover','.jawBone .selectedItemImageColoumn ol li img' , function (event) {
+	mainContainer.on( 'mouseover','.jawBone .selectedItemImageColoumn ol li img' , function (event) {
 		var newImage = $(this).attr('src').replace('catalog','large');
 		var location = $(this).closest('.selectedItemImageWrapper').find('.selectedItemPictureContainer').find('.selectedItemZoomPicture');
 		location.find('img:first').remove();
 		location.append('<img imageorder = "'+$(this).attr('imageorder') +'" src="'+newImage+'"/>');
 	});
 	//******CLICK NEXT
-	mainSection.on( 'click','.jawBone .next-item' , function (event) {
+	mainContainer.on( 'click','.jawBone .next-item' , function (event) {
 		var currentImage = $(this).closest('.selectedItemZoomPicture').find('img');
 		var currentImageOrder = parseInt(currentImage.attr('imageorder'));
 		
@@ -345,7 +357,7 @@ $(document).ready( function() {
 		$(this).closest('.selectedItemZoomPicture').append('<img imageorder = "'+newImageLocation+'" src="'+newImageSrc+'"/>');
 	});
 	//******CLICK PREV
-	mainSection.on( 'click','.jawBone .prev-item' , function (event) {
+	mainContainer.on( 'click','.jawBone .prev-item' , function (event) {
 		var currentImage = $(this).closest('.selectedItemZoomPicture').find('img');
 		var currentImageOrder = parseInt(currentImage.attr('imageorder'));
 		
@@ -372,7 +384,7 @@ $(document).ready( function() {
 		var headerHeight = $('.header').height();
 		var filterWrapperPosition=$('.facetWrapper').offset();
 		var filterHeight = $('.facetWrapper').height();
-
+        console.log(upStateChanged , downStateChanged)
 
 		if(currentScroll +  headerHeight<= filterPosition.top){
 			facetContainer.css('position','absolute').css('top','0px').css('bottom', 'auto');
@@ -413,18 +425,9 @@ $(document).ready( function() {
 		}
 		previousScroll= currentScroll;
 
-		/*if(currentScroll + facetContainer.height() >= footerPosition.top -40){
-			facetContainer.addClass('pull-bottom').removeClass('fixed');
-		}
-		else if(currentScroll> (filterPosition.top - 100) ){
-			facetContainer.addClass('fixed').removeClass('pull-bottom');
-		}
-		else if(currentScroll < (filterPosition.top-100)  ){
-			facetContainer.removeClass('fixed').removeClass('pull-bottom');
-		}*/
 	}
 	$(window).scroll(function () {
-		if(mainSection.is(':visible')){
+		if(mainSection.is(':visible') || searchSection.is(':visible')){
 			mainFacetPaneScroll()
 		}
     });

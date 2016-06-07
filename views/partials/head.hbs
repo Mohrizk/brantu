@@ -45,6 +45,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
     <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+
+    <script src="/javascripts/templates.js"></script>
     <script type="text/javascript" src="/javascripts/hb-helper.js"></script>
     <script type="text/javascript" src="/javascripts/hb-partial.js"></script>
 
@@ -60,6 +62,14 @@
             {{#if selectedDepartment}}
               DEPARTMENT = {{{json selectedDepartment}}};
             {{/if}}
+
+        var TYPE ={};
+        {{#if exposeName}}
+            TYPE.name  = {{{json exposeName}}};
+        {{/if}}
+        {{#if exposeValue}}
+        TYPE.value = {{{json exposeValue}}};
+        {{/if}}
 
         var CATEGORY_TREE = {};
             {{#if categoryTree}}
