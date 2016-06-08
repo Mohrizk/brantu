@@ -58,8 +58,13 @@ var register = function(Handlebars) {
                 return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
             };
             return object.theID=(S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+        },
+        upToIndex:function(currentIndex, maxIndex){
+            if(currentIndex<=maxIndex)
+            return true;
+            else
+            return false;
         }
-
     };
 
 

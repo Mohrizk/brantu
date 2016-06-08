@@ -49,11 +49,13 @@ if( DEPARTMENT!==null){
 }
 
 //_________AUTCOMPLETE
+var currentDDHits=[];
 autocomplete('#search', {
 		dropdownMenuContainer: '#containerAC',
 		hints:true,
+	    debug:true,
 		templates: {
-			dropdownMenu: '#brantu-dropdown-template'
+			dropdownMenu: searchDropDownTemplate
 		}
 	},
 	[
@@ -64,6 +66,8 @@ autocomplete('#search', {
 				var options = {hitsPerPage: 7}
 				if(departmentVerified)options.facetFilters = 'categories.lvl0:'+DEPARTMENT.name;
 				index.search(query, options).then(function(answer) {
+					currentDDHits=[]
+					currentDDHits=answer.hits;
 					callback(answer.hits);
 				}, function() {
 					callback([]);
@@ -102,7 +106,7 @@ autocomplete('#search', {
 		}
 	]
 ).on('autocomplete:selected', function(event, suggestion, dataset) {
-	console.log(suggestion, dataset);
+	//console.log(suggestion, dataset);
 	//window.location ='/brand/'+suggestion.name;
 });
 
@@ -151,18 +155,24 @@ $(document).ready( function() {
 
 
 	var productArray=[];
+
 	var mainSection = $('#mainSection');
 	var searchSection = $('#searchSection');
 	var mainContainer = $('.resultContainer');
+
 	var filterSelector = $('#mainFacetPane');
 	var facetContainer = $('#mainFacetContainer');
+	var productContainer= $('.productPane');
 	var productList = $('.itemList');
+
 	var jawboneContainer = $('.jawBoneContainer');
 	var jawboneContent = $('.jawBoneContent');
 	var searchBar =  $('#search');
 	var priceBarInput = $("#pricerange")
 	var paginate = $('.paginate');
+	var loading = $('.loading');
     var priceLimitsChange = true;
+
 
 	priceBarInput.ionRangeSlider({
         type: "double",
@@ -178,15 +188,32 @@ $(document).ready( function() {
 
 
 	function RENDER (content, isSearch){
+		/*
+		 * MAIN RENDER FUNCTION FOR ALL SEARCHES
+		 * AND CATEGORY NAVIGATION
+		 *
+		 * */
+		//SHOW LOADING
+		loading.show();
+		productContainer.hide();
+		//STORE CURRENT HITS IN CURRENT PRODUCT GLOBAL ARRAY
 		productArray = content.hits;
 		productList.html(productTemplate(productArray));
+
+		//GET BREAD CRUMB IF THERE IS A VERIFIED DEPARTMENT
+		//IF THERE IS A DEPARTMENT VERIFIED THEN A CATEGORY IS INVOLOVED
 		var breadCrumb = [];
 		if(departmentVerified) breadCrumb=currentInstance.getHierarchicalFacetBreadcrumb('products');
-		//Prices
+
+		//GET NEW PRICES
+		//UPDATE PRICES IF THE NAVIGATION
         var newPrice = content.getFacetStats('price.value');
         if(priceLimitsChange && newPrice!=null) priceBar.update({min: newPrice.min, max: newPrice.max, from: newPrice.min, to:  newPrice.max})
 		else priceLimitsChange= true;
+		if(content.nbHits==0) $('.price').hide();
+		else $('.price').show();
 
+		//RENDER ALL NEW VALUES
 		$('.welcome').html(welcomeTemplate(productHelper.getWelcomeMessage(breadCrumb, content, isSearch)));
         $('.sale').html(onlySaleBoxFacetTemplate({header: HEADERTEXT.facets.sale.header,   content: productHelper.mapWithout(content.getFacetValues('sale'),['false'])}));
         $('.discounts').html(listFacetTemplate(  {header: HEADERTEXT.disjunctionFacets.discount.header, content: productHelper.mapWithout(content.getFacetValues('discount'), ['0'])} ));
@@ -196,17 +223,24 @@ $(document).ready( function() {
 		$('.colors').html(colorFacetTemplate(    {header: HEADERTEXT.disjunctionFacets.color.header , content: productHelper.mapColor(content.getFacetValues('color'),COLORS)}));
 		$('.filterTags').html(filterTagsTemplate(productHelper.getAllRefinements(currentInstance.getState(['attribute:*']), HEADERTEXT)));
 		$('.category').html(categoryFacetTemplate(productHelper.categoryRefinement(content.hierarchicalFacets, breadCrumb)));
-		$('.paginate').html(pagingTemplate(productHelper.pagination(content.page, content.nbPages)));
+		$('.paginate').html(pagingTemplate(productHelper.pagination(content)));
+		//Show Result
+		loading.hide();
+		productContainer.show();
+
 	}
 	function SEARCH (){
 			var q = searchBar.val(); searchBar.blur();
+			productHelper.closeDDViewProductInfo(mainContainer, productList,jawboneContent, paginate);
 			if(q.length ==  0){
 				closeSearch();
 				return;
 			}
+
 			searcher.clearRefinements().setQuery(q);
 			if(!jQuery.isEmptyObject(DEPARTMENT)) searcher.toggleRefinement('products', DEPARTMENT.name);
 			searcher.search();
+			$('html, body').animate({scrollTop: 0 }, 100, $.bez([.5, 0, .1, 1]));
 		   if(searchSection.length !=0){
 			   mainSection.hide();
 			   searchSection.show()
@@ -306,58 +340,137 @@ $(document).ready( function() {
 		closeSearch();
 	})
   //***********************USER ACTIONS
-	mainSection.on( 'click','.changeView' , function (event) {
-		productHelper.changeView(productList,mainContainer);
-	});
-	productList.on( 'click','.item .preview-image, .item .moreInfo' , function (event) {
+	productList.on( 'click','.item img, .item .moreInfo' , function (event) {
 		productHelper.openDDViewProductInfo(
 			mainContainer, productList, $('#jawbone'), jawboneContainer, productArray[$(this).attr('index')],paginate);
 
 	});
+
+	$('.productPreview .itemList.horizontal').on( 'mouseover','.item .preview-image, .item .moreInfo' , function (event) {
+		productHelper.openDDViewProductInfo(
+			mainContainer, productList, $('#jawbone'), jawboneContainer, productArray[$(this).attr('index')],paginate);
+	})
+
+	var productPreviewTimer;
+	$('.productPreview .itemList.vertical').on( 'mouseover','.item .preview-image' , function (event) {
+		var imageSelector  =  $(this).find('img');
+		var productPreviewIndex = 1;
+		var divSelector = $(this);
+		var imageArray = imageSelector.attr('pic-src').split('/BREAK/');
+       if(imageArray.length>1){
+		   productPreviewTimer=setInterval(function(){
+			   if(productPreviewIndex == imageArray.length) productPreviewIndex= 0;
+			   console.log('oo')
+			   $.when( divSelector.animate({opacity: 0,width: "2%"}, 400, $.bez([.6, 0, .1, 1]))).done( function() {
+				   imageSelector.attr('src',imageArray[productPreviewIndex]);
+				   divSelector.animate({opacity: 1,width: "100%"}, 400, $.bez([.6, 0, .1, 1]));
+				   productPreviewIndex++;
+			   })
+		   }, 2200);
+	   }
+
+	}).on( 'mouseout','.item .preview-image' , function (event) { console.log('out');
+		var imageSelector  =  $(this).find('img');
+		var imageArray = imageSelector.attr('pic-src').split('/BREAK/');
+		if(imageArray.length>1)
+			imageSelector.attr('src',imageArray[0]);
+
+		clearInterval(productPreviewTimer);
+		console.log('looool')
+	});
+
 	mainContainer.on( 'click','.jawBone .delete' , function () {
 		productHelper.closeDDViewProductInfo(mainContainer, productList,jawboneContent, paginate);
 	});
+
+    /*
+    * JAWBONE ACTIONS
+    *
+    * **/
+
 	mainContainer.on( 'mouseover','.jawBone .selectedItemImageColoumn ol li img' , function (event) {
-		var newImage = $(this).attr('src').replace('catalog','large');
-		var location = $(this).closest('.selectedItemImageWrapper').find('.selectedItemPictureContainer').find('.selectedItemZoomPicture');
-		location.find('img:first').remove();
-		location.append('<img imageorder = "'+$(this).attr('imageorder') +'" src="'+newImage+'"/>');
+		var JBDivSelector = $('#mainJawBoneImageContainer');
+		var JBImageSelector = $('#mainJawBoneImage');
+		var newImage = $(this).attr('src');
+		//console.log(newImage)
+		var newOrder = $(this).attr('imageorder')
+		$.when( JBDivSelector.animate({opacity: 0.4, marginLeft:"600"}, 500, $.bez([.6, 0, .1, 1]))).done( function() {
+			JBImageSelector.attr('src',newImage).attr('imageorder', newOrder);
+			JBDivSelector.animate({opacity: 1, margin:"0"}, 500, $.bez([.6, 0, .1, 1]));
+		})
 	});
 	//******CLICK NEXT
 	mainContainer.on( 'click','.jawBone .next-item' , function (event) {
-		var currentImage = $(this).closest('.selectedItemZoomPicture').find('img');
-		var currentImageOrder = parseInt(currentImage.attr('imageorder'));
-		
-		var coloumnImages = $(this).closest('.selectedItemImageWrapper').find('.selectedItemImageColoumn');
-		var coloumnImagesLength = parseInt(coloumnImages.attr('numofimages'));
-		
-		var newImageLocation;
-		if(currentImageOrder < (coloumnImagesLength-1)) newImageLocation = currentImageOrder + 1;
-		else newImageLocation = 0;
-		var nthchild = newImageLocation + 1;
-		
-		var newImageSrc = coloumnImages.find('ol li:nth-child('+nthchild+')').find('img').attr('src').replace('catalog','large');
-		currentImage.remove();
-		$(this).closest('.selectedItemZoomPicture').append('<img imageorder = "'+newImageLocation+'" src="'+newImageSrc+'"/>');
+		var JBDivSelector = $('#mainJawBoneImageContainer');
+		var JBImageSelector = $('#mainJawBoneImage');
+		var imageArray = $('.jawbone').attr('pic-src').split('/BREAK/');
+		var currentIndex = JBImageSelector.attr('imageorder');
+		var nextIndex = (currentIndex == imageArray.length-1)? 0 : (Number(currentIndex)+1);
+		$.when( JBDivSelector.animate({opacity: 0.4, marginLeft:"100%"}, 500, $.bez([.6, 0, .1, 1]))).done( function() {
+			JBImageSelector.attr('src',imageArray[nextIndex]).attr('imageorder', nextIndex);
+			JBDivSelector.animate({opacity: 1, margin:"0"}, 500, $.bez([.6, 0, .1, 1]));
+		})
 	});
 	//******CLICK PREV
 	mainContainer.on( 'click','.jawBone .prev-item' , function (event) {
-		var currentImage = $(this).closest('.selectedItemZoomPicture').find('img');
-		var currentImageOrder = parseInt(currentImage.attr('imageorder'));
-		
-		var coloumnImages = $(this).closest('.selectedItemImageWrapper').find('.selectedItemImageColoumn');
-		var coloumnImagesLength = parseInt(coloumnImages.attr('numofimages'));
-		
-		var newImageLocation;
-		if(currentImageOrder > 0) newImageLocation = currentImageOrder - 1;
-		else newImageLocation = coloumnImagesLength-1;
-		var nthchild = newImageLocation + 1;
-		
-		var newImageSrc = coloumnImages.find('ol li:nth-child('+nthchild+')').find('img').attr('src').replace('catalog','large');
-		currentImage.remove();
-		$(this).closest('.selectedItemZoomPicture').append('<img imageorder = "'+newImageLocation+'" src="'+newImageSrc+'"/>');
+		var JBDivSelector = $('#mainJawBoneImageContainer');
+		var JBImageSelector = $('#mainJawBoneImage');
+		var imageArray = $('.jawbone').attr('pic-src').split('/BREAK/');
+		var currentIndex =  Number(JBImageSelector.attr('imageorder'))
+		var prevIndex = (currentIndex == 0)? (currentIndex-1) : (imageArray.length-1);
+		$.when( JBDivSelector.animate({opacity: 0.4, marginLeft:"100%"}, 500, $.bez([.6, 0, .1, 1]))).done( function() {
+			JBImageSelector.attr('src',imageArray[prevIndex]).attr('imageorder', prevIndex);
+			JBDivSelector.animate({opacity: 1, margin:"0"}, 500, $.bez([.6, 0, .1, 1]));
+		})
 	});
 
+
+
+
+	/*
+	 * search dropdown ACTIONS
+	 *
+	 * **/
+	var ddContainer = $('#containerAC');
+    var pPcurrentIndex = 100;
+	ddContainer.on( 'mouseover','#dditemList',function(event){
+		$('#ddCol2').hide();
+		$('#ddProductPreview').show();
+	}).on('mouseout' ,'#dditemList' , function (event) {
+		$('#ddProductPreview').hide()
+		$('#ddProductPreviewContainer').html('');
+		pPcurrentIndex = 100;
+		$('#ddCol2').show()
+	})
+
+	ddContainer.on( 'mouseover','#dditemList .productsAC' , function (event) {
+		var content;
+		var productId = $(this).attr('data-id');
+		var pPreviewSelector = $('#ddProductPreview')
+		var pPreviewContainer =
+		pPreviewSelector.show();
+		var index = 3;
+		for(var c in currentDDHits){
+			if(productId == currentDDHits[c].productId){
+				content = currentDDHits[c];
+				index = c;
+			}
+		}
+            console.log(index, pPcurrentIndex);
+			if(pPcurrentIndex != index)
+				$.when( pPreviewContainer.animate({opacity: 0.5, left:"20"}, 100, $.bez([.6, 0, .1, 1]))).done( function() {
+				pPcurrentIndex= index;
+				pPreviewContainer.html(ACProductPreviewTemplate(content));
+				pPreviewContainer.animate({opacity: 1, left:"0"}, 100, $.bez([.6, 0, .1, 1]));
+			})
+	})
+
+
+
+	/*
+	 * Scrolling ACTIONS
+	 *
+	 * **/
     var previousScroll = 0;
 	var downStateChanged = false;
 	var upStateChanged = false;
@@ -368,7 +481,6 @@ $(document).ready( function() {
 		var headerHeight = $('.header').height();
 		var filterWrapperPosition=$('.facetWrapper').offset();
 		var filterHeight = $('.facetWrapper').height();
-        console.log(upStateChanged , downStateChanged)
 
 		if(currentScroll +  headerHeight<= filterPosition.top){
 			facetContainer.css('position','absolute').css('top','0px').css('bottom', 'auto');

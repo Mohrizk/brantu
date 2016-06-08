@@ -1,5 +1,3 @@
-
-
 var welcomeTemplate = Handlebars.compile(
     '{{#if search}}' +
     '<div class="pull-right closeSearch"><i class="pg-close_line fa-2x"></i></div>' +
@@ -13,9 +11,9 @@ var welcomeTemplate = Handlebars.compile(
 
 
 var productTemplate = Handlebars.compile(
-    '{{#each this}}'+
+    '{{#each  this}}' +
     '<li  class="item offer" index="{{@index}}" productId="{{{this.brantuId}}}">'+
-    '<img class="preview-image" src="{{{this.mainPicture.largeUrl}}}" alt="{{name}}" index="{{@index}}" productId="{{this.productId}}"/>'+
+    '<div class="preview-image auto-margin"><img src="{{{this.mainPicture.largeUrl}}}" pic-src="{{{this.mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}" alt="{{../name}}" index="{{@index}}" nb-pic="{{nbImages}}" pic-order="0" productId="{{../productId}}"/></div>'+
     '<span class="item-brand sbold">{{{this.brand.name}}}</span>'+
     '<span class="item-name medium">{{{this.targetGroup}}}</span>'+
     '{{#if sale}}'+
@@ -43,21 +41,21 @@ var productTemplate = Handlebars.compile(
 
 
 var jawBoneTemplate = Handlebars.compile(
-    '<div class="jawBone">'+
+    '<div class="jawBone" nb-pic="{{numOfImages}}" pic-src="{{{mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}">'+
     '<div class="mainWrapper">'+
     '<div class="selectedItemImageWrapper">'+
     '<div class="selectedItemImageColoumn frame" id="selectedItemImages" numOfImages="{{numOfImages}}">'+
     '<ol class="slidee">'+
     '<li><img imageorder ="0" src="{{mainPicture.largeUrl}}" /></li>'+
     '{{#each auxPictures}}'+
-    '<li><img imageorder ="{{indexPlusConstant @index 1}}" src="{{largeUrl}}" /></li>'+
+    '<li><img  imageorder ="{{indexPlusConstant @index 1}}" src="{{largeUrl}}" /></li>'+
     '{{/each}}'+
     '</ol>'+
     '</div>'+
     '<div class="selectedItemPictureContainer">'+
     '<div class="selectedItemZoomPicture">'+
     '<div class="prev-item"><i class="  pg-arrow_left_line_alt"></i></div> <div class="next-item"><i class=" pg-arrow_lright_line_alt"></i></div>'+
-    ' <img imageorder = "0" src="{{mainPicture.largeUrl}}"/>'+
+    '<div id="mainJawBoneImageContainer"> <img id="mainJawBoneImage" imageorder = "0" src="{{mainPicture.largeUrl}}"/> </div>'+
     '</div>'+
     '</div>'+
     '</div>'+
@@ -191,6 +189,7 @@ var filterTagsTemplate = Handlebars.compile(
 )
 
 var pagingTemplate = Handlebars.compile(
+    '{{#if paginate}}'+
     '<div class="clearfix">' +
     '<div class="pull-right bg-master-light btn-rounded p-r-10 p-l-10">' +
     '{{#if hasPrevious}}' +
@@ -209,25 +208,92 @@ var pagingTemplate = Handlebars.compile(
     '<a class="inline p-l-5 page v-align-middle" value="{{indexPlusConstant currentPage 1}}"><i class="fa-2x pg-arrow_lright_line_alt "></i></a>'+
     '{{/if}}'+
     '</div>' +
-    '</div>'
+    '</div>+' +
+    '{{/if}}'
 );
 
 //AUTOCOMEPLETE
+
+var searchDropDownTemplate =  Handlebars.compile(
+    '<div class="my-custom-menu">'+
+    '<div class="row padding-2v">'+
+    '<div class="col-sm-1"><h1 class="light">Your Search Result</h1></div>'+
+    '<div class="col-sm-4 col-sm-offset-1 text-center" id="dditemListContainer">' +
+    '<h5 class="text-left b-b bold text-pink-darker">Products</h5>'+
+    '<div class="aa-dataset-0" id="dditemList"></div>'+
+    '</div>'+
+    '<div class="col-sm-3 col-sm-offset-1 text-center" id="ddCol2">' +
+    '<div id="ddBrands">'+
+    '<div>'+
+    '<h5 class="text-left b-b bold text-pink-darker" >Brands</h5>'+
+    '</div>'+
+    '<div class="aa-dataset-1"></div>'+
+    '<div class="aa-dataset-2"></div>' +
+    '</div>'+
+    '<div id="ddCategory">'+
+    '</div>' +
+    '</div>'+
+    '<div class="col-sm-5 col-sm-offset-1 text-center no-overflow" style="display: none; max-height: 30vw;" id="ddProductPreview">' +
+    '<div class="top-left bottom-right" id="ddProductPreviewContainer">' +
+    '</div>' +
+    '</div>' +
+    '</div>'+
+    '</div>'
+)
 var ACTemplateProduct = Handlebars.compile(
-    '<a class="dark" href="{{{shopUrl}}}"><div class="productsAC m-b-5 text-left">'+
+    '<div data-id="{{productId}}" class="productsAC m-b-5 text-left">'+
     '<div><img src="{{{mainPicture.smallUrl}}}" width="40" height="auto"/></div>'+
     '<div class="b-b b-grey" style="font-size:12px;"> ' +
     '<div class="brand bold">{{{ brand.name}}}</div>' +
     '<div class="name medium">{{{ _highlightResult.name.value }}}</div>' +
     '<div class="price medium inline">{{{ price.formatted}}}</div>' +
-    '</div></div></a>'
+    '</div></div>'
 );
 
 
 var ACTemplateBrand = Handlebars.compile('<a class="dark" href="/brand/{{{name}}}"><div class="brandsAC text-left">' +
-    '<div>{{#logoUrl}}<img src="{{logoUrl}}" width="40" height="auto"/>{{/logoUrl}}</div>'+
+    '<div>{{#if logoUrl}}<img src="{{logoUrl}}" width="40" height="auto"/>{{/if}}</div>'+
     '<div class="b-b b-grey p-l-10"><div class="name medium"><span class="">{{{ _highlightResult.name.value }}}</span></div></div>' +
     '</div></a>');
+
+var ACProductPreviewTemplate=  Handlebars.compile(
+    '<div class="row">' +
+    '<div class="col-xs-7"><img  src="{{mainPicture.largeUrl}}" style="width: 100%"/>' +
+    '</div>' +
+    '<div class="col-xs-4 col-xs-offset-1"><ol class="slidee no-style">'+
+    '{{#each auxPictures}}'+
+    '{{#if (upToIndex @index 1)}}<li class="p-t-1v"><img src="{{largeUrl}}" style="width: 100%" /></li>{{/if}}'+
+    '{{/each}}'+
+    '</ol>'+
+    '</div>'+
+    '</div>'+
+    '<div class="overlayer bottom-left full-width">' +
+    '<div class="overlayer-wrapper item-info more-content">' +
+    '<div class="gradient-grey p-l-20 p-r-20 p-t-20 p-b-5">' +
+    '<div class="row">' +
+    '<div class="col-xs-7">' +
+    '<h3 class="text-left bold text-white no-margin">{{brand.name}}</h3>' +
+    '<p class="hint-text text-left text-white">{{name}}</p>' +
+    '</div>' +
+    '<div class="col-xs">' +
+    '{{#if sale}}'+
+    '<h3 class="text-red no-padding no-margin bold text-right"> {{{discount}}}%</h3>' +
+    '<div class="clearfix">'+
+    '<h5 class="text-white pull-left no-padding no-margin " style="text-decoration: line-through">{{originalPrice.formatted}} </h5>'+
+    '<h4 class="text-white pull-right  no-padding no-margin">{{{price.formatted}}} </h4>' +
+    '</div>'+
+    '{{else}}'+
+    '<h3 class="text-white text-left text-left">{{{originalPrice.formatted}}}</h3>' +
+    '{{/if}}'+
+    '</div>' +
+    '</div>' +
+    '</div>'+
+    '</div>' +
+    '</div>' +
+    '</div>'
+)
+
+
 /*****Render Color LIST*******/
 var productHelper;
 productHelper = {
@@ -424,8 +490,11 @@ productHelper = {
                 break;
         }
     },
-    pagination: function (currentPage, totalPages) {
+    pagination: function (content) {
+        var nbHits = content.nbHits;
+        var currentPage= content.page, totalPages = content.nbPages;
         var rObject = {
+            paginate : true,
             currentPage: currentPage,
             totalPages: totalPages,
             hasNext: false,
@@ -437,44 +506,49 @@ productHelper = {
             pages: []
         };
         var cClass = 'sbold text-pink-darker';
-        if (currentPage < totalPages - 1) rObject.hasNext = true;
-        if (currentPage != 0) rObject.hasPrevious = true;
-        if(totalPages > 5) {
-            if (currentPage == 0) {
-                rObject.bufferBefore = 0;
-                rObject.bufferAfter = 4;
-                rObject.showFirst = false;
-            } else if (currentPage == 1) {
-                rObject.bufferBefore = 1;
-                rObject.bufferAfter = 3;
-                rObject.showFirst = false;
-            }
-            else if (currentPage == 2) {
-                rObject.showFirst = false;
-            }
-            else if (currentPage == (totalPages - 2)) {
-                rObject.bufferBefore = 3;
-                rObject.bufferAfter = 1;
-                rObject.showLast = false;
-            } else if (currentPage == (totalPages - 1)) {
-                rObject.bufferBefore = 4;
-                rObject.bufferAfter = 0;
-                rObject.showLast = false;
-            } else if (currentPage == (totalPages - 3)) {
-                rObject.showLast = false;
-            }
+        if(nbHits != 0 ){
+            if (currentPage < totalPages - 1) rObject.hasNext = true;
+            if (currentPage != 0) rObject.hasPrevious = true;
+            if(totalPages > 5) {
+                if (currentPage == 0) {
+                    rObject.bufferBefore = 0;
+                    rObject.bufferAfter = 4;
+                    rObject.showFirst = false;
+                } else if (currentPage == 1) {
+                    rObject.bufferBefore = 1;
+                    rObject.bufferAfter = 3;
+                    rObject.showFirst = false;
+                }
+                else if (currentPage == 2) {
+                    rObject.showFirst = false;
+                }
+                else if (currentPage == (totalPages - 2)) {
+                    rObject.bufferBefore = 3;
+                    rObject.bufferAfter = 1;
+                    rObject.showLast = false;
+                } else if (currentPage == (totalPages - 1)) {
+                    rObject.bufferBefore = 4;
+                    rObject.bufferAfter = 0;
+                    rObject.showLast = false;
+                } else if (currentPage == (totalPages - 3)) {
+                    rObject.showLast = false;
+                }
 
-            for(var x=0; x<rObject.bufferBefore; x++) rObject.pages.push({thePage:currentPage - rObject.bufferBefore + (x), class:''});
-            rObject.pages.push({thePage:currentPage, class: cClass})
-            for(var c=0; c<rObject.bufferAfter; c++) rObject.pages.push({thePage:currentPage + (c + 1), class:''});
-        }
-        else {
-            for(var c=0; c<totalPages; c++){
-                if(c == currentPage) rObject.pages.push({thePage:c, class:cClass});
-                else rObject.pages.push({thePage:c, class:''});
-                rObject.showFirst = false;
-                rObject.showLast = false;
+                for(var x=0; x<rObject.bufferBefore; x++) rObject.pages.push({thePage:currentPage - rObject.bufferBefore + (x), class:''});
+                rObject.pages.push({thePage:currentPage, class: cClass})
+                for(var c=0; c<rObject.bufferAfter; c++) rObject.pages.push({thePage:currentPage + (c + 1), class:''});
             }
+            else {
+                for(var c=0; c<totalPages; c++){
+                    if(c == currentPage) rObject.pages.push({thePage:c, class:cClass});
+                    else rObject.pages.push({thePage:c, class:''});
+                    rObject.showFirst = false;
+                    rObject.showLast = false;
+                }
+            }
+        }
+        else{
+            rObject.paginate = false;
         }
         return rObject;
     },
@@ -498,6 +572,7 @@ productHelper = {
         jawboneContent.removeClass("open");
 
     }
+
 
 };
 
