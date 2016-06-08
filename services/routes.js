@@ -76,6 +76,12 @@ var routes = [
           res.redirect('/');
         } ]
       ],
+    /*********Privacy***************************/
+    [ '/privacy', 'get', [categories.getCategoryTree, function(req, res, next) {
+        res.render('privacy')
+    }
+    ]
+    ],
 
     /*********Settings***************************/
     //SETTINGS: START
