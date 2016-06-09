@@ -163,10 +163,9 @@ autocomplete('#search', {
  */
 $(document).ready( function() {
 	var currentInstance = helper;
-	helper.on  ('result', function(content) {currentInstance = helper;  RENDER(content, false); })
-	searcher.on('result', function(content) { currentInstance = searcher; RENDER(content, true); })
-
-
+	var currentState= {search:false , main:true, compare:false}
+	helper.on  ('result', function(content) {currentInstance = helper;RENDER(content);})
+	searcher.on('result', function(content) { currentInstance = searcher; RENDER(content); })
 	var productArray=[];
 	var priceLimits = {
 		change : true,
@@ -176,6 +175,7 @@ $(document).ready( function() {
 	var mainSection = $('#mainSection');
 	var searchSection = $('#searchSection');
 	var compareSection = $('#compareSection');
+	var general = $('.general');
 
 	var mainContainer = $('.resultContainer');
 	var filterSelector = $('#mainFacetPane');
@@ -209,14 +209,17 @@ $(document).ready( function() {
 		loading = $('.loading');
 	}
 
-	function RENDER (content, isSearch){
+	function RENDER (content){
 		/*
 		 * MAIN RENDER FUNCTION FOR ALL SEARCHES
 		 * AND CATEGORY NAVIGATION
 		 *
 		 * */
 		//SHOW LOADING
-		mainSection.html(productEngineTemplate());
+		if(!currentState.compare && (currentState.search || currentState.main) && searchSection.length == 0){
+			mainSection.html(productEngineTemplate());
+		}
+
 		refreshVariables();
 		productContainer.hide();
 		//STORE CURRENT HITS IN CURRENT PRODUCT GLOBAL ARRAY
@@ -251,7 +254,7 @@ $(document).ready( function() {
 			}
 		});
 		//RENDER ALL NEW VALUES
-		$('.welcome').html(welcomeTemplate(productHelper.getWelcomeMessage(breadCrumb, content, isSearch)));
+		$('.welcome').html(welcomeTemplate(productHelper.getWelcomeMessage(breadCrumb, content, currentState.search)));
         $('.sale').html(onlySaleBoxFacetTemplate({header: HEADERTEXT.facets.sale.header,   content: productHelper.mapWithout(content.getFacetValues('sale'),['false'])}));
         $('.discounts').html(listFacetTemplate(  {header: HEADERTEXT.disjunctionFacets.discount.header, content: productHelper.mapWithout(content.getFacetValues('discount'), ['0'])} ));
         $('.sizes').html(listFacetTemplate(      {header: HEADERTEXT.disjunctionFacets.size.header , content:content.getFacetValues('sizes')}));
@@ -269,15 +272,15 @@ $(document).ready( function() {
 //*******************************************Filter Actions
 
 
-	mainSection.on( 'click', ' .resultContainer .category li a', function (event) {
+	general.on( 'click', ' .resultContainer .category li a', function (event) {
 		var value = $(this).attr('value');
 		currentInstance.clearRefinements('products').toggleRefinement('products', value).search();
 	});
-	mainSection.on( 'click', '.resultContainer .breadcrumb li a', function (event) {
+	general.on( 'click', '.resultContainer .breadcrumb li a', function (event) {
 		var value = $(this).attr('value');
 		currentInstance.clearRefinements('products').toggleRefinement('products', value).search();
 	});
-	mainSection.on( 'click', '.resultContainer .brands input', function (event) {
+	general.on( 'click', '.resultContainer .brands input', function (event) {
 		var value = $(this).attr('value');
 		if($(this).prop('checked')){
 			currentInstance.addDisjunctiveFacetRefinement('brand.name', value).search();
@@ -286,7 +289,7 @@ $(document).ready( function() {
 			currentInstance.removeDisjunctiveFacetRefinement('brand.name', value).search();
 		}
 	});
-	mainSection.on( 'change', '.resultContainer .sizes input', function (event) {
+	general.on( 'change', '.resultContainer .sizes input', function (event) {
 		var value = $(this).attr('value');
 		if($(this).prop('checked')){
 			currentInstance.addDisjunctiveFacetRefinement('sizes', value).search();
@@ -295,7 +298,7 @@ $(document).ready( function() {
 			currentInstance.removeDisjunctiveFacetRefinement('sizes', value).search();
 		}
 	});
-	mainSection.on( 'change', '.resultContainer .discounts input', function (event) {
+	general.on( 'change', '.resultContainer .discounts input', function (event) {
 		var value = $(this).attr('value');
 		if( $(this).prop('checked')){
 			currentInstance.addDisjunctiveFacetRefinement('discount', value).search();
@@ -304,7 +307,7 @@ $(document).ready( function() {
 			currentInstance.removeDisjunctiveFacetRefinement('discount', value).search();
 		}
 	});
-	mainSection.on( 'change', '.resultContainer .colors input', function (event) {
+	general.on( 'change', '.resultContainer .colors input', function (event) {
 		var value = $(this).attr('value');
 		//console.log(value)
 
@@ -315,7 +318,7 @@ $(document).ready( function() {
 			currentInstance.removeDisjunctiveFacetRefinement('color', value).search();
 		}
 	});
-	mainSection.on( 'change', '.resultContainer .shops input', function (event) {
+	general.on( 'change', '.resultContainer .shops input', function (event) {
 		var value = $(this).attr('value');
 		if( $(this).prop('checked')){
 			currentInstance.addDisjunctiveFacetRefinement('shop.name', value).search();
@@ -324,7 +327,7 @@ $(document).ready( function() {
 			currentInstance.removeDisjunctiveFacetRefinement('shop.name', value).search();
 		}
 	});
-	mainSection.on( 'change', '.resultContainer .sale input', function (event) {
+	general.on( 'change', '.resultContainer .sale input', function (event) {
 		var value = $(this).attr('value');
 		if( $(this).prop('checked')){
 			currentInstance.addFacetRefinement('sale', value).search();
@@ -333,14 +336,14 @@ $(document).ready( function() {
 			currentInstance.removeFacetRefinement('sale', value).search();
 		}
 	});
-	mainSection.on( 'click', '.resultContainer .filterTags button', function (event) {
+	general.on( 'click', '.resultContainer .filterTags button', function (event) {
 		var value = $(this).attr('value');
 		var facet = $(this).attr('facet');
 		var type = $(this).attr('type');
 		productHelper.removeFilterTag(type, facet, value, currentInstance);
 
 	});
-	mainSection.on( 'click', '.resultContainer .paginate a', function (event) {
+	general.on( 'click', '.resultContainer .paginate a', function (event) {
 		currentInstance.setPage($(this).attr('value')).search();
 		$('html, body').animate({scrollTop: productList.offset().top - 100}, 100, $.bez([.5, 0, .1, 1]));
 
@@ -373,17 +376,14 @@ $(document).ready( function() {
 			imageSelector.attr('src',imageArray[0]);
         console.log('mmm');
 		clearInterval(productPreviewTimer);
-
 	});
-
-
 
 	/*
     * JAWBONE ACTIONS
     *
     * **/
 	var itemScrollindex;
-	mainSection.on( 'click','.itemList .item img, .item .moreInfo' , function (event) {
+	general.on( 'click','.itemList .item img, .item .moreInfo' , function (event) {
 		refreshVariables()
 		itemScrollindex = $(this).attr('index');
 		$('.itemList img').removeClass('selected');
@@ -399,7 +399,7 @@ $(document).ready( function() {
 				})
 			})
 	});
-	mainSection.on( 'click','.jawBone .delete' , function () {
+	general.on( 'click','.jawBone .delete' , function () {
 		refreshVariables()
 		$.when( productHelper.closeDDViewProductInfo(mainContainer, productList,jawboneContent, paginate))
 			.done( function() {
@@ -410,7 +410,7 @@ $(document).ready( function() {
 				})
 		})
 	});
-	mainSection.on( 'mouseover','.jawBone .selectedItemImageColoumn ol li img' , function (event) {
+	general.on( 'mouseover','.jawBone .selectedItemImageColoumn ol li img' , function (event) {
 		var JBDivSelector = $('#mainJawBoneImageContainer');
 		var JBImageSelector = $('#mainJawBoneImage');
 		var newImage = $(this).attr('src');
@@ -422,7 +422,7 @@ $(document).ready( function() {
 		})
 	});
 	//CLICK NEXT/PREV
-	mainSection.on( 'click','.jawBone .next-item' , function (event) {
+	general.on( 'click','.jawBone .next-item' , function (event) {
 		var JBDivSelector = $('#mainJawBoneImageContainer');
 		var JBImageSelector = $('#mainJawBoneImage');
 		var imageArray = $('.jawbone').attr('pic-src').split('/BREAK/');
@@ -433,7 +433,7 @@ $(document).ready( function() {
 			JBDivSelector.animate({opacity: 1, margin:"0"}, 500, $.bez([.6, 0, .1, 1]));
 		})
 	});
-	mainSection.on( 'click','.jawBone .prev-item' , function (event) {
+	general.on( 'click','.jawBone .prev-item' , function (event) {
 		var JBDivSelector = $('#mainJawBoneImageContainer');
 		var JBImageSelector = $('#mainJawBoneImage');
 		var imageArray = $('.jawbone').attr('pic-src').split('/BREAK/');
@@ -460,22 +460,26 @@ $(document).ready( function() {
 			closeSEARCH();
 			return;
 		}
-
+		currentState={search:true, compare:false,main:false};
 		searcher.clearRefinements().setQuery(q);
 		if(!jQuery.isEmptyObject(DEPARTMENT)) searcher.toggleRefinement('products', DEPARTMENT.name);
 		searcher.search();
 		$('html, body').animate({scrollTop: 0 }, 100, $.bez([.5, 0, .1, 1]));
 		if(searchSection.length !=0){
-			mainSection.hide();
-			searchSection.show()
+			 mainSection.hide()
+			 searchSection.show().css({'opacity':0}).animate({'opacity':1});
+
 		}
 	}
 	function closeSEARCH(){
+		console.log(',,,')
 		refreshVariables()
+		currentState={search:false, compare:false,main:true};
 		currentInstance = helper;
 		if(searchSection.length !=0) {
-			mainSection.show();
-			searchSection.hide();
+			searchSection.hide()
+			mainSection.show().css({'opacity':0}).animate({'opacity':1});
+
 		}
 		if(typeVerified) helper.search();
 	}
@@ -485,7 +489,6 @@ $(document).ready( function() {
 		SEARCH();
 	})
 	ddContainer.on( 'click','#ddsearchMore', SEARCH)
-	//searchBar.on( 'change', SEARCH)
 	mainSection.on( 'click','.closeSearch', closeSEARCH)
 	searchSection.on( 'click','.closeSearch', closeSEARCH)
 	ddContainer.on( 'mouseover','#dditemList',function(event){
@@ -528,12 +531,13 @@ $(document).ready( function() {
 	function FINDBETTERPRICES(content){
 		refreshVariables()
 		searchBar.blur();
+		currentState={search:false, compare:true,main:false};
 		if(searchSection.length !=0){
-			mainSection.hide();
-			searchSection.html(CPProductTemplate(content));
-			searchSection.show();
+			mainSection.hide()
+			searchSection.html(CPProductTemplate(content)).show().css({'opacity':0}).animate({'opacity':1});
+
 		}
-		else mainSection.html(CPProductTemplate(content));
+		else mainSection.html(CPProductTemplate(content)).css({'opacity':0}).animate({'opacity':1});
 
 		$('html, body').animate({scrollTop: 0 }, 100, $.bez([.5, 0, .1, 1]));
 	}

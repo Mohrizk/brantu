@@ -704,7 +704,7 @@ productHelper = {
     },
     openDDViewProductInfo: function (mainContainer, productList, jawboneLocation, jawboneContainer, content, paginate) {
         if (productList.hasClass("vertical")) {
-            productList.toggleClass('horizontal').toggleClass('vertical');
+            productList.toggleClass('horizontal').toggleClass('vertical').css({'opacity':0}).animate({'opacity':1},1000, $.bez([.5, 0, .1, 1]));
             mainContainer.addClass('noFilter');
             paginate.addClass('hide');
         }
@@ -717,7 +717,7 @@ productHelper = {
     closeDDViewProductInfo: function (mainContainer, productList, jawboneContent, paginate) {
         paginate.removeClass('hide');
         productList.removeClass("jbMode");
-        productList.removeClass('horizontal').addClass('vertical');
+        productList.removeClass('horizontal').addClass('vertical').css({'opacity':0}).animate({'opacity':1});
         mainContainer.removeClass('noFilter');
         jawboneContent.removeClass("open");
 
