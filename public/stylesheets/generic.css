@@ -4,7 +4,7 @@ input:-webkit-autofill {
     background: transparent !important;
    
 }
-#mainSection, #searchSection{
+#mainSection, #searchSection, #compareSection{
     margin-top:155px;
 }
 .hoverish{
@@ -24,6 +24,16 @@ input:-webkit-autofill {
     flex-direction: row !important;
     width:100%!important;
 }
+.my-custom-menu{transition: all .4s cubic-bezier(.5,0,.1,1) !important;}
+
+.productsAC .visible-hover{
+    opacity: 0;
+    transition: opacity .4s cubic-bezier(.5,0,.1,1);
+}
+.productsAC:hover .visible-hover{
+    opacity: 1;
+}
+
 .productsAC, .brandsAC {
     display: flex;
     flex-direction: row;
@@ -797,4 +807,4 @@ ol.itemList.vertical.jbMode .item>.original-price,  ol.itemList.jbMode .item>.di
     overflow-x: hidden;
 }
 
-/******RIPPLE EFFECT***/
+/******A***/

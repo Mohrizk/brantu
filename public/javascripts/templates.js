@@ -4,7 +4,6 @@ var welcomeTemplate = Handlebars.compile(
     '<h3 class="all-caps text-spaced text-center font-GothamMedium">{{#if department}}{{department}}/{{/if}} {{name}} "{{query}}"</h3>' +
     '<h5 class="all-caps text-spaced text-center font-GothamMedium">{{{nbHits}}}</h5>' +
     '{{else}}' +
-    '{{debug name}}' +
     '<h1 class="all-caps text-spaced text-center font-GothamMedium">{{name}} </h1>' +
     '{{/if}}'
 )
@@ -215,6 +214,7 @@ var pagingTemplate = Handlebars.compile(
 //AUTOCOMEPLETE
 
 var searchDropDownTemplate =  Handlebars.compile(
+    '{{debug this}}'+
     '<div class="my-custom-menu">'+
     '<div class="row padding-2v">'+
     '<div class="col-sm-1"><h1 class="light">Your Search Result</h1></div>'+
@@ -233,7 +233,7 @@ var searchDropDownTemplate =  Handlebars.compile(
     '<div id="ddCategory">'+
     '</div>' +
     '</div>'+
-    '<div class="col-sm-5 col-sm-offset-1 text-center no-overflow" style="display: none; max-height: 30vw;" id="ddProductPreview">' +
+    '<div class="col-sm col-sm-offset-1 relative text-center no-overflow" style="display: none; max-height: 30vw;" id="ddProductPreview">' +
     '<div class="top-left bottom-right" id="ddProductPreviewContainer">' +
     '</div>' +
     '</div>' +
@@ -241,13 +241,22 @@ var searchDropDownTemplate =  Handlebars.compile(
     '</div>'
 )
 var ACTemplateProduct = Handlebars.compile(
+    '{{#if more}}' +
+    '<a id="ddsearchMore"><h5 class="b-b b-t b-r b-l"><font class="text-pink-darker bold">{{nbHits}}</font> {{text}} </h5></a>' +
+    '{{else}}' +
     '<div data-id="{{productId}}" class="productsAC m-b-5 text-left">'+
     '<div><img src="{{{mainPicture.smallUrl}}}" width="40" height="auto"/></div>'+
-    '<div class="b-b b-grey" style="font-size:12px;"> ' +
-    '<div class="brand bold">{{{ brand.name}}}</div>' +
-    '<div class="name medium">{{{ _highlightResult.name.value }}}</div>' +
-    '<div class="price medium inline">{{{ price.formatted}}}</div>' +
-    '</div></div>'
+    '<div class="b-b b-grey relative" style="font-size:12px;"> ' +
+    '<a class="dark" target="_blank" href="{{{productUrl}}}"><div>' +
+    '<div class=" bold">{{{ brand.name}}}</div>' +
+    '<div class="medium">{{{ _highlightResult.name.value }}}</div>' +
+    '<div class="medium inline">{{{ price.formatted}}}</div>' +
+    '</div></a>'+
+    '<div class="bottom-right hidden-sm visible-hover"> ' +
+    '<a class="dark medium all-caps findBetterPrices" data-id="{{productId}}"> {{{ autoComplete.findBetterPriceButton}}} </a>' +
+    '</div>'+
+    '</div></div>'+
+    '{{/if}}'
 );
 
 
@@ -256,11 +265,11 @@ var ACTemplateBrand = Handlebars.compile('<a class="dark" href="/brand/{{{name}}
     '<div class="b-b b-grey p-l-10"><div class="name medium"><span class="">{{{ _highlightResult.name.value }}}</span></div></div>' +
     '</div></a>');
 
-var ACProductPreviewTemplate=  Handlebars.compile(
+var ACProductPreviewTemplate= Handlebars.compile(
     '<div class="row">' +
     '<div class="col-xs-7"><img  src="{{mainPicture.largeUrl}}" style="width: 100%"/>' +
     '</div>' +
-    '<div class="col-xs-4 col-xs-offset-1"><ol class="slidee no-style">'+
+    '<div class="col-xs col-xs-offset-1"><ol class="slidee no-style">'+
     '{{#each auxPictures}}'+
     '{{#if (upToIndex @index 1)}}<li class="p-t-1v"><img src="{{largeUrl}}" style="width: 100%" /></li>{{/if}}'+
     '{{/each}}'+
@@ -270,28 +279,70 @@ var ACProductPreviewTemplate=  Handlebars.compile(
     '<div class="overlayer bottom-left full-width">' +
     '<div class="overlayer-wrapper item-info more-content">' +
     '<div class="gradient-grey p-l-20 p-r-20 p-t-20 p-b-5">' +
-    '<div class="row">' +
-    '<div class="col-xs-7">' +
-    '<h3 class="text-left bold text-white no-margin">{{brand.name}}</h3>' +
-    '<p class="hint-text text-left text-white">{{name}}</p>' +
+    '<div class="row top-xs">' +
+    '<div class="col-xs-6 bottom-xs">' +
+    '<div class="row bottom-xs start-xs">' +
+    '<div class="col-xs bottom-xs"><h4 class="text-left medium text-white no-padding no-margin v-align-bottom"> {{name}}</h4></div>' +
     '</div>' +
-    '<div class="col-xs">' +
-    '{{#if sale}}'+
-    '<h3 class="text-red no-padding no-margin bold text-right"> {{{discount}}}%</h3>' +
-    '<div class="clearfix">'+
-    '<h5 class="text-white pull-left no-padding no-margin " style="text-decoration: line-through">{{originalPrice.formatted}} </h5>'+
-    '<h4 class="text-white pull-right  no-padding no-margin">{{{price.formatted}}} </h4>' +
-    '</div>'+
+    '<div class="row bottom-xs start-xs">' +
+    '<div class="col-xs bottom-xs"><h5 class="sbold no-margin no-padding text-pink-dark text-left v-align-bottom" style="font-size: 15px;"><span class="light text-white">{{autoComplete.brand}} :</span> {{brand.name}}</h5></div>' +
+    '</div>' +
+    '<div class="row bottom-xs start-xs">' +
+    '<div class="col-xs bottom-xs"><p class="bold text-left text-white v-align-bottom"><span class="light">{{autoComplete.shop}} :</span> {{shop.name}}</p></div>'+
+    '</div>' +
+    '</div>' +
+    '<div class="col-xs bottom-xs">' +
+    '{{#if sale}}' +
+    '<div class="row bottom-xs end-xs">' +
+    '<div class="col-xs"><h3 class="text-right bold text-white no-padding no-margin">{{{discount}}}%</h3></div>' +
+    '</div>' +
+    '<div class="row bottom-xs end-xs">' +
+    '<div class="col-xs bottom-xs"><h4 class="medium no-margin text-right no-padding text-pink-dark" ><span class="text-white" style="text-decoration: line-through; font-size:15px;">{{{originalPrice.formatted}}}</span>{{{price.formatted}}}</h4></div>' +
+    '</div>' +
     '{{else}}'+
-    '<h3 class="text-white text-left text-left">{{{originalPrice.formatted}}}</h3>' +
+    '<div class="row bottom-xs end-xs">' +
+    '<div class="col-xs"><h4 class="medium no-margin no-padding text-pink-dark text-right" style="">{{{price.formatted}}}</h4></div>' +
+    '</div>' +
     '{{/if}}'+
     '</div>' +
     '</div>' +
+    '</div>' +
     '</div>'+
-    '</div>' +
-    '</div>' +
     '</div>'
-)
+);
+
+
+//Shipping costs...etc
+var CPProductPreviewExtentionTemplate = Handlebars.compile(
+
+);
+
+var CPProductFoundTemplate = Handlebars.compile(
+    '{{#each  this}}' +
+    '<li  class="item offer" index="{{@index}}" productId="{{{this.brantuId}}}">'+
+    '<div class="preview-image auto-margin"><img src="{{{this.mainPicture.largeUrl}}}" pic-src="{{{this.mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}" alt="{{../name}}" index="{{@index}}" nb-pic="{{nbImages}}" pic-order="0" productId="{{../productId}}"/></div>'+
+    '<span class="item-brand sbold">{{{this.brand.name}}}</span>'+
+    '<span class="item-name medium">{{{this.targetGroup}}}</span>'+
+    '{{#if sale}}'+
+    '<span class="original-price discounted">{{{this.originalPrice.formatted}}}</span>'+
+    '<span class="discounted-price">{{{this.price.formatted}}}</span>'+
+    '<span class="discounted-percentage">{{{this.discount}}}%</span>'+
+    '{{else}}'+
+    '<span class="original-price">{{{this.originalPrice.formatted}}}</span>'+
+    '{{/if}}'+
+    '<ol class="small-options">'+
+    '<li class="delete"><a href="#"><i class=" pg-close_line"> </i></a></li>'+
+    '<li class="like"> <a href="#"><i class="  fa  fa-heart-o"></i></a></li>'+
+    '<li class="cart"> <a href="#"><i class="fa fa-share-alt"></i></a></li>'+
+    '</ol>'+
+    '<div class="main-options">'+
+    '<a><button class="btn  btn-info GoStore">Go to store</button></a>'+
+    '<button class="btn btn-info moreInfo" index="{{@index }}" productId="{{{this.productId}}}">More Info</button>'+
+    '</div>'+
+    '</li>'+
+    '{{/each}}'
+
+);
 
 
 /*****Render Color LIST*******/
@@ -572,8 +623,6 @@ productHelper = {
         jawboneContent.removeClass("open");
 
     }
-
-
 };
 
 

@@ -50,10 +50,10 @@ if( DEPARTMENT!==null){
 
 //_________AUTCOMPLETE
 var currentDDHits=[];
+var pPcurrentIndex = 100;  // needed for hovering effect
 autocomplete('#search', {
 		dropdownMenuContainer: '#containerAC',
 		hints:true,
-	    debug:true,
 		templates: {
 			dropdownMenu: searchDropDownTemplate
 		}
@@ -63,11 +63,23 @@ autocomplete('#search', {
 			//source: autocomplete.sources.hits(productIndex, {hitsPerPage: 7}),
 			source: function(query, callback) {
 				var index = client.initIndex('product_sweden');
-				var options = {hitsPerPage: 7}
+				var options = {hitsPerPage: 8}
 				if(departmentVerified)options.facetFilters = 'categories.lvl0:'+DEPARTMENT.name;
 				index.search(query, options).then(function(answer) {
-					currentDDHits=[]
-					currentDDHits=answer.hits;
+					pPcurrentIndex = 100;
+					console.log(answer);
+					currentDDHits= answer.hits;
+					$('#ddProductPreview').hide()
+					$('#ddProductPreviewContainer').html('');
+					$('#ddCol2').show()
+					if(answer.hits.length > 7){
+						answer.hits.splice(7,1,{
+							more:true,
+							nbHits:answer.nbHits,
+							text:'found search more'
+						})
+					}
+
 					callback(answer.hits);
 				}, function() {
 					callback([]);
@@ -76,6 +88,7 @@ autocomplete('#search', {
 			displayKey: 'name',
 			templates: {
 				suggestion: function(suggestion) {
+					suggestion.autoComplete = HEADERTEXT.autoComplete.productList;
 					return ACTemplateProduct(suggestion);
 				},
 				empty: function(empty) {
@@ -158,8 +171,9 @@ $(document).ready( function() {
 
 	var mainSection = $('#mainSection');
 	var searchSection = $('#searchSection');
-	var mainContainer = $('.resultContainer');
+	var compareSection = $('#compareSection');
 
+	var mainContainer = $('.resultContainer');
 	var filterSelector = $('#mainFacetPane');
 	var facetContainer = $('#mainFacetContainer');
 	var productContainer= $('.productPane');
@@ -229,31 +243,7 @@ $(document).ready( function() {
 		productContainer.show();
 
 	}
-	function SEARCH (){
-			var q = searchBar.val(); searchBar.blur();
-			productHelper.closeDDViewProductInfo(mainContainer, productList,jawboneContent, paginate);
-			if(q.length ==  0){
-				closeSearch();
-				return;
-			}
 
-			searcher.clearRefinements().setQuery(q);
-			if(!jQuery.isEmptyObject(DEPARTMENT)) searcher.toggleRefinement('products', DEPARTMENT.name);
-			searcher.search();
-			$('html, body').animate({scrollTop: 0 }, 100, $.bez([.5, 0, .1, 1]));
-		   if(searchSection.length !=0){
-			   mainSection.hide();
-			   searchSection.show()
-		   }
-	}
-	function closeSearch(){
-		currentInstance = helper;
-		if(searchSection.length !=0) {
-			mainSection.show();
-			searchSection.hide();
-		}
-		if(typeVerified) helper.search();
-	}
 //*******************************************Filter Actions
 	var productEngine = $('#productEngine ')
 
@@ -333,12 +323,6 @@ $(document).ready( function() {
 		$('html, body').animate({scrollTop: productList.offset().top - 100}, 100, $.bez([.5, 0, .1, 1]));
 
 	});
-//***************************************SEARCH
-	searchBar.on( 'change', SEARCH)
-	$('#searchSubmit').on( 'click', SEARCH)
-	$('.welcome').on( 'click','.closeSearch', function(event){
-		closeSearch();
-	})
   //***********************USER ACTIONS
 	productList.on( 'click','.item img, .item .moreInfo' , function (event) {
 		productHelper.openDDViewProductInfo(
@@ -417,7 +401,7 @@ $(document).ready( function() {
 		var JBImageSelector = $('#mainJawBoneImage');
 		var imageArray = $('.jawbone').attr('pic-src').split('/BREAK/');
 		var currentIndex =  Number(JBImageSelector.attr('imageorder'))
-		var prevIndex = (currentIndex == 0)? (currentIndex-1) : (imageArray.length-1);
+		var prevIndex = (currentIndex == 0)? (imageArray.length-1) : (currentIndex-1) ;
 		$.when( JBDivSelector.animate({opacity: 0.4, marginLeft:"100%"}, 500, $.bez([.6, 0, .1, 1]))).done( function() {
 			JBImageSelector.attr('src',imageArray[prevIndex]).attr('imageorder', prevIndex);
 			JBDivSelector.animate({opacity: 1, margin:"0"}, 500, $.bez([.6, 0, .1, 1]));
@@ -425,24 +409,54 @@ $(document).ready( function() {
 	});
 
 
-
-
 	/*
-	 * search dropdown ACTIONS
+	 * AUTOCOMEPLTE ACTIONS
 	 *
 	 * **/
+	//***************************************SEARCH
+	function SEARCH (){
+		console.log('mmm')
+		var q = searchBar.val(); searchBar.blur();
+		productHelper.closeDDViewProductInfo(mainContainer, productList,jawboneContent, paginate);
+		if(q.length ==  0){
+			closeSearch();
+			return;
+		}
+
+		searcher.clearRefinements().setQuery(q);
+		if(!jQuery.isEmptyObject(DEPARTMENT)) searcher.toggleRefinement('products', DEPARTMENT.name);
+		searcher.search();
+		$('html, body').animate({scrollTop: 0 }, 100, $.bez([.5, 0, .1, 1]));
+		if(searchSection.length !=0){
+			mainSection.hide();
+			compareSection.hide();
+			searchSection.show()
+		}
+	}
+	function closeSearch(){
+		currentInstance = helper;
+		if(searchSection.length !=0) {
+			mainSection.show();
+			searchSection.hide();
+		}
+		if(typeVerified) helper.search();
+	}
 	var ddContainer = $('#containerAC');
-    var pPcurrentIndex = 100;
+	$('#autocompleteForm').submit( function(){
+		event.preventDefault();
+		SEARCH();
+	})
+	ddContainer.on( 'click','#ddsearchMore', SEARCH)
+	//searchBar.on( 'change', SEARCH)
+	$('.welcome').on( 'click','.closeSearch', closeSearch)
 	ddContainer.on( 'mouseover','#dditemList',function(event){
 		$('#ddCol2').hide();
 		$('#ddProductPreview').show();
 	}).on('mouseout' ,'#dditemList' , function (event) {
 		$('#ddProductPreview').hide()
 		$('#ddProductPreviewContainer').html('');
-		pPcurrentIndex = 100;
 		$('#ddCol2').show()
 	})
-
 	ddContainer.on( 'mouseover','#dditemList .productsAC' , function (event) {
 		var content;
 		var productId = $(this).attr('data-id');
@@ -453,19 +467,43 @@ $(document).ready( function() {
 		for(var c in currentDDHits){
 			if(productId == currentDDHits[c].productId){
 				content = currentDDHits[c];
+				console.log('mmmm')
 				index = c;
 			}
 		}
             console.log(index, pPcurrentIndex);
 			if(pPcurrentIndex != index)
 				$.when( pPreviewContainer.animate({opacity: 0.5, left:"20"}, 100, $.bez([.6, 0, .1, 1]))).done( function() {
-				pPcurrentIndex= index;
+				pPcurrentIndex = index;
+					console.log('sp.',pPcurrentIndex)
+					content.autoComplete = HEADERTEXT.autoComplete.productPreview;
 				pPreviewContainer.html(ACProductPreviewTemplate(content));
 				pPreviewContainer.animate({opacity: 1, left:"0"}, 100, $.bez([.6, 0, .1, 1]));
 			})
 	})
 
-
+	/*
+	 * Find better price ACTIONS
+	 *
+	 * **/
+	function FINDBETTERPRICES(content){
+		searchBar.blur();
+		var jawBoneHtml = ACProductPreviewTemplate(content);
+		mainSection.hide();
+		searchSection.hide();
+		$('#cPProductPreview').html(jawBoneHtml)
+		compareSection.show();
+	}
+	ddContainer.on( 'click','.findBetterPrices',function(){
+		console.log('mmm')
+		var productId = $(this).attr('data-id');
+		for(var c in currentDDHits){
+			if(productId == currentDDHits[c].productId){
+				content = currentDDHits[c];
+			}
+		}
+		FINDBETTERPRICES(content);
+	})
 
 	/*
 	 * Scrolling ACTIONS
