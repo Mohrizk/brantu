@@ -164,7 +164,7 @@ autocomplete('#search', {
 $(document).ready( function() {
 	var currentInstance = helper;
 	var currentState= {search:false , main:true, compare:false}
-	helper.on  ('result', function(content) {currentInstance = helper;RENDER(content);})
+	helper.on  ('result', function(content) {currentInstance = helper;RENDER(content); })
 	searcher.on('result', function(content) { currentInstance = searcher; RENDER(content); })
 	var productArray=[];
 	var priceLimits = {
@@ -216,12 +216,12 @@ $(document).ready( function() {
 		 *
 		 * */
 		//SHOW LOADING
+
 		if(!currentState.compare && (currentState.search || currentState.main) && searchSection.length == 0){
 			mainSection.html(productEngineTemplate());
 		}
 
 		refreshVariables();
-		productContainer.hide();
 		//STORE CURRENT HITS IN CURRENT PRODUCT GLOBAL ARRAY
 		productArray = content.hits;
 		$('.itemList').html(productTemplate(productArray));
@@ -265,8 +265,8 @@ $(document).ready( function() {
 		$('.category').html(categoryFacetTemplate(productHelper.categoryRefinement(content.hierarchicalFacets, breadCrumb)));
 		$('.paginate').html(pagingTemplate(productHelper.pagination(content)));
 		//Show Result
-		loading.hide();
-		productContainer.show();
+		general.css({'opacity':0.5}).animate({'opacity':1});
+
 
 	}
 //*******************************************Filter Actions
