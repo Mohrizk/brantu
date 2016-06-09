@@ -487,6 +487,7 @@ $(document).ready( function() {
 	ddContainer.on( 'click','#ddsearchMore', SEARCH)
 	//searchBar.on( 'change', SEARCH)
 	mainSection.on( 'click','.closeSearch', closeSEARCH)
+	searchSection.on( 'click','.closeSearch', closeSEARCH)
 	ddContainer.on( 'mouseover','#dditemList',function(event){
 		$('#ddCol2').hide();
 		$('#ddProductPreview').show();
