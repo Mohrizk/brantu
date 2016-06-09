@@ -418,7 +418,8 @@ ol.itemList.horizontal a.item:hover img{
     border-width: 1px;
 }
 
-
+ol.itemList.horizontal .item .selected{border:3px solid #333 !important;}
+ol.itemList.horizontal .item:hover .selected{border:3px solid #333 !important;}
 ol.itemList.horizontal .item img{ height:22vw; width:auto;   margin: 0 auto; display:block; border:1px solid #ddd;}
 ol.itemList.horizontal .item>.item-name  { height:auto; width:auto; padding:0.25vw; line-height:0.75vw;   margin: 0 auto; text-align: center; display:block; font-family:"Sharp Sans"; font-size:0.75vw; color:#333; }
 ol.itemList.horizontal .item>.item-brand  {text-transform:uppercase; height:auto; width:auto; padding:0.15vw; line-height:0.75vw;   margin: 0 auto; text-align: center; display:block; font-family:"Sharp Sans"; font-size:0.75vw; color:#555; margin-top:0.3vw;}

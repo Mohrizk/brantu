@@ -1,12 +1,60 @@
 var welcomeTemplate = Handlebars.compile(
     '{{#if search}}' +
-    '<div class="pull-right closeSearch"><i class="pg-close_line fa-2x"></i></div>' +
+    '<a class="pull-right closeSearch"><i class="pg-close_line fa-2x"></i></a>' +
     '<h3 class="all-caps text-spaced text-center font-GothamMedium">{{#if department}}{{department}}/{{/if}} {{name}} "{{query}}"</h3>' +
     '<h5 class="all-caps text-spaced text-center font-GothamMedium">{{{nbHits}}}</h5>' +
     '{{else}}' +
     '<h1 class="all-caps text-spaced text-center font-GothamMedium">{{name}} </h1>' +
     '{{/if}}'
 )
+
+var productEngineTemplate = Handlebars.compile(
+'<div class="content"><div class="welcome"></div>' +
+'<div class="resultContainer" id="productEngine">' +
+'<div class="facetPane " id="mainFacetPane">' +
+'<div class="facetContainer" id="mainFacetContainer">' +
+'<div class="facetWrapper padding-1v" style="">' +
+'<div class="facet-header">' +
+'</div>' +
+'<div class="facets" id="primaryFacets">' +
+' <div class="category"></div>' +
+' <div class="price">' +
+'<h5>' +
+'<span class="bg-white text-left all-caps ">Pris</span>' +
+'</h5>' +
+'<div id="pricerange"></div>' +
+'<div class="sale refinement"></div>' +
+'<div class="discounts refinement"></div>' +
+'</div>' +
+'<div class="sizes refinement" ></div>' +
+'<div class="brands refinement" ></div>' +
+'<div class="colors refinement" ></div>' +
+'<div class="shops refinement" ></div>' +
+'</div>' +
+'</div>' +
+'</div>' +
+'</div>' +
+'<div class="productPane">' +
+'<div class="productPreview">' +
+'<div class="row">' +
+'<div class="filterTags col-xs-9"></div>' +
+'<div class="sort col-xs-3"></div>' +
+'</div>' +
+'<ol class="itemList vertical">' +
+'</ol>' +
+'<div class="paginate"></div>' +
+'</div>' +
+'<div class="jawBoneContent" id="jawbone">' +
+'<div class="jawBoneOpenContainer">' +
+'<div class="jawBoneFadeInPlaceContainer">' +
+'<div class="jawBoneContainer">' +
+'</div>' +
+'</div>' +
+'</div>' +
+'</div>' +
+'</div>' +
+'</div></div>'
+);
 
 
 var productTemplate = Handlebars.compile(
@@ -59,21 +107,38 @@ var jawBoneTemplate = Handlebars.compile(
     '</div>'+
     '</div>'+
     '<div class="selectedItemDescriptionContainer">'+
-    '<div class="selectedItemHeader">'+
-    '<div class="headerWrapper">'+
-    '{{#if brand.logoUrl}}<div><img src="{{brand.logoUrl}}"/></div>{{/if}}'+
-    '<h2 class="selectedItemBrand">{{brand.name}}</h2>'+
-    '<h5 class="selectedItemName">{{name}}</h5>'+
-    '</div>'+
-    '<div class="priceLocation">'+
-    '{{#if sale}}'+
-    '<span class="original-price discounted">{{originalPrice.formatted}}</span>'+
-    '<span class="discounted-price">{{{price.formatted}}}</span>'+
-    '<span class="discounted-percentage">{{{discount}}}%</span>'+
+
+    '<div class="item-info b-b more-content">' +
+    '<div class=" p-t-20 p-b-5">' +
+    '<div class="row top-xs">' +
+    '<div class="col-xs-6 bottom-xs">' +
+    '<div class="row bottom-xs start-xs">' +
+    '<div class="col-xs bottom-xs"><h4 class="text-left medium no-padding no-margin v-align-bottom"> {{name}}</h4></div>' +
+    '</div>' +
+    '<div class="row bottom-xs start-xs">' +
+    '<div class="col-xs bottom-xs"><h5 class="sbold no-margin no-padding text-pink-dark text-left v-align-bottom" style="font-size: 15px;"><span class="light text-white"></span> {{brand.name}}</h5></div>' +
+    '</div>' +
+    '<div class="row bottom-xs start-xs">' +
+    '<div class="col-xs bottom-xs"><p class="bold text-left  v-align-bottom"><span class="light"></span> {{shop.name}}</p></div>'+
+    '</div>' +
+    '</div>' +
+    '<div class="col-xs bottom-xs">' +
+    '{{#if sale}}' +
+    '<div class="row bottom-xs end-xs">' +
+    '<div class="col-xs"><h3 class="text-right bold  no-padding no-margin">{{{discount}}}%</h3></div>' +
+    '</div>' +
+    '<div class="row bottom-xs end-xs">' +
+    '<div class="col-xs bottom-xs"><h4 class="medium no-margin text-right no-padding" ><span style="text-decoration: line-through; font-size:15px;">{{{originalPrice.formatted}}}</span>{{{price.formatted}}}</h4></div>' +
+    '</div>' +
     '{{else}}'+
-    '<span class="original-price">{{{originalPrice.formatted}}}</span>'+
+    '<div class="row bottom-xs end-xs">' +
+    '<div class="col-xs"><h4 class="medium no-margin no-padding text-pink-dark text-right" style="">{{{price.formatted}}}</h4></div>' +
+    '</div>' +
     '{{/if}}'+
-    '</div>'+
+    '</div>' +
+    '</div>' +
+    '</div>' +
+
     '</div>'+
     '<div class="selectedItemActions">'+
     '<button class="btn  btn-info"> Go To Shop</button>'+
@@ -101,11 +166,11 @@ var jawBoneTemplate = Handlebars.compile(
     '</div>'+
     '<ol class="selectedItemSave">'+
     '<li ><div class="delete"><i class=" pg-close_line"> </i></div></li>'+
-    '<li> <div class="like"><i class="  fa  fa-heart-o"></i></div></li>'+
+
     '</ol>'+
     '</div>'
 );
-
+//'<li> <div class="like"><i class="  fa  fa-heart-o"></i></div></li>'+
 
 var categoryFacetTemplate = Handlebars.compile(
     '<div class="refinement">'+
@@ -207,7 +272,7 @@ var pagingTemplate = Handlebars.compile(
     '<a class="inline p-l-5 page v-align-middle" value="{{indexPlusConstant currentPage 1}}"><i class="fa-2x pg-arrow_lright_line_alt "></i></a>'+
     '{{/if}}'+
     '</div>' +
-    '</div>+' +
+    '</div>' +
     '{{/if}}'
 );
 
@@ -313,35 +378,69 @@ var ACProductPreviewTemplate= Handlebars.compile(
 
 
 //Shipping costs...etc
-var CPProductPreviewExtentionTemplate = Handlebars.compile(
 
-);
+var CPProductTemplate = Handlebars.compile(
+    '<div class="content p-t-50" >' +
+    '<a class="pull-right closeSearch"><i class="pg-close_line fa-2x"></i></a>' +
+    '<div class="row">' +
+    '<div class="col-sm-4  relative text-center" style="max-height: 40vw;" id="cPProductPreview">' +
 
-var CPProductFoundTemplate = Handlebars.compile(
-    '{{#each  this}}' +
-    '<li  class="item offer" index="{{@index}}" productId="{{{this.brantuId}}}">'+
-    '<div class="preview-image auto-margin"><img src="{{{this.mainPicture.largeUrl}}}" pic-src="{{{this.mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}" alt="{{../name}}" index="{{@index}}" nb-pic="{{nbImages}}" pic-order="0" productId="{{../productId}}"/></div>'+
-    '<span class="item-brand sbold">{{{this.brand.name}}}</span>'+
-    '<span class="item-name medium">{{{this.targetGroup}}}</span>'+
-    '{{#if sale}}'+
-    '<span class="original-price discounted">{{{this.originalPrice.formatted}}}</span>'+
-    '<span class="discounted-price">{{{this.price.formatted}}}</span>'+
-    '<span class="discounted-percentage">{{{this.discount}}}%</span>'+
-    '{{else}}'+
-    '<span class="original-price">{{{this.originalPrice.formatted}}}</span>'+
-    '{{/if}}'+
-    '<ol class="small-options">'+
-    '<li class="delete"><a href="#"><i class=" pg-close_line"> </i></a></li>'+
-    '<li class="like"> <a href="#"><i class="  fa  fa-heart-o"></i></a></li>'+
-    '<li class="cart"> <a href="#"><i class="fa fa-share-alt"></i></a></li>'+
+    '<div class="row">' +
+    '<div class="col-xs-7"><img  src="{{mainPicture.largeUrl}}" style="width: 100%"/>' +
+    '</div>' +
+    '<div class="col-xs col-xs-offset-1"><ol class="slidee no-style">'+
+    '{{#each auxPictures}}'+
+    '{{#if (upToIndex @index 1)}}<li class="p-t-1v"><img src="{{largeUrl}}" style="width: 100%" /></li>{{/if}}'+
+    '{{/each}}'+
     '</ol>'+
-    '<div class="main-options">'+
-    '<a><button class="btn  btn-info GoStore">Go to store</button></a>'+
-    '<button class="btn btn-info moreInfo" index="{{@index }}" productId="{{{this.productId}}}">More Info</button>'+
     '</div>'+
-    '</li>'+
-    '{{/each}}'
+    '</div>'+
+    '<div class="overlayer full-width">' +
+    '<div class="overlayer-wrapper item-info more-content">' +
+    '<div class="gradient-grey p-l-20 p-r-20 p-t-20 p-b-5">' +
+    '<div class="row top-xs">' +
+    '<div class="col-xs-6 bottom-xs">' +
+    '<div class="row bottom-xs start-xs">' +
+    '<div class="col-xs bottom-xs"><h4 class="text-left medium text-white no-padding no-margin v-align-bottom"> {{name}}</h4></div>' +
+    '</div>' +
+    '<div class="row bottom-xs start-xs">' +
+    '<div class="col-xs bottom-xs"><h5 class="sbold no-margin no-padding text-pink-dark text-left v-align-bottom" style="font-size: 15px;"><span class="light text-white">{{autoComplete.brand}} :</span> {{brand.name}}</h5></div>' +
+    '</div>' +
+    '<div class="row bottom-xs start-xs">' +
+    '<div class="col-xs bottom-xs"><p class="bold text-left text-white v-align-bottom"><span class="light">{{autoComplete.shop}} :</span> {{shop.name}}</p></div>'+
+    '</div>' +
+    '</div>' +
+    '<div class="col-xs bottom-xs">' +
+    '{{#if sale}}' +
+    '<div class="row bottom-xs end-xs">' +
+    '<div class="col-xs"><h3 class="text-right bold text-white no-padding no-margin">{{{discount}}}%</h3></div>' +
+    '</div>' +
+    '<div class="row bottom-xs end-xs">' +
+    '<div class="col-xs bottom-xs"><h4 class="medium no-margin text-right no-padding text-pink-dark" ><span class="text-white" style="text-decoration: line-through; font-size:15px;">{{{originalPrice.formatted}}}</span>{{{price.formatted}}}</h4></div>' +
+    '</div>' +
+    '{{else}}'+
+    '<div class="row bottom-xs end-xs">' +
+    '<div class="col-xs"><h4 class="medium no-margin no-padding text-pink-dark text-right" style="">{{{price.formatted}}}</h4></div>' +
+    '</div>' +
+    '{{/if}}'+
+    '</div>' +
+    '</div>' +
+    '</div>' +
+    '</div>'+
+    '</div>'+
 
+
+    '</div>' +
+    '<div class="col-sm  relative text-center" style="max-height: 40vw;" id="cPProductPreview">' +
+    '<div></div>' +
+    '<div>' +
+    '<h3 class="text-center" style="text-align: center;border-bottom: 1px solid #333;line-height: 0;padding: 0; margin:1vw 0vw;">' +
+    '<span class="bg-white padding-2v all-caps ">Similar products with better prices</span>' +
+    '</h3>' +
+    '<ol class=""></ol></div>' +
+    '</div>' +
+    '</div>' +
+    '</div>'
 );
 
 
