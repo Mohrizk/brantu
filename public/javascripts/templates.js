@@ -9,10 +9,10 @@ var welcomeTemplate = Handlebars.compile(
 )
 
 var productEngineTemplate = Handlebars.compile(
-'<div class="content"><div class="welcome"></div>' +
-'<div class="resultContainer" id="productEngine">' +
-'<div class="facetPane " id="mainFacetPane">' +
-'<div class="facetContainer" id="mainFacetContainer">' +
+'<div class=""><div class="welcome"></div>' +
+'<div class="resultContainer row" id="productEngine">' +
+'<div class="facetPane" id="mainFacetPane">' +
+'<div class="facetContainer " id="mainFacetContainer">' +
 '<div class="facetWrapper padding-1v" style="">' +
 '<div class="facet-header">' +
 '</div>' +
@@ -20,7 +20,7 @@ var productEngineTemplate = Handlebars.compile(
 ' <div class="category"></div>' +
 ' <div class="price">' +
 '<h5>' +
-'<span class="bg-white text-left all-caps ">Pris</span>' +
+'<span class="bg-white text-left all-caps bold">Pris</span>' +
 '</h5>' +
 '<div id="pricerange"></div>' +
 '<div class="sale refinement"></div>' +
@@ -53,61 +53,109 @@ var productEngineTemplate = Handlebars.compile(
 '</div>' +
 '</div>' +
 '</div>' +
-'</div></div>'
+'</div></div>' +
+
+'<div class="popout visible-sm visible-xs">' +
+'<div class="fab {{#if fab}}active{{/if}}">' +
+'<i class="icon ion-ios-glasses"></i>' +
+'</div>' +
+'<div class="panel {{#if fab}}active{{/if}}">' +
+'<div class="panel-header">' +
+'<h3>Filter <span class="pull-right close p-t-10"> <i class="pg-close_line"></i></span></h3>'+
+'<div id="mobileTags"></div>' +
+'</div>' +
+'<div class="panel-body scrollable">' +
+'<div class="facets" id="primaryFacets">' +
+' <div class="category"></div>' +
+' <div class="price">' +
+'<h5>' +
+'<span class="bg-white text-left all-caps bold">Pris</span>' +
+'</h5>' +
+'<div id="pricerange_mobile"></div>' +
+'<div class="sale refinement"></div>' +
+'<div class="discounts refinement"></div>' +
+'</div>' +
+'<div class="sizes refinement bold" ></div>' +
+'<div class="brands refinement bold" ></div>' +
+'<div class="colors refinement" ></div>' +
+'<div class="shops refinement" ></div>' +
+'</div>' +
+'</div>' +
+'</div> </div>'
 );
 
 
 var productTemplate = Handlebars.compile(
     '{{#each  this}}' +
-    '<li  class="item offer" index="{{@index}}" productId="{{{this.brantuId}}}">'+
-    '<div class="preview-image auto-margin"><img src="{{{this.mainPicture.largeUrl}}}" pic-src="{{{this.mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}" alt="{{../name}}" index="{{@index}}" nb-pic="{{nbImages}}" pic-order="0" productId="{{../productId}}"/></div>'+
+    '<li  class="item" index="{{@index}}" productId="{{{this.brantuId}}}">' +
+    '<div class="itemContainer">' +
+    '<div class="itemWrapper">' +
+    '<div class="row top-xs">'+
+    '<div class="preview-image auto-margin col-xs" style="margin-top: 0;">' +
+    '<img src="{{{this.mainPicture.largeUrl}}}" class="v-align-top" pic-src="{{{this.mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}" alt="{{../name}}" index="{{@index}}" nb-pic="{{nbImages}}" pic-order="0" productId="{{../productId}}"/>' +
+    '</div>' +
+    '</div>'+
     '<span class="item-brand sbold">{{{this.brand.name}}}</span>'+
-    '<span class="item-name medium">{{{this.targetGroup}}}</span>'+
-    '{{#if sale}}'+
-    '<span class="original-price discounted">{{{this.originalPrice.formatted}}}</span>'+
-    '<span class="discounted-price">{{{this.price.formatted}}}</span>'+
-    '<span class="discounted-percentage">{{{this.discount}}}%</span>'+
+    '<span class="item-name medium no-overflow-text">{{{this.name}}}</span>'+
+    '{{#if sale}}' +
+    '<div class="row">'+
+    '<div class="original-price discounted col-xs text-right">{{{this.originalPrice.formatted}}}</div>' +
+    '<div class="discounted-price col-xs text-left">{{{this.price.formatted}}}</div>'+
+    '</div>'+
+    '<div class="discounted-percentage ">{{{this.discount}}}%</div>' +
     '{{else}}'+
-    '<span class="original-price">{{{this.originalPrice.formatted}}}</span>'+
+    '<span class="original-price text-center">{{{this.originalPrice.formatted}}}</span>'+
+    '{{/if}}' +
+    '<div class="main-options">' +
+    '<ol class="no-style no-overflow-text">' +
+    '{{#each  sizes}}' +
+    '{{#if  @last}}<li class="inline text-pink-darker sbold no-overflow-text">{{this}}</li>' +
+    '{{else}}<li class="inline text-pink-darker sbold no-overflow-text">{{this}} <font class="text-master-light">/</font></li>' +
     '{{/if}}'+
-    '<ol class="small-options">'+
-    '<li class="delete"><a href="#"><i class=" pg-close_line"> </i></a></li>'+
-    '<li class="like"> <a href="#"><i class="  fa  fa-heart-o"></i></a></li>'+
-    '<li class="cart"> <a href="#"><i class="fa fa-share-alt"></i></a></li>'+
+    '{{/each}}' +
+    '</ol>' +
+    '<div class="p-t-10 p-b-10">'+
+    '<a class="dark bold"><div class="btn  btn-info btn-rounded m-r-5">Go to store</div></a>'+
+    '<a class="dark bold" index="{{@index }}" productId="{{{this.productId}}}"><div class="btn  btn-info btn-rounded  m-l-5" >Find better prices</div></a>' +
+    '</div>'+
+    '</div>' +
+    '<ol class="small-options no-style">' +
     '</ol>'+
-    '<div class="main-options">'+
-    '<a><button class="btn  btn-info GoStore">Go to store</button></a>'+
-    '<button class="btn btn-info moreInfo" index="{{@index }}" productId="{{{this.productId}}}">More Info</button>'+
+    '</div>' +
     '</div>'+
     '</li>'+
     '{{/each}}'
 );
+/*'<li class="like"> <a href="#"><i class="  fa  fa-heart-o"></i></a></li>'+
+ '<li class="cart"> <a href="#"><i class="fa fa-share-alt"></i></a></li>'+*/
 
-
+//
 
 
 
 var jawBoneTemplate = Handlebars.compile(
     '<div class="jawBone" nb-pic="{{numOfImages}}" pic-src="{{{mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}">'+
-    '<div class="mainWrapper">'+
-    '<div class="selectedItemImageWrapper">'+
-    '<div class="selectedItemImageColoumn frame" id="selectedItemImages" numOfImages="{{numOfImages}}">'+
-    '<ol class="slidee">'+
+    '<div class="mainWrapper row">'+
+
+    '<div class=" col-md-6 col-sm-12 col-xs-12 pictureWrapper">' +
+    '<div class="row">'+
+    '<div class="selectedItemImageColoumn col-xs-3 frame scrollable" id="selectedItemImages" numOfImages="{{numOfImages}}">'+
+    '<ol class="slidee scrollable">'+
     '<li><img imageorder ="0" src="{{mainPicture.largeUrl}}" /></li>'+
     '{{#each auxPictures}}'+
     '<li><img  imageorder ="{{indexPlusConstant @index 1}}" src="{{largeUrl}}" /></li>'+
     '{{/each}}'+
     '</ol>'+
     '</div>'+
-    '<div class="selectedItemPictureContainer">'+
-    '<div class="selectedItemZoomPicture">'+
+    '<div class="selectedItemPictureContainer auto-margin col-xs">'+
+    '<div class="selectedItemZoomPicture auto-margin block">'+
     '<div class="prev-item"><i class="  pg-arrow_left_line_alt"></i></div> <div class="next-item"><i class=" pg-arrow_lright_line_alt"></i></div>'+
-    '<div id="mainJawBoneImageContainer"> <img id="mainJawBoneImage" imageorder = "0" src="{{mainPicture.largeUrl}}"/> </div>'+
+    '<div id="mainJawBoneImageContainer" class="auto-margin block"> <img id="mainJawBoneImage" imageorder = "0" src="{{mainPicture.largeUrl}}"/> </div>'+
     '</div>'+
     '</div>'+
-    '</div>'+
-    '<div class="selectedItemDescriptionContainer">'+
+    '</div> </div>'+
 
+    '<div class="col-md col-sm-12 col-xs-12 p-t-10">'+
     '<div class="item-info b-b more-content">' +
     '<div class=" p-t-20 p-b-5">' +
     '<div class="row top-xs">' +
@@ -140,10 +188,8 @@ var jawBoneTemplate = Handlebars.compile(
     '</div>' +
 
     '</div>'+
-    '<div class="selectedItemActions">'+
-    '<button class="btn  btn-info"> Go To Shop</button>'+
-    '</div>'+
-    '<div class="selectedItemDetail">'+
+
+    '<div class="selectedItemDetail full-width">'+
     '<div class="panel">'+
     '<ul class="nav nav-tabs nav-tabs-simple hidden-xs"  data-init-reponsive-tabs="collapse">'+
     '<li class="active"><a href="#tabDetails"  data-toggle="tab" aria-expanded="true">Description</a></li>'+
@@ -158,9 +204,12 @@ var jawBoneTemplate = Handlebars.compile(
     '</div>'+
     '<div class="tab-pane" id="tabReviews">{{>loading}}</div>'+
     '</div>'+
+        '<div class="p-t-10 p-b-10 text-right"><button class="btn  btn-info"> Go To Shop</button></div>'+
     '</div>'+
     '</div>'+
     '</div>'+
+
+
     '</div>'+
     '<div class="recommendedProducts">'+
     '</div>'+
@@ -193,13 +242,13 @@ var listFacetTemplate = Handlebars.compile(
     '{{#if content}}'+
     '<div class="">'+
     '<h5>'+
-    '<span class="bg-white text-left all-caps ">{{header}}</span>'+
+    '<span class="bg-white text-left all-caps bold">{{header}}</span>'+
     '</h5>'+
     '<div id="listContainer">'+
     '<ul class="list" style="max-height: 160px; overflow: scroll;">'+
     '{{#each content}}' +
     '{{#if (idGenerator this)}}{{/if}}'+
-    '{{#if isRefined}}<div><input class="input" type="checkbox" value="{{this.name}}" id="{{this.theID}}" checked/> <label class="label" for="{{this.theID}}"><span class="name">{{this.name}}</span> <span class="count">{{this.count}}</span></label></div>'+
+    '{{#if isRefined}}<div><input class="input" type="checkbox" value="{{this.name}}" id="{{this.theID}}" checked/> <label class="label" for="{{this.theID}}"><span class="name ">{{this.name}}</span> <span class="count">{{this.count}}</span></label></div>'+
     '{{else}}		  <div><input class="input" type="checkbox" value="{{this.name}}" id="{{this.theID}}"/> <label class="label" for="{{this.theID}}"><span class="name">{{this.name}}</span><span class="count">{{this.count}}</span></label></div>'+
     '{{/if}}'+
     '{{/each}}'+
@@ -212,8 +261,8 @@ var listFacetTemplate = Handlebars.compile(
 var onlySaleBoxFacetTemplate = Handlebars.compile(
     '{{#if content}}'+
     '{{#each content}}'+
-    '{{#if isRefined}}<div class="checkbox  checkbox-circle"><input type="checkbox" name="checkbox" value="{{name}}"  id="{{name}}" checked/> <label for="{{name}}"><span>{{../header}}</span></label></div>'+
-    '{{else}}<div class="checkbox  checkbox-circle"><input type="checkbox" name="checkbox" value="{{name}}" id="{{name}}" /> <label for="{{name}}"><span>{{../header}}</span></label></div>'+
+    '{{#if isRefined}}<div class="checkbox  checkbox-circle"><input type="checkbox" name="checkbox" value="{{name}}"  id="{{name}}" checked/> <label for="{{name}}"><span class="bold">{{../header}}</span></label></div>'+
+    '{{else}}<div class="checkbox  checkbox-circle"><input type="checkbox" name="checkbox" value="{{name}}" id="{{name}}" /> <label for="{{name}}"><span class="bold">{{../header}}</span></label></div>'+
     '{{/if}}'+
     '{{/each}}'+
     '{{/if}}'
@@ -223,12 +272,12 @@ var onlySaleBoxFacetTemplate = Handlebars.compile(
 var colorFacetTemplate = Handlebars.compile(
     '{{#if content}}'+
     '<h5>'+
-    '<span class=" bg-white all-caps ">{{header}}</span>'+
+    '<span class=" bg-white all-caps bold">{{header}}</span>'+
     '</h5>'+
     '<div class="colorList">'+
     '{{#each content}}'+
-    '{{#if isRefined}}<input type="checkbox" name="color" value="{{name}}"   id="{{name}}_{{hex}}" checked/><label for="{{name}}_{{hex}}"  style="background-color:{{hex}}; "><span class="name">{{name}}</span></label>'+
-    '{{else}}         <input type="checkbox" name="color" value="{{name}}"   id="{{name}}_{{hex}}"        /><label for="{{name}}_{{hex}}"  style="background-color:{{hex}}; "><span class="name">{{name}}</span></label>'+
+    '{{#if isRefined}}<input type="checkbox" name="color" value="{{name}}"   id="{{name}}_{{hex}}" checked/><label for="{{name}}_{{hex}}"  style="background-color:{{hex}}; "><span class="name no-overflow-text">{{name}}</span></label>'+
+    '{{else}}         <input type="checkbox" name="color" value="{{name}}"   id="{{name}}_{{hex}}"        /><label for="{{name}}_{{hex}}"  style="background-color:{{hex}}; "><span class="name no-overflow-text">{{name}}</span></label>'+
     '{{/if}}'+
     '{{/each}}'+
     '</div>'+
@@ -282,12 +331,12 @@ var searchDropDownTemplate =  Handlebars.compile(
     '{{debug this}}'+
     '<div class="my-custom-menu">'+
     '<div class="row padding-2v">'+
-    '<div class="col-sm-1"><h1 class="light">Your Search Result</h1></div>'+
-    '<div class="col-sm-4 col-sm-offset-1 text-center" id="dditemListContainer">' +
+    '<div class="col-md-1 hidden-xs hidden-sm"><h1 class="light">Your Search Result</h1></div>'+
+    '<div class="col-sm-5 col-md-4 col-sm-offset-1 text-center" id="dditemListContainer">' +
     '<h5 class="text-left b-b bold text-pink-darker">Products</h5>'+
     '<div class="aa-dataset-0" id="dditemList"></div>'+
     '</div>'+
-    '<div class="col-sm-3 col-sm-offset-1 text-center" id="ddCol2">' +
+    '<div class="col-md-3 col-sm-offset-1 col-sm-5  text-center" id="ddCol2">' +
     '<div id="ddBrands">'+
     '<div>'+
     '<h5 class="text-left b-b bold text-pink-darker" >Brands</h5>'+
@@ -298,7 +347,7 @@ var searchDropDownTemplate =  Handlebars.compile(
     '<div id="ddCategory">'+
     '</div>' +
     '</div>'+
-    '<div class="col-sm col-sm-offset-1 relative text-center no-overflow" style="display: none; max-height: 30vw;" id="ddProductPreview">' +
+    '<div class="col-sm col-sm-offset-1 relative text-center no-overflow" style="display: none; " id="ddProductPreview">' +
     '<div class="top-left bottom-right" id="ddProductPreviewContainer">' +
     '</div>' +
     '</div>' +
@@ -317,7 +366,7 @@ var ACTemplateProduct = Handlebars.compile(
     '<div class="medium">{{{ _highlightResult.name.value }}}</div>' +
     '<div class="medium inline">{{{ price.formatted}}}</div>' +
     '</div></a>'+
-    '<div class="bottom-right hidden-sm visible-hover"> ' +
+    '<div class="bottom-right hidden-xs visible-hover"> ' +
     '<a class="dark medium all-caps findBetterPrices" data-id="{{productId}}"> {{{ autoComplete.findBetterPriceButton}}} </a>' +
     '</div>'+
     '</div></div>'+
@@ -702,24 +751,37 @@ productHelper = {
         }
         return rObject;
     },
-    openDDViewProductInfo: function (mainContainer, productList, jawboneLocation, jawboneContainer, content, paginate) {
-        if (productList.hasClass("vertical")) {
-            productList.toggleClass('horizontal').toggleClass('vertical').css({'opacity':0}).animate({'opacity':1},1000, $.bez([.5, 0, .1, 1]));
-            mainContainer.addClass('noFilter');
-            paginate.addClass('hide');
-        }
+    openDDViewProductInfo: function (selector, mainContainer, productList, jawboneLocation, jawboneContainer, content, paginate, itemScrollindex) {
         jawboneLocation.addClass("open");
-        $('html, body').animate({scrollTop: productList.offset().top - 100}, 1, $.bez([.5, 0, .1, 1]));
-        jawboneContainer.html(jawBoneTemplate(content));
         productList.addClass("jbMode");
+        productList.addClass('horizontal').removeClass('vertical');
+        mainContainer.addClass('noFilter');
+        paginate.addClass('hide');
+        jawboneContainer.html(jawBoneTemplate(content));
+        var totalChildren = productList.children('li').length;
+        var totalLength =  productList.width();
+        var selector = selector.width();
+        productList.children('li').each(function () {
+            if($(this).attr('index') == itemScrollindex){
+                console.log($(this).offset().left,'-', productList.scrollLeft(),'-',$(this).width() )
+                productList.animate({scrollLeft: $(this).offset().left + productList.scrollLeft() - $(this).width()}, 100, $.bez([.5, 0, .1, 1]));
+                itemScrollindex = $(this).attr('index');
+            }
+        })
+        mainContainer.css({'opacity':0.8}).animate({'opacity':1})
 
     },
-    closeDDViewProductInfo: function (mainContainer, productList, jawboneContent, paginate) {
+    closeDDViewProductInfo: function (mainContainer, productList, jawboneContent, paginate,itemScrollindex) {
         paginate.removeClass('hide');
         productList.removeClass("jbMode");
         productList.removeClass('horizontal').addClass('vertical').css({'opacity':0}).animate({'opacity':1});
         mainContainer.removeClass('noFilter');
         jawboneContent.removeClass("open");
+        productList.children('li').each(function () {
+            if($(this).attr('index') == itemScrollindex){
+                $('body').scrollTop( $(this).offset().top - 150 );
+            }
+        })
 
     }
 };

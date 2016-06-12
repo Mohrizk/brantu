@@ -18,8 +18,7 @@ module.exports = {
 
                     Categories.findOne({key: category},{'key':1, 'name': 1}, function (err, mainCategory) {
                         if(err) callback(err);
-
-                        callback(null, mainCategory);
+                        else callback(null, mainCategory);
                     });
 
                 },
@@ -28,7 +27,7 @@ module.exports = {
                     if(mainCategory != null){
                         Categories.find({"parentKey": mainCategory.key}, {'key': 1, 'name': 1},{sort:{name: 1}}, function (err, categorylist) {
                             if(err) callback(err);
-                            callback(null, mainCategory, categorylist);
+                            else callback(null, mainCategory, categorylist);
 
                         })
                     }
@@ -43,20 +42,24 @@ module.exports = {
                         async.each(categorylist, function (category, callback) {
                             Categories.find({parentKey: category.key}, {key: 1, name: 1},{sort:{name: 1}},function (err, subcategory) {
                                 if (err) {callback(err);}
-
-                                if (subcategory != null) {
-                                    temp.push({'category': category, 'subCategory': subcategory});
+                                else {
+                                    if (subcategory != null) {
+                                        temp.push({'category': category, 'subCategory': subcategory});
+                                    }
+                                    callback();
                                 }
-                                callback();
+
                             });
 
                         }, function (err) {
 
                             if (err) {callback(err)}
+                            else{
+                                listOfCategories.push({department: mainCategory, categories: temp});
+                                temp = new Array();
+                                callback(null, temp);
+                            }
 
-                            listOfCategories.push({department: mainCategory, categories: temp});
-                            temp = new Array();
-                            callback(null, temp);
                         });
 
                     }
@@ -91,14 +94,17 @@ module.exports = {
 
         Categories.findOne({'name': name}, function(err, category) {
 
-            if (err) return callback(err);
+            if (err) next(err);
+            else{
+                if (category != null) {
+                    res.locals.selectedDepartmentName = category.name;
+                    res.locals.selectedDepartmentKey = category.key;
+                    res.locals.selectedDepartment = category;
+                }
+                next();
 
-            if (category != null) {
-                res.locals.selectedDepartmentName = category.name;
-                res.locals.selectedDepartmentKey = category.key;
-                res.locals.selectedDepartment = category;
             }
-            next();
+
         });
     },
     //GET BREAD CRUMBS & CHILDREN
@@ -117,14 +123,17 @@ module.exports = {
                 Categories.findOne({'key': key}, function(err, category) {
 
                     if (err) return callback(err);
+                    else{
+                        if (category != null) {
+                            theCategory = category;
+                            //breadcrumb.push(category);
+                            condition = category;
 
-                    if (category != null) {
-                        theCategory = category;
-                        //breadcrumb.push(category);
-                        condition = category;
+                        }
+                        return callback();
 
                     }
-                    return callback();
+
                 });
             }
             ,
@@ -149,14 +158,16 @@ module.exports = {
                             Categories.findOne({'key': condition.parentKey}, function(err, parentCategory) {
                                 count ++;
                                 if (err) return callback(err);
+                                else{
+                                    if (parentCategory != null) {
 
+                                        condition= parentCategory;
+                                        breadcrumb.push({name : parentCategory.name, key:parentCategory.key});
+                                    }
+                                    return callback();
 
-                                if (parentCategory != null) {
-
-                                    condition= parentCategory;
-                                    breadcrumb.push({name : parentCategory.name, key:parentCategory.key});
                                 }
-                                return callback();
+
                             });
                     },
                     function (err) {
@@ -170,11 +181,14 @@ module.exports = {
                 Categories.find({'key':{$in: theCategory.childKeys}}, function(err, categories) {
 
                     if (err) return callback(err);
+                    else{
+                        if (categories != null) {
+                            req.children = categories;
+                        }
+                        return callback();
 
-                    if (categories != null) {
-                        req.children = categories;
                     }
-                    return callback();
+
                 });
             }
         ], function (error){
