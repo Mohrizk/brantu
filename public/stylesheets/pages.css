@@ -235,6 +235,9 @@ body.dashboard .page-container {
   -o-transition:all .54s cubic-bezier(.5,0,.1,1);
   transition:all .54s cubic-bezier(.5,0,.1,1) !important;
 }
+.search-mobile input[type="text"]:focus{
+  background: #eed3d3 !important;
+}
 
 
 
@@ -441,7 +444,7 @@ top:14%; left:7px;
 */
 .page-sidebar {
     width:280px;
-  background-color: #2b303b;
+  background-color: #000;
   z-index: 1000;
   left: -210px;
   position: fixed;
@@ -480,9 +483,9 @@ top:14%; left:7px;
   display: block;
   height: 60px;
   line-height: 60px;
-  background-color: #272b35;
+  background-color: #eed3d3;
   border-bottom: 1px solid #a2a2a2;
-  color: #ffffff;
+  color: #333;
   width: 100%;
   padding: 0 20px;
   padding-left: 30px;

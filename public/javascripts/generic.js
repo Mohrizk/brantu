@@ -448,43 +448,6 @@ $(document).ready( function() {
 		$('html, body').animate({scrollTop: productList.offset().top - 100}, 100, $.bez([.5, 0, .1, 1]));
 
 	});
-	/*
-	Mobile Menu
-	*/
-	$('.burger-container').on('click', function() {
-		('.header').toggleClass('menu-opened');
-	})
-
-	/*
-	 * MOBILE
-	 * FLOATING ACTION BUTTON
-	 * */
-
-	function openFab(){
-		console.log('openning fab')
-		onFab  = true;
-		$('.header').addClass("hidden");
-		$('#footer').addClass("hidden");
-		$('.fab').addClass("active");
-		$('.fab').closest(".popout").find(".panel").toggleClass("active");
-	}
-	function closeFab(){
-		onFab  = false;
-		$('.header').removeClass("hidden");
-		$('#footer').removeClass("hidden");
-		$(".popout .panel").removeClass("active");
-		$(".popout .fab").removeClass("active");
-	}
-	general.on('click',".popout .fab",openFab);
-	general.on('click',".panel .close",closeFab);
-	general.on('click',".popout .panel",function(event) {
-		event.stopPropagation();
-	});
-	general.on('click',".popout .fab",function(event) {
-		event.stopPropagation();
-	});
-
-
 	//***********************USER ACTIONS
 	var productPreviewTimer;
 	$('body ').on( 'mouseover','.vertical .item .preview-image' , function (event) {
@@ -650,6 +613,43 @@ $(document).ready( function() {
 			})
 	})
 	/*
+	 Mobile Menu
+	 */
+	$('#menuBurgerIcon').on('click', function() {
+		$('.fixed-header').toggleClass('sidebar-open');
+		$('.page-sidebar').toggleClass('visible');
+
+	})
+
+	/*
+	 * MOBILE
+	 * FLOATING ACTION BUTTON
+	 * */
+
+	function openFab(){
+		console.log('openning fab')
+		onFab  = true;
+		$('.header').addClass("hidden");
+		$('#footer').addClass("hidden");
+		$('.fab').addClass("active");
+		$('.fab').closest(".popout").find(".panel").toggleClass("active");
+	}
+	function closeFab(){
+		onFab  = false;
+		$('.header').removeClass("hidden");
+		$('#footer').removeClass("hidden");
+		$(".popout .panel").removeClass("active");
+		$(".popout .fab").removeClass("active");
+	}
+	general.on('click',".popout .fab",openFab);
+	general.on('click',".panel .close",closeFab);
+	general.on('click',".popout .panel",function(event) {
+		event.stopPropagation();
+	});
+	general.on('click',".popout .fab",function(event) {
+		event.stopPropagation();
+	});
+	/*
 	 * MOBILE
 	 * Search
 	 *
@@ -675,7 +675,7 @@ $(document).ready( function() {
 	})
 	$('#menuSearchIcon').on('click',openMobileSearch);
 	$('#CloseSearchMobile').on('click', closeMobileSearch)
-	$('.page-container').on('click', closeMobileSearch)
+	$('.page-container-wrapper').on('click', closeMobileSearch)
 	/*
 	 * Find better price ACTIONS
 	 *
@@ -778,6 +778,5 @@ $(document).ready( function() {
 		if((mainSection.is(':visible') || searchSection.is(':visible')) && productList.hasClass('vertical') && $('.itemList').is(':visible')){
 			mainFacetPaneScroll();
 		}
-
     });
 });
