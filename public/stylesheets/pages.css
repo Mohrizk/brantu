@@ -1053,7 +1053,7 @@ top:14%; left:7px;
   background: #fef8ae;
 }
 .page-sidebar ~ .page-container {
-  padding-left: 70px;
+/* padding-left: 70px;*/
 }
 /* Page Container
 ------------------------------------
