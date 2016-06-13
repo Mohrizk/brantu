@@ -7,23 +7,7 @@
       <section class="general content" id="mainSection">
     <!-- START PAGE CONTENT -->
              <div class="content">
-                <div class="welcome">
-                    <div class="breadcrumb text-center">
-                        {{#each breadcrumb}}
-                            <li><a class="medium" href="{{this.key}}">{{andfixer this.name}}</a></li>
-                        {{/each}}
-                    </div>
-                    <h1 class="all-caps text-spaced text-center font-GothamMedium"> {{andfixer category.name}}</h1>
 
-                    <div class="child-category b-b">
-                        <ul class="circle mini">
-                        {{#each children}}
-                            <a class="medium" href="{{this.key}}"><li><div>{{andfixer this.name}}</div></li></a>
-                        {{/each}}
-                        </ul>
-                    </div>
-                </div>
-                {{> productView}}
             </div>
       </section>
       {{>footer}}

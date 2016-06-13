@@ -3,6 +3,7 @@
  * INITIALIZATIONNNNNN
  * @type {string}
  */
+
 var client = algoliasearch("D3IWZXC0AH", '3d6a60c228b6e8058770fdf8eab2f652');
 var helper   = algoliasearchHelper(client,'product_sweden', {
 	hierarchicalFacets: [{
@@ -51,74 +52,145 @@ if( DEPARTMENT!==null){
 //_________AUTCOMPLETE
 var currentDDHits=[];
 var pPcurrentIndex = 100;  // needed for hovering effect
+var autocompleteOptions = [
+	{
+		//source: autocomplete.sources.hits(productIndex, {hitsPerPage: 7}),
+		source: function(query, callback) {
+			var index = client.initIndex('product_sweden');
+			var options = {hitsPerPage: 8}
+			if(departmentVerified)options.facetFilters = 'categories.lvl0:'+DEPARTMENT.name;
+			index.search(query, options).then(function(answer) {
+				pPcurrentIndex = 100;
+				console.log(answer);
+				currentDDHits= answer.hits;
+				$('#ddProductPreview').hide()
+				$('#ddProductPreviewContainer').html('');
+				$('#ddCol2').show()
+				if(answer.hits.length > 7){
+					answer.hits.splice(7,1,{
+						more:true,
+						nbHits:answer.nbHits,
+						text:'found search more'
+					})
+				}
+
+				callback(answer.hits);
+			}, function() {
+				callback([]);
+			});
+		},
+		displayKey: 'name',
+		templates: {
+			suggestion: function(suggestion) {
+				suggestion.autoComplete = HEADERTEXT.autoComplete.productList;
+				return ACTemplateProduct(suggestion);
+			},
+			empty: function(empty) {
+				return '<h5 class="text-left">No Items Found</h5>';
+			}
+		}
+	} ,
+	{
+		source: function(query, callback) {
+			var index = client.initIndex('brands_sv');
+			var options = {hitsPerPage: 5}
+			if(departmentVerified)options.facetFilters = 'genders:'+DEPARTMENT.name;
+			index.search(query, options).then(function(answer) {
+				callback(answer.hits);
+			}, function() {
+				callback([]);
+			});
+		},
+		displayKey: 'name',
+		templates: {
+			suggestion: function(suggestion, answer) {
+				return ACTemplateBrand(suggestion);
+			},
+			empty: function(empty) {
+				return '<h5 class="text-left">No Items Found</h5>';
+			}
+		}
+	}
+];
+var autocompleteOptionsMobile = [
+	{
+		//source: autocomplete.sources.hits(productIndex, {hitsPerPage: 7}),
+		source: function(query, callback) {
+			var index = client.initIndex('product_sweden');
+			var options = {hitsPerPage: 4}
+			if(departmentVerified)options.facetFilters = 'categories.lvl0:'+DEPARTMENT.name;
+			index.search(query, options).then(function(answer) {
+				pPcurrentIndex = 100;
+				console.log(answer);
+				currentDDHits= answer.hits;
+				$('#ddProductPreview').hide()
+				$('#ddProductPreviewContainer').html('');
+				$('#ddCol2').show()
+				if(answer.nbHits > 4){
+					console.log('mmmm')
+					answer.hits.splice(3,1,{
+						more:true,
+						nbHits:answer.nbHits,
+						text:'found search more'
+					})
+				}
+
+				callback(answer.hits);
+			}, function() {
+				callback([]);
+			});
+		},
+		displayKey: 'name',
+		templates: {
+			suggestion: function(suggestion) {
+				suggestion.autoComplete = HEADERTEXT.autoComplete.productList;
+				return ACTemplateProduct(suggestion);
+			},
+			empty: function(empty) {
+				return '<h5 class="text-left">No Items Found</h5>';
+			}
+		}
+	} ,
+	{
+		source: function(query, callback) {
+			var index = client.initIndex('brands_sv');
+			var options = {hitsPerPage: 4}
+			if(departmentVerified)options.facetFilters = 'genders:'+DEPARTMENT.name;
+			index.search(query, options).then(function(answer) {
+				callback(answer.hits);
+			}, function() {
+				callback([]);
+			});
+		},
+		displayKey: 'name',
+		templates: {
+			suggestion: function(suggestion, answer) {
+				return ACTemplateBrand(suggestion);
+			},
+			empty: function(empty) {
+				return '<h5 class="text-left">No Items Found</h5>';
+			}
+		}
+	}
+];
 autocomplete('#search', {
 		dropdownMenuContainer: '#containerAC',
 		hints:true,
 		templates: {
 			dropdownMenu: searchDropDownTemplate
 		}
-	},
-	[
-		{
-			//source: autocomplete.sources.hits(productIndex, {hitsPerPage: 7}),
-			source: function(query, callback) {
-				var index = client.initIndex('product_sweden');
-				var options = {hitsPerPage: 8}
-				if(departmentVerified)options.facetFilters = 'categories.lvl0:'+DEPARTMENT.name;
-				index.search(query, options).then(function(answer) {
-					pPcurrentIndex = 100;
-					console.log(answer);
-					currentDDHits= answer.hits;
-					$('#ddProductPreview').hide()
-					$('#ddProductPreviewContainer').html('');
-					$('#ddCol2').show()
-					if(answer.hits.length > 7){
-						answer.hits.splice(7,1,{
-							more:true,
-							nbHits:answer.nbHits,
-							text:'found search more'
-						})
-					}
+	},autocompleteOptions).on('autocomplete:selected', function(event, suggestion, dataset) {
+	//console.log(suggestion, dataset);
+	//window.location ='/brand/'+suggestion.name;
+});
+autocomplete('#searchMobile', {
+	dropdownMenuContainer: '#containerAC',
+	hints:true,
 
-					callback(answer.hits);
-				}, function() {
-					callback([]);
-				});
-			},
-			displayKey: 'name',
-			templates: {
-				suggestion: function(suggestion) {
-					suggestion.autoComplete = HEADERTEXT.autoComplete.productList;
-					return ACTemplateProduct(suggestion);
-				},
-				empty: function(empty) {
-					return '<h5 class="text-left">No Items Found</h5>';
-				}
-			}
-		} ,
-		{
-			source: function(query, callback) {
-				var index = client.initIndex('brands_sv');
-				var options = {hitsPerPage: 5}
-				if(departmentVerified)options.facetFilters = 'genders:'+DEPARTMENT.name;
-				index.search(query, options).then(function(answer) {
-					callback(answer.hits);
-				}, function() {
-					callback([]);
-				});
-			},
-			displayKey: 'name',
-			templates: {
-				suggestion: function(suggestion, answer) {
-					return ACTemplateBrand(suggestion);
-				},
-				empty: function(empty) {
-					return '<h5 class="text-left">No Items Found</h5>';
-				}
-			}
-		}
-	]
-).on('autocomplete:selected', function(event, suggestion, dataset) {
+	templates: {
+		dropdownMenu: searchDropDownMobileTemplate
+	}
+},autocompleteOptionsMobile).on('autocomplete:selected', function(event, suggestion, dataset) {
 	//console.log(suggestion, dataset);
 	//window.location ='/brand/'+suggestion.name;
 });
@@ -411,6 +483,8 @@ $(document).ready( function() {
 	general.on('click',".popout .fab",function(event) {
 		event.stopPropagation();
 	});
+
+
 	//***********************USER ACTIONS
 	var productPreviewTimer;
 	$('body ').on( 'mouseover','.vertical .item .preview-image' , function (event) {
@@ -446,6 +520,7 @@ $(document).ready( function() {
 		refreshVariables()
 		itemScrollindex = $(this).attr('index');
 		$('.itemList img').removeClass('selected');
+		$('.fab').hide();
 		$(this).addClass('selected')
 		productHelper
 			.openDDViewProductInfo(
@@ -459,6 +534,7 @@ $(document).ready( function() {
 			.closeDDViewProductInfo(
 				mainContainer, productList,jawboneContent, paginate, itemScrollindex
 			)
+		$('.fab').show();
 
 	})
 	general.on( 'mouseover','.jawBone .selectedItemImageColoumn ol li img' , function (event) {
@@ -501,10 +577,10 @@ $(document).ready( function() {
 	 *
 	 * **/
 	//***************************************SEARCH
-	function SEARCH (){
+	function SEARCH (searchInput){
 		refreshVariables()
 		console.log('mmm')
-		var q = searchBar.val(); searchBar.blur();
+		var q = searchInput.val(); searchInput.blur();
 		productHelper.closeDDViewProductInfo(mainContainer, productList,jawboneContent, paginate);
 		if(q.length ==  0){
 			closeSEARCH();
@@ -536,9 +612,9 @@ $(document).ready( function() {
 
 	$('#autocompleteForm').submit( function(){
 		event.preventDefault();
-		SEARCH();
+		SEARCH(searchBar);
 	})
-	ddContainer.on( 'click','#ddsearchMore', SEARCH)
+	ddContainer.on( 'click','#ddsearchMore', SEARCH(searchBar))
 	mainSection.on( 'click','.closeSearch', closeSEARCH)
 	searchSection.on( 'click','.closeSearch', closeSEARCH)
 	ddContainer.on( 'mouseover','#dditemList',function(event){
@@ -573,7 +649,33 @@ $(document).ready( function() {
 				pPreviewContainer.animate({opacity: 1, left:"0"}, 100, $.bez([.6, 0, .1, 1]));
 			})
 	})
+	/*
+	 * MOBILE
+	 * Search
+	 *
+	 * */
+	function openMobileSearch(){
+		$('#searchMobileContainer').removeClass('hidden').css({left:1000}).animate({left: 0}, 300, $.bez([.6, 0, .1, 1]));
+		$('#searchMobile').focus();
+	}
+	function closeMobileSearch(){
+		$('#searchMobile').val('').blur();
+		var searchContainer = $('#searchMobileContainer')
 
+		$.when(searchContainer.css({left:0}).animate({left: 1000}, 300, $.bez([.6, 0, .1, 1])) )
+			.done( function() {
+				searchContainer.addClass('hidden')
+			})
+
+	}
+	$('#searchMobileForm').submit( function(){
+		console.log('submitting')
+		event.preventDefault();
+		SEARCH($('#searchMobile'))
+	})
+	$('#menuSearchIcon').on('click',openMobileSearch);
+	$('#CloseSearchMobile').on('click', closeMobileSearch)
+	$('.page-container').on('click', closeMobileSearch)
 	/*
 	 * Find better price ACTIONS
 	 *
@@ -602,10 +704,6 @@ $(document).ready( function() {
 		FINDBETTERPRICES(content);
 
 	})
-
-
-
-
 	/*
 	 * Scrolling ACTIONS
 	 *

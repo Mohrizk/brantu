@@ -1,6 +1,6 @@
 var welcomeTemplate = Handlebars.compile(
     '{{#if search}}' +
-    '<a class="pull-right closeSearch"><i class="pg-close_line fa-2x"></i></a>' +
+    '<a class="pull-right closeSearch m-xs-r-10"><i class="pg-close_line fa-2x"></i></a>' +
     '<h3 class="all-caps text-spaced text-center font-GothamMedium">{{#if department}}{{department}}/{{/if}} {{name}} "{{query}}"</h3>' +
     '<h5 class="all-caps text-spaced text-center font-GothamMedium">{{{nbHits}}}</h5>' +
     '{{else}}' +
@@ -134,12 +134,10 @@ var productTemplate = Handlebars.compile(
 
 
 var jawBoneTemplate = Handlebars.compile(
-    '<div class="jawBone" nb-pic="{{numOfImages}}" pic-src="{{{mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}">'+
-    '<div class="mainWrapper row">'+
-
-    '<div class=" col-md-6 col-sm-12 col-xs-12 pictureWrapper">' +
+    '<div class="jawBone" nb-pic="{{numOfImages}}" pic-src="{{{mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}"><div class="mainWrapper row">' +
+'<div class=" col-md-6 col-sm-12 col-xs-12 pictureWrapper">' +
     '<div class="row">'+
-    '<div class="selectedItemImageColoumn col-xs-3 frame scrollable" id="selectedItemImages" numOfImages="{{numOfImages}}">'+
+    '<div class="selectedItemImageColoumn col-md-2 col-lg-3  hidden-sm hidden-xs frame scrollable" id="selectedItemImages" numOfImages="{{numOfImages}}">'+
     '<ol class="slidee scrollable">'+
     '<li><img imageorder ="0" src="{{mainPicture.largeUrl}}" /></li>'+
     '{{#each auxPictures}}'+
@@ -153,8 +151,17 @@ var jawBoneTemplate = Handlebars.compile(
     '<div id="mainJawBoneImageContainer" class="auto-margin block"> <img id="mainJawBoneImage" imageorder = "0" src="{{mainPicture.largeUrl}}"/> </div>'+
     '</div>'+
     '</div>'+
-    '</div> </div>'+
-
+    '</div> </div>' +
+    '<div class="row visible-sm visible-xs full-width p-t-20 p-l-20 p-r-10">' +
+    '<div class=" selectedItemImageColoumn  col-xs-12 frame scrollable" numOfImages="{{numOfImages}}">'+
+    '<ol class="slidee scrollable auto-margin block">'+
+    '<li class="inline"><img imageorder ="0" src="{{mainPicture.largeUrl}}" /></li>'+
+    '{{#each auxPictures}}'+
+    '<li class="inline"><img  imageorder ="{{indexPlusConstant @index 1}}" src="{{largeUrl}}" /></li>'+
+    '{{/each}}'+
+    '</ol>'+
+    '</div>'+
+    '</div>'+
     '<div class="col-md col-sm-12 col-xs-12 p-t-10">'+
     '<div class="item-info b-b more-content">' +
     '<div class=" p-t-20 p-b-5">' +
@@ -173,7 +180,7 @@ var jawBoneTemplate = Handlebars.compile(
     '<div class="col-xs bottom-xs">' +
     '{{#if sale}}' +
     '<div class="row bottom-xs end-xs">' +
-    '<div class="col-xs"><h3 class="text-right bold  no-padding no-margin">{{{discount}}}%</h3></div>' +
+    '<div class="col-xs"><h3 class="text-right bold  no-padding no-margin">{{{discount}}}%</h3></div>'+
     '</div>' +
     '<div class="row bottom-xs end-xs">' +
     '<div class="col-xs bottom-xs"><h4 class="medium no-margin text-right no-padding" ><span style="text-decoration: line-through; font-size:15px;">{{{originalPrice.formatted}}}</span>{{{price.formatted}}}</h4></div>' +
@@ -186,9 +193,7 @@ var jawBoneTemplate = Handlebars.compile(
     '</div>' +
     '</div>' +
     '</div>' +
-
     '</div>'+
-
     '<div class="selectedItemDetail full-width">'+
     '<div class="panel">'+
     '<ul class="nav nav-tabs nav-tabs-simple hidden-xs"  data-init-reponsive-tabs="collapse">'+
@@ -204,18 +209,15 @@ var jawBoneTemplate = Handlebars.compile(
     '</div>'+
     '<div class="tab-pane" id="tabReviews">{{>loading}}</div>'+
     '</div>'+
-        '<div class="p-t-10 p-b-10 text-right"><button class="btn  btn-info"> Go To Shop</button></div>'+
+    '<div class="p-t-10 p-b-10 text-right"><button class="btn  btn-info"> Go To Shop</button></div>'+
     '</div>'+
     '</div>'+
     '</div>'+
-
-
     '</div>'+
     '<div class="recommendedProducts">'+
     '</div>'+
     '<ol class="selectedItemSave">'+
     '<li ><div class="delete"><i class=" pg-close_line"> </i></div></li>'+
-
     '</ol>'+
     '</div>'
 );
@@ -304,21 +306,21 @@ var filterTagsTemplate = Handlebars.compile(
 var pagingTemplate = Handlebars.compile(
     '{{#if paginate}}'+
     '<div class="clearfix">' +
-    '<div class="pull-right bg-master-light btn-rounded p-r-10 p-l-10">' +
+    '<div class="pull-right bg-master-light btn-rounded p-r-10 p-l-10  m-xs-r-10 m-b-20">' +
     '{{#if hasPrevious}}' +
-    '<a class="inline p-r-5 page v-align-middle"  value="{{indexMinusConstant currentPage 1}}"><i class="fa-2x pg-arrow_left_line_alt"></i></a>'+
+    '<a class="inline p-r-5 page v-align-middle  p-b-5"  value="{{indexMinusConstant currentPage 1}}"><i class="fa-2x pg-arrow_left_line_alt"></i></a>'+
     '{{/if}}'+
     '{{#if showFirst}}' +
-    '<div class="inline"><a class="sbold page"  value="0"> 1</a> ... </div>'+
+    '<div class="inline"><a class="sbold page "  value="0"> 1</a> ... </div>'+
     '{{/if}}' +
     '{{#each pages}}' +
-    '<a class="inline page {{class}}  sbold padding-1v"  value="{{thePage}}">{{indexPlusConstant thePage 1}}</a>' +
+    '<a class="inline page {{class}}  sbold padding-1v p-xs-l-10 p-t-10 p-b-10"  value="{{thePage}}">{{indexPlusConstant thePage 1}}</a>' +
     '{{/each}}' +
     '{{#if showLast}}' +
-    '<div class="inline">... <a class="sbold page"  value="{{indexMinusConstant totalPages 1}}"> {{totalPages}}</a></div>'+
+    '<div class="inline">... <a class="sbold page p-xs-l-10"  value="{{indexMinusConstant totalPages 1}}"> {{totalPages}}</a></div>'+
     '{{/if}}'+
     '{{#if hasNext}}' +
-    '<a class="inline p-l-5 page v-align-middle" value="{{indexPlusConstant currentPage 1}}"><i class="fa-2x pg-arrow_lright_line_alt "></i></a>'+
+    '<a class="inline p-l-5 page v-align-middle p-xs-l-10 p-b-5" value="{{indexPlusConstant currentPage 1}}"><i class="fa-2x pg-arrow_lright_line_alt "></i></a>'+
     '{{/if}}'+
     '</div>' +
     '</div>' +
@@ -332,11 +334,11 @@ var searchDropDownTemplate =  Handlebars.compile(
     '<div class="my-custom-menu">'+
     '<div class="row padding-2v">'+
     '<div class="col-md-1 hidden-xs hidden-sm"><h1 class="light">Your Search Result</h1></div>'+
-    '<div class="col-sm-5 col-md-4 col-sm-offset-1 text-center" id="dditemListContainer">' +
+    '<div class="col-sm-5 col-md-4 col-xs-12 col-sm-offset-1 text-center" id="dditemListContainer">' +
     '<h5 class="text-left b-b bold text-pink-darker">Products</h5>'+
     '<div class="aa-dataset-0" id="dditemList"></div>'+
     '</div>'+
-    '<div class="col-md-3 col-sm-offset-1 col-sm-5  text-center" id="ddCol2">' +
+    '<div class="col-md-3 col-sm-offset-1 col-sm-5  col-xs-12 text-center" id="ddCol2">' +
     '<div id="ddBrands">'+
     '<div>'+
     '<h5 class="text-left b-b bold text-pink-darker" >Brands</h5>'+
@@ -354,6 +356,34 @@ var searchDropDownTemplate =  Handlebars.compile(
     '</div>'+
     '</div>'
 )
+var searchDropDownMobileTemplate =  Handlebars.compile(
+    '<div class="my-custom-menu scrollable">'+
+    '<div class="row padding-2v">'+
+    '<div class="col-xs-12 text-center" id="ddCol2">' +
+    '<div id="ddBrands">'+
+    '<div>'+
+    '<h5 class="text-left b-b bold text-pink-darker" >Products</h5>'+
+    '</div>'+
+    '<div class="aa-dataset-2"></div>'+
+    '<div>'+
+    '<h5 class="text-left b-b bold text-pink-darker" >Brands</h5>'+
+    '</div>'+
+    '<div class="aa-dataset-3"></div>' +
+    '</div>'+
+    '<div id="ddCategory">'+
+    '</div>' +
+    '</div>'+
+    '<div class="col-sm col-sm-offset-1 relative text-center no-overflow" style="display: none; " id="ddProductPreview">' +
+    '<div class="top-left bottom-right" id="ddProductPreviewContainer">' +
+    '</div>' +
+    '</div>' +
+    '</div>'+
+    '</div>'
+)
+
+
+
+
 var ACTemplateProduct = Handlebars.compile(
     '{{#if more}}' +
     '<a id="ddsearchMore"><h5 class="b-b b-t b-r b-l"><font class="text-pink-darker bold">{{nbHits}}</font> {{text}} </h5></a>' +
@@ -430,7 +460,7 @@ var ACProductPreviewTemplate= Handlebars.compile(
 
 var CPProductTemplate = Handlebars.compile(
     '<div class="content p-t-50" >' +
-    '<a class="pull-right closeSearch"><i class="pg-close_line fa-2x"></i></a>' +
+    '<a class="pull-right closeSearch  "><i class="pg-close_line fa-2x"></i></a>' +
     '<div class="row">' +
     '<div class="col-sm-4  relative text-center" style="max-height: 40vw;" id="cPProductPreview">' +
 

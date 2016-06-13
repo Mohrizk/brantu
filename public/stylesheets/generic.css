@@ -325,6 +325,8 @@ ul.circle li:hover div{
 .resultContainer, .resultContainer.noFilter {
     display:flex;
 	flex-direction: row;
+    margin:0;
+    padding:0;
     justify-content:flex-start;
     width: 100%;
 }
@@ -576,6 +578,7 @@ ol.itemList.vertical.jbMode .item .original-price,  ol.itemList.jbMode .item .di
 /*** Jawbone Content****/
   .pictureWrapper{
       max-height:50vw;
+      padding:0;
       overflow-y:hidden;
   }
   .selectedItemImageColoumn ol{
@@ -584,8 +587,10 @@ ol.itemList.vertical.jbMode .item .original-price,  ol.itemList.jbMode .item .di
       margin: 0;
       list-style-type: none;
   }
-   .selectedItemImageColoumn ol li img{max-width:3vw; height:auto; margin: 0.2vw 0; border:0.1vw solid #ddd;}
-    .selectedItemZoomPicture img{ margin:auto; display:block; width:auto;
+    .selectedItemImageColoumn ol li img{max-width:3vw; height:auto; margin: 0.2vw 0; border:0.1vw solid #ddd;}
+    .selectedItemZoomPicture img{
+        max-width:30vw;
+    margin:auto; display:block; width:auto;
      transition: opacity 1s ease-in-out;
      opacity:1;
     }
@@ -605,7 +610,7 @@ ol.itemList.vertical.jbMode .item .original-price,  ol.itemList.jbMode .item .di
   .selectedItemDescriptionContainer .selectedItemHeader .headerWrapper  img{ width:6vw; height:auto; border:1px solid #ddd;}
   .selectedItemDescriptionContainer .selectedItemHeader .headerWrapper .selectedItemBrand {margin:0; font-size:1.2vw; line-height:1.8vw; text-transform:capitalize; font-weight: bold;  display:inline-block;}
   .selectedItemDescriptionContainer .selectedItemHeader .headerWrapper .selectedItemName{font-size:1vw; line-height:1vw; margin:0.5vw 0; }
-  .priceLocation{  display:inline-block; font-weight: bold;  width:28%; font-size:1.4vw;  font-family:"Sharp Sans";  text-align:right; vertical-align:bottom; z-index:10; margin-top:0.5vw 0;}
+  .priceLocation{  display:inline-block; font-weight: bold;  width:28%; font-size:1.4vw; text-align:right; vertical-align:bottom; z-index:10; }
   .selectedItemOriginalPrice.discounted{font-weight: 400;  font-size:1.2vw;  font-family:"Sharp Sans";  text-decoration:line-through;}
   .selectedItemDiscountedPrice{ color:#E50914; font-family:"Sharp Sans"; font-weight: bold;}
   .selectedItemDiscountedPercentage{font-size:1.2vw; color:#E50914; font-family:"Sharp Sans"; font-weight: bold;}
@@ -762,7 +767,7 @@ ol.itemList.vertical.jbMode .item .original-price,  ol.itemList.jbMode .item .di
 
 
 /***FLOATING ACTION BUTTON*****/
-  .popout {
+.popout {
       position: fixed;
       bottom: 3rem;
       right: 3rem;
@@ -853,6 +858,8 @@ ol.itemList.vertical.jbMode .item .original-price,  ol.itemList.jbMode .item .di
     color: #aaa;
 }
 
+/******MOBILE MENU****/
+
 /****SMALL DE***/
 @media (max-width: 991px){
 
@@ -932,13 +939,12 @@ ol.itemList.vertical.jbMode .item .original-price,  ol.itemList.jbMode .item .di
     body.fixed-header .header {
         height:auto;
         box-shadow: 0 1px 4px rgba(68,68,68,0.2);
-        background: rgba(0, 0, 0, 0.8) !important;
         transition: all 0.5s ease-out, background 1s ease-out;
         transition-delay: 0.2s;
     }
 
     #mainSection, #searchSection, #compareSection{  margin-top: 50px;  }
-    .page-container .page-content-wrapper .content{  padding: 0 0.5% 0 0.5%;  }
+    .page-container .page-content-wrapper .content{  padding: 0;  }
     .ol.itemList{  padding: 0; margin:0; }
     .item, ol.itemList.vertical .item,
     ol.itemList a.item{  height:50vw; width:29vw;  }
@@ -950,22 +956,37 @@ ol.itemList.vertical.jbMode .item .original-price,  ol.itemList.jbMode .item .di
     ol.itemList.vertical .item .discounted-percentage { top:30vw; left:1vw;  }
 }
 @media (max-width: 480px){
+    .jawBoneContent.open{
+        padding: 0 10px;
+    }
+    .selectedItemSave {
+        font-size: 25px;
+        padding-right: -5px;
+    }
     .mainLogo{
-        width:120px;
+        width:140px;
     }
     /********VERTICAL IMAGES*******/
+    ol.itemList.vertical{padding-left: 20px; height: auto;}
     .item, ol.itemList.vertical .item,
     ol.itemList a.item{
+        margin: 0 4vw 8vw 0;
         height:70vw; width:42vw;
     }
     ol.itemList.vertical .item img{ height:auto; max-width:42vw;}
     ol.itemList.vertical .item .discounted-percentage { top:44vw; left:1vw;}
     .selectedItemZoomPicture img {
-        max-height:80vw;
+        max-height:120vw;
+        max-width: 80vw;
+    }
+    .selectedItemZoomPicture .next-item i, .selectedItemZoomPicture .prev-item i {
+        font-size: 7vw;
     }
     .selectedItemImageColoumn ol li img{
         max-width: 10vw;
     }
+    .selectedItemZoomPicture .next-item{right: 2%;  }
+    .selectedItemZoomPicture .prev-item{left: 2%;  }
 
     ol.itemList.horizontal.jbMode .item {
         margin: 0 1.5vw 0 0;
@@ -975,6 +996,9 @@ ol.itemList.vertical.jbMode .item .original-price,  ol.itemList.jbMode .item .di
     }
     ol.itemList.horizontal.jbMode .item img {
         height: 22vw;
+    }
+    .pictureWrapper{
+        max-height:100vw;
     }
 
 

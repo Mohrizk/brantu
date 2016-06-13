@@ -14,10 +14,10 @@
         </div>
 
         <div class="row p-b-1v">
-            <div class="col-sm-1"></div>
-            <div class="col-sm text-center">
+            <div class="col-xs-1"></div>
+            <div class="col-xs text-center padding-5">
                 <h2 class=" text-spaced  all-caps" style="padding-bottom: 1%;"> bringing brands to you</h2>
-                <p class=" p-t-1v p-b-1v b-b b-t" style="padding-left: 1vw; padding-right: 1vw;">
+                <p class=" p-t-1v p-b-1v p-l-1v p-r-1v b-b b-t" >
                     <font class="bold">Vi på Brantu.com  samlar alla nätbutiker som brinner för mode.</font><br/>
                     På vår hemsida kan du söka bland de senaste trenderna och inspireras av våra nätbutikers enorma utbud.
                     Med vår blixtsnabba sökning gör vi det enkelt och bekvämt att shoppa kläder online.
@@ -28,42 +28,42 @@
                     Vi satsar på det största utbudet som passar den mode<font class="bold">medvetna.</font>
                 </p>
             </div>
-            <div class="col-sm-1"></div>
+            <div class="col-xs-1"></div>
         </div>
         <div class="container no-padding full-width ">
         <div class="block auto-margin padding-2v">
             <div class="row ">
                 <div class="text-center col-xs">
-                   <h6 class=" text-uppercase fs-14 text-black text-spaced p-b-10 sbold">Brantu </h6>
+                   <h5 class=" text-uppercase text-black text-spaced p-b-10 sbold">Brantu </h5>
                    <ul class="no-style">
-                       <li class="m-b-5 no-padding bold"><a class="dark" href="/">Hem</a></li>
-                       <li class="m-b-5 no-padding bold"><a class="dark" href="/cashback-to-society">om Cash Back to Society</a></li>
-                       <li class="m-b-5 no-padding bold"><a class="dark" href="join-shop">För annonsörer</a></li>
-                       <li class="m-b-5 no-padding bold"><a class="dark" href="join-charity">För välgörenhetsorganisationer</a></li>
-                       <li class="m-b-5 no-padding bold"><a class="dark" href="#">Privacy</a></li>
-                       <li class="m-b-5 no-padding bold"><a class="dark" href="#">Legal</a></li>
-                       <li class="m-b-5 no-padding bold"><a class="dark" href="#">Jobb</a></li>
+                       <li class="m-b-5  m-xs-b-0  no-padding "><a class="dark" href="/">Hem</a></li>
+                       <li class="m-b-5  m-xs-b-0  no-padding "><a class="dark" href="/cashback-to-society">om Cash Back to Society</a></li>
+                       <li class="m-b-5  m-xs-b-0  no-padding "><a class="dark" href="join-shop">För annonsörer</a></li>
+                       <li class="m-b-5  m-xs-b-0  no-padding "><a class="dark" href="join-charity">För välgörenhetsorganisationer</a></li>
+                       <li class="m-b-5  m-xs-b-0  no-padding "><a class="dark" href="#">Privacy</a></li>
+                       <li class="m-b-5  m-xs-b-0  no-padding "><a class="dark" href="#">Legal</a></li>
+                       <li class="m-b-5  m-xs-b-0  no-padding "><a class="dark" href="#">Jobb</a></li>
                    </ul>
                </div>
             {{#each categoryTree}}
                 <div class="text-center col-xs">
-                    <h6 class=" text-uppercase fs-14 text-spaced text-black p-b-10 sbold">{{this.department.name}} </h6>
+                    <h5 class=" text-uppercase text-spaced text-black p-b-10 sbold">{{this.department.name}} </h5>
                     <ul class="no-style">
                         {{#each categories}}
-                        <li class="m-b-5 no-padding bold"><a class="dark" href="/shop/{{this.category.key}}">{{andfixer this.category.name}}</a></li>
+                        <li class="m-b-5  m-xs-b-0  no-padding "><a class="dark" href="/shop/{{this.category.key}}">{{andfixer this.category.name}}</a></li>
                         {{/each}}
                     </ul>
                 </div>
             {{/each}}
 
                <div class="text-center col-xs">
-                   <h6 class="font-GothamBold text-uppercase fs-14 text-spaced text-black p-b-10 sbold">Märke </h6>
+                   <h5 class="font-GothamBold text-uppercase text-spaced text-black p-b-10 sbold">Märke </h5>
                    <ul class="no-style">
-                       <li class="m-b-5 no-padding bold"><a class="dark" href="/brand/Nike%20Performance">Nike</a></li>
-                       <li class="m-b-5 no-padding bold"><a class="dark" href="/brand/adidas%20Performance">Adidas</a></li>
-                       <li class="m-b-5 no-padding bold"><a class="dark" href="/brand/J.LINDEBERG">J.Lindberg</a></li>
-                       <li class="m-b-5 no-padding bold"><a class="dark" href="/brand/Diesel">Diesel</a></li>
-                       <li class="m-b-5 no-padding bold"><a class="dark" href="/brand/Scotch%20Shrunk">Scotch Shrunk</a></li>
+                       <li class="m-b-5  m-xs-b-0  no-padding "><a class="dark" href="/brand/Nike%20Performance">Nike</a></li>
+                       <li class="m-b-5  m-xs-b-0  no-padding "><a class="dark" href="/brand/adidas%20Performance">Adidas</a></li>
+                       <li class="m-b-5  m-xs-b-0  no-padding "><a class="dark" href="/brand/J.LINDEBERG">J.Lindberg</a></li>
+                       <li class="m-b-5  m-xs-b-0  no-padding "><a class="dark" href="/brand/Diesel">Diesel</a></li>
+                       <li class="m-b-5  m-xs-b-0  no-padding "><a class="dark" href="/brand/Scotch%20Shrunk">Scotch Shrunk</a></li>
 
                    </ul>
                </div>
@@ -73,7 +73,7 @@
 
                 </div>
 
-                <div class="col-sm-12 b-t b-b b-grey" >
+                <div class="col-sm-12 b-t b-b b-grey hidden-xs hidden-sm" >
                     <a href="/join-shop"><div class="col-md-6" style="margin: 1vw 0;">
                         <div class="bg-image" style="background-image:url('/images/footer/affiliate.jpg'); height:14vw; background-position: center;">
                             <div class=" top-right  all-caps" style=" right:4vw; top:4vw;">
@@ -84,8 +84,8 @@
 
                             <div class=" col-md-8 full-height" style="background:linear-gradient(to right,rgba(238,211,211,0.99), rgba(238,211,211,0));">
                                 <div class="col-md-6 m-t-1v">
-                                    <h5 class="text-spaced bold fs-15"> Affiliation Program  </h5>
-                                    <p class="font-sharp text-black bold fs-11">Kontakta oss om ni vill exponera era produkter mot våra modemedvetna medlemmar & besökare.</p>
+                                    <h5 class="text-spaced bold"> Affiliation Program  </h5>
+                                    <p class="font-sharp text-black bold ">Kontakta oss om ni vill exponera era produkter mot våra modemedvetna medlemmar & besökare.</p>
                                 </div>
                             </div>
                         </div>
