@@ -390,7 +390,7 @@ ol.itemList.horizontal{
 .item .discounted-percentage{width:2.8vw;height: 2.8vw; line-height: 2.8vw;text-align: center; border-radius: 50%; border:1px solid #e24675; font-weight: 900; font-family:"Sharp Sans";font-size:1.0vw; color:#fff; background:#E25E75; }
 
 /***************************HORIZONTAL*******************/
-.item,ol.itemList.horizontal .item,  ol.itemList a.item{
+ol.itemList.horizontal .item,  ol.itemList a.item{
 	float:none;
 	display: inline-block;
 	margin: 0 1.5vw 0 0;
@@ -454,13 +454,9 @@ ol.itemList.horizontal.jbMode .item .original-price,  ol.itemList.jbMode .item .
 
  .item, ol.itemList.vertical .item,
  ol.itemList a.item{
-	float:none;
 	display: inline-block;
-	margin: 0 1.2vw 5vw 0;
-	vertical-align:top;
 	position:relative;
-	height:32vw; width:20vw;
-	padding:0vw;
+	 width:32%;
 }
 
 ol.itemList.vertical .item:hover img,
@@ -474,7 +470,7 @@ ol.itemList.vertical a.item:hover img{
 
 ol.itemList .item img.fadeOut{ opacity: 0 !important; }
 
-ol.itemList.vertical .item img{ height:auto; max-width:20vw; position:relative;   margin: 0 auto; display:block; border:1px solid #f8f8f8; opacity: 1; }
+ol.itemList.vertical .item img{ height:auto; max-width:100%; position:relative;   margin: 0 auto; display:block; border:1px solid #f8f8f8; opacity: 1; }
 ol.itemList.vertical .item .item-name  { height:auto; width:auto; padding:0.25vw; line-height:1.2vw; text-transform:capitalize;  margin: 0 auto; text-align: center; display:block; font-family:"Sharp Sans"; font-size:1vw; color:#333; }
 ol.itemList.vertical .item .item-brand  {text-transform:capitalize; height:auto; width:auto; padding:0.15vw; line-height:1.4vw;   margin: 0 auto; text-align: center; display:block; font-family:"Sharp Sans"; font-weight: bold; font-size:0.9vw; color:#555; margin-top:0.3vw;}
 ol.itemList.vertical .item .original-price { padding:0.25vw; line-height:1.4vw;   margin: 0 auto; display:block;  font-size:1.2vw; color:#333; font-weight: bold;}
@@ -489,21 +485,9 @@ ol.itemList.vertical .item:hover .small-options .cart{ transition-delay:200ms;}
 ol.itemList.vertical .item:hover .small-options li{ opacity:0.8}
 ol.itemList.vertical .item:hover .small-options li:hover{ opacity:1}
 
-ol.itemList.vertical .item .main-options{text-align:center;  opacity:0;  }
+ol.itemList.vertical .item .main-options{text-align:center; position: relative;  opacity:0;  }
 ol.itemList.vertical .item:hover .main-options{ opacity:1;}
 
-
-ol.itemList.vertical .item:hover .itemContainer{
-
-
-}
-
-ol.itemList.vertical .item:hover .itemContainer .itemWrapper{
-    background: #fff;
-    border:1px solid #ddd;
-    height:auto;
-
-}
 
     /****HIDE WHEN OFFERS*******/
 ol.itemList.vertical.jbMode .item{margin: 0 1.5vw 0 0; height:8vw; width:8vw; border:0; }
@@ -873,9 +857,7 @@ ol.itemList.vertical.jbMode .item .original-price,  ol.itemList.jbMode .item .di
         display:none;
     }
     /********VERTICAL IMAGES*******/
-    .item, ol.itemList.vertical .item,
-    ol.itemList a.item{  height:42vw; width:26vw;  }
-    ol.itemList.vertical .item img{ height:auto; max-width:26vw; }
+
     ol.itemList.vertical .item .item-name  { line-height:24px; text-transform:capitalize;   font-size:14px; color:#333; }
     ol.itemList.vertical .item .item-brand  {line-height:18px;  font-size:16px; margin-top:10px;}
     ol.itemList.vertical .item .original-price { line-height:18px;  font-size:16px;}
@@ -946,9 +928,8 @@ ol.itemList.vertical.jbMode .item .original-price,  ol.itemList.jbMode .item .di
     #mainSection, #searchSection, #compareSection{  margin-top: 50px;  }
     .page-container .page-content-wrapper .content{  padding: 0;  }
     .ol.itemList{  padding: 0; margin:0; }
-    .item, ol.itemList.vertical .item,
-    ol.itemList a.item{  height:50vw; width:29vw;  }
-    ol.itemList.vertical .item img{ height:auto; max-width:29vw; }
+
+    ol.itemList.vertical .item img{ height:auto; max-width:100%; }
     ol.itemList.vertical .item .item-name  { line-height:18px; text-transform:capitalize;   font-size:12px; color:#333; }
     ol.itemList.vertical .item .item-brand  {line-height:16px;  font-size:14px; margin-top:10px;}
     ol.itemList.vertical .item .original-price { line-height:16px;  font-size:14px;}
@@ -967,13 +948,11 @@ ol.itemList.vertical.jbMode .item .original-price,  ol.itemList.jbMode .item .di
         width:140px;
     }
     /********VERTICAL IMAGES*******/
-    ol.itemList.vertical{padding-left: 20px; height: auto;}
-    .item, ol.itemList.vertical .item,
+    ol.itemList.vertical{padding-left: 0px; height: auto;}
+     ol.itemList.vertical .item,
     ol.itemList a.item{
-        margin: 0 4vw 8vw 0;
-        height:70vw; width:42vw;
+         width:49%;
     }
-    ol.itemList.vertical .item img{ height:auto; max-width:42vw;}
     ol.itemList.vertical .item .discounted-percentage { top:44vw; left:1vw;}
     .selectedItemZoomPicture img {
         max-height:120vw;

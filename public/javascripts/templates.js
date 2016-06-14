@@ -1,12 +1,4 @@
-var welcomeTemplate = Handlebars.compile(
-    '{{#if search}}' +
-    '<a class="pull-right closeSearch m-xs-r-10"><i class="pg-close_line fa-2x"></i></a>' +
-    '<h3 class="all-caps text-spaced text-center font-GothamMedium">{{#if department}}{{department}}/{{/if}} {{name}} "{{query}}"</h3>' +
-    '<h5 class="all-caps text-spaced text-center font-GothamMedium">{{{nbHits}}}</h5>' +
-    '{{else}}' +
-    '<h1 class="all-caps text-spaced text-center font-GothamMedium">{{name}} </h1>' +
-    '{{/if}}'
-)
+
 
 var productEngineTemplate = Handlebars.compile(
 '<div class=""><div class="welcome"></div>' +
@@ -37,8 +29,8 @@ var productEngineTemplate = Handlebars.compile(
 '<div class="productPane">' +
 '<div class="productPreview">' +
 '<div class="row">' +
-'<div class="filterTags col-xs-9"></div>' +
-'<div class="sort col-xs-3"></div>' +
+'<div class="filterTags col-xs-7"></div>' +
+'<div class="col-xs"><div class="paginate hidden-xs"></div></div>' +
 '</div>' +
 '<ol class="itemList vertical">' +
 '</ol>' +
@@ -95,8 +87,8 @@ var productTemplate = Handlebars.compile(
     '<img src="{{{this.mainPicture.largeUrl}}}" class="v-align-top" pic-src="{{{this.mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}" alt="{{../name}}" index="{{@index}}" nb-pic="{{nbImages}}" pic-order="0" productId="{{../productId}}"/>' +
     '</div>' +
     '</div>'+
-    '<span class="item-brand sbold">{{{this.brand.name}}}</span>'+
-    '<span class="item-name medium no-overflow-text">{{{this.name}}}</span>'+
+    '<div class="item-brand sbold">{{{this.brand.name}}}</div>'+
+    '<div class="item-name medium no-overflow-text">{{{this.name}}}</div>'+
     '{{#if sale}}' +
     '<div class="row">'+
     '<div class="original-price discounted col-xs text-right">{{{this.originalPrice.formatted}}}</div>' +
@@ -104,9 +96,9 @@ var productTemplate = Handlebars.compile(
     '</div>'+
     '<div class="discounted-percentage ">{{{this.discount}}}%</div>' +
     '{{else}}'+
-    '<span class="original-price text-center">{{{this.originalPrice.formatted}}}</span>'+
+    '<div class="original-price text-center">{{{this.originalPrice.formatted}}}</div>'+
     '{{/if}}' +
-    '<div class="main-options">' +
+    '<div class="main-options hidden-xs">' +
     '<ol class="no-style no-overflow-text">' +
     '{{#each  sizes}}' +
     '{{#if  @last}}<li class="inline text-pink-darker sbold no-overflow-text">{{this}}</li>' +
@@ -114,7 +106,7 @@ var productTemplate = Handlebars.compile(
     '{{/if}}'+
     '{{/each}}' +
     '</ol>' +
-    '<div class="p-t-10 p-b-10">'+
+    '<div class="p-t-10 p-b-10 ">'+
     '<a class="dark bold"><div class="btn  btn-info btn-rounded m-r-5">Go to store</div></a>'+
     '<a class="dark bold" index="{{@index }}" productId="{{{this.productId}}}"><div class="btn  btn-info btn-rounded  m-l-5" >Find better prices</div></a>' +
     '</div>'+
@@ -136,7 +128,7 @@ var productTemplate = Handlebars.compile(
 var jawBoneTemplate = Handlebars.compile(
     '<div class="jawBone" nb-pic="{{numOfImages}}" pic-src="{{{mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}"><div class="mainWrapper row">' +
 '<div class=" col-md-6 col-sm-12 col-xs-12 pictureWrapper">' +
-    '<div class="row">'+
+    '<div class="row full-width">'+
     '<div class="selectedItemImageColoumn col-md-2 col-lg-3  hidden-sm hidden-xs frame scrollable" id="selectedItemImages" numOfImages="{{numOfImages}}">'+
     '<ol class="slidee scrollable">'+
     '<li><img imageorder ="0" src="{{mainPicture.largeUrl}}" /></li>'+
@@ -288,7 +280,7 @@ var colorFacetTemplate = Handlebars.compile(
 
 
 var filterTagsTemplate = Handlebars.compile(
-    '<div class="container padding-1v">'+
+    '<div class="">'+
     '{{#each facets}}'+
     '<div class="inline p-r-5">'+
     '<button class="btn btn-tag btn-tag-rounded" style="border:1px solid #ddd;" value="{{value}}" facet="{{facet}}" type="{{type}}"> <font class="sbold">{{text}}: </font>{{value}}<i class="pg-close_line p-l-5"></i></button>'+
@@ -306,21 +298,21 @@ var filterTagsTemplate = Handlebars.compile(
 var pagingTemplate = Handlebars.compile(
     '{{#if paginate}}'+
     '<div class="clearfix">' +
-    '<div class="pull-right bg-master-light btn-rounded p-r-10 p-l-10  m-xs-r-10 m-b-20">' +
+    '<div class="pull-right btn-rounded p-r-10 p-l-10 b-b b-l b-t b-r b-grey  m-xs-r-10 m-b-20" >' +
     '{{#if hasPrevious}}' +
-    '<a class="inline p-r-5 page v-align-middle  p-b-5"  value="{{indexMinusConstant currentPage 1}}"><i class="fa-2x pg-arrow_left_line_alt"></i></a>'+
+    '<a class="inline p-r-10 page v-align-middle   p-b-5"  value="{{indexMinusConstant currentPage 1}}"><i class=" pg-arrow_left_line_alt" style="font-size:15px;"></i></a>'+
     '{{/if}}'+
     '{{#if showFirst}}' +
-    '<div class="inline"><a class="sbold page "  value="0"> 1</a> ... </div>'+
+    '<div class="inline"><a class="sbold page padding-1v p-xs-r-10"  value="0"> 1</a> ... </div>'+
     '{{/if}}' +
     '{{#each pages}}' +
-    '<a class="inline page {{class}}  sbold padding-1v p-xs-l-10 p-t-10 p-b-10"  value="{{thePage}}">{{indexPlusConstant thePage 1}}</a>' +
+    '<a class="inline page {{class}}  sbold padding-05v p-xs-l-10 p-t-5 p-b-5"  value="{{thePage}}">{{indexPlusConstant thePage 1}}</a>' +
     '{{/each}}' +
     '{{#if showLast}}' +
-    '<div class="inline">... <a class="sbold page p-xs-l-10"  value="{{indexMinusConstant totalPages 1}}"> {{totalPages}}</a></div>'+
+    '<div class="inline">... <a class="sbold page padding-1v p-xs-l-10"  value="{{indexMinusConstant totalPages 1}}"> {{totalPages}}</a></div>'+
     '{{/if}}'+
     '{{#if hasNext}}' +
-    '<a class="inline p-l-5 page v-align-middle p-xs-l-10 p-b-5" value="{{indexPlusConstant currentPage 1}}"><i class="fa-2x pg-arrow_lright_line_alt "></i></a>'+
+    '<a class="inline p-l-10 page v-align-middle  p-b-5" value="{{indexPlusConstant currentPage 1}}"><i class=" pg-arrow_lright_line_alt " style="font-size:15px;"></i></a>'+
     '{{/if}}'+
     '</div>' +
     '</div>' +
@@ -330,15 +322,14 @@ var pagingTemplate = Handlebars.compile(
 //AUTOCOMEPLETE
 
 var searchDropDownTemplate =  Handlebars.compile(
-    '{{debug this}}'+
     '<div class="my-custom-menu">'+
     '<div class="row padding-2v">'+
     '<div class="col-md-1 hidden-xs hidden-sm"><h1 class="light">Your Search Result</h1></div>'+
-    '<div class="col-sm-5 col-md-4 col-xs-12 col-sm-offset-1 text-center" id="dditemListContainer">' +
+    '<div class="col-xs-5 col-md-4 col-sm-offset-1 text-center" id="dditemListContainer">' +
     '<h5 class="text-left b-b bold text-pink-darker">Products</h5>'+
     '<div class="aa-dataset-0" id="dditemList"></div>'+
     '</div>'+
-    '<div class="col-md-3 col-sm-offset-1 col-sm-5  col-xs-12 text-center" id="ddCol2">' +
+    '<div class="col-md-3 col-sm-offset-1 col-xs-5  col-xs-12 text-center" id="ddCol2">' +
     '<div id="ddBrands">'+
     '<div>'+
     '<h5 class="text-left b-b bold text-pink-darker" >Brands</h5>'+
@@ -349,7 +340,7 @@ var searchDropDownTemplate =  Handlebars.compile(
     '<div id="ddCategory">'+
     '</div>' +
     '</div>'+
-    '<div class="col-sm col-sm-offset-1 relative text-center no-overflow" style="display: none; " id="ddProductPreview">' +
+    '<div class="col-xs col-xs-offset-1 relative text-center no-overflow" style="display: none; " id="ddProductPreview">' +
     '<div class="top-left bottom-right" id="ddProductPreviewContainer">' +
     '</div>' +
     '</div>' +
@@ -373,16 +364,9 @@ var searchDropDownMobileTemplate =  Handlebars.compile(
     '<div id="ddCategory">'+
     '</div>' +
     '</div>'+
-    '<div class="col-sm col-sm-offset-1 relative text-center no-overflow" style="display: none; " id="ddProductPreview">' +
-    '<div class="top-left bottom-right" id="ddProductPreviewContainer">' +
-    '</div>' +
-    '</div>' +
     '</div>'+
     '</div>'
 )
-
-
-
 
 var ACTemplateProduct = Handlebars.compile(
     '{{#if more}}' +
@@ -522,11 +506,30 @@ var CPProductTemplate = Handlebars.compile(
     '</div>'
 );
 
-
+var welcomeTemplate = Handlebars.compile(
+    '{{#if search}}' +
+    '<a class="pull-right closeSearch m-xs-r-10"><i class="pg-close_line fa-2x"></i></a>' +
+    '<h3 class="all-caps text-spaced text-center font-GothamMedium">{{#if department}}{{department}}/{{/if}} {{name}} "{{query}}"</h3>' +
+    '{{#if suggestedBrands}}'+
+    '<div class="visible-xs p-b-40">'+
+    '<h5 class="all-caps text-spaced text-center font-GothamMedium">{{{nbBrandHits}}}</h5>' +
+    '<div class="text-center auto-margin block">' +
+    '{{#each suggestedBrands}}' +
+    '<a class="dark inline p-l-20 bold" href="/brand/{{{name}}}"><div class="brandsAC text-center">' +
+    '<span class="">{{{ _highlightResult.name.value }}}</span>' +
+    '</div></a>'+
+    '{{/each}}' +
+    '</div></div>'+
+    '{{/if}}'+
+    '<h5 class="all-caps text-spaced text-center font-GothamMedium">{{{nbHits}}}</h5>' +
+    '{{else}}' +
+    '<h1 class="all-caps text-spaced text-center font-GothamMedium">{{name}} </h1>' +
+    '{{/if}}'
+)
 /*****Render Color LIST*******/
 var productHelper;
 productHelper = {
-    getWelcomeMessage: function(breadcrumb, content, isSearch){
+    getWelcomeMessage: function(breadcrumb, content, isSearch, suggestedBrands){
         var rObject = {}
         console.log(breadcrumb);
         if(isSearch){
@@ -536,6 +539,8 @@ productHelper = {
             rObject.nbHits = HEADERTEXT.search.found +' <font class="bold text-pink-dark"> '+content.nbHits+' </font> '+HEADERTEXT.search.product ;
             rObject.query = content.query;
             rObject.closeSearch=true;
+            rObject.suggestedBrands = suggestedBrands;
+            rObject.nbBrandHits = HEADERTEXT.search.found +' <font class="bold text-pink-dark"> '+suggestedBrands.length+' </font> '+HEADERTEXT.search.brand ;
         }
         else{
             rObject.search = false;

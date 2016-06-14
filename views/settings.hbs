@@ -1,6 +1,5 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/list.js/1.2.0/list.min.js"></script>
 <div class="overlay" role="nav-down-container" style="height:20vw"></div>
-<div class="page-container ">
     <!-- START PAGE CONTENT WRAPPER -->
     <div class="page-content-wrapper">
         <section id="mainSection">
@@ -36,12 +35,12 @@
         </div>
         </section>
         {{>search}}
+        {{>loading}}
         {{#unless (compareStrings (settingsPartial) 'settings-brands')}} {{>footer}} {{/unless}}
         <!-- END PAGE CONTENT -->
     </div>
     <!-- END PAGE CONTENT WRAPPER -->
 
-</div>
 
 <script type="text/javascript" src="/javascripts/search.js"> </script>
 <script type="text/javascript" src="/javascripts/navbar.js"> </script>

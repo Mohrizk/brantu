@@ -4592,29 +4592,32 @@ body > .pgn-wrapper {
 ------------------------------------
 */
 .progress-circle-indeterminate {
-  background: url('../img/progress/progress-circle-master.svg') no-repeat top left;
+  background: url('/images/progress/progress-circle-master.svg') no-repeat top left;
   width: 50px;
   height: 50px;
   background-size: 100% auto;
   margin: 0 auto;
 }
+.progress-circle-indeterminate.progress-circle-white {
+  background: url('/images/progress/progress-circle-lg-white.svg') no-repeat top left;
+}
 .progress-circle-indeterminate.progress-circle-warning {
-  background-image: url('../img/progress/progress-circle-warning.svg');
+  background-image: url('/images/progress/progress-circle-warning.svg');
 }
 .progress-circle-indeterminate.progress-circle-danger {
-  background-image: url('../img/progress/progress-circle-danger.svg');
+  background-image: url('/images/progress/progress-circle-danger.svg');
 }
 .progress-circle-indeterminate.progress-circle-info {
-  background-image: url('../img/progress/progress-circle-info.svg');
+  background-image: url('/images/progress/progress-circle-info.svg');
 }
 .progress-circle-indeterminate.progress-circle-primary {
-  background-image: url('../img/progress/progress-circle-primary.svg');
+  background-image: url('/images/progress/progress-circle-primary.svg');
 }
 .progress-circle-indeterminate.progress-circle-success {
-  background-image: url('../img/progress/progress-circle-success.svg');
+  background-image: url('/images/progress/progress-circle-success.svg');
 }
 .progress-circle-indeterminate.progress-circle-complete {
-  background-image: url('../img/progress/progress-circle-complete.svg');
+  background-image: url('/images/progress/progress-circle-complete.svg');
 }
 
 

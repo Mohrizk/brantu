@@ -26,12 +26,21 @@ var searcher = algoliasearchHelper(client,'product_sweden', {
 
 var typeVerified = true, departmentVerified= false;
 if(TYPE !=null){
+	var mainSection = $('#mainSection');
+	var loading = $('.loading');
+
 	switch (TYPE.name) {
 		case 'category':
-			helper.toggleRefinement('products','Kvinna').search();
+			helper.toggleRefinement('products','Kvinna');
+			mainSection.hide();
+			loading.show()
+			helper.search()
 			break;
 		case 'brand':
-			helper.addDisjunctiveFacetRefinement('brand.name', TYPE.value.name).search();
+			helper.addDisjunctiveFacetRefinement('brand.name', TYPE.value.name);
+			mainSection.hide();
+			loading.show()
+			helper.search()
 			break;
 		default:
 			typeVerified = false;
@@ -51,6 +60,7 @@ if( DEPARTMENT!==null){
 
 //_________AUTCOMPLETE
 var currentDDHits=[];
+var currentBrandDDHits=[];
 var pPcurrentIndex = 100;  // needed for hovering effect
 var autocompleteOptions = [
 	{
@@ -59,9 +69,10 @@ var autocompleteOptions = [
 			var index = client.initIndex('product_sweden');
 			var options = {hitsPerPage: 8}
 			if(departmentVerified)options.facetFilters = 'categories.lvl0:'+DEPARTMENT.name;
+			$('.ACSearchProgress').removeClass('hidden');
 			index.search(query, options).then(function(answer) {
 				pPcurrentIndex = 100;
-				console.log(answer);
+				$('.ACSearchProgress').addClass('hidden');
 				currentDDHits= answer.hits;
 				$('#ddProductPreview').hide()
 				$('#ddProductPreviewContainer').html('');
@@ -119,9 +130,11 @@ var autocompleteOptionsMobile = [
 			var index = client.initIndex('product_sweden');
 			var options = {hitsPerPage: 4}
 			if(departmentVerified)options.facetFilters = 'categories.lvl0:'+DEPARTMENT.name;
+			$('.ACSearchProgress').removeClass('hidden');
 			index.search(query, options).then(function(answer) {
 				pPcurrentIndex = 100;
 				console.log(answer);
+				$('.ACSearchProgress').addClass('hidden');
 				currentDDHits= answer.hits;
 				$('#ddProductPreview').hide()
 				$('#ddProductPreviewContainer').html('');
@@ -157,7 +170,11 @@ var autocompleteOptionsMobile = [
 			var options = {hitsPerPage: 4}
 			if(departmentVerified)options.facetFilters = 'genders:'+DEPARTMENT.name;
 			index.search(query, options).then(function(answer) {
-				callback(answer.hits);
+				currentBrandDDHits = answer.hits;
+				var returnedArray =[];
+				if(currentBrandDDHits.length>=5)returnedArray= answer.hits.slice(0,5);
+				else returnedArray = answer.hits;
+				callback(returnedArray);
 			}, function() {
 				callback([]);
 			});
@@ -184,7 +201,7 @@ autocomplete('#search', {
 	//window.location ='/brand/'+suggestion.name;
 });
 autocomplete('#searchMobile', {
-	dropdownMenuContainer: '#containerAC',
+	dropdownMenuContainer: '#mobileContainerAC',
 	hints:true,
 
 	templates: {
@@ -194,37 +211,6 @@ autocomplete('#searchMobile', {
 	//console.log(suggestion, dataset);
 	//window.location ='/brand/'+suggestion.name;
 });
-
-
-/*****ADD INITIAL FACETS TO HELPER*******/
-
-
-
-//********BEGNING GET & ATTACH JAWBONE RECOMMENDATION
-/*function getRecommendations(itemId){
-				var recommendedItems = '<li productID= "'+item.id+'"><img src="'+item.media.images[0].mediumUrl+'" alt="'+item.name+'"/> <div class="brandName">'+name[0]+'</div></li>';
-				html = '<h5>Similar Products</h5><div class=" frame similarProducts" id="sly_'+itemId+'"><ol class="slidee">'+recommendedItems+'</ol></div>';
-				location.find('.recommendedProducts').html(html);	
-				
-				var horizontalOptions= {
-					    horizontal: 1,
-					    itemNav: 'basic',
-					    speed: 300,
-					    mouseDragging: 1,
-					    touchDragging: 1
-					};
-
-				var sly = new Sly("#sly_"+itemId,{
-				    horizontal: 1,
-				    itemNav: 'basic',
-				    speed: 300,
-				    mouseDragging: 1,
-				    touchDragging: 1
-				}).init();
-				sly.reload();	
-
-	});
-}*/
 
 //********BEGINING of Change view********************
 /**
@@ -236,20 +222,31 @@ autocomplete('#searchMobile', {
 $(document).ready( function() {
 	var currentInstance = helper;
 	var currentState= {search:false , main:true, compare:false}
-	helper.on  ('result', function(content) {currentInstance = helper;RENDER(content); })
-	searcher.on('result', function(content) { currentInstance = searcher; RENDER(content); })
+	helper.on('result', function(content) {
+		currentInstance = helper;
+		RENDER(content);
+		loading.hide();
+		$('html, body').animate({scrollTop: 0 }, 100, $.bez([.5, 0, .1, 1]));
+		mainSection.show().css({'opacity':0}).animate({'opacity':1});
+	})
+	searcher.on('result', function(content) {
+		currentInstance = searcher;
+		RENDER(content);
+		loading.hide();
+		$('html, body').animate({scrollTop: 0 }, 100, $.bez([.5, 0, .1, 1]));
+		if(searchSection.length !=0){searchSection.show().css({'opacity':0}).animate({'opacity':1});}
+		else mainSection.show().css({'opacity':0}).animate({'opacity':1});
+	})
+
 	var productArray=[];
 	var priceLimits = {
 		change : true,
 		data:{}
 	}
-
 	var mainSection = $('#mainSection');
 	var searchSection = $('#searchSection');
 	var general = $('.general');
-
 	var ddContainer = $('#containerAC');
-
 	var mainContainer = $('.resultContainer');
 	var filterSelector = $('#mainFacetPane');
 	var facetContainer = $('#mainFacetContainer');
@@ -262,9 +259,6 @@ $(document).ready( function() {
 	var paginate = $('.paginate');
 	var loading = $('.loading');
 	var onFab = false;
-
-
-
 	/*
 	 * MAIN RENDER FUNCTION FOR ALL SEARCHES
 	 * AND CATEGORY NAVIGATION
@@ -289,9 +283,13 @@ $(document).ready( function() {
 		paginate = $('.paginate');
 		loading = $('.loading');
 	}
+	function FETCHPRODUCTS(){
+		mainSection.hide();
+		loading.show()
+		currentInstance.search()
+	}
 	function RENDER (content){
 		refreshVariables();
-
 		if(!currentState.compare && (currentState.search || currentState.main) && searchSection.length == 0){
 			mainSection.html(productEngineTemplate({fab:onFab}));
 		}
@@ -347,7 +345,7 @@ $(document).ready( function() {
 			}
 		});
 		//RENDER ALL NEW VALUES
-		$('.welcome').html(welcomeTemplate(productHelper.getWelcomeMessage(breadCrumb, content, currentState.search)));
+		$('.welcome').html(welcomeTemplate(productHelper.getWelcomeMessage(breadCrumb, content, currentState.search, currentBrandDDHits)));
         $('.sale').html(onlySaleBoxFacetTemplate({header: HEADERTEXT.facets.sale.header,   content: productHelper.mapWithout(content.getFacetValues('sale'),['false'])}));
         $('.discounts').html(listFacetTemplate(  {header: HEADERTEXT.disjunctionFacets.discount.header, content: productHelper.mapWithout(content.getFacetValues('discount'), ['0'])} ));
         $('.sizes').html(listFacetTemplate(      {header: HEADERTEXT.disjunctionFacets.size.header , content:content.getFacetValues('sizes')}));
@@ -359,45 +357,54 @@ $(document).ready( function() {
 		var tags = filterTagsTemplate(productHelper.getAllRefinements(currentInstance.getState(['attribute:*']), HEADERTEXT))
 		$('.filterTags').html(tags);
 		$('#navbarTags').html(tags);
-		$('#mobileTags').html(tags);
+
 		//Show Result
 		console.log('fab is ', onFab);
 		general.css({'opacity':0.5}).animate({'opacity':1});
 	}
+
 //*******************************************Filter Actions
 	general.on( 'click', ' .resultContainer .category li a', function (event) {
 		var value = $(this).attr('value');
-		currentInstance.clearRefinements('products').toggleRefinement('products', value).search();
+		currentInstance.clearRefinements('products').toggleRefinement('products', value);
+		FETCHPRODUCTS()
 	});
 	general.on( 'click', '.resultContainer .breadcrumb li a', function (event) {
 		var value = $(this).attr('value');
-		currentInstance.clearRefinements('products').toggleRefinement('products', value).search();
+		currentInstance.clearRefinements('products').toggleRefinement('products', value);
+		FETCHPRODUCTS()
 	});
 	general.on( 'click', '.resultContainer .brands input', function (event) {
 		var value = $(this).attr('value');
 		if($(this).prop('checked')){
-			currentInstance.addDisjunctiveFacetRefinement('brand.name', value).search();
+			currentInstance.addDisjunctiveFacetRefinement('brand.name', value);
+			FETCHPRODUCTS()
 		}
 		else{
-			currentInstance.removeDisjunctiveFacetRefinement('brand.name', value).search();
+			currentInstance.removeDisjunctiveFacetRefinement('brand.name', value);
+			FETCHPRODUCTS()
 		}
 	});
 	general.on( 'change', '.resultContainer .sizes input', function (event) {
 		var value = $(this).attr('value');
 		if($(this).prop('checked')){
-			currentInstance.addDisjunctiveFacetRefinement('sizes', value).search();
+			currentInstance.addDisjunctiveFacetRefinement('sizes', value);
+			FETCHPRODUCTS()
 		}
 		else{
-			currentInstance.removeDisjunctiveFacetRefinement('sizes', value).search();
+			currentInstance.removeDisjunctiveFacetRefinement('sizes', value);
+			FETCHPRODUCTS()
 		}
 	});
 	general.on( 'change', '.resultContainer .discounts input', function (event) {
 		var value = $(this).attr('value');
 		if( $(this).prop('checked')){
-			currentInstance.addDisjunctiveFacetRefinement('discount', value).search();
+			currentInstance.addDisjunctiveFacetRefinement('discount', value);
+			FETCHPRODUCTS()
 		}
 		else{
-			currentInstance.removeDisjunctiveFacetRefinement('discount', value).search();
+			currentInstance.removeDisjunctiveFacetRefinement('discount', value);
+			FETCHPRODUCTS()
 		}
 	});
 	general.on( 'change', '.resultContainer .colors input', function (event) {
@@ -405,28 +412,34 @@ $(document).ready( function() {
 		//console.log(value)
 
 		if( $(this).prop('checked')){
-			currentInstance.addDisjunctiveFacetRefinement('color', value).search();
+			currentInstance.addDisjunctiveFacetRefinement('color', value);
+			FETCHPRODUCTS()
 		}
 		else{
-			currentInstance.removeDisjunctiveFacetRefinement('color', value).search();
+			currentInstance.removeDisjunctiveFacetRefinement('color', value);
+			FETCHPRODUCTS()
 		}
 	});
 	general.on( 'change', '.resultContainer .shops input', function (event) {
 		var value = $(this).attr('value');
 		if( $(this).prop('checked')){
-			currentInstance.addDisjunctiveFacetRefinement('shop.name', value).search();
+			currentInstance.addDisjunctiveFacetRefinement('shop.name', value);
+			FETCHPRODUCTS()
 		}
 		else{
-			currentInstance.removeDisjunctiveFacetRefinement('shop.name', value).search();
+			currentInstance.removeDisjunctiveFacetRefinement('shop.name', value);
+			FETCHPRODUCTS()
 		}
 	});
 	general.on( 'change', '.resultContainer .sale input', function (event) {
 		var value = $(this).attr('value');
 		if( $(this).prop('checked')){
-			currentInstance.addFacetRefinement('sale', value).search();
+			currentInstance.addFacetRefinement('sale', value);
+			FETCHPRODUCTS()
 		}
 		else{
-			currentInstance.removeFacetRefinement('sale', value).search();
+			currentInstance.removeFacetRefinement('sale', value);
+			FETCHPRODUCTS()
 		}
 	});
 	general.on( 'click', '.resultContainer .filterTags button', function (event) {
@@ -443,11 +456,11 @@ $(document).ready( function() {
 		productHelper.removeFilterTag(type, facet, value, currentInstance);
 
 	});
-	general.on( 'click', '.resultContainer .paginate a', function (event) {
-		currentInstance.setPage($(this).attr('value')).search();
-		$('html, body').animate({scrollTop: productList.offset().top - 100}, 100, $.bez([.5, 0, .1, 1]));
-
+	general.on( 'click', ' .paginate a', function (event) {
+		currentInstance.setPage($(this).attr('value'));
+		FETCHPRODUCTS();
 	});
+
 	//***********************USER ACTIONS
 	var productPreviewTimer;
 	$('body ').on( 'mouseover','.vertical .item .preview-image' , function (event) {
@@ -542,23 +555,22 @@ $(document).ready( function() {
 	//***************************************SEARCH
 	function SEARCH (searchInput){
 		refreshVariables()
-		console.log('mmm')
+		$('.ACSearchProgress').addClass('hidden');
+		$(document).scrollTop(0);
+		  //MAKE SURE TO TURN THE LOADING OF THE AUTCOMPLETE BAR
 		var q = searchInput.val(); searchInput.blur();
 		productHelper.closeDDViewProductInfo(mainContainer, productList,jawboneContent, paginate);
 		if(q.length ==  0){
 			closeSEARCH();
 			return;
 		}
+		//if(searchSection.length !=0){
+		mainSection.hide()
+		loading.show()
 		currentState={search:true, compare:false,main:false};
 		searcher.clearRefinements().setQuery(q);
 		if(!jQuery.isEmptyObject(DEPARTMENT)) searcher.toggleRefinement('products', DEPARTMENT.name);
 		searcher.search();
-		$('html, body').animate({scrollTop: 0 }, 100, $.bez([.5, 0, .1, 1]));
-		if(searchSection.length !=0){
-			 mainSection.hide()
-			 searchSection.show().css({'opacity':0}).animate({'opacity':1});
-
-		}
 	}
 	function closeSEARCH(){
 		console.log(',,,')
@@ -570,14 +582,16 @@ $(document).ready( function() {
 			mainSection.show().css({'opacity':0}).animate({'opacity':1});
 
 		}
-		if(typeVerified) helper.search();
+		if(typeVerified) FETCHPRODUCTS()
 	}
 
 	$('#autocompleteForm').submit( function(){
 		event.preventDefault();
 		SEARCH(searchBar);
 	})
-	ddContainer.on( 'click','#ddsearchMore', SEARCH(searchBar))
+	ddContainer.on( 'click','#ddsearchMore', function(){
+		SEARCH(searchBar)
+	})
 	mainSection.on( 'click','.closeSearch', closeSEARCH)
 	searchSection.on( 'click','.closeSearch', closeSEARCH)
 	ddContainer.on( 'mouseover','#dditemList',function(event){
@@ -612,6 +626,139 @@ $(document).ready( function() {
 				pPreviewContainer.animate({opacity: 1, left:"0"}, 100, $.bez([.6, 0, .1, 1]));
 			})
 	})
+	/*
+	 * Find better price ACTIONS
+	 *
+	 * **/
+	function FINDBETTERPRICES(content){
+		refreshVariables()
+		searchBar.blur();
+		currentState={search:false, compare:true,main:false};
+		if(searchSection.length !=0){
+			mainSection.hide()
+			searchSection.html(CPProductTemplate(content)).show().css({'opacity':0}).animate({'opacity':1});
+
+		}
+		else mainSection.html(CPProductTemplate(content)).css({'opacity':0}).animate({'opacity':1});
+
+		$('html, body').animate({scrollTop: 0 }, 100, $.bez([.5, 0, .1, 1]));
+	}
+	ddContainer.on( 'click','.findBetterPrices',function(){
+		console.log('mmm')
+		var productId = $(this).attr('data-id');
+		for(var c in currentDDHits){
+			if(productId == currentDDHits[c].productId){
+				content = currentDDHits[c];
+			}
+		}
+		FINDBETTERPRICES(content);
+
+	})
+	/*
+	 * Scrolling ACTIONS
+	 *
+	 * **/
+	var previousScroll = 0;
+	var downStateChanged = false;
+	var upStateChanged = false;
+	function mainFacetPaneScroll(){
+		refreshVariables()
+		var currentScroll = $(document).scrollTop();
+		var footerPosition = $('#footer').offset();
+		var filterPosition = filterSelector.offset();
+		var headerHeight = $('.header').height();
+		var filterWrapperPosition=$('.facetWrapper').offset();
+		var filterHeight = $('.facetWrapper').height();
+
+		var navSegment = $('#navbarCategory');
+		var tagSegment = $('#navbarTags');
+
+		if(filterSelector.length != 0){
+			if(currentScroll +  headerHeight<= filterPosition.top){
+				facetContainer.css('position','absolute').css('top','0px').css('bottom', 'auto');
+			}
+			else if(currentScroll + facetContainer.height() >= footerPosition.top -10){
+				facetContainer.css('position','absolute').css('top','auto').css('bottom', '10px');
+			}
+			else if(previousScroll<currentScroll ){
+				navSegment.hide(); tagSegment.slideDown();
+
+				if(!upStateChanged && currentScroll + headerHeight >= filterWrapperPosition.top ){
+					facetContainer.css('position','absolute').css('bottom','auto').css('top', filterWrapperPosition.top-filterPosition.top);
+					downStateChanged = false;
+					upStateChanged = true;
+
+				}
+				else if(upStateChanged && currentScroll + headerHeight >= filterWrapperPosition.top && currentScroll + $(window).height() <= filterWrapperPosition.top + filterHeight){
+
+				}
+				else if(upStateChanged && currentScroll + $(window).height() > filterWrapperPosition.top + filterHeight){
+					facetContainer.css('position','fixed').css('bottom','0').css('top', 'auto');
+				}
+
+			}
+			else if (previousScroll>currentScroll)
+			{
+				navSegment.slideDown(); tagSegment.hide();
+
+				if(!downStateChanged && currentScroll - headerHeight <= filterWrapperPosition.top + filterHeight ){
+					facetContainer.css('position','absolute').css('bottom', 'auto').css('top', filterWrapperPosition.top-filterPosition.top);
+					downStateChanged = true;
+					upStateChanged = false;
+				}
+				else if(downStateChanged && currentScroll + headerHeight <= filterWrapperPosition.top && currentScroll + $(window).height() > filterWrapperPosition.top + filterHeight ){
+
+				}
+				else if(downStateChanged && currentScroll + headerHeight  < filterWrapperPosition.top){
+					facetContainer.css('position','fixed').css('top', headerHeight).css('bottom', 'auto');
+
+				}
+			}
+
+
+
+		}
+
+		if(mainContainer.offset().top  > currentScroll){
+
+		}
+		previousScroll= currentScroll;
+	}
+	$(window).scroll(function () {
+		if((mainSection.is(':visible') || searchSection.is(':visible')) && $('.itemList').hasClass('vertical') && $('.itemList').is(':visible')){
+			console.log('ok')
+			mainFacetPaneScroll();
+		}
+	});
+	/*
+	 * MOBILE
+	 * Search
+	 *
+	 * */
+	function openMobileSearch(){
+		$('#searchMobileContainer').removeClass('hidden').css({left:1000}).animate({left: 0}, 100);
+		$('#searchMobile').focus();
+	}
+	function closeMobileSearch(){
+		$('#searchMobile').val('').blur();
+		var searchContainer = $('#searchMobileContainer');
+
+		$.when(searchContainer.css({left:0}).animate({left: 1000},100))
+			.done( function() {
+				searchContainer.addClass('hidden')
+			})
+
+	}
+	$('#searchMobileForm').submit( function(){
+		event.preventDefault();
+		SEARCH($('#searchMobile'))
+	})
+	$('#mobileContainerAC').on( 'click','#ddsearchMore', function(){
+		SEARCH($('#searchMobile'))
+	})
+	$('#menuSearchIcon').on('click',openMobileSearch);
+	$('#CloseSearchMobile').on('click', closeMobileSearch)
+	$('.page-container-wrapper').on('click', closeMobileSearch)
 	/*
 	 Mobile Menu
 	 */
@@ -649,134 +796,5 @@ $(document).ready( function() {
 	general.on('click',".popout .fab",function(event) {
 		event.stopPropagation();
 	});
-	/*
-	 * MOBILE
-	 * Search
-	 *
-	 * */
-	function openMobileSearch(){
-		$('#searchMobileContainer').removeClass('hidden').css({left:1000}).animate({left: 0}, 300, $.bez([.6, 0, .1, 1]));
-		$('#searchMobile').focus();
-	}
-	function closeMobileSearch(){
-		$('#searchMobile').val('').blur();
-		var searchContainer = $('#searchMobileContainer')
 
-		$.when(searchContainer.css({left:0}).animate({left: 1000}, 300, $.bez([.6, 0, .1, 1])) )
-			.done( function() {
-				searchContainer.addClass('hidden')
-			})
-
-	}
-	$('#searchMobileForm').submit( function(){
-		console.log('submitting')
-		event.preventDefault();
-		SEARCH($('#searchMobile'))
-	})
-	$('#menuSearchIcon').on('click',openMobileSearch);
-	$('#CloseSearchMobile').on('click', closeMobileSearch)
-	$('.page-container-wrapper').on('click', closeMobileSearch)
-	/*
-	 * Find better price ACTIONS
-	 *
-	 * **/
-	function FINDBETTERPRICES(content){
-		refreshVariables()
-		searchBar.blur();
-		currentState={search:false, compare:true,main:false};
-		if(searchSection.length !=0){
-			mainSection.hide()
-			searchSection.html(CPProductTemplate(content)).show().css({'opacity':0}).animate({'opacity':1});
-
-		}
-		else mainSection.html(CPProductTemplate(content)).css({'opacity':0}).animate({'opacity':1});
-
-		$('html, body').animate({scrollTop: 0 }, 100, $.bez([.5, 0, .1, 1]));
-	}
-	ddContainer.on( 'click','.findBetterPrices',function(){
-		console.log('mmm')
-		var productId = $(this).attr('data-id');
-		for(var c in currentDDHits){
-			if(productId == currentDDHits[c].productId){
-				content = currentDDHits[c];
-			}
-		}
-		FINDBETTERPRICES(content);
-
-	})
-	/*
-	 * Scrolling ACTIONS
-	 *
-	 * **/
-    var previousScroll = 0;
-	var downStateChanged = false;
-	var upStateChanged = false;
-	function mainFacetPaneScroll(){
-		refreshVariables()
-		var currentScroll = $(document).scrollTop();
-		var footerPosition = $('#footer').offset();
-		var filterPosition = filterSelector.offset();
-		var headerHeight = $('.header').height();
-		var filterWrapperPosition=$('.facetWrapper').offset();
-		var filterHeight = $('.facetWrapper').height();
-
-		var navSegment = $('#navbarCategory');
-		var tagSegment = $('#navbarTags');
-
-      	if(filterSelector.length != 0){
-		  if(currentScroll +  headerHeight<= filterPosition.top){
-			  facetContainer.css('position','absolute').css('top','0px').css('bottom', 'auto');
-		  }
-		  else if(currentScroll + facetContainer.height() >= footerPosition.top -10){
-			  facetContainer.css('position','absolute').css('top','auto').css('bottom', '10px');
-		  }
-		  else if(previousScroll<currentScroll ){
-			  navSegment.hide(); tagSegment.slideDown();
-
-			  if(!upStateChanged && currentScroll + headerHeight >= filterWrapperPosition.top ){
-				  facetContainer.css('position','absolute').css('bottom','auto').css('top', filterWrapperPosition.top-filterPosition.top);
-				  downStateChanged = false;
-				  upStateChanged = true;
-
-			  }
-			  else if(upStateChanged && currentScroll + headerHeight >= filterWrapperPosition.top && currentScroll + $(window).height() <= filterWrapperPosition.top + filterHeight){
-
-			  }
-			  else if(upStateChanged && currentScroll + $(window).height() > filterWrapperPosition.top + filterHeight){
-				  facetContainer.css('position','fixed').css('bottom','0').css('top', 'auto');
-			  }
-
-		  }
-		  else if (previousScroll>currentScroll)
-		  {
-			  navSegment.slideDown(); tagSegment.hide();
-
-			  if(!downStateChanged && currentScroll - headerHeight <= filterWrapperPosition.top + filterHeight ){
-				  facetContainer.css('position','absolute').css('bottom', 'auto').css('top', filterWrapperPosition.top-filterPosition.top);
-				  downStateChanged = true;
-				  upStateChanged = false;
-			  }
-			  else if(downStateChanged && currentScroll + headerHeight <= filterWrapperPosition.top && currentScroll + $(window).height() > filterWrapperPosition.top + filterHeight ){
-
-			  }
-			  else if(downStateChanged && currentScroll + headerHeight  < filterWrapperPosition.top){
-				  facetContainer.css('position','fixed').css('top', headerHeight).css('bottom', 'auto');
-
-			  }
-		  }
-
-
-
-	  }
-
-		if(mainContainer.offset().top  > currentScroll){
-
-		}
-		previousScroll= currentScroll;
-	}
-	$(window).scroll(function () {
-		if((mainSection.is(':visible') || searchSection.is(':visible')) && productList.hasClass('vertical') && $('.itemList').is(':visible')){
-			mainFacetPaneScroll();
-		}
-    });
 });
