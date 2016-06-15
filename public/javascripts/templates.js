@@ -78,13 +78,17 @@ var productEngineTemplate = Handlebars.compile(
 
 
 var productTemplate = Handlebars.compile(
-    '{{#each  this}}' +
+    '{{#each  products}}' +
     '<li  class="item" index="{{@index}}" productId="{{{this.brantuId}}}">' +
     '<div class="itemContainer">' +
     '<div class="itemWrapper">' +
     '<div class="row top-xs">'+
     '<div class="preview-image auto-margin col-xs" style="margin-top: 0;">' +
+    '{{#if ../mobile}}'+
     '<img src="{{{this.mainPicture.largeUrl}}}" class="v-align-top" pic-src="{{{this.mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}" alt="{{../name}}" index="{{@index}}" nb-pic="{{nbImages}}" pic-order="0" productId="{{../productId}}"/>' +
+    '{{else}}'+
+    '<img src="{{{this.mainPicture.largeUrl}}}" class="v-align-top" pic-src="{{{this.mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}" alt="{{../name}}" index="{{@index}}" nb-pic="{{nbImages}}" pic-order="0" productId="{{../productId}}"/>' +
+    '{{/if}}'+
     '</div>' +
     '</div>'+
     '<div class="item-brand sbold">{{{this.brand.name}}}</div>'+
@@ -303,13 +307,13 @@ var pagingTemplate = Handlebars.compile(
     '<a class="inline p-r-10 page v-align-middle   p-b-5"  value="{{indexMinusConstant currentPage 1}}"><i class=" pg-arrow_left_line_alt" style="font-size:15px;"></i></a>'+
     '{{/if}}'+
     '{{#if showFirst}}' +
-    '<div class="inline"><a class="sbold page padding-1v p-xs-r-10"  value="0"> 1</a> ... </div>'+
+    '<div class="inline"><a class=" page padding-1v p-xs-r-10"  value="0"> 1</a> ... </div>'+
     '{{/if}}' +
     '{{#each pages}}' +
-    '<a class="inline page {{class}}  sbold padding-05v p-xs-l-10 p-t-5 p-b-5"  value="{{thePage}}">{{indexPlusConstant thePage 1}}</a>' +
+    '<a class="inline page {{class}}  padding-05v p-xs-l-10 p-t-5 p-b-5"  value="{{thePage}}">{{indexPlusConstant thePage 1}}</a>' +
     '{{/each}}' +
     '{{#if showLast}}' +
-    '<div class="inline">... <a class="sbold page padding-1v p-xs-l-10"  value="{{indexMinusConstant totalPages 1}}"> {{totalPages}}</a></div>'+
+    '<div class="inline">... <a class=" page padding-1v p-xs-l-10"  value="{{indexMinusConstant totalPages 1}}"> {{totalPages}}</a></div>'+
     '{{/if}}'+
     '{{#if hasNext}}' +
     '<a class="inline p-l-10 page v-align-middle  p-b-5" value="{{indexPlusConstant currentPage 1}}"><i class=" pg-arrow_lright_line_alt " style="font-size:15px;"></i></a>'+
@@ -318,6 +322,7 @@ var pagingTemplate = Handlebars.compile(
     '</div>' +
     '{{/if}}'
 );
+
 
 //AUTOCOMEPLETE
 

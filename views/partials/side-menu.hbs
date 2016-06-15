@@ -1,23 +1,16 @@
 <nav class="page-sidebar hidden-md hidden-xlg hidden-lg" >
     <!-- BEGIN SIDEBAR MENU TOP TRAY CONTENT-->
-    <div class="sidebar-overlay-slide from-top" id="appMenu">
+    <div class="sidebar-overlay-slide from-top" id="departmentMenu">
+        <h1 class="text-white">Select Department</h1>
         <div class="row">
-            <div class="col-xs-6 no-padding">
-                <a href="#" class="p-l-40"><img src="assets/img/demo/social_app.svg" alt="socail">
+            <div class="col-xs-12 p-t-20 ">
+                <a href="#" class="p-l-10 sbold" style="font-size: 24px;" data-department="Kvinna">
+                    Kvinna
                 </a>
             </div>
-            <div class="col-xs-6 no-padding">
-                <a href="#" class="p-l-10"><img src="assets/img/demo/email_app.svg" alt="socail">
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-6 m-t-20 no-padding">
-                <a href="#" class="p-l-40"><img src="assets/img/demo/calendar_app.svg" alt="socail">
-                </a>
-            </div>
-            <div class="col-xs-6 m-t-20 no-padding">
-                <a href="#" class="p-l-10"><img src="assets/img/demo/add_more.svg" alt="socail">
+            <div class="col-xs-12 p-t-20">
+                <a href="#" class="p-l-10  sbold" style="font-size: 24px;" data-department="Man">
+                    Mann
                 </a>
             </div>
         </div>
@@ -25,231 +18,226 @@
     <!-- END SIDEBAR MENU TOP TRAY CONTENT-->
     <!-- BEGIN SIDEBAR MENU HEADER-->
     <div class="sidebar-header">
-        <img src="assets/img/logo_white.png" alt="logo" class="brand" data-src="assets/img/logo_white.png" data-src-retina="assets/img/logo_white_2x.png" width="78" height="22">
+        <div  class="inline text-white medium sidebar-header-title" style="font-size: 24px;">Kvinna</div>
         <div class="sidebar-header-controls">
-            <button type="button" class="btn btn-xs sidebar-slide-toggle btn-link m-l-20" data-pages-toggle="#appMenu"><i class="fa fa-angle-down fs-16"></i>
-            </button>
-            <button type="button" class="btn btn-link visible-lg-inline" data-toggle-pin="sidebar"><i class="fa fs-12"></i>
+            <button type="button" class="btn btn-xs sidebar-slide-toggle btn-link m-l-20 p-t-5" data-pages-toggle="#appMenu">
+                <i class="fa fa-angle-down  text-white" style="font-size: 16px;"></i>
             </button>
         </div>
     </div>
     <!-- END SIDEBAR MENU HEADER-->
     <!-- START SIDEBAR MENU -->
-    <div class="sidebar-menu">
+    <div class="sidebar-menu bg-Image" style="background-position: top; background-image:url('/images/home/women/main4.jpg');"  data-department-toggle="Kvinna">
         <!-- BEGIN SIDEBAR MENU ITEMS-->
-        <div class="scroll-wrapper menu-items" style="position: relative;"><ul class="menu-items scroll-content" style="margin-bottom: 0px; margin-right: 0px; height: 676px;">
+        <div class="scroll-wrapper glassLight menu-items bgBlurEffectLight" style="position: relative; overflow-x: hidden;">
+            <ul class="menu-items scroll-content" style="margin-bottom: 0px; margin-right: 0px; height: 676px;">
             <li class="m-t-30">
-                <a href="index.html" class="detailed">
-                    <span class="title">Dashboard</span>
-                    <span class="details">12 New Updates</span>
+                <a href="#" class="detailed">
+                    <span class="title text-black" style="line-height: 20px;">Get <br/>Inspired</span>
+                    <!--<span class="details">234 New Updates</span>-->
                 </a>
-                <span class="icon-thumbnail bg-success"><i class="pg-home"></i></span>
+                 <span class="icon-thumbnail">
+                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="30px" height="30px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                    <g>
+                        <path fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" d="M35.328,35.9
+                            c0,5.618-4.56,7.86-10.185,7.86s-10.185-2.242-10.185-7.86c0-1.482,0.318-2.428,0.889-3.699c0.376-0.836,1.278,2.981,1.889,2.312
+                            c1.505-1.647-1.666-5.406,4.167-8.259c-1.042,2.913-0.207,4.069,0.926,4.069c2.46,0,2.498-3.672,2.228-8.323
+                            c7.523,5.808,3.37,8.045,4.224,8.756c4.196,0.462,1.393-8.724,5.122,0.058C35.078,32.406,35.328,34.046,35.328,35.9z"/>
+                    </g>
+                    </svg>
+                 </span>
             </li>
-            <li class="">
-                <a href="email.html" class="detailed">
-                    <span class="title">Email</span>
-                    <span class="details">234 New Emails</span>
-                </a>
-                <span class="icon-thumbnail "><i class="pg-mail"></i></span>
-            </li>
-            <li class="">
-                <a href="social.html"><span class="title">Social</span></a>
-                <span class="icon-thumbnail "><i class="pg-social"></i></span>
-            </li>
-            <li class="">
-                <a href="calendar.html"><span class="title">Calendar</span></a>
-                <span class="icon-thumbnail"><i class="pg-calender"></i></span>
-            </li>
-            <li class="">
-                <a href="builder.html">
-                    <span class="title">Builder</span>
-                </a>
-                <span class="icon-thumbnail"><i class="pg-layouts"></i></span>
-            </li>
-            <li class="">
-                <a href="javascript:;"><span class="title">UI Elements</span>
-                    <span class="arrow"></span></a>
-                <span class="icon-thumbnail">Ui</span>
-                <ul class="sub-menu" style="display: none;">
-                    <li class="">
-                        <a href="color.html">Color</a>
-                        <span class="icon-thumbnail">c</span>
-                    </li>
-                    <li class="">
-                        <a href="typography.html">Typography</a>
-                        <span class="icon-thumbnail">t</span>
-                    </li>
-                    <li class="">
-                        <a href="icons.html">Icons</a>
-                        <span class="icon-thumbnail">i</span>
-                    </li>
-                    <li class="">
-                        <a href="buttons.html">Buttons</a>
-                        <span class="icon-thumbnail">b</span>
-                    </li>
-                    <li class="">
-                        <a href="notifications.html">Notifications</a>
-                        <span class="icon-thumbnail">n</span>
-                    </li>
-                    <li class="">
-                        <a href="modals.html">Modals</a>
-                        <span class="icon-thumbnail">m</span>
-                    </li>
-                    <li class="">
-                        <a href="progress.html">Progress &amp; Activity</a>
-                        <span class="icon-thumbnail">pa</span>
-                    </li>
-                    <li class="">
-                        <a href="tabs_accordian.html">Tabs &amp; Accordions</a>
-                        <span class="icon-thumbnail">ta</span>
-                    </li>
-                    <li class="">
-                        <a href="sliders.html">Sliders</a>
-                        <span class="icon-thumbnail">s</span>
-                    </li>
-                    <li class="active">
-                        <a href="tree_view.html">Tree View</a>
-                        <span class="icon-thumbnail">tv</span>
-                    </li>
-                    <li class="">
-                        <a href="nestables.html">Nestable</a>
-                        <span class="icon-thumbnail">ns</span>
-                    </li>
-                </ul>
-            </li>
-            <li class="">
-                <a href="javascript:;">
-                    <span class="title">Forms</span>
-              <span class="arrow
-             "></span>
-                </a>
-                <span class="icon-thumbnail"><i class="pg-form"></i></span>
-                <ul class="sub-menu">
-                    <li class="">
-                        <a href="form_elements.html">Form Elements</a>
-                        <span class="icon-thumbnail">fe</span>
-                    </li>
-                    <li class="">
-                        <a href="form_layouts.html">Form Layouts</a>
-                        <span class="icon-thumbnail">fl</span>
-                    </li>
-                    <li class="">
-                        <a href="form_wizard.html">Form Wizard</a>
-                        <span class="icon-thumbnail">fw</span>
-                    </li>
-                </ul>
-            </li>
-            <li class="">
-                <a href="portlets.html">
-                    <span class="title">Portlets</span>
-                </a>
-                <span class="icon-thumbnail"><i class="pg-grid"></i></span>
-            </li>
-            <li class="">
-                <a href="javascript:;"><span class="title">Tables</span>
-                    <span class=" arrow"></span></a>
-                <span class="icon-thumbnail"><i class="pg-tables"></i></span>
-                <ul class="sub-menu">
-                    <li class="">
-                        <a href="tables.html">Basic Tables</a>
-                        <span class="icon-thumbnail">bt</span>
-                    </li>
-                    <li class="">
-                        <a href="datatables.html">Data Tables</a>
-                        <span class="icon-thumbnail">dt</span>
-                    </li>
-                </ul>
-            </li>
-            <li class="">
-                <a href="javascript:;"><span class="title">Maps</span>
-                    <span class=" arrow"></span></a>
-                <span class="icon-thumbnail "><i class="pg-map"></i></span>
-                <ul class="sub-menu">
-                    <li class="">
-                        <a href="google_map.html">Google Maps</a>
-                        <span class="icon-thumbnail">gm</span>
-                    </li>
-                    <li class="">
-                        <a href="vector_map.html">Vector Maps</a>
-                        <span class="icon-thumbnail">vm</span>
-                    </li>
-                </ul>
-            </li>
-            <li class="">
-                <a href="charts.html"><span class="title">Charts</span></a>
-                <span class="icon-thumbnail"><i class="pg-charts"></i></span>
-            </li>
-            <li class="">
-                <a href="javascript:;"><span class="title">Extra</span>
-                    <span class=" arrow"></span></a>
-                <span class="icon-thumbnail"><i class="pg-bag"></i></span>
-                <ul class="sub-menu">
-                    <li class="">
-                        <a href="invoice.html">Invoice</a>
-                        <span class="icon-thumbnail">in</span>
-                    </li>
-                    <li class="">
-                        <a href="404.html">404 Page</a>
-                        <span class="icon-thumbnail">pg</span>
-                    </li>
-                    <li class="">
-                        <a href="500.html">500 Page</a>
-                        <span class="icon-thumbnail">pg</span>
-                    </li>
-                    <li class="">
-                        <a href="blank_template.html">Blank Page</a>
-                        <span class="icon-thumbnail">bp</span>
-                    </li>
-                    <li class="">
-                        <a href="login.html">Login</a>
-                        <span class="icon-thumbnail">l</span>
-                    </li>
-                    <li class="">
-                        <a href="register.html">Register</a>
-                        <span class="icon-thumbnail">re</span>
-                    </li>
-                    <li class="">
-                        <a href="lock_screen.html">Lockscreen</a>
-                        <span class="icon-thumbnail">ls</span>
-                    </li>
-                    <li class="">
-                        <a href="gallery.html">Gallery</a>
-                        <span class="icon-thumbnail">gl</span>
-                    </li>
-                    <li class="">
-                        <a href="timeline.html">Timeline</a>
-                        <span class="icon-thumbnail">t</span>
-                    </li>
-                </ul>
-            </li>
-            <li class="">
-                <a href="javascript:;"><span class="title">Menu Levels</span>
-                    <span class="arrow"></span></a>
-                <span class="icon-thumbnail"><i class="pg-menu_lv"></i></span>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="javascript:;">Level 1</a>
-                        <span class="icon-thumbnail">L1</span>
-                    </li>
-                    <li>
-                        <a href="javascript:;"><span class="title">Level 2</span>
-                            <span class="arrow"></span></a>
-                        <span class="icon-thumbnail">L2</span>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="javascript:;">Sub Menu</a>
-                                <span class="icon-thumbnail">Sm</span>
+
+        <li class="m-t-30">
+            <a href="#" class="detailed">
+                <span class="title  text-black" style="line-height: 20px;">Wardrobe <br/>Finder</span>
+                <span class="arrow"></span>
+            </a>
+                <span class="icon-thumbnail ">
+                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="30px" height="30px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                    <g>
+                        <path fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" d="M21.059,26.172
+                            c0-1.761,1.428-3.189,3.189-3.189c1.761,0,3.189,1.428,3.189,3.189c0,1.761-3.178,2.474-3.178,4.267l-16,8.556
+                            c0,0.607,0.454,1.1,1.013,1.1h31.039c0.559,0,1.013-0.492,1.013-1.1L25.325,30.45"/>
+                    </g>
+                    </svg>
+                </span>
+            {{#if ../selectedDepartmentName}}{{/if}}
+
+
+            {{#each categoryTree}}
+                {{#if (compareStrings this.department.name "Kvinna")}}
+                    <ul class="sub-menu">
+                        {{#each categories}}
+                            <li class="">
+                                <a href="javascript:;"><span class="title">{{andfixer category.name}}</span>
+                                    <span class="arrow"></span></a>
+                                <ul class="sub-menu">
+                                    {{#each subCategory}}
+                                        <li>
+                                            <a href="#">{{andfixer this.name}}</a>
+                                        </li>
+                                    {{/each }}
+                                </ul>
                             </li>
-                            <li>
-                                <a href="ujavascript:;">Sub Menu</a>
-                                <span class="icon-thumbnail">Sm</span>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                        {{/each }}
+                    </ul>
+                </li>
+                {{/if}}
+            {{/each}}
+
+
+
+            <li class="m-t-30">
+                <a href="#">
+                    <span class="title  text-black" style="line-height: 20px;">Compare <br/> Prices</span>
+                </a>
+                    <span class="icon-thumbnail ">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="30px" height="30px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                    <g display="none">
+                        <path display="inline" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" d="
+                            M35.328,35.9c0,5.618-4.56,7.86-10.185,7.86s-10.185-2.242-10.185-7.86c0-1.482,0.318-2.428,0.889-3.699
+                            c0.376-0.836,1.278,2.981,1.889,2.312c1.505-1.647-1.666-5.406,4.167-8.259c-1.042,2.913-0.207,4.069,0.926,4.069
+                            c2.46,0,2.498-3.672,2.228-8.323c7.523,5.808,3.37,8.045,4.224,8.756c4.196,0.462,1.393-8.724,5.122,0.058
+                            C35.078,32.406,35.328,34.046,35.328,35.9z"/>
+                    </g>
+                    <g>
+                        <g>
+                            <path fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" d="M28.96,44.879
+                                c-0.277,0.277-0.726,0.277-1.003,0l-9.075-9.075c-1.004-1.004-2.76-7.778-0.753-9.785c2.007-2.007,8.782-0.251,9.785,0.753
+                                l9.075,9.075c0.277,0.277,0.277,0.727,0,1.003L28.96,44.879z"/>
+                            <circle fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" cx="20.402" cy="28.292" r="1.419"/>
+                            <path fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" d="M16.862,26.745
+                                c-0.158-0.148-0.323-0.309-0.496-0.482c-2.46-2.46-0.509-2.516-0.509-2.516s0.027-1.981,2.516,0.509
+                                c2.356,2.356,2.311,3.209,1.756,3.763"/>
+                        </g>
+                        <path fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" d="M27.18,37.718
+                            c0.63,0.63,1.658,0.623,2.296-0.015c0.638-0.638,0.644-1.666,0.015-2.296c-0.926-0.926-2.524-0.213-2.524-0.213
+                            s-1.612,0.699-2.524-0.213c-0.629-0.63-0.623-1.658,0.015-2.296c0.638-0.638,1.666-0.644,2.295-0.015"/>
+
+                            <line fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" x1="23.24" y1="31.426" x2="30.752" y2="38.937"/>
+                    </g>
+                    </svg>
+                </span>
             </li>
-        </ul><div class="scroll-element scroll-x"><div class="scroll-element_outer">    <div class="scroll-element_size"></div>    <div class="scroll-element_track"></div>    <div class="scroll-bar" style="width: 96px;"></div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer">    <div class="scroll-element_size"></div>    <div class="scroll-element_track"></div>    <div class="scroll-bar" style="height: 96px; top: 0px;"></div></div></div></div>
+        </ul><div class="scroll-element scroll-x"><div class="scroll-element_outer">    <div class="scroll-element_size"></div>    <div class="scroll-element_track"></div>    <div class="scroll-bar" style="width: 96px;">
+
+        </div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer">
+            <div class="scroll-element_size"></div>
+            <div class="scroll-element_track"></div>
+            <div class="scroll-bar" style="height: 96px; top: 0px;">
+            </div></div></div></div>
         <div class="clearfix"></div>
     </div>
+    <div class="sidebar-menu bg-Image" style="background-image: url('/images/home/men/main2.jpg');" data-department-toggle="Man">
+        <!-- BEGIN SIDEBAR MENU ITEMS-->
+        <div class="scroll-wrapper menu-items glassLight bgBlurEffectLight" style="position: relative; overflow-x: hidden;"><ul class="menu-items scroll-content" style="margin-bottom: 0px; margin-right: 0px; height: 676px;">
+            <li class="m-t-30">
+                <a href="#" class="detailed">
+                    <span class="title text-black" style="line-height: 20px;"">Get <br/>Inspired</span>
+                    <!--<span class="details">234 New Updates</span>-->
+                </a>
+                 <span class="icon-thumbnail">
+                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="30px" height="30px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                    <g>
+                        <path fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" d="M35.328,35.9
+                            c0,5.618-4.56,7.86-10.185,7.86s-10.185-2.242-10.185-7.86c0-1.482,0.318-2.428,0.889-3.699c0.376-0.836,1.278,2.981,1.889,2.312
+                            c1.505-1.647-1.666-5.406,4.167-8.259c-1.042,2.913-0.207,4.069,0.926,4.069c2.46,0,2.498-3.672,2.228-8.323
+                            c7.523,5.808,3.37,8.045,4.224,8.756c4.196,0.462,1.393-8.724,5.122,0.058C35.078,32.406,35.328,34.046,35.328,35.9z"/>
+                    </g>
+                    </svg>
+                 </span>
+            </li>
+
+        <li class="m-t-30">
+            <a href="#" class="detailed">
+                <span class="title text-black " style="line-height: 20px;">Wardrobe <br/>Finder</span>
+                <span class="arrow"></span>
+            </a>
+                <span class="icon-thumbnail ">
+                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="30px" height="30px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                    <g>
+                        <path fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" d="M21.059,26.172
+                            c0-1.761,1.428-3.189,3.189-3.189c1.761,0,3.189,1.428,3.189,3.189c0,1.761-3.178,2.474-3.178,4.267l-16,8.556
+                            c0,0.607,0.454,1.1,1.013,1.1h31.039c0.559,0,1.013-0.492,1.013-1.1L25.325,30.45"/>
+                    </g>
+                    </svg>
+                </span>
+            {{#if ../selectedDepartmentName}}{{/if}}
+
+
+            {{#each categoryTree}}
+                {{#if (compareStrings this.department.name "Man")}}
+                    <ul class="sub-menu">
+                        {{#each categories}}
+                            <li class="">
+                                <a href="javascript:;"><span class="title">{{andfixer category.name}}</span>
+                                    <span class="arrow"></span></a>
+                                <ul class="sub-menu">
+                                    {{#each subCategory}}
+                                        <li>
+                                            <a href="#">{{andfixer this.name}}</a>
+                                        </li>
+                                    {{/each }}
+                                </ul>
+                            </li>
+                        {{/each }}
+                    </ul>
+                </li>
+                {{/if}}
+            {{/each}}
+
+
+
+            <li class="m-t-30">
+                <a href="#">
+                    <span class="title text-black" style="line-height: 20px;">Compare <br/> Prices</span>
+                </a>
+                    <span class="icon-thumbnail ">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="30px" height="30px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                    <g display="none">
+                        <path display="inline" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" d="
+                            M35.328,35.9c0,5.618-4.56,7.86-10.185,7.86s-10.185-2.242-10.185-7.86c0-1.482,0.318-2.428,0.889-3.699
+                            c0.376-0.836,1.278,2.981,1.889,2.312c1.505-1.647-1.666-5.406,4.167-8.259c-1.042,2.913-0.207,4.069,0.926,4.069
+                            c2.46,0,2.498-3.672,2.228-8.323c7.523,5.808,3.37,8.045,4.224,8.756c4.196,0.462,1.393-8.724,5.122,0.058
+                            C35.078,32.406,35.328,34.046,35.328,35.9z"/>
+                    </g>
+                    <g>
+                        <g>
+                            <path fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" d="M28.96,44.879
+                                c-0.277,0.277-0.726,0.277-1.003,0l-9.075-9.075c-1.004-1.004-2.76-7.778-0.753-9.785c2.007-2.007,8.782-0.251,9.785,0.753
+                                l9.075,9.075c0.277,0.277,0.277,0.727,0,1.003L28.96,44.879z"/>
+                            <circle fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" cx="20.402" cy="28.292" r="1.419"/>
+                            <path fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" d="M16.862,26.745
+                                c-0.158-0.148-0.323-0.309-0.496-0.482c-2.46-2.46-0.509-2.516-0.509-2.516s0.027-1.981,2.516,0.509
+                                c2.356,2.356,2.311,3.209,1.756,3.763"/>
+                        </g>
+                        <path fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" d="M27.18,37.718
+                            c0.63,0.63,1.658,0.623,2.296-0.015c0.638-0.638,0.644-1.666,0.015-2.296c-0.926-0.926-2.524-0.213-2.524-0.213
+                            s-1.612,0.699-2.524-0.213c-0.629-0.63-0.623-1.658,0.015-2.296c0.638-0.638,1.666-0.644,2.295-0.015"/>
+
+                            <line fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" x1="23.24" y1="31.426" x2="30.752" y2="38.937"/>
+                    </g>
+                    </svg>
+                </span>
+            </li>
+        </ul><div class="scroll-element scroll-x"><div class="scroll-element_outer">    <div class="scroll-element_size"></div>    <div class="scroll-element_track"></div>    <div class="scroll-bar" style="width: 96px;">
+
+        </div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer">
+            <div class="scroll-element_size"></div>
+            <div class="scroll-element_track"></div>
+            <div class="scroll-bar" style="height: 96px; top: 0px;">
+            </div></div></div></div>
+
+    </div>
+
     <!-- END SIDEBAR MENU -->
 </nav>
+
+<div class="page-sidebar-cover hidden"></div>

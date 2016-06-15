@@ -172,6 +172,7 @@ var routes = [
 
     [ '/kvinna', 'get', [ categories.getCategoryTree, categories.getDepartment, function(req, res, next) {
         //console.log(req.i18n.getLocale());
+        console.log('how many time')
         res.locals.title = "Bringing Brands to You";
         res.render('women');
     } ]

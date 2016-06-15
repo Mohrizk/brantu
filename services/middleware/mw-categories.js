@@ -3,7 +3,8 @@ var async = require('async');
 var options = ['kvinna', 'man'];
 
 
-
+var lvl1_cancelOut = ['Premium']
+var lvl2_cancelOut = [{lvl0:'Kvinna', lvl1:'Kläder',lvl2:['Underkläder']}]
 
 module.exports = {
     //GET CATEGORY TREE
@@ -27,7 +28,13 @@ module.exports = {
                     if(mainCategory != null){
                         Categories.find({"parentKey": mainCategory.key}, {'key': 1, 'name': 1},{sort:{name: 1}}, function (err, categorylist) {
                             if(err) callback(err);
-                            else callback(null, mainCategory, categorylist);
+                            else{
+                                var categorylist = categorylist.filter(function(item)
+                                {
+                                    return item.name.indexOf(lvl1_cancelOut) == -1;
+                                });
+                                callback(null, mainCategory, categorylist);
+                            }
 
                         })
                     }
@@ -44,7 +51,16 @@ module.exports = {
                                 if (err) {callback(err);}
                                 else {
                                     if (subcategory != null) {
-                                        temp.push({'category': category, 'subCategory': subcategory});
+                                        var index = -1;
+                                        for (var c in lvl2_cancelOut){
+                                            if(category.name == lvl2_cancelOut[c].lvl1) index = c;
+                                        }
+                                        var subCategory;
+                                        if(index > -1) subCategory= subcategory.filter(function(item) {
+                                            return item.name.indexOf(lvl2_cancelOut[index].lvl2) == -1;
+                                        });
+                                        else subCategory= subcategory
+                                        temp.push({'category': category, 'subCategory': subCategory});
                                     }
                                     callback();
                                 }
@@ -175,8 +191,8 @@ module.exports = {
                         callback();
                     }
                 );
-            },
-            // Lets get the children ;)
+            }/*,
+            Lets get the children ;)
             function (callback){
                 Categories.find({'key':{$in: theCategory.childKeys}}, function(err, categories) {
 
@@ -190,7 +206,7 @@ module.exports = {
                     }
 
                 });
-            }
+            }*/
         ], function (error){
                 console.log(breadcrumb);
                 if(req.children != null) res.locals.children = req.children;

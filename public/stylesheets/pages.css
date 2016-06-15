@@ -2,6 +2,7 @@
 Pages v1.1.0
 Theme : Default
 Generated From LESS
+
 [Table of contents]
 
 1. Layouts
@@ -55,7 +56,7 @@ width: 100%;
 }
 body.fixed-header .header {
   position: fixed;
-  background: #fff;
+  background: transparent;
   height: auto;
   width: 100%;
   left: 0;
@@ -169,11 +170,13 @@ body.dashboard .page-container {
   color: #333;
   border-bottom: 2px solid transparent;
 }
-.header a.dark:hover, #footer a.dark:hover {
+.header a.dark:hover, .header a.dark:hover, #footer a.dark:hover {
   color: #000;
   border-bottom: 2px solid #ee99ae;
   background: transparent;
 }
+
+
 .header a {
   color: #f1f2f2;
 }
@@ -226,9 +229,11 @@ body.dashboard .page-container {
   border:0;
   color:#000;
   height:46px;
+  border-radius: 0;
   width:100%;
   line-height: 46px;
   font-size: 18px !important;
+  font-weight: normal;
   background: transparent;
   -webkit-transition:all .54s cubic-bezier(.5,0,.1,1);
   -moz-transition:all .54s cubic-bezier(.5,0,.1,1);
@@ -296,6 +301,7 @@ display: inline !important;
   height: 35px;
   width: 100%;
   border:1px solid #ccc;
+  box-shadow: 0.2px 0.2px 2px 1px rgba(0,0,10,0.1);
   border-radius: 0px;
   margin-top: 5px;
   z-index: 10;
@@ -309,7 +315,7 @@ display: inline !important;
   border-radius:0;
   box-shadow: 0 2px 2px -2px gray;
   color:#333;
-  background: none;
+  background: rgba(238,211,211,0.2) !important;
   background-position: right center;
   font-size: 16px;
   line-height: 30px;
@@ -442,8 +448,18 @@ top:14%; left:7px;
 /* Main Menu Sidebar
 ------------------------------------
 */
+.page-sidebar-cover{
+  position: fixed;
+  z-index:150 !important;
+  top:0;
+  right:0;
+  left:0;
+  bottom:0;
+  -webkit-backdrop-filter: blur(10);
+}
 .page-sidebar {
     width:280px;
+  z-index: 200 !important;
   background-color: #000;
   z-index: 1000;
   left: -210px;
@@ -461,7 +477,7 @@ top:14%; left:7px;
 }
 .page-sidebar a,
 .page-sidebar button {
-  color: #788195;
+  color: #ffffff;
 }
 .page-sidebar a:hover,
 .page-sidebar button:hover,
@@ -473,7 +489,9 @@ top:14%; left:7px;
 .page-sidebar button:visited,
 .page-sidebar a:focus,
 .page-sidebar button:focus {
-  color: #788195;
+  color: #ffffff;
+
+ /*color: #788195;*/
 }
 .page-sidebar .scroll-element {
   visibility: hidden;
@@ -522,7 +540,8 @@ top:14%; left:7px;
   /* Side-bar Top Slider */
   width: 100%;
   height: 100%;
-  background-color: #272b35;
+  background-color: rgba(39,43,53,0.7);
+  -webkit-backdrop-filter: blur(5px);
   display: block;
   z-index: 9;
   padding: 80px 20px 20px 20px;
@@ -559,13 +578,13 @@ top:14%; left:7px;
   position: relative;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  height: calc(100% - 10px);
+  height: 100%;
   width: 100%;
 }
 .page-sidebar .sidebar-menu .menu-items li:hover > .icon-thumbnail,
 .page-sidebar .sidebar-menu .menu-items li.open > .icon-thumbnail,
 .page-sidebar .sidebar-menu .menu-items li.active > .icon-thumbnail {
-  color: #ffffff;
+  background: #eed3d3;
 }
 .page-sidebar .sidebar-menu .menu-items li:hover > a,
 .page-sidebar .sidebar-menu .menu-items li.open > a,
@@ -573,10 +592,10 @@ top:14%; left:7px;
   color: #ffffff;
 }
 .page-sidebar .sidebar-menu .menu-items li > a {
-  white-space: nowrap;
+
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 65%;
+  width: 75%;
 }
 .page-sidebar .sidebar-menu .menu-items > li {
   display: block;
@@ -590,13 +609,12 @@ top:14%; left:7px;
   clear: both;
 }
 .page-sidebar .sidebar-menu .menu-items > li > a {
-  font-family: Arial, sans-serif;
   display: inline-block;
   padding: 0 3px;
   padding-left: 32px;
   min-height: 40px;
   line-height: 40px;
-  font-size: 14px;
+  font-size: 20px;
   clear: both;
 }
 .page-sidebar .sidebar-menu .menu-items > li > a.open {
@@ -613,11 +631,12 @@ top:14%; left:7px;
   height: auto;
   content: "\f104";
   font-weight: 300;
+  color:#000 !important;
   text-shadow: none;
   -webkit-transition: all 0.12s ease;
   transition: all 0.12s ease;
 }
-.page-sidebar .sidebar-menu .menu-items > li > a > .arrow.open:before {
+.page-sidebar .sidebar-menu .menu-items > li.open > a > .arrow:before {
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
@@ -649,6 +668,9 @@ top:14%; left:7px;
 }
 .page-sidebar .sidebar-menu .menu-items > li > .icon-thumbnail:first-letter {
   text-transform: uppercase;
+}
+.page-sidebar .sidebar-menu .menu-items > li > ul.sub-menu > li.open ul.sub-menu{
+  display: block;
 }
 .page-sidebar .sidebar-menu .menu-items > li > ul.sub-menu > li ul.sub-menu li {
   padding-left: 10px;
@@ -691,11 +713,16 @@ top:14%; left:7px;
 .page-sidebar .sidebar-menu .menu-items > li ul.sub-menu {
   display: none;
   list-style: none;
+  transition: all .2s cubic-bezier(.5,0,.1,1);
   clear: both;
   margin: 0 0 10px 0;
   background-color: #21252d;
   padding: 18px 0 10px 0;
 }
+.page-sidebar .sidebar-menu .menu-items > li.active ul.sub-menu li.active{
+  display: block;
+}
+
 .page-sidebar .sidebar-menu .menu-items > li ul.sub-menu > li {
   background: none;
   padding: 0px 20px 0 40px;
@@ -708,7 +735,6 @@ top:14%; left:7px;
   display: inline-block;
   padding: 5px 0px;
   font-size: 13px;
-  font-family: Arial, sans-serif;
   white-space: normal;
 }
 .page-sidebar .sidebar-menu .menu-items > li ul.sub-menu > li .icon-thumbnail {
@@ -719,6 +745,8 @@ top:14%; left:7px;
   background-color: #2b303b;
   font-size: 14px;
 }
+
+
 .page-sidebar .sidebar-menu .muted {
   color: #576775;
   opacity: .45;
@@ -1353,6 +1381,7 @@ top:14%; left:7px;
 */
 .scroll-wrapper > .scroll-element,
 .scroll-wrapper > .scroll-element div {
+
   background: none;
   border: none;
   margin: 0;
@@ -2362,6 +2391,9 @@ hr.dotted {
 }
 .capitalize {
   text-transform: capitalize !important;
+}
+.smallCaps {
+  text-transform: lowercase !important;
 }
 .muted {
   color: #e2e2e2;

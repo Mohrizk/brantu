@@ -2,15 +2,6 @@
 
     'use strict';
 
-    $(window).on('load', function() {
-    	/*var myInput = document.getElementById('passwordConfirm');
-   	 myInput.onpaste = function(e) {
-   	   e.preventDefault();
-   	 }*/
-
-   })
-
-
 $(document).ready(function() {
 
 	$('#AuthenticationPopUp').on('click','.toggle', function() {
@@ -41,18 +32,6 @@ $(document).ready(function() {
 	})
 
 
-
-	/*$(document).on('click','#submitRegistration',function () {
-
-		submitRegistration();
-
-	});
-
-	$(document).on('click','#submitLogin',function () {
-		console.log('xxx');
-		finalloginvalidation();
-	});*/
-
 	$('#signupForm').on('keypress', function(e) {
 	    var code = e.keyCode || e.which;
 
@@ -70,9 +49,6 @@ $(document).ready(function() {
 	    	e.preventDefault();
 	  }
 	});
-
-
-
 
 });
 
