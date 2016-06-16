@@ -195,6 +195,7 @@ var autocompleteOptionsMobile = [
 ];
 autocomplete('#search', {
 		dropdownMenuContainer: '#containerAC',
+		openOnFocus:true,
 		hints:true,
 		templates: {
 			dropdownMenu: searchDropDownTemplate
@@ -206,7 +207,7 @@ autocomplete('#search', {
 autocomplete('#searchMobile', {
 	dropdownMenuContainer: '#mobileContainerAC',
 	hints:true,
-
+	openOnFocus:true,
 	templates: {
 		dropdownMenu: searchDropDownMobileTemplate
 	}
@@ -738,31 +739,37 @@ $(document).ready( function() {
 	 * Search
 	 *
 	 * */
-	function openMobileSearch(){
-		$('#searchMobileContainer').removeClass('hidden').css({left:1000}).animate({left: 0}, 100);
-		$('#searchMobile').focus();
-	}
 	function closeMobileSearch(){
 		$('#searchMobile').val('').blur();
+		$('#fakeMobileSearchButton').show();
 		var searchContainer = $('#searchMobileContainer');
 
-		$.when(searchContainer.css({left:0}).animate({left: 1000},100))
+		$.when(searchContainer.animate({opacity: 0},50))
 			.done( function() {
 				searchContainer.addClass('hidden')
 			})
 
 	}
-	function searchMobileSumbit(e){
-		SEARCH($('#searchMobile'))
-	}
-	$('#searchMobileForm').bind('submit', function(e){
+	$('#searchMobileForm').submit(function(e){
 		event.preventDefault();
 		SEARCH($('#searchMobile'))
 	})
+	$('#searchMobileForm').keyup(function(event) {
+		if (event.which == 13) {
+			SEARCH($('#searchMobile'))
+		}
+	});
 	$('#mobileContainerAC').on( 'click','#ddsearchMore', function(){
 		SEARCH($('#searchMobile'))
 	})
-	$('#menuSearchIcon').on('click',openMobileSearch);
+	$('#fakeMobileSearchButton').focus(function(e){
+		e.preventDefault();
+		$.when($('#searchMobileContainer').removeClass('hidden').css({opacity:1}).animate({opacity: 1}, 50))
+			.done( function() {
+				$('#searchMobileForm').find('.algolia-autocomplete').find('input:eq(1)').focus();
+			})
+	});
+
 	$('#CloseSearchMobile').on('click', closeMobileSearch)
 	$('.page-container-wrapper').on('click', closeMobileSearch)
 
