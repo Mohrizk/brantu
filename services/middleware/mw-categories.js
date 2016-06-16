@@ -2,7 +2,6 @@ var Categories  = require('../models/category');
 var async = require('async');
 var options = ['kvinna', 'man'];
 
-
 var lvl1_cancelOut = ['Premium']
 var lvl2_cancelOut = [{lvl0:'Kvinna', lvl1:'Kläder',lvl2:['Underkläder']}]
 
@@ -17,7 +16,7 @@ module.exports = {
 
                 function(callback){
 
-                    Categories.findOne({key: category},{'key':1, 'name': 1}, function (err, mainCategory) {
+                    Categories.findOne({key: category},{'key':1, 'name': 1, breadcrumb: 1}, function (err, mainCategory) {
                         if(err) callback(err);
                         else callback(null, mainCategory);
                     });
@@ -26,7 +25,7 @@ module.exports = {
 
                 function(mainCategory, callback){
                     if(mainCategory != null){
-                        Categories.find({"parentKey": mainCategory.key}, {'key': 1, 'name': 1},{sort:{name: 1}}, function (err, categorylist) {
+                        Categories.find({"parentKey": mainCategory.key}, {'key': 1, 'name': 1, breadcrumb: 1},{sort:{name: 1}}, function (err, categorylist) {
                             if(err) callback(err);
                             else{
                                 var categorylist = categorylist.filter(function(item)
@@ -47,7 +46,7 @@ module.exports = {
                     var temp = new Array();
                     if(categorylist != null){
                         async.each(categorylist, function (category, callback) {
-                            Categories.find({parentKey: category.key}, {key: 1, name: 1},{sort:{name: 1}},function (err, subcategory) {
+                            Categories.find({parentKey: category.key}, {key: 1, name: 1, breadcrumb: 1},{sort:{name: 1}},function (err, subcategory) {
                                 if (err) {callback(err);}
                                 else {
                                     if (subcategory != null) {
@@ -106,19 +105,16 @@ module.exports = {
     },
     //GET CATEGORY TREE
     getDepartment: function(req, res, next){
-        var name = req.url.substring(1);
-
-        Categories.findOne({'name': name}, function(err, category) {
-
+       console.log(req.url)
+        var split = req.url.split('/');
+        var key = split[1];
+        Categories.findOne({'key': key}, function(err, category) {
             if (err) next(err);
             else{
                 if (category != null) {
-                    res.locals.selectedDepartmentName = category.name;
-                    res.locals.selectedDepartmentKey = category.key;
                     res.locals.selectedDepartment = category;
                 }
                 next();
-
             }
 
         });
@@ -130,9 +126,8 @@ module.exports = {
         var count = 0;
 
         var theCategory ={};
-        var breadcrumb= new Array();
-        var condition;
-
+        /*var breadcrumb= new Array();
+        var condition;*/
         async.series([
             // GET THE REQUESTED information of the category
             function (callback){
@@ -143,8 +138,6 @@ module.exports = {
                         if (category != null) {
                             theCategory = category;
                             //breadcrumb.push(category);
-                            condition = category;
-
                         }
                         return callback();
 
@@ -152,13 +145,13 @@ module.exports = {
 
                 });
             }
-            ,
+
             // GET THE BEDCRUMBS
-            function(callback){
+            /*function(callback){
                 async.whilst(
-                        //COndition
+
                         function () {
-                            //console.log(condition)
+
                             if(condition != null){
                                 if(options.indexOf(condition.key) == -1)
                                     return true;
@@ -187,11 +180,11 @@ module.exports = {
                             });
                     },
                     function (err) {
-                        //req.breadcrumb = breadcrumb;
+
                         callback();
                     }
                 );
-            }/*,
+            },
             Lets get the children ;)
             function (callback){
                 Categories.find({'key':{$in: theCategory.childKeys}}, function(err, categories) {
@@ -208,15 +201,21 @@ module.exports = {
                 });
             }*/
         ], function (error){
-                console.log(breadcrumb);
-                if(req.children != null) res.locals.children = req.children;
+
+                //if(req.children != null) res.locals.children = req.children;
                 if(theCategory != null) {
                     res.locals.category = theCategory;
                     res.locals.exposeName  = "category";
                     res.locals.exposeValue = theCategory;
+                    res.locals.title = theCategory.name;
+                    if(theCategory.breadcrumb != null){
+                        console.log('WHY IT DOESNT')
+                        if(theCategory.breadcrumb.length > 0)
+                            res.locals.selectedDepartment = {name:theCategory.breadcrumb[0].name, key:theCategory.breadcrumb[0].key};
+                    }
                 }
 
-                if(breadcrumb !=null) {
+                /*if(breadcrumb !=null) {
                     res.locals.breadcrumb = breadcrumb.reverse();
                     if(breadcrumb.length != 0){
                              res.locals.selectedDepartmentName =  res.locals.breadcrumb [0].name;
@@ -229,7 +228,7 @@ module.exports = {
                         res.locals.selectedDepartment = theCategory;
                     }
 
-                }
+                }*/
                 next();
         });
     }

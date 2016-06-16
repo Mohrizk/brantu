@@ -165,31 +165,33 @@ var routes = [
 
     /*********MAIN PAGE******************************************/
     [ '/', 'get', [function(req, res, next) {
-
       res.redirect('/kvinna');
     } ]
     ],
+    [ '/kvinna', 'get', [function(req, res, next) {
+        res.redirect('/kvinna/upptack-nya-favoriter');
+    } ]
+    ],
 
-    [ '/kvinna', 'get', [ categories.getCategoryTree, categories.getDepartment, function(req, res, next) {
+    [ '/kvinna/upptack-nya-favoriter', 'get', [ categories.getCategoryTree, categories.getDepartment, function(req, res, next) {
         //console.log(req.i18n.getLocale());
-        console.log('how many time')
-        res.locals.title = "Bringing Brands to You";
+        res.locals.title = res.locals.selectedDepartment.name+ "/ Get Inspired";
         res.render('women');
     } ]
     ],
-    [ '/man', 'get', [categories.getCategoryTree,categories.getDepartment, function(req, res, next) {
-        res.locals.title = "Bringing Brands to You";
-        res.render('men');
+    [ '/man', 'get', [function(req, res, next) {
+        res.redirect('/man/upptack-nya-favoriter');
     } ]
     ],
-    [ '/barn', 'get', [ categories.getCategoryTree, categories.getDepartment ,function(req, res, next) {
-        res.locals.title = "Bringing Brands to You";
-        res.render('kids');
+
+    [ '/man/upptack-nya-favoriter', 'get', [categories.getCategoryTree,categories.getDepartment, function(req, res, next) {
+        res.locals.title =  res.locals.selectedDepartment.name +"/ Get Inspired";
+        res.render('men');
     } ]
     ],
 
   /*********SHOP***************************/
-    [ '/shop/*', 'get', [ categories.getCategoryTree, categories.getBreadcrumbAndChildren, function(req, res, next) {
+    [ '/explore/*', 'get', [ categories.getCategoryTree, categories.getBreadcrumbAndChildren, function(req, res, next) {
         res.render('category')
       } ]
     ],

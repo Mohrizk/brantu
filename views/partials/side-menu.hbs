@@ -4,13 +4,13 @@
         <h1 class="text-white">Select Department</h1>
         <div class="row">
             <div class="col-xs-12 p-t-20 ">
-                <a href="#" class="p-l-10 sbold" style="font-size: 24px;" data-department="Kvinna">
+                <a href="/kvinna" class="p-l-10 sbold" href="/{{kvinna}}"  style="font-size: 24px;" data-department="Kvinna">
                     Kvinna
                 </a>
             </div>
             <div class="col-xs-12 p-t-20">
-                <a href="#" class="p-l-10  sbold" style="font-size: 24px;" data-department="Man">
-                    Mann
+                <a href="/man" class="p-l-10  sbold" href="/{{man}}" style="font-size: 24px;" data-department="Man">
+                    Man
                 </a>
             </div>
         </div>
@@ -77,7 +77,7 @@
                                 <ul class="sub-menu">
                                     {{#each subCategory}}
                                         <li>
-                                            <a href="#">{{andfixer this.name}}</a>
+                                            <a href="/explore/{{this.key}}">{{andfixer this.name}}</a>
                                         </li>
                                     {{/each }}
                                 </ul>

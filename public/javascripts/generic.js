@@ -13,7 +13,7 @@ var client = algoliasearch("D3IWZXC0AH", '3d6a60c228b6e8058770fdf8eab2f652');
 var helper   = algoliasearchHelper(client,'product_sweden', {
 	hierarchicalFacets: [{
 		name: 'products',
-		attributes: ['categories.lvl0', 'categories.lvl1', 'categories.lvl2', 'categories.lvl3'],
+		attributes: ['categories.lvl0', 'categories.lvl1', 'categories.lvl2', 'categories.lvl3', 'categories.lvl4'],
         sortBy: ['count:desc', 'name:asc']
 	}],
 	facets:[  'sale', 'price.value'],
@@ -30,13 +30,18 @@ var searcher = algoliasearchHelper(client,'product_sweden', {
 });
 
 var typeVerified = true, departmentVerified= false;
-if(TYPE !=null){
-	var mainSection = $('#mainSection');
-	var loading = $('.loading');
 
+if(TYPE !=null){
+	var loading = $('.loading');
 	switch (TYPE.name) {
 		case 'category':
-			helper.toggleRefinement('products','Kvinna');
+			var breadcrumb = '';
+			for(var t in TYPE.value.breadcrumb)
+				if(t == TYPE.value.breadcrumb.length - 1) breadcrumb += TYPE.value.breadcrumb[t].name;
+				else breadcrumb += TYPE.value.breadcrumb[t].name + ' > ';
+			console.log(DEPARTMENT)
+			console.log(breadcrumb)
+			helper.toggleRefinement('products',breadcrumb);
 			loading.show()
 			helper.search()
 			break;
@@ -51,11 +56,9 @@ if(TYPE !=null){
 			break;
 	}
 }
-console.log(DEPARTMENT)
 if( DEPARTMENT!==null){
 	if( DEPARTMENT.name !== null) {
 		if (DEPARTMENT.name == 'Kvinna' || DEPARTMENT.name == 'Man') {
-			console.log('aaaa')
 			departmentVerified = true;
 		}
 	}
@@ -227,6 +230,7 @@ $(document).ready( function() {
 	var currentInstance = helper;
 	var currentState= {search:false , main:true, compare:false}
 	helper.on('result', function(content) {
+		console.log(content);
 		currentInstance = helper;
 		RENDER(content);
 		loading.hide();
@@ -300,8 +304,6 @@ $(document).ready( function() {
 		else if(!currentState.compare && currentState.search && searchSection.length != 0){
 			searchSection.html(productEngineTemplate({fab:onFab}));
 		}
-
-
 		//STORE CURRENT HITS IN CURRENT PRODUCT GLOBAL ARRAY
 		productArray = content.hits;
 		$('.itemList').html(productTemplate({products: productArray, mobile: isMobile}));
@@ -310,6 +312,8 @@ $(document).ready( function() {
 		//IF THERE IS A DEPARTMENT VERIFIED THEN A CATEGORY IS INVOLOVED
 		var breadCrumb = [];
 		if(departmentVerified) breadCrumb=currentInstance.getHierarchicalFacetBreadcrumb('products');
+		console.log('Is department Verified', departmentVerified)
+		console.log('So the rendered breadcrumb', breadCrumb)
 
 		//GET NEW PRICES
 		//UPDATE PRICES IF THE NAVIGATION
@@ -363,7 +367,6 @@ $(document).ready( function() {
 		$('#navbarTags').html(tags);
 
 		//Show Result
-		console.log('fab is ', onFab);
 		general.css({'opacity':0.5}).animate({'opacity':1});
 	}
 

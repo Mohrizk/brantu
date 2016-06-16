@@ -339,29 +339,38 @@
     </div>
     <div class="container hidden-xs full-width menu b-b b-grey bg-white" >
        <ul class="nav navbar-nav submenu">
-           <li class=" "><a class="dark medium  text-center">Upptäck <font class="smallCaps">nya favoriter</font> </a></li>
-           <li class=""><a class="dark medium  text-center">Wardrobe Finder</a></li>
-           <li class=" "><a class="dark medium  text-center">jämför <font class="smallCaps">priser</font></a> </li>
+           <li class=" "><a class="dark medium  text-center" href="/{{selectedDepartment.key}}/upptack-nya-favoriter">Upptäck <font class="smallCaps">nya favoriter</font> </a></li>
+           {{#each categoryTree}}
+               {{#if (compareStrings this.department.name ../selectedDepartment.name)}}
+                   {{#each categories}}
+                       <li class=""><a class="dark medium text-center" expand-key="{{category.key}}">{{andfixer category.name}}</a></li>
+                   {{/each}}
+               {{/if}}
+           {{/each}}
        </ul>
     </div>
 
     <div class=" " style="padding:0 50px; background: transparent;">
-        <div class="bg-pink" style=" background: transparent;">
-        {{#each categoryTree}}
-            <div class=" category-expand-container hidden  padding-1v" expand-parentKey="{{this.department.key}}">
+        <div class="bg-white" style=" background: transparent; box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.2);">
+            {{#each categoryTree}}
+            {{#if (compareStrings this.department.name ../selectedDepartment.name)}}
                 {{#each categories}}
-                    <div class="category-expand ">
-                        <h5 class="bold all-caps text-spaced "><a class="dark" href="/shop/{{category.key}}">{{andfixer category.name}}</a></h5>
-                        <ul>
-                            {{#each subCategory}}
-                                <a class="dark" href="/shop/{{this.key}}"><li>
-                                    {{andfixer this.name}}
-                                </li></a>
-                            {{/each}}
-                        </ul>
+                <div class=" category-expand-container hidden  padding-1v" expand-parentKey="{{category.key}}">
+                    <div class="category-expand">
+                        <h5 class="sbold">{{andfixer category.name}}</h5>
+                        <div class="desktopNavColoumns">
+                            <ul>
+                                {{#each subCategory}}
+                                    <li><a class="dark" href="/explore/{{this.key}}">
+                                        {{andfixer this.name}}
+                                    </a></li>
+                                {{/each}}
+                            </ul>
+                        </div>
                     </div>
+                </div>
                 {{/each}}
-            </div>
+            {{/if}}
         {{/each}}
         </div>
 
@@ -370,7 +379,7 @@
 
 <div class="text-center p-t-50 full-width no-overflow visible-xs " id="mobileSubMenu">
     <div class="row b-b b-grey">
-        <a class="col-xs p-b-5 dark light  text-center"><div class="">
+        <a class="col-xs p-b-5 dark light text-center" href="/{{selectedDepartment.key}}/upptack-nya-favoriter"><div class="">
             <div>
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
@@ -384,7 +393,7 @@
 
             </div>
             Upptäck nya favoriter</div></a>
-        <a class="dark light active  text-center col-xs b-l b-grey p-b-5"><div class=" ">
+        <a class="dark light active  text-center col-xs b-l b-grey p-b-5" href="/explore/{{selectedDepartment.key}}"><div class=" ">
             <div>
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                      width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
