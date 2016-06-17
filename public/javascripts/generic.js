@@ -39,8 +39,6 @@ if(TYPE !=null){
 			for(var t in TYPE.value.breadcrumb)
 				if(t == TYPE.value.breadcrumb.length - 1) breadcrumb += TYPE.value.breadcrumb[t].name;
 				else breadcrumb += TYPE.value.breadcrumb[t].name + ' > ';
-			console.log(DEPARTMENT)
-			console.log(breadcrumb)
 			helper.toggleRefinement('products',breadcrumb);
 			loading.show()
 			helper.search()
@@ -139,14 +137,12 @@ var autocompleteOptionsMobile = [
 			$('.ACSearchProgress').removeClass('hidden');
 			index.search(query, options).then(function(answer) {
 				pPcurrentIndex = 100;
-				console.log(answer);
 				$('.ACSearchProgress').addClass('hidden');
 				currentDDHits= answer.hits;
 				$('#ddProductPreview').hide()
 				$('#ddProductPreviewContainer').html('');
 				$('#ddCol2').show()
 				if(answer.nbHits > 4){
-					console.log('mmmm')
 					answer.hits.splice(3,1,{
 						more:true,
 						nbHits:answer.nbHits,
@@ -205,7 +201,6 @@ autocomplete('#search', {
 		}
 	},autocompleteOptions).on('autocomplete:selected', function(event, suggestion, dataset) {
 	//console.log(suggestion, dataset);
-	//window.location ='/brand/'+suggestion.name;
 });
 autocomplete('#searchMobile', {
 	dropdownMenuContainer: '#mobileContainerAC',
@@ -216,7 +211,6 @@ autocomplete('#searchMobile', {
 	}
 },autocompleteOptionsMobile).on('autocomplete:selected', function(event, suggestion, dataset) {
 	//console.log(suggestion, dataset);
-	//window.location ='/brand/'+suggestion.name;
 });
 
 //********BEGINING of Change view********************
@@ -230,7 +224,7 @@ $(document).ready( function() {
 	var currentInstance = helper;
 	var currentState= {search:false , main:true, compare:false}
 	helper.on('result', function(content) {
-		console.log(content);
+
 		currentInstance = helper;
 		RENDER(content);
 		loading.hide();
@@ -312,8 +306,6 @@ $(document).ready( function() {
 		//IF THERE IS A DEPARTMENT VERIFIED THEN A CATEGORY IS INVOLOVED
 		var breadCrumb = [];
 		if(departmentVerified) breadCrumb=currentInstance.getHierarchicalFacetBreadcrumb('products');
-		console.log('Is department Verified', departmentVerified)
-		console.log('So the rendered breadcrumb', breadCrumb)
 
 		//GET NEW PRICES
 		//UPDATE PRICES IF THE NAVIGATION
@@ -473,12 +465,12 @@ $(document).ready( function() {
 	//***********************USER ACTIONS
 	var productPreviewTimer;
 	$('body ').on( 'mouseover','.vertical .item .preview-image' , function (event) {
-		if(!isMobile){var imageSelector  =  $(this).find('img');
-		var productPreviewIndex = 1;
-		var divSelector = $(this);
-		var imageArray = imageSelector.attr('pic-src').split('/BREAK/');
-		console.log('oo')
-        if(imageArray.length>1){
+		if(!isMobile){
+			var imageSelector  =  $(this).find('img');
+			var productPreviewIndex = 1;
+			var divSelector = $(this);
+			var imageArray = imageSelector.attr('pic-src').split('/BREAK/');
+        	if(imageArray.length>1){
 		   productPreviewTimer=setInterval(function(){
 			   if(productPreviewIndex == imageArray.length) productPreviewIndex= 0;
 				   imageSelector.attr('src',imageArray[productPreviewIndex]);
@@ -488,7 +480,7 @@ $(document).ready( function() {
 		}
 	   }
 
-	}).on( 'mouseout','.item .preview-image' , function (event) { console.log('out');
+	}).on( 'mouseout','.item .preview-image' , function (event) {
 		if(!isMobile){var imageSelector  =  $(this).find('img');
 			var imageArray = imageSelector.attr('pic-src').split('/BREAK/');
 			if(imageArray.length>1)
@@ -527,7 +519,6 @@ $(document).ready( function() {
 		var JBDivSelector = $('#mainJawBoneImageContainer');
 		var JBImageSelector = $('#mainJawBoneImage');
 		var newImage = $(this).attr('src');
-		//console.log(newImage)
 		var newOrder = $(this).attr('imageorder')
 		$.when( JBDivSelector.animate({opacity: 0.4, marginLeft:"600"}, 500, $.bez([.6, 0, .1, 1]))).done( function() {
 			JBImageSelector.attr('src',newImage).attr('imageorder', newOrder);
@@ -583,7 +574,6 @@ $(document).ready( function() {
 		searcher.search();
 	}
 	function closeSEARCH(){
-		console.log(',,,')
 		refreshVariables()
 		currentState={search:false, compare:false,main:true};
 		currentInstance = helper;
@@ -622,15 +612,12 @@ $(document).ready( function() {
 		for(var c in currentDDHits){
 			if(productId == currentDDHits[c].productId){
 				content = currentDDHits[c];
-				console.log('mmmm')
 				index = c;
 			}
 		}
-            console.log(index, pPcurrentIndex);
 			if(pPcurrentIndex != index)
 				$.when( pPreviewContainer.animate({opacity: 0.5, left:"20"}, 100, $.bez([.6, 0, .1, 1]))).done( function() {
 				pPcurrentIndex = index;
-					console.log('sp.',pPcurrentIndex)
 					content.autoComplete = HEADERTEXT.autoComplete.productPreview;
 				pPreviewContainer.html(ACProductPreviewTemplate(content));
 				pPreviewContainer.animate({opacity: 1, left:"0"}, 100, $.bez([.6, 0, .1, 1]));
@@ -654,7 +641,6 @@ $(document).ready( function() {
 		$('html, body').animate({scrollTop: 0 }, 100, $.bez([.5, 0, .1, 1]));
 	}
 	ddContainer.on( 'click','.findBetterPrices',function(){
-		console.log('mmm')
 		var productId = $(this).attr('data-id');
 		for(var c in currentDDHits){
 			if(productId == currentDDHits[c].productId){
@@ -735,7 +721,6 @@ $(document).ready( function() {
 	}
 	$(window).scroll(function () {
 		if((mainSection.is(':visible') || searchSection.is(':visible')) && $('.itemList').hasClass('vertical') && $('.itemList').is(':visible')){
-			console.log('ok')
 			mainFacetPaneScroll();
 		}
 	});
@@ -773,9 +758,7 @@ $(document).ready( function() {
 	$('#mobileContainerAC').on( 'click','#ddsearchMore', function(){
 		SEARCH($('#searchMobile'))
 	})
-
 	$('.fakeMobileSearchButton').focus(openMobileSearch);
-
 	$('#CloseSearchMobile').on('click', closeMobileSearch)
 	$('.page-container-wrapper').on('click', closeMobileSearch)
 
@@ -785,16 +768,16 @@ $(document).ready( function() {
 	 * */
 
 	function openFab(){
-		console.log('openning fab')
 		onFab  = true;
 		$('.header').addClass("hidden");
+		$('#mobileSubMenu').addClass("hidden");
 		$('#footer').addClass("hidden");
-		$('.fab').addClass("active");
-		$('.fab').closest(".popout").find(".panel").toggleClass("active");
+		$('.fab').addClass("active").closest(".popout").find(".panel").toggleClass("active");;
 	}
 	function closeFab(){
 		onFab  = false;
 		$('.header').removeClass("hidden");
+		$('#mobileSubMenu').removeClass("hidden");
 		$('#footer').removeClass("hidden");
 		$(".popout .panel").removeClass("active");
 		$(".popout .fab").removeClass("active");

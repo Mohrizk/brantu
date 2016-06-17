@@ -30,7 +30,7 @@ $(document).ready(function() {
 	 Mobile Menu
 	 */
 	$('#menuBurgerIcon').on('click', function(e) {
-		$('.page-sidebar').toggleClass('visible').css({opacity:0}).animate({opacity:1});
+		$('.page-sidebar').toggleClass('visible').css({opacity:0}).delay(200).animate({opacity:1});
 		$('.fixed-header').toggleClass('sidebar-open');
 
 		$('.page-sidebar-cover').toggleClass('hidden');
@@ -66,7 +66,7 @@ $(document).ready(function() {
 		$('.sidebar-overlay-slide').toggleClass('show');
 		$('.sidebar-header').find('button').toggleClass('active');
 	}
-	$('.sidebar-header').click( closesideBarDD)
+	//$('.sidebar-header').click( closesideBarDD)
 
 	$('#departmentMenu a').click(function(){
 		var departmentChoose = $(this).attr('data-department');
@@ -108,7 +108,6 @@ $(document).ready(function() {
 	}
 
 	$(document).on( 'scroll' , function (event) {
-
 		if(!isMobile)navBarScrollActions;
 		else{
 			var logo = $('.mainLogo');

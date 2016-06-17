@@ -4,12 +4,12 @@
         <h1 class="text-white">Select Department</h1>
         <div class="row">
             <div class="col-xs-12 p-t-20 ">
-                <a href="/kvinna" class="p-l-10 sbold" href="/{{kvinna}}"  style="font-size: 24px;" data-department="Kvinna">
+                <a href="/kvinna" class="p-l-10 sbold" href="/kvinna"  style="font-size: 24px;" data-department="Kvinna">
                     Kvinna
                 </a>
             </div>
             <div class="col-xs-12 p-t-20">
-                <a href="/man" class="p-l-10  sbold" href="/{{man}}" style="font-size: 24px;" data-department="Man">
+                <a href="/man" class="p-l-10  sbold" href="/man" style="font-size: 24px;" data-department="Man">
                     Man
                 </a>
             </div>
@@ -18,16 +18,18 @@
     <!-- END SIDEBAR MENU TOP TRAY CONTENT-->
     <!-- BEGIN SIDEBAR MENU HEADER-->
     <div class="sidebar-header">
-        <div  class="inline text-white medium sidebar-header-title" style="font-size: 24px;">Kvinna</div>
-        <div class="sidebar-header-controls">
+        <a  class="inline text-white medium sidebar-header-title cursor {{#if (compareStrings selectedDepartment.name "Kvinna")}}sbold {{else}} hint-text{{/if}}" href="/kvinna" style="font-size: 18px;">Kvinna</a>
+        <a class="inline p-r-5 p-l-5" style="font-size: 18px;">/</a>
+        <a  class="inline text-white medium sidebar-header-title cursor {{#if (compareStrings selectedDepartment.name "Man")}}sbold {{else}} hint-text{{/if}}" href="/man" style="font-size: 18px;">Man</a>
+        <!--<div class="sidebar-header-controls">
             <button type="button" class="btn btn-xs sidebar-slide-toggle btn-link m-l-20 p-t-5" data-pages-toggle="#appMenu">
                 <i class="fa fa-angle-down  text-white" style="font-size: 16px;"></i>
             </button>
-        </div>
+        </div>-->
     </div>
     <!-- END SIDEBAR MENU HEADER-->
     <!-- START SIDEBAR MENU -->
-    <div class="sidebar-menu bg-Image" style="background-position: top; background-image:url('/images/home/women/main4.jpg');"  data-department-toggle="Kvinna">
+    <div class="sidebar-menu bg-Image b-r" style="background-position: top; background-image:url('/images/home/women/main4.jpg');"  data-department-toggle="Kvinna">
         <!-- BEGIN SIDEBAR MENU ITEMS-->
         <div class="scroll-wrapper glassLight menu-items bgBlurEffectLight" style="position: relative; overflow-x: hidden;">
             <ul class="menu-items scroll-content" style="margin-bottom: 0px; margin-right: 0px; height: 676px;">
@@ -48,7 +50,7 @@
                  </span>
                 </li>
 
-        <li class="m-t-30">
+        <li class="m-t-30 open active">
             <a href="#" class="detailed">
                 <span class="title  text-black" style="line-height: 20px;">Wardrobe <br/>Finder</span>
                 <span class="arrow"></span>
@@ -70,13 +72,13 @@
                 {{#if (compareStrings this.department.name "Kvinna")}}
                     <ul class="sub-menu">
                         {{#each categories}}
-                            <li class="">
-                                <a href="javascript:;"><span class="title">{{andfixer category.name}}</span>
+                            <li>
+                                <a class="text-black"><span class="title">{{andfixer category.name}}</span>
                                     <span class="arrow"></span></a>
                                 <ul class="sub-menu">
                                     {{#each subCategory}}
                                         <li>
-                                            <a href="/explore/{{this.key}}">{{andfixer this.name}}</a>
+                                            <a class="text-black" href="/explore/{{this.key}}">{{andfixer this.name}}</a>
                                         </li>
                                     {{/each }}
                                 </ul>
@@ -131,7 +133,7 @@
             </div></div></div></div>
         <div class="clearfix"></div>
     </div>
-    <div class="sidebar-menu bg-Image" style="background-image: url('/images/home/men/main2.jpg');" data-department-toggle="Man">
+    <div class="sidebar-menu bg-Image b-r" style="background-image: url('/images/home/men/main2.jpg');" data-department-toggle="Man">
         <!-- BEGIN SIDEBAR MENU ITEMS-->
         <div class="scroll-wrapper menu-items glassLight bgBlurEffectLight" style="position: relative; overflow-x: hidden;"><ul class="menu-items scroll-content" style="margin-bottom: 0px; margin-right: 0px; height: 676px;">
             <li class="m-t-30">
@@ -151,7 +153,7 @@
                  </span>
             </li>
 
-        <li class="m-t-30">
+        <li class="m-t-30 open active">
             <a href="#" class="detailed">
                 <span class="title text-black " style="line-height: 20px;">Wardrobe <br/>Finder</span>
                 <span class="arrow"></span>
@@ -174,12 +176,12 @@
                     <ul class="sub-menu">
                         {{#each categories}}
                             <li class="">
-                                <a href="javascript:;"><span class="title">{{andfixer category.name}}</span>
+                                <a class="text-black" href="javascript:;"><span class="title">{{andfixer category.name}}</span>
                                     <span class="arrow"></span></a>
                                 <ul class="sub-menu">
                                     {{#each subCategory}}
                                         <li>
-                                            <a href="#">{{andfixer this.name}}</a>
+                                            <a class="text-black" href="#">{{andfixer this.name}}</a>
                                         </li>
                                     {{/each }}
                                 </ul>
