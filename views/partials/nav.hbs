@@ -12,7 +12,7 @@
                     C29.651,37.245,37.07,29.825,37.07,20.671z"/>
                 </svg>
             </div>
-                <input id="fakeMobileSearchButton" />
+                <input class="fakeMobileSearchButton" />
             </div>
 
         </div>
@@ -30,19 +30,19 @@
         </div>
         <div class="top-left bottom-right visible-xs bg-master-lighter  b-t b-r b-l b-grey b-b hidden" id="searchMobileContainer" style="z-index: 200;">
                    <div class="row relative">
-                       <div class="col-xs-12 search-mobile">
+                       <div class="col-xs-12 search-mobile m-t-5 m-l-5">
                         <form id="searchMobileForm">
                             <input type="submit" class="hidden"/>
                             <input type="text" placeholder="Sök märken, produkter och jämför priser" id="searchMobile"/>
-                            <div class="ACSearchProgress hidden top-right" style="right:15%; padding-top:7px;" >
+                            <div class="ACSearchProgress hidden top-right" style="right:22%; padding-top:5px;" >
                                 <div class=" text-center">
-                                    <img src='/images/progress/progress-circle-lg-white.svg' style="width:30px; height: 30px;"/>
+                                    <img src='/images/progress/progress-circle-lg-master.svg' style="width:22px; height: 20px;"/>
                                 </div>
                             </div>
                         </form>
                        </div>
-                       <div class="top-right p-t-10 p-b-10 p-l-30 p-r-30" id="CloseSearchMobile">
-                           <a><i class="pg-close_line fa-2x"></i></a>
+                       <div class="top-right p-t-10 p-b-10 p-l-15 p-r-15" id="CloseSearchMobile">
+                           <a class="dark no-border"><i class="pg-close_line fa-2x"></i></a>
                        </div>
                    </div>
         </div>
@@ -83,7 +83,7 @@
         </div>
     </div>
 
-    <div class="container glass" >
+    <div class="container glass boxShadowed">
         <div class="row">
             <div class="col-sm full-width  visible-xs">
                 <div class=" sm-table">
@@ -114,7 +114,7 @@
               </div>
           </div>
             <div class="col-sm-6 relative  hidden-xs">
-                <div class="auto-margin block relative" style="" >
+                <div class="auto-margin block relative p-t-5" >
                     <form id="autocompleteForm">
                         <div class="search-link">
                             <input type="text" placeholder="Sök märken, produkter och jämför priser" id="search"/>
@@ -304,69 +304,77 @@
     <div class="full-width bg-white" id="containerAC"></div>
     <div class="full-width bg-white" id="mobileContainerAC"></div>
 
-
-    <div class="container  hidden-xs" style="  background: rgba(251,251,251,0.93);" id="navbar-categories">
-
-            <div class="pull-left" id="navbarCategory">
-                <div class=" sm-table">
-                    <div class="header-inner auto-margin" style="text-align: center !important;">
-                        <div class="brand" style="width: auto;">
-                            <ul class="nav navbar-nav" id="navbar-categories">
-                                {{#each categoryTree}}
-                                    <li class=" p-r-80 inline">
-                                        <a class="capitalize dark text-spaced medium {{#if ../selectedDepartmentName}}{{#if (compareStrings this.department.name ../selectedDepartmentName)}}active{{/if}}{{/if}}" style="font-size:15px; line-height: 3px;" key="{{this.department.key}}" href="/{{this.department.name}}">{{this.department.name}}</a>
-                                    </li>
-                                {{/each}}
-                            </ul>
+   <div id="navbarDepartment">
+        <div class="container  hidden-xs" style="  background: rgba(251,251,251,0.93);" >
+        <div class="pull-left" id="navbarCategory">
+                    <div class=" sm-table">
+                        <div class="header-inner auto-margin" style="text-align: center !important;">
+                            <div class="brand" style="width: auto;">
+                                <ul class="nav navbar-nav" id="navbar-categories">
+                                    {{#each categoryTree}}
+                                        <li class=" p-r-80 inline">
+                                            <a class="capitalize dark text-spaced medium {{#if ../selectedDepartmentName}}{{#if (compareStrings this.department.name ../selectedDepartmentName)}}active{{/if}}{{/if}}" style="font-size:15px; line-height: 3px;" key="{{this.department.key}}" href="/{{this.department.name}}">{{this.department.name}}</a>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="pull-left" id="navbarTags" style="display:none;">
-                <div class=" sm-table">
-                    <div class="header-inner auto-margin" style="text-align: center !important;">
-                        <div class="brand" style="width: auto;">
-                            <ul class="nav navbar-nav" id="navbar-categories">
-                                <li class=" p-r-80 inline">
-                                    <a class="capitalize dark text-spaced medium">FUck you</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        </div>
+        <div class="container hidden-xs full-width menu b-b b-grey bg-white" id="navSubCategory" >
+        <ul class="nav navbar-nav submenu">
+            <li class=" "><a class="dark medium  text-center" href="/{{selectedDepartment.key}}/upptack-nya-favoriter">Upptäck <font class="smallCaps">nya favoriter</font> </a></li>
+            {{#each categoryTree}}
+                {{#if (compareStrings this.department.name ../selectedDepartment.name)}}
+                    {{#each categories}}
+                        <li class=""><a class="dark medium text-center" href="/explore/{{category.key}}" expand-key="{{category.key}}">{{andfixer category.name}}</a></li>
+                    {{/each}}
+                {{/if}}
+            {{/each}}
+        </ul>
     </div>
-    <div class="container hidden-xs full-width menu b-b b-grey bg-white" >
-       <ul class="nav navbar-nav submenu">
-           <li class=" "><a class="dark medium  text-center" href="/{{selectedDepartment.key}}/upptack-nya-favoriter">Upptäck <font class="smallCaps">nya favoriter</font> </a></li>
-           {{#each categoryTree}}
-               {{#if (compareStrings this.department.name ../selectedDepartment.name)}}
-                   {{#each categories}}
-                       <li class=""><a class="dark medium text-center" expand-key="{{category.key}}">{{andfixer category.name}}</a></li>
-                   {{/each}}
-               {{/if}}
-           {{/each}}
-       </ul>
+   </div>
+
+    <div class="container  hidden-xs " id="navbarTagsContainer" style="  background: rgba(251,251,251,0.98); display: none;" >
+        <div class="pull-left p-t-5 p-b-5" id="navbarTags" style="display:none;">
+            <div class=" sm-table">
+                <div class="header-inner auto-margin" style="text-align: center !important;">
+                    <div class="brand" style="width: auto;">
+                        <ul class="nav navbar-nav" id="navbar-categories">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class=" " style="padding:0 50px; background: transparent;">
-        <div class="bg-white" style=" background: transparent; box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.2);">
+        <div class="gradient-maroon category-expand-wrapper" style="opacity:0; box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.2);">
             {{#each categoryTree}}
             {{#if (compareStrings this.department.name ../selectedDepartment.name)}}
                 {{#each categories}}
                 <div class=" category-expand-container hidden  padding-1v" expand-parentKey="{{category.key}}">
                     <div class="category-expand">
-                        <h5 class="sbold">{{andfixer category.name}}</h5>
-                        <div class="desktopNavColoumns">
-                            <ul>
-                                {{#each subCategory}}
-                                    <li><a class="dark" href="/explore/{{this.key}}">
-                                        {{andfixer this.name}}
-                                    </a></li>
-                                {{/each}}
-                            </ul>
+                        <div class="inline">
+
+                                <h5 class="sbold text-white">{{andfixer category.name}}</h5>
+                                <div class="desktopNavColoumns">
+                                    <ul>
+                                        {{#each subCategory}}
+                                            <li><a class="" href="/explore/{{this.key}}">
+                                                {{andfixer this.name}}
+                                            </a></li>
+                                        {{/each}}
+                                    </ul>
+                                </div>
                         </div>
+                            <div class=inline" style="width:50%" style="background-image: url('');">
+
+                            </div>
+
+
+
                     </div>
                 </div>
                 {{/each}}
@@ -379,21 +387,19 @@
 
 <div class="text-center p-t-50 full-width no-overflow visible-xs " id="mobileSubMenu">
     <div class="row b-b b-grey">
-        <a class="col-xs p-b-5 dark light text-center" href="/{{selectedDepartment.key}}/upptack-nya-favoriter"><div class="">
+        <a class="col-xs p-b-5 dark light text-center {{#if (stringContains url "upptack-nya-favoriter")}}active{{/if}}" href="/{{selectedDepartment.key}}/upptack-nya-favoriter"><div class="">
             <div>
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
-<g>
-	<path fill="none" stroke="#8B8B8D" stroke-width="0.7019" stroke-linejoin="round" stroke-miterlimit="10" d="M35.328,35.9
-		c0,5.618-4.56,7.86-10.185,7.86s-10.185-2.242-10.185-7.86c0-1.482,0.318-2.428,0.889-3.699c0.376-0.836,1.278,2.981,1.889,2.312
-		c1.505-1.647-1.666-5.406,4.167-8.259c-1.042,2.913-0.207,4.069,0.926,4.069c2.46,0,2.498-3.672,2.228-8.323
-		c7.523,5.808,3.37,8.045,4.224,8.756c4.196,0.462,1.393-8.724,5.122,0.058C35.078,32.406,35.328,34.046,35.328,35.9z"/>
-</g>
-</svg>
-
+                     width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                <g>
+                    <path fill="none" stroke="#000000" stroke-width="0.8537" stroke-linejoin="round" stroke-miterlimit="10" d="M25.017,24.542
+                        c-2.089-4.653-13.249-5.007-13.249,3.303c0,6.502,10.847,14.81,13.232,14.81c2.385,0,13.232-8.309,13.232-14.81
+                        c0-9.232-14.468-8.579-14.468,1.225"/>
+                </g>
+                </svg>
             </div>
             Upptäck nya favoriter</div></a>
-        <a class="dark light active  text-center col-xs b-l b-grey p-b-5" href="/explore/{{selectedDepartment.key}}"><div class=" ">
+        <a class="dark light text-center col-xs b-l b-grey p-b-5 {{#if (stringContains url "explore")}}active{{/if}}" href="/explore/{{selectedDepartment.key}}"><div class="">
             <div>
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                      width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
@@ -406,8 +412,8 @@
 
 
             </div>
-            Wardrobe Finder</div></a>
-        <a class="col-xs b-l b-grey p-b-5 dark light text-center"><div class="">
+            Explore products</div></a>
+        <a class="col-xs b-l b-grey p-b-5 dark light text-center relative no-overflow" id="comparePricePageButton"><div >
             <div>
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
@@ -437,7 +443,9 @@
 </svg>
                 </svg>
             </div>
-            Jämför priser</div> </a>
+            Jämför priser</div>
+            <input class="fakeMobileSearchButton bigSquare" />
+        </a>
     </div>
 </div>
 

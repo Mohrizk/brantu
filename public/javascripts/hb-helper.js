@@ -30,6 +30,11 @@ var register = function(Handlebars) {
             }
             return false;
         },
+        stringContains: function(passedString, expression){
+          if(passedString.indexOf(expression)>-1)
+          return true;
+            else false;
+        },
         json: function(context){
             return JSON.stringify(context);
         },

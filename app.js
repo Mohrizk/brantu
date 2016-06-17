@@ -78,6 +78,7 @@ app.set('json spaces', 2);//ONLY DEVELOPMENT
 app.use(paginate.middleware(10, 50));
 
 app.use(function(req, res, next){
+    res.locals.url= req.url;
     res.locals.user = req.user;
     if(req.user){
         User

@@ -54,7 +54,7 @@ var productEngineTemplate = Handlebars.compile(
 '<div class="panel {{#if fab}}active{{/if}}">' +
 '<div class="panel-header">' +
 '<h3>Filter <span class="pull-right close p-t-10"> <i class="pg-close_line"></i></span></h3>'+
-'<div id="mobileTags"></div>' +
+'<div  class="filterTags" id="mobileTags"></div>' +
 '</div>' +
 '<div class="panel-body scrollable">' +
 '<div class="facets" id="primaryFacets">' +
