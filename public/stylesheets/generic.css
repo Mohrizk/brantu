@@ -88,9 +88,9 @@ input:-webkit-autofill {
 }
 
 .scaleDown{
-    -ms-transform: scale(0.6); /* IE 9 */
-    -webkit-transform: scale(0.6); /* Safari */
-    transform: scale(0.6);
+    -ms-transform: scale(0.75); /* IE 9 */
+    -webkit-transform: scale(0.75); /* Safari */
+    transform: scale(0.75);
 }
 
 .fakeMobileSearchButton{

@@ -108,7 +108,7 @@ $(document).ready(function() {
 	}
 
 	$(document).on( 'scroll' , function (event) {
-		if(!isMobile)navBarScrollActions;
+		if(!isMobile)navBarScrollActions();
 		else{
 			var logo = $('.mainLogo');
 			var current = $(document).scrollTop();
