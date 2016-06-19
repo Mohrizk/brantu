@@ -45,37 +45,39 @@ var productEngineTemplate = Handlebars.compile(
 '</div>' +
 '</div>' +
 '</div>' +
-'</div></div>' +
-
-'<div class="popout visible-sm visible-xs">' +
-'<div class="fab {{#if fab}}active{{/if}}">' +
-'<i class="icon ion-ios-glasses"></i>' +
-'</div>' +
-'<div class="panel {{#if fab}}active{{/if}}">' +
-'<div class="panel-header">' +
-'<h3>Filter <span class="pull-right close p-t-10"> <i class="pg-close_line"></i></span></h3>'+
-'<div  class="filterTags" id="mobileTags"></div>' +
-'</div>' +
-'<div class="panel-body scrollable">' +
-'<div class="facets" id="primaryFacets">' +
-' <div class="category"></div>' +
-' <div class="price">' +
-'<h5>' +
-'<span class="bg-white text-left all-caps bold">Pris</span>' +
-'</h5>' +
-'<div id="pricerange_mobile"></div>' +
-'<div class="sale refinement"></div>' +
-'<div class="discounts refinement"></div>' +
-'</div>' +
-'<div class="sizes refinement bold" ></div>' +
-'<div class="brands refinement bold" ></div>' +
-'<div class="colors refinement" ></div>' +
-'<div class="shops refinement" ></div>' +
-'</div>' +
-'</div>' +
 '</div> </div>'
 );
 
+
+var mobileFilters = Handlebars.compile(
+    '<div class="popout visible-sm visible-xs">' +
+    '<div class="fab {{#if fab}}active{{/if}}">' +
+    '<i class="icon ion-ios-glasses"></i>' +
+    '</div>' +
+    '<div class="panel  {{#if fab}}active{{/if}}">' +
+    '<div class="panel-header">' +
+    '<h3>Filter <span class="pull-right close p-t-5"> <i class="pg-close_line" style="font-size: 25px;"></i></span></h3>'+
+    '<div  class="filterTags" id="mobileTags"></div>' +
+    '</div>' +
+    '<div class="panel-body scrollable">' +
+    '<div class="facets" id="primaryFacets">' +
+    ' <div class="category"></div>' +
+    ' <div class="price">' +
+    '<h5>' +
+    '<span class="bg-white text-left all-caps bold">Pris</span>' +
+    '</h5>' +
+    '<div id="pricerange_mobile"></div>' +
+    '<div class="sale refinement"></div>' +
+    '<div class="discounts refinement"></div>' +
+    '</div>' +
+    '<div class="sizes refinement bold" ></div>' +
+    '<div class="brands refinement bold" ></div>' +
+    '<div class="colors refinement" ></div>' +
+    '<div class="shops refinement" ></div>' +
+    '</div>' +
+    '</div>' +
+    '</div> </div>'
+)
 
 var productTemplate = Handlebars.compile(
     '{{#each  products}}' +
@@ -84,11 +86,8 @@ var productTemplate = Handlebars.compile(
     '<div class="itemWrapper">' +
     '<div class="row top-xs">'+
     '<div class="preview-image auto-margin col-xs" style="margin-top: 0;">' +
-    '{{#if ../mobile}}'+
-    '<img src="{{{this.mainPicture.largeUrl}}}" class="v-align-top" pic-src="{{{this.mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}" alt="{{../name}}" index="{{@index}}" nb-pic="{{nbImages}}" pic-order="0" productId="{{../productId}}"/>' +
-    '{{else}}'+
-    '<img src="{{{this.mainPicture.largeUrl}}}" class="v-align-top" pic-src="{{{this.mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}" alt="{{../name}}" index="{{@index}}" nb-pic="{{nbImages}}" pic-order="0" productId="{{../productId}}"/>' +
-    '{{/if}}'+
+    '<img src="{{{this.mainPicture.largeUrl}}}" action="/add-viewed-product-session" class="v-align-top" pic-src="{{{this.mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}" alt="{{../name}}" index="{{@index}}" nb-pic="{{nbImages}}" pic-order="0" productId="{{productId}}"/>' +
+
     '</div>' +
     '</div>'+
     '<div class="item-brand sbold">{{{this.brand.name}}}</div>'+
@@ -112,10 +111,14 @@ var productTemplate = Handlebars.compile(
     '</ol>' +
     '<div class="p-t-10 p-b-10 ">'+
     '<a class="dark bold"><div class="btn  btn-info btn-rounded m-r-5">Go to store</div></a>'+
-    '<a class="dark bold" index="{{@index }}" productId="{{{this.productId}}}"><div class="btn  btn-info btn-rounded  m-l-5" >Find better prices</div></a>' +
+    '<a class="dark bold" index="{{@index }}" action="/add-viewed-product-session" productId="{{{this.productId}}}"><div class="btn  btn-info btn-rounded  m-l-5" >Find better prices</div></a>' +
     '</div>'+
     '</div>' +
     '<ol class="small-options no-style">' +
+    '<li class="like cursor">' +
+    '<a class="addFavouriteProduct" productId="{{{this.productId}}}" action="/add-favourite-product-session">' +
+    '<i class="fa fa-anchor"></i>' +
+    '</a></li>' +
     '</ol>'+
     '</div>' +
     '</div>'+
@@ -132,7 +135,7 @@ var productTemplate = Handlebars.compile(
 var jawBoneTemplate = Handlebars.compile(
     '<div class="jawBone" nb-pic="{{numOfImages}}" pic-src="{{{mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}"><div class="mainWrapper row">' +
 '<div class=" col-md-6 col-sm-12 col-xs-12 pictureWrapper">' +
-    '<div class="row full-width">'+
+    '<div class="row full-width no-margin">'+
     '<div class="selectedItemImageColoumn col-md-2 col-lg-3  hidden-sm hidden-xs frame scrollable" id="selectedItemImages" numOfImages="{{numOfImages}}">'+
     '<ol class="slidee scrollable">'+
     '<li><img imageorder ="0" src="{{mainPicture.largeUrl}}" /></li>'+
@@ -141,7 +144,7 @@ var jawBoneTemplate = Handlebars.compile(
     '{{/each}}'+
     '</ol>'+
     '</div>'+
-    '<div class="selectedItemPictureContainer auto-margin col-xs">'+
+    '<div class="selectedItemPictureContainer no-padding auto-margin col-xs">'+
     '<div class="selectedItemZoomPicture auto-margin block">'+
     '<div class="prev-item"><i class="  pg-arrow_left_line_alt"></i></div> <div class="next-item"><i class=" pg-arrow_lright_line_alt"></i></div>'+
     '<div id="mainJawBoneImageContainer" class="auto-margin block"> <img id="mainJawBoneImage" imageorder = "0" src="{{mainPicture.largeUrl}}"/> </div>'+
@@ -301,7 +304,7 @@ var filterTagsTemplate = Handlebars.compile(
 
 var pagingTemplate = Handlebars.compile(
     '{{#if paginate}}'+
-    '<div class="clearfix">' +
+    '<div class="clearfix hidden-xs">' +
     '<div class="pull-right btn-rounded p-r-10 p-l-10 b-b b-l b-t b-r b-grey  m-xs-r-10 m-b-20" >' +
     '{{#if hasPrevious}}' +
     '<a class="inline p-r-10 page v-align-middle   p-b-5"  value="{{indexMinusConstant currentPage 1}}"><i class=" pg-arrow_left_line_alt" style="font-size:15px;"></i></a>'+
@@ -318,6 +321,31 @@ var pagingTemplate = Handlebars.compile(
     '{{#if hasNext}}' +
     '<a class="inline p-l-10 page v-align-middle  p-b-5" value="{{indexPlusConstant currentPage 1}}"><i class=" pg-arrow_lright_line_alt " style="font-size:15px;"></i></a>'+
     '{{/if}}'+
+    '</div>' +
+    '</div>' +
+
+    '<div class="visible-xs p-t-5 p-b-5" style="font-size:20px;">' +
+    '<div class="full-width btn-rounded p-r-10 p-l-10 b-b b-l b-t b-r b-grey  m-xs-r-10 m-b-20" >' +
+    '{{#if hasPrevious}}' +
+    '<a class="pull-left page v-align-middle   p-b-5"  value="{{indexMinusConstant currentPage 1}}" style="font-size: 30px;"><i class=" pg-arrow_left_line_alt" style=""></i></a>'+
+    '{{/if}}' +
+    '{{#if hasNext}}' +
+    '<a class="pull-right page v-align-middle  p-b-5" value="{{indexPlusConstant currentPage 1}}" style="font-size: 30px;"><i class=" pg-arrow_lright_line_alt " style=""></i></a>'+
+    '{{/if}}'+
+
+    '<div class="auto-margin block text-center">'+
+    '{{#if showFirst}}' +
+    '<div class="inline"><a class=" page padding-1v p-xs-r-10"  value="0"> 1</a> ... </div>'+
+    '{{/if}}' +
+    '{{#each pages}}' +
+    '<a class="inline page {{class}}  padding-05v p-xs-l-10 p-t-5 p-b-5"  value="{{thePage}}">{{indexPlusConstant thePage 1}}</a>' +
+    '{{/each}}' +
+    '{{#if showLast}}' +
+    '<div class="inline">... <a class=" page padding-1v p-xs-l-10"  value="{{indexMinusConstant totalPages 1}}"> {{totalPages}}</a></div>'+
+    '{{/if}}' +
+    '</div>'+
+
+
     '</div>' +
     '</div>' +
     '{{/if}}'
@@ -445,8 +473,6 @@ var ACProductPreviewTemplate= Handlebars.compile(
 );
 
 
-//Shipping costs...etc
-
 var CPProductTemplate = Handlebars.compile(
     '<div class="content p-t-50" >' +
     '<a class="pull-right closeSearch  "><i class="pg-close_line fa-2x"></i></a>' +
@@ -530,6 +556,28 @@ var welcomeTemplate = Handlebars.compile(
     '{{else}}' +
     '<h1 class="all-caps text-spaced text-center font-GothamMedium">{{name}} </h1>' +
     '{{/if}}'
+)
+
+//NEWSLETTER
+var newsletterTemplate = Handlebars.compile(
+    '{{#if form}}'+
+    '<p>{{form.body}}</p>'+
+    '<form id="newsletterSignupForm" action="/newsletter-signup">'+
+    '<input name="email" type="email" id="newsletterSignupEmail"/>'+
+    '</form>'+
+    '{{/if}}'+
+
+    '{{#if success}}'+
+    '<p>{{success.body}}</p>'+
+    '<a class="bold" id="addNewsletterEmail">{{success.addAnother}}</a>'+
+    '{{/if}}'+
+
+    '{{#if fail}}'+
+     '<p>{{fail.body}}</p>'+
+     '<form id="newsletterSignupForm" action="/newsletter-signup">'+
+     '<input name="email" type="email" id="newsletterSignupEmail"/>'+
+     '</form>'+
+     '{{/if}}'
 )
 /*****Render Color LIST*******/
 var productHelper;
@@ -798,9 +846,6 @@ productHelper = {
         mainContainer.addClass('noFilter');
         paginate.addClass('hide');
         jawboneContainer.html(jawBoneTemplate(content));
-        var totalChildren = productList.children('li').length;
-        var totalLength =  productList.width();
-        var selector = selector.width();
         productList.children('li').each(function () {
             if($(this).attr('index') == itemScrollindex){
                 console.log($(this).offset().left,'-', productList.scrollLeft(),'-',$(this).width() )
@@ -819,7 +864,8 @@ productHelper = {
         jawboneContent.removeClass("open");
         productList.children('li').each(function () {
             if($(this).attr('index') == itemScrollindex){
-                $('body').scrollTop( $(this).offset().top - 150 );
+                if(isMobile) $('.page-container').scrollTop( $(this).offset().top);
+                else $('html, body').scrollTop( $(this).offset().top - 150 );
             }
         })
 

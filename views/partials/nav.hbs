@@ -16,7 +16,6 @@
             </div>
 
         </div>
-
         <div class="top-left p-l-5 visible-xs" id="menuBurgerIcon" style="padding-top: 10px;">
             <div>
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -34,6 +33,13 @@
                         <form id="searchMobileForm">
                             <input type="submit" class="hidden"/>
                             <input type="text" placeholder="Sök märken, produkter och jämför priser" id="searchMobile"/>
+                            <div class="dropdown" style="padding-top:5px; ">
+                                <div class="dropdown-menu" id="mobileContainerHintAC">
+                                    <div class="p-l-25 p-t-5">
+                                        Lovely Stuff
+                                    </div>
+                                </div>
+                            </div>
                             <div class="ACSearchProgress hidden top-right" style="right:22%; padding-top:5px;" >
                                 <div class=" text-center">
                                     <img src='/images/progress/progress-circle-lg-master.svg' style="width:22px; height: 20px;"/>
@@ -83,7 +89,7 @@
         </div>
     </div>
 
-    <div class="container glass boxShadowed">
+    <div class="container glass boxShadowed" id="headerMain" >
         <div class="row">
             <div class="col-sm full-width  visible-xs">
                 <div class=" sm-table">
@@ -118,6 +124,11 @@
                     <form id="autocompleteForm">
                         <div class="search-link">
                             <input type="text" placeholder="Sök märken, produkter och jämför priser" id="search"/>
+                            <div class="dropdown">
+                                <div class="dropdown-menu styleTip" id="containerHintAC">
+                                    <div class="p-l-10 p-t-10 p-b-10">Jamfor Pris</div>
+                                </div>
+                            </div>
                             <div class="ACSearchProgress hidden top-right" style="right:15%; padding-top:7px; z-index: 10;" >
                                 <div class=" text-center">
                                     <img src='/images/progress/progress-circle-master.svg' style="width:30px; height: 30px;"/>
@@ -236,63 +247,65 @@
              {{else}}
              <div class="hidden-xs pull-right">
                <ul class="nav navbar-nav">
+
                  <li id="login"><a class="dark" >Logga In </a></li>
                    <li class="login text-pink-darker hidden-sm" style="padding-top: 14px;line-height: 25px;">eller</li>
                    <li class="login text-pink-darker visible-sm" style="padding-top: 14px;line-height: 25px;">/</li>
                  <li id="signup"><a class="dark" >Bli medlem</a></li>
-             </ul>
+
+
+               </ul>
              </div>
              {{/if}}
 
-               {{#if user}}
-                   <div class="visible-lg visible-md pull-left hidden-sm hidden-xs  " style=" height:50px; margin-right:0px; padding-top:6px;" >
-                       <ul class="notification-list no-margin  no-style p-l-15 p-r-15 inline">
-                           <li class="p-l-30 p-r-25 inline relative" >
-                               <a href="#"  id="preference-center" >
-                                   <div style="width: 23px;">
-                                       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                             width="100%" height="100%" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve">
+               <div class="visible-lg visible-md pull-right hidden-sm hidden-xs  " style=" height:50px; margin-right:0px; padding-top:6px;" >
+                   <ul class="notification-list no-margin  no-style inline">
+                       <li class="p-r-20 inline relative" >
+                           <a href="#"  id="preference-center" >
+                               <div style="width: 20px;">
+                                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         width="100%" height="100%" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve">
+                                    <g>
+                                        <path fill="none" stroke="#e5a3ad" stroke-width="4" stroke-miterlimit="10" d="M29.978,46.071
+                                            c-1.419,1.419-3.812,1.874-5.267,0.946C15.335,41.043,7.458,33.166,1.484,23.79c-0.928-1.455-0.472-3.846,0.946-5.267
+                                            c1.146-1.146,2.292-2.291,3.437-3.437c1.421-1.421,3.289-1.35,4.217,0.104c5.975,9.375,13.852,17.252,23.228,23.227
+                                            c1.453,0.926,1.523,2.795,0.103,4.216C32.269,43.78,31.123,44.925,29.978,46.071z"/>
                                         <g>
-                                            <path fill="none" stroke="#e5a3ad" stroke-width="4" stroke-miterlimit="10" d="M29.978,46.071
-                                                c-1.419,1.419-3.812,1.874-5.267,0.946C15.335,41.043,7.458,33.166,1.484,23.79c-0.928-1.455-0.472-3.846,0.946-5.267
-                                                c1.146-1.146,2.292-2.291,3.437-3.437c1.421-1.421,3.289-1.35,4.217,0.104c5.975,9.375,13.852,17.252,23.228,23.227
-                                                c1.453,0.926,1.523,2.795,0.103,4.216C32.269,43.78,31.123,44.925,29.978,46.071z"/>
-                                            <g>
-                                                <path fill="none" stroke="#e5a3ad" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" d="M39.998,8.72
-                                                    c0,0-4.043-7.057-10.873-2.892c-6.83,4.165-11.839,7.676-19.306,9.005"/>
+                                            <path fill="none" stroke="#e5a3ad" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" d="M39.998,8.72
+                                                c0,0-4.043-7.057-10.873-2.892c-6.83,4.165-11.839,7.676-19.306,9.005"/>
 
-                                                <path fill="none" stroke="#e5a3ad" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" d="M39.781,8.503
-                                                    c0,0,7.056,4.042,2.892,10.873c-4.164,6.83-7.676,11.839-9.005,19.306"/>
-                                            </g>
-
-                                                <circle fill="none" stroke="#e5a3ad" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" cx="43.153" cy="5.348" r="4.348"/>
-
-                                            <path fill="none" stroke="#e5a3ad" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" d="M16.995,41.852
-                                                c-2.857,2.857-7.489,2.857-10.348,0c-2.856-2.857-2.856-7.489,0.001-10.347"/>
+                                            <path fill="none" stroke="#e5a3ad" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" d="M39.781,8.503
+                                                c0,0,7.056,4.042,2.892,10.873c-4.164,6.83-7.676,11.839-9.005,19.306"/>
                                         </g>
-                                        </svg>
-                                   </div>
-                                   <div class="bubble"> <span>25</span></div>
-                               </a>
-                           </li>
-                           <li class="p-l-25 p-r-25 inline relative" >
-                               <a href="#" id="preference-center" >
-                                   <div style="width: 23px;">
-                                       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                             width="100%" height="100%" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
 
-                                        <path fill="none" stroke="#e5a3ad" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
-                                            M34.381,3.423c-4.08,0-7.725,1.862-10.131,4.783c-2.406-2.921-6.051-4.783-10.131-4.783C6.874,3.423,1,9.296,1,16.543
-                                            s11.274,16.56,23.25,28.535C36.846,32.483,47.5,23.789,47.5,16.543S41.626,3.423,34.381,3.423z"/>
-                                        </svg>
-                                   </div>
-                                   <div class="bubble"> <span>25</span></div>
-                               </a>
-                           </li>
+                                            <circle fill="none" stroke="#e5a3ad" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" cx="43.153" cy="5.348" r="4.348"/>
 
-                       </ul>
-                   </div>
-               {{/if}}
+                                        <path fill="none" stroke="#e5a3ad" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" d="M16.995,41.852
+                                            c-2.857,2.857-7.489,2.857-10.348,0c-2.856-2.857-2.856-7.489,0.001-10.347"/>
+                                    </g>
+                                    </svg>
+                               </div>
+                               <div class="bubble" id="nbFavoProduct"> <span>{{#if nbFavProducts}} {{nbFavProducts}} {{else}}0{{/if}}</span></div>
+                           </a>
+                       </li>
+                       <!--<li class="p-l-25 p-r-25 inline relative" >
+                           <a href="#" id="preference-center" >
+                               <div style="width: 23px;">
+                                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         width="100%" height="100%" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+
+                                    <path fill="none" stroke="#e5a3ad" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                                        M34.381,3.423c-4.08,0-7.725,1.862-10.131,4.783c-2.406-2.921-6.051-4.783-10.131-4.783C6.874,3.423,1,9.296,1,16.543
+                                        s11.274,16.56,23.25,28.535C36.846,32.483,47.5,23.789,47.5,16.543S41.626,3.423,34.381,3.423z"/>
+                                    </svg>
+                               </div>
+                               <div class="bubble"> <span>25</span></div>
+                           </a>
+                       </li>-->
+
+                   </ul>
+               </div>
+
 
 
              <!-- END User Info-->
@@ -300,20 +313,19 @@
         </div>
     </div>
 
-
     <div class="full-width bg-white" id="containerAC"></div>
     <div class="full-width bg-white" id="mobileContainerAC"></div>
 
-   <div id="navbarDepartment">
+    <div id="navbarDepartment">
         <div class="container  hidden-xs" style="  background: rgba(251,251,251,0.93);" >
-        <div class="pull-left" id="navbarCategory">
+            <div class="pull-left" id="navbarCategory">
                     <div class=" sm-table">
                         <div class="header-inner auto-margin" style="text-align: center !important;">
                             <div class="brand" style="width: auto;">
                                 <ul class="nav navbar-nav" id="navbar-categories">
                                     {{#each categoryTree}}
                                         <li class=" p-r-80 inline">
-                                            <a class="capitalize dark text-spaced medium {{#if ../selectedDepartmentName}}{{#if (compareStrings this.department.name ../selectedDepartmentName)}}active{{/if}}{{/if}}" style="font-size:15px; line-height: 3px;" key="{{this.department.key}}" href="/{{this.department.name}}">{{this.department.name}}</a>
+                                            <a class="capitalize dark text-spaced medium {{#if ../selectedDepartment}}{{#if (compareStrings this.department.name ../selectedDepartment.name)}}active{{/if}}{{/if}}" style="font-size:15px; line-height: 3px;" key="{{this.department.key}}" href="/{{this.department.key}}">{{this.department.name}}</a>
                                         </li>
                                     {{/each}}
                                 </ul>
@@ -322,20 +334,56 @@
                     </div>
                 </div>
         </div>
+        {{#if selectedDepartment}}
         <div class="container hidden-xs full-width menu b-b b-grey bg-white" id="navSubCategory" >
-        <ul class="nav navbar-nav submenu">
-            <li class=" "><a class="dark medium  text-center" href="/{{selectedDepartment.key}}/upptack-nya-favoriter">Upptäck <font class="smallCaps">nya favoriter</font> </a></li>
-            {{#each categoryTree}}
-                {{#if (compareStrings this.department.name ../selectedDepartment.name)}}
-                    {{#each categories}}
-                        <li class=""><a class="dark medium text-center" href="/explore/{{category.key}}" expand-key="{{category.key}}">{{andfixer category.name}}</a></li>
-                    {{/each}}
-                {{/if}}
-            {{/each}}
-        </ul>
-    </div>
-   </div>
+            <ul class="nav navbar-nav submenu">
+                <li class=" "><a class="dark medium  text-center" href="/{{selectedDepartment.key}}/upptack-nya-favoriter">Upptäck <font class="smallCaps">nya favoriter</font> </a></li>
+                {{#each categoryTree}}
+                    {{#if (compareStrings this.department.name ../selectedDepartment.name)}}
+                        {{#each categories}}
+                            <li class=""><a class="dark medium text-center" href="/explore/{{category.key}}" expand-key="{{category.key}}">{{andfixer category.name}}</a></li>
+                        {{/each}}
+                    {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+        {{/if}}
 
+        <div class=" " style="padding:0 50px; background: transparent;">
+            <div class="gradient-maroon category-expand-wrapper" style="opacity:0; box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.2);">
+                {{#each categoryTree}}
+                    {{#if (compareStrings this.department.name ../selectedDepartment.name)}}
+                        {{#each categories}}
+                            <div class=" category-expand-container hidden  padding-1v" expand-parentKey="{{category.key}}">
+                                <div class="category-expand">
+                                    <div class="inline">
+
+                                        <h5 class="sbold text-white">{{andfixer category.name}}</h5>
+                                        <div class="desktopNavColoumns">
+                                            <ul>
+                                                {{#each subCategory}}
+                                                    <li><a class="" href="/explore/{{this.key}}">
+                                                        {{andfixer this.name}}
+                                                    </a></li>
+                                                {{/each}}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class=inline" style="width:50%" style="background-image: url('');">
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        {{/each}}
+                    {{/if}}
+                {{/each}}
+            </div>
+
+        </div>
+    </div>
     <div class="container  hidden-xs " id="navbarTagsContainer" style="  background: rgba(251,251,251,0.98); display: none;" >
         <div class="pull-left p-t-5 p-b-5" id="navbarTags" style="display:none;">
             <div class=" sm-table">
@@ -347,41 +395,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class=" " style="padding:0 50px; background: transparent;">
-        <div class="gradient-maroon category-expand-wrapper" style="opacity:0; box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.2);">
-            {{#each categoryTree}}
-            {{#if (compareStrings this.department.name ../selectedDepartment.name)}}
-                {{#each categories}}
-                <div class=" category-expand-container hidden  padding-1v" expand-parentKey="{{category.key}}">
-                    <div class="category-expand">
-                        <div class="inline">
-
-                                <h5 class="sbold text-white">{{andfixer category.name}}</h5>
-                                <div class="desktopNavColoumns">
-                                    <ul>
-                                        {{#each subCategory}}
-                                            <li><a class="" href="/explore/{{this.key}}">
-                                                {{andfixer this.name}}
-                                            </a></li>
-                                        {{/each}}
-                                    </ul>
-                                </div>
-                        </div>
-                            <div class=inline" style="width:50%" style="background-image: url('');">
-
-                            </div>
-
-
-
-                    </div>
-                </div>
-                {{/each}}
-            {{/if}}
-        {{/each}}
-        </div>
-
     </div>
 </div>
 
@@ -448,7 +461,7 @@
         </a>
     </div>
 </div>
-
+<div id="mobileProductFilter"></div>
 
 
 

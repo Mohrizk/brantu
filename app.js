@@ -1,20 +1,22 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var async = require("async");
-var exphbs = require('express-handlebars');//HTML TEMPLATING
-var mongoose = require('mongoose');//FOR Database
+const express = require('express');
+const session = require('express-session');
+//const MongoStore = require('connect-mongo')(session);
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const async = require("async");
+const exphbs = require('express-handlebars');//HTML TEMPLATING
+const mongoose = require('mongoose');//FOR Database
 
-var User     = require('./services/models/user');
-var passport = require('passport');
-var routes = require('./services/routes');//FOR ROUTES
-var paginate = require('express-paginate');//Pagination
-var i18n = require('i18n-2');//Internationalization
+const User     = require('./services/models/user');
+const passport = require('passport');
+const routes = require('./services/routes');//FOR ROUTES
+const paginate = require('express-paginate');//Pagination
+const i18n = require('i18n-2');//Internationalization
 
-var app = express();//INITIATE A
+const app = express();//INITIATE A
 
 //CONNECT DB
 if (app.get('env') === 'development')
@@ -31,6 +33,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
+/*******************BEGINING Session**********************/
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(
+    function(req, res, next){
+        console.log('------------------')
+        console.log(req.session)
+        console.log('------------------')
+        next();
+    }
+)
 /********view engine setup****/
 // Register `hbs` as our view engine using its bound `engine()` function.
 // Set html in app.engine and app.set so express knows what extension to look for.
@@ -38,21 +55,12 @@ app.engine('.hbs', exphbs({
         defaultLayout: 'single',
         extname: '.hbs',
         helpers: require("./public/javascripts/hb-helper.js").helpers
-    })
-)
+    }))
 app.set('view engine', '.hbs');
 app.set('views', path.join(__dirname, 'views'));
-
-// uncomment after placing your favicon in /public
-
 /**************************************************************
 *******************BEGINING AUTHENTICATION**********************
 ***************************************************************/
-app.use(require('express-session')({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: false
-}));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -67,7 +75,6 @@ i18n.expressBind(app, {
   // change the cookie name from 'lang' to 'locale'
   cookieName: 'brantuLang'
 });
-
 app.use(function(req, res, next) {
   req.i18n.setLocaleFromCookie();
   next();
@@ -78,6 +85,8 @@ app.set('json spaces', 2);//ONLY DEVELOPMENT
 app.use(paginate.middleware(10, 50));
 
 app.use(function(req, res, next){
+    if(typeof req.session.favProducts !== "undefined")
+        res.locals.nbFavProducts = req.session.favProducts.length;
     res.locals.url= req.url;
     res.locals.user = req.user;
     if(req.user){

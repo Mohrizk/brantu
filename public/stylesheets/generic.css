@@ -1,4 +1,5 @@
 
+
 .mainLogo{
     transition: all .24s cubic-bezier(.5,0,.1,1);
     width:175px;
@@ -70,6 +71,9 @@ input:-webkit-autofill {
     -webkit-backdrop-filter: blur(5px);
 }
 /***navabr******/
+#headerMain .navbar-nav > li > a {
+    padding: 14px 0px;
+}
 .desktopNavColoumns{
     moz-column-width: 11.5em; /* Firefox */
     -webkit-column-width: 11.5em; /* webkit, Safari, Chrome */
@@ -109,8 +113,16 @@ input:-webkit-autofill {
     height:200px;
 
 }
-
-
+#containerHintAC{
+    background: white;
+    top:15px;
+    width: 500px;
+}
+#mobileContainerHintAC{
+    width:780px !important;
+    left:-10px;
+    background: white;
+}
 
 
 /**********ALGOLIA AUTO COMPLETE***/
@@ -150,7 +162,8 @@ input:-webkit-autofill {
 .aa-dataset-1{
   flex: 1 1;
 }
-.aa-dropdown-menu:after{
+.styleTip{border-top: 1px solid #521740;  border-radius: 0;}
+.aa-dropdown-menu:after, .styleTip:after{
     position: absolute;
     top: -7px;
     left: calc(50% - 232px);
@@ -159,9 +172,8 @@ input:-webkit-autofill {
     border-bottom: 8px solid #fff;
     border-left: 8px solid transparent;
     content: '';
-
 }
-.aa-dropdown-menu:before{
+.aa-dropdown-menu:before, .styleTip:before{
     position: absolute;
     top: -9px;
     left: calc(50% - 233px);
@@ -840,6 +852,7 @@ ol.itemList.vertical.jbMode .item .original-price,  ol.itemList.jbMode .item .di
 /***FLOATING ACTION BUTTON*****/
 .popout {
       position: fixed;
+      z-index:10;
       bottom: 3rem;
       right: 3rem;
   }
@@ -860,12 +873,15 @@ ol.itemList.vertical.jbMode .item .original-price,  ol.itemList.jbMode .item .di
     background: transparent;
     color: #eed3d3;
     border-radius: 50%;
+    -webkit-box-shadow: 2px 3px 3px 0px rgba(41, 41, 41, .3);
+    -moz-box-shadow: 2px 3px 3px 0px rgba(41, 41, 41, .3);
+    box-shadow: 2px 3px 3px 0px rgba(41, 41, 41, .3);
     transition:0.2s opacity ease-in-out;
     -webkit-transition:0.2s opacity ease-in-out;
 }
 .popout .fab.active {
     visibility: hidden;
-    opacity: 0;
+    opacity:0;
 }
 .popout .fab:after {
     display: block;
@@ -878,12 +894,12 @@ ol.itemList.vertical.jbMode .item .original-price,  ol.itemList.jbMode .item .di
     height: 60px;
     background: #000;
     z-index: -2;
-    box-shadow: 0 0 5px rgba(0,0,0,0.15);
     -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
     -moz-transition: -moz-transform 0.2s, opacity 0.2s;
-    transition: transform 0.2s, opacity 0.2s;
+    transition: transform 0.1s, opacity 0.2s;
 }
 .popout .fab:active:after {
+    background: white;
     -webkit-transform: scale(10);
     -moz-transform: scale(10);
     -ms-transform: scale(10);
@@ -894,15 +910,15 @@ ol.itemList.vertical.jbMode .item .original-price,  ol.itemList.jbMode .item .di
     margin:0;
     -webkit-backdrop-filter: blur(5px);
     position: fixed;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1200;
-    width: 100%;
+    bottom: 0rem;
+    top: 0px;
+    left: 0rem;
+    right: 0rem;
+    z-index: 1000;
     height: 100%;
+    width: 100%;
     text-align: left;
-    background:rgba(255,255,255,0.96);
+    background:rgba(255,255,255,0.95);
     visibility: hidden;
     transform: scale(0);
     transform-origin: 100% 100%;
@@ -910,7 +926,6 @@ ol.itemList.vertical.jbMode .item .original-price,  ol.itemList.jbMode .item .di
     opacity: 0;
 }
 .popout .panel.active {
-    height: auto;
     opacity: 1;
     visibility: visible;
     transform: scale(1);
@@ -961,7 +976,7 @@ ol.itemList.vertical.jbMode .item .original-price,  ol.itemList.jbMode .item .di
     .irs-from, .irs-to, .irs-single{
         font-size: 12px !important;
     }
-    .navbar-nav > li > a {
+    #headerMain .navbar-nav > li > a {
         padding: 12px 0px;
     }
     .colorList{margin-bottom: 2vw; padding-bottom:30px;}
@@ -1054,13 +1069,13 @@ ol.itemList.vertical.jbMode .item .original-price,  ol.itemList.jbMode .item .di
         max-width: 80vw;
     }
     .selectedItemZoomPicture .next-item i, .selectedItemZoomPicture .prev-item i {
-        font-size: 7vw;
+        font-size: 10vw;
     }
     .selectedItemImageColoumn ol li img{
-        max-width: 10vw;
+        max-width: 15vw;
     }
-    .selectedItemZoomPicture .next-item{right: 2%;  }
-    .selectedItemZoomPicture .prev-item{left: 2%;  }
+    .selectedItemZoomPicture .next-item{right: 1%;  padding:10px;z-index: 40;}
+    .selectedItemZoomPicture .prev-item{left: 1%;  padding:10px;z-index: 40;}
 
     ol.itemList.horizontal.jbMode .item {
         margin: 0 1.5vw 0 0;

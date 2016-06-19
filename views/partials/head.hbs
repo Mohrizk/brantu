@@ -173,22 +173,46 @@
             }
         ]
         var HEADERTEXT = {
-            hierarchicalFacets: { header: ''},
+            hierarchicalFacets: { header: "xx"},
             disjunctionFacets: {
-                color:{header: 'Välj  färgen', filter:'färg'},
-                brand:{header: 'Välj  märken', filter:'märken'},
-                shop:{header:'Välj  butiken', filter:'butik'},
-                size:{header:'Välj  Storlekar', filter:'Storlek'},
-                discount:{header:'Rea%', filter:'Rea'}
+                color:{header: "Välj  färgen", filter:"färg"},
+                brand:{header: "Välj  märken", filter:"märken"},
+                shop:{header:"Välj  butiken", filter:"butik"},
+                size:{header:"Välj  Storlekar", filter:"Storlek"},
+                discount:{header:"Rea%", filter:"Rea"}
             },
             facets:{
-                sale:{header: 'Bara Rea', filter:'Bara Rea'},
-                price:{header: 'Pris'   , filter:'pris'},
+                sale: {header: "Bara Rea", filter:"Bara Rea"},
+                price:{header: "Pris"   , filter:"pris"}
             },
-            search:{header:'Sökresultat', found: 'vi hittade', product:'styles', brand:'brands'},
+            search:{
+                header:"Sökresultat",
+                found: "vi hittade",
+                product:"styles",
+                brand:"brands"
+            },
             autoComplete:{
-                productPreview:{brand: 'Märken', shop:'Butik'},
-                productList:{ findBetterPriceButton:'find better prices'}
+                productPreview:{brand: "Märken", shop:"Butik"},
+                productList:{ findBetterPriceButton:"find better prices"}
+            },
+            newsletter:{
+                responseSuccess:{
+                    success:{
+                        body:"Thank you for submitting you email",
+                        addAnother:"Add another email"
+                    }
+                },
+                responseFail:{
+                    fail:{
+                        body:"Sorry we couldnt add",
+                        addAnother:"Add another email"
+                    }
+                },
+                addForm:{
+                    form:{
+                        body:"Add a new email"
+                    }
+                }
             }
         }
 

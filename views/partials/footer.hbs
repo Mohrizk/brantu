@@ -1,20 +1,16 @@
 <section class="p-b-55 p-t-1v xs-p-b-20 content relative b-t" style="background: linear-gradient( to top,rgba(117,127,154,0.7) , #FAEBD7, #fff); z-index:100;" id="footer">
-
-
-        <div class="top-left bottom-right" style="top:10%; ">
+    <div class="row p-b-1v relative" id="informationFooterSection" >
+        <!--<div class="top-left bottom-right" style="top:10%; ">
             <div class="row">
-            <div class=" col-sm-4 text-center">
+                <div class=" col-sm-4 text-center">
+                </div>
+                <div class=" col-sm-4 text-center">
+                    <img src="/images/heart.svg" class="full-width" style="opacity: 0.5;"/>
+                </div>
+                <div class=" col-sm-4 text-center">
+                </div>
             </div>
-            <div class=" col-sm-4 text-center">
-                <img src="/images/heart.svg" class="full-width" style="opacity: 0.5;"/>
-            </div>
-            <div class=" col-sm-4 text-center">
-            </div>
-            </div>
-        </div>
-
-        <div class="row p-b-1v">
-            <div class="col-xs-1"></div>
+        </div>-->
             <div class="col-xs text-center padding-5">
                 <h2 class=" text-spaced  all-caps" style="padding-bottom: 1%;"> bringing brands to you</h2>
                 <p class=" p-t-1v p-b-1v p-l-1v p-r-1v b-b b-t" >
@@ -28,9 +24,19 @@
                     Vi satsar på det största utbudet som passar den mode<font class="bold">medvetna.</font>
                 </p>
             </div>
-            <div class="col-xs-1"></div>
+    </div>
+    <div class="row b-b">
+        <div class="col-xs text-center">
+            <h4 class="bold">Sign Up for newletter</h4>
+            <div id="newsletterSignUp">
+                <p>Stay updated with price comparison</p>
+                <form id="newsletterSignupForm" action="/newsletter-signup">
+                    <input name="email" type="email" id="newsletterSignupEmail"/>
+                </form>
+            </div>
         </div>
-        <div class="container no-padding full-width ">
+    </div>
+    <div class="no-padding full-width" id="siteMapFooterSection" >
         <div class="block auto-margin padding-2v p-xs-b-50">
             <div class="row ">
                 <div class="text-center col-sm col-xs-6">
@@ -111,28 +117,20 @@
 
         </div>
         </div>
-
-
-   <div class="container-fluid container-fixed-lg footer " style="background: rgba(51,21,21,0.44)">
-
-       <div class="copyright sm-text-center text-white">
-           <p class="small no-margin pull-left sm-pull-reset">
-               <span class="hint-text">Copyright © 2016 </span>
-               <span class="font-montserrat">BRANTU</span>.
-               <span class="hint-text">All rights reserved. </span>
-               <span class="sm-block"><a href="#" class="m-l-10 m-r-10">Terms of use</a> | <a href="#" class="m-l-10">Privacy Policy</a></span>
-           </p>
-           <p class="small no-margin pull-right sm-pull-reset">
-               <a href="#">Hand-crafted</a> <span class="hint-text">&amp; Made with Love ®</span>
-           </p>
-           <div class="clearfix"></div>
-       </div>
    </div>
+    <div class="container-fluid container-fixed-lg footer" id="footerFooterSection" style="background: rgba(51,21,21,0.44)">
 
-
-
-   </div>
-
-
-
+        <div class="copyright sm-text-center text-white">
+            <p class="small no-margin pull-left sm-pull-reset">
+                <span class="hint-text">Copyright © 2016 </span>
+                <span class="font-montserrat">BRANTU</span>.
+                <span class="hint-text">All rights reserved. </span>
+                <span class="sm-block"><a href="#" class="m-l-10 m-r-10">Terms of use</a> | <a href="#" class="m-l-10">Privacy Policy</a></span>
+            </p>
+            <p class="small no-margin pull-right sm-pull-reset">
+                <a href="#">Hand-crafted</a> <span class="hint-text">&amp; Made with Love ®</span>
+            </p>
+            <div class="clearfix"></div>
+        </div>
+    </div>
 </section>
