@@ -6,7 +6,7 @@ var passport    = require('passport');
 /********** Middleware******/
 var categories = require('./middleware/mw-categories');
 var brands = require('./middleware/mw-brands');
-var userBrands = require('./middleware/mw-userBrands');
+var products = require('./middleware/mw-products');
 var newsletter = require('./middleware/mw-newsletter');
 var session = require('./middleware/mw-session');
 var email = require('./middleware/mw-email');
@@ -112,7 +112,7 @@ var routes = [
     ['/settings/brands', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
-        userBrands.getUserBrands,
+        brands.getUserBrands,
         function(req, res, next) {
         if (req.user) {
             res.locals.userBrands = req.userBrands;
@@ -120,14 +120,13 @@ var routes = [
                     settingsPartial: function() {
                         return "settings-brands";
                     }
-                }
-            );
-        }
+                });
+        } else res.redirect('/login')
     } ]
     ],
 
     //ADD USER BRANDS
-    ['/settings/addBrands','post',[userBrands.addUserBrands, function(req, res, next) {
+    ['/settings/addBrands','post',[brands.addUserBrands, function(req, res, next) {
         res.contentType('application/json');
         var data = JSON.stringify('/settings/brands')
         res.header('Content-Length', data.length);
@@ -135,14 +134,14 @@ var routes = [
       }]
     ],
     //REMOVE USER BRANDS
-    ['/settings/removeBrands','post',[userBrands.removeUserBrands, function(req, res, next) {
+    ['/settings/removeBrands','post',[brands.removeUserBrands, function(req, res, next) {
         res.contentType('application/json');
         var data = JSON.stringify('/settings/brands')
         res.header('Content-Length', data.length);
         res.end(data);
     }]
     ],
-    //SETTINGS: SIZES
+    //SETTINGS: SIZES   FUTURE
     [ '/settings/sizes', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
@@ -156,9 +155,10 @@ var routes = [
                 }
             );
         }
+            else res.redirect('/login')
     } ]
     ],
-    //SETTINGS:NOTIFICATION
+    //SETTINGS:NOTIFICATION   FUTURE
     [ '/settings/notifications', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
@@ -169,14 +169,11 @@ var routes = [
                     settingsPartial: function() {
                         return "settings-notifications";
                     }
-                }
-            );
-        } else {
-            // not logged in
-        }
+                });
+        } else res.redirect('/login')
     } ]
     ],
-
+    //SETTINGS:ACCOUNT
     [ '/settings/account', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
@@ -186,10 +183,9 @@ var routes = [
                     settingsPartial: function() {
                         return "settings-account";
                     }
-                }
-            );
-            // logged in
+                });
         }
+        else res.redirect('/login')
 
     } ]
     ],
@@ -200,6 +196,15 @@ var routes = [
             else
                 res.send(emailSaved);
         })
+    } ]
+    ],
+    /*********Favourite Products******************************************/
+    [ '/favourite-products', 'get', [
+        products.getFavouriteProducts,
+        categories.getCategoryTree,
+        categories.getDepartment,
+        function(req, res, next) {
+        res.render('favourite-products');
     } ]
     ],
     /*********MAIN PAGE******************************************/
@@ -219,7 +224,6 @@ var routes = [
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
-        console.log(req.i18n.getLocale());
         res.locals.title = res.locals.selectedDepartment.name+ "/ Get Inspired";
         res.render('women');
     } ]
@@ -230,6 +234,7 @@ var routes = [
     ],
 
     [ '/man/upptack-nya-favoriter', 'get', [
+        session.addFavouriteDepartment,
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
@@ -267,13 +272,29 @@ var routes = [
     } ]
     ],
 
-/*********ABOUT - CHARITY/SHOP *************************************/
+/*********INFORMATION & CONTACT PAGES *************************************/
+    [ '/contact-us', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        function(req, res, next) {
+            res.locals.title = "Join our tribe";
+            res.render('cashback-to-society');
+        }]
+    ],
     [ '/join-charity', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
       res.locals.title = "Join our tribe";
       res.render('join-charity');
+        }]
+    ],
+    [ '/about-us', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        function(req, res, next) {
+            res.locals.title = "Join our tribe";
+            res.render('join-charity');
         }]
     ],
     [ '/join-shop', 'get', [
@@ -316,12 +337,19 @@ var routes = [
         ]
     ],
 /********* Saving Session ********/
-    [ '/add-favourite-product-session', 'post', [
+    [ '/favourite-product/add', 'post', [
         session.addFavouriteProduct,
         function( req, res, next) {
          res.send(req.session.favProducts.length+'');
         }
      ]
+    ],
+    [ '/favourite-product/remove', 'post', [
+        session.removeFavouriteProduct,
+        function( req, res, next) {
+            res.send(req.session.favProducts.length+'');
+        }
+    ]
     ],
     [ '/add-viewed-product-session', 'post', [
         session.addViewedProduct,
@@ -337,8 +365,16 @@ var routes = [
         })
     }
     ]
-    ]
-
+    ],
+    /*********api********/
+    [ '/api/getProductByProductID/*', 'get', [
+        products.getProductByProductID,
+        products.checkProductIsFavoured,
+        function( req, res, next) {
+            //console.log(req.product)
+            res.send(req.product);
+    }]
+        ]
 ];
 
 routes.forEach(function(arr){

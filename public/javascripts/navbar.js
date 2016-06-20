@@ -89,17 +89,23 @@ $(document).ready(function() {
 				headerSegment.slideDown('fast');
 				logo.removeClass('scaleDown')
 			}
+			if(scrollEvent){
 
-			if(previousScroll<current){
-				navSegment.slideUp('fast');
+				if( current - previousScroll  >30){
+					previousScroll= current;
+					navSegment.slideUp('fast');
+				}
+				else if (previousScroll - current > 30 && scrollEvent)
+				{
+					previousScroll= current;
+					navSegment.slideDown('fast');
+
+				}
 			}
-			else if (previousScroll>current)
-			{
-				navSegment.slideDown('fast');
+			else if(!scrollEvent ){
+				if(current < $('.itemList').offset().top) scrollEvent = true;
+				if(navSegment.is(':visible'))navSegment.slideUp('fast');
 			}
-
-			previousScroll= current;
-
 		}
 	}
 	$(window).on( 'scroll' ,navBarScrollActions);

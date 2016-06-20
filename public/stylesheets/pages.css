@@ -220,9 +220,9 @@ body.dashboard .page-container {
   color: #ffffff;
   position: absolute;
   text-align: center;
-  top: 2px;
+  top: 4px;
+  right:-20px;
   float: right;
-  right: 10px;
 }
 
 .search-mobile input[type="text"]{
@@ -235,7 +235,7 @@ body.dashboard .page-container {
   font-size: 14px !important;
     border: 1px solid #ddd;
   font-weight: normal;
-  background: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.5);
   -webkit-transition:all .54s cubic-bezier(.5,0,.1,1);
   -moz-transition:all .54s cubic-bezier(.5,0,.1,1);
   -o-transition:all .54s cubic-bezier(.5,0,.1,1);
@@ -616,7 +616,7 @@ top:14%; left:7px;
   padding-left: 32px;
   min-height: 40px;
   line-height: 40px;
-  font-size: 20px;
+  font-size: 16px;
   clear: both;
 }
 .page-sidebar .sidebar-menu .menu-items > li > a.open {
@@ -651,7 +651,7 @@ top:14%; left:7px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  width: 65%;
+  width: 79%;
 }
 .page-sidebar .sidebar-menu .menu-items > li > a > .details {
   font-size: 12px;
@@ -794,7 +794,7 @@ top:14%; left:7px;
   background: #6f3662;
   height: 40px;
   width: 40px;
-    border-radius: 50%;
+  border-radius: 50%;
   line-height: 40px;
   text-align: center;
   vertical-align: middle;
@@ -802,8 +802,8 @@ top:14%; left:7px;
   left: 0;
   float: right;
   margin-right: 14px;
-  color: #788195;
-  font-size: 24px;
+  color: #ffffff;
+  font-size: 18px;
   -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.05, 0.74, 0.27, 0.99);
   transition: transform 0.4s cubic-bezier(0.05, 0.74, 0.27, 0.99);
   -webkit-backface-visibility: hidden;
@@ -3585,20 +3585,19 @@ Rounded buttons
   float: left;
   list-style: none;
   text-shadow: none;
-  	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 
-    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 
-    border-color: #E5E5E5 #DBDBDB #D2D2D2;
-    border-style: solid;
-    border-width: 1px;
-
-  border-radius: 3px;
+  border-color: #E5E5E5 #DBDBDB #D2D2D2;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0px;
   font-size: 14px;
   font-family:"Sharp Sans";
   text-transform: capatilize;
   margin: 0;
-  background: #D7DDE8;
+  background: rgba(0,0,0,0.87);
 
   min-width: 200px;
   z-index: 790 !important;
@@ -10475,7 +10474,6 @@ Main components
 ------------------------------------
 */
 .profile-dropdown {
-  background: #fff;
   padding: 0;
 }
 .profile-dropdown:before {
@@ -10495,7 +10493,7 @@ Main components
   right: 16px;
   display: inline-block;
   border-right: 6px solid transparent;
-  border-bottom: 6px solid #ffffff;
+  border-bottom: 6px solid #000;
   border-left: 6px solid transparent;
   content: '';
 }

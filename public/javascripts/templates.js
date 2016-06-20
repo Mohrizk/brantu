@@ -110,15 +110,11 @@ var productTemplate = Handlebars.compile(
     '{{/each}}' +
     '</ol>' +
     '<div class="p-t-10 p-b-10 ">'+
-    '<a class="dark bold"><div class="btn  btn-info btn-rounded m-r-5">Go to store</div></a>'+
-    '<a class="dark bold" index="{{@index }}" action="/add-viewed-product-session" productId="{{{this.productId}}}"><div class="btn  btn-info btn-rounded  m-l-5" >Find better prices</div></a>' +
+    '<a class="dark bold"><div class="btn  btn-info btn-rounded m-r-5"><small>Go to store</small></div></a>'+
+    '<a class="dark bold" index="{{@index }}" action="/add-viewed-product-session" productId="{{{this.productId}}}"><div class="btn  btn-info btn-rounded  m-l-5 no-border" ><small>Find better prices</small></div></a>' +
     '</div>'+
     '</div>' +
     '<ol class="small-options no-style">' +
-    '<li class="like cursor">' +
-    '<a class="addFavouriteProduct" productId="{{{this.productId}}}" action="/add-favourite-product-session">' +
-    '<i class="fa fa-anchor"></i>' +
-    '</a></li>' +
     '</ol>'+
     '</div>' +
     '</div>'+
@@ -161,7 +157,7 @@ var jawBoneTemplate = Handlebars.compile(
     '</ol>'+
     '</div>'+
     '</div>'+
-    '<div class="col-md col-sm-12 col-xs-12 p-t-10">'+
+    '<div class="col-md-5 col-sm-12 col-xs-12 p-t-10">'+
     '<div class="item-info b-b more-content">' +
     '<div class=" p-t-20 p-b-5">' +
     '<div class="row top-xs">' +
@@ -217,6 +213,12 @@ var jawBoneTemplate = Handlebars.compile(
     '</div>'+
     '<ol class="selectedItemSave">'+
     '<li ><div class="delete"><i class=" pg-close_line"> </i></div></li>'+
+    '<li class="like cursor">' +
+    '{{#if isFavored}}<a class="removeFavouriteProduct" productId="{{{this.productId}}}" action="/favourite-product/remove">' +
+    '<i class="fa fa-heart text-pink-darker"></i><a></li>' +
+    '{{else}}<a class="addFavouriteProduct" productId="{{{this.productId}}}" action="/favourite-product/add">' +
+    '<i class="fa fa-heart-o"></i><a></li>' +
+    '{{/if}}' +
     '</ol>'+
     '</div>'
 );
@@ -408,7 +410,7 @@ var ACTemplateProduct = Handlebars.compile(
     '<div data-id="{{productId}}" class="productsAC m-b-5 text-left">'+
     '<div><img src="{{{mainPicture.smallUrl}}}" width="40" height="auto"/></div>'+
     '<div class="b-b b-grey relative" style="font-size:12px;"> ' +
-    '<a class="dark" target="_blank" href="{{{productUrl}}}"><div>' +
+    '<a class="dark findBetterPrices" data-id="{{productId}}"><div>' +
     '<div class=" bold">{{{ brand.name}}}</div>' +
     '<div class="medium">{{{ _highlightResult.name.value }}}</div>' +
     '<div class="medium inline">{{{ price.formatted}}}</div>' +
@@ -841,8 +843,8 @@ productHelper = {
     },
     openDDViewProductInfo: function (selector, mainContainer, productList, jawboneLocation, jawboneContainer, content, paginate, itemScrollindex) {
         jawboneLocation.addClass("open");
-        productList.addClass("jbMode");
-        productList.addClass('horizontal').removeClass('vertical');
+        productList.addClass("jbMode").addClass('horizontal').removeClass('vertical');
+        $('.itemListFav').addClass("jbMode").addClass('horizontal').removeClass('vertical');
         mainContainer.addClass('noFilter');
         paginate.addClass('hide');
         jawboneContainer.html(jawBoneTemplate(content));
@@ -858,8 +860,8 @@ productHelper = {
     },
     closeDDViewProductInfo: function (mainContainer, productList, jawboneContent, paginate,itemScrollindex) {
         paginate.removeClass('hide');
-        productList.removeClass("jbMode");
-        productList.removeClass('horizontal').addClass('vertical').css({'opacity':0}).animate({'opacity':1});
+        productList.removeClass("jbMode").removeClass('horizontal').addClass('vertical').css({'opacity':0}).animate({'opacity':1});
+        $('.itemListFav').removeClass("jbMode").removeClass('horizontal').addClass('vertical').css({'opacity':0}).animate({'opacity':1});
         mainContainer.removeClass('noFilter');
         jawboneContent.removeClass("open");
         productList.children('li').each(function () {

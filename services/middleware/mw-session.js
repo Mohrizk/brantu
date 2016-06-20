@@ -16,9 +16,18 @@ module.exports ={
             req.session.favProducts = [req.body.productId]
         next();
     },
+    removeFavouriteProduct: function(req, res, next){
+        console.log(req.body)
+        if(req.session.favProducts != null){
+            req.session.favProducts = req.session.favProducts.filter(function(productId){
+                    return productId !== req.body.productId;
+            })
+        }
+        next();
+    },
     addViewedProduct: function(req, res, next){
         console.log(req.body)
-        if(req.session.favProducts != null)
+        if(req.session.viewedProducts != null )
             req.session.viewedProducts.push(req.body.productId)
         else
             req.session.viewedProducts = [req.body.productId]

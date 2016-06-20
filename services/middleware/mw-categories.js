@@ -113,8 +113,26 @@ module.exports = {
             else{
                 if (category != null) {
                     res.locals.selectedDepartment = category;
+                    next();
                 }
-                next();
+                else {
+                    var favKey;
+                    if(typeof req.session.favDepartment !== 'undefined'){
+                        var splitFav = req.session.favDepartment.split('/');
+                        favKey = splitFav[1];
+                    }
+                    else
+                       favKey = 'kvinna'
+
+                    Categories.findOne({'key': favKey}, function(err, categoryFav) {
+                        if (err) return callback(err);
+                        if (categoryFav != null)
+                            res.locals.selectedDepartment = categoryFav;
+                            //breadcrumb.push(category);
+                        next();
+                    })
+                }
+
             }
 
         });
@@ -124,7 +142,6 @@ module.exports = {
         var splitUrl = req.url.split('/');
         var key = splitUrl [splitUrl.length - 1];
         var count = 0;
-
         var theCategory ={};
         /*var breadcrumb= new Array();
         var condition;*/
@@ -135,12 +152,10 @@ module.exports = {
 
                     if (err) return callback(err);
                     else{
-                        if (category != null) {
+                        if (category != null)
                             theCategory = category;
                             //breadcrumb.push(category);
-                        }
-                        return callback();
-
+                            return callback();
                     }
 
                 });

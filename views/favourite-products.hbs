@@ -1,0 +1,85 @@
+<div class="page-content-wrapper">
+    <div id="mainSection" class="general">
+        <div class="content" >
+            <div class="welcomeFav p-t-25">
+                <h1 class="text-center">Favourite Products</h1>
+            </div>
+            {{#if productsList}}
+            <div class="resultContainer row" id="productEngine">
+
+                <div class="productPane" style="width:100%;">
+                    <div class="productPreview">
+
+                        <ol class="itemListFav vertical">
+
+                            {{#each  productsList}}
+                                    <li  class="item" index="{{@index}}" productId="{{{this.brantuId}}}">
+                                        <div class="itemContainer">
+                                            <div class="itemWrapper">
+                                                <div class="row top-xs">
+                                                    <div class="preview-image auto-margin col-xs" style="margin-top: 0;">
+                                                        <img src="{{{this.mainPicture.largeUrl}}}" action="/add-viewed-product-session" class="v-align-top" pic-src="{{{this.mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}" alt="{{../name}}" index="{{@index}}" nb-pic="{{nbImages}}" pic-order="0" productId="{{productId}}"/>
+
+                                                        </div>
+                                                    </div>
+                                                <div class="item-brand sbold">{{{this.brand.name}}}</div>
+                                                <div class="item-name medium no-overflow-text">{{{this.name}}}</div>
+                                                {{#if sale}}
+                                                    <div class="row">
+                                                        <div class="original-price discounted col-xs text-right">{{{this.originalPrice.formatted}}}</div>
+                                                        <div class="discounted-price col-xs text-left">{{{this.price.formatted}}}</div>
+                                                        </div>
+                                                    <div class="discounted-percentage ">{{{this.discount}}}%</div>
+                                                    {{else}}
+                                                    <div class="original-price text-center">{{{this.originalPrice.formatted}}}</div>
+                                                    {{/if}}
+                                                <div class="main-options hidden-xs">
+                                                    <ol class="no-style no-overflow-text">
+                                                        {{#each  sizes}}
+                                                            {{#if  @last}}<li class="inline text-pink-darker sbold no-overflow-text">{{this}}</li>
+                                                                {{else}}<li class="inline text-pink-darker sbold no-overflow-text">{{this}} <font class="text-master-light">/</font></li>
+                                                                {{/if}}
+                                                            {{/each}}
+                                                        </ol>
+                                                    <div class="p-t-10 p-b-10 ">
+                                                        <a class="dark bold"><div class="btn  btn-info btn-rounded m-r-5">Go to store</div></a>
+                                                        <a class="dark bold" index="{{@index }}" action="/add-viewed-product-session" productId="{{{this.productId}}}"><div class="btn  btn-info btn-rounded  m-l-5" >Find better prices</div></a>
+                                                        </div>
+                                                    </div>
+                                                <ol class="small-options no-style">
+                                                    <li class="delete cursor">
+                                                        <a class="removeFavouriteProduct" productId="{{{this.productId}}}" action="/favourite-product/remove">
+                                                            <i class="pg-close_line fa-2x"></i>
+                                                            </a></li>
+                                                    </ol>
+                                                </div>
+                                            </div>
+                                        </li>
+                {{/each}}
+
+                        </ol>
+
+                    </div>
+
+                    <div class="jawBoneContent" id="jawbone">
+                        <div class="jawBoneOpenContainer">
+                            <div class="jawBoneFadeInPlaceContainer">
+                                <div class="jawBoneContainer">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            {{else}}
+                <h3 class="text-center"> No Favourite Products Found</h3>
+                <div class="text-center"> <img src="/images/icons/Bag.svg" style="width: 35vw"/></div>
+            {{/if}}
+        </div>
+    </div>
+    {{>search}}
+    {{>loading}}
+    {{>footer}}
+</div>
