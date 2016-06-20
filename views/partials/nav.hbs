@@ -245,17 +245,63 @@
                </div>
              </div>
              {{else}}
-             <div class="hidden-xs pull-right">
-               <ul class="nav navbar-nav">
+                 <div class="hidden-xs pull-right">
+                     <div class="dropdown pull-right p-t-15">
+                         <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                             <img src="/images/nav/more.svg" width="22"/>
+                         </button>
+                         <ul class="dropdown-menu profile-dropdown" role="menu">
+                             <li class="bold"><a href="#" class="bold">
+                                 <i class="inline" style="width:15px;">
+                                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             width="15px" height="15px" viewBox="0 0 48.501 48.501" enable-background="new 0 0 48.501 48.501" xml:space="preserve">
+                        <g>
 
-                 <li id="login"><a class="dark" >Logga In </a></li>
-                   <li class="login text-pink-darker hidden-sm" style="padding-top: 14px;line-height: 25px;">eller</li>
-                   <li class="login text-pink-darker visible-sm" style="padding-top: 14px;line-height: 25px;">/</li>
-                 <li id="signup"><a class="dark" >Bli medlem</a></li>
+                                <path fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                                M42.997,2.169H5.886C3.74,2.169,2,3.847,2,5.916v28.949c0,2.07,1.74,3.747,3.886,3.747H8.66l-4.146,8.44l12.018-8.44h26.465
+                                c2.146,0,3.886-1.678,3.886-3.747V5.916C46.883,3.847,45.143,2.169,42.997,2.169z"/>
+                            <g>
+                                <path fill="#010101" stroke-width="4" d="M22.659,24.094l-0.055-0.713c-0.164-1.48,0.329-3.098,1.7-4.742c1.233-1.453,1.919-2.522,1.919-3.756
+                                    c0-1.399-0.877-2.33-2.604-2.358c-0.987,0-2.084,0.329-2.769,0.85l-0.657-1.728c0.904-0.657,2.467-1.096,3.92-1.096
+                                    c3.153,0,4.578,1.946,4.578,4.029c0,1.865-1.041,3.208-2.357,4.77c-1.206,1.425-1.645,2.632-1.563,4.03l0.027,0.713H22.659z
+                                     M22.057,27.932c0-1.015,0.685-1.727,1.645-1.727c0.959,0,1.617,0.712,1.617,1.727c0,0.96-0.631,1.7-1.645,1.7
+                                    C22.714,29.631,22.057,28.891,22.057,27.932z"/>
+                            </g>
+                        </g>
+                        </svg>
+                                 </i>
+                                 Contact us</a >
+                             </li>
+                             <li class="bold "><a href="#" class="bold">
+                                 <i class="inline " style="width:15px;">
+                                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 width="15px" height="15px" viewBox="0 0 48.501 48.501" enable-background="new 0 0 48.501 48.501" xml:space="preserve">
+                            <g>
+                                <path fill="none" stroke="#010101" stroke-width="3" stroke-miterlimit="10" d="M39.44,16.924c0-8.173-6.626-14.799-14.799-14.799
+                                    c-8.173,0-14.799,6.626-14.799,14.799c0,6.261,4.08,8.885,7.403,13.764c0.849,1.247,1.984,6.033,1.984,6.033h10.824
+                                    c0,0,1.135-4.787,1.984-6.034C35.361,25.809,39.44,23.185,39.44,16.924z"/>
+                                <line fill="none" stroke="#010101" stroke-width="2" stroke-miterlimit="10" x1="18.62" y1="39.868" x2="30.662" y2="39.868"/>
+                                <line fill="none" stroke="#010101" stroke-width="3" stroke-miterlimit="10" x1="19.036" y1="43.043" x2="30.246" y2="43.043"/>
+                                <path fill="none" stroke="#010101" stroke-width="3" stroke-miterlimit="10" d="M27.975,43.043c0,1.841-1.492,3.333-3.333,3.333
+                                    c-1.841,0-3.333-1.492-3.333-3.333"/>
+                            </g>
+                            </svg>
+                                 </i>
+                                 About</a>
+                             </li>
+                         </ul>
+                     </div>
+                 </div>
 
+                 <div class="hidden-xs pull-right">
+                    <ul class="nav navbar-nav">
 
-               </ul>
-             </div>
+                         <li id="login"><a class="dark" >Logga In </a></li>
+                        <li class="login text-pink-darker hidden-sm" style="padding-top: 14px;line-height: 25px;">eller</li>
+                        <li class="login text-pink-darker visible-sm" style="padding-top: 14px;line-height: 25px;">/</li>
+                        <li id="signup"><a class="dark" >Bli medlem</a></li>
+                    </ul>
+                </div>
              {{/if}}
 
                <div class="visible-lg visible-md pull-right hidden-sm hidden-xs  " style=" height:50px; margin-right:0px; padding-top:6px;" >
@@ -370,11 +416,7 @@
                                         </div>
                                     </div>
                                     <div class=inline" style="width:50%" style="background-image: url('');">
-
                                     </div>
-
-
-
                                 </div>
                             </div>
                         {{/each}}

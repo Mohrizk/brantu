@@ -518,22 +518,32 @@ $(document).ready( function() {
 		});
 	}
 	var itemScrollindex;
-	general.on( 'click','.itemList .item img, .item .moreInfo' , function (event) {
+	function viewProduct(selector){
 		refreshVariables()
-		itemScrollindex = $(this).attr('index');
+		itemScrollindex = selector.attr('index');
 		$('.itemList img').removeClass('selected');
 		$('.fab').hide();
-		$(this).addClass('selected')
+		selector.addClass('selected')
 		productHelper
 			.openDDViewProductInfo(
-			$(this) ,mainContainer, productList, $('#jawbone'), jawboneContainer, productArray[$(this).attr('index')],paginate, itemScrollindex
+				selector ,mainContainer, productList, $('#jawbone'), jawboneContainer, productArray[selector.attr('index')],paginate, itemScrollindex
 			);
 
 		if(!isMobile)$('html, body').scrollTop(jawboneContent.offset().top - $('.header').height())
 		else $('.page-container').scrollTop(260)
 
 		$('#navbarDepartment').hide();
-		addViewedProduct($(this).attr('action'), {productId: $(this).attr('productId')});
+		addViewedProduct(selector.attr('action'), {productId: selector.attr('productId')});
+	}
+	page('/view-product/*', function(ctx, next) {
+		console.log('do we find the path')
+		viewProduct(ctx)
+		next()
+	})
+
+	general.on( 'click','.itemList .item img, .item .moreInfo' , function (e) {
+		viewProduct($(this))
+		e.preventDefault()
 	});
 	general.on( 'click','.jawBone .delete' , function () {
 		refreshVariables()
@@ -761,7 +771,6 @@ $(document).ready( function() {
 		previousScroll= currentScroll;
 	}
 	$(window).scroll(function () {
-		console.log('scolling')
 		if((mainSection.is(':visible') || searchSection.is(':visible')) && $('.itemList').hasClass('vertical') && $('.itemList').is(':visible')){
 			mainFacetPaneScroll();
 		}
@@ -801,7 +810,7 @@ $(document).ready( function() {
 	})
 	$('.fakeMobileSearchButton').focus(openMobileSearch);
 	$('#CloseSearchMobile').on('touchend click', function(e){
-		closeMobileSearch(); e.preventBubble();
+		closeMobileSearch(); e.stopPropagation();
 	})
 	$('.page-container-wrapper').on('click', closeMobileSearch)
 	mobileSearchBar.focus(function(){

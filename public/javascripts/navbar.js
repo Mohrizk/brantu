@@ -26,19 +26,19 @@ $(document).ready(function() {
 	/*
 	 Mobile Menu
 	 */
-	$('#menuBurgerIcon').on('touchend', function(e) {
+	$('#menuBurgerIcon').on('touchend click', function(e) {
 
 		$('.page-sidebar').toggleClass('visible').css({opacity:0}).animate({opacity:1}, 400);
 		$('.fixed-header').toggleClass('sidebar-open');
 		$('.page-sidebar-cover').toggleClass('hidden');
-		e.preventBubble();
+		e.stopPropagation();
 
 	})
-	$('.page-sidebar-cover').on('touchend', function() {
+	$('.page-sidebar-cover').on('touchend click', function(e) {
 		$('.page-sidebar').removeClass('visible');
 		$('.fixed-header').removeClass('sidebar-open');
 		$('.page-sidebar-cover').addClass('hidden');
-		e.preventBubble();
+		e.stopPropagation();
 	})
 
 	$('.menu-items > li a').click( function() {
