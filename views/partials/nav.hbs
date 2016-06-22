@@ -208,9 +208,9 @@
                  </div>
                  <div class="hidden-xs pull-right nav-margin-small">
                     <ul class="nav navbar-nav">
-                         <li data-view="login" class="authenticate"><a class="dark" >Logga In </a></li>
+                         <li data-view="login" class="authenticate no-overflow-text"><a class="dark no-overflow-text" >Logga In </a></li>
                         <li class="login text-pink-darker " style="padding-top: 14px;line-height: 25px;">/</li>
-                        <li data-view="signup" class="authenticate"><a class="dark" >Bli medlem</a></li>
+                        <li data-view="signup" class="authenticate no-overflow-text"><a class="dark no-overflow-text" >Bli medlem</a></li>
                     </ul>
                 </div>
              {{/if}}
@@ -278,7 +278,7 @@
                 {{#each categoryTree}}
                     {{#if (compareStrings this.department.name ../selectedDepartment.name)}}
                         {{#each categories}}
-                            <li class=""><a class="dark  text-center" href="/explore/{{category.key}}" expand-key="{{category.key}}">{{andfixer category.name}}</a></li>
+                            <li class=""><a class="dark  text-center"  expand-key="{{category.key}}">{{andfixer category.name}}</a></li>
                         {{/each}}
                     {{/if}}
                 {{/each}}
@@ -295,7 +295,7 @@
                                 <div class="category-expand">
                                     <div class="inline">
 
-                                        <h5 class="sbold text-white">{{andfixer category.name}}</h5>
+                                        <a href="/explore/{{category.key}}"><h5 class="sbold text-white">{{andfixer category.name}}</h5></a>
                                         <div class="desktopNavColoumns">
                                             <ul>
                                                 {{#each subCategory}}
