@@ -1,13 +1,12 @@
-<div id="AuthenticationPopUp" class="hidden authenticationPopUp" style="position: fixed; left:0; right:0; top:0; bottom:0; z-index:1000; background:linear-gradient(to top left,rgba(251,251,251,0.9) , rgba(201,201,201,0.9)); ">
-    <div class="fa-2x top-right bg-master-lightest" style="border-radius:50%; margin-right:50px; margin-top:50px;" id="close-AuthenticationPopUp"><i class="pg-close_line "></i></div>
-
+<div id="AuthenticationPopUp" class="hidden authenticationPopUp" style=" ">
     <div class="registerContainer " style="margin-top: 50px;">
         <div class="registerCard">
             <h1 class="title text-center">
                 <div class="">
-                    <img src="/images/logo-b-1x.png" alt="logo" data-src="/images/logo-b-1x.png" data-src-retina="/images/logo_2x.png"  style="width:200px;"/>
+                    <img src="/images/brantublacklogo.svg" alt="logo" class="authenticateLogo" />
                 </div>
                 Login
+                <div class="close close-AuthenticationPopUp"></div>
             </h1>
            <!-- <div class="button-container padding-1v">
                 <a  href="/auth/facebook">
@@ -43,10 +42,10 @@
 
             <h1 class="title text-center">
                 <div class="">
-                    <img src="/images/logo_2x.png" alt="logo" data-src="/images/logo_2x.png" data-src-retina="/images/logo_2x.png"  style="width:200px;"/>
+                    <img src="/images/brantuwhitelogo.svg" alt="logo" class="authenticateLogo"/>
                 </div>
                 Sign Up
-                <div class="close"></div>
+                <div class="close close-AuthenticationPopUp"></div>
             </h1>
             <!--<div class="button-container padding-1v" style="margin-bottom: 30px;">
                 <a href="/auth/facebook">
@@ -75,13 +74,14 @@
                     <div class="bar"></div>
                 </div>
 
-                <div class="input-radio">
-                    <div class="col-xs-8 col-xs-offset-4">
-                        <div class="radio radio-default auto-margin block " id="genderSelection">
-                            <input type="radio" class="registration"  value="female" data-for="registration" required="required" name="gender" id="female" />
-                            <label for="female"  class="text-pink bold relative">Kvinna</label>
-                            <input type="radio" class="registration"   value="male" data-for="registration" required="required"  name="gender" id="male" />
-                            <label for="male"  class=" text-pink bold relative">Man</label>
+                <div class="input-radio row">
+                    <div class="col-xs">
+                        <div class="radio radio-pink  block text-center" id="genderSelection">
+
+                            <input type="radio" class="registration"  value="female" data-for="registration" required="required" name="gender" id="femaleRegistrationPopUp" />
+                            <label for="femaleRegistrationPopUp"  class="text-pink bold relative">Kvinna</label>
+                            <input type="radio" class="registration"   value="male" data-for="registration" required="required"  name="gender" id="maleRegistrationPopUp" />
+                            <label for="maleRegistrationPopUp"  class=" text-pink bold relative">Man</label>
                         </div>
                     </div>
                     <div class="col-sm-10 text-center col-sm-offset-1">
@@ -91,10 +91,12 @@
                 <div id="registerError" class="col-sm-12" style="display:none;">
                     <p  class="text-pink text-center" > It seems that this account is already in use</p>
                 </div>
+
                 <div class="button-container">
                     <button type="submit" id="submitRegistration"><span>Välkommen In</span></button>
                 </div>
             </form>
+            <div class="full-width text-center" id="fromSignUpToLogin"><button class=" no-border bold btn btn-rounded btn-default"><u>Logga In</u></button></div>
         </div>
     </div>
 </div>

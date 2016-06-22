@@ -26,20 +26,43 @@ $(document).ready(function() {
 	/*
 	 Mobile Menu
 	 */
-	$('#menuBurgerIcon').on('touchend click', function(e) {
-
-		$('.page-sidebar').toggleClass('visible').css({opacity:0}).animate({opacity:1}, 400);
-		$('.fixed-header').toggleClass('sidebar-open');
-		$('.page-sidebar-cover').toggleClass('hidden');
-		e.stopPropagation();
-
-	})
-	$('.page-sidebar-cover').on('touchend click', function(e) {
+	function closeSidePage(){
 		$('.page-sidebar').removeClass('visible');
 		$('.fixed-header').removeClass('sidebar-open');
 		$('.page-sidebar-cover').addClass('hidden');
-		e.stopPropagation();
+	}
+	$('#menuBurgerIcon').on(eventOnTE, function(e) {
+		e.stopImmediatePropagation();  e.preventDefault();e.cancelBubble = true;
+		$('.page-sidebar').toggleClass('visible').css({opacity:0}).animate({opacity:1}, 400);
+		$('.fixed-header').toggleClass('sidebar-open');
+		$('.page-sidebar-cover').toggleClass('hidden');
+         console.log('opening mobile menu')
+
 	})
+
+	$('.page-sidebar-cover').on(eventOnTE, function(e) {
+		e.stopImmediatePropagation();  e.preventDefault();
+		console.log('closing mobile menu')
+		closeSidePage()
+	})
+
+	$('a[data-page]').on(eventOnTE,function(e){
+		e.preventDefault();e.stopImmediatePropagation();
+		$('a[data-page]').removeClass('active');
+		$(this).addClass('active');
+		var goTo = $(this).attr('data-page');
+		setTimeout(
+			function()
+			{
+				location.href = goTo;
+				$('.loading').hide();
+			}, 100);
+	})
+
+
+
+
+
 
 	$('.menu-items > li a').click( function() {
 		console.log('ges here')
@@ -57,11 +80,7 @@ $(document).ready(function() {
 
 
 	})
-    function closesideBarDD(){
-		$('.sidebar-overlay-slide').toggleClass('show');
-		$('.sidebar-header').find('button').toggleClass('active');
-	}
-	//$('.sidebar-header').click( closesideBarDD)
+
 
 	$('#departmentMenu').on('click','a',function(){
 		var departmentChoose = $(this).attr('data-department');

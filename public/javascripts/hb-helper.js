@@ -23,6 +23,7 @@ var register = function(Handlebars) {
             return;
         },
         compareStrings: function(passedString, secondString) {
+            console.log(passedString, secondString)
             if(passedString!=null &&  secondString!=null){
                 if(passedString.toLowerCase() === secondString.toLowerCase()){
                     return true;
@@ -31,6 +32,7 @@ var register = function(Handlebars) {
             return false;
         },
         stringContains: function(passedString, expression){
+            console.log(passedString, expression)
           if(passedString.indexOf(expression)>-1)
           return true;
             else false;
@@ -71,7 +73,6 @@ var register = function(Handlebars) {
             return false;
         }
     };
-
 
 if (Handlebars && typeof Handlebars.registerHelper === "function") {
         // register helpers

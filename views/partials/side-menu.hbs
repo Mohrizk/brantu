@@ -18,6 +18,7 @@
     <!-- END SIDEBAR MENU TOP TRAY CONTENT-->
     <!-- BEGIN SIDEBAR MENU HEADER-->
     <div class="sidebar-header">
+
         <a  class="inline text-white medium sidebar-header-title cursor {{#if (compareStrings selectedDepartment.name "Kvinna")}}sbold {{else}} hint-text{{/if}}" href="/kvinna" style="font-size: 18px;">Kvinna</a>
         <a class="inline p-r-5 p-l-5" style="font-size: 18px;">/</a>
         <a  class="inline text-white medium sidebar-header-title cursor {{#if (compareStrings selectedDepartment.name "Man")}}sbold {{else}} hint-text{{/if}}" href="/man" style="font-size: 18px;">Man</a>
@@ -26,58 +27,61 @@
                 <i class="fa fa-angle-down  text-white" style="font-size: 16px;"></i>
             </button>
         </div>-->
+        {{#if user}}
+        <div class="pull-right">
+            <button class="profile-dropdown-toggle p-t-5 p-r-10" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{#if user.facebook.name}}
+                    <span class="thumbnail-wrapper circular d39  bold  inline all-caps" style="font-size:18px; border:2px solid rgba(0,0,0,0.7); color:#e5a3ad; padding-top:8px;" id="avatar">
+                        {{trimForAvatar user.facebook.name}}
+                    </span>
+
+                {{else}}
+                <span class="thumbnail-wrapper circular d39  bold   inline all-caps " style="font-size:18px; border:2px solid rgba(111,111,111,0.7); color:#ffb6c1;  line-height:33px;" id="avatar">
+                        {{trimForAvatar user.local.email}}
+                    </span>
+                {{/if}}
+
+            </button>
+        </div>
+        {{/if}}
     </div>
     <!-- END SIDEBAR MENU HEADER-->
     <!-- START SIDEBAR MENU -->
-    <div class="sidebar-menu bg-Image b-r" style="background-position: top; background-image:url('/images/home/women/main4.jpg');"  data-department-toggle="Kvinna">
+    <div class="sidebar-menu bg-Image b-r" style="background-position: top; {{#if (compareStrings selectedDepartment.name 'Kvinna')}}background-image:url('/images/home/women/main4.jpg');{{else}} background-image: url('/images/home/men/main2.jpg'); {{/if}}"  data-department-toggle="{{selectedDepartment.name}}">
         <!-- BEGIN SIDEBAR MENU ITEMS-->
-        <div class="scroll-wrapper glassLight menu-items bgBlurEffectLight" style="position: relative; overflow-x: hidden;">
-            <ul class="menu-items scroll-content" style="margin-bottom: 0px; margin-right: 0px; height: 676px;">
-                 <li class="m-t-30">
-                    <a href="#" class="detailed">
-                        <span class="title text-black" >Inspire</span>
+        <div class="scroll-wrapper  menu-items bgBlurEffectLight" style="position: relative; overflow-x: hidden; background: rgba(0,0,0,0.82);">
+            <ul class="menu-items scroll-content" style="margin-bottom: 0px; margin-right: 0px; height: 100%; padding-bottom: 50px;">
+                 <li class="m-t-30 b-b b-transparent-white">
+                    <a href="/{{selectedDepartment.key}}/upptack-nya-favoriter" >
+                        <span class="title all-caps bold" >Inspire</span>
                         <!--<span class="details">234 New Updates</span>-->
                     </a>
                  <span class="icon-thumbnail">
-                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                     width="30px" height="30px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
-                <g>
-                    <path fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" d="M25.017,24.542
-                        c-2.089-4.653-13.249-5.007-13.249,3.303c0,6.502,10.847,14.81,13.232,14.81c2.385,0,13.232-8.309,13.232-14.81
-                        c0-9.232-14.468-8.579-14.468,1.225"/>
-                </g>
-                </svg>
+                    <i><img src="/images/nav/lookbook.svg" style="width:38px;"/></i>
                  </span>
                 </li>
-                 <li class="m-t-10 open active">
-                    <a href="#" class="detailed">
-                        <span class="title  text-black" >Explore</span>
-                        <span class="arrow"></span>
+                 <li class="m-t-10 b-b b-transparent-white">
+                    <a href="#" >
+                        <span class="title all-caps bold" >Explore</span>
+                        <span class="arrow p-r-10"></span>
                     </a>
                         <span class="icon-thumbnail ">
-                           <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                             width="30px" height="30px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
-                            <g>
-                                <path fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" d="M21.059,26.172
-                                    c0-1.761,1.428-3.189,3.189-3.189c1.761,0,3.189,1.428,3.189,3.189c0,1.761-3.178,2.474-3.178,4.267l-16,8.556
-                                    c0,0.607,0.454,1.1,1.013,1.1h31.039c0.559,0,1.013-0.492,1.013-1.1L25.325,30.45"/>
-                            </g>
-                            </svg>
+                           <i><img src="/images/nav/explore.svg" style="width:38px;"/></i>
                         </span>
-                    {{#if ../selectedDepartmentName}}{{/if}}
-
-
                     {{#each categoryTree}}
-                        {{#if (compareStrings this.department.name "Kvinna")}}
+                        {{#if (compareStrings this.department.name ../selectedDepartment.name)}}
                             <ul class="sub-menu">
                                 {{#each categories}}
                                     <li>
-                                        <a class="text-black"><span class="title">{{andfixer category.name}}</span>
+                                        <a class=" bold"><span class="title">{{andfixer category.name}}</span>
                                             <span class="arrow"></span></a>
                                         <ul class="sub-menu">
+                                                <li>
+                                                    <a class=" bold" href="/explore/{{category.key}}">ALLA</a>
+                                                </li>
                                             {{#each subCategory}}
                                                 <li>
-                                                    <a class="text-black" href="/explore/{{this.key}}">{{andfixer this.name}}</a>
+                                                    <a class=" bold" href="/explore/{{this.key}}">{{andfixer this.name}}</a>
                                                 </li>
                                             {{/each }}
                                         </ul>
@@ -87,149 +91,46 @@
                         {{/if}}
                     {{/each}}
                 </li>
-                <li class="m-t-10">
+                <li class="m-t-10 relative no-overflow  b-b b-transparent-white">
                 <a href="#">
-                    <span class="title  text-black" >Compare Prices</span>
+                    <span class="title all-caps bold" >Compare Prices</span>
                 </a>
                     <span class="icon-thumbnail ">
-                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                         width="30px" height="30px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
-                    <g display="none">
-                        <path display="inline" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" d="
-                            M35.328,35.9c0,5.618-4.56,7.86-10.185,7.86s-10.185-2.242-10.185-7.86c0-1.482,0.318-2.428,0.889-3.699
-                            c0.376-0.836,1.278,2.981,1.889,2.312c1.505-1.647-1.666-5.406,4.167-8.259c-1.042,2.913-0.207,4.069,0.926,4.069
-                            c2.46,0,2.498-3.672,2.228-8.323c7.523,5.808,3.37,8.045,4.224,8.756c4.196,0.462,1.393-8.724,5.122,0.058
-                            C35.078,32.406,35.328,34.046,35.328,35.9z"/>
-                    </g>
-                    <g>
-                        <g>
-                            <path fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" d="M28.96,44.879
-                                c-0.277,0.277-0.726,0.277-1.003,0l-9.075-9.075c-1.004-1.004-2.76-7.778-0.753-9.785c2.007-2.007,8.782-0.251,9.785,0.753
-                                l9.075,9.075c0.277,0.277,0.277,0.727,0,1.003L28.96,44.879z"/>
-                            <circle fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" cx="20.402" cy="28.292" r="1.419"/>
-                            <path fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" d="M16.862,26.745
-                                c-0.158-0.148-0.323-0.309-0.496-0.482c-2.46-2.46-0.509-2.516-0.509-2.516s0.027-1.981,2.516,0.509
-                                c2.356,2.356,2.311,3.209,1.756,3.763"/>
-                        </g>
-                        <path fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" d="M27.18,37.718
-                            c0.63,0.63,1.658,0.623,2.296-0.015c0.638-0.638,0.644-1.666,0.015-2.296c-0.926-0.926-2.524-0.213-2.524-0.213
-                            s-1.612,0.699-2.524-0.213c-0.629-0.63-0.623-1.658,0.015-2.296c0.638-0.638,1.666-0.644,2.295-0.015"/>
-
-                            <line fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" x1="23.24" y1="31.426" x2="30.752" y2="38.937"/>
-                    </g>
-                    </svg>
-                </span>
-            </li>
-                 <li class="m-t-10">
-                    <a href="/favourite-products">
-                        <span class="title text-black" style="">Favourite</span>
-                    </a>
-                     <span class="icon-thumbnail sideBarFavouriteProducts">{{#if nbFavProducts}} {{nbFavProducts}} {{else}}0{{/if}}</span>
-
-                 </li>
-        </ul><div class="scroll-element scroll-x"><div class="scroll-element_outer">    <div class="scroll-element_size"></div>    <div class="scroll-element_track"></div>    <div class="scroll-bar" style="width: 96px;">
-
-        </div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer">
-            <div class="scroll-element_size"></div>
-            <div class="scroll-element_track"></div>
-            <div class="scroll-bar" style="height: 96px; top: 0px;">
-            </div></div></div></div>
-        <div class="clearfix"></div>
-    </div>
-    <div class="sidebar-menu bg-Image b-r" style="background-image: url('/images/home/men/main2.jpg');" data-department-toggle="Man">
-        <!-- BEGIN SIDEBAR MENU ITEMS-->
-        <div class="scroll-wrapper menu-items glassLight bgBlurEffectLight" style="position: relative; overflow-x: hidden;"><ul class="menu-items scroll-content" style="margin-bottom: 0px; margin-right: 0px; height: 676px;">
-            <li class="m-t-30">
-                <a href="#" class="detailed">
-                    <span class="title text-black" style="line-height: 20px;">Get Inspired</span>
-                    <!--<span class="details">234 New Updates</span>-->
-                </a>
-                 <span class="icon-thumbnail">
-                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                     width="30px" height="30px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
-                <g>
-                    <path fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" d="M25.017,24.542
-                        c-2.089-4.653-13.249-5.007-13.249,3.303c0,6.502,10.847,14.81,13.232,14.81c2.385,0,13.232-8.309,13.232-14.81
-                        c0-9.232-14.468-8.579-14.468,1.225"/>
-                </g>
-                </svg>
-                 </span>
-            </li>
-            <li class="m-t-10 open active">
-            <a href="#" class="detailed">
-                <span class="title text-black " style="line-height: 20px;">Wardrobe Finder</span>
-                <span class="arrow"></span>
-            </a>
-                <span class="icon-thumbnail ">
-                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                     width="30px" height="30px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
-                    <g>
-                        <path fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" d="M21.059,26.172
-                            c0-1.761,1.428-3.189,3.189-3.189c1.761,0,3.189,1.428,3.189,3.189c0,1.761-3.178,2.474-3.178,4.267l-16,8.556
-                            c0,0.607,0.454,1.1,1.013,1.1h31.039c0.559,0,1.013-0.492,1.013-1.1L25.325,30.45"/>
-                    </g>
-                    </svg>
-                </span>
-            {{#if ../selectedDepartmentName}}{{/if}}
-            {{#each categoryTree}}
-                {{#if (compareStrings this.department.name "Man")}}
-                    <ul class="sub-menu">
-                        {{#each categories}}
-                            <li class="">
-                                <a class="text-black" href="javascript:;"><span class="title">{{andfixer category.name}}</span>
-                                    <span class="arrow"></span></a>
-                                <ul class="sub-menu">
-                                    {{#each subCategory}}
-                                        <li>
-                                            <a class="text-black" href="#">{{andfixer this.name}}</a>
-                                        </li>
-                                    {{/each }}
-                                </ul>
-                            </li>
-                        {{/each }}
-                    </ul>
+                    <i><img src="/images/nav/compare.svg" style="width:38px;"/></i>
+                    </span>
+                <input class="fakeMobileSearchButton bigSquare"/>
+                </li>
+                <li class="m-t-10 b-b b-transparent-white">
+                    <a href="/favourite-products"><span class="title all-caps bold" >Favourite</span></a>
+                    <span class="icon-thumbnail sideBarFavouriteProducts">
+                         <i><img src="/images/nav/favourite.svg" style="width:38px;"/></i>
+                    </span>
+                    <!--<span class="detail">{{#if nbFavProducts}} {{nbFavProducts}} {{else}}0{{/if}}</span>-->
+                </li>
+                {{#if user}}
+                <li class="m-t-10 b-b b-transparent-white">
+                        <a href="/settings">
+                            <span class="title  all-caps bold" >Settings</span>
+                        </a>
+                         <span class="icon-thumbnail">
+                             <i class="fa fa-gear" style="padding-top: 13px;"></i>
+                         </span>
+                </li>
+                <li  class="m-t-50 full-width text-center " data-view="signup">
+                       <a  class="no-padding no-margin" href="/logout"><button class="btn btn-info text-black p-l-60 p-r-60 p-t-15 p-b-15 all-caps bold">logout</button></a>
+                </li>
                 {{/if}}
-            {{/each}}
-            </li>
-            <li class="m-t-10">
-            <a href="#">
-                <span class="title text-black" style="line-height: 20px;">Compare Prices</span>
-            </a>
-                <span class="icon-thumbnail ">
-                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                     width="30px" height="30px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
-                <g display="none">
-                    <path display="inline" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" d="
-                        M35.328,35.9c0,5.618-4.56,7.86-10.185,7.86s-10.185-2.242-10.185-7.86c0-1.482,0.318-2.428,0.889-3.699
-                        c0.376-0.836,1.278,2.981,1.889,2.312c1.505-1.647-1.666-5.406,4.167-8.259c-1.042,2.913-0.207,4.069,0.926,4.069
-                        c2.46,0,2.498-3.672,2.228-8.323c7.523,5.808,3.37,8.045,4.224,8.756c4.196,0.462,1.393-8.724,5.122,0.058
-                        C35.078,32.406,35.328,34.046,35.328,35.9z"/>
-                </g>
-                <g>
-                    <g>
-                        <path fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" d="M28.96,44.879
-                            c-0.277,0.277-0.726,0.277-1.003,0l-9.075-9.075c-1.004-1.004-2.76-7.778-0.753-9.785c2.007-2.007,8.782-0.251,9.785,0.753
-                            l9.075,9.075c0.277,0.277,0.277,0.727,0,1.003L28.96,44.879z"/>
-                        <circle fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" cx="20.402" cy="28.292" r="1.419"/>
-                        <path fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" d="M16.862,26.745
-                            c-0.158-0.148-0.323-0.309-0.496-0.482c-2.46-2.46-0.509-2.516-0.509-2.516s0.027-1.981,2.516,0.509
-                            c2.356,2.356,2.311,3.209,1.756,3.763"/>
-                    </g>
-                    <path fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" d="M27.18,37.718
-                        c0.63,0.63,1.658,0.623,2.296-0.015c0.638-0.638,0.644-1.666,0.015-2.296c-0.926-0.926-2.524-0.213-2.524-0.213
-                        s-1.612,0.699-2.524-0.213c-0.629-0.63-0.623-1.658,0.015-2.296c0.638-0.638,1.666-0.644,2.295-0.015"/>
 
-                        <line fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" x1="23.24" y1="31.426" x2="30.752" y2="38.937"/>
-                </g>
-                </svg>
-            </span>
-        </li>
-             <li class="m-t-10">
-                 <a href="/favourite-products">
-                     <span class="title text-black">Favourite</span>
-                </a>
-                 <span class="icon-thumbnail sideBarFavouriteProducts">{{#if nbFavProducts}} {{nbFavProducts}} {{else}}0{{/if}}</span>
-             </li>
+
+
+                {{#unless user}}
+                <li class="m-t-50 full-width text-center authenticateMobile" data-view="signup">
+                    <button class="btn btn-default  p-l-70 p-r-70 p-t-15 p-b-15 all-caps bold">Bli member</button>
+                </li>
+                <li class="m-t-10 full-width text-center authenticateMobile" data-view="login">
+                    <button class="btn btn-default no-border bold all-caps bold"><u>logga In</u></button>
+                </li>
+                {{/unless}}
         </ul><div class="scroll-element scroll-x"><div class="scroll-element_outer">    <div class="scroll-element_size"></div>    <div class="scroll-element_track"></div>    <div class="scroll-bar" style="width: 96px;">
 
         </div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer">

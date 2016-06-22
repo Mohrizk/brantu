@@ -10,6 +10,7 @@ var products = require('./middleware/mw-products');
 var newsletter = require('./middleware/mw-newsletter');
 var session = require('./middleware/mw-session');
 var email = require('./middleware/mw-email');
+var user = require('./middleware/mw-users');
 
 
 /**************************************************************
@@ -174,20 +175,32 @@ var routes = [
     } ]
     ],
     //SETTINGS:ACCOUNT
-    [ '/settings/account', 'get', [
+    [ '/settings/account/:status', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
+        console.log('The param request is ', req.param('status'));
         if (req.user) {
             res.render('settings', {
                     settingsPartial: function() {
                         return "settings-account";
-                    }
+                    }, accountStatus: req.params.status
                 });
         }
         else res.redirect('/login')
-
     } ]
+    ],
+    [ '/settings/change/name', 'get', [
+        user.changeName,
+        function(req, res, next) {
+            res.redirect('/settings/account')
+        }]
+    ],
+    [ '/settings/change/password', 'get', [
+        user.changePassword,
+        function(req, res, next) {
+            res.redirect('/settings/account/'+res.locals.PassMatch)}
+    ]
     ],
     /*********Newsletter******************************************/
     [ '/newsletter-signup', 'get', [function(req, res, next) {

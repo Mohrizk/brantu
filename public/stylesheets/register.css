@@ -1,5 +1,17 @@
 
+#AuthenticationPopUp{
+    position: fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    z-index:1000;
+    background:linear-gradient(to top left,rgba(238,211,211,0.8) , rgba(201,201,201,0.9));
 
+}
+.authenticateLogo{
+    width:200px;
+}
 /* Container */
 .registerContainer {
     position: relative;
@@ -70,7 +82,7 @@
     position: relative;
     background: #fff;
     border-radius: 5px;
-    padding: 60px 0 40px 0;
+    padding: 60px 0 60px 0;
     box-sizing: border-box;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     transition: .3s ease;
@@ -130,7 +142,7 @@
     line-height: 30px;
     -webkit-transition: 0.2s ease;
     -moz-transition: 0.2s ease;
-    transition: 0.2s ease;
+    transition: 0.1s ease;
 }
 .registerCard .input-container .bar {
     position: absolute;
@@ -146,7 +158,7 @@
     background: #ed2553;
     width: 0;
     height: 2px;
-    transition: .2s ease;
+    transition: .1s ease;
 }
 .registerCard .input-container .bar:before {
     left: 50%;
@@ -165,7 +177,7 @@
     display: inline-block;
     background: 0;
     width: 100%;
-    border-radius: 100px;
+
     border: 2px solid #888;
     padding: 10px 0;
     font-size: 16px;
@@ -173,13 +185,13 @@
     line-height: 1;
     text-transform: uppercase;
     overflow: hidden;
-    transition: .2s cubic-bezier(.5,0,.1,1);
+    transition: .1s cubic-bezier(.5,0,.1,1);
 }
 .registerCard .button-container button span {
     position: relative;
     z-index: 1;
     color: #888;
-    transition: .2s cubic-bezier(.5,0,.1,1);
+    transition: .1s cubic-bezier(.5,0,.1,1);
 }
 .registerCard .button-container button:before {
     content: '';
@@ -193,7 +205,7 @@
     border-radius: 100%;
     margin: -15px 0 0 -15px;
     opacity: 0;
-    transition: .2s cubic-bezier(.5,0,.1,1);
+    transition: .1s cubic-bezier(.5,0,.1,1);
 }
 .registerCard .button-container button:hover, .registerCard .button-container button:active, .registerCard .button-container button:focus {
     border-color: #ed2553;
@@ -222,15 +234,15 @@
 .registerCard .footer a {
     color: inherit;
     text-decoration: none;
-    transition: .2s cubic-bezier(.5,0,.1,1);
+    transition: .1s cubic-bezier(.5,0,.1,1);
 }
 .registerCard .footer a:hover {
     color: #bababa;
 }
 .registerCard.alt {
     position: absolute;
-    top: 20px;
-    right: -40px;
+    top: 500px;
+    right: 150px;
     z-index: 10;
     width: 140px;
     height: 140px;
@@ -238,14 +250,15 @@
     border-radius: 100%;
     box-shadow: none;
     padding: 0;
-    transition: .2s cubic-bezier(.5,0,.1,1);
+    transition: .1s cubic-bezier(.5,0,.1,1);
     /* Toggle */
     /* Title */
     /* Input */
     /* Button */
 }
 .registerCard.alt .toggle {
-    background: linear-gradient(to top, rgb(117, 127, 154), rgb(0, 0, 0));
+    background: #7a829d;
+    color:black;
     width: 140px;
     height: 50px;
     border-radius: 100px;
@@ -257,6 +270,12 @@
     line-height: 50px;
     text-align: center;
 }
+
+.registerContainer.active .registerCard.alt .toggle{
+    background: linear-gradient(to top, rgb(117, 127, 154), rgb(0, 0, 0));
+
+}
+
 .registerCard.alt .toggle:before {
     content: 'New Account';
 }
@@ -275,17 +294,19 @@
     border-color: #eed3d3;
     color: #eed3d3;
 }
-.registerCard.alt .title .close {
+.registerCard.alt .title .close, .registerCard .title .close {
     cursor: pointer;
     position: absolute;
     top: 0;
     right: 20px;
     display: inline;
-    color: #ffffff;
+
     font-size: 58px;
     font-weight: 400;
 }
-.registerCard.alt .title .close:before {
+.registerCard.alt .title .close{color: #ffffff;}
+.registerCard .title .close{color: #333;}
+.registerCard.alt .title .close:before, .registerCard .title .close:before {
     content: '\00d7';
 }
 .registerCard.alt .input-container input {
@@ -334,4 +355,38 @@
 }
 .rerun a:hover {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+
+@media (max-width: 480px){
+    .authenticateLogo{
+        width:140px;
+    }
+   .registerCard{
+       padding: 20px 0 40px 0;
+       overflow-y:scroll;
+   }
+    .registerContainer.active .registerCard.alt{
+        padding: 20px 0 10px 0;
+        overflow-y:scroll;
+    }
+    .registerCard .input-container {
+        position: relative;
+        margin: 0 20px 30px;
+    }
+    .registerCard.alt {
+        top: 390px;
+        right:90px ;
+    }
+    .registerCard.alt .toggle {
+        box-shadow: none;
+        font-weight: bold;
+        text-decoration: underline;
+        text-transform: uppercase;
+        color:#000;
+        background: transparent;
+    }
+
+
+
 }

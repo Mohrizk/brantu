@@ -212,8 +212,8 @@ var jawBoneTemplate = Handlebars.compile(
     '<div class="recommendedProducts">'+
     '</div>'+
     '<ol class="selectedItemSave">'+
-    '<li ><div class="delete"><i class=" pg-close_line"> </i></div></li>'+
-    '<li class="like cursor">' +
+    '<li class="delete p-l-10 p-b-10"><div ><i class=" pg-close_line"> </i></div></li>'+
+    '<li class="like cursor p-l-10 sm-p-t-10">' +
     '{{#if isFavored}}<a class="removeFavouriteProduct" productId="{{{this.productId}}}" action="/favourite-product/remove">' +
     '<i class="fa fa-heart text-pink-darker"></i><a></li>' +
     '{{else}}<a class="addFavouriteProduct" productId="{{{this.productId}}}" action="/favourite-product/add">' +

@@ -4,20 +4,18 @@
     flex-wrap: wrap;
     justify-content: center;
 }
-#brandUser li {
-    flex:0 0 10%;
-}
+
 
 #brandSelection input.search{
     width:100%;
     border-radius: 12px;
     margin-bottom: 1vw;
-    height: 3vw;
+    height: 34px;
     text-align: center;
     background: rgba(211,211,211,0.3);
     border:0;
     font-weight: 700;
-    font-size: 1.5vw;
+    font-size: 16px;
 }
 
 #brandSelection input.search:focus{
@@ -33,6 +31,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    overflow-y:scroll ;
     justify-content: center;
 }
 

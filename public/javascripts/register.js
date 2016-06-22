@@ -1,34 +1,47 @@
 (function($) {
-
     'use strict';
-
 $(document).ready(function() {
-
-	$('#AuthenticationPopUp').on('click','.toggle', function() {
-		$('.registerContainer').stop().addClass('active');
+	var registerContainer = $('.registerContainer');
+	var registerSection = $('#AuthenticationPopUp');
+	//FOR MOBILE
+	function closeSideBar(){
+		$('.page-sidebar').removeClass('visible');
+		$('.fixed-header').removeClass('sidebar-open');
+		$('.page-sidebar-cover').addClass('hidden');
+	}
+	registerSection.on('click','.toggle', function() {
+		registerContainer.stop().addClass('active');
 	});
 
-	$('#AuthenticationPopUp').on('click', '.close', function() {
-		$('.registerContainer').stop().removeClass('active');
+	$('#fromSignUpToLogin').on('click', function() {
+		registerContainer.stop().removeClass('active');
 	});
 
-	$(document).on('click', '#login, #signup', function (event) {
-		var x = $(this)
-		if(x.attr('id')==='login'){
-			console.log(x.attr('id'));
-			$('.registerContainer').stop().removeClass('active');
+	$('.authenticate').on('click', function (event) {
+		if($(this).attr('data-view')==='login')
+			registerContainer.stop().removeClass('active').css({marginTop:800}).animate({marginTop:50}, 200);
 
-		}
-		else if(x.attr('id')==='signup'){
-			console.log(x.attr('id'));
-			$('.registerContainer').stop().addClass('active');
-		}
-		$('#AuthenticationPopUp').removeClass('hidden');
+		else if($(this).attr('data-view')==='signup')
+			registerContainer.stop().addClass('active').css({marginTop:800}).animate({marginTop:50}, 200);
 
+		registerSection.removeClass('hidden').css({opacity:0}).animate({opacity:1});
 	});
 
-	$(document).on('click','#close-AuthenticationPopUp', function(e){
-		$('#AuthenticationPopUp').addClass('hidden');
+	$('.authenticateMobile').on('touchend click', function (e) {
+		e.preventDefault();e.stopPropagation();
+			closeSideBar()
+			if($(this).attr('data-view')==='login')
+				registerContainer.stop().removeClass('active').css({marginTop:800}).animate({marginTop:0}, 200);
+			else if($(this).attr('data-view')==='signup')
+				registerContainer.stop().addClass('active').css({marginTop:800}).animate({marginTop:0}, 200);
+
+		registerSection.removeClass('hidden').css({opacity:0}).animate({opacity:1});
+	});
+	$('.close-AuthenticationPopUp').on('click', function(e){
+		$.when(registerSection.animate({opacity:0}, 100))
+			.done(function(){
+				registerSection.addClass('hidden')
+			});
 	})
 
 
@@ -53,6 +66,11 @@ $(document).ready(function() {
 });
 
 })(window.jQuery);
+
+
+
+
+
 
 
 /***************SUBMIT FORM***************/
