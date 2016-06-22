@@ -193,7 +193,7 @@ var routes = [
     [ '/settings/change/name', 'get', [
         user.changeName,
         function(req, res, next) {
-            res.redirect('/settings/account')
+            res.redirect('/settings/account/name-changed')
         }]
     ],
     [ '/settings/change/password', 'get', [
