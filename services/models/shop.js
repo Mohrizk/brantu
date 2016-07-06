@@ -6,8 +6,15 @@ var Shop = mongoose.Schema({
     logoUrl : String ,
     logoLargeUrl : String,
     commission  : Number,
-    shippingCosts  : String    ,
-    DeliveryTime   : String    ,
+    shipping    : [
+        {
+            country  :    String,
+            standard :    {value:Number,   currency:String, delivery: String},
+            express  :    {value:Number,   currency:String, delivery:String},
+            return   :    {free: Boolean, period:String},
+            freeStandard: {value:Number, currency:String}
+        }
+    ]   ,
     network: String,
     programID: String
 })

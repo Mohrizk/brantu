@@ -1,33 +1,21 @@
 var mongoose = require('mongoose');
-var mongoosePaginate = require('mongoose-paginate');
-
-mongoosePaginate.paginate.options = {
-    lean:  true,
-    limit: 20
-};
-
+var deepPopulate = require('mongoose-deep-populate')(mongoose);
+var Article  = require('./article');
 var Product = mongoose.Schema({
-
-    brantuId       : String    ,
-    productId      : String    ,
-    modelId        : String    ,
+    ean            : String    ,
+    mpn            : String    ,
     name           : String    ,
     description    : String    ,
     productUrl     : String    ,
-    color          : String    ,
-    shop           : {type: mongoose.Schema.Types.ObjectId, ref:'Shop'}    ,
 
     available      : Boolean   ,
-
     genders        : [String]  , // To Index
     ageGroups      : [String]  ,
-
-    category     : {type: mongoose.Schema.Types.ObjectId, ref:'Category'},
+    category       : {type: mongoose.Schema.Types.ObjectId, ref:'Category'},
 
     brand          : {type: mongoose.Schema.Types.ObjectId, ref:'Brand'},
-    brandVerified   : Boolean   ,
+    brandVerified  : Boolean   ,
 
-    //****ATTRIBUTES*****//
     attributes     : [{name: String, value: [String]}],
 
     season         :  String   ,
@@ -35,21 +23,27 @@ var Product = mongoose.Schema({
     activationDate :  String   , // To Index
     updateDate     : {year: Number, month: Number, day: Number},
     addDate        : {year: Number, month: Number, day: Number},
-    additionalInfos: [String],
+    additionalInfos: [String] ,
+
+    color          : String    ,
+    otherColors    : [{type: mongoose.Schema.Types.ObjectId, ref:'Product'}],
+    sizes          : [String]  ,
 
     picture        : {type: mongoose.Schema.Types.ObjectId, ref:'Picture'},
     mainPicture    : { smallUrl: String, mediumUrl: String,  largeUrl: String, zoomUrl: String}   ,
     auxPictures    : [{smallUrl: String, mediumUrl: String,  largeUrl: String, zoomUrl: String}]  ,
-    imageLocations : [Number],
 
     price          :{currency: String, value: Number, formatted: String},
     originalPrice  :{currency: String, value: Number, formatted: String},
     sale           : Boolean,
+    discount       : Number,
 
-    sizes          : [String],
-
-    units          : [{ sku : String, size: String}], // To Index
-    rating         :  String
+    articles       : {type: mongoose.Schema.Types.ObjectId, ref:'Article'},
+    rating         :  String,
+    navigate       :  Boolean
 })
-Product.plugin(mongoosePaginate);
+
+
+Product.plugin(deepPopulate);
+
 module.exports = mongoose.model('Product', Product ,'products');

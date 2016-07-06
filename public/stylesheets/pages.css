@@ -591,7 +591,6 @@ top:14%; left:7px;
 .page-sidebar .sidebar-menu .menu-items li.open > .icon-thumbnail,
 .page-sidebar .sidebar-menu .menu-items li.active > .icon-thumbnail {
   transform: scale(1);
-  background: #6F3662;
 }
 .page-sidebar .sidebar-menu .menu-items li:hover > a,
 .page-sidebar .sidebar-menu .menu-items li.open > a,
@@ -2624,7 +2623,7 @@ hr.dotted {
 .bg-brantu-gradient{background:linear-gradient(to top, rgb(117, 127, 154), rgb(0, 0, 0)) !important;}
 .bg-brantu-black-gradient{background:linear-gradient(to top, rgb(51, 51, 51), rgb(0, 0, 0)) !important;}
 
-
+.text-velvet{color: #AA076B !important;}
 .text-pink{color: #eed3d3 !important;}
 .text-pink-dark{color:#ffb6c1 !important}
 .text-pink-darker{color: #e58eac!important;}
@@ -7473,7 +7472,7 @@ div.cs-skin-slide .cs-options ul li.cs-selected span {
   margin-bottom: -20px;
 }
 .table tbody tr td {
-  background: #fff;
+  background: transparent;
   border-bottom: 1px solid rgba(230, 230, 230, 0.7);
   border-top: 0px;
   padding: 20px;

@@ -1,7 +1,9 @@
 
 
 var productEngineTemplate = Handlebars.compile(
-'<div class=""><div class="welcome"></div>' +
+'<div class="">' +
+'<div class="navigationWrapper">' +
+'<div class="welcome"></div>' +
 '<div class="resultContainer row" id="productEngine">' +
 '<div class="facetPane" id="mainFacetPane">' +
 '<div class="facetContainer " id="mainFacetContainer">' +
@@ -36,6 +38,9 @@ var productEngineTemplate = Handlebars.compile(
 '</ol>' +
 '<div class="paginate"></div>' +
 '</div>' +
+'</div>' +
+'</div> ' +
+'</div> ' +
 '<div class="jawBoneContent" id="jawbone">' +
 '<div class="jawBoneOpenContainer">' +
 '<div class="jawBoneFadeInPlaceContainer">' +
@@ -44,8 +49,7 @@ var productEngineTemplate = Handlebars.compile(
 '</div>' +
 '</div>' +
 '</div>' +
-'</div>' +
-'</div> </div>'
+'</div>'
 );
 
 
@@ -81,12 +85,12 @@ var mobileFilters = Handlebars.compile(
 
 var productTemplate = Handlebars.compile(
     '{{#each  products}}' +
-    '<li  class="item" index="{{@index}}" productId="{{{this.brantuId}}}">' +
+    '<li  class="item" index="{{@index}}" productId="{{{this._id}}}">' +
     '<div class="itemContainer">' +
     '<div class="itemWrapper">' +
     '<div class="row top-xs">'+
     '<div class="preview-image auto-margin col-xs" style="margin-top: 0;">' +
-    '<img src="{{{this.mainPicture.largeUrl}}}" action="/add-viewed-product-session" class="v-align-top" pic-src="{{{this.mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}" alt="{{../name}}" index="{{@index}}" nb-pic="{{nbImages}}" pic-order="0" productId="{{productId}}"/>' +
+    '<img src="{{{this.mainPicture.largeUrl}}}" action="/add-viewed-product-session" class="v-align-top" pic-src="{{{this.mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}" alt="{{../name}}" index="{{@index}}" nb-pic="{{nbImages}}" pic-order="0" _id="{{_id}}" data-product-info="show"/>' +
 
     '</div>' +
     '</div>'+
@@ -99,7 +103,7 @@ var productTemplate = Handlebars.compile(
     '</div>'+
     '<div class="discounted-percentage ">{{{this.discount}}}%</div>' +
     '{{else}}'+
-    '<div class="original-price text-center">{{{this.originalPrice.formatted}}}</div>'+
+    '<div class="original-price text-center">{{{this.price.formatted}}}</div>'+
     '{{/if}}' +
     '<div class="main-options hidden-xs">' +
     '<ol class="no-style no-overflow-text">' +
@@ -111,7 +115,7 @@ var productTemplate = Handlebars.compile(
     '</ol>' +
     '<div class="p-t-10 p-b-10 ">'+
     '<a class="dark bold"><div class="btn  btn-info btn-rounded m-r-5"><small>Go to store</small></div></a>'+
-    '<a class="dark bold" index="{{@index }}" action="/add-viewed-product-session" productId="{{{this.productId}}}"><div class="btn  btn-info btn-rounded  m-l-5 no-border" ><small>Find better prices</small></div></a>' +
+    '<a class="dark bold" data-product-info="show" index="{{@index }}" action="/add-viewed-product-session" _id="{{{this._id}}}"><div class="btn  btn-info btn-rounded  m-l-5 no-border" ><small>Find better prices</small></div></a>' +
     '</div>'+
     '</div>' +
     '<ol class="small-options no-style">' +
@@ -124,52 +128,52 @@ var productTemplate = Handlebars.compile(
 /*'<li class="like"> <a href="#"><i class="  fa  fa-heart-o"></i></a></li>'+
  '<li class="cart"> <a href="#"><i class="fa fa-share-alt"></i></a></li>'+*/
 
-//
 
-
-
-var jawBoneTemplate = Handlebars.compile(
-    '<div class="jawBone" nb-pic="{{numOfImages}}" pic-src="{{{mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}"><div class="mainWrapper row">' +
-'<div class=" col-md-6 col-sm-12 col-xs-12 pictureWrapper">' +
-    '<div class="row full-width no-margin">'+
-    '<div class="selectedItemImageColoumn col-md-2 col-lg-3  hidden-sm hidden-xs frame scrollable" id="selectedItemImages" numOfImages="{{numOfImages}}">'+
-    '<ol class="slidee scrollable">'+
-    '<li><img imageorder ="0" src="{{mainPicture.largeUrl}}" /></li>'+
+var jawBoneTemplate;
+jawBoneTemplate = Handlebars.compile(
+    '<div class="jawBone" nb-pic="{{numOfImages}}" pic-src="{{{mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}">'+
+    '<div class="mainWrapper relative row no-overflow">' +
+    '<div class=" jbImageContainer hidden-xs hidden-sm">' +
+    '<div class="selectedItemPictureContainer">'+
+    '<div class="selectedItemZoomPicture">'+
+    '<div id="mainJawBoneImageContainer" > ' +
+    '<div id="owl-main" class=" no-style">'+
+    '<div ><img onload="$(this).fadeTo(500, 1);" imageorder ="0" src="{{mainPicture.largeUrl}}" /></div>'+
     '{{#each auxPictures}}'+
-    '<li><img  imageorder ="{{indexPlusConstant @index 1}}" src="{{largeUrl}}" /></li>'+
+    '<div><img onload="$(this).fadeTo(500, 1);"  imageorder ="{{indexPlusConstant @index 1}}" src="{{largeUrl}}" /></div>'+
     '{{/each}}'+
-    '</ol>'+
-    '</div>'+
-    '<div class="selectedItemPictureContainer no-padding auto-margin col-xs">'+
-    '<div class="selectedItemZoomPicture auto-margin block">'+
-    '<div class="prev-item"><i class="  pg-arrow_left_line_alt"></i></div> <div class="next-item"><i class=" pg-arrow_lright_line_alt"></i></div>'+
-    '<div id="mainJawBoneImageContainer" class="auto-margin block"> <img id="mainJawBoneImage" imageorder = "0" src="{{mainPicture.largeUrl}}"/> </div>'+
+    '<div></div><div></div>'+
     '</div>'+
     '</div>'+
-    '</div> </div>' +
-    '<div class="row visible-sm visible-xs full-width p-t-20 p-l-20 p-r-10">' +
-    '<div class=" selectedItemImageColoumn  col-xs-12 frame scrollable" numOfImages="{{numOfImages}}">'+
-    '<ol class="slidee scrollable auto-margin block">'+
-    '<li class="inline"><img imageorder ="0" src="{{mainPicture.largeUrl}}" /></li>'+
+    '</div>'+
+    '</div>'+
+    '</div>' +
+    '<div class=" col-xs-12 col-sm-12 visible-xs visible-sm">' +
+    '<div class="selectedItemPictureContainer">'+
+    '<div class="selectedItemZoomPicture">'+
+    '<div id="mainJawBoneImageContainer" > ' +
+    '<div id="owl-main-mobile" class=" no-style">'+
+    '<div class="text-center"><img onload="$(this).fadeTo(500, 1);" imageorder ="0" src="{{mainPicture.largeUrl}}" /></div>'+
     '{{#each auxPictures}}'+
-    '<li class="inline"><img  imageorder ="{{indexPlusConstant @index 1}}" src="{{largeUrl}}" /></li>'+
+    '<div class="text-center"> <img onload="$(this).fadeTo(500, 1);"  imageorder ="{{indexPlusConstant @index 1}}" src="{{largeUrl}}" /></div>'+
     '{{/each}}'+
-    '</ol>'+
     '</div>'+
     '</div>'+
-    '<div class="col-md-5 col-sm-12 col-xs-12 p-t-10">'+
+    '</div>'+
+    '</div>'+
+    '</div>' +
+    '<div class="col-md-8 col-md-offset-4  col-sm-12 col-xs-12 p-t-10 p-l-30 p-xs-l-5 p-xs-r-10" id="selectedItemInformation" >'+
+    '<div class="row">'+
+    '<div class="col-md-11 col-sm-12 col-xs-12"">'+
     '<div class="item-info b-b more-content">' +
     '<div class=" p-t-20 p-b-5">' +
     '<div class="row top-xs">' +
     '<div class="col-xs-6 bottom-xs">' +
     '<div class="row bottom-xs start-xs">' +
-    '<div class="col-xs bottom-xs"><h4 class="text-left medium no-padding no-margin v-align-bottom"> {{name}}</h4></div>' +
+    '<div class="col-xs bottom-xs"><h4 class="text-left medium no-padding no-margin v-align-bottom text-black"> {{name}}</h4></div>' +
     '</div>' +
     '<div class="row bottom-xs start-xs">' +
-    '<div class="col-xs bottom-xs"><h5 class="sbold no-margin no-padding text-pink-dark text-left v-align-bottom" style="font-size: 15px;"><span class="light text-white"></span> {{brand.name}}</h5></div>' +
-    '</div>' +
-    '<div class="row bottom-xs start-xs">' +
-    '<div class="col-xs bottom-xs"><p class="bold text-left  v-align-bottom"><span class="light"></span> {{shop.name}}</p></div>'+
+    '<div class="col-xs bottom-xs"><h5 class="sbold no-margin no-padding text-blacktext-left v-align-bottom" style="font-size: 15px;"><span class="light text-white"></span> {{brand.name}}</h5></div>' +
     '</div>' +
     '</div>' +
     '<div class="col-xs bottom-xs">' +
@@ -182,7 +186,7 @@ var jawBoneTemplate = Handlebars.compile(
     '</div>' +
     '{{else}}'+
     '<div class="row bottom-xs end-xs">' +
-    '<div class="col-xs"><h4 class="medium no-margin no-padding text-pink-dark text-right" style="">{{{price.formatted}}}</h4></div>' +
+    '<div class="col-xs"><h4 class="medium no-margin no-padding text-black text-right" style="">{{{price.formatted}}}</h4></div>' +
     '</div>' +
     '{{/if}}'+
     '</div>' +
@@ -190,39 +194,176 @@ var jawBoneTemplate = Handlebars.compile(
     '</div>' +
     '</div>'+
     '<div class="selectedItemDetail full-width">'+
-    '<div class="panel">'+
-    '<ul class="nav nav-tabs nav-tabs-simple hidden-xs"  data-init-reponsive-tabs="collapse">'+
-    '<li class="active"><a href="#tabDetails"  data-toggle="tab" aria-expanded="true">Description</a></li>'+
-    '{{#if reviews}}<li class=""><a href="#tabReviews"data-toggle="tab" aria-expanded="false">Review</a></li>{{/if}}'+
-    '</ul>'+
-    '<div class="tab-content hidden-xs">'+
+    '<div class="panel panel-transparent">'+
+    '<div class="tab-content">'+
     '<div class="tab-pane active" id="tabDetails">'+
     '<div class="row column-seperation">'+
-    '<div class="col-md-5"></div>'+
-    '<div class="col-md-7">'+'<ol class="selectedItemDetailList">{{description}}</ol></div>'+
-    '</div>'+
-    '</div>'+
-    '<div class="tab-pane" id="tabReviews">{{>loading}}</div>'+
-    '</div>'+
-    '<div class="p-t-10 p-b-10 text-right"><button class="btn  btn-info"> Go To Shop</button></div>'+
-    '</div>'+
-    '</div>'+
-    '</div>'+
-    '</div>'+
-    '<div class="recommendedProducts">'+
-    '</div>'+
-    '<ol class="selectedItemSave">'+
-    '<li class="delete p-l-10 p-b-10"><div ><i class=" pg-close_line"> </i></div></li>'+
-    '<li class="like cursor p-l-10 sm-p-t-10">' +
-    '{{#if isFavored}}<a class="removeFavouriteProduct" productId="{{{this.productId}}}" action="/favourite-product/remove">' +
-    '<i class="fa fa-heart text-pink-darker"></i><a></li>' +
-    '{{else}}<a class="addFavouriteProduct" productId="{{{this.productId}}}" action="/favourite-product/add">' +
-    '<i class="fa fa-heart-o"></i><a></li>' +
-    '{{/if}}' +
+    '<div class="col-xs-12">'+
+    '<div class="p-t-20">'+
+    '<h6 class="bold text-black">Colors</h6>'+
+    '<ol class="JBColorList no-style no-padding no-margin">'+
+    '{{#if color}}<li class="inline no-padding no-margin"><img class="active bg-image" src="{{{mainPicture.mediumUrl}}}"/><div class="text-center no-overflow-text text-black">{{color}}</div></li>{{/if}}'+
+    '{{#each otherColors}}<li class="inline no-padding no-margin"><a data-product-info="show" _id="{{_id}}"><img class="bg-image" src="{{{mainPicture.mediumUrl}}}"/><div class="text-center no-overflow-text text-black">{{color}}</div></a></li>{{/each}}'+
     '</ol>'+
+    '</div>'+
+    '</div>'+
+    '</div>'+
+    '</div>'+
+    '</div>'+
+    '</div>'+
+    '<div class="panel panel-transparent">'+
+    '<div class="panel-body no-padding" style="height:auto;"> <div class="dataTables_wrapper form-inline no-footer"><div class="table-responsive"><table class="table table-hover demo-table-search dataTable no-footer">'+
+    '<thread><tr role="row">'+
+    '<th class="sorting no-padding" rowspan="1" colspan="1">Shop</th>'+
+    '<th class="sorting no-padding hidden-xs" rowspan="1" colspan="1">Colors</th>'+
+    '<th class="sorting no-padding hidden-xs" rowspan="1" colspan="1">Prices</th>'+
+    '<th class="sorting no-padding" rowspan="1" colspan="1">Lowest Price</th>'+
+    '<th class="sorting no-padding" rowspan="1" colspan="1">Shipping & Return </th>'+
+    '<th class="sorting no-padding hidden-xs" rowspan="1" colspan="1"></th>'+
+    '</tr></thread>'+
+    '<tbody>'+
+    '{{#each articles.shops}}'+
+    '<tr >'+
+    '<td class="v-align-middle no-padding p-t-10 "><img src="{{this.shop.logoUrl}}" style="width:120px;"/><br/> <button class="btn btn-tag">Go to Shop</button></td>'+
+    '<td class="v-align-middle no-padding p-t-10 p-l-5 hidden-xs">'+
+    '<ol class="no-padding no-margin no-style">'+
+    '{{#each this.units}}'+
+    '<li><p class="no-padding no-margin">{{this.color}}</p></li>'+
+    '{{/each}}'+
+    ' </ol>'+
+    '</td>'+
+    '<td class="v-align-middle no-padding p-t-10 p-l-5 hidden-xs">'+
+    '<ol class="no-padding no-margin no-style">'+
+    '{{#each this.units}}'+
+    '<li>'+
+    '<p class="no-padding no-margin">{{this.price.formatted}}{{#if discount}} <span class="bold text-master">({{this.discount}}%)</span>{{/if}}</p>'+
+    '</li>'+
+    '{{/each}}'+
+    ' </ol>'+
+    '</td>'+
+
+    '<td class="v-align-middle no-padding p-t-10">' +
+    '<p class="bold">{{lowest.price.formatted}}</p>' +
+    '</td>'+
+
+    '<td class="v-align-middle no-padding p-t-10 p-b-5">' +
+    '<h6 class="bold no-padding no-margin"><font class="text-master medium">Free Return: </font>{{#if this.shop.freeReturn}} Yes {{else}} No {{/if}}</h6>' +
+    '<h6 class="bold no-padding no-margin"><font class="text-master medium">Return Period: </font>{{this.shop.returnPeriod}}</h6>' +
+    '<h6 class="bold no-padding no-margin"><font class="text-master medium">Shipping Cost: </font>{{this.shop.standardShippingCost}}</h6>' +
+    '<h6 class="bold no-padding no-margin"><font class="text-master medium">Shipping Period: </font>{{this.shop.standardShippingTime}}</h6>' +
+    '<h6 class="bold no-padding no-margin"><font class="text-master medium">Free Shipping After: </font>{{this.shop.freeAfter}}</h6>' +
+    '</td>'+
+
+    '<td class="v-align-middle no-padding p-t-10 hidden-xs">' +
+    '<button class="btn btn-tag">Go to Shop</button>' +
+    '</td>'+
+    '</tr>'+
+    '{{/each}}'+
+    '</tbody>'+
+    '</table></div></div></div>'+
+    '</div>'+
+    '<div>'+
+    '<h6 class="text-black b-b bold b-transparent-white">Description</h6>'+
+    '<div class="description text-black medium">{{description}}</div>'+
+    '</div>'+
+
+    '</div>'+
+    '</div>'+
+    '<div class="col-md hidden-sm hidden-xs relative"> '+
+    '<ol class="selectedItemSave ">'+
+    '<li class="delete p-l-10 p-b-10">'+
+    '<div ><i class=" pg-close_line"> </i></div>'+
+    '</li>'+
+    '<li class="like cursor p-l-10 sm-p-t-10">' +
+    '{{#if isFavored}}'+
+    '<a class="removeFavouriteProduct" _id="{{{this._id}}}" action="/favourite-product/remove">' +
+    '<i class="fa fa-heart text-pink-darker"></i></a>' +
+    '{{else}} '+
+    '<a class="addFavouriteProduct" _id="{{{this._id}}}" action="/favourite-product/add">' +
+    '<i class="fa fa-heart-o"></i></a>' +
+    '{{/if}}' +
+    '</li>'+
+    '</ol>'+
+    '</div>'+
+    '</div>'+
+    '</div>'+
+    '</div>'+
+    '<ol class="selectedItemSave visible-sm visible-xs">'+
+    '<li class="delete p-l-10 p-b-10">'+
+    '<div ><i class=" pg-close_line"> </i></div>'+
+    '</li>'+
+    '<li class="like cursor p-l-10 sm-p-t-10">' +
+    '{{#if isFavored}}'+
+    '<a class="removeFavouriteProduct" _id="{{{this._id}}}" action="/favourite-product/remove">' +
+    '<i class="fa fa-heart text-pink-darker"></i></a>' +
+    '{{else}} '+
+    '<a class="addFavouriteProduct" _id="{{{this._id}}}" action="/favourite-product/add">' +
+    '<i class="fa fa-heart-o"></i></a>' +
+    '{{/if}}' +
+    '</li>'+
+    '</ol>'+
+    '<div class="similarProducts">'+
+    '</div>'+
     '</div>'
+    );
+
+
+
+var similarProductTemplate = Handlebars.compile(
+    '<div class="row b-b">'+
+
+    '{{#if LowerPriceCategoryProducts}}'+
+    '<div class="p-xs-t-10  b-grey col-md-6 col-sm-12 col-xs-12">' +
+    '<h4 class="capitalize text-center">{{category.name}} at <b>lower price</b></h4>' +
+    '<div id="frameSameCategory" class="auto-margin block">' +
+    '<div class="no-style" id="owlLowerCategory">'+
+    '{{#each LowerPriceCategoryProducts}}'+
+    '<div class="carousel" >' +
+    '<a _id="{{{this._id}}}" data-product-info="show"><img onload="$(this).fadeTo(500, 1);" src="{{{this.mainPicture.mediumUrl}}}"/>' +
+    '<p class="text-center">{{this.price.formatted}}<br/> <span class="text-velvet" style="font-size: 12px;"><i><img src="/images/nav/compare.png" style="width:20px;"></i>Save <b>{{this.saving}}</b> ({{this.savingPercentage}}%)</span></p></a>' +
+    '</div>'+
+    '{{/each}}'+
+    '</div>' +
+    '</div>' +
+    '</div>'+
+    '{{/if}}'+
+
+    '{{#if sameBrandProducts}}'+
+    '<div class="p-xs-t-10 b-grey {{#if LowerPriceCategoryProducts}}b-l{{/if}} col-md-6 col-sm-12 col-xs-12">' +
+    '<h4 class="capitalize text-center">Related Products from <b>{{brand.name}}</b></h4>' +
+    '<div id="frameSameBrand" class="auto-margin block">'+
+    '<div class="no-style text-center" id="owlBrand">'+
+    '{{#each sameBrandProducts}}'+
+    '<div class="carousel">' +
+    '<a _id="{{{this._id}}}" data-product-info="show"><img onload="$(this).fadeTo(500, 1);" src="{{{this.mainPicture.mediumUrl}}}"/>' +
+    '<p class="text-center">{{this.price.formatted}}</p></a>' +
+    '</div>'+
+    '{{/each}}'+
+    '</div>' +
+    '</div>'+
+    '</div>'+
+    '{{/if}}'+
+    '</div>'+
+    '{{#if sameCategoryProducts}}'+
+    '<div class="p-t-40 p-b-30 b-b">' +
+    '<h3 class="capitalize text-center">{{category.name}} <b>Related Products</b></h3>' +
+    '<div id="frameSameCategory" class="auto-margin block">' +
+    '<div class="text-center no-style" id="owlCategory">'+
+    '{{#each sameCategoryProducts}}'+
+    '<div class="flow inline p-b-40">' +
+    '<a _id="{{{this._id}}}" data-product-info="show"><img onload="$(this).fadeTo(500, 1);" src="{{{this.mainPicture.mediumUrl}}}"/>' +
+    '<p class="text-center no-overflow-text">{{this.name}}</p></a>' +
+    '<p class="text-center no-overflow-text">{{this.price.formatted}}</p></a>' +
+    '</div>'+
+    '{{/each}}'+
+    '</div>' +
+    '</div>' +
+    '</div>'+
+    '{{/if}}'
+
 );
-//'<li> <div class="like"><i class="  fa  fa-heart-o"></i></div></li>'+
+
+
 
 var categoryFacetTemplate = Handlebars.compile(
     '<div class="refinement">'+
@@ -269,7 +410,6 @@ var onlySaleBoxFacetTemplate = Handlebars.compile(
     '{{/if}}'+
     '{{/each}}'+
     '{{/if}}'
-
 )
 
 var colorFacetTemplate = Handlebars.compile(
@@ -407,18 +547,18 @@ var ACTemplateProduct = Handlebars.compile(
     '{{#if more}}' +
     '<a id="ddsearchMore"><h5 class="b-b b-t b-r b-l"><font class="text-pink-darker bold">{{nbHits}}</font> {{text}} </h5></a>' +
     '{{else}}' +
-    '<div data-id="{{productId}}" class="productsAC m-b-5 text-left">'+
+    '<a class="findBetterPrices" _id="{{_id}}"><div data-id="{{_id}}" class="productsAC m-b-5 text-left">'+
     '<div><img src="{{{mainPicture.smallUrl}}}" width="40" height="auto"/></div>'+
     '<div class="b-b b-grey relative" style="font-size:12px;"> ' +
-    '<a class="dark findBetterPrices" data-id="{{productId}}"><div>' +
+    '<a class="dark " data-id="{{_id}}"><div>' +
     '<div class=" bold">{{{ brand.name}}}</div>' +
     '<div class="medium">{{{ _highlightResult.name.value }}}</div>' +
     '<div class="medium inline">{{{ price.formatted}}}</div>' +
     '</div></a>'+
     '<div class="bottom-right hidden-xs visible-hover"> ' +
-    '<a class="dark medium all-caps findBetterPrices" data-id="{{productId}}"> {{{ autoComplete.findBetterPriceButton}}} </a>' +
+    '<a class="dark medium all-caps" data-id="{{_id}}"> {{{ autoComplete.findBetterPriceButton}}} </a>' +
     '</div>'+
-    '</div></div>'+
+    '</div></div></a>'+
     '{{/if}}'
 );
 
@@ -586,7 +726,7 @@ var productHelper;
 productHelper = {
     getWelcomeMessage: function(breadcrumb, content, isSearch, suggestedBrands){
         var rObject = {}
-        console.log(breadcrumb);
+        //console.log(breadcrumb);
         if(isSearch){
             rObject.search = true;
             rObject.department = breadcrumb[0]
@@ -612,7 +752,6 @@ productHelper = {
                     array[a].hex = values[b].hex;
                     x.push(array[a]);
                 }
-
             }
         }
         return x;
@@ -850,7 +989,6 @@ productHelper = {
         jawboneContainer.html(jawBoneTemplate(content));
         productList.children('li').each(function () {
             if($(this).attr('index') == itemScrollindex){
-                console.log($(this).offset().left,'-', productList.scrollLeft(),'-',$(this).width() )
                 productList.animate({scrollLeft: $(this).offset().left + productList.scrollLeft() - $(this).width()}, 100, $.bez([.5, 0, .1, 1]));
                 itemScrollindex = $(this).attr('index');
             }

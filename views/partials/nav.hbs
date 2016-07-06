@@ -95,10 +95,12 @@
                 <div class=" sm-table">
                     <div class="header-inner auto-margin" style="text-align: center !important;">
                         <div class="brand" style="width: auto;">
-                                <div class="auto-margin block" style="width: 180px; height: auto;">
-                                    <a href="/" class="relative">
-                                        <img src="/images/brantublacklogo.svg" alt="logo" class="mainLogo" />
-                                        <div class="bottom-right" style="right:-30px;"><span class="text-black">Beta</span></div>
+                                <div class="auto-margin block m-t-10" style="width: 180px; height: auto;">
+                                    <a href="/" class="m-t-15">
+                                        <div class="mainLogo ">
+                                            <div class="bottom-right" style="right:-30px;"><span class="text-black">Beta</span></div>
+                                        </div>
+
                                     </a>
                                 </div>
                         </div>
@@ -110,13 +112,12 @@
                   <div class="">
                       <div class="brand" style="width: auto;">
                               <div class="relative" style=" padding-top: 5px;">
-                                  <a href="/" class=" relative">
-                                      <img src="/images/brantublacklogo.svg" alt="logo" class="mainLogo" />
-                                      <div class="bottom-right" style="right:-30px;"><span class="text-black">Beta</span></div>
-
+                                  <a href="/">
+                                      <div class="mainLogo">
+                                          <div class="bottom-right" style="right:34%;"><span class="text-black">Beta</span></div>
+                                      </div>
                                   </a>
                               </div>
-
                       </div>
                   </div>
               </div>
@@ -190,7 +191,8 @@
                          <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                              <img src="/images/nav/more.png" width="17"/>
                          </button>
-                         <ul class="dropdown-menu profile-dropdown" role="menu" style="top:103%">
+                         <ul class="dropdown-menu profile-dropdown" role="menu" style="top:102%;    right: -25%;
+">
                              <li class="bold visible-sm visible-xs"><a href="/favourite-products"  class="bold b-b b-transparent-white text-white">
                                  <i style="padding-top: 3px;"><img src="/images/nav/favourite.png" style="width:26px;"/></i>
                                  <span class="v-align-middle">Favourite</span></a>
@@ -333,10 +335,8 @@
     </div>
 </div>
 
-
-
-<div class="text-center full-width no-overflow visible-xs " id="mobileSubMenu" style="padding-top:46px;">
-    <div class="row b-b b-grey">
+<div class="text-center full-width no-overflow visible-xs bg-master-lighter" id="mobileSubMenu" style="padding-top:46px;">
+    <div class="row b-b">
         <a class="col-xs p-b-5 dark light text-center subMenuMobile {{#if (stringContains url "upptack-nya-favoriter")}}active{{/if}}" data-page="/{{selectedDepartment.key}}/upptack-nya-favoriter" >
             <div>
                 <div class="p-t-10">
@@ -363,9 +363,6 @@
     </div>
 </div>
 
-
-
-<div id="mobileProductFilter"></div>
 
 
 

@@ -60,7 +60,7 @@
                     <i><img src="/images/nav/lookbook.png" style="width:38px;"/></i>
                  </span>
                 </li>
-                 <li class="m-t-10 b-b b-transparent-white">
+                 <li class="m-t-10 b-b b-transparent-white open active">
                     <a href="#" >
                         <span class="title all-caps bold" >Explore</span>
                         <span class="arrow "></span>
@@ -73,11 +73,11 @@
                             <ul class="sub-menu">
                                 {{#each categories}}
                                     <li>
-                                        <a class=" bold"><span class="title">{{andfixer category.name}}</span>
+                                        <a class=" bold"><span class="title all-caps">{{andfixer category.name}}</span>
                                             <span class="arrow"></span></a>
                                         <ul class="sub-menu">
                                                 <li>
-                                                    <a class=" bold" href="/explore/{{category.key}}">ALLA</a>
+                                                    <a class=" bold" href="/explore/{{category.key}}">Alla</a>
                                                 </li>
                                             {{#each subCategory}}
                                                 <li>
@@ -141,7 +141,14 @@
 
     </div>
 
+
     <!-- END SIDEBAR MENU -->
 </nav>
-
 <div class="page-sidebar-cover hidden"></div>
+
+<div id="mobileProductFilter"></div>
+
+
+
+
+

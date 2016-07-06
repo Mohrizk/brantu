@@ -380,14 +380,32 @@ var routes = [
     ]
     ],
     /*********api********/
-    [ '/api/getProductByProductID/*', 'get', [
-        products.getProductByProductID,
+    [ '/api/getProductByID/*', 'get', [
+        products.getProductByID,
         products.checkProductIsFavoured,
         function( req, res, next) {
             //console.log(req.product)
             res.send(req.product);
-    }]
-        ]
+        }]
+    ],
+    [ '/api/getSimilarProducts/*', 'get', [
+        products.getUnpopulatedProductByID,
+        products.getSimilarProductsFromSameBrand,
+        products.GetLowerPriceCategoryProducts,
+        products.GetSimilarCategoryProducts,
+        function( req, res, next) {
+            //console.log(req.product)
+            res.send(
+                {
+                    sameBrandProducts           :req.sameBrandProducts,
+                    LowerPriceCategoryProducts  :req.LowerPriceCategoryProducts ,
+                    sameCategoryProducts        : req.sameCategoryProducts,
+                    category                    : req.category,
+                    brand                       : req.brand
+                }
+            );
+        }]
+    ]
 ];
 
 routes.forEach(function(arr){
