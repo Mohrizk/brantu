@@ -5,36 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="319a9c44-cb0a-494b-a470-9e86d210bc29" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/owl-carousel/AjaxLoader.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/owl-carousel/grabbing.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/colors.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/owl-carousel/owl.carousel.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/owl-carousel/owl.carousel.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/owl-carousel/owl.carousel.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/owl-carousel/owl.theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/owl-carousel/owl.transitions.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/services/models/article.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/services/models/color.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/www" afterPath="$PROJECT_DIR$/bin/www" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.js" afterPath="$PROJECT_DIR$/config/database.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/brantublacklogo.svg" afterPath="$PROJECT_DIR$/public/images/brantublacklogo.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/main.js" afterPath="$PROJECT_DIR$/public/javascripts/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/navbar.js" afterPath="$PROJECT_DIR$/public/javascripts/navbar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/templates.js" afterPath="$PROJECT_DIR$/public/javascripts/templates.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/generic.css" afterPath="$PROJECT_DIR$/public/stylesheets/generic.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/pages.css" afterPath="$PROJECT_DIR$/public/stylesheets/pages.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/middleware/mw-products.js" afterPath="$PROJECT_DIR$/services/middleware/mw-products.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/middleware/mw-session.js" afterPath="$PROJECT_DIR$/services/middleware/mw-session.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/models/brand.js" afterPath="$PROJECT_DIR$/services/models/brand.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/models/product.js" afterPath="$PROJECT_DIR$/services/models/product.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/models/shop.js" afterPath="$PROJECT_DIR$/services/models/shop.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/routes.js" afterPath="$PROJECT_DIR$/services/routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/favourite-products.hbs" afterPath="$PROJECT_DIR$/views/favourite-products.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/head.hbs" afterPath="$PROJECT_DIR$/views/partials/head.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/nav.hbs" afterPath="$PROJECT_DIR$/views/partials/nav.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/side-menu.hbs" afterPath="$PROJECT_DIR$/views/partials/side-menu.hbs" />
     </list>
     <ignored path="brantu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -162,11 +134,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mw-products.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mw-products.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/services/middleware/mw-products.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="124" column="6" selection-start-line="124" selection-start-column="6" selection-end-line="124" selection-end-column="6" />
+            <state vertical-scroll-proportion="0.20397352">
+              <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
               <folding>
                 <element signature="n#!!block;n#getHex#0" expanded="false" />
                 <element signature="n#!!block;n#getLowestPrice#0" expanded="false" />
@@ -217,10 +189,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="database.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/database.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.059602648">
+            <state vertical-scroll-proportion="0.0">
               <caret line="3" column="69" selection-start-line="3" selection-start-column="69" selection-end-line="3" selection-end-column="69" />
               <folding />
             </state>
@@ -230,8 +202,8 @@
       <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.5652175">
-              <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+            <state vertical-scroll-proportion="-8.884615">
+              <caret line="23" column="16" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -295,15 +267,15 @@
         <option value="$PROJECT_DIR$/services/routes.js" />
         <option value="$PROJECT_DIR$/services/models/shop.js" />
         <option value="$PROJECT_DIR$/public/stylesheets/pages.css" />
-        <option value="$PROJECT_DIR$/services/middleware/mw-products.js" />
         <option value="$PROJECT_DIR$/views/partials/head.hbs" />
         <option value="$PROJECT_DIR$/public/stylesheets/generic.css" />
         <option value="$PROJECT_DIR$/views/favourite-products.hbs" />
         <option value="$PROJECT_DIR$/public/javascripts/main.js" />
         <option value="$PROJECT_DIR$/public/javascripts/templates.js" />
         <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/config/database.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/services/middleware/mw-products.js" />
       </list>
     </option>
   </component>
@@ -1002,29 +974,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/services/middleware/mw-products.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="124" column="6" selection-start-line="124" selection-start-column="6" selection-end-line="124" selection-end-column="6" />
-          <folding>
-            <element signature="n#!!block;n#getHex#0" expanded="false" />
-            <element signature="n#!!block;n#getLowestPrice#0" expanded="false" />
-            <element signature="n#!!block;n#getCountryFromLanguage#0" expanded="false" />
-            <element signature="n#!!block;n#getShippingReturn#0" expanded="false" />
-            <element signature="n#!!block;n#sortbyNearestDescription#0" expanded="false" />
-            <element signature="n#!!block;n#calculateSaving#0" expanded="false" />
-            <element signature="e#4084#4631#0" expanded="false" />
-            <element signature="e#4692#5818#0" expanded="false" />
-            <element signature="e#5877#6893#0" expanded="false" />
-            <element signature="e#5942#6277#0" expanded="false" />
-            <element signature="e#6949#8155#0" expanded="false" />
-            <element signature="e#7014#7253#0" expanded="false" />
-            <element signature="e#8210#8549#0" expanded="false" />
-            <element signature="e#8607#9084#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="73.03704">
@@ -1225,14 +1174,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.5652175">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1243,9 +1184,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/database.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.059602648">
+        <state vertical-scroll-proportion="0.0">
           <caret line="3" column="69" selection-start-line="3" selection-start-column="69" selection-end-line="3" selection-end-column="69" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.884615">
+          <caret line="23" column="16" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/middleware/mw-products.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20397352">
+          <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+          <folding>
+            <element signature="n#!!block;n#getHex#0" expanded="false" />
+            <element signature="n#!!block;n#getLowestPrice#0" expanded="false" />
+            <element signature="n#!!block;n#getCountryFromLanguage#0" expanded="false" />
+            <element signature="n#!!block;n#getShippingReturn#0" expanded="false" />
+            <element signature="n#!!block;n#sortbyNearestDescription#0" expanded="false" />
+            <element signature="n#!!block;n#calculateSaving#0" expanded="false" />
+            <element signature="e#4084#4631#0" expanded="false" />
+            <element signature="e#4692#5818#0" expanded="false" />
+            <element signature="e#5877#6893#0" expanded="false" />
+            <element signature="e#5942#6277#0" expanded="false" />
+            <element signature="e#6949#8155#0" expanded="false" />
+            <element signature="e#7014#7253#0" expanded="false" />
+            <element signature="e#8210#8549#0" expanded="false" />
+            <element signature="e#8607#9084#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

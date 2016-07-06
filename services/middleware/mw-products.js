@@ -5,7 +5,7 @@ var Article  = require('../models/article');
 var Shops  = require('../models/shop');
 var Colors  = require('../models/color');
 var async = require('async');
-var Levenshtein = require('Levenshtein');
+var Levenshtein = require('levenshtein');
 //HELPER FUNCTIONS
 function getHex(product, callback){
     var color = product.color;
