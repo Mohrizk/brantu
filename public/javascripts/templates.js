@@ -3,7 +3,8 @@
 var productEngineTemplate = Handlebars.compile(
 '<div class="">' +
 '<div class="navigationWrapper">' +
-'<div class="welcome"></div>' +
+'<div class="welcome">' +
+'</div>' +
 '<div class="resultContainer row" id="productEngine">' +
 '<div class="facetPane" id="mainFacetPane">' +
 '<div class="facetContainer " id="mainFacetContainer">' +
@@ -85,12 +86,12 @@ var mobileFilters = Handlebars.compile(
 
 var productTemplate = Handlebars.compile(
     '{{#each  products}}' +
-    '<li  class="item" index="{{@index}}" productId="{{{this._id}}}">' +
+    '<li  class="item" index="{{@index}}" _id="{{{this.objectID}}}">' +
     '<div class="itemContainer">' +
     '<div class="itemWrapper">' +
     '<div class="row top-xs">'+
     '<div class="preview-image auto-margin col-xs" style="margin-top: 0;">' +
-    '<img src="{{{this.mainPicture.largeUrl}}}" action="/add-viewed-product-session" class="v-align-top" pic-src="{{{this.mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}" alt="{{../name}}" index="{{@index}}" nb-pic="{{nbImages}}" pic-order="0" _id="{{_id}}" data-product-info="show"/>' +
+    '<img src="{{{this.mainPicture.largeUrl}}}" action="/add-viewed-product-session" class="v-align-top" pic-src="{{{this.mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}" alt="{{../name}}" index="{{@index}}" nb-pic="{{nbImages}}" pic-order="0" _id="{{objectID}}" data-product-info="show"/>' +
 
     '</div>' +
     '</div>'+
@@ -115,7 +116,7 @@ var productTemplate = Handlebars.compile(
     '</ol>' +
     '<div class="p-t-10 p-b-10 ">'+
     '<a class="dark bold"><div class="btn  btn-info btn-rounded m-r-5"><small>Go to store</small></div></a>'+
-    '<a class="dark bold" data-product-info="show" index="{{@index }}" action="/add-viewed-product-session" _id="{{{this._id}}}"><div class="btn  btn-info btn-rounded  m-l-5 no-border" ><small>Find better prices</small></div></a>' +
+    '<a class="dark bold" data-product-info="show" index="{{@index }}" action="/add-viewed-product-session" _id="{{{this.objectID}}}"><div class="btn  btn-info btn-rounded  m-l-5 no-border" ><small>Find better prices</small></div></a>' +
     '</div>'+
     '</div>' +
     '<ol class="small-options no-style">' +
@@ -132,13 +133,15 @@ var productTemplate = Handlebars.compile(
 var jawBoneTemplate;
 jawBoneTemplate = Handlebars.compile(
     '<div class="jawBone" nb-pic="{{numOfImages}}" pic-src="{{{mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}">'+
-    '<div class="mainWrapper relative row no-overflow">' +
+    '<div class="mainWrapper relative row">' +
     '<div class=" jbImageContainer hidden-xs hidden-sm">' +
     '<div class="selectedItemPictureContainer">'+
     '<div class="selectedItemZoomPicture">'+
     '<div id="mainJawBoneImageContainer" > ' +
+    '<div class=" next-item"><i class=" fa  fa-angle-right"></i></div>'+
+    '<div class=" prev-item"><i class="fa  fa-angle-left"></i></div>'+
     '<div id="owl-main" class=" no-style">'+
-    '<div ><img onload="$(this).fadeTo(500, 1);" imageorder ="0" src="{{mainPicture.largeUrl}}" /></div>'+
+    '<div><img onload="$(this).fadeTo(500, 1);" imageorder ="0" src="{{mainPicture.largeUrl}}" /></div>'+
     '{{#each auxPictures}}'+
     '<div><img onload="$(this).fadeTo(500, 1);"  imageorder ="{{indexPlusConstant @index 1}}" src="{{largeUrl}}" /></div>'+
     '{{/each}}'+
@@ -162,7 +165,7 @@ jawBoneTemplate = Handlebars.compile(
     '</div>'+
     '</div>'+
     '</div>' +
-    '<div class="col-md-8 col-md-offset-4  col-sm-12 col-xs-12 p-t-10 p-l-30 p-xs-l-5 p-xs-r-10" id="selectedItemInformation" >'+
+    '<div class="col-md-8 col-md-offset-4  col-sm-12 col-xs-12 p-t-10 p-l-20 p-r-20" id="selectedItemInformation" >'+
     '<div class="row">'+
     '<div class="col-md-11 col-sm-12 col-xs-12"">'+
     '<div class="item-info b-b more-content">' +
@@ -236,7 +239,7 @@ jawBoneTemplate = Handlebars.compile(
     '<ol class="no-padding no-margin no-style">'+
     '{{#each this.units}}'+
     '<li>'+
-    '<p class="no-padding no-margin">{{this.price.formatted}}{{#if discount}} <span class="bold text-master">({{this.discount}}%)</span>{{/if}}</p>'+
+    '<p class="no-padding no-margin">{{this.price.formatted}}{{#if discount}} <span class="bold text-velvet">({{this.discount}}%)</span>{{/if}}</p>'+
     '</li>'+
     '{{/each}}'+
     ' </ol>'+
@@ -303,6 +306,14 @@ jawBoneTemplate = Handlebars.compile(
     '</li>'+
     '</ol>'+
     '<div class="similarProducts">'+
+    '<div class="relative">'+
+    '<div class="text-center p-t-50 p-b-50" >'+
+    '<div class=" text-center ">' +
+    '<h4>Loading Related Products</h4>'+
+    '<img src="/images/progress/progress-circle-master.svg" style="width:100px; height: 100px">'+
+    '</div>'+
+    '</div>'+
+    '</div>'+
     '</div>'+
     '</div>'
     );
@@ -310,17 +321,17 @@ jawBoneTemplate = Handlebars.compile(
 
 
 var similarProductTemplate = Handlebars.compile(
-    '<div class="row b-b">'+
+    '<div class="row ">'+
 
     '{{#if LowerPriceCategoryProducts}}'+
-    '<div class="p-xs-t-10  b-grey col-md-6 col-sm-12 col-xs-12">' +
-    '<h4 class="capitalize text-center">{{category.name}} at <b>lower price</b></h4>' +
+    '<div class="p-xs-t-10   col-sm-12 col-xs-12 p-b-10 b-b">' +
+    '<h4 class="capitalize text-center"> {{#if style}}{{style}} <small>{{category.name}}</small>{{else}} {{category.name}} {{/if}} at <b>lower price</b></h4>' +
     '<div id="frameSameCategory" class="auto-margin block">' +
     '<div class="no-style" id="owlLowerCategory">'+
     '{{#each LowerPriceCategoryProducts}}'+
     '<div class="carousel" >' +
     '<a _id="{{{this._id}}}" data-product-info="show"><img onload="$(this).fadeTo(500, 1);" src="{{{this.mainPicture.mediumUrl}}}"/>' +
-    '<p class="text-center">{{this.price.formatted}}<br/> <span class="text-velvet" style="font-size: 12px;"><i><img src="/images/nav/compare.png" style="width:20px;"></i>Save <b>{{this.saving}}</b> ({{this.savingPercentage}}%)</span></p></a>' +
+    '<p class="text-center">{{this.price.formatted}} {{#if this.isItSaving}}<br/> <span class="text-velvet" style="font-size: 12px;"><i><img src="/images/nav/compare.png" style="width:20px;"></i>Save <b>{{this.saving}}</b> ({{this.savingPercentage}}%)</span>{{/if}}</p></a>' +
     '</div>'+
     '{{/each}}'+
     '</div>' +
@@ -329,14 +340,14 @@ var similarProductTemplate = Handlebars.compile(
     '{{/if}}'+
 
     '{{#if sameBrandProducts}}'+
-    '<div class="p-xs-t-10 b-grey {{#if LowerPriceCategoryProducts}}b-l{{/if}} col-md-6 col-sm-12 col-xs-12">' +
+    '<div class="p-xs-t-10  p-t-20 p-b-10  col-sm-12 col-xs-12 b-b">' +
     '<h4 class="capitalize text-center">Related Products from <b>{{brand.name}}</b></h4>' +
     '<div id="frameSameBrand" class="auto-margin block">'+
     '<div class="no-style text-center" id="owlBrand">'+
     '{{#each sameBrandProducts}}'+
     '<div class="carousel">' +
     '<a _id="{{{this._id}}}" data-product-info="show"><img onload="$(this).fadeTo(500, 1);" src="{{{this.mainPicture.mediumUrl}}}"/>' +
-    '<p class="text-center">{{this.price.formatted}}</p></a>' +
+    '<p class="text-center">{{this.price.formatted}} {{#if this.isItSaving}}<br/> <span class="text-velvet" style="font-size: 12px;"><i><img src="/images/nav/compare.png" style="width:20px;"></i>Save <b>{{this.saving}}</b> ({{this.savingPercentage}}%)</span> {{/if}}</p></a>' +
     '</div>'+
     '{{/each}}'+
     '</div>' +
@@ -345,7 +356,7 @@ var similarProductTemplate = Handlebars.compile(
     '{{/if}}'+
     '</div>'+
     '{{#if sameCategoryProducts}}'+
-    '<div class="p-t-40 p-b-30 b-b">' +
+    '<div class="p-t-30 p-b-30 b-b">' +
     '<h3 class="capitalize text-center">{{category.name}} <b>Related Products</b></h3>' +
     '<div id="frameSameCategory" class="auto-margin block">' +
     '<div class="text-center no-style" id="owlCategory">'+
@@ -353,7 +364,7 @@ var similarProductTemplate = Handlebars.compile(
     '<div class="flow inline p-b-40">' +
     '<a _id="{{{this._id}}}" data-product-info="show"><img onload="$(this).fadeTo(500, 1);" src="{{{this.mainPicture.mediumUrl}}}"/>' +
     '<p class="text-center no-overflow-text">{{this.name}}</p></a>' +
-    '<p class="text-center no-overflow-text">{{this.price.formatted}}</p></a>' +
+    '<p class="text-center no-overflow-text">{{this.price.formatted}} {{#if this.isItSaving}}<br/> <span class="text-velvet" style="font-size: 12px;"><i><img src="/images/nav/compare.png" style="width:20px;"></i>Save <b>{{this.saving}}</b> ({{this.savingPercentage}}%)</span>{{/if}}  </p></a>' +
     '</div>'+
     '{{/each}}'+
     '</div>' +
@@ -547,16 +558,16 @@ var ACTemplateProduct = Handlebars.compile(
     '{{#if more}}' +
     '<a id="ddsearchMore"><h5 class="b-b b-t b-r b-l"><font class="text-pink-darker bold">{{nbHits}}</font> {{text}} </h5></a>' +
     '{{else}}' +
-    '<a class="findBetterPrices" _id="{{_id}}"><div data-id="{{_id}}" class="productsAC m-b-5 text-left">'+
+    '<a class="findBetterPrices" _id="{{objectID}}"><div data-id="{{objectID}}" class="productsAC m-b-5 text-left">'+
     '<div><img src="{{{mainPicture.smallUrl}}}" width="40" height="auto"/></div>'+
     '<div class="b-b b-grey relative" style="font-size:12px;"> ' +
-    '<a class="dark " data-id="{{_id}}"><div>' +
+    '<a class="dark " data-id="{{objectID}}"><div>' +
     '<div class=" bold">{{{ brand.name}}}</div>' +
     '<div class="medium">{{{ _highlightResult.name.value }}}</div>' +
     '<div class="medium inline">{{{ price.formatted}}}</div>' +
     '</div></a>'+
     '<div class="bottom-right hidden-xs visible-hover"> ' +
-    '<a class="dark medium all-caps" data-id="{{_id}}"> {{{ autoComplete.findBetterPriceButton}}} </a>' +
+    '<a class="dark medium all-caps" data-id="{{objectID}}"> {{{ autoComplete.findBetterPriceButton}}} </a>' +
     '</div>'+
     '</div></div></a>'+
     '{{/if}}'
@@ -696,7 +707,10 @@ var welcomeTemplate = Handlebars.compile(
     '{{/if}}'+
     '<h5 class="all-caps text-spaced text-center font-GothamMedium">{{{nbHits}}}</h5>' +
     '{{else}}' +
-    '<h1 class="all-caps text-spaced text-center font-GothamMedium">{{name}} </h1>' +
+    '<h1 class="all-caps text-spaced text-center font-GothamMedium ">{{name}} </h1>' +
+    '{{#if attributes}}<div class=" auto-margin block text-center p-b-20">' +
+    '<h5 class="all-caps bold  b-b">Styles</h5>' +
+    '{{#each attributes}}<p class="inline text-center p-r-10 p-l-10">{{this.name}}</p>{{/each}}</div>{{/if}}' +
     '{{/if}}'
 )
 
@@ -726,7 +740,10 @@ var productHelper;
 productHelper = {
     getWelcomeMessage: function(breadcrumb, content, isSearch, suggestedBrands){
         var rObject = {}
-        //console.log(breadcrumb);
+        if(breadcrumb.length > 2){
+            rObject.attributes= content.getFacetValues('attributes.value');
+            console.log(rObject.attributes);
+        }
         if(isSearch){
             rObject.search = true;
             rObject.department = breadcrumb[0]
@@ -814,7 +831,7 @@ productHelper = {
             facets: []
         };
 
-        if (object.hasOwnProperty('hierarchicalFacetsRefinements')) {
+        if (object.hasOwnProperty('hierarchicalFacetsRefinements') && typeof object.hierarchicalFacetsRefinements !== 'undefined') {
             if (object.hierarchicalFacetsRefinements.hasOwnProperty('products')) {
                 var x = object.hierarchicalFacetsRefinements.products[0].split(' > ')
                 rObject.hierarchicalFacets.push({
@@ -825,7 +842,7 @@ productHelper = {
                 })
             }
         }
-        if (object.hasOwnProperty('disjunctiveFacetsRefinements')) {
+        if (object.hasOwnProperty('disjunctiveFacetsRefinements') && typeof object.disjunctiveFacetsRefinements !== 'undefined') {
             if (object.disjunctiveFacetsRefinements.hasOwnProperty('discount')) {
                 for (var c in object.disjunctiveFacetsRefinements.discount)
                     rObject.facets.push({

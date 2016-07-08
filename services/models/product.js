@@ -16,7 +16,7 @@ var Product = mongoose.Schema({
     brand          : {type: mongoose.Schema.Types.ObjectId, ref:'Brand'},
     brandVerified  : Boolean   ,
 
-    attributes     : [{name: String, value: [String]}],
+    attributes     : [{name: String, value: String}],
 
     season         :  String   ,
     seasonYear     :  String   ,

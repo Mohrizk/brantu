@@ -13,22 +13,22 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
 }
 
 var client = algoliasearch("D3IWZXC0AH", '3d6a60c228b6e8058770fdf8eab2f652');
-var helper   = algoliasearchHelper(client,'test_product', {
+var helper   = algoliasearchHelper(client,'test_product_asos', {
 	hierarchicalFacets: [{
 		name: 'products',
 		attributes: ['category.lvl0', 'category.lvl1', 'category.lvl2', 'category.lvl3', 'categories.lvl4'],
         sortBy: ['count:desc', 'name:asc']
 	}],
-	facets:[  'sale', 'price.value'],
+	facets:[  'sale', 'price.value' , 'attributes.value'],
 	disjunctiveFacets:['color','brand.name','shop.name','sizes', 'discount']
 });
-var searcher = algoliasearchHelper(client,'test_product', {
+var searcher = algoliasearchHelper(client,'test_product_asos', {
 	hierarchicalFacets: [{
 		name: 'products',
-		attributes: ['category.lvl0', 'category.lvl1', 'category.lvl2', 'category.lvl3'],
+		attributes: ['category.lvl0', 'category.lvl1', 'category.lvl2', 'category.lvl3', 'category.lvl4'],
 		sortBy: ['count:desc', 'name:asc']
 	}],
-	facets:[  'sale', 'price.value'],
+	facets:[  'sale', 'price.value' , 'attributes.value'],
 	disjunctiveFacets:['color','brand.name','shop.name','sizes', 'discount']
 });
 
@@ -72,7 +72,7 @@ var autocompleteOptions = [
 	{
 		//source: autocomplete.sources.hits(productIndex, {hitsPerPage: 7}),
 		source: function(query, callback) {
-			var index = client.initIndex('test_product');
+			var index = client.initIndex('test_product_asos');
 			var options = {hitsPerPage: 8}
 			if(departmentVerified)options.facetFilters = 'category.lvl0:'+DEPARTMENT.name;
 			$('.ACSearchProgress').removeClass('hidden');
@@ -134,7 +134,7 @@ var autocompleteOptionsMobile = [
 	{
 		//source: autocomplete.sources.hits(productIndex, {hitsPerPage: 7}),
 		source: function(query, callback) {
-			var index = client.initIndex('test_product');
+			var index = client.initIndex('test_product_asos');
 			var options = {hitsPerPage: 4}
 			if(departmentVerified)options.facetFilters = 'categories.lvl0:'+DEPARTMENT.name;
 			$('.ACSearchProgress').removeClass('hidden');
@@ -214,7 +214,7 @@ $(document).ready( function() {
 		}
 	},autocompleteOptions)
 		.on('autocomplete:selected', function(event, suggestion, dataset) {
-			FINDBETTERPRICES(suggestion._id);
+			FINDBETTERPRICES(suggestion.objectID);
 		})
 		.on('autocomplete:shown', function(event, suggestion, dataset) {
 			$('#containerHintAC').hide();
@@ -229,7 +229,7 @@ $(document).ready( function() {
 	},autocompleteOptionsMobile)
 		.on('autocomplete:selected', function(event, suggestion, dataset) {
 			//console.log(suggestion, dataset);
-			FINDBETTERPRICES(suggestion._id);
+			FINDBETTERPRICES(suggestion.objectID);
 		})
 		.on('autocomplete:shown', function(event, suggestion, dataset) {
 			$('#mobileContainerHintAC').hide();
@@ -270,6 +270,7 @@ $(document).ready( function() {
 	 *
 	 */
 	helper.on('result', function(content) {
+		console.log(content)
 		currentInstance = helper;
 		RENDER(content);
 		loading.hide();
@@ -539,16 +540,15 @@ $(document).ready( function() {
     *
     * **/
 
-	var itemScrollindex;
+	var itemScrollindex, owl, owlMobile, owlBrand, owlLowerCategory;
 	function loadMainOwl() {
-		var owl =  $("#owl-main");
+		owl =  $("#owl-main");
 		owl.owlCarousel({
 			items : 3,
 			itemsDesktop : [1000,2],
-			itemsDesktopSmall : [900,2],
-			navigation : true
+			itemsDesktopSmall : [900,2]
 		});
-		var owlMobile = $("#owl-main-mobile");
+		owlMobile = $("#owl-main-mobile");
 		owlMobile.owlCarousel({
 			items : 3,
 			itemsDesktopSmall : [900,2],
@@ -556,18 +556,18 @@ $(document).ready( function() {
 		});
 	}
 	function loadSimilarSly() {
-		var owlBrand = $("#owlBrand");
+		owlBrand = $("#owlBrand");
 		owlBrand.owlCarousel({
-			items :3,
+			items :6,
 			itemsDesktopSmall : [900,3],
 			itemsTablet: [600,2],
 			itemsMobile : false
 		});
 
 
-		var owlLowerCategory = $("#owlLowerCategory");
+		owlLowerCategory = $("#owlLowerCategory");
 		owlLowerCategory.owlCarousel({
-			items : 3,
+			items : 6,
 			itemsDesktopSmall : [900,3],
 			itemsTablet: [600,2],
 			itemsMobile : false
@@ -602,17 +602,17 @@ $(document).ready( function() {
 				searchSection.html(jawBoneTemplate(result)).show().css({'opacity':0}).animate({'opacity':1});
 			}
 			else mainSection.html(jawBoneTemplate(result)).show().css({'opacity':0}).animate({'opacity':1});
-			$('html, body').scrollTop(0)
-
+			loadMainOwl();
+			$('html, body').scrollTop(0);
+			$('#header-Dropdown').hide();
 			$.when(loading.hide()).done( function() {
-					loadMainOwl();
 					addViewedProduct({_id: _id});
 					getSimilarProducts(_id);
 				})
 			})
 
 	}
-	function addViewedProduct(action, _id){
+	function addViewedProduct(_id){
 		$.ajax({
 			type: "POST",
 			url: "/add-viewed-product-session",
@@ -639,6 +639,12 @@ $(document).ready( function() {
 		closeMobileSearch();
 		viewProduct($(this).attr('_id'), $(this).attr('index'))
 	});
+	general.on('click','#mainJawBoneImageContainer .next-item',function(){
+		owl.trigger('owl.next');
+	})
+	general.on('click','#mainJawBoneImageContainer .prev-item',function(){
+		owl.trigger('owl.prev');
+	})
 	general.on( eventOnTE,'.jawBone .delete' , function (e) {
 		e.stopImmediatePropagation();e.preventDefault();
 		console.log('closing product')
@@ -760,11 +766,12 @@ $(document).ready( function() {
 		var content;
 		var _id = $(this).attr('data-id');
 		var pPreviewSelector = $('#ddProductPreview')
-		var pPreviewContainer =
+		var pPreviewContainer = $('#ddProductPreviewContainer')
 		pPreviewSelector.show();
 		var index = 3;
+		console.log('DD HITS',currentDDHits.length);
 		for(var c in currentDDHits){
-			if(_id == currentDDHits[c]._id){
+			if(_id == currentDDHits[c].objectID){
 				content = currentDDHits[c];
 				index = c;
 			}

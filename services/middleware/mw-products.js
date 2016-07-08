@@ -68,24 +68,7 @@ function getShippingReturn(product, req){
     }
     console.log(product.articles.shops);
 }
-function sortbyNearestDescription(item, products){
-    for(var p in products){
-        var l = new Levenshtein( products[p].description, item.description)
-        products[p].levenshtein = l.distance
-    }
-    products.sort(function(a, b) {
-        return a.levenshtein - b.levenshtein;
-    });
-    for(var x in products) console.log(products[x]._id, products[x].levenshtein)
-    return products;
-}
-function calculateSaving(item, products){
-    for(var p in products){
-         products[p].saving = (item.price.value - products[p].price.value) +' '+item.price.currency ;
-         products[p].savingPercentage = Math.round(((item.price.value - products[p].price.value)/ item.price.value)*100);
-        }
-    return products;
-}
+
 
 operations = {
     //API FOR GETTING PRODUCT
@@ -114,6 +97,12 @@ operations = {
             req.product = product.toObject();
             Products.populate(product, [{path:'brand'}, {path:'category'}], function(err, newProduct){
                 req.brand = newProduct.brand;
+                for(var a in newProduct.attributes){
+                    if( newProduct.attributes[a].name == 'style'|| newProduct.attributes[a].name == 'Style')
+                        req.style = newProduct.attributes[a].value;
+                }
+
+                console.log('THE STYLE IS',req.style)
                 req.category = newProduct.category;
                 return next();
             })
@@ -123,15 +112,16 @@ operations = {
     },
 
     getSimilarProductsFromSameBrand:function(req,res,next){
-       var foundProduct = req.product;
+        var foundProduct = req.product;
         var query = {   "brand": foundProduct.brand,
-                        "category": foundProduct.category,
-                        "price.value":
-                        {   $gt: Math.round(foundProduct.price.value * 0.2),
-                             $lte:Math.round(foundProduct.price.value * 1.3)
-                        }
-                    };
-        Products.find(query).lean().exec(function(err, products){
+                    "category": foundProduct.category,
+                    "price.value":
+                    {   $gt: Math.round(foundProduct.price.value * 0.2),
+                         $lte:Math.round(foundProduct.price.value * 1.3)
+                    }
+                };
+        helper.addAttributesQuery(foundProduct, query);
+        Products.find(query).sort( { "price.value": 1 }).lean().exec(function(err, products){
             if(err) return next(err);
             if(products.length == 0) return next();
             var filtered= products.filter(function(product){
@@ -142,8 +132,8 @@ operations = {
                 }
                 return true;
             })
-            var sorted = sortbyNearestDescription(req.product, filtered)
-            req.sameBrandProducts = calculateSaving(req.product, sorted)
+            //var sorted = sortbyNearestDescription(req.product, filtered)
+            req.sameBrandProducts = helper.calculateSaving(req.product, filtered)
             next();
         })
     },
@@ -154,10 +144,11 @@ operations = {
                             "category": foundProduct.category,
                             "price.value":
                             {
-                                $lte:Math.round(foundProduct.price.value * 1)
+                                $lt:Math.round(foundProduct.price.value * 1)
                             }
                         };
-        Products.find(query).lean().exec(function(err, products){
+        helper.addAttributesQuery(foundProduct, query);
+        Products.find(query).sort( { "price.value": 1 }).lean().exec(function(err, products){
             if(err) return next(err);
             if(products.length == 0) return next();
              var filtered = products.filter(function(product){
@@ -165,8 +156,8 @@ operations = {
                     return true;
                 }
             });
-            var sort= sortbyNearestDescription(req.product, filtered)
-            req.LowerPriceCategoryProducts = calculateSaving(req.product,sort);
+            //var sort= sortbyNearestDescription(req.product, filtered)
+            req.LowerPriceCategoryProducts = helper.calculateSaving(req.product,filtered);
             next();
         })
 
@@ -178,14 +169,14 @@ operations = {
             "category": foundProduct.category,
             "price.value":
             {
-                $lte:Math.round(foundProduct.price.value * 3)
+                $lte:Math.round(foundProduct.price.value * 2.5)
             }
         };
-        Products.find(query).sort( { "price.value": -1 }).lean().exec(function(err, products){
+        helper.addAttributesQuery(foundProduct, query);
+        Products.find(query).sort( { "price.value": 1 }).lean().exec(function(err, products){
             if(err) return next(err);
             if(products.length == 0) return next();
             var filtered = products.filter(function(product){
-
                 if (foundProduct._id.toString() == product._id.toString()) return false;
                 for (var j in req.LowerPriceCategoryProducts)
                     if(req.LowerPriceCategoryProducts[j]._id.toString() == product._id.toString())  return false
@@ -194,7 +185,8 @@ operations = {
 
                     return true;
             });
-            req.sameCategoryProducts = sortbyNearestDescription(req.product, filtered)
+            //req.sameCategoryProducts = sortbyNearestDescription(req.product, filtered)
+            req.sameCategoryProducts = helper.calculateSaving(req.product,filtered);
             console.log(req.sameCategoryProducts.length)
             next();
         })
@@ -229,7 +221,37 @@ operations = {
     }
 }
 
-helper={
+helper = {
+    addAttributesQuery:function(foundProduct, query){
+        if(foundProduct.attributes.length!==0){
+            console.log('ATTRIBUTES FOUND', foundProduct.attributes)
+            var values = []
+            for(var a in foundProduct.attributes){
+                values.push(foundProduct.attributes[a].value);
+            }
+            query['attributes.value'] ={ "$in": values};
+        }
+    },
+    calculateSaving: function (item, products){
+    for(var p in products){
+
+        products[p].saving = (item.price.value - products[p].price.value) +' '+item.price.currency ;
+        products[p].isItSaving = (item.price.value - products[p].price.value > 0? true :false);
+        products[p].savingPercentage = Math.round(((item.price.value - products[p].price.value)/ item.price.value)*100);
+    }
+    return products;
+},
+    sortbyNearestDescription: function (item, products){
+        for(var p in products){
+            var l = new Levenshtein( products[p].description, item.description)
+            products[p].levenshtein = l.distance
+        }
+        products.sort(function(a, b) {
+            return a.levenshtein - b.levenshtein;
+        });
+        for(var x in products) console.log(products[x]._id, products[x].levenshtein)
+        return products;
+    }
 
 }
 

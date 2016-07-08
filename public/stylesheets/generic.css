@@ -696,34 +696,45 @@ ul.circle li:hover div{
         width:100%;
         transition: opacity 1s ease-in-out;
     }
-    .selectedItemZoomPicture img.transparent{opacity:0;}
-
-    .selectedItemZoomPicture .next-item{
-        position: absolute;
-        left: 19%;
-        background: #333;
-        color: white;
-        top:95%;
-        border-radius: 50%;
-        padding: 5px;
-        cursor: pointer;
-        z-index: 200;
-    }
     .jbImageContainer .owl-controls{
         width:33% !important;
     }
-    .selectedItemZoomPicture .prev-item{
+    .selectedItemZoomPicture img.transparent{opacity:0;}
+
+
+    .selectedItemZoomPicture .prev-item, .selectedItemZoomPicture .next-item{
         position: absolute;
-        left: 11%;
+        opacity:0.4;
+        left: -1%;
+        width:35px;
+        height:35px;
         background: #333;
         color: white;
-        top: 95%;
+        top: 45%;
         border-radius: 50%;
         padding: 5px;
         cursor: pointer;
         z-index: 200;
+        transition:0.2s opacity ease-in-out;
+        -webkit-transition:0.2s opacity ease-in-out;
     }
-    .selectedItemZoomPicture .next-item i, .selectedItemZoomPicture .prev-item i{font-size:25px;}
+.selectedItemZoomPicture .prev-item:hover, .selectedItemZoomPicture .next-item:hover{
+    opacity:1;
+}
+    .selectedItemZoomPicture .next-item{
+        left: 30%;
+        top:45%;
+        padding-left: 15px;
+    }
+
+    .selectedItemZoomPicture .prev-item{
+        left: -1%;
+        top: 45%;
+        padding-left: 11px;
+    }
+  .selectedItemZoomPicture .next-item i, .selectedItemZoomPicture .prev-item i{
+      font-size:25px;
+  }
    .selectedItemDescriptionContainer{padding: 10px; position:relative;}
    /*.selectedItemDescriptionContainer button{margin-right:0.4vw;margin-top:0.8vw; float:left; vertical-align:top; display:block; text-transform: uppercase;}
    .selectedItemDescriptionContainer button.btn{font-size:0.9vw; line-height:1.5vw;  padding-left: 0.6vw; padding-right: 0.6vw;}*/
@@ -1155,14 +1166,10 @@ ul.circle li:hover div{
         max-height:120vw;
         max-width: 80vw;
     }
-    .selectedItemZoomPicture .next-item i, .selectedItemZoomPicture .prev-item i {
-        font-size: 10vw;
-    }
+
     .selectedItemImageColoumn ol li img{
         max-width: 15vw;
     }
-    .selectedItemZoomPicture .next-item{right: 1%;  padding:10px;z-index: 40;}
-    .selectedItemZoomPicture .prev-item{left: 1%;  padding:10px;z-index: 40;}
 
     .horizontal.jbMode .item {
         margin: 0 1.5vw 0 0;

@@ -20,9 +20,9 @@ const app = express();//INITIATE A
 
 //CONNECT DB
 if (app.get('env') === 'development')
-    mongoose.connect(require('./config/database.js').remote);
+    mongoose.connect(require('./config/database.js').local);
 else
-    mongoose.connect(require('./config/database.js').remote);
+    mongoose.connect(require('./config/database.js').local);
 
 app.use(logger('dev'));
 app.use(bodyParser.json());

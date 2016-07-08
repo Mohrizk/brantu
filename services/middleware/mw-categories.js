@@ -138,7 +138,9 @@ module.exports = {
         });
     },
     //GET BREAD CRUMBS & CHILDREN
-    getBreadcrumbAndChildren: function (req, res, next) {
+    getCategoryUrl: function (req, res, next) {
+        console.log(req.url);
+        console.log(req.query.color);
         var splitUrl = req.url.split('/');
         var key = splitUrl [splitUrl.length - 1];
         var count = 0;
@@ -146,10 +148,8 @@ module.exports = {
         /*var breadcrumb= new Array();
         var condition;*/
         async.series([
-            // GET THE REQUESTED information of the category
             function (callback){
                 Categories.findOne({'key': key}, function(err, category) {
-
                     if (err) return callback(err);
                     else{
                         if (category != null)
@@ -160,65 +160,8 @@ module.exports = {
 
                 });
             }
-
-            // GET THE BEDCRUMBS
-            /*function(callback){
-                async.whilst(
-
-                        function () {
-
-                            if(condition != null){
-                                if(options.indexOf(condition.key) == -1)
-                                    return true;
-                                else
-                                    return  false;
-
-                            }
-                            else{
-                                return false;
-                            }
-                        },
-                        function (callback) {
-                            Categories.findOne({'key': condition.parentKey}, function(err, parentCategory) {
-                                count ++;
-                                if (err) return callback(err);
-                                else{
-                                    if (parentCategory != null) {
-
-                                        condition= parentCategory;
-                                        breadcrumb.push({name : parentCategory.name, key:parentCategory.key});
-                                    }
-                                    return callback();
-
-                                }
-
-                            });
-                    },
-                    function (err) {
-
-                        callback();
-                    }
-                );
-            },
-            Lets get the children ;)
-            function (callback){
-                Categories.find({'key':{$in: theCategory.childKeys}}, function(err, categories) {
-
-                    if (err) return callback(err);
-                    else{
-                        if (categories != null) {
-                            req.children = categories;
-                        }
-                        return callback();
-
-                    }
-
-                });
-            }*/
         ], function (error){
-
-                //if(req.children != null) res.locals.children = req.children;
-                if(theCategory != null) {
+             if(theCategory != null) {
                     res.locals.category = theCategory;
                     res.locals.exposeName  = "category";
                     res.locals.exposeValue = theCategory;
@@ -230,20 +173,6 @@ module.exports = {
                     }
                 }
 
-                /*if(breadcrumb !=null) {
-                    res.locals.breadcrumb = breadcrumb.reverse();
-                    if(breadcrumb.length != 0){
-                             res.locals.selectedDepartmentName =  res.locals.breadcrumb [0].name;
-                             res.locals.selectedDepartmentKey =  res.locals.breadcrumb [0].key;
-                             res.locals.selectedDepartment =  res.locals.breadcrumb [0];
-                    }
-                    else{
-                        res.locals.selectedDepartmentName =  theCategory.name;
-                        res.locals.selectedDepartmentKey = theCategory.key;
-                        res.locals.selectedDepartment = theCategory;
-                    }
-
-                }*/
                 next();
         });
     }

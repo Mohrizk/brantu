@@ -259,7 +259,7 @@ var routes = [
   /*********SHOP***************************/
     [ '/explore/*', 'get', [
         categories.getCategoryTree,
-        categories.getBreadcrumbAndChildren,
+        categories.getCategoryUrl,
         function(req, res, next) {
         res.render('category')
       } ]
@@ -400,6 +400,7 @@ var routes = [
                     sameBrandProducts           :req.sameBrandProducts,
                     LowerPriceCategoryProducts  :req.LowerPriceCategoryProducts ,
                     sameCategoryProducts        : req.sameCategoryProducts,
+                    style                       : req.style,
                     category                    : req.category,
                     brand                       : req.brand
                 }
