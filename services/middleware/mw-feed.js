@@ -1,7 +1,6 @@
 var Outfits  = require('../models/outfit');
 var Product  = require('../models/product');
 var webshot = require('webshot');
-var phantom = require('phantom');
 var exphbs = require('express-handlebars');//HTML TEMPLATING
 
 
