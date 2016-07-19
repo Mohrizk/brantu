@@ -4,9 +4,7 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="319a9c44-cb0a-494b-a470-9e86d210bc29" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/middleware/mw-feed.js" afterPath="$PROJECT_DIR$/services/middleware/mw-feed.js" />
-    </list>
+    <list default="true" id="319a9c44-cb0a-494b-a470-9e86d210bc29" name="Default" comment="" />
     <ignored path="brantu.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -111,22 +109,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mw-feed.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/services/middleware/mw-feed.js">
+      <file leaf-file-name="mw-socialmedia.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/services/middleware/mw-socialmedia.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.06437768">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <element signature="e#236#346#0" expanded="false" />
-                <element signature="e#399#754#0" expanded="false" />
-                <element signature="e#807#1161#0" expanded="false" />
-                <element signature="e#1228#5798#0" expanded="false" />
-                <element signature="e#1391#1562#0" expanded="false" />
-                <element signature="e#1755#1880#0" expanded="false" />
-                <element signature="e#2015#2183#0" expanded="false" />
-                <element signature="e#2368#2550#0" expanded="false" />
-                <element signature="e#2766#2912#0" expanded="false" />
-                <element signature="e#7871#8744#0" expanded="false" />
+                <element signature="e#365#1323#0" expanded="false" />
+                <element signature="e#1369#1877#0" expanded="false" />
+                <element signature="e#1922#2412#0" expanded="false" />
+                <element signature="e#2584#2722#0" expanded="false" />
+                <element signature="e#3378#3647#0" expanded="false" />
+                <element signature="e#3716#4442#0" expanded="false" />
+                <element signature="e#4765#5236#0" expanded="false" />
+                <element signature="e#5290#5761#0" expanded="false" />
+                <element signature="n#!!block;n#mapGenderSocial#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -872,13 +869,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/services/middleware/mw-socialmedia.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="62" column="13" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/images/footer/blimedlem.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1072,14 +1062,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/services/user-routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1128,6 +1110,32 @@
             <element signature="e#2368#2550#0" expanded="false" />
             <element signature="e#2766#2912#0" expanded="false" />
             <element signature="e#7871#8744#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/middleware/mw-socialmedia.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#365#1323#0" expanded="false" />
+            <element signature="e#1369#1877#0" expanded="false" />
+            <element signature="e#1922#2412#0" expanded="false" />
+            <element signature="e#2584#2722#0" expanded="false" />
+            <element signature="e#3378#3647#0" expanded="false" />
+            <element signature="e#3716#4442#0" expanded="false" />
+            <element signature="e#4765#5236#0" expanded="false" />
+            <element signature="e#5290#5761#0" expanded="false" />
+            <element signature="n#!!block;n#mapGenderSocial#0" expanded="false" />
           </folding>
         </state>
       </provider>
