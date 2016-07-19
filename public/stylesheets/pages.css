@@ -289,9 +289,7 @@ display: inline !important;
   max-width:600px;
 
 }
-::-webkit-input-placeholder {
-  color:    rgba(51,51,51,0.4);
-}
+
 
 .header .search-link input[type="text"] {
   margin:auto;
@@ -1742,12 +1740,10 @@ top:14%; left:7px;
   height: calc(100% - 50px);
 }
 .panel .panel-heading .panel-title {
-  font-family: 'GothamRounded-Bold';
   text-transform: uppercase;
   color:white;
   display: inline-block;
   letter-spacing: 0.5em;
-  font-size: 2vw;
   margin: 0;
   padding: 0;
   line-height: normal;
@@ -2573,6 +2569,12 @@ hr.dotted {
   background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 75%);
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 75%);
 }
+.gradient-black-light {
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 75%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 75%);
+}
+
+
 .gradient-blue{
      background: -webkit-linear-gradient(#85ccec,#89daff);
   background: linear-gradient(#85ccec,#89daff);
@@ -2624,6 +2626,11 @@ hr.dotted {
 .bg-brantu-black-gradient{background:linear-gradient(to top, rgb(51, 51, 51), rgb(0, 0, 0)) !important;}
 
 .text-velvet{color: #AA076B !important;}
+a.text-velvet{
+  color: #AA076B !important;
+  opacity:0.6;
+}
+a.text-velvet:hover{color: #AA076B !important; opacity:1;}
 .text-pink{color: #eed3d3 !important;}
 .text-pink-dark{color:#ffb6c1 !important}
 .text-pink-darker{color: #e58eac!important;}
@@ -2701,6 +2708,9 @@ color:#66cdaa !important;
 */
 .text-spaced{
     letter-spacing: 0.1em;
+}
+.text-spaced-medium{
+  letter-spacing: 0.3em;
 }
 
 /* Labels
@@ -5546,6 +5556,8 @@ https://github.com/IonDen/ion.rangeSlider
     border-top-color: #f55753;
 }
 
+
+
 /*------------------------------------------------------------------
 [13. Treeview]
 */
@@ -5666,7 +5678,6 @@ textarea {
 }
 input[type="radio"],
 input[type="checkbox"] {
-  margin-top: 1px 0 0;
   line-height: normal;
   cursor: pointer;
   -webkit-box-sizing: border-box;
@@ -5720,36 +5731,35 @@ form legend {
   background-color: #f8f8f8;
   outline: 0 !important;
   -webkit-box-shadow: none;
-  box-shadow: 0 0 5px rgb(100, 220, 255);
 }
 .form-control:focus::-moz-placeholder {
   color: inherit;
-  opacity: 0.7;
+  opacity: 0.3;
    text-transform: uppercase;
 }
 .form-control:focus:-ms-input-placeholder {
   color: inherit;
-  opacity: 0.7;
+  opacity: 0.3;
    text-transform: uppercase;
 }
 .form-control:focus::-webkit-input-placeholder {
   color: inherit;
-  opacity: 0.7;
+  opacity: 0.3;
    text-transform: uppercase;
 }
 .form-control::-moz-placeholder {
   color: inherit;
-  opacity: 0.9;
+  opacity: 0.3;
    text-transform: uppercase;
 }
 .form-control:-ms-input-placeholder {
   color: inherit;
-  opacity: 0.9;
+  opacity: 0.3;
    text-transform: uppercase;
 }
 .form-control::-webkit-input-placeholder {
   color: inherit;
-  opacity: 0.9;
+  opacity: 0.3;
    text-transform: uppercase;
 }
 .form-control[disabled],
@@ -6132,7 +6142,6 @@ input:required label{
  * attribute and a focus state
  */
 input:required:focus {
-  border: 1px solid red;
   outline: none;
 }
 
@@ -6608,6 +6617,7 @@ https://github.com/eternicode/bootstrap-datepicker
 .datepicker.dropdown-menu {
   border-color: #e6e6e6;
   color: #626262;
+  background:#fff;
 }
 .datepicker.datepicker-dropdown.datepicker-orient-bottom:before {
   border-color: #e6e6e6;
@@ -12051,6 +12061,7 @@ Main components
 }
 /* Landscape view of all tablet devices */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
   .page-sidebar .sidebar-menu .menu-items ul {
     -webkit-transform: translateZ(0);
     -webkit-backface-visibility: hidden;

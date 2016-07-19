@@ -1,0 +1,93 @@
+var express     = require('express');
+var router      = express.Router();
+var passport    = require('passport');
+
+
+/********** Middleware******/
+var categories = require('./middleware/mw-categories');
+var brands = require('./middleware/mw-brands');
+var products = require('./middleware/mw-products');
+var newsletter = require('./middleware/mw-newsletter');
+var feed = require('./middleware/mw-feed');
+var session = require('./middleware/mw-session');
+var email = require('./middleware/mw-email');
+var socialMedia = require('./middleware/mw-socialmedia');
+var user = require('./middleware/mw-users');
+
+/**************************************************************
+ *******************BEGINING ROUTES***************************
+ ***************************************************************/
+var routes = [
+/********* Email ********/
+    [ '/email/sendConfirmation', 'get', [ function( req, res, next) {
+        email.sendSignupConfirmation('rizk@brantu.com',function(){
+            res.send('cool')
+        })
+    }]
+    ],
+    [ '/fb/get-page-token', 'get', [
+        socialMedia.facebook.getAccessToken,
+        //socialMedia.fbPost,
+        function( req, res, next) {
+            // do something with req.use
+        }]
+    ],
+    [ '/fb/publish/post', 'get', [
+        socialMedia.facebook.publishPost,
+        function( req, res, next) {
+                    // do something with req.use
+    }]
+    ],
+    [ '/fb/delete/post/:id', 'get', [
+        socialMedia.facebook.deletePost,
+        function( req, res, next) {
+            // do something with req.use
+        }]
+    ],
+    /*[ '/fb/publish/image', 'get', [
+        feed.getFeed,
+        feed.renderPriceCard,
+        socialMedia.facebook.publishImage,
+        function( req, res, next) {
+            // do something with req.use
+        }]
+    ],*/
+    [ '/fb/delete/image/:id', 'get', [
+        function( req, res, next) {
+            // do something with req.use
+        }]
+    ],
+
+/********* Create Outfit ********/
+    [ '/admin/create-price-card', 'get', [ function( req, res, next) {
+        res.render('feedForm',{valid:req.query.valid, message:req.query.message});
+    }]
+    ],
+    [ '/admin/create-price-card', 'post', [
+        feed.createPriceCard,
+        feed.renderPriceCard,
+       // socialMedia.facebook.publishPriceCard,
+        function( req, res, next) {
+        var response = 'valid='+req.priceCardCreated
+        var message = 'message='+req.message
+        res.redirect('/admin/create-price-card?'+response+'&'+message)
+    }]
+    ],
+];
+
+routes.forEach(function(arr){
+    console.log(arr[1]);
+    router[arr[1]](arr[0], arr[2]);
+});
+/**************************************************************
+ *******************END ROUTES***************************
+ ***************************************************************/
+// route middleware to make sure a user is logged in
+function isLoggedIn(req, res, next) {
+    // if user is authenticated in the session, carry on
+    if (req.isAuthenticated())
+        return next();
+    // if they aren't redirect them to the home page
+    res.redirect('/');
+}
+module.exports = router;

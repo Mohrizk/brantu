@@ -52,7 +52,7 @@
         <div class="scroll-wrapper  menu-items bgBlurEffectLight" style="position: relative; overflow-x: hidden; background: rgba(0,0,0,0.82);">
             <ul class="menu-items scroll-content" style="margin-bottom: 0px; margin-right: 0px; height: 100%; padding-bottom: 50px;">
                  <li class="m-t-30 b-b b-transparent-white">
-                    <a href="/{{selectedDepartment.key}}/upptack-nya-favoriter" >
+                    <a href="/{{selectedDepartment}}/upptack-nya-favoriter" >
                         <span class="title all-caps bold" >Inspire</span>
                         <!--<span class="details">234 New Updates</span>-->
                     </a>
@@ -69,7 +69,7 @@
                            <i><img src="/images/nav/explore.png" style="width:38px;"/></i>
                         </span>
                     {{#each categoryTree}}
-                        {{#if (compareStrings this.department.name ../selectedDepartment.name)}}
+                        {{#if (compareStrings this.department.name ../selectedDepartment)}}
                             <ul class="sub-menu">
                                 {{#each categories}}
                                     <li>
@@ -77,11 +77,11 @@
                                             <span class="arrow"></span></a>
                                         <ul class="sub-menu">
                                                 <li>
-                                                    <a class=" bold" href="/explore/{{category.key}}">Alla</a>
+                                                    <a class=" bold" href="/explore?q=&hFR[products][0]={{joinBreadCrumb category.breadcrumb}}&page=0"  data-page-ref>Alla</a>
                                                 </li>
                                             {{#each subCategory}}
                                                 <li>
-                                                    <a class=" bold" href="/explore/{{this.key}}">{{andfixer this.name}}</a>
+                                                    <a class=" bold" href="/explore?q=&hFR[products][0]={{joinBreadCrumb this.breadcrumb}}&page=0" data-page-ref>{{andfixer this.name}}</a>
                                                 </li>
                                             {{/each }}
                                         </ul>

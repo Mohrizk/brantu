@@ -7,7 +7,6 @@ var User = require('../models/user');
 
 
 module.exports = {
-    //GET CATEGORY TREE
     changeName: function (req, res, next) {
         console.log('So current user', req.user._id)
         console.log('SO we are sending',req.body, req.query);
@@ -55,5 +54,4 @@ module.exports = {
 
         });
     }
-
 }

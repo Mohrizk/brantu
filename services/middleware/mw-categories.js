@@ -1,6 +1,8 @@
 var Categories  = require('../models/category');
 var async = require('async');
 var options = ['kvinna', 'man'];
+var algoliasearch = require('algoliasearch');
+var algoliasearchHelper = require('algoliasearch-helper');
 
 var lvl1_cancelOut = ['Premium']
 var lvl2_cancelOut = [{lvl0:'Kvinna', lvl1:'Kläder',lvl2:['Underkläder']}]
@@ -25,7 +27,7 @@ module.exports = {
 
                 function(mainCategory, callback){
                     if(mainCategory != null){
-                        Categories.find({"parentKey": mainCategory.key}, {'key': 1, 'name': 1, breadcrumb: 1},{sort:{name: 1}}, function (err, categorylist) {
+                        Categories.find({"parentKey": mainCategory.key}, {'key': 1, 'name': 1, breadcrumb: 1},{sort:{name: 1}}).cache().exec( function (err, categorylist) {
                             if(err) callback(err);
                             else{
                                 var categorylist = categorylist.filter(function(item)
@@ -46,7 +48,7 @@ module.exports = {
                     var temp = new Array();
                     if(categorylist != null){
                         async.each(categorylist, function (category, callback) {
-                            Categories.find({parentKey: category.key}, {key: 1, name: 1, breadcrumb: 1},{sort:{name: 1}},function (err, subcategory) {
+                            Categories.find({parentKey: category.key}, {key: 1, name: 1, breadcrumb: 1},{sort:{name: 1}}).cache().exec(function (err, subcategory) {
                                 if (err) {callback(err);}
                                 else {
                                     if (subcategory != null) {
@@ -104,15 +106,16 @@ module.exports = {
 
     },
     //GET CATEGORY TREE
+
     getDepartment: function(req, res, next){
-       console.log(req.url)
         var split = req.url.split('/');
         var key = split[1];
-        Categories.findOne({'key': key}, function(err, category) {
+
+        Categories.findOne({'key': key}).cache().exec( function(err, category) {
             if (err) next(err);
             else{
                 if (category != null) {
-                    res.locals.selectedDepartment = category;
+                    res.locals.selectedDepartment = category.name;
                     next();
                 }
                 else {
@@ -124,11 +127,16 @@ module.exports = {
                     else
                        favKey = 'kvinna'
 
-                    Categories.findOne({'key': favKey}, function(err, categoryFav) {
+
+                    Categories.findOne({'key': favKey}).cache().exec( function(err, categoryFav) {
                         if (err) return callback(err);
                         if (categoryFav != null)
-                            res.locals.selectedDepartment = categoryFav;
+                            res.locals.selectedDepartment = categoryFav.name;
                             //breadcrumb.push(category);
+                        else res.locals.selectedDepartment = 'kvinna';
+
+
+
                         next();
                     })
                 }
@@ -137,8 +145,9 @@ module.exports = {
 
         });
     },
-    //GET BREAD CRUMBS & CHILDREN
-    getCategoryUrl: function (req, res, next) {
+
+
+    getCategoryUrl_old: function (req, res, next) {
         console.log(req.url);
         console.log(req.query.color);
         var splitUrl = req.url.split('/');

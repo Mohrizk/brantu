@@ -21,8 +21,8 @@ var Product = mongoose.Schema({
     season         :  String   ,
     seasonYear     :  String   ,
     activationDate :  String   , // To Index
-    updateDate     : {year: Number, month: Number, day: Number},
-    addDate        : {year: Number, month: Number, day: Number},
+    updateDate     :  { type: Date, default: Date.now },
+    addDate        :  { type: Date, default: Date.now },
     additionalInfos: [String] ,
 
     color          : String    ,

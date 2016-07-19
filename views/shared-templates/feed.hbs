@@ -1,0 +1,62 @@
+
+\{{#each feed.docs}}
+<div class="productFeedTemplate "  >
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 p-t-30 bg-white" style="border:1px solid #eee; border-radius: 5px; box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);">
+            <h3 class="all-caps text-spaced-medium text-center p-b-20 p-l-20 p-r-20">\{{this.name}}</h3>
+            <div class="images row text-center" >
+                <div class="col-md-5 col-sm-6 col-xs-6 imageInspire inline relative no-padding p-l-10">
+                    <h4 class="text-center no-padding no-margin " style="border-bottom: 1px solid #333;line-height: 0;">
+                        <span class="bg-white padding-2v all-caps  text-spaced-medium">Style</span>
+                    </h4>
+                    <img class="full-width p-t-10"  src="\{{this.styleProduct.mainPicture.largeUrl}}"/>
+                    <div class="overlayer bottom-right full-width" style="left:10px;" >
+                        <div class="overlayer-wrapper item-info more-content p-r-10">
+                            <div class="gradient-black-light p-l-20 p-r-20 p-t-20 p-b-5">
+                                <div class="">
+                                    <h4 class="text-center text-black no-margin no-padding bold">\{{this.styleProduct.price.formatted}}</h4>
+                                    <p class="text-center text-black no-margin no-padding bold">\{{this.styleProduct.brand.name}}</p>
+                                    <a class="text-velvet b-b bold" target="_blank" href="\{{this.styleProduct.productUrl}}">Buy now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-xs-6 col-md-offset-2 imageCheap inline relative no-padding p-r-10" >
+                    <h4 class="text-center no-padding no-margin " style="border-bottom: 1px solid #333;line-height: 0;">
+                        <span class="bg-white padding-2v all-caps  text-spaced-medium">Price</span>
+                    </h4>
+                    \{{#if this.saving}}
+                    <div class="top-right p-t-20">
+                        <h6 class="p-r-10 no-padding no-margin p-t-10 bold">Brantu Search Engine</h6>
+                        <h5 class="p-r-10 no-padding no-margin text-velvet">Save \{{this.saving.value}} (\{{this.saving.value}})</h5>
+                    </div>
+                    \{{/if}}
+
+                    <img class="full-width p-t-10" src="\{{this.priceProduct.mainPicture.largeUrl}}"/>
+
+                    <div class="overlayer bottom-right full-width" style="">
+                        <div class="overlayer-wrapper item-info more-content p-r-10">
+                            <div class="gradient-black-light p-l-20 p-r-20 p-t-20 p-b-5">
+                                <div class="">
+                                    <h4 class="text-center text-black no-margin no-padding bold">\{{this.priceProduct.price.formatted}}</h4>
+                                    <p class="text-center text-black no-margin no-padding bold">\{{this.priceProduct.brand.name}}</p>
+                                    <a class="text-velvet b-b bold" target="_blank" href="\{{this.priceProduct.productUrl}}">Buy now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="text-center padding-30">
+                <p>\{{this.description}}</p>
+                <div>
+                    <a class="text-velvet b-b bold" href="\{{categoryLink}}">Explore more \{{categoryName}}</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+\{{/each}}

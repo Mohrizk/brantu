@@ -10,25 +10,23 @@
     $(document).ready(function() {
         //$("#birth-date").birthdayPicker({maxAge: 65, sizeClass: "span2"});
         /************************************************INITIALIZATION*********************/
+        $("#owlLanding").owlCarousel({
 
+            // Show next and prev buttons
+            slideSpeed : 1000,
+            paginationSpeed : 800,
+            singleItem:true,
+           // autoPlay: 3000,
 
-        $("#pricerange").ionRangeSlider({
-            type: "double",
-            min: 0,
-            max: 5000,
-            from: 200,
-            to: 800,
-            prefix: "SEK"
+            // "singleItem:true" is a shortcut for:
+            // items : 1,
+            // itemsDesktop : false,
+            // itemsDesktopSmall : false,
+            // itemsTablet: false,
+            // itemsMobile : false
+
         });
 
-       /* $(".brand-multiple").select2({
-            placeholder: "SELECT BRAND"
-        });
-        $(".category-multiple").select2({
-            placeholder: "SELECT CATEGORY"
-        });*/
-        /*****ToolTIP******/
-        $('[data-toggle="tooltip"]').tooltip();
     });
 
 })(window.jQuery);

@@ -1,3 +1,4 @@
+<div id="headerMainContainer">
 <div class="header no-margin" >
     <div class="mobile">
         <div class="top-right  visible-xs" id="menuSearchIcon" style="padding-top: 9px;">
@@ -57,35 +58,27 @@
 
     <div class="b-b hidden-xs bg-white" id="header-Dropdown" style="">
         <div class="row p-t-10">
-            <div class="col-xs-3 ">
+            <div class="col-xs-4 ">
                 <div class="row">
-                    <div class="col-xs  text-right hidden-sm hidden-xs"><img  src="/images/nav/glasses.svg"   width="40"/></div>
-                    <div class="col-xs pull-xs-left text-center visible-sm visible-xs"><img  src="/images/nav/glasses.svg"   width="40"/></div>
-                    <div class="col-md-8 hidden-sm hidden-xs"><p class="medium text-master">Jämför och hitta det bästa priset inom mode</p></div >
+                    <div class="col-xs  text-right hidden-sm hidden-xs"><img  src="/images/nav/lookbook.png"   width="44"/></div>
+                    <div class="col-xs pull-xs-left text-center visible-sm visible-xs"><img  src="/images/nav/lookbook.png"   width="44"/></div>
+                    <div class="col-md-8 hidden-sm hidden-xs text-left"><p class="bold text-master">Jämför och hitta det <br/>bästa priset inom mode</p></div >
                 </div>
             </div>
-            <div class="col-xs-3 ">
+            <div class="col-xs-4 ">
                 <div class="row">
-                    <div class="col-xs text-right hidden-sm hidden-xs"><img  src="/images/nav/lightning.svg"   width="40"/></div>
-                    <div class="col-xs text-center visible-sm visible-xs"><img  src="/images/nav/lightning.svg"   width="40"/></div>
-                    <div class="col-md-8 hidden-sm hidden-xs"><p class="medium p-t-10 text-master ">Blixtsnabb sökning</p></div >
+                    <div class="col-xs text-right hidden-sm hidden-xs"><img  src="/images/nav/explore.png"   width="44"/></div>
+                    <div class="col-xs text-center visible-sm visible-xs"><img  src="/images/nav/explore.png"   width="44"/></div>
+                    <div class="col-md-8 hidden-sm hidden-xs text-left"><p class="bold text-master ">+100 000 styles <br/>+3000 märken</p></div >
                 </div>
             </div>
-            <div class="col-xs-3 ">
+            <div class="col-xs ">
                 <div class="row">
-                    <div class="col-xs text-right hidden-sm hidden-xs"><img  src="/images/nav/calender.svg"   width="40"/></div>
-                    <div class="col-xs text-center visible-sm visible-xs"><img  src="/images/nav/calender.svg"   width="40"/></div>
-                    <div class="col-md-8 hidden-sm hidden-xs"><p class="medium text-master ">Nyheter från våra nätbutiker varje dag</p></div >
+                    <div class="col-xs text-right hidden-sm hidden-xs"><img  src="/images/nav/compare.png"   width="40"/></div>
+                    <div class="col-xs text-center visible-sm visible-xs"><img  src="/images/nav/compare.png"   width="40"/></div>
+                    <div class="col-md-8 hidden-sm hidden-xs text-left"><p class="bold text-master ">Blixtsnabb <br/>sökning</p></div >
                 </div>
             </div>
-            <div class="col-xs  ">
-                <div class="row">
-                    <div class="col-xs text-right hidden-sm hidden-xs"><img  src="/images/nav/present.svg"   width="40"/></div>
-                    <div class="col-xs text-center p-xs-l-10 visible-sm visible-xs"><img  src="/images/nav/present.svg"   width="40"/></div>
-                    <div class="col-md-8 hidden-sm hidden-xs"><p class="medium p-t-10 text-master">Stöd välgörenhet</p></div >
-                </div>
-            </div>
-
         </div>
     </div>
 
@@ -264,7 +257,7 @@
                                 <ul class="nav navbar-nav" id="navbar-categories">
                                     {{#each categoryTree}}
                                         <li class=" p-r-80 inline">
-                                            <a class="capitalize dark text-spaced  {{#if ../selectedDepartment}}{{#if (compareStrings this.department.name ../selectedDepartment.name)}}active{{/if}}{{/if}}" style="font-size:15px; line-height: 3px;" key="{{this.department.key}}" href="/{{this.department.key}}">{{this.department.name}}</a>
+                                            <a class="capitalize dark text-spaced  {{#if ../selectedDepartment}}{{#if (compareStrings this.department.name ../selectedDepartment)}}active{{/if}}{{/if}}" style="font-size:15px; line-height: 3px;" key="{{this.department.key}}" href="/{{this.department.key}}">{{this.department.name}}</a>
                                         </li>
                                     {{/each}}
                                 </ul>
@@ -276,9 +269,9 @@
         {{#if selectedDepartment}}
         <div class="container hidden-xs full-width menu b-b b-grey bg-white" id="navSubCategory" >
             <ul class="nav navbar-nav submenu">
-                <li class=" "><a class="dark  text-center" href="/{{selectedDepartment.key}}/upptack-nya-favoriter">Look Book</a></li>
+                <li class=" "><a class="dark  text-center" href="/{{selectedDepartment}}" data-page>Look Book</a></li>
                 {{#each categoryTree}}
-                    {{#if (compareStrings this.department.name ../selectedDepartment.name)}}
+                    {{#if (compareStrings this.department.name ../selectedDepartment)}}
                         {{#each categories}}
                             <li class=""><a class="dark  text-center"  expand-key="{{category.key}}">{{andfixer category.name}}</a></li>
                         {{/each}}
@@ -291,17 +284,16 @@
         <div class=" " style="padding:0 50px; background: transparent;">
             <div class="glassViolet p-l-50  category-expand-wrapper" style="opacity:0; box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.2);">
                 {{#each categoryTree}}
-                    {{#if (compareStrings this.department.name ../selectedDepartment.name)}}
+                    {{#if (compareStrings this.department.name ../selectedDepartment)}}
                         {{#each categories}}
                             <div class=" category-expand-container hidden  padding-1v" expand-parentKey="{{category.key}}">
                                 <div class="category-expand">
                                     <div class="inline">
-
-                                        <a href="/explore/{{category.key}}"><h5 class="sbold text-white">{{andfixer category.name}}</h5></a>
+                                        <a href="/explore?q=&hFR[products][0]={{joinBreadCrumb category.breadcrumb}}&page=0"><h5 class="sbold text-white">{{andfixer category.name}}</h5></a>
                                         <div class="desktopNavColoumns">
                                             <ul>
                                                 {{#each subCategory}}
-                                                    <li><a class="" href="/explore/{{this.key}}">
+                                                    <li><a class="" href="/explore?q=&hFR[products][0]={{joinBreadCrumb this.breadcrumb}}&page=0">
                                                         {{andfixer this.name}}
                                                     </a></li>
                                                 {{/each}}
@@ -334,17 +326,16 @@
         </div>
     </div>
 </div>
-
 <div class="text-center full-width no-overflow visible-xs bg-master-lighter" id="mobileSubMenu" style="padding-top:46px;">
     <div class="row b-b">
-        <a class="col-xs p-b-5 dark light text-center subMenuMobile {{#if (stringContains url "upptack-nya-favoriter")}}active{{/if}}" data-page="/{{selectedDepartment.key}}/upptack-nya-favoriter" >
+        <a class="col-xs p-b-5 dark light text-center subMenuMobile {{#if (stringContains url "upptack-nya-favoriter")}}active{{/if}}" href="/{{selectedDepartment}}"  data-page>
             <div>
                 <div class="p-t-5">
                     <i><img src="/images/nav/lookbook.png" style="width:45px;"/></i>
                 </div>
             </div>
         </a>
-        <a class="dark light text-center col-xs b-l b-grey p-b-5 subMenuMobile {{#if (stringContains url "explore")}}active{{/if}}" data-page="/explore/{{selectedDepartment.key}}">
+        <a class="dark light text-center col-xs b-l b-grey p-b-5 subMenuMobile {{#if (stringContains url "explore")}}active{{/if}}" href="/explore?q=&hFR[products][0]={{selectedDepartment}}&page=0" data-page="explore">
             <div>
                 <div class="p-t-5">
                     <i><img src="/images/nav/explore.png" style="width:45px;"/></i>
@@ -359,6 +350,25 @@
         </a>
     </div>
 </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

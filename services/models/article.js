@@ -16,8 +16,8 @@ var Article = mongoose.Schema({
 
                 sizes          : [String],
                 quantity       :  Number,
-                updateDate     : {year: Number, month: Number, day: Number},
-                addDate        : {year: Number, month: Number, day: Number}
+                updateDate     : { type: Date, default: Date.now },
+                addDate        : { type: Date, default: Date.now }
             }]
         }
     ]

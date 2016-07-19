@@ -4,6 +4,7 @@ module.exports ={
         next();
     },
     addFavouriteProduct: function(req, res, next){
+
         if(req.session.favProducts != null){
             var found = false;
             for(var f in req.session.favProducts)

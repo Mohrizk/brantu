@@ -4,8 +4,25 @@ var Categories  = require('../models/category');
 var Article  = require('../models/article');
 var Shops  = require('../models/shop');
 var Colors  = require('../models/color');
+
 var async = require('async');
 var Levenshtein = require('levenshtein');
+var url = require('url');
+var algoliasearch = require('algoliasearch');
+var algoliasearchHelper = require('algoliasearch-helper');
+
+var client   = algoliasearch("D3IWZXC0AH", '3d6a60c228b6e8058770fdf8eab2f652');
+var AgoliaInstance   = algoliasearchHelper(client,'test_product_asos', {
+    hierarchicalFacets: [{
+        name: 'products',
+        attributes: ['category.lvl0', 'category.lvl1', 'category.lvl2', 'category.lvl3', 'categories.lvl4'],
+        sortBy: ['count:desc', 'name:asc']
+    }],
+    facets:[  'sale', 'price.value' , 'attributes.value'],
+    disjunctiveFacets:['color','brand.name','shop.name','sizes', 'discount']
+});
+var sharedHelpers = require('../../public/javascripts/shared-helper');
+
 //HELPER FUNCTIONS
 function getHex(product, callback){
     var color = product.color;
@@ -73,42 +90,25 @@ function getShippingReturn(product, req){
 operations = {
     //API FOR GETTING PRODUCT
     getProductByID  :function(req, res, next){
-        var split = req.url.split('/');
-        var _id = split[split.length-1];
+        var _id = req.params.id;
         console.log(_id)
         var options = 'brand category otherColors articles articles.shops.shop';
         Products.findOne({"_id":_id}).deepPopulate(options).exec( function(err, product){
             if(err) return next(err);
             if(product == null) return next();
             var x= product.toObject();
-                getLowestPrice(x);
-                getShippingReturn(x, req)
-                req.product = x;
-                return next();
+            getLowestPrice(x);
+            getShippingReturn(x, req)
+            req.product = x;
+            req.brand = x.brand;
+            req._id = x._id;
+            for(var a in x.attributes){
+                if( x.attributes[a].name == 'style'|| x.attributes[a].name == 'Style')
+                    req.style = x.attributes[a].value;
+            }
+            req.category = x.category;
+            return next();
             })
-    },
-
-    getUnpopulatedProductByID  :function(req, res, next){
-        var split = req.url.split('/');
-        var _id = split[split.length-1];
-        Products.findOne({"_id":_id}).exec( function(err, product){
-            if(err) return next(err);
-            if(product == null) return next();
-            req.product = product.toObject();
-            Products.populate(product, [{path:'brand'}, {path:'category'}], function(err, newProduct){
-                req.brand = newProduct.brand;
-                for(var a in newProduct.attributes){
-                    if( newProduct.attributes[a].name == 'style'|| newProduct.attributes[a].name == 'Style')
-                        req.style = newProduct.attributes[a].value;
-                }
-
-                console.log('THE STYLE IS',req.style)
-                req.category = newProduct.category;
-                return next();
-            })
-
-
-        })
     },
 
     getSimilarProductsFromSameBrand:function(req,res,next){
@@ -205,6 +205,12 @@ operations = {
     },
 
     getFavouriteProducts   : function (req, res, next) {
+        for(var f in req.session.favProducts){
+            if(req.session.favProducts[f]==''){
+                req.session.favProducts.splice(f, 1);
+            }
+        }
+
         if(typeof req.session.favProducts !== 'undefined'){
             var query = { "_id": { $in: req.session.favProducts }}
             Products.find(query, function(err, productList){
@@ -218,10 +224,59 @@ operations = {
             res.locals.favouriteProductsList = [];
             next()
         }
+    },
+
+    getAlgoliaProducts:function(req, res, next){
+        var url_parts = url.parse(req.url, true);
+        console.log(url_parts)
+        var currentState;
+
+        if(url_parts.pathname.indexOf('explore') > -1)  {
+            currentState= {brand: false, category:true, search:false}
+            res.locals.TYPE  = "category"
+            res.locals.title = url_parts.query['hFR[products][0]']
+        }
+        else if(url_parts.pathname.indexOf('brand') > -1){
+            currentState= {brand: true, category:false, search:false}
+            res.locals.TYPE  = "brand"
+            res.locals.title = 'brand - '+req.params.name;
+        }
+        else if(url_parts.pathname.indexOf('search') > -1){
+            currentState= {brand: false, category:false, search:true}
+            res.locals.TYPE  = "search"
+            res.locals.title = 'search - '+url_parts.query['q'];
+        }
+        res.locals.selectedDepartment = url_parts.query['hFR[products][0]'].split(' > ')[0];
+
+        var queryString = decodeURIComponent(url_parts.search).split('?');
+        sharedHelpers.helper.urlToState(
+            AgoliaInstance,
+            queryString[queryString.length-1],
+            currentState,
+            req.params.name
+        )
+        AgoliaInstance.search()
+        AgoliaInstance.once('result', function(content){
+            console.log('Hits',content.hits.length)
+            console.log('2 start')
+            sharedHelpers.helper.getAllFacetValues(
+                res.locals,
+                AgoliaInstance,
+                content,
+                currentState,
+                null,
+                sharedHelpers.colors,
+                sharedHelpers.translation,
+                true);
+
+            console.log('2 end')
+            console.log(res.locals.welcome)
+            next()
+        });
     }
 }
 
-helper = {
+var helper = {
     addAttributesQuery:function(foundProduct, query){
         if(foundProduct.attributes.length!==0){
             console.log('ATTRIBUTES FOUND', foundProduct.attributes)

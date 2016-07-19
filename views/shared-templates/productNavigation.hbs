@@ -1,0 +1,518 @@
+
+<div class="navigationWrapper">
+        <div class="welcome">
+            \{{#if welcome.search}}
+            <a class="pull-right visible-xs  closeSearch m-xs-r-10"><i class="pg-close_line fa-2x"></i></a> 
+            <h2 class="all-caps text-spaced-medium text-center font-GothamMedium">\{{#if welcome.department}}\{{welcome.department}}/\{{/if}} \{{welcome.name}} <b>"\{{welcome.query}}"</b></h2>
+                \{{#if welcome.suggestedBrands}}
+                    <div class="visible-xs p-b-40">
+                        <h5 class="all-caps text-spaced-medium text-center font-GothamMedium">\{{{nbBrandHits}}}</h5>
+                        <div class="text-center auto-margin block">
+                            \{{#each welcome.suggestedBrands}}
+                                <a class="dark inline p-l-20 bold" href="/brand/\{{{name}}}"><div class="brandsAC text-center">
+                                    <span class="">\{{{ _highlightResult.name.value }}}</span>
+                                    </div></a>
+                                \{{/each}}
+                            </div>
+                    </div>
+                \{{/if}}
+            <h4 class="all-caps text-spaced-medium text-center font-GothamMedium">\{{{welcome.nbHits}}}</h4>
+            \{{else}} 
+            <h1 class="all-caps text-spaced-medium text-center font-GothamMedium ">\{{welcome.name}} </h1>
+            <h5 class="all-caps text-spaced-medium text-center font-GothamMedium">\{{welcome.department}}\{{#if welcome.subCategory}}/\{{welcome.subCategory}} \{{/if}}</h5>
+            \{{#if welcome.attributes}}<div class=" auto-margin block text-center p-b-20">
+                <h5 class="all-caps bold  b-b">Styles</h5> 
+                \{{#each welcome.attributes}}<p class="inline text-center p-r-10 p-l-10">\{{this.name}}</p>\{{/each}}</div>\{{/if}}
+            \{{/if}} 
+        
+        </div>
+        \{{#if products}}
+        <div class="resultContainer row" id="productEngine"> 
+            <div class="facetPane" id="mainFacetPane"> 
+                <div class="facetContainer " id="mainFacetContainer"> 
+                    <div class="facetWrapper padding-1v" style=""> 
+                        <div class="facet-header"> 
+                            </div> 
+                        <div class="facets" id="primaryFacets"> 
+
+                            <div class="category">
+                                 <div class="refinement">
+                                    <div class="breadcrumb">
+                                     \{{#each category.breadCrumb}}
+                                         \{{#if @first}}<li><a class="bold" value="\{{path}}" style="margin-left: 0 !important;">\{{name}}</a></li>
+                                             \{{else}}<li><a class="bold" value="\{{path}}">\{{name}}</a></li>
+                                             \{{/if}}
+                                         \{{/each}}
+                                     </div>
+                                     <ul class="categoryList no-style">
+                                        \{{#each category.childCategories}}
+                                            <li><a class="medium all-caps \{{class}}" value="\{{path}}">\{{name}}<span>\{{count}}</span></a></li>
+                                         \{{/each}}
+                                     </ul>
+                                 </div>
+                             </div>
+
+                             <div class="price"> 
+                                <h5> 
+                                    <span class="bg-white text-left all-caps bold">Pris</span> 
+                                </h5>
+
+                                <div id="pricerange"></div> 
+                               
+                               
+                                <div class="sale refinement">
+
+                                \{{#each sale.content}}
+                                \{{#if (idGenerator this)}}\{{/if}}
+                                \{{#if this.isRefined}}<div class="checkbox  checkbox-circle"><input type="checkbox" name="checkbox" value="\{{this.name}}"  id="\{{this.theID}}" checked/> <label for="\{{this.theID}}"><span class="bold">\{{../sale.header}}</span></label></div>
+                                    \{{else}}<div class="checkbox  checkbox-circle"><input type="checkbox" name="checkbox" value="\{{this.name}}" id="\{{this.theID}}" /> <label for="\{{this.theID}}"><span class="bold">\{{../sale.header}}</span></label></div>
+                                \{{/if}}
+                                \{{/each}}
+
+                                </div> 
+                                 
+                                <div class="discounts refinement">
+                                    \{{#if discounts.content}}
+                                    <div class="">
+                                        <h5>
+                                            <span class="bg-white text-left all-caps bold">\{{discounts.header}}</span>
+                                            </h5>
+                                        <div id="listContainer">
+                                            <ul class="list" style="max-height: 160px; overflow: scroll;">
+                                                \{{#each discounts.content}}
+                                                    \{{#if (idGenerator this)}}\{{/if}}
+                                                    \{{#if this.isRefined}}<div><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}" checked/> <label class="label" for="\{{this.theID}}"><span class="name ">\{{this.name}}</span> <span class="count">\{{this.count}}</span></label></div>
+                                                        \{{else}}		  <div><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}"/> <label class="label" for="\{{this.theID}}"><span class="name">\{{this.name}}</span><span class="count">\{{this.count}}</span></label></div>
+                                                        \{{/if}}
+                                                    \{{/each}}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    \{{/if}}
+                                    
+                                </div> 
+                                </div> 
+                            <div class="sizes refinement" >
+                                \{{#if sizes.content}}
+                                <div>
+                                    <h5>
+
+                                        <span class="bg-white text-left all-caps bold">\{{sizes.header}}</span>
+                                    </h5>
+                                    <div id="listContainer">
+                                        <ul class="list" style="max-height: 160px; overflow: scroll;">
+                                            \{{#each sizes.content}}
+                                                \{{#if (idGenerator this)}}\{{/if}}
+                                                \{{#if this.isRefined}}<div><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}" checked/> <label class="label" for="\{{this.theID}}"><span class="name ">\{{this.name}}</span> <span class="count">\{{this.count}}</span></label></div>
+                                                    \{{else}}		  <div><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}"/> <label class="label" for="\{{this.theID}}"><span class="name">\{{this.name}}</span><span class="count">\{{this.count}}</span></label></div>
+                                                    \{{/if}}
+                                                \{{/each}}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                \{{/if}}
+                                
+                            </div>
+                            <div class="brands refinement" >
+                            \{{#if brands.content}}
+                            <div class="">
+                            <h5>
+                                <span class="bg-white text-left all-caps bold">\{{brands.header}}</span>
+                                </h5>
+                            <div id="listContainer">
+                                <ul class="list" style="max-height: 160px; overflow: scroll;">
+                                    \{{#each brands.content}}
+                                        \{{#if (idGenerator this)}}\{{/if}}
+                                            \{{#if this.isRefined}}
+                                                <div><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}" checked/> <label class="label" for="\{{this.theID}}"><span class="name ">\{{this.name}}</span> <span class="count">\{{this.count}}</span></label></div>
+                                            \{{else}}
+                                                <div><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}"/> <label class="label" for="\{{this.theID}}"><span class="name">\{{this.name}}</span><span class="count">\{{this.count}}</span></label></div>
+                                            \{{/if}}
+                                    \{{/each}}
+                                </ul>
+                            </div>
+                            </div>
+                            \{{/if}}
+                                
+                            </div>
+                            <div class="colors refinement" >
+                                \{{#if colors.content}}
+                                <h5>
+                                <span class=" bg-white all-caps bold">\{{colors.header}}</span>
+                                </h5>
+                                <div class="colorList">
+                                \{{#each colors.content}}
+                                    \{{#if this.isRefined}}
+                                    <input type="checkbox" name="color" value="\{{this.name}}"   id="\{{this.name}}_\{{this.hex}}" checked/><label for="\{{this.name}}_\{{this.hex}}"  style="background-color:\{{this.hex}};"><span class="name no-overflow-text">\{{this.name}}</span></label>
+                                    \{{else}}
+                                    <input type="checkbox" name="color" value="\{{this.name}}"   id="\{{this.name}}_\{{this.hex}}"/><label for="\{{this.name}}_\{{this.hex}}"  style="background-color: \{{this.hex}};"><span class="name no-overflow-text">\{{this.name}}</span></label>
+                                    \{{/if}}
+                                \{{/each}}
+                                </div>
+                                \{{/if}}
+                            </div>
+                            <div class="shops refinement">
+                             \{{#if shops.content}}
+                                <div class="">
+                                    <h5>
+                                        <span class="bg-white text-left all-caps bold">\{{shops.header}}</span>
+                                        </h5>
+                                    <div id="listContainer">
+                                        <ul class="list" style="max-height: 160px; overflow: scroll;">
+                                            \{{#each shops.content}}
+                                                \{{#if (idGenerator this)}}\{{/if}}
+                                                \{{#if isRefined}}<div><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}" checked/> <label class="label" for="\{{this.theID}}"><span class="name ">\{{this.name}}</span> <span class="count">\{{this.count}}</span></label></div>
+                                                    \{{else}}		  <div><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}"/> <label class="label" for="\{{this.theID}}"><span class="name">\{{this.name}}</span><span class="count">\{{this.count}}</span></label></div>
+                                                    \{{/if}}
+                                                \{{/each}}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                \{{/if}}
+                            </div> 
+                            
+                            </div> 
+                        </div> 
+                    </div> 
+                </div> 
+            <div class="productPane"> 
+                <div class="productPreview"> 
+                    <div class="row"> 
+                        <div class="filterTags col-xs-7">
+                            \{{#each tags.facets}}
+                            <div class="inline p-r-5">
+                                <button class="btn btn-tag btn-tag-rounded" style="border:1px solid #ddd;" value="\{{value}}" facet="\{{facet}}" type="\{{type}}"> <font class="sbold">\{{text}}: </font>\{{value}}<i class="pg-close_line p-l-5"></i></button>
+                                </div>
+                            \{{/each}}
+
+                            \{{#each tags.numericFacets}}
+                            <div class="inline p-r-5">
+                                <button class="btn btn-tag  btn-tag-rounded" style="border:1px solid #ddd;"  facet="\{{facet}}" type="\{{type}}"> <font class="sbold">\{{text}}: </font> \{{value}} <i class="pg-close_line p-l-5"></i></button>
+                                </div>
+                            \{{/each}}
+                            </div>
+                            
+                        </div> 
+                        <div class="col-xs">
+                            <div class="paginate hidden-xs">
+
+                                \{{#if paginate}}
+                                    <div class="clearfix hidden-xs">
+                                        <div class="pull-right btn-rounded p-r-10 p-l-10 b-b b-l b-t b-r b-grey  m-xs-r-10 m-b-20" >
+                                            \{{#if paginate.hasPrevious}}
+                                                <a class="inline p-r-10 page v-align-middle   p-b-5"  value="\{{indexMinusConstant paginate.currentPage 1}}"><i class=" pg-arrow_left_line_alt" style="font-size:15px;"></i></a>
+                                            \{{/if}}
+                                            \{{#if paginate.showFirst}}
+                                                <div class="inline"><a class=" page padding-1v p-xs-r-10"  value="0"> 1</a> ... </div>
+                                            \{{/if}}
+                                            \{{#each paginate.pages}}
+                                                <a class="inline page \{{class}}  padding-05v p-xs-l-10 p-t-5 p-b-5"  value="\{{this.thePage}}">\{{indexPlusConstant this.thePage 1}}</a>
+                                            \{{/each}}
+                                            \{{#if paginate.showLast}}
+                                                <div class="inline">... <a class=" page padding-1v p-xs-l-10"  value="\{{indexMinusConstant paginate.totalPages 1}}"> \{{paginate.totalPages}}</a></div>
+                                            \{{/if}}
+                                            \{{#if paginate.hasNext}}
+                                                <a class="inline p-l-10 page v-align-middle  p-b-5" value="\{{indexPlusConstant paginate.currentPage 1}}"><i class=" pg-arrow_lright_line_alt " style="font-size:15px;"></i></a>
+                                            \{{/if}}
+                                        </div>
+                                    </div>
+
+                                    <div class="visible-xs p-t-5 p-b-5" style="font-size:20px;">
+                                        <div class="full-width btn-rounded p-r-10 p-l-10 b-b b-l b-t b-r b-grey  m-xs-r-10 m-b-20" >
+                                            \{{#if paginate.hasPrevious}}
+                                                <a class="pull-left page v-align-middle   p-b-5"  value="\{{indexMinusConstant paginate.currentPage 1}}" style="font-size: 30px;"><i class=" pg-arrow_left_line_alt" style=""></i></a>
+                                            \{{/if}}
+                                            \{{#if paginate.hasNext}}
+                                                <a class="pull-right page v-align-middle  p-b-5" value="\{{indexPlusConstant paginate.currentPage 1}}" style="font-size: 30px;"><i class=" pg-arrow_lright_line_alt " style=""></i></a>
+                                            \{{/if}}
+
+                                            <div class="auto-margin block text-center">
+                                                \{{#if paginate.showFirst}}
+                                                    <div class="inline"><a class=" page padding-1v p-xs-r-10"  value="0"> 1</a> ... </div>
+                                                \{{/if}}
+                                                \{{#each paginate.pages}}
+                                                    <a class="inline page \{{class}}  padding-05v p-xs-l-10 p-t-5 p-b-5"  value="\{{this.thePage}}">\{{indexPlusConstant this.thePage 1}}</a>
+                                                \{{/each}}
+                                                \{{#if paginate.showLast}}
+                                                    <div class="inline">... <a class=" page padding-1v p-xs-l-10"  value="\{{indexMinusConstant paginate.totalPages 1}}"> \{{paginate.totalPages}}</a></div>
+                                                \{{/if}}
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                \{{/if}}
+
+
+                            </div>
+                        </div>
+                        </div> 
+                    <ol class="itemList vertical">
+                        \{{#each  products}} 
+                        <li  class="item" index="\{{@index}}" _id="\{{{this.objectID}}}"> 
+                            <div class="itemContainer"> 
+                                <div class="itemWrapper"> 
+                                    <div class="row top-xs">
+                                        <div class="preview-image auto-margin col-xs" style="margin-top: 0;"> 
+                                            <img data-original="\{{{this.mainPicture.largeUrl}}}" action="/add-viewed-product-session" class="v-align-top lazy" pic-src="\{{{this.mainPicture.largeUrl}}}\{{#each auxPictures}}/BREAK/\{{{largeUrl}}}\{{/each}}" alt="\{{../name}}" index="\{{@index}}" nb-pic="\{{nbImages}}" pic-order="0" _id="\{{objectID}}" data-product-info="show"/>
+                                        </div>
+                                        </div>
+                                    <div class="item-brand sbold">\{{{this.brand.name}}}</div>
+                                    <div class="item-name medium no-overflow-text">\{{{this.name}}}</div>
+                                    \{{#if sale}} 
+                                        <div class="row">
+                                            <div class="original-price discounted col-xs text-right">\{{{this.originalPrice.formatted}}}</div> 
+                                            <div class="discounted-price col-xs text-left">\{{{this.price.formatted}}}</div>
+                                            </div>
+                                        <div class="discounted-percentage ">\{{{this.discount}}}%</div> 
+                                        \{{else}}
+                                        <div class="original-price text-center">\{{{this.price.formatted}}}</div>
+                                        \{{/if}} 
+                                    <div class="main-options hidden-xs"> 
+                                        <ol class="no-style no-overflow-text"> 
+                                            \{{#each  sizes}} 
+                                                \{{#if  @last}}<li class="inline text-pink-darker sbold no-overflow-text">\{{this}}</li> 
+                                                    \{{else}}<li class="inline text-pink-darker sbold no-overflow-text">\{{this}} <font class="text-master-light">/</font></li> 
+                                                    \{{/if}}
+                                                \{{/each}} 
+                                            </ol> 
+                                        <div class="p-t-10 p-b-10 ">
+                                            <a class="dark bold"><div class="btn  btn-info btn-rounded m-r-5"><small>Go to store</small></div></a>
+                                            <a class="dark bold" data-product-info="show" index="\{{@index }}" action="/add-viewed-product-session" _id="\{{{this.objectID}}}"><div class="btn  btn-info btn-rounded  m-l-5 no-border" ><small>Find better prices</small></div></a> 
+                                            </div>
+                                        </div> 
+                                    <ol class="small-options no-style"> 
+                                        </ol>
+                                    </div> 
+                                </div>
+                            </li>
+                        \{{/each}};
+                    </ol> 
+                    <div class="paginate">
+
+                        \{{#if paginate}}
+                        <div class="clearfix hidden-xs">
+                            <div class="pull-right btn-rounded p-r-10 p-l-10 b-b b-l b-t b-r b-grey  m-xs-r-10 m-b-20" >
+                                \{{#if paginate.hasPrevious}}
+                                <a class="inline p-r-10 page v-align-middle   p-b-5"  value="\{{indexMinusConstant paginate.currentPage 1}}"><i class=" pg-arrow_left_line_alt" style="font-size:15px;"></i></a>
+                                \{{/if}}
+                                \{{#if paginate.showFirst}}
+                                <div class="inline"><a class=" page padding-1v p-xs-r-10"  value="0"> 1</a> ... </div>
+                                \{{/if}}
+                                \{{#each paginate.pages}}
+                                <a class="inline page \{{class}}  padding-05v p-xs-l-10 p-t-5 p-b-5"  value="\{{this.thePage}}">\{{indexPlusConstant this.thePage 1}}</a>
+                                \{{/each}}
+                                \{{#if paginate.showLast}}
+                                <div class="inline">... <a class=" page padding-1v p-xs-l-10"  value="\{{indexMinusConstant totalPages 1}}"> \{{paginate.totalPages}}</a></div>
+                                \{{/if}}
+                                \{{#if paginate.hasNext}}
+                                <a class="inline p-l-10 page v-align-middle  p-b-5" value="\{{indexPlusConstant paginate.currentPage 1}}"><i class=" pg-arrow_lright_line_alt " style="font-size:15px;"></i></a>
+                                \{{/if}}
+                            </div>
+                        </div>
+
+                        <div class="visible-xs p-t-5 p-b-5" style="font-size:20px;">
+                            <div class="full-width btn-rounded p-r-10 p-l-10 b-b b-l b-t b-r b-grey  m-xs-r-10 m-b-20" >
+                                \{{#if paginate.hasPrevious}}
+                                <a class="pull-left page v-align-middle   p-b-5"  value="\{{indexMinusConstant paginate.currentPage 1}}" style="font-size: 30px;"><i class=" pg-arrow_left_line_alt" style=""></i></a>
+                                \{{/if}}
+                                \{{#if paginate.hasNext}}
+                                <a class="pull-right page v-align-middle  p-b-5" value="\{{indexPlusConstant paginate.currentPage 1}}" style="font-size: 30px;"><i class=" pg-arrow_lright_line_alt " style=""></i></a>
+                                \{{/if}}
+
+                                <div class="auto-margin block text-center">
+                                    \{{#if paginate.showFirst}}
+                                    <div class="inline"><a class=" page padding-1v p-xs-r-10"  value="0"> 1</a> ... </div>
+                                    \{{/if}}
+                                    \{{#each paginate.pages}}
+                                    <a class="inline page \{{class}}  padding-05v p-xs-l-10 p-t-5 p-b-5"  value="\{{this.thePage}}">\{{indexPlusConstant this.thePage 1}}</a>
+                                    \{{/each}}
+                                    \{{#if paginate.showLast}}
+                                    <div class="inline">... <a class=" page padding-1v p-xs-l-10"  value="\{{indexMinusConstant paginate.totalPages 1}}"> \{{paginate.totalPages}}</a></div>
+                                    \{{/if}}
+                                </div>
+
+
+                            </div>
+                        </div>
+                        \{{/if}}
+                        
+                        
+                    </div> 
+                </div>
+            </div>
+        \{{else}}
+            <h4 class="text-center text-spaced-medium">No Products Found</h4>
+            <div class="text-center full-width"><img src="/images/icons/Search.svg" style="width: 20vw;"></div>
+        \{{/if}}
+    </div>
+\{{#if products}}
+    <div id="mobileProductFilter">
+
+        <div class="popout visible-sm visible-xs">
+        <div class="fab \{{#if isFab}}  active \{{/if}}">
+            <i class="icon ion-ios-glasses"></i>
+            </div>
+        <div class="panel  \{{#if isFab}} active \{{/if}}">
+            <div class="panel-header">
+                <h3>Filter <span class="pull-right close p-t-5"> <i class="pg-close_line" style="font-size: 25px;"></i></span></h3>
+                <div  class="filterTags" id="mobileTags">
+                    \{{#each tags.facets}}
+                    <div class="inline p-r-5">
+                        <button class="btn btn-tag btn-tag-rounded" style="border:1px solid #ddd;" value="\{{value}}" facet="\{{facet}}" type="\{{type}}"> <font class="sbold">\{{text}}: </font>\{{value}}<i class="pg-close_line p-l-5"></i></button>
+                    </div>
+                    \{{/each}}
+
+                    \{{#each tags.numericFacets}}
+                    <div class="inline p-r-5">
+                        <button class="btn btn-tag  btn-tag-rounded" style="border:1px solid #ddd;"  facet="\{{facet}}" type="\{{type}}"> <font class="sbold">\{{text}}: </font> \{{value}} <i class="pg-close_line p-l-5"></i></button>
+                    </div>
+                    \{{/each}}
+
+                </div>
+                </div>
+            <div class="panel-body scrollable">
+                <div class="facets" id="primaryFacets">
+
+
+
+                    <div class="category">
+                        <div class="refinement">
+                            <div class="breadcrumb">
+                                \{{#each category.breadCrumb}}
+                                \{{#if @first}}<li><a class="bold" value="\{{path}}" style="margin-left: 0 !important;">\{{name}}</a></li>
+                                \{{else}}<li><a class="bold" value="\{{path}}">\{{name}}</a></li>
+                                \{{/if}}
+                                \{{/each}}
+                            </div>
+                            <ul class="categoryList no-style">
+                                \{{#each category.childCategories}}
+                                <li><a class="medium all-caps \{{class}}" value="\{{path}}">\{{name}}<span>\{{count}}</span></a></li>
+                                \{{/each}}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="price">
+                        <h5>
+                            <span class="bg-white text-left all-caps bold">Pris</span>
+                        </h5>
+
+                        <div id="pricerange_mobile"></div>
+
+                        <div class="sale refinement">
+                            \{{#each sale.content}}
+                            \{{#if (idGenerator this)}}\{{/if}}
+                            \{{#if this.isRefined}}<div class="checkbox  checkbox-circle"><input type="checkbox" name="checkbox" value="\{{this.name}}"  id="\{{this.theID}}" checked/> <label for="\{{this.theID}}"><span class="bold">\{{../sale.header}}</span></label></div>
+                            \{{else}}<div class="checkbox  checkbox-circle"><input type="checkbox" name="checkbox" value="\{{this.name}}" id="\{{this.theID}}" /> <label for="\{{this.theID}}"><span class="bold">\{{../sale.header}}</span></label></div>
+                            \{{/if}}
+                            \{{/each}}
+
+                        </div>
+
+                        <div class="discounts refinement">
+                            \{{#if discounts.content}}
+                            <div class="">
+                                <h5>
+                                    <span class="bg-white text-left all-caps bold">\{{discounts.header}}</span>
+                                </h5>
+                                <div id="listContainer">
+                                    <ul class="list" style="max-height: 160px; overflow: scroll;">
+                                        \{{#each discounts.content}}
+                                        \{{#if (idGenerator this)}}\{{/if}}
+                                        \{{#if this.isRefined}}<div><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}" checked/> <label class="label" for="\{{this.theID}}"><span class="name ">\{{this.name}}</span> <span class="count">\{{this.count}}</span></label></div>
+                                        \{{else}}		  <div><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}"/> <label class="label" for="\{{this.theID}}"><span class="name">\{{this.name}}</span><span class="count">\{{this.count}}</span></label></div>
+                                        \{{/if}}
+                                        \{{/each}}
+                                    </ul>
+                                </div>
+                            </div>
+                            \{{/if}}
+
+                        </div>
+                    </div>
+                    <div class="sizes refinement" >
+                        \{{#if sizes.content}}
+                        <div>
+                            <h5>
+
+                                <span class="bg-white text-left all-caps bold">\{{sizes.header}}</span>
+                            </h5>
+                            <div id="listContainer">
+                                <ul class="list" style="max-height: 160px; overflow: scroll;">
+                                    \{{#each sizes.content}}
+                                    \{{#if (idGenerator this)}}\{{/if}}
+                                    \{{#if this.isRefined}}<div><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}" checked/> <label class="label" for="\{{this.theID}}"><span class="name ">\{{this.name}}</span> <span class="count">\{{this.count}}</span></label></div>
+                                    \{{else}}		  <div><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}"/> <label class="label" for="\{{this.theID}}"><span class="name">\{{this.name}}</span><span class="count">\{{this.count}}</span></label></div>
+                                    \{{/if}}
+                                    \{{/each}}
+                                </ul>
+                            </div>
+                        </div>
+                        \{{/if}}
+
+                    </div>
+                    <div class="brands refinement" >
+                        \{{#if brands.content}}
+                        <div class="">
+                            <h5>
+                                <span class="bg-white text-left all-caps bold">\{{brands.header}}</span>
+                            </h5>
+                            <div id="listContainer">
+                                <ul class="list" style="max-height: 160px; overflow: scroll;">
+                                    \{{#each brands.content}}
+                                    \{{#if (idGenerator this)}}\{{/if}}
+                                    \{{#if this.isRefined}}
+                                    <div><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}" checked/> <label class="label" for="\{{this.theID}}"><span class="name ">\{{this.name}}</span> <span class="count">\{{this.count}}</span></label></div>
+                                    \{{else}}
+                                    <div><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}"/> <label class="label" for="\{{this.theID}}"><span class="name">\{{this.name}}</span><span class="count">\{{this.count}}</span></label></div>
+                                    \{{/if}}
+                                    \{{/each}}
+                                </ul>
+                            </div>
+                        </div>
+                        \{{/if}}
+
+                    </div>
+                    <div class="colors refinement" >
+                        \{{#if colors.content}}
+                        <h5>
+                            <span class=" bg-white all-caps bold">\{{colors.header}}</span>
+                        </h5>
+                        <div class="colorList">
+                            \{{#each colors.content}}
+                            \{{#if this.isRefined}}
+                            <input type="checkbox" name="color" value="\{{this.name}}"   id="\{{this.name}}_\{{this.hex}}" checked/><label for="\{{this.name}}_\{{this.hex}}"  style="background-color:\{{this.hex}};"><span class="name no-overflow-text">\{{this.name}}</span></label>
+                            \{{else}}
+                            <input type="checkbox" name="color" value="\{{this.name}}"   id="\{{this.name}}_\{{this.hex}}"/><label for="\{{this.name}}_\{{this.hex}}"  style="background-color: \{{this.hex}};"><span class="name no-overflow-text">\{{this.name}}</span></label>
+                            \{{/if}}
+                            \{{/each}}
+                        </div>
+                        \{{/if}}
+                    </div>
+                    <div class="shops refinement" >
+                        \{{#if shops.content}}
+                        <div class="">
+                            <h5>
+                                <span class="bg-white text-left all-caps bold">\{{shops.header}}</span>
+                            </h5>
+                            <div id="listContainer">
+                                <ul class="list" style="max-height: 160px; overflow: scroll;">
+                                    \{{#each shops.content}}
+                                    \{{#if (idGenerator this)}}\{{/if}}
+                                    \{{#if isRefined}}<div><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}" checked/> <label class="label" for="\{{this.theID}}"><span class="name ">\{{this.name}}</span> <span class="count">\{{this.count}}</span></label></div>
+                                    \{{else}}		  <div><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}"/> <label class="label" for="\{{this.theID}}"><span class="name">\{{this.name}}</span><span class="count">\{{this.count}}</span></label></div>
+                                    \{{/if}}
+                                    \{{/each}}
+                                </ul>
+                            </div>
+                        </div>
+                        \{{/if}}
+                    </div>
+                </div>
+                </div>
+            </div> </div>
+
+
+    </div>
+\{{/if}}

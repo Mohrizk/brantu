@@ -23,7 +23,6 @@ var register = function(Handlebars) {
             return;
         },
         compareStrings: function(passedString, secondString) {
-            console.log(passedString, secondString)
             if(passedString!=null &&  secondString!=null){
                 if(passedString.toLowerCase() === secondString.toLowerCase()){
                     return true;
@@ -71,6 +70,14 @@ var register = function(Handlebars) {
             return true;
             else
             return false;
+        },
+        joinBreadCrumb: function(array){
+            var breadcrumb = "";
+            for (var a in array){
+                if(a == array.length-1) breadcrumb += array[a].name
+                else breadcrumb += array[a].name+' > '
+            }
+            return breadcrumb;
         }
     };
 

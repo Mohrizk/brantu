@@ -1,3 +1,11 @@
+.productFeedTemplate img{ max-height:500px;}
+img.lazy {
+    display: block;
+    /* optional way, set loading as background */
+    background-image: url('/plugins/owl-carousel/AjaxLoader.gif');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
 .nav-margin{
     margin-right: 35px;
 }
@@ -51,7 +59,7 @@ input:-webkit-autofill {
     min-width:50px !important;
 }
 #mobileSubMenu a.active{
-    background: #000 !important;
+    background: #fff !important;
     color:#eed3d3 !important;
 
 }
@@ -665,7 +673,7 @@ ul.circle li:hover div{
     background:#fff;
 }
 
-.jawBone .similarProducts{
+ .similarProducts{
     width:100%;
     margin-top:1vw;
     min-height:8vw;
@@ -687,7 +695,7 @@ ul.circle li:hover div{
   }
     .selectedItemImageColoumn ol li img{max-width:3vw; height:auto; margin: 0.2vw 0; border:0.1vw solid #ddd;}
     #selectedItemInformation{
-        background:rgba(255,255,255,0.95);
+        background:rgba(255,255,255,0.80);
         min-height: 45vw;
 
     }
@@ -704,15 +712,13 @@ ul.circle li:hover div{
 
     .selectedItemZoomPicture .prev-item, .selectedItemZoomPicture .next-item{
         position: absolute;
-        opacity:0.4;
-        left: -1%;
-        width:35px;
-        height:35px;
+        opacity:0.2;
+        width:2.5vw;
+        height:2.5vw;
         background: #333;
         color: white;
         top: 45%;
         border-radius: 50%;
-        padding: 5px;
         cursor: pointer;
         z-index: 200;
         transition:0.2s opacity ease-in-out;
@@ -722,18 +728,20 @@ ul.circle li:hover div{
     opacity:1;
 }
     .selectedItemZoomPicture .next-item{
-        left: 30%;
+        left: 31%;
         top:45%;
-        padding-left: 15px;
+        padding-left: 1vw;
     }
 
     .selectedItemZoomPicture .prev-item{
-        left: -1%;
+        left: -1.5%;
         top: 45%;
-        padding-left: 11px;
+        padding-left: 0.8vw;
     }
   .selectedItemZoomPicture .next-item i, .selectedItemZoomPicture .prev-item i{
-      font-size:25px;
+      font-size:2vw;
+      line-height: 2.5vw;
+      text-align: center;
   }
    .selectedItemDescriptionContainer{padding: 10px; position:relative;}
    /*.selectedItemDescriptionContainer button{margin-right:0.4vw;margin-top:0.8vw; float:left; vertical-align:top; display:block; text-transform: uppercase;}
@@ -921,7 +929,10 @@ ul.circle li:hover div{
     overflow-y: scroll;
     overflow-x: hidden;
 }
-
+/*****PRICE COMPARISON TABLE*****/
+.dataTables_wrapper td  img{
+    width:120px;
+}
 
 /***FLOATING ACTION BUTTON*****/
 .popout {
@@ -1114,7 +1125,11 @@ ul.circle li:hover div{
 
 }
 @media (max-width: 767px){
+
     .table-responsive th {font-size:12px;}
+    .dataTables_wrapper td  img{
+        width:70px;
+    }
     .submenu li{
         min-width:30% !important;
     }
@@ -1164,7 +1179,7 @@ ul.circle li:hover div{
     .vertical .item .discounted-percentage { top:44vw; left:1vw;}
     .selectedItemZoomPicture img {
         max-height:120vw;
-        max-width: 80vw;
+        max-width: 100%;
     }
 
     .selectedItemImageColoumn ol li img{

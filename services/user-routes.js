@@ -9,9 +9,9 @@ var brands = require('./middleware/mw-brands');
 var products = require('./middleware/mw-products');
 var newsletter = require('./middleware/mw-newsletter');
 var session = require('./middleware/mw-session');
+var feed = require('./middleware/mw-feed');
 var email = require('./middleware/mw-email');
 var user = require('./middleware/mw-users');
-
 
 /**************************************************************
 *******************BEGINING ROUTES***************************
@@ -81,7 +81,7 @@ var routes = [
           req.logIn(user, function(err) { res.redirect('/');})
         })(req, res, next);
       }
-    ]
+         ]
       ],
 
     /*********LOGOUT***************************/
@@ -91,12 +91,20 @@ var routes = [
         } ]
       ],
     /*********Privacy***************************/
-    [ '/privacy', 'get', [
+    [ '/privacy-policy', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
         res.render('privacy')
     }
+    ]
+    ],
+    [ '/terms-and-conditions', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        function(req, res, next) {
+            res.render('privacy')
+        }
     ]
     ],
 
@@ -234,10 +242,13 @@ var routes = [
     ],
 
     [ '/kvinna/upptack-nya-favoriter', 'get', [
+        session.addFavouriteDepartment,
         categories.getCategoryTree,
         categories.getDepartment,
+        feed.getFeed,
         function(req, res, next) {
-        res.locals.title = res.locals.selectedDepartment.name+ "/ Get Inspired";
+
+        res.locals.title = res.locals.selectedDepartment+ " - Get Inspired";
         res.render('women');
     } ]
     ],
@@ -250,29 +261,60 @@ var routes = [
         session.addFavouriteDepartment,
         categories.getCategoryTree,
         categories.getDepartment,
+        feed.getFeed,
         function(req, res, next) {
-        res.locals.title =  res.locals.selectedDepartment.name +"/ Get Inspired";
+        res.locals.title =  res.locals.selectedDepartment +" - Get Inspired";
         res.render('men');
     } ]
     ],
 
   /*********SHOP***************************/
-    [ '/explore/*', 'get', [
+    [ '/explore', 'get', [
         categories.getCategoryTree,
-        categories.getCategoryUrl,
+        categories.getDepartment,
+        products.getAlgoliaProducts,
         function(req, res, next) {
-        res.render('category')
+        res.render('navigation')
       } ]
     ],
-
-    [ '/brand/*', 'get', [
+    [ '/search', 'get', [
         categories.getCategoryTree,
-        brands.getBrandInfo,
+        categories.getDepartment,
+        products.getAlgoliaProducts,
         function(req, res, next) {
-        if(res.locals.brand != null)
-            res.render('brand')
-        else
-            res.redirect('/error')
+            res.render('navigation')
+        } ]
+    ],
+
+    [ '/view/:id', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        products.getProductByID,
+        products.checkProductIsFavoured,
+        products.getSimilarProductsFromSameBrand,
+        products.GetLowerPriceCategoryProducts,
+        products.GetSimilarCategoryProducts,
+        function(req, res, next) {
+            res.render('product', {
+                title                       : req.product.name,
+                product                     : req.product,
+                sameBrandProducts           :req.sameBrandProducts,
+                LowerPriceCategoryProducts  :req.LowerPriceCategoryProducts ,
+                sameCategoryProducts        : req.sameCategoryProducts,
+                style                       : req.style,
+                category                    : req.category,
+                brand                       : req.brand
+            })
+        } ]
+    ],
+
+
+    [ '/brand/:name', 'get', [
+        categories.getCategoryTree,
+        products.getAlgoliaProducts,
+        categories.getDepartment,
+        function(req, res, next) {
+            res.render('navigation')
     } ]
     ],
 
@@ -291,15 +333,7 @@ var routes = [
         categories.getDepartment,
         function(req, res, next) {
             res.locals.title = "Join our tribe";
-            res.render('cashback-to-society');
-        }]
-    ],
-    [ '/join-charity', 'get', [
-        categories.getCategoryTree,
-        categories.getDepartment,
-        function(req, res, next) {
-      res.locals.title = "Join our tribe";
-      res.render('join-charity');
+            res.render('contact-us');
         }]
     ],
     [ '/about-us', 'get', [
@@ -307,7 +341,15 @@ var routes = [
         categories.getDepartment,
         function(req, res, next) {
             res.locals.title = "Join our tribe";
-            res.render('join-charity');
+            res.render('about-us');
+        }]
+    ],
+    [ '/faq', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        function(req, res, next) {
+            res.locals.title = "Join our tribe";
+            res.render('about-us');
         }]
     ],
     [ '/join-shop', 'get', [
@@ -319,14 +361,7 @@ var routes = [
     }]
     ],
 
-    [ '/cashback-to-society', 'get', [
-        categories.getCategoryTree,
-        categories.getDepartment,
-        function(req, res, next) {
-        res.locals.title = "Join our tribe";
-        res.render('cashback-to-society');
-        }]
-    ],
+
 
 /*********Internationalization *******************/
     [ '/en', 'get', [ function(req, res, next) {
@@ -368,44 +403,7 @@ var routes = [
         session.addViewedProduct,
         function( req, res, next) {
         res.send('cool')
-    }
-    ]
-    ],
-/********* Email ********/
-    [ '/email/sendConfirmation', 'get', [ function( req, res, next) {
-        email.sendSignupConfirmation('rizk@brantu.com',function(){
-            res.send('cool')
-        })
-    }
-    ]
-    ],
-    /*********api********/
-    [ '/api/getProductByID/*', 'get', [
-        products.getProductByID,
-        products.checkProductIsFavoured,
-        function( req, res, next) {
-            //console.log(req.product)
-            res.send(req.product);
-        }]
-    ],
-    [ '/api/getSimilarProducts/*', 'get', [
-        products.getUnpopulatedProductByID,
-        products.getSimilarProductsFromSameBrand,
-        products.GetLowerPriceCategoryProducts,
-        products.GetSimilarCategoryProducts,
-        function( req, res, next) {
-            //console.log(req.product)
-            res.send(
-                {
-                    sameBrandProducts           :req.sameBrandProducts,
-                    LowerPriceCategoryProducts  :req.LowerPriceCategoryProducts ,
-                    sameCategoryProducts        : req.sameCategoryProducts,
-                    style                       : req.style,
-                    category                    : req.category,
-                    brand                       : req.brand
-                }
-            );
-        }]
+    }]
     ]
 ];
 
@@ -424,5 +422,4 @@ function isLoggedIn(req, res, next) {
     // if they aren't redirect them to the home page
     res.redirect('/');
 }
-
 module.exports = router;

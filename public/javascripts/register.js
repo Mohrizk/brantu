@@ -17,6 +17,12 @@ $(document).ready(function() {
 		registerContainer.stop().removeClass('active');
 	});
 
+	$('#footerSignUPButton').on('click', function() {
+
+		registerContainer.stop().addClass('active').css({marginTop:800}).animate({marginTop:50}, 200);
+		registerSection.removeClass('hidden').css({opacity:0}).animate({opacity:1});
+	});
+
 	$('.authenticate').on('click', function (event) {
 		if($(this).attr('data-view')==='login')
 			registerContainer.stop().removeClass('active').css({marginTop:800}).animate({marginTop:50}, 200);

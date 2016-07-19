@@ -5,6 +5,7 @@
 
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
+var FacebookTokenStrategy = require('passport-facebook-token');
 
 var User = require('../services/models/user');
 
@@ -120,12 +121,6 @@ module.exports = function(passport) {
 
     }));
 
-
-
-
-
-
-
   // =========================================================================
   // FACEBOOK ================================================================
   // =========================================================================
@@ -139,8 +134,8 @@ module.exports = function(passport) {
       // facebook will send back the token and profile
      function(token, refreshToken, profile, done) {
        // asynchronous
+         console.log(token, refreshToken)
         process.nextTick(function() {
-
           // find the user in the database based on their facebook id
                 User.findOne({ 'facebook.id' : profile.id }, function(err, user) {
 
@@ -181,4 +176,4 @@ module.exports = function(passport) {
 
         }));
 
-    };
+};

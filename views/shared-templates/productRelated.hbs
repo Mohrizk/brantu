@@ -1,0 +1,52 @@
+<div class="similarProducts">
+    <div class="row ">
+        \{{#if LowerPriceCategoryProducts}}
+            <div class="p-xs-t-10   col-sm-12 col-xs-12 p-b-10 b-b">
+                <h4 class="capitalize text-center"> \{{#if style}}\{{style}} <small>\{{category.name}}</small>\{{else}} \{{category.name}} \{{/if}} at <b>lower price</b></h4>
+                <div id="frameSameCategory" class="auto-margin block">
+                    <div class="no-style" id="owlLowerCategory">
+                        \{{#each LowerPriceCategoryProducts}}
+                            <div class="carousel" >
+
+                                <a _id="\{{{this._id}}}"  href="/view/\{{this._id}}" data-product-info="show"><img class="lazyOwl" data-src="\{{{this.mainPicture.mediumUrl}}}"/>
+                                    <p class="text-center">\{{this.price.formatted}} \{{#if this.isItSaving}}<br/> <span class="text-velvet" style="font-size: 12px;"><i><img src="/images/nav/compare.png" style="width:20px;"></i>Save <b>\{{this.saving}}</b> (\{{this.savingPercentage}}%)</span>\{{/if}}</p></a>
+                            </div>
+                        \{{/each}}
+                    </div>
+                </div>
+            </div>
+        \{{/if}}
+
+        \{{#if sameBrandProducts}}
+            <div class="p-xs-t-10  p-t-20 p-b-10  col-sm-12 col-xs-12 b-b">
+                <h4 class="capitalize text-center">Related Products from <b>\{{brand.name}}</b></h4>
+                <div id="frameSameBrand" class="auto-margin block">
+                    <div class="no-style text-center" id="owlBrand">
+                        \{{#each sameBrandProducts}}
+                            <div class="carousel">
+                                <a _id="\{{{this._id}}}" href="/view/\{{this._id}}" data-product-info="show"><img class="lazyOwl" data-src="\{{{this.mainPicture.mediumUrl}}}"/>
+                                    <p class="text-center">\{{this.price.formatted}} \{{#if this.isItSaving}}<br/> <span class="text-velvet" style="font-size: 12px;"><i><img src="/images/nav/compare.png" style="width:20px;"></i>Save <b>\{{this.saving}}</b> (\{{this.savingPercentage}}%)</span> \{{/if}}</p></a>
+                            </div>
+                        \{{/each}}
+                    </div>
+                </div>
+            </div>
+        \{{/if}}
+    </div>
+    \{{#if sameCategoryProducts}}
+        <div class="p-t-30 p-b-30 b-b">
+            <h3 class="capitalize text-center">\{{category.name}} <b>Related Products</b></h3>
+            <div id="frameSameCategory" class="auto-margin block">
+                <div class="text-center no-style" id="owlCategory">
+                    \{{#each sameCategoryProducts}}
+                        <div class="flow inline p-b-40">
+                            <a _id="\{{{this._id}}}" href="/view/\{{this._id}}" data-product-info="show"><img class="lazy" data-original="\{{{this.mainPicture.largeUrl}}}"/>
+                                <p class="text-center no-overflow-text">\{{this.name}}</p></a>
+                            <p class="text-center no-overflow-text">\{{this.price.formatted}} \{{#if this.isItSaving}}<br/> <span class="text-velvet" style="font-size: 12px;"><i><img src="/images/nav/compare.png" style="width:20px;"></i>Save <b>\{{this.saving}}</b> (\{{this.savingPercentage}}%)</span>\{{/if}}  </p></a>
+                        </div>
+                    \{{/each}}
+                </div>
+            </div>
+        </div>
+    \{{/if}}
+</div>

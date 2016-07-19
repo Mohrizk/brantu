@@ -22,6 +22,11 @@ $(document).ready(function() {
 			$('.category-expand-container').addClass('hidden');
 		})
 	});
+	$('.category-expand').on('click', 'li a, a h5', function(){
+		$.when( $('.category-expand-wrapper').animate({opacity:0})).done( function() {
+			$('.category-expand-container').addClass('hidden');
+		})
+	});
 	$('.page-content-wrapper').on('click',function(){
 		if($('.category-expand-container').not('.hidden')){
 			$('.category-expand-container').addClass('hidden');
@@ -53,18 +58,13 @@ $(document).ready(function() {
 	})
 
 	$('a[data-page]').on(eventOnTE,function(e){
-		e.preventDefault();e.stopImmediatePropagation();
 		$('a[data-page]').removeClass('active');
 		$(this).addClass('active');
-		var goTo = $(this).attr('data-page');
-		setTimeout(
-			function()
-			{
-				location.href = goTo;
-				$('.loading').hide();
-			}, 100);
 	})
-
+	$('a[data-page-ref]').on(eventOnTE,function(e){
+		$('a[data-page]').removeClass('active');
+		$('a[data-page="explore"]').addClass('active');
+	})
 
 	$('.menu-items > li a').click( function() {
 		console.log('ges here')
