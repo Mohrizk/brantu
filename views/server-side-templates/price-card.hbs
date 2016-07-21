@@ -40,33 +40,30 @@
         <div class="productFeedTemplate "  >
         <div class="row">
             <div style="border:1px solid #eee; border-radius: 5px; padding-top:30px; text-align: center;">
-                <h3  style="font:400 18px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight:100; font-size:24px; letter-spacing: 6px;">{{priceCard.name}}</h3>
+                <h3  style="font:400 21px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight:100; font-size:24px; letter-spacing: 6px;">{{priceCard.name}}</h3>
                 <div style="display: block; margin: auto;">
-                    <div style="width:35%; display: inline-block; vertical-align: top; padding: 0 20px 0 20px;">
+                    <div style="width:42%; display: inline-block; vertical-align: top; padding: 0 20px;">
                         <h4 class="text-center no-padding no-margin " style="border-bottom: 1px solid #333;line-height: 0;">
                             <span style="font:400 18px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight:100; text-transform: uppercase; padding: 10px 10px 10px 10px;letter-spacing: 4px; text-align: center; background-color: #ffffff;">Style</span>
                         </h4>
-                        <img class="full-width p-t-10" style="width:100%; vertical-align: top;"  src="{{priceCard.styleImage}}"/>
+                        <img class="full-width p-t-10" style="height:500px;  max-width:100%;vertical-align: top;"  src="{{priceCard.styleImage}}"/>
                         <div class="">
-                            <h2 style="font:400 24px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; padding:0; font-size:20px;">{{priceCard.stylePrice}}</h2>
-                            <p style="font:400 18px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; padding:0;">{{priceCard.styleBrand}}</p>
+                            <h2 style="font:400 24px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; padding:0; font-size:20px; line-height: 24px;">{{priceCard.stylePrice}}</h2>
+                            <p style="font:400 18px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; padding:0; line-height: 18px;">{{priceCard.styleBrand}}</p>
                         </div>
                     </div>
 
 
-                    <div style="width:35%; position: relative; vertical-align: top; display: inline-block; padding: 0 20px 0 20px;" >
+                    <div style="width:42%; position: relative; vertical-align: top; display: inline-block; padding: 0 20px;" >
                         <h4 class="text-center no-padding no-margin " style="border-bottom: 1px solid #333;line-height: 0;">
                             <span style="font:400 18px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight:100; text-transform: uppercase; padding: 10px 10px 10px 10px; letter-spacing: 4px; text-align: center; background-color: #ffffff;">Price</span>
                         </h4>
-                        <img class="full-width p-t-10" style="width:100%; vertical-align: top; " src="{{priceCard.priceImage}}"/>
+                        <img class="full-width p-t-10" style="height:500px; max-width:100%; vertical-align: top; " src="{{priceCard.priceImage}}"/>
                         <div class="">
-                            <h2 style="font:400 24px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; padding:0; font-size:20px;">{{priceCard.pricePrice}}</h2>
-                            <p style="font:400 18px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; padding:0;">{{priceCard.priceBrand}}</p>
+                            <h2 style="font:400 24px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; padding:0; font-size:20px; line-height: 24px;">{{priceCard.pricePrice}}</h2>
+                            <p style="font:400 18px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; padding:0; line-height: 20px;">{{priceCard.priceBrand}}</p>
                             {{#if priceCard.saving}}
-                                <div style="position: absolute; top:50px; left:90px; ">
-                                    <h6 style="font:400 12px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight:100; text-transform: uppercase; letter-spacing: 4px; padding:0; margin:0px; line-height: 12px; text-align: center; ">Brantu Search Engine</h6>
-                                    <h5 style="font:400 18px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight:100; text-transform: uppercase; padding:0; margin:0px; letter-spacing: 4px; line-height: 18px;  text-align: center; color:#AA076B;">Save {{priceCard.saving.value}} ({{priceCard.saving.discount}}%)</h5>
-                                </div>
+                                <h5 style="font:400 18px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight:100; text-transform: uppercase; padding:0; margin:0px; letter-spacing: 4px; line-height: 18px;  text-align: center; color:#AA076B;">Save {{priceCard.saving.value}} ({{priceCard.saving.discount}}%)</h5>
                             {{/if}}
                         </div>
 

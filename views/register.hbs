@@ -16,37 +16,41 @@
                                 <p  class="text-red text-center" > Your account already exist<a href="/login">Login</a></p>
                             </div>
                         {{/if}}
-                        <div class="button-container padding-1v" style="margin-bottom: 30px;">
+                        <!--<div class="button-container padding-1v" style="margin-bottom: 30px;">
                             <a href="/auth/facebook">
                                 <button id="facebookAccess" style="background-color: #3b5998;">
                                     <span> <i class="fa fa-facebook" style="color:#fff;"></i></span>
                                 </button>
                             </a>
-                        </div>
+                        </div>-->
 
                         <form id="signupFormPage"  role="form" action="/signupUser" method="post">
-
-                            <div class="input-container">
-                                <input type="text" name="name" id="nameSignupPage" class="text-white" required="required"/>
-                                <label for="nameSignupPage" class="text-pink">Din Namn</label>
-                                <div class="bar"></div>
-                            </div>
 
                             <div class="input-container">
                                 <input type="email" name="email" id="emailSignupPage" class="text-white" required="required"/>
                                 <label for="emailSignupPage" class="text-pink">Din e-postadress</label>
                                 <div class="bar"></div>
+
+                            </div>
+
+                            <div class="input-container">
+                                <input type="password" name="password" id="passwordSignupPage" class="text-white" required="required"/>
+                                <label for="passwordSignupPage" class="text-pink">Lösenord</label>
+                                <div class="bar"></div>
                             </div>
 
                             <div class="input-container"  style="margin-bottom: 20px;">
-                                <input type="password" name="password" id="passwordSignupPage" class="text-white" required="required"/>
-                                <label for="PasswordSignupPage" class="text-pink">Lösenord</label>
+                                <input type="password"  id="passwordSignupPageConfirm" class="text-white" required="required"/>
+                                <label for="passwordSignupPageConfirm" class="text-pink">Confirm Lösenord</label>
                                 <div class="bar"></div>
+                            </div>
+                            <div id="registerPagePasswrodError" class="col-sm-12" style="display:none;">
+                                <p  class="text-red text-center" > Make sure your password matches</p>
                             </div>
 
                             <div class="input-radio">
                                 <div class="col-xs-8 col-xs-offset-4">
-                                    <div class="radio radio-default auto-margin block " id="genderSelectionSignupPage">
+                                    <div class="radio  radio-pink auto-margin block " id="genderSelectionSignupPage">
                                         <input type="radio"  value="female"  name="gender" id="femaleSignupPage" />
                                         <label for="femaleSignupPage"  class="text-pink bold ">Kvinna</label>
 
@@ -54,16 +58,37 @@
                                         <label for="maleSignupPage"  class=" text-pink bold ">Man</label>
                                     </div>
                                 </div>
-                                <div class="col-sm-10 text-center col-sm-offset-1">
-                                    <h6 class="text-white">By clicking Sign Up, you agree to our  <a target="_blank" href="http://www.brantu.com/terms-and-conditions"> Terms &amp; Conditions</a> and that you have read our <a target="_blank" href="http://www.brantu.com/privacy-policy">Privacy Policy</a></h6>
+                            </div>
+                            <div class="col-sm-10 col-sm-offset-1 p-t-10">
+                                <div class="row">
+                                    <div class="col-xs-1">
+                                        <div class="full-width">
+                                            <input class="pull-right" type="checkbox" name="concent" id="concent" required/>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs">
+                                        <label  for="concent" class="text-white">Jag godkänner medlemsvillkoren och att mina personuppgifter behandlas enligt ovan, medlemsvillkoren samt Brantus <a class="text-pink" href="/privacy-policy">Integritetspolicy</a>.</label>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="button-container">
+                            <div class="button-container p-t-10">
                                 <button id="submitRegistration" style="border-color: #eed3d3;"><span class="text-white">Välkommen In</span></button>
                             </div>
                         </form>
 
+                    </div>
+                </div>
+                <div class="registerLoading fixed" style="display: none; top:0; bottom:0; right:0; left:0; z-index:500;">
+                    <div class="loading full-height full-width gradient-velvet-opacity" >
+                        <div class="bgBlurEffect">
+                            <div class="text-center" style="padding-top: 100px;" >
+                                <div class=" text-center ">
+                                    <h3 class="text-white">Vi jämför och hittar dina stilar till det bästa priset</h3>
+                                    <img src="/images/progress/progress-circle-lg-white.svg" style="width:40px; height:40px">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

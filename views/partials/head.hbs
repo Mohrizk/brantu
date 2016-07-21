@@ -87,7 +87,61 @@
         {{/if}}
 
     </script>
+    <a title="Web Analytics" href="http://clicky.com/100974570"><img alt="Web Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
+    <script src="//static.getclicky.com/js" type="text/javascript"></script>
+    <script type="text/javascript">try{ clicky.init(100974570); }catch(e){}</script>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100974570ns.gif" /></p></noscript>
 </head>
+
+
+{{#unless cookieConcession}}
+
+    <div id="cookieNotification">
+        <div class="pgn-wrapper" data-position="bottom" style="left: 0; right: 0;">
+        <div class="pgn push-on-sidebar-open pgn-bar ">
+            <div class="alert padding-30 padding-xs-5 text-center" style="background: rgba(51, 27, 43, 0.84); ">
+                <span class="medium hidden-xs" style="color:#eed3d3">Brantu.com använder <a class="text-pink-darker" href="/cookie-policy">cookies</a>. Genom att fortsätta på sidan godkänner du användandet av <a class="text-pink-darker" href="/cookie-policy">cookies</a>.</span>
+                <div class="medium visible-xs" style="color:#eed3d3">Brantu.com använder <a class="text-pink-darker" href="/cookie-policy">cookies</a>. Genom att fortsätta på sidan godkänner du användandet av <a class="text-pink-darker" href="/cookie-policy">cookies</a>.</div>
+                <button type="button" class="hidden-xs btn btn-default m-l-30 m-xs-l-0 " id="cookieAccept" data-dismiss="alert">Jag förstår!
+                </button>
+                <div class="visible-xs m-b-10">  <button type="button" class="btn btn-default m-l-30 m-xs-l-0 " id="cookieAcceptMobile" data-dismiss="alert">
+                    Jag förstår!
+                    </button>
+                  </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <script>
+        function sendCookieConcession(){
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    document.getElementById("demo").innerHTML = xhttp.responseText;
+                }
+            };
+            xhttp.open("POST", "/cookie-policy", true);
+            xhttp.send();
+        }
+
+        setTimeout(function(){
+            document.getElementById("cookieNotification").style.display = "none";
+            sendCookieConcession();
+        }, 15000);
+        document.getElementById("cookieAccept").onclick=function(){
+            document.getElementById("cookieNotification").style.display = "none";
+            console.log('sending cookie')
+            sendCookieConcession();
+        }
+        document.getElementById("cookieAcceptMobile").onclick=function(){
+            document.getElementById("cookieNotification").style.display = "none";
+            console.log('sending cookie')
+            sendCookieConcession();
+        }
+    </script>
+{{/unless}}
 
 
 

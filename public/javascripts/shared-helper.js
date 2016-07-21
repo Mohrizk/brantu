@@ -11,6 +11,9 @@ var renderHelper = {
             helper.clearRefinements('products')
             helper.toggleRefinement('products', path);
         }
+
+
+
         //IF BRAND
 
         if(currentState.brand && brandName !== null && typeof brandName !== 'undefined'){
@@ -44,7 +47,7 @@ var renderHelper = {
 
         return x;
     },
-    categoryRefinement: function (categoryContent, breadcrumb) {
+    categoryRefinement: function (categoryContent, breadcrumb, headerText) {
         var breadcrumbHref = [], returnArray = [], data = categoryContent[0].data;
         var maxB =0, maxC= 0;
         for (var b = 0; b < breadcrumb.length + 1; b++) {
@@ -93,7 +96,7 @@ var renderHelper = {
             }
             returnArray=uniqueArray;
         }
-        return {childCategories: returnArray, breadCrumb: breadcrumbHref}
+        return {childCategories: returnArray, breadCrumb: breadcrumbHref, header: headerText}
     },
 
     removeFilterTag: function (type, facet, value, helper) {
@@ -183,9 +186,9 @@ var renderHelper = {
 
     getWelcomeMessage: function(helper,currentState,breadcrumb, content, suggestedBrands){
         var rObject = {}
-        if(breadcrumb.length > 2){
-            rObject.attributes= content.getFacetValues('attributes.value');
-        }
+        /*if(breadcrumb.length > 2){
+            rObject.style= content.getFacetValues('style');
+        }*/
 
         if(currentState.brand){
             rObject.search = false;
@@ -262,6 +265,15 @@ var renderHelper = {
                         facet: 'brand.name'
                     })
             }
+            if (object.disjunctiveFacetsRefinements.hasOwnProperty('style')) {
+                for (var c in object.disjunctiveFacetsRefinements['style'])
+                    rObject.facets.push({
+                        text: header.disjunctionFacets.style.filter,
+                        type: 'disjunctive',
+                        value: object.disjunctiveFacetsRefinements['style'][c],
+                        facet: 'style'
+                    })
+            }
 
             if (object.disjunctiveFacetsRefinements.hasOwnProperty('color')) {
                 for (var c in object.disjunctiveFacetsRefinements.color)
@@ -273,13 +285,13 @@ var renderHelper = {
                     })
             }
 
-            if (object.disjunctiveFacetsRefinements.hasOwnProperty('shop.name')) {
-                for (var c in object.disjunctiveFacetsRefinements['shop.name'])
+            if (object.disjunctiveFacetsRefinements.hasOwnProperty('shops')) {
+                for (var c in object.disjunctiveFacetsRefinements['shops'])
                     rObject.facets.push({
                         text: header.disjunctionFacets.shop.filter,
                         type: 'disjunctive',
-                        value: object.disjunctiveFacetsRefinements['shop.name'][c],
-                        facet: 'shop.name'
+                        value: object.disjunctiveFacetsRefinements['shops'][c],
+                        facet: 'shops'
                     })
             }
 
@@ -317,7 +329,6 @@ var renderHelper = {
                     facet: 'sale'
                 }
                 rObject.facets.push(temp)
-
             }
         }
         return rObject;
@@ -333,9 +344,14 @@ var renderHelper = {
         object.sale = {content:renderHelper.mapWithout(content.getFacetValues('sale'),['false']), header: HEADERTEXT.facets.sale.header};
         object.discounts={content: renderHelper.mapWithout(content.getFacetValues('discount'), ['0']), header: HEADERTEXT.disjunctionFacets.discount.header};
         object.sizes= {content: content.getFacetValues('sizes'), header: HEADERTEXT.disjunctionFacets.size.header};
-        object.shops= {content: content.getFacetValues('sizes'),header:   HEADERTEXT.disjunctionFacets.shop.header};
+
+        object.style= {content: content.getFacetValues('style'), header: HEADERTEXT.disjunctionFacets.style.header};
+        console.log('style', object.style)
+
+        object.shops= {content: content.getFacetValues('shops'),header:   HEADERTEXT.disjunctionFacets.shop.header};
         object.paginate = renderHelper.pagination(content);
-        object.category = renderHelper.categoryRefinement(content.hierarchicalFacets, breadCrumb);
+
+        object.category = renderHelper.categoryRefinement(content.hierarchicalFacets, breadCrumb, HEADERTEXT.hierarchicalFacets.header);
         object.products = content.hits;
         object.colors = {header: HEADERTEXT.disjunctionFacets.color.header , content: renderHelper.mapColor(content.getFacetValues('color'),COLORS)}
         object.tags = renderHelper.getAllRefinements(helper.getState(['attribute:*']), HEADERTEXT, currentState);
@@ -439,12 +455,13 @@ var COLORS = [
     }
 ]
 var HEADERTEXT = {
-    hierarchicalFacets: { header: "xx"},
+    hierarchicalFacets: { header: "Kategorier"},
     disjunctionFacets: {
-        color:{header: "Välj  färgen", filter:"färg"},
-        brand:{header: "Välj  märken", filter:"märken"},
-        shop:{header:"Välj  butiken", filter:"butik"},
-        size:{header:"Välj  Storlekar", filter:"Storlek"},
+        color:{header: "Färger", filter:"färg"},
+        brand:{header: "Märken", filter:"märken"},
+        style:{header: "Styles", filter:"style"},
+        shop:{header:"Butiker", filter:"butik"},
+        size:{header:"Storlekar", filter:"Storlek"},
         discount:{header:"Rea%", filter:"Rea"}
     },
     facets:{

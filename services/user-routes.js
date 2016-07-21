@@ -20,6 +20,7 @@ var routes = [
   /*********REGISTER***************************/
     // Sign up Passport
       ['/signupUser','post',[function(req, res, next) {
+          console.log('SIGN UP',req.body, req.query)
         passport.authenticate('local-signup',function(err, user, info) {
             if (err) { return next(err) }
             if (!user) {
@@ -90,23 +91,7 @@ var routes = [
           res.redirect('/');
         } ]
       ],
-    /*********Privacy***************************/
-    [ '/privacy-policy', 'get', [
-        categories.getCategoryTree,
-        categories.getDepartment,
-        function(req, res, next) {
-        res.render('privacy')
-    }
-    ]
-    ],
-    [ '/terms-and-conditions', 'get', [
-        categories.getCategoryTree,
-        categories.getDepartment,
-        function(req, res, next) {
-            res.render('privacy')
-        }
-    ]
-    ],
+
 
     /*********Settings***************************/
     //SETTINGS: START
@@ -242,6 +227,7 @@ var routes = [
     ],
 
     [ '/kvinna/upptack-nya-favoriter', 'get', [
+        session.cookieConcession,
         session.addFavouriteDepartment,
         categories.getCategoryTree,
         categories.getDepartment,
@@ -258,6 +244,7 @@ var routes = [
     ],
 
     [ '/man/upptack-nya-favoriter', 'get', [
+        session.cookieConcession,
         session.addFavouriteDepartment,
         categories.getCategoryTree,
         categories.getDepartment,
@@ -270,6 +257,7 @@ var routes = [
 
   /*********SHOP***************************/
     [ '/explore', 'get', [
+        session.cookieConcession,
         categories.getCategoryTree,
         categories.getDepartment,
         products.getAlgoliaProducts,
@@ -278,6 +266,7 @@ var routes = [
       } ]
     ],
     [ '/search', 'get', [
+        session.cookieConcession,
         categories.getCategoryTree,
         categories.getDepartment,
         products.getAlgoliaProducts,
@@ -287,6 +276,7 @@ var routes = [
     ],
 
     [ '/view/:id', 'get', [
+        session.cookieConcession,
         categories.getCategoryTree,
         categories.getDepartment,
         products.getProductByID,
@@ -310,6 +300,7 @@ var routes = [
 
 
     [ '/brand/:name', 'get', [
+        session.cookieConcession,
         categories.getCategoryTree,
         products.getAlgoliaProducts,
         categories.getDepartment,
@@ -318,41 +309,55 @@ var routes = [
     } ]
     ],
 
-    [ '/your-shop', 'get', [
-        categories.getCategoryTree,
-        categories.getDepartment ,
-        function(req, res, next) {
-        res.locals.title = "Bringing Brands to You";
-        res.render('shop')
-    } ]
-    ],
-
 /*********INFORMATION & CONTACT PAGES *************************************/
     [ '/contact-us', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
-            res.locals.title = "Join our tribe";
+            res.locals.title = "Kontakt oss";
             res.render('contact-us');
         }]
     ],
     [ '/about-us', 'get', [
+        session.cookieConcession,
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
-            res.locals.title = "Join our tribe";
+            res.locals.title = "Om oss";
             res.render('about-us');
         }]
     ],
     [ '/faq', 'get', [
+        session.cookieConcession,
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
-            res.locals.title = "Join our tribe";
-            res.render('about-us');
+            res.locals.title = "FAQ";
+            res.render('faq');
         }]
     ],
+    [ '/privacy-policy', 'get', [
+        session.cookieConcession,
+        categories.getCategoryTree,
+        categories.getDepartment,
+        function(req, res, next) {
+            res.locals.title = "Privacy policy";
+            res.render('privacy')
+        }
+    ]
+    ],
+    [ '/terms-and-conditions', 'get', [
+        session.cookieConcession,
+        categories.getCategoryTree,
+        categories.getDepartment,
+        function(req, res, next) {
+            res.locals.title = "Terms and conditions";
+            res.render('terms')
+        }
+    ]
+    ],
     [ '/join-shop', 'get', [
+        session.cookieConcession,
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
@@ -360,6 +365,25 @@ var routes = [
         res.render('join-shop');
     }]
     ],
+    [ '/cookie-policy', 'get', [
+        session.cookieConcession,
+        categories.getCategoryTree,
+        categories.getDepartment,
+        function(req, res, next) {
+            res.locals.title = "Cookie Policy";
+            res.render('cookie');
+        }]
+    ],
+    [ '/cookie-policy', 'post', [
+        function(req, res, next) {
+            req.session.cookieConcession = true;
+            req.session.save()
+            console.log('COOKIE POLICY',req.session.cookieConcession)
+            res.status(200);
+        }]
+    ],
+
+
 
 
 

@@ -75,9 +75,10 @@ var register = function(Handlebars) {
             var breadcrumb = "";
             for (var a in array){
                 if(a == array.length-1) breadcrumb += array[a].name
-                else breadcrumb += array[a].name+' > '
+                else breadcrumb += array[a].name+'%20>%20'
             }
-            return breadcrumb;
+            var returnBreadCrumb = breadcrumb.split(" & ").join("%20%26%20")
+            return returnBreadCrumb;
         }
     };
 

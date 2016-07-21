@@ -11,7 +11,7 @@ var helper = {
 },
     populateStyleProduct: function (body, callback){
     if(body.styleProduct !== null && body.styleProduct !== ''){
-        Product.findOne({_id: body.styleProduct}, function(err, product){
+        Product.findOne({_id: body.styleProduct}).populate({path:'brand'}).exec(function(err, product){
 
             if(err) return callback(err)
             if(product== null) return callback(null,null)
@@ -22,7 +22,7 @@ var helper = {
 },
     populatePriceProduct: function (body, callback){
     if(body.priceProduct !== null && body.priceProduct !== ''){
-        Product.findOne({_id: body.priceProduct}, function(err, product){
+        Product.findOne({_id: body.priceProduct}).populate({path:'brand'}).exec(function(err, product){
             if(err) return callback(err)
             if(product== null) return callback(null,null)
             console.log('Here bitches', product.name)
@@ -86,7 +86,7 @@ module.exports = {
                         body.pricePrice = priceProduct.price.value;
                     }
                     if(body.styleBrand == null || body.priceBrand == ''){
-                        body.styleBrand = priceProduct.brand.name;
+                        body.priceBrand = priceProduct.brand.name;
                     }
 
                 }
@@ -189,12 +189,12 @@ module.exports = {
         console.log('params ',req.params.page)
         console.log('PAGE ',page)
         var query = {
-            //gender: helper.mapGender(res.locals.selectedDepartment),
+            gender: helper.mapGender(res.locals.selectedDepartment),
             startDate:{"$lt":now}
         }
         var options = {
             populate: [{path:'styleProduct', populate:{path:'brand'}}, {path:'priceProduct', populate:{path:'brand'}}],
-            sort:     { date: 1 },
+            sort:     { startDate: -1 },
             lean:     true,
             page:       page,
             limit:     2

@@ -1,0 +1,18 @@
+\{{#if form}}
+<p>\{{form.body}}</p>
+<form id="newsletterSignupForm" action="/newsletter-signup">
+    <input name="email" type="email" id="newsletterSignupEmail"/>
+    </form>
+\{{/if}}
+
+\{{#if success}}
+<p>\{{success.body}}</p>
+<a class="bold" id="addNewsletterEmail">\{{success.addAnother}}</a>
+\{{/if}}
+
+\{{#if fail}}
+<p>\{{fail.body}}</p>
+<form id="newsletterSignupForm" action="/newsletter-signup">
+    <input name="email" type="email" id="newsletterSignupEmail"/>
+    </form>
+\{{/if}}

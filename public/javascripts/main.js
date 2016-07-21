@@ -14,17 +14,24 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
 var productNavigate = Handlebars.compile($("#productNavigationTemplate").html());
 var productView = Handlebars.compile($("#productViewTemplate").html());
 var productRelated = Handlebars.compile($("#productRelatedTemplate").html());
+var searchDropDown = Handlebars.compile($("#searchDropDownTemplate").html());
+var searchDropDownMobile= Handlebars.compile($("#searchDropDownMobileTemplate").html());
+var ACTemplateProduct= Handlebars.compile($("#ACTemplateProductTemplate").html());
+var ACTemplateBrand= Handlebars.compile($("#ACTemplateBrandTemplate").html());
+var ACProductPreviewTemplate = Handlebars.compile($("#ACProductPreviewTemplateTemplate").html());
+var newsletterTemplate = Handlebars.compile($("#newsletterTemplateTemplate").html());
 
 var client = algoliasearch("D3IWZXC0AH", '3d6a60c228b6e8058770fdf8eab2f652');
 var helper   = algoliasearchHelper(client, 'products',
 	{
-	hierarchicalFacets: [{
+		hitsPerPage: 30,
+		hierarchicalFacets: [{
 		name: 'products',
 		attributes: ['category.lvl0', 'category.lvl1', 'category.lvl2', 'category.lvl3', 'categories.lvl4'],
         sortBy: ['count:desc', 'name:asc']
 	}],
-	facets:[  'sale', 'price.value' , 'attributes.value'],
-	disjunctiveFacets:['color','brand.name','shop.name','sizes', 'discount']
+	facets:[  'sale', 'price.value'],
+	disjunctiveFacets:['color','brand.name','sizes', 'shops', 'discount' , 'style']
 });
 
 var typeVerified = false, departmentVerified= false;
@@ -72,7 +79,7 @@ if( DEPARTMENT!==null){
  */
 $(document).ready( function() {
 	function lazy(){
-		$('img.lazy').lazyload({effect: "fadeIn"}).removeClass("lazy");
+		$('img.lazy').lazyload({effect: "fadeIn", threshold:300}).removeClass("lazy");
 	}
 	lazy()
 	if(typeVerified){
@@ -86,7 +93,7 @@ $(document).ready( function() {
 		{
 			//source: autocomplete.sources.hits(productIndex, {hitsPerPage: 7}),
 			source: function(query, callback) {
-				var index = client.initIndex('test_product_asos');
+				var index = client.initIndex('products');
 				var options = {hitsPerPage: 8}
 				if(departmentVerified)options.facetFilters = 'category.lvl0:'+DEPARTMENT;
 				$('.ACSearchProgress').removeClass('hidden');
@@ -97,9 +104,17 @@ $(document).ready( function() {
 					console.log(answer)
 					$('#ddProductPreview').hide()
 					$('#ddProductPreviewContainer').html('');
-					$('#ddCol2').show()
+					$('#ddCol2').show();
+					console.log(getUrlFromState());
 					if(answer.hits.length > 7){
+						var urlLink = getUrlFromState(); var returnLink;
+						if(urlLink.indexOf('search')== -1){
+							returnLink = '/search?'+helper.getStateAsQueryString().split('%20&%20').join('%20%26%20');
+						}
+						else returnLink = urlLink;
+
 						answer.hits.splice(7,1,{
+							linkHref:returnLink,
 							more:true,
 							nbHits:answer.nbHits,
 							text:'found search more'
@@ -123,7 +138,7 @@ $(document).ready( function() {
 		} ,
 		{
 			source: function(query, callback) {
-				var index = client.initIndex('brands_sv');
+				var index = client.initIndex('brands');
 				var options = {hitsPerPage: 5}
 				if(departmentVerified)options.facetFilters = 'genders:'+DEPARTMENT;
 				index.search(query, options).then(function(answer) {
@@ -150,7 +165,7 @@ $(document).ready( function() {
 		{
 			//source: autocomplete.sources.hits(productIndex, {hitsPerPage: 7}),
 			source: function(query, callback) {
-				var index = client.initIndex('test_product_asos');
+				var index = client.initIndex('products');
 				var options = {hitsPerPage: 4}
 				if(departmentVerified)options.facetFilters = 'categories.lvl0:'+DEPARTMENT;
 				$('.ACSearchProgress').removeClass('hidden');
@@ -187,7 +202,7 @@ $(document).ready( function() {
 		} ,
 		{
 			source: function(query, callback) {
-				var index = client.initIndex('brands_sv');
+				var index = client.initIndex('brands');
 				var options = {hitsPerPage: 4}
 				if(departmentVerified)options.facetFilters = 'genders:'+DEPARTMENT;
 				index.search(query, options).then(function(answer) {
@@ -215,12 +230,13 @@ $(document).ready( function() {
 		dropdownMenuContainer: '#containerAC',
 		hints:true,
 		templates: {
-			dropdownMenu: searchDropDownTemplate
+			dropdownMenu: searchDropDown
 		}
 	},autocompleteOptions)
 		.on('autocomplete:selected', function(event, suggestion, dataset) {
 			console.log('done')
 			$('#search').val('');
+			searchBar.blur();
 		})
 		.on('autocomplete:shown', function(event, suggestion, dataset) {
 			$('#containerHintAC').hide();
@@ -230,11 +246,12 @@ $(document).ready( function() {
 		dropdownMenuContainer: '#mobileContainerAC',
 		hints:true,
 		templates: {
-			dropdownMenu: searchDropDownMobileTemplate
+			dropdownMenu: searchDropDownMobile
 		}
 	},autocompleteOptionsMobile)
 		.on('autocomplete:selected', function(event, suggestion, dataset) {
 			$('#searchMobile').val('');
+			searchBar.blur();
 		})
 		.on('autocomplete:shown', function(event, suggestion, dataset) {
 			$('#mobileContainerHintAC').hide();
@@ -311,25 +328,28 @@ $(document).ready( function() {
 	page('/settings/*', reload)
 	page('/about/*', reload)
 	page('/favourite-products', reload)
-	page({ dispatch: false });
+	page({ dispatch: false, decodeURLComponents:false});
 
 	function reload(context,next){
 		location.href = context.path;
 	}
 	function getUrlFromState(){
+		var helperString = helper.getStateAsQueryString().split('%20&%20').join('%20%26%20');
 		var path ;
 		var page = '&page='+helper.getPage();
 		if(currentState.brand){
 			path = 'brand/'+renderHelper.getBrandName(helper)+'?';
 			helper.clearRefinements('brand.name');
 		}
-		else if(currentState.search)path ='search?';
-		else if(currentState.category) path ='explore?'
+		else if(currentState.search)   path ='search?';
+		else if(currentState.category) path ='explore?';
 
-		var x = '/'+path+helper.getStateAsQueryString()+page;
-		console.log('NEW URL')
 
-		return '/'+path+helper.getStateAsQueryString()+ page;
+		var x = '/'+path+helperString+page;
+		console.log(helperString)
+		console.log('NEW URL', x)
+
+		return '/'+path+helperString+ page;
 	}
 	function saveLastPath(context, next){
 		returnPath = context.path;
@@ -343,6 +363,7 @@ $(document).ready( function() {
 		next();
 	}
 	function priceBar(){
+		console.log(priceLimits)
 		$("#pricerange").ionRangeSlider({
 			type: "double",
 			min:priceLimits.data.min,
@@ -388,6 +409,7 @@ $(document).ready( function() {
 		lazy()
 	}
 	helper.on('result', function(content) {
+		console.log(content)
 		RENDER(content);
 		$('html, body').scrollTop(0);
 		loading.fadeOut('slow');
@@ -398,21 +420,13 @@ $(document).ready( function() {
 		loading.show();
 		next();
 	}
-	function hideLoading (context, next){
-		loading.hide();
-		next()
-	}
+
 	function setCategory(context, next){
 		currentState.category=true;
 		currentState.search=false;
 		currentState.brand=false;
 		next();
 	}
-	function showMain(context, next){
-		$('html, body').scrollTop(0);
-		mainSection.show().css({'opacity':0}).animate({'opacity':1});
-	}
-
 	function setSearch(context, next){
 		currentState.search=true;
 		currentState.brand=false;
@@ -438,24 +452,27 @@ $(document).ready( function() {
 		context.state.product = context.params.id
 		//context.save()
 		refreshVariables()
-		$('.facetPane').hide();
+		$('.resultContainer').fadeOut()
+		//$('.facetPane').hide();
 		$('.itemList img').removeClass('selected');
 		$.ajax({
 			url: '/api/getProductByID/'+context.state.product,
 		}).success(function(result) {
+			console.log(result)
 			result.lastPath = returnPath;
 			$(document).prop('title', 'Product - '+  result.product.name)
 			    mainSection.html(productView(result) + '<div class="relatedProducts">'+
 				 '<div class="">'+
 				 '<div class="text-center p-t-50 p-b-50">'+
 				 '<div class=" text-center ">' +
-				 '<h4>Loading Related Products</h4>'+
+				 '<h4>Söker efter relaterade <b>styles</b> </h4>'+
 				 '<img src="/images/progress/progress-circle-master.svg" style="width:200px height: 200px">'+
 				 '</div>'+
 				 '</div>'+
 				 '</div>'+
 				 '</div >')
 				loadMainOWl();
+
 				$('html, body').scrollTop(0);
 				//$('#header-Dropdown').hide();
 				loading.fadeOut('slow');
@@ -567,6 +584,19 @@ $(document).ready( function() {
 		}
 		page(getUrlFromState())
 	});
+
+	body.on( 'click', ' .style input', function (event) {
+		var value = $(this).attr('value');
+		console.log(value)
+		if($(this).prop('checked')){
+			helper.addDisjunctiveFacetRefinement('style', value);
+		}
+		else{
+			helper.removeDisjunctiveFacetRefinement('style', value);
+		}
+		page(getUrlFromState())
+	});
+
 	body.on( 'change', ' .sizes input', function (event) {
 		var value = $(this).attr('value');
 		if($(this).prop('checked')){
@@ -600,12 +630,14 @@ $(document).ready( function() {
 		page(getUrlFromState())
 	});
 	body.on( 'change', ' .shops input', function (event) {
+
 		var value = $(this).attr('value');
+		console.log('shops',value )
 		if( $(this).prop('checked')){
-			helper.addDisjunctiveFacetRefinement('shop.name', value);
+			helper.addDisjunctiveFacetRefinement('shops', value);
 		}
 		else{
-			helper.removeDisjunctiveFacetRefinement('shop.name', value);
+			helper.removeDisjunctiveFacetRefinement('shops', value);
 		}
 		page(getUrlFromState())
 	});
@@ -703,7 +735,12 @@ $(document).ready( function() {
 	 *
 	 * **/
 	//***************************************SEARCH
-	$('#autocompleteForm').submit( function(){
+	$('#fakeDesktopSearch').on('keyup',function(){
+		console.log('pressing')
+		searchBar.focus()
+		searchBar.val($(this).val())
+	})
+	$('#autocompleteForm').submit( function(event){
 		event.preventDefault();
 		SEARCH(searchBar);
 	})
@@ -743,7 +780,7 @@ $(document).ready( function() {
 			})
 	})
 	searchBar.focus(function(){
-		$('.searchMainPageOverlay').show();
+		$('.searchMainPageOverlay').fadeIn('slow');
 		if(this.value == ''){
 			$('#containerHintAC').show();
 		}
@@ -752,6 +789,11 @@ $(document).ready( function() {
 		$('.searchMainPageOverlay').hide();
 		$('#containerHintAC').hide();
 	})
+	searchBar.on('keyup',function(){
+		var fake = $('#fakeDesktopSearch');
+		fake.val($(this).val());
+	})
+
 	/*
 	 * Scrolling ACTIONS
 	 *
@@ -811,11 +853,7 @@ $(document).ready( function() {
 
 				}
 			}
-
-
-
 		}
-
 		if(mainContainer.offset().top  > currentScroll){
 
 		}

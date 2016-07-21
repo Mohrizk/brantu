@@ -57,39 +57,53 @@
 
             <form id="signupForm"  role="form" action="/signupUser" method="post">
                 <div class="input-container">
-                    <input type="text" id="nameSignUp" name="name" required="required"/>
-                    <label for="nameSignUp">Din Namn</label>
-                    <div class="bar"></div>
-                </div>
-
-                <div class="input-container">
                     <input type="email" name="email" id="emailSignUp" required="required"/>
                     <label for="emailSignUp">Din e-postadress</label>
                     <div class="bar"></div>
+
                 </div>
 
-                <div class="input-container" style="margin-bottom: 20px;">
+                <div class="input-container">
                     <input type="password" name="password" id="passwordSignUp" required="required"/>
                     <label for="PasswordSignUp">Lösenord</label>
                     <div class="bar"></div>
                 </div>
 
+                <div class="input-container" style="margin-bottom: 20px;">
+                    <input type="password" id="passwordSignUpConfirm" required="required"/>
+                    <label for="passwordSignUpConfirm">Confirm Lösenord</label>
+                    <div class="bar"></div>
+                </div>
+
+
+
                 <div class="input-radio row">
                     <div class="col-xs">
                         <div class="radio radio-pink  block text-center" id="genderSelection">
-
-                            <input type="radio" class="registration"  value="female" data-for="registration" required="required" name="gender" id="femaleRegistrationPopUp" />
+                            <input type="radio" class="registration"  value="female"  required name="gender" id="femaleRegistrationPopUp" />
                             <label for="femaleRegistrationPopUp"  class="text-pink bold relative">Kvinna</label>
-                            <input type="radio" class="registration"   value="male" data-for="registration" required="required"  name="gender" id="maleRegistrationPopUp" />
+                            <input type="radio" class="registration"   value="male" required  name="gender" id="maleRegistrationPopUp" />
                             <label for="maleRegistrationPopUp"  class=" text-pink bold relative">Man</label>
                         </div>
                     </div>
-                    <div class="col-sm-10 text-center col-sm-offset-1">
-                        <h6 class="text-white">By clicking Sign Up, you agree to our  <a target="_blank" href="http://www.brantu.com/terms-and-conditions"> Terms &amp; Conditions</a> and that you have read our <a target="_blank" href="http://www.brantu.com/privacy-policy">Privacy Policy</a></h6>
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div class="row">
+                            <div class="col-xs-1">
+                                <div class="full-width">
+                                    <input class="pull-right" type="checkbox" name="concent" id="concent" required/>
+                                </div>
+                            </div>
+                            <div class="col-xs">
+                                <label  for="concent" class="text-white">Jag godkänner medlemsvillkoren och att mina personuppgifter behandlas enligt ovan, medlemsvillkoren samt Brantus <a class="text-pink" href="/privacy-policy">Integritetspolicy</a>.</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div id="registerError" class="col-sm-12" style="display:none;">
                     <p  class="text-pink text-center" > It seems that this account is already in use</p>
+                </div>
+                <div id="registerPasswrodError" class="col-sm-12" style="display:none;">
+                    <p  class="text-red text-center" > Make sure your password matches</p>
                 </div>
 
                 <div class="button-container">
@@ -97,6 +111,18 @@
                 </div>
             </form>
             <div class="full-width text-center" id="fromSignUpToLogin"><button class=" no-border bold btn btn-rounded btn-default"><u>Logga In</u></button></div>
+        </div>
+    </div>
+    <div class="registerLoading fixed" style="display: none; top:0; bottom:0; right:0; left:0; z-index:1500;">
+        <div class="loading full-height full-width gradient-velvet-opacity" >
+            <div class="bgBlurEffect">
+                <div class="text-center" style="padding-top: 100px;" >
+                    <div class=" text-center ">
+                        <h3 class="text-white">Vi jämför och hittar dina stilar till det bästa priset</h3>
+                        <img src="/images/progress/progress-circle-lg-white.svg" style="width:40px; height:40px">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -1,4 +1,7 @@
-.productFeedTemplate img{ max-height:500px;}
+/*FEEEEED*******/
+.productFeedTemplate img{
+    height: 30vw; max-width:100%;
+}
 img.lazy {
     display: block;
     /* optional way, set loading as background */
@@ -37,7 +40,7 @@ input:-webkit-autofill {
    
 }
 #mainSection, #searchSection, #compareSection{
-    margin-top:195px;
+    margin-top:180px;
 }
 .hoverish{
     border:2px solid white;
@@ -68,10 +71,10 @@ input:-webkit-autofill {
     stroke-width: 2.4;
 }
 .glass{
-    background: linear-gradient(to top, rgba(255,255,255,0.98) 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.85), rgba(255,255,255,0.75));
-    background: -webkit-linear-gradient(to top, rgba(255,255,255,0.98) 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.85), rgba(255,255,255,0.75));
-    background: -moz-linear-gradient(to top, rgba(255,255,255,0.98) 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.85), rgba(255,255,255,0.75));
-    background: -o-linear-gradient(to top, rgba(255,255,255,0.98) 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.85), rgba(255,255,255,0.75));
+    background: linear-gradient(to top, rgba(255,255,255,0.96) 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.85), rgba(255,255,255,0.75));
+    background: -webkit-linear-gradient(to top, rgba(255,255,255,0.96) 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.85), rgba(255,255,255,0.75));
+    background: -moz-linear-gradient(to top, rgba(255,255,255,0.96) 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.85), rgba(255,255,255,0.75));
+    background: -o-linear-gradient(to top, rgba(255,255,255,0.96) 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.85), rgba(255,255,255,0.75));
 
 }
 .glassLight{
@@ -97,14 +100,17 @@ input:-webkit-autofill {
 .bgBlurEffectLight{
     -webkit-backdrop-filter: blur(5px);
 }
+.bgBlurEffectLighter{
+    -webkit-backdrop-filter: blur(2px);
+}
 /***navabr******/
 #headerMain .navbar-nav > li > a {
     padding: 14px 0px;
 }
 .desktopNavColoumns{
-    moz-column-width: 11.5em; /* Firefox */
-    -webkit-column-width: 11.5em; /* webkit, Safari, Chrome */
-    column-width: 11.5em;
+    moz-column-width: 15em; /* Firefox */
+    -webkit-column-width: 15em; /* webkit, Safari, Chrome */
+    column-width: 15em;
     max-height: 200px;
 }
 .desktopNavColoumns ul
@@ -153,6 +159,7 @@ input:-webkit-autofill {
 
 
 /**********ALGOLIA AUTO COMPLETE***/
+
 .aa-dropdown-menu{
     background: linear-gradient(to bottom, #FFFFFF 80%, #f3f1f0 );
     border-top:2px solid #521740 !important;
@@ -281,10 +288,6 @@ input:-webkit-autofill {
 .category-expand li{
 	list-style-type: none;
 	padding:0;
-	font-size: 12px;
-	font-weight: 500;
-	width:120px;
-	font-weight: 500;
 }
 
 
@@ -596,7 +599,7 @@ ul.circle li:hover div{
 
  .item img.fadeOut{ opacity: 0 !important; }
 
-.vertical .item img{ height:auto; max-width:100%; position:relative;   margin: 0 auto; display:block; border:1px solid #f8f8f8; opacity: 1; }
+.vertical .item img{ height:26.5vw; width:auto; max-width: 100%; position:relative;   margin: 0 auto; display:block; border:1px solid #f8f8f8; opacity: 1; }
 .vertical .item .item-name  { height:auto; width:auto; padding:0.25vw; line-height:1.2vw; text-transform:capitalize;  margin: 0 auto; text-align: center; display:block; font-family:"Sharp Sans"; font-size:1vw; color:#333; }
 .vertical .item .item-brand  {text-transform:capitalize; height:auto; width:auto; padding:0.15vw; line-height:1.4vw;   margin: 0 auto; text-align: center; display:block; font-family:"Sharp Sans"; font-weight: bold; font-size:0.9vw; color:#555; margin-top:0.3vw;}
 .vertical .item .original-price { padding:0.25vw; line-height:1.4vw;   margin: 0 auto; display:block;  font-size:1.2vw; color:#333; font-weight: bold;}
@@ -805,8 +808,18 @@ ul.circle li:hover div{
     text-align: center;
 }
 
-.similarProducts div img{width:94%; margin: auto;}
-.similarProducts .flow{width:25%; margin: auto;}
+.similarProducts div img{
+    width:auto; height:290px; margin-left:20px; margin: auto;
+}
+.similarProducts i img{
+    height:25px;  margin: auto;
+}
+.similarProducts .flow{
+    width:25%;
+    margin: auto;}
+.similarProducts .flow img{
+    max-width:94%; height:26.5vw;
+    margin: auto;}
 
 .similarProducts div .discountedPrice{color:#E50914;}
 .similarProducts div .originalPrice.discounted{ text-decoration:line-through; }
@@ -846,7 +859,8 @@ ul.circle li:hover div{
 
 
 .categoryList li{
-    padding:7px 0;
+    padding:7px 0px;
+
 
 }
 
@@ -1050,6 +1064,12 @@ ul.circle li:hover div{
     }
 }
 @media (max-width: 991px){
+    .productFeedTemplate img{
+        height: 50vw;
+    }
+    .similarProducts .flow img{
+       height:36vw;
+     }
     .similarProducts .flow{width:32%;}
     .nav-margin{
         margin-right: 5px;
@@ -1155,6 +1175,13 @@ ul.circle li:hover div{
     .vertical .item .discounted-percentage { top:30vw; left:1vw;  }
 }
 @media (max-width: 480px){
+    .productFeedTemplate img{
+        height: 60vw;
+    }
+    .similarProducts .flow img{
+        height:60vw;
+        max-width:98%;
+    }
     .similarProducts .flow{width:49%; }
     .jawBoneContent.open{
         padding: 0 10px;
@@ -1178,8 +1205,15 @@ ul.circle li:hover div{
     }
     .vertical .item .discounted-percentage { top:44vw; left:1vw;}
     .selectedItemZoomPicture img {
-        max-height:120vw;
-        max-width: 100%;
+        max-height: 100%;
+        height: auto;
+        max-width: 90%;
+    }
+    .similarProducts div img{
+        height: 180px;
+    }
+    .similarProducts i img{
+        height: 25px;
     }
 
     .selectedItemImageColoumn ol li img{

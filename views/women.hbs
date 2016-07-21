@@ -2,21 +2,43 @@
 
 
 <div class="page-content-wrapper bg-master-lightest" >
-   <section id="mainSection" >
-       <div id="owlLanding" class="owl-carousel owl-theme">
+   <section id="mainSection"  >
+       <div id="owlLanding" class="">
            <div>
-               <a href="/shop/damklader-blusar-skjortor" class="">
-                    <div class="bg-image relative mainJumbtron" style="background-image:url('/images/home/women/wherestylemeetsprice.jpg');"> <!--http://media.gettyimages.com/photos/beautiful-woman-on-the-background-of-bay-picture-id186557562-->
+
+                    <!--<div class="bg-image relative mainJumbtron" style="background-image:url('/images/home/women/wherestylemeetspricewomen.jpg');">
                     <div class="col-md-12 hidden-xs  full-height"  style="">
                         <div class="padding-1v col-sm-4 col-xs-7  col-sm-offset-1" style="margin-top: 6vw; ">
                             <div>
+                                <h1>When Style Meets Price</h1>
                             </div>
                         </div>
                     </div>
-                </div>
-               </a>
+                    </div>-->
+                   <div class="bg-image relative no-overflow relative" style="background-image:url('/images/home/women/wherestylemeetspricewomen.jpg'); height:40vw; ">
+
+                       <div class="col-md-12  full-height relative" >
+                           <div class="bgblureffectlighter" style="top:-100px; background: rgba(51,5,51,0.2); border-radius: 0%; position: absolute; bottom: -100px; right: 0%; left: 0%;"></div>
+                           <div class="padding-1v col-xs-12 text-center" style="margin-top: 10vw; ">
+                               <h1 class="text-spaced-medium all-caps text-blue-darker bold" style="color:#fff ">Where Style Meets Price</h1>
+
+                               <div class="m-t-30 hidden-xs">
+                                   <span class="relative" style="width: auto;">
+                                    <input type="text" id="fakeDesktopSearch" class="text-center text-black all-caps   p-l-20" style="width:600px; height:50px; background-color: #fff; border: 0; border: 1px solid #ddd;  font-size: 16px;" placeholder="Vi jämför och hittar dina stilar till det bästa priset"/>
+                                    <button class="search-button bg-transparent no-border" style="position: absolute; left:92%;top: -7px;"><i class="fa text-master-light fa-search" style="font-size: 24px; "></i></button>
+                                   </span>
+                               </div>
+                               <div class="m-t-40 hidden-sm hidden-xs">
+                                   <a class="text-velvet padding-10"  id="startFeed"><div class="relative" style="width: auto; height: auto;"><btn class="btn no-border btn-default bold text-black circle"><span class="top-left " style="padding-left: 25px; padding-top: 30px;"><i class=" pg-arrow_minimize_line" style="font-size:42px;"></i></span></btn><div></div></div></a>
+                                  <!-- <a class="text-velvet padding-10"><div><u>Explore Products</u></div></a>-->
+                               </div>
+
+                           </div>
+                       </div>
+                   </div>
+
            </div>
-           <div>
+           <!--<div>
                <div class="today row">
                    <div class="col-sm-5 col-xs-12 mainJumbtron">
                        <div class="bg-image full-width full-height" style="background-position: top; background-image:url('/images/home/women/main4.jpg');">
@@ -35,7 +57,7 @@
                    </div>
                </div>
            </div>
-           <!--<div>
+           <div>
                <h1 class="headerLined" >
                    <span >klä dig i blått</span>
                </h1>
@@ -52,7 +74,7 @@
                        <div class="bg-image full-width mainJumbtron" style="background-position: center; background-image:url('/images/home/women/main3.jpg');"></div>
                    </div>
                </div>
-           </div>-->
+           </div>
            <div>
                <div id="sale">
                    <div class="row m-xs-r-30 m-xs-l-30" >
@@ -95,28 +117,43 @@
                    </div>
 
                </div>
-           </div>
+           </div>-->
        </div>
        <div class="content" >
-            <div>
-                <div class=" m-t-10">
-                    <div style="margin-top: 5vw;">
-                        <div style="margin-top: 5vw;">
-                            <h1 class="text-center" style="text-align: center;border-bottom: 1px solid #333;line-height: 0;padding: 0; margin:50px 0vw;">
-                                <span class="bg-white text-black bold padding-2v all-caps  text-spaced-medium">Style vs. Price Feed</span>
-                            </h1>
-                            <div class="feed" data-page="1">
+            <div class="row m-t-40" >
+                <div class="no-padding m-t-20 m-b-50 m-xs-t-0 full-width text-center">
+                    <h1 class="text-center no-padding no-margin hidden-xs" style="border-bottom: 1px solid #333;line-height: 0;">
+                        <span class="bg-white p-l-10 p-r-10 all-caps text-spaced-medium">Style vs. Price Feed</span>
+                    </h1>
+
+                    <h1 class="all-caps text-spaced visible-xs">Style vs. Price Feed</h1>
+                </div>
+                <div class="col-md-8">
+                    <div>
+                            <div class="feed" data-page="1" data-total-pages="{{feed.pages}}">
                                 {{> feed_Back}}
                             </div>
-                            <div class="text-center p-t-20 p-b-20"><btn id="loadMoreFeed" class="btn btn-info">Load More</btn></div>
-                        </div>
-                    </div>
+                         <div class="text-center p-t-20 p-b-20">
+                             <btn id="loadMoreFeed" class="btn btn-info bold circle">
+                                 Load More
 
+                             </btn>
+                             <div id="moreFeedLoader" class=" text-center" style="display: none;">
+                                 <img src='/images/progress/progress-circle-danger.svg' style="width:60px; height: 60px;"/>
+                             </div>
+                         </div>
+                    </div>
+                 </div>
+                <div class="col-md hidden-sm hidden-xs relative">
+                        <div id="sideBanner" >
+                            <p class="hint-text no-margin no-padding all-caps medium p-l-5"style="font-size: 8px; line-height: 8px;">annons</p>
+                            <a href="http://ad.zanox.com/ppc/?38693503C316963388T"><img src="http://ad.zanox.com/ppv/?38693503C316963388" align="bottom" width="300" height="600" border="0" hspace="1" alt="River Island Women"></a>                        </div>
+                </div>
             </div>
-        </div>
+       </div>
     </section>
     {{>loading}}
     {{>footer}}
 </div>
 <script type="text/javascript" src="/javascripts/home.js"> </script>
-<script type="text/javascript" src="/javascripts/manage-feed.js"> </script>
+

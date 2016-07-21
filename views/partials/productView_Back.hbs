@@ -69,7 +69,7 @@
                                     <div class="row column-seperation">
                                         <div class="col-xs-12">
                                             <div class="p-t-20">
-                                                <h6 class="bold text-black">Colors</h6>
+                                                <h6 class="bold text-black">Färger</h6>
                                                 <ol class="JBColorList no-style no-padding no-margin">
                                                     {{#if product.color}}<li class="inline no-padding no-margin"><img class="active bg-image" src="{{{product.mainPicture.mediumUrl}}}"/><div class="text-center no-overflow-text text-black sbold">{{product.color}}</div></li>{{/if}}
                                                     {{#each product.otherColors}}<li class="inline no-padding no-margin"><a data-product-info="show" _id="{{this._id}}"><img class="bg-image" src="{{{this.mainPicture.mediumUrl}}}"/><div class="text-center no-overflow-text text-black sbold">{{this.color}}</div></a></li>{{/each}}
@@ -83,12 +83,12 @@
                         <div class="panel panel-transparent no-margin">
                             <div class="panel-body no-padding " style="height:auto;"> <div class="dataTables_wrapper form-inline no-footer"><div class="table-responsive no-border"><table class="table table-hover demo-table-search dataTable no-footer">
                                 <thread><tr role="row">
-                                    <th class="sorting no-padding" rowspan="1" colspan="1">Shop</th>
-                                    <th class="sorting no-padding hidden-xs" rowspan="1" colspan="1">Colors</th>
-                                    <th class="sorting no-padding hidden-xs" rowspan="1" colspan="1">Prices</th>
-                                    <th class="sorting no-padding" rowspan="1" colspan="1">Lowest Price</th>
-                                    <th class="sorting no-padding hidden-xs" rowspan="1" colspan="1">Shipping & Return </th>
-                                    <th class="sorting no-padding visible-xs" rowspan="1" colspan="1">Free Return </th>
+                                    <th class="sorting no-padding" rowspan="1" colspan="1">Butik</th>
+                                    <th class="sorting no-padding hidden-xs" rowspan="1" colspan="1">Färg</th>
+                                    <th class="sorting no-padding hidden-xs" rowspan="1" colspan="1">Pris</th>
+                                    <th class="sorting no-padding" rowspan="1" colspan="1">Lägsta priset</th>
+                                    <th class="sorting no-padding hidden-xs" rowspan="1" colspan="1">Retur & leverans</th>
+                                    <th class="sorting no-padding visible-xs" rowspan="1" colspan="1">Fri retur </th>
                                     <th class="sorting no-padding " rowspan="1" colspan="1"></th>
                                 </tr></thread>
                                 <tbody style="background-color: rgba(255,255,255,0.9);">
@@ -117,18 +117,18 @@
                                     </td>
 
                                     <td class="v-align-middle no-padding p-t-10 p-b-5 hidden-xs">
-                                        <h6 class="bold no-padding no-margin"><font class="text-master medium">Free Return: </font>{{#if this.shop.freeReturn}} Yes {{else}} No {{/if}}</h6>
-                                        <h6 class="bold no-padding no-margin"><font class="text-master medium">Return Period: </font>{{this.shop.returnPeriod}}</h6>
-                                        <h6 class="bold no-padding no-margin"><font class="text-master medium">Shipping Cost: </font>{{this.shop.standardShippingCost}}</h6>
-                                        <h6 class="bold no-padding no-margin"><font class="text-master medium">Shipping Period: </font>{{this.shop.standardShippingTime}}</h6>
-                                        <h6 class="bold no-padding no-margin"><font class="text-master medium">Free Shipping After: </font>{{this.shop.freeAfter}}</h6>
+                                        <h6 class="bold no-padding no-margin"><font class="text-master medium">Fri retur: </font>{{#if this.shop.freeReturn}} Ja {{else}} Nej {{/if}}</h6>
+                                        <h6 class="bold no-padding no-margin"><font class="text-master medium">Byte & retur: </font>{{this.shop.returnPeriod}}</h6>
+                                        <h6 class="bold no-padding no-margin"><font class="text-master medium">Fraktavgift: </font>{{this.shop.standardShippingCost}}</h6>
+                                        <h6 class="bold no-padding no-margin"><font class="text-master medium">Leveranstid: </font>{{this.shop.standardShippingTime}}</h6>
+                                        <h6 class="bold no-padding no-margin"><font class="text-master medium">Fri frakt över: </font>{{this.shop.freeAfter}}</h6>
                                     </td>
                                     <td class="v-align-middle no-padding p-t-10 p-b-5 visible-xs">
-                                        <p class="bold no-padding no-margin"><font class="text-master medium"></font>{{#if this.shop.freeReturn}} Yes {{else}} No {{/if}}</p>
+                                        <p class="bold no-padding no-margin"><font class="text-master medium"></font>{{#if this.shop.freeReturn}} Ja {{else}} Nej {{/if}}</p>
                                     </td>
 
                                     <td class="v-align-middle no-padding">
-                                       <a href="{{../product.productUrl}}" target="_blank"> <button class="btn btn-tag sbold">Go to Shop</button></a>
+                                       <a href="{{../product.productUrl}}" target="_blank"> <button class="btn btn-tag sbold fs-14">Gå till butik</button></a>
                                     </td>
                                 </tr>
                                 {{/each}}
@@ -136,7 +136,7 @@
                             </table></div></div></div>
                         </div>
                         <div class="hidden-xs">
-                            <h6 class="text-black b-b bold b-transparent-white">Description</h6>
+                            <h6 class="text-black b-b bold b-transparent-white">BESKRIVNING / DESCRIPTION</h6>
                             <div class="description text-black medium">{{product.description}}</div>
                         </div>
                         <div class="visible-xs">
@@ -145,7 +145,7 @@
                                     <div class="panel-heading" role="tab" id="headingOne">
                                         <h4 class="panel-title">
                                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="collapsed">
-                                                Description
+                                                BESKRIVNING / DESCRIPTION
                                             </a>
                                         </h4>
                                     </div>

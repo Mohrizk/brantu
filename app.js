@@ -56,14 +56,14 @@ app.use(session({
         ttl: 14 * 24 * 60 * 60 // = 14 days
              })
 }));
-/*app.use(
+app.use(
     function(req, res, next){
         console.log('------------------')
         console.log(req.session)
         console.log('------------------')
         next();
     }
-)*/
+)
 /************* Internationalization Config*******/
 
 i18n.expressBind(app, {

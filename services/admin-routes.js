@@ -66,7 +66,7 @@ var routes = [
     [ '/admin/create-price-card', 'post', [
         feed.createPriceCard,
         feed.renderPriceCard,
-       // socialMedia.facebook.publishPriceCard,
+        socialMedia.facebook.publishPriceCard,
         function( req, res, next) {
         var response = 'valid='+req.priceCardCreated
         var message = 'message='+req.message

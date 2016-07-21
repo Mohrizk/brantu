@@ -1,11 +1,18 @@
 var Categories  = require('../models/category');
 var async = require('async');
 var options = ['kvinna', 'man'];
-var algoliasearch = require('algoliasearch');
-var algoliasearchHelper = require('algoliasearch-helper');
 
-var lvl1_cancelOut = ['Premium']
-var lvl2_cancelOut = [{lvl0:'Kvinna', lvl1:'Kläder',lvl2:['Underkläder']}]
+
+var lvl1_cancelOut = ['Premium', 'Sport &amp; träning']
+var lvl2_cancelOut = [
+    {lvl0:'Kvinna', lvl1:'Kläder',lvl2:['Underkläder', 'Sportkläder']},
+    {lvl0:'Kvinna', lvl1:'Accessoarer',lvl2:'Paraplyer'},
+    {lvl0:'Kvinna', lvl1:'Skor',lvl2:['Outdoorskor','Skotillbehör', 'Slip-ins & clogs', 'Snörskor', 'Sportskor']},
+    {lvl0:'Kvinna', lvl1:'Outlet',lvl2:['Premium', 'Skönhet','Sport &amp; träning']},
+    {lvl0:'Kvinna', lvl1:'Skönhet',lvl2:['Mamma', 'Spa']},
+    {lvl0:'Kvinna', lvl1:'Sport &amp; träning',lvl2:[ 'Ryggsäckar', 'Utrustning','Väskor']},
+]
+
 
 module.exports = {
     //GET CATEGORY TREE
@@ -32,7 +39,7 @@ module.exports = {
                             else{
                                 var categorylist = categorylist.filter(function(item)
                                 {
-                                    return item.name.indexOf(lvl1_cancelOut) == -1;
+                                    return lvl1_cancelOut.indexOf(item.name) == -1;
                                 });
                                 callback(null, mainCategory, categorylist);
                             }
@@ -54,12 +61,20 @@ module.exports = {
                                     if (subcategory != null) {
                                         var index = -1;
                                         for (var c in lvl2_cancelOut){
-                                            if(category.name == lvl2_cancelOut[c].lvl1) index = c;
+                                            if(category.name===lvl2_cancelOut[c].lvl1){
+                                                index = c;
+                                            }
                                         }
                                         var subCategory;
-                                        if(index > -1) subCategory= subcategory.filter(function(item) {
-                                            return item.name.indexOf(lvl2_cancelOut[index].lvl2) == -1;
-                                        });
+                                        if(index > -1){
+                                            //console.log(category.name, index)
+                                            subCategory = subcategory.filter(function(item) {
+                                                //console.log(item.name , lvl2_cancelOut[index].lvl2 , item.name.indexOf(lvl2_cancelOut[index].lvl2))
+                                                return lvl2_cancelOut[index].lvl2.indexOf(item.name) == -1;
+                                            });
+                                            //console.log(lvl2_cancelOut[index].lvl2)
+                                            //console.log(subCategory)
+                                        }
                                         else subCategory= subcategory
                                         temp.push({'category': category, 'subCategory': subCategory});
                                     }
@@ -91,7 +106,6 @@ module.exports = {
 
         }, function(err) {
             var sortedCategoryList = [];
-
             options.forEach(function(option){
                 listOfCategories.forEach(function(category){
                     if(category.department.key == option)

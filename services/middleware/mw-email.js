@@ -32,9 +32,12 @@ module.exports = {
         var mailOptions = {
             from: BrantuEmails.confirmation,
             to: userEmail,
-            subject: "Thank you for signing Up",
+            subject: "Välkommen till Brantu",
             generateTextFromHTML: true,
-            html: "<b>Hello world</b>"
+            html: "<b>Hej nya Shopaholic!</b>"+
+                    "<p>Vad roligt att du har hittat till oss, och varmt välkommen som kund!<br/>Ditt användarnamn är din e-postadress som du behöver för att logga in på <a target='_blank' href='http//www.brantu.com'> BRANTU.COM.</a></p>"+
+                    "<p>Om du har frågor kring något tveka inte på att höra av dig till vår <a href='mailto:support@brantu.com'>kundtjänst</a>.</p>"+
+                    "<p style='padding-top: 30px;'>Blir du shoppingsugen? (Det blir vi) - Gå direkt till <a target='_blank' href='http//www.brantu.com'>BRANTU.COM.</a></p>"
         };
 
         transporter.sendMail(mailOptions, function(error, response) {

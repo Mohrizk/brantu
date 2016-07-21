@@ -2,70 +2,99 @@
 <div class="overlay" role="nav-down-container" style="height:20vw"></div>
 
 
-<div class="page-content-wrapper bg-master-light ">
-        <section id="mainSection" class=" bg-master-light ">
-            <a href="/shop/man-klader-overdelar"><div class="bg-image relative" style="background-image:url('/images/home/men/mensalecover.jpg'); height:40vw; ">
-                <div class="col-md-12  full-height" >
-                    <div class="padding-1v col-sm-4 col-sm-offset-1" style="margin-top: 10vw; ">
+<div class="page-content-wrapper bg-white ">
+        <section id="mainSection" class=" bg-white ">
+            <div id="owlLanding" class="" >
 
-                    </div>
-                </div>
-            </div></a>
-            <div class="content">
+                <div class="bg-image relative no-overflow relative" style="background-image:url('/images/home/men/wherestylemeetspriceman.jpg'); height:40vw; ">
 
-            <div class=" m-t-10">
-                <div style="margin-top: 5vw;">
-                    <div style="margin-top: 5vw;">
-                        <h1 class="text-center" style="text-align: center;border-bottom: 1px solid #333;line-height: 0;padding: 0; margin:50px 0vw;">
-                            <span class="bg-master-light text-white bold padding-2v all-caps  text-spaced-medium">EDITORS Feed</span>
-                        </h1>
-                        <div class="feed" data-page="1">
-                                {{> feed_Back}}
-                        </div>
-                        <div class="text-center p-t-20"><btn id="loadMoreFeed" class="btn btn-info">Load More</btn></div>
-                    </div>
-                </div>
+                    <div class="col-md-12  full-height relative" >
+                        <div class="bgblureffectlighter" style="top:-100px; background: rgba(76, 96, 128, 0.46); border-radius: 0%; position: absolute; bottom: -100px; right: 0%; left: 0%;"></div>
+                        <div class="padding-1v col-xs-12 text-center" style="margin-top: 10vw; ">
+                            <h1 class="text-spaced-medium all-caps text-blue-darker bold" style="color:#fff ">Where Style Meets Price</h1>
 
-                <div id="sale" style="margin-top: 5vw;">
-                    <h1 class="text-center" style="text-align: center;border-bottom: 1px solid #333;line-height: 0;padding: 0; margin:1vw 0vw;">
-                        <span class="bg-white all-caps ">REA</span>
-                    </h1>
-
-
-                    <div class="row">
-                        <a href="/shop/man-premium-klader" class="bg-image margin-1v padding-05v hoverish col-xs-3" style="background-image:url('/images/home/men/pants.jpg'); height: 34vw;">
-                            <div class="full-height full-width" style="border: 2px solid white; "></div>
-                        </a>
-                        <div class="margin-1v col-xs-5">
-                            <div style="display: flex; flex-direction: row;">
-                                <a href="/shop/herrklader-rea" class="bg-image padding-05v hoverish" style="background-image:url('/images/home/men/sweater.jpg'); flex: 0 0 45%; height: 15.5vw;">
-                                    <div class="full-height full-width" style="border: 2px solid white; "></div>
-                                </a>
-                                <a href="/shop/man-premium-klader" class="bg-image padding-05v hoverish" style="background-image:url('/images/home/men/blazer.jpg'); flex: 0 0 45%; height: 15.5vw; margin-left: auto;">
-                                    <div class="full-height full-width" style="border: 2px solid white; "></div>
-                                </a>
+                            <div class="m-t-30 hidden-xs">
+                                   <span class="relative" style="width: auto;">
+                                    <input type="text" id="fakeDesktopSearch" class="text-center text-black all-caps   p-l-20" style="width:600px; height:50px; background-color: #fff; border: 0; border: 1px solid #ddd;  font-size: 16px;" placeholder="Vi jämför och hittar dina stilar till det bästa priset"/>
+                                    <button class="search-button bg-transparent no-border" style="position: absolute; left:92%;top: -7px;"><i class="fa text-master-light fa-search" style="font-size: 24px; "></i></button>
+                                   </span>
+                            </div>
+                            <div class="m-t-40 hidden-sm hidden-xs">
+                                <a class="text-velvet padding-10"  id="startFeed"><div class="relative" style="width: auto; height: auto;"><btn class="btn no-border btn-default bold  circle"><span class="top-left " style="padding-left: 25px; padding-top: 30px;"><i class=" pg-arrow_minimize_line" style="font-size:42px;"></i></span></btn><div></div></div></a>
+                                <!-- <a class="text-velvet padding-10"><div><u>Explore Products</u></div></a>-->
                             </div>
 
-                            <div href="/shop/herrskor-rea" class="bg-image full-width padding-05v hoverish" style="background-image:url('/images/home/men/shoes.jpg'); height: 16.5vw; margin-top:2.02vw; " >
-                                <a href=""><div class="full-height full-width" style="border: 2px solid white; "></div></a>
-                            </div>
                         </div>
-
-                        <a href="/shop/herrklader-rea" class="bg-image margin-1v padding-05v hoverish col-xs-3" style="background-image:url('/images/home/men/jeans.jpg'); height: 34vw;">
-                            <div class="full-height full-width" style="border: 2px solid white; "></div>
-                        </a>
                     </div>
                 </div>
 
+                <!--<div>
+                    <div id="sale">
 
+                        <div class="row">
+                            <a href="/shop/man-premium-klader" class="bg-image margin-1v padding-05v hoverish col-xs-3" style="background-image:url('/images/home/men/pants.jpg'); height: 34vw;">
+                                <div class="full-height full-width" style="border: 2px solid white; "></div>
+                            </a>
+                            <div class="margin-1v col-xs-5">
+                                <div style="display: flex; flex-direction: row;">
+                                    <a href="/shop/herrklader-rea" class="bg-image padding-05v hoverish" style="background-image:url('/images/home/men/sweater.jpg'); flex: 0 0 45%; height: 15.5vw;">
+                                        <div class="full-height full-width" style="border: 2px solid white; "></div>
+                                    </a>
+                                    <a href="/shop/man-premium-klader" class="bg-image padding-05v hoverish" style="background-image:url('/images/home/men/blazer.jpg'); flex: 0 0 45%; height: 15.5vw; margin-left: auto;">
+                                        <div class="full-height full-width" style="border: 2px solid white; "></div>
+                                    </a>
+                                </div>
+
+                                <div href="/shop/herrskor-rea" class="bg-image full-width padding-05v hoverish" style="background-image:url('/images/home/men/shoes.jpg'); height: 16.5vw; margin-top:2.02vw; " >
+                                    <a href=""><div class="full-height full-width" style="border: 2px solid white; "></div></a>
+                                </div>
+                            </div>
+
+                            <a href="/shop/herrklader-rea" class="bg-image margin-1v padding-05v hoverish col-xs-3" style="background-image:url('/images/home/men/jeans.jpg'); height: 34vw;">
+                                <div class="full-height full-width" style="border: 2px solid white; "></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>-->
             </div>
 
+            <div class="content" style="">
+                <div class="row m-t-40" >
+                    <div class="no-padding m-t-20 m-b-50 m-xs-t-0 full-width text-center">
+                        <h1 class="text-center no-padding no-margin hidden-xs" style="border-bottom: 1px solid #333;line-height: 0;">
+                            <span class="bg-white p-l-10 p-r-10 all-caps text-spaced-medium">Style vs. Price Feed</span>
+                        </h1>
 
+                        <h1 class="all-caps text-spaced visible-xs">Style vs. Price Feed</h1>
+                    </div>
+                    <div class="col-md-8">
+                        <div>
+                            <div class="feed" data-page="1" data-total-pages="{{feed.pages}}">
+                                {{> feed_Back}}
+                            </div>
+                            <div class="text-center p-t-20 p-b-20">
+                                <btn id="loadMoreFeed" class="btn btn-info bold btn-info circle">
+                                    Load More
 
+                                </btn>
+                                <div id="moreFeedLoader" class=" text-center" style="display: none;">
+                                    <img src='/images/progress/progress-circle-danger.svg' style="width:60px; height: 60px;"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md hidden-sm hidden-xs relative">
+
+                            <div id="sideBanner" class="b-b b-r b-l b-t b-grey">
+                                <!--<a href="http://ad.zanox.com/ppc/?38687697C951858620T" target="_blank"><img src="http://ad.zanox.com/ppv/?38687697C951858620" align="bottom" style="width:100%; height: auto; max-height: 930px; max-width: 240px;" border="0" hspace="1" alt="River Island Women"></a>-->
+                                <a href="http://ad.zanox.com/ppc/?38693926C269671031T"><img src="http://ad.zanox.com/ppv/?38693926C269671031" align="bottom" width="300" height="600" border="0" hspace="1" alt="Summer Static Scan 300x600"></a>                            </div>
+
+                    </div>
+                </div>
             </div>
         </section>
         {{>loading}}
         {{>footer}}
  </div>
 <script type="text/javascript" src="/javascripts/home.js"> </script>
-<script type="text/javascript" src="/javascripts/manage-feed.js"> </script>
+

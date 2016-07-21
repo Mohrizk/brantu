@@ -1,6 +1,7 @@
 {
   "name": "brantu",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "Brantu web app",
   "engines": {
     "node": "5.8.0"
   },

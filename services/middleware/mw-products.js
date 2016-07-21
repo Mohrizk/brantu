@@ -12,14 +12,15 @@ var algoliasearch = require('algoliasearch');
 var algoliasearchHelper = require('algoliasearch-helper');
 
 var client   = algoliasearch("D3IWZXC0AH", '3d6a60c228b6e8058770fdf8eab2f652');
-var AgoliaInstance   = algoliasearchHelper(client,'test_product_asos', {
+var AgoliaInstance   = algoliasearchHelper(client,'products', {
+    hitsPerPage: 30,
     hierarchicalFacets: [{
         name: 'products',
         attributes: ['category.lvl0', 'category.lvl1', 'category.lvl2', 'category.lvl3', 'categories.lvl4'],
         sortBy: ['count:desc', 'name:asc']
     }],
-    facets:[  'sale', 'price.value' , 'attributes.value'],
-    disjunctiveFacets:['color','brand.name','shop.name','sizes', 'discount']
+    facets:[  'sale', 'price.value'],
+    disjunctiveFacets:['color','brand.name','shops','sizes', 'discount' , 'style']
 });
 var sharedHelpers = require('../../public/javascripts/shared-helper');
 
@@ -41,50 +42,9 @@ function getHex(product, callback){
         callback()
     })
 }
-function getLowestPrice(product){
-    for (var s in product.articles.shops){
-        var lowest;
-        for(var u in product.articles.shops[s].units){
-          if(u == 0){
-              lowest = product.articles.shops[s].units[u];
-          }
-          else{
-              if(product.articles.shops[s].units[u].price.value <  lowest.price.value){
-                  lowest = product.articles.shops[s].units[u];
-              }
-          }
-        }
-        product.articles.shops[s].lowest = lowest;
-    }
-    console.log(product.articles.shops);
-}
-function getCountryFromLanguage(req){
-    console.log(req.i18n.getLocale())
-    switch(req.i18n.getLocale()){
-        case 'sv':
-            return 'sweden';
-        default:
-            return 'sweden';
 
-    }
-}
-function getShippingReturn(product, req){
-    var country = getCountryFromLanguage(req);
-    for (var s in product.articles.shops){
-        var location = 0;
-        for(var x in product.articles.shops[s].shop.shipping){
-          if( product.articles.shops[s].shop.shipping[x].country == country)
-          location = x;
-        }
-        var easy = product.articles.shops[s].shop.shipping[location];
-        product.articles.shops[s].shop.standardShippingCost =  easy.standard.value +' '+easy.standard.currency;
-        product.articles.shops[s].shop.standardShippingTime =  easy.standard.delivery;
-        product.articles.shops[s].shop.freeAfter = easy.freeStandard.value +' '+easy.freeStandard.currency;
-        product.articles.shops[s].shop.freeReturn = easy.return.free;
-        product.articles.shops[s].shop.returnPeriod = easy.return.period;
-    }
-    console.log(product.articles.shops);
-}
+
+
 
 
 operations = {
@@ -97,9 +57,10 @@ operations = {
             if(err) return next(err);
             if(product == null) return next();
             var x= product.toObject();
-            getLowestPrice(x);
-            getShippingReturn(x, req)
+            helper.getLowestPrice(x);
+            helper.getShippingReturn(x, req)
             req.product = x;
+            //req.productCategoryPath = x.category.get
             req.brand = x.brand;
             req._id = x._id;
             for(var a in x.attributes){
@@ -114,11 +75,11 @@ operations = {
     getSimilarProductsFromSameBrand:function(req,res,next){
         var foundProduct = req.product;
         var query = {   "brand": foundProduct.brand,
-                    "category": foundProduct.category,
-                    "price.value":
-                    {   $gt: Math.round(foundProduct.price.value * 0.2),
-                         $lte:Math.round(foundProduct.price.value * 1.3)
-                    }
+                         "category": foundProduct.category,
+                        "price.value":
+                        {   $gt: Math.round(foundProduct.price.value * 0.2),
+                            $lte:Math.round(foundProduct.price.value * 1.3)
+                            }
                 };
         helper.addAttributesQuery(foundProduct, query);
         Products.find(query).sort( { "price.value": 1 }).lean().exec(function(err, products){
@@ -141,6 +102,7 @@ operations = {
     GetLowerPriceCategoryProducts:function(req,res,next){
         var foundProduct = req.product;
         var query =    {    "color": new RegExp( '.*' + foundProduct.color  +'.*', 'i'),
+                            "attributes":  { "$in" : foundProduct.attributes },
                             "category": foundProduct.category,
                             "price.value":
                             {
@@ -272,7 +234,9 @@ operations = {
             console.log('2 end')
             console.log(res.locals.welcome)
             next()
-        });
+        }).on('error',function(err){
+            return next(err);
+        })
     }
 }
 
@@ -295,6 +259,50 @@ var helper = {
         products[p].savingPercentage = Math.round(((item.price.value - products[p].price.value)/ item.price.value)*100);
     }
     return products;
+},
+    getLowestPrice:function(product){
+    for (var s in product.articles.shops){
+        var lowest;
+        for(var u in product.articles.shops[s].units){
+            if(u == 0){
+                lowest = product.articles.shops[s].units[u];
+            }
+            else{
+                if(product.articles.shops[s].units[u].price.value <  lowest.price.value){
+                    lowest = product.articles.shops[s].units[u];
+                }
+            }
+        }
+        product.articles.shops[s].lowest = lowest;
+    }
+    console.log(product.articles.shops);
+},
+    getShippingReturn:function (product, req){
+    var country = helper.getCountryFromLanguage(req);
+    for (var s in product.articles.shops){
+        var location = 0;
+        for(var x in product.articles.shops[s].shop.shipping){
+            if( product.articles.shops[s].shop.shipping[x].country == country)
+                location = x;
+        }
+        var easy = product.articles.shops[s].shop.shipping[location];
+        product.articles.shops[s].shop.standardShippingCost =  easy.standard.value +' '+easy.standard.currency;
+        product.articles.shops[s].shop.standardShippingTime =  easy.standard.delivery;
+        product.articles.shops[s].shop.freeAfter = easy.freeStandard.value +' '+easy.freeStandard.currency;
+        product.articles.shops[s].shop.freeReturn = easy.return.free;
+        product.articles.shops[s].shop.returnPeriod = easy.return.period;
+    }
+    console.log(product.articles.shops);
+},
+    getCountryFromLanguage:function(req){
+    console.log(req.i18n.getLocale())
+    switch(req.i18n.getLocale()){
+        case 'sv':
+            return 'sweden';
+        default:
+            return 'sweden';
+
+    }
 },
     sortbyNearestDescription: function (item, products){
         for(var p in products){

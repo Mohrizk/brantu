@@ -8,24 +8,69 @@
 
 
     $(document).ready(function() {
-        //$("#birth-date").birthdayPicker({maxAge: 65, sizeClass: "span2"});
-        /************************************************INITIALIZATION*********************/
-        $("#owlLanding").owlCarousel({
+        var feedSelector = $('.feed')
+        var feedTemplate = Handlebars.compile($("#feedTemplate").html());
+        $('#startFeed').on('click',function(){
+            $('html, body').stop().animate({scrollTop:feedSelector.offset().top - 50}, '500', 'swing');
+        })
+        $('#loadMoreFeed').on('click', function(){
+            var currentPage = parseInt(feedSelector.attr('data-page'));
+            var totalPage = parseInt(feedSelector.attr('data-total-pages'));
+            if(currentPage >= totalPage) return;
+            $('#loadMoreFeed').hide();
+            $('#moreFeedLoader').fadeIn();
 
-            // Show next and prev buttons
+
+            $.ajax({
+                url: '/api/getFeed/'+(currentPage+1),
+            }).success(function(result) {
+                var html = feedTemplate({feed: result});
+                feedSelector.attr('data-page', currentPage+1)
+                console.log(html)
+                feedSelector.append(html);
+                $('#moreFeedLoader').fadeOut('hide')
+
+                if(feedSelector.attr('data-page') < totalPage)
+                    $('#loadMoreFeed').fadeIn('slow');
+
+            })
+        })
+
+        /*$("#owlLanding").owlCarousel({
+
             slideSpeed : 1000,
             paginationSpeed : 800,
             singleItem:true,
-           // autoPlay: 3000,
+            autoPlay: 3000,
+        });*/
 
-            // "singleItem:true" is a shortcut for:
-            // items : 1,
-            // itemsDesktop : false,
-            // itemsDesktopSmall : false,
-            // itemsTablet: false,
-            // itemsMobile : false
+        $(window).scroll(function(){
 
-        });
+                var feed = $('.feed');
+
+            if(feed.length !== 0 ){
+
+                var sideAd = $('#sideBanner')
+                var currentScroll = $(document).scrollTop();
+                var headerHeight = $('.header').height();
+
+                var footer = $('#footer')
+
+                if((currentScroll+headerHeight) > feed.offset().top &&  (currentScroll+headerHeight) < (feed.offset().top+ feed.height())){
+                    sideAd.css('position','fixed').css('top',headerHeight).css('bottom','auto');
+                }
+                if(feed.offset().top > sideAd.offset().top){
+                    sideAd.css('position','relative').css('top','0').css('bottom','auto');
+                }
+
+                if(footer.offset().top < (sideAd.offset().top +sideAd.height() +30)){
+                    sideAd.css('position','absolute').css('top','auto').css('bottom',30);
+                }
+
+            }
+
+
+        })
 
     });
 

@@ -50,23 +50,32 @@ $(document).ready(function() {
 			});
 	})
 
+	$('#signupForm').on('submit', function(e) {
+		e.preventDefault();
+		console.log('Supe3');
+		if($('#passwordSignUpConfirm').val() !== $('#passwordSignUp').val()) $('#registerPasswrodError').fadeIn();
+		else{
+			$.when($('.registerContainer').hide(), $('.registerLoading').fadeIn('slow')).done(function(){
+				$('#signupForm')[0].submit();
+			})
 
-	$('#signupForm').on('keypress', function(e) {
-	    var code = e.keyCode || e.which;
 
-	    if (code == 13 ) {
+		}
 
-	    	e.preventDefault();
-	  }
 	});
 
+	$('#signupFormPage').on('submit', function(e) {
+		e.preventDefault();
+		console.log('Supe3');
+		if($('#passwordSignupPageConfirm').val() !== $('#passwordSignupPage').val()) $('#registerPagePasswrodError').fadeIn();
+		else{
+			$.when($('.registerContainer').hide(), $('.registerLoading').fadeIn('slow')).done(function(){
+				$('#signupFormPage')[0].submit();
+			})
 
 
-	$(document).on('keyup', '#signupForm', function(e) {
-	    var code = e.keyCode || e.which;
-	    if (code == 13 ) {
-	    	e.preventDefault();
-	  }
+		}
+
 	});
 
 });

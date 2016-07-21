@@ -1,5 +1,5 @@
 <div id="headerMainContainer">
-<div class="header no-margin" >
+    <div class="header no-margin" >
     <div class="mobile">
         <div class="top-right  visible-xs" id="menuSearchIcon" style="padding-top: 9px;">
             <div class="relative">
@@ -37,13 +37,18 @@
                             <div class="dropdown" style="padding-top:5px; ">
                                 <div class="dropdown-menu" id="mobileContainerHintAC">
                                     <div class="p-l-25 p-t-5">
-                                        Lovely Stuff
+                                        You can search for
+                                        <ul>
+                                            <li class="medium text-velvet">Products</li>
+                                            <li class="medium text-velvet">Brands</li>
+                                            <li class="medium text-velvet">Styles/category</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                             <div class="ACSearchProgress hidden top-right" style="right:22%; padding-top:5px;" >
                                 <div class=" text-center">
-                                    <img src='/images/progress/progress-circle-lg-master.svg' style="width:22px; height: 20px;"/>
+                                    <img src='/images/progress/progress-circle-danger.svg' style="width:22px; height: 20px;"/>
                                 </div>
                             </div>
                         </form>
@@ -56,28 +61,60 @@
 
     </div>
 
-    <div class="b-b hidden-xs bg-white" id="header-Dropdown" style="">
-        <div class="row p-t-10">
-            <div class="col-xs-4 ">
+    <div class="b-b hidden-xs bg-white relative" id="header-Dropdown" style="">
+        <div class="owl-carousel owl-theme bg-master-lightest" id="owlNav">
+            <div class="text-center p-t-10 ">
                 <div class="row">
-                    <div class="col-xs  text-right hidden-sm hidden-xs"><img  src="/images/nav/lookbook.png"   width="44"/></div>
-                    <div class="col-xs pull-xs-left text-center visible-sm visible-xs"><img  src="/images/nav/lookbook.png"   width="44"/></div>
-                    <div class="col-md-8 hidden-sm hidden-xs text-left"><p class="bold text-master">Jämför och hitta det <br/>bästa priset inom mode</p></div >
+                    <div class="col-xs-4 ">
+                        <div class="row">
+                            <div class="col-xs  text-right  hidden-xs"><img  src="/images/nav/lookbook_black.png"   width="44"/></div>
+                            <div class="col-md-8 hidden-xs text-left"><p class="bold text-black">Jämför och hitta det <br/>bästa priset inom mode</p></div >
+                        </div>
+                    </div>
+                    <div class="col-xs-4 ">
+                        <div class="row">
+                            <div class="col-xs text-right hidden-xs"><img  src="/images/nav/explore_black.png"   width="44"/></div>
+                            <div class="col-md-8 hidden-xs text-left"><p class="bold text-black ">+100 000 styles <br/>+3000 märken</p></div >
+                        </div>
+                    </div>
+                    <div class="col-xs ">
+                        <div class="row">
+                            <div class="col-xs text-right hidden-xs"><img  src="/images/nav/compare_black.png"   width="40"/></div>
+
+                            <div class="col-md-8  hidden-xs text-left"><p class="bold text-black ">Blixtsnabb <br/>sökning</p></div >
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-xs-4 ">
-                <div class="row">
-                    <div class="col-xs text-right hidden-sm hidden-xs"><img  src="/images/nav/explore.png"   width="44"/></div>
-                    <div class="col-xs text-center visible-sm visible-xs"><img  src="/images/nav/explore.png"   width="44"/></div>
-                    <div class="col-md-8 hidden-sm hidden-xs text-left"><p class="bold text-master ">+100 000 styles <br/>+3000 märken</p></div >
-                </div>
+
+            <div class="row p-t-10">
+                <div class="col-xs-3 text-center"><a target="_blank" href="http://ad.zanox.com/ppc/?38716083C1837840187T"><img src="/images/shop-logos/asos.png" height="38" width="auto"/></a></div>
+               <div class="col-xs-3 text-center"> <a target="_blank" href="https://clk.tradedoubler.com/click?p=227648&a=2845810&g=22955234"><img src="/images/shop-logos/boozt.png" width="auto" height="32"/></a></div>
+                <div class="col-xs-3 text-center"><a target="_blank" href="https://clk.tradedoubler.com/click?p=246777&a=2845810&g=21733454"><img src="/images/shop-logos/danielwellington.png" width="auto" height="45"/></a></div>
+                <div class="col-xs text-center "><a target="_blank"  class="m-t-5" href="https://clk.tradedoubler.com/click?p=151948&a=2845810&g=18352288"><img src="/images/shop-logos/ellos.png" width="auto" height="35"/></a></div>
             </div>
-            <div class="col-xs ">
-                <div class="row">
-                    <div class="col-xs text-right hidden-sm hidden-xs"><img  src="/images/nav/compare.png"   width="40"/></div>
-                    <div class="col-xs text-center visible-sm visible-xs"><img  src="/images/nav/compare.png"   width="40"/></div>
-                    <div class="col-md-8 hidden-sm hidden-xs text-left"><p class="bold text-master ">Blixtsnabb <br/>sökning</p></div >
-                </div>
+
+            <div class="row p-t-10">
+               <div class="col-xs-3 text-center"><a target="_blank" href="http://ad.zanox.com/ppc/?38526299C41157032T"><img src="/images/shop-logos/mrporter.png" width="auto" height="38"/></a></div>
+               <div class="col-xs-3 text-center"><a target="_blank" href="https://clk.tradedoubler.com/click?p=270159&a=2845810&g=23120192"><img src="/images/shop-logos/nakd.png" width="auto" height="30"/></a></div>
+               <div class="col-xs-3 text-center"><a target="_blank" href="https://clk.tradedoubler.com/click?p=17833&a=2845810&g=17114610"><img src="/images/shop-logos/nelly.png" width="auto" height="36"/></a></div>
+               <div class="col-xs text-center"><a target="_blank" href="http://ad.zanox.com/ppc/?38093533C37559022T"><img class="m-t-5" src="/images/shop-logos/riverisland.png"  width="auto" height="23"/></a></div>
+            </div>
+
+            <div class="row ">
+                <div class="col-xs-3 text-center"><a target="_blank" href="http://ad.zanox.com/ppc/?38466512C97949588T"><img class="m-t-15"  src="/images/shop-logos/farfetch.png" width="auto" height="26"/></a></div>
+               <div class="col-xs-3 text-center"><a target="_blank" href="http://ad.zanox.com/ppc/?38223421C59905408T"><img class="m-t-5"  src="/images/shop-logos/happysocks.png" width="auto" height="50"/></a></div>
+               <div class="col-xs-3 text-center"><a target="_blank" href="http://ad.zanox.com/ppc/?38514929C65783720T"><img class="m-t-15"  src="/images/shop-logos/hope.png" width="auto" height="28"/></a></div>
+                <div class="col-xs text-center"><a target="_blank" href="http://ad.zanox.com/ppc/?38129541C17502336T"><img class="m-t-15"  src="/images/shop-logos/miinto.png" width="auto" height="30"/></a></div>
+            </div>
+
+
+
+            <div class="row p-t-15 bg-master-lightest">
+                <div class="col-xs-3 text-center"><a target="_blank" href="http://ad.zanox.com/ppc/?38327053C74631457T"><img src="/images/shop-logos/sarenza.png" style="margin-top:4px;" width="auto" height="22"/></a></div>
+                <div class="col-xs-3 text-center"><a target="_blank" href="http://ad.zanox.com/ppc/?38147178C67665694T"><img src="/images/shop-logos/stylepit.png" width="auto" height="30"/></a></div>
+                <div class="col-xs-3 text-center"><a target="_blank" href="http://ad.zanox.com/ppc/?38165721C89270335T"><img src="/images/shop-logos/topman.png" style="margin-top:4px;" width="auto" height="22"/></a></div>
+               <div class="col-xs text-center"><a target="_blank" href="http://ad.zanox.com/ppc/?38637325C44813741T"><img src="/images/shop-logos/urban-outfitters.png" width="auto" height="34"/></a></div>
             </div>
         </div>
     </div>
@@ -91,9 +128,7 @@
                                 <div class="auto-margin block m-t-10" style="width: 180px; height: auto;">
                                     <a href="/" class="m-t-15">
                                         <div class="mainLogo ">
-                                            <div class="bottom-right" style="right:-30px;"><span class="text-black">Beta</span></div>
                                         </div>
-
                                     </a>
                                 </div>
                         </div>
@@ -107,7 +142,7 @@
                               <div class="relative" style=" padding-top: 5px;">
                                   <a href="/">
                                       <div class="mainLogo">
-                                          <div class="bottom-right" style="right:34%;"><span class="text-black">Beta</span></div>
+
                                       </div>
                                   </a>
                               </div>
@@ -119,10 +154,19 @@
                 <div class="auto-margin block relative p-t-5" >
                     <form id="autocompleteForm">
                         <div class="search-link">
-                            <input type="text" placeholder="Sök och jämför priser" id="search"/>
+                            <form id="searchForm">
+                                <input type="text" placeholder="Sök och jämför priser" id="search"/>
+                            </form>
                             <div class="dropdown">
                                 <div class="dropdown-menu styleTip" id="containerHintAC">
-                                    <div class="p-l-10 p-t-10 p-b-10">Jamfor Pris</div>
+                                    <div class="p-l-10 p-t-10 all-caps">
+                                        You can search for
+                                        <ul>
+                                            <li class="medium text-velvet">Products</li>
+                                            <li class="medium text-velvet">Brands</li>
+                                            <li class="medium text-velvet">Styles/category</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <div class="ACSearchProgress hidden top-right" style="right:15%; padding-top:7px; z-index: 10;" >
@@ -257,7 +301,7 @@
                                 <ul class="nav navbar-nav" id="navbar-categories">
                                     {{#each categoryTree}}
                                         <li class=" p-r-80 inline">
-                                            <a class="capitalize dark text-spaced  {{#if ../selectedDepartment}}{{#if (compareStrings this.department.name ../selectedDepartment)}}active{{/if}}{{/if}}" style="font-size:15px; line-height: 3px;" key="{{this.department.key}}" href="/{{this.department.key}}">{{this.department.name}}</a>
+                                            <a class="all-caps dark text-spaced-medium  {{#if ../selectedDepartment}}{{#if (compareStrings this.department.name ../selectedDepartment)}}active{{/if}}{{/if}}" style="font-size:15px; line-height: 3px;" key="{{this.department.key}}" href="/{{this.department.key}}">{{this.department.name}}</a>
                                         </li>
                                     {{/each}}
                                 </ul>
@@ -269,11 +313,11 @@
         {{#if selectedDepartment}}
         <div class="container hidden-xs full-width menu b-b b-grey bg-white" id="navSubCategory" >
             <ul class="nav navbar-nav submenu">
-                <li class=" "><a class="dark  text-center" href="/{{selectedDepartment}}" data-page>Look Book</a></li>
+                <li class=" "><a class="dark all-caps text-spaced-medium   text-center" href="/{{selectedDepartment}}" data-page>Feed</a></li>
                 {{#each categoryTree}}
                     {{#if (compareStrings this.department.name ../selectedDepartment)}}
                         {{#each categories}}
-                            <li class=""><a class="dark  text-center"  expand-key="{{category.key}}">{{andfixer category.name}}</a></li>
+                            <li class=""><a class="dark all-caps text-spaced-medium  text-center"  expand-key="{{category.key}}">{{andfixer category.name}}</a></li>
                         {{/each}}
                     {{/if}}
                 {{/each}}
@@ -281,32 +325,48 @@
         </div>
         {{/if}}
 
-        <div class=" " style="padding:0 50px; background: transparent;">
-            <div class="glassViolet p-l-50  category-expand-wrapper" style="opacity:0; box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.2);">
+        <div id="category-expand-parent" class="hidden" style="margin:0 50px; background: transparent;">
+            <div class=" p-l-50 bgBlurEffect  category-expand-wrapper relative" style="opacity:0; box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.2); background: rgba(0,0,0,0.82); width:1000px; height: 250px;">
                 {{#each categoryTree}}
                     {{#if (compareStrings this.department.name ../selectedDepartment)}}
                         {{#each categories}}
                             <div class=" category-expand-container hidden  padding-1v" expand-parentKey="{{category.key}}">
                                 <div class="category-expand">
-                                    <div class="inline">
-                                        <a href="/explore?q=&hFR[products][0]={{joinBreadCrumb category.breadcrumb}}&page=0"><h5 class="sbold text-white">{{andfixer category.name}}</h5></a>
-                                        <div class="desktopNavColoumns">
-                                            <ul>
-                                                {{#each subCategory}}
-                                                    <li><a class="" href="/explore?q=&hFR[products][0]={{joinBreadCrumb this.breadcrumb}}&page=0">
-                                                        {{andfixer this.name}}
-                                                    </a></li>
-                                                {{/each}}
-                                            </ul>
+                                    <div class="">
+                                        <a href="/explore?q=&hFR[products][0]={{joinBreadCrumb category.breadcrumb}}&page=0"><h4 class="sbold text-spaced-medium all-caps b-b b-white text-white">{{andfixer category.name}}</h4></a>
+                                        <div class="inline">
+
+                                            <div class="desktopNavColoumns p-b-20">
+                                                <ul>
+                                                    {{#each subCategory}}
+                                                        <li class="full-width  b-b m-b-10" style="border-color: rgba(255,255,255,0.1)"><a class=" fs-14  bold"  href="/explore?q=&hFR[products][0]={{joinBreadCrumb this.breadcrumb}}&page=0">
+                                                          {{andfixer this.name}}
+                                                        </a></li>
+                                                    {{/each}}
+                                                </ul>
+                                            </div>
                                         </div>
+
                                     </div>
-                                    <div class=inline" style="width:50%" style="background-image: url('');">
-                                    </div>
+
                                 </div>
                             </div>
                         {{/each}}
                     {{/if}}
                 {{/each}}
+                {{#if (compareStrings 'Kvinna' selectedDepartment)}}
+
+                    <div class="bottom-right p-r-40" >
+                        <script type="text/javascript">
+                            var uri = 'https://impse.tradedoubler.com/imp?type(img)g(23323710)a(2845810)' + new String (Math.random()).substring (2, 11);
+                            document.write('<a href="https://clk.tradedoubler.com/click?p=270159&a=2845810&g=23323710" target="_BLANK"><img style="max-width: 100%" src="'+uri+'" border=0></a>');
+                        </script>
+                    </div>
+                {{else}}
+                    <div class="bottom-right p-r-40" >
+                         <a href="http://ad.zanox.com/ppc/?38687752C882786159T"><img src="http://ad.zanox.com/ppv/?38687752C882786159" align="bottom" width="300" height="250" border="0" hspace="1" alt="Shoes 300 x 250"></a>
+                    </div>
+                {{/if}}
             </div>
 
         </div>
@@ -326,7 +386,7 @@
         </div>
     </div>
 </div>
-<div class="text-center full-width no-overflow visible-xs bg-master-lighter" id="mobileSubMenu" style="padding-top:46px;">
+<div class="text-center full-width no-overflow visible-xs bg-master-lighter" id="mobileSubMenu" style="padding-top:35px;">
     <div class="row b-b">
         <a class="col-xs p-b-5 dark light text-center subMenuMobile {{#if (stringContains url "upptack-nya-favoriter")}}active{{/if}}" href="/{{selectedDepartment}}"  data-page>
             <div>

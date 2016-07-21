@@ -1739,6 +1739,10 @@ top:14%; left:7px;
   padding-top: 0;
   height: calc(100% - 50px);
 }
+.faq .panel-title{
+  letter-spacing: 0.1em!important;
+  font-weight: 700;
+}
 .panel .panel-heading .panel-title {
   text-transform: uppercase;
   color:white;
@@ -2558,6 +2562,12 @@ hr.dotted {
 .bg-menu-light {
   background-color: #788195;
 }
+.bg-velvet {
+  background-color: #AA076B;
+}
+.bg-velvet-dark{
+  background-color: #840552 !important;
+}
 /* Gradients
 ------------------------------------
 */
@@ -2598,6 +2608,15 @@ hr.dotted {
   background-image: -ms-radial-gradient(closest-corner,rgba(148,142,153,0) 60%,rgba(46,20,55,.2)),-ms-linear-gradient(342deg,rgba(148,142,153,0.5),rgba(46,20,55,0.2) 10%,rgba(148,142,153,0.5) 90%);
 }
 
+.gradient-velvet-opacity, .btn.gradient-velvet-opacity {
+  background: -moz--webkit-linear-gradient(to left, rgba(170,7,107,0.6) , rgba(97,4,95,0.7)) !important;
+  background: -webkit-linear-gradient(to left, rgba(170,7,107,0.6) , rgba(97,4,95,0.7)) !important;
+  background: linear-gradient(to left, rgba(170,7,107,0.6) , rgba(97,4,95,0.7)) !important;
+
+}
+
+
+
 
 /* Other Colors
 ------------------------------------
@@ -2620,20 +2639,11 @@ hr.dotted {
 }
 .bg-red{background: #E50914!important;}
 .text-red{color: #E50914 !important;}
-.bg-pink{background: #eed3d3!important;}
-.bg-pink-dark{background:#ffb6c1!important;}
+
 .bg-brantu-gradient{background:linear-gradient(to top, rgb(117, 127, 154), rgb(0, 0, 0)) !important;}
 .bg-brantu-black-gradient{background:linear-gradient(to top, rgb(51, 51, 51), rgb(0, 0, 0)) !important;}
 
-.text-velvet{color: #AA076B !important;}
-a.text-velvet{
-  color: #AA076B !important;
-  opacity:0.6;
-}
-a.text-velvet:hover{color: #AA076B !important; opacity:1;}
-.text-pink{color: #eed3d3 !important;}
-.text-pink-dark{color:#ffb6c1 !important}
-.text-pink-darker{color: #e58eac!important;}
+
 
 .bg-blue-darker{background:#708090 !important;}
 .text-pink-darkest{ color:#ffe4e1;}
@@ -2651,9 +2661,6 @@ color:#66cdaa !important;
   color: #90f263 !important;
 }
 
-.brantu-blue{
-  color: #85ceec !important;
-}
 .brantu-cream{
   color: #f2f2f2 !important;
 }
@@ -2664,7 +2671,7 @@ color:#66cdaa !important;
   color: #e6e6e6 !important;
 }
 .text-black {
-  color: #2c2c2c !important;
+  color: #000 !important;
 }
 .text-white {
   color: #fff !important;
@@ -2690,6 +2697,20 @@ color:#66cdaa !important;
 .text-primary {
   color: #6d5cae !important;
 }
+.text-blue{
+  color: #85ceec !important;
+}
+.text-orange{color: #ff7639 !important;}
+.text-velvet{color: #AA076B !important;}
+a.text-velvet{
+  color: #AA076B !important;
+  opacity:0.6;
+}
+a.text-velvet:hover{color: #AA076B !important; opacity:1;}
+.text-pink{color: #eed3d3 !important;}
+.text-pink-dark{color:#ffb6c1 !important}
+.text-pink-darker{color: #e58eac!important;}
+.text-navy{color:#003366!important;}
 /* Text Aligngments
 ------------------------------------
 */
@@ -2757,28 +2778,28 @@ color:#66cdaa !important;
   line-height: 1.0vw !important;
 }
 .fs-11 {
-  font-size: 0.9vw !important;
-  line-height: 1.1vw !important;
+  font-size: 11px !important;
+  line-height: 11px !important;
 }
 .fs-12 {
-  font-size: 1vw !important;
-  line-height: 1.2vw !important;
+  font-size: 12px !important;
+  line-height: 12px !important;
 }
 .fs-13 {
-  font-size: 1.1vw !important;
-  line-height: 1.3vw !important;
+  font-size: 13px !important;
+  line-height: 13px!important;
 }
 .fs-14 {
-  font-size: 1.2vw !important;
-  line-height: 1.4vw !important;
+  font-size: 14px !important;
+  line-height: 14px !important;
 }
 .fs-15 {
-  font-size: 1.3vw !important;
-  line-height: 1.5vw !important;
+  font-size: 15px !important;
+  line-height: 15px !important;
 }
 .fs-16 {
-  font-size: 1.4vw !important;
-  line-height: 1.6vw !important;
+  font-size: 16px !important;
+  line-height: 16px !important;
 
 }
 /* Line-heights
@@ -2788,25 +2809,25 @@ color:#66cdaa !important;
   line-height: normal;
 }
 .lh-10 {
-  line-height: 0.8vw ;
+  line-height: 10px ;
 }
 .lh-11 {
-  line-height: 0.9vw ;
+  line-height: 11px ;
 }
 .lh-12 {
-  line-height: 1vw ;
+  line-height: 12px ;
 }
 .lh-13 {
-  line-height: 1.1vw;
+  line-height: 13px;
 }
 .lh-14 {
-  line-height: 1.2vw;
+  line-height: 14px;
 }
 .lh-15 {
-  line-height: 1.3vw;
+  line-height: 15px;
 }
 .lh-16 {
-  line-height: 1.4vw;
+  line-height: 16px;
 }
 /* Font Faces
 ------------------------------------
@@ -2979,7 +3000,7 @@ color:#66cdaa !important;
   cursor: pointer;
   background-image: none !important;
   color: #000;
-  background-color: transparent;
+  background: transparent;
   text-shadow: none;
   text-transform:uppercase;
   box-shadow: none;
@@ -2987,7 +3008,7 @@ color:#66cdaa !important;
   padding-left: 1.8vw;
   padding-right: 1.8vw;
   position: relative;
-    -webkit-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -2996,6 +3017,17 @@ color:#66cdaa !important;
    border-radius:0 !important;
 
 }
+
+.btn.circle {
+  height: 90px;
+  width:90px;
+  line-height: 90px;
+  border-radius: 50%!important;
+  font-size: 14px!important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .btn:hover {
   background-color: #000;
   color:#fff;
