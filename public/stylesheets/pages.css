@@ -214,17 +214,17 @@ body.dashboard .page-container {
 
 .header .bubble {
   border-radius: 12px;
-  height: 16px;
-  width: 24px;
-  font-size: 12px;
-  line-height: 16px;
+  height: 13px;
+  width: 20px;
+  font-size: 10px;
+  line-height: 13px;
   font-weight: 900;
-  background-color: rgba(117, 127, 154,0.7);
+  background-color: rgba(132,5,82,0.2);
   color: #ffffff;
   position: absolute;
   text-align: center;
   top: 4px;
-  right:-20px;
+  right:-12px;
   float: right;
 }
 
@@ -2702,6 +2702,8 @@ color:#66cdaa !important;
 }
 .text-orange{color: #ff7639 !important;}
 .text-velvet{color: #AA076B !important;}
+.text-velvet-dark{color: #840552  !important;}
+
 a.text-velvet{
   color: #AA076B !important;
   opacity:0.6;
@@ -2779,27 +2781,27 @@ a.text-velvet:hover{color: #AA076B !important; opacity:1;}
 }
 .fs-11 {
   font-size: 11px !important;
-  line-height: 11px !important;
+  line-height: 15px !important;
 }
 .fs-12 {
   font-size: 12px !important;
-  line-height: 12px !important;
+  line-height: 16px !important;
 }
 .fs-13 {
   font-size: 13px !important;
-  line-height: 13px!important;
+  line-height: 17px!important;
 }
 .fs-14 {
   font-size: 14px !important;
-  line-height: 14px !important;
+  line-height: 18px !important;
 }
 .fs-15 {
   font-size: 15px !important;
-  line-height: 15px !important;
+  line-height: 20px !important;
 }
 .fs-16 {
   font-size: 16px !important;
-  line-height: 16px !important;
+  line-height: 22px !important;
 
 }
 /* Line-heights
@@ -3279,6 +3281,61 @@ fieldset[disabled] .btn-info.active {
   color: #000;
   background-color: #ffffff;
 }
+
+
+.btn-velvet,
+.btn-velvet:focus {
+  color: #AA076B;
+  background-color: transparent;
+  border-color: #AA076B;
+}
+.btn-velvet.active,
+.btn-velvet:active,
+.btn-velvet.active:focus,
+.btn-velvet:active:focus,
+.btn-velvet:active:hover,
+.open .dropdown-toggle.btn-velvet {
+  background-color: #840552;
+  border: 2px solid;
+  border-color: #AA076B;
+  color: #fff;
+}
+.btn-velvet.hover,
+.btn-velvet:hover,
+.open .dropdown-toggle.btn-velvet {
+  background-color: #840552;
+  border-color: #AA076B;
+  color: #fff;
+}
+.btn-velvet.active:hover {
+  background: #840552;
+  border-color: #fff;
+}
+.btn-velvet.disabled,
+.btn-velvet[disabled],
+fieldset[disabled] .btn-velvet,
+.btn-velvet.disabled:hover,
+.btn-velvet[disabled]:hover,
+fieldset[disabled] .btn-velvet:hover,
+.btn-velvet.disabled:focus,
+.btn-velvet[disabled]:focus,
+fieldset[disabled] .btn-velvet:focus,
+.btn-velvet.disabled:active,
+.btn-velvet[disabled]:active,
+fieldset[disabled] .btn-velvet:active,
+.btn-velvet.disabled.active,
+.btn-velvet[disabled].active,
+fieldset[disabled] .btn-velvet.active {
+  background-color: #AA076B;
+  border-color: #AAAAAA;
+}
+.btn-velvet .badge {
+  color: #fff;
+  background-color: #AA076B;
+}
+
+
+
 .btn-warning,
 .btn-warning:focus {
   color: #54eaff;
@@ -11513,6 +11570,7 @@ Main components
   bottom: 0;
   right: 0;
 }
+.object-cover{object-fit: cover;}
 .v-align-bottom {
   vertical-align: bottom;
 }

@@ -223,21 +223,21 @@
 
                         {{#if paginate}}
                         <div class="clearfix hidden-xs">
-                            <div class="pull-right btn-rounded p-r-10 p-l-10 b-b b-l b-t b-r b-grey  m-xs-r-10 m-b-20" >
+                            <div class="pull-right p-r-10 p-l-10 b-b  b-t  b-grey   m-xs-r-10 m-b-20" >
                                 {{#if paginate.hasPrevious}}
-                                <a class="inline p-r-10 page v-align-middle   p-b-5"  value="{{indexMinusConstant paginate.currentPage 1}}"><i class=" pg-arrow_left_line_alt" style="font-size:15px;"></i></a>
+                                <a class="inline p-r-10 page v-align-middle  hint-text bold text-black   p-b-5"  value="{{indexMinusConstant paginate.currentPage 1}}"><i class=" pg-arrow_left_line_alt" style="font-size:15px;"></i></a>
                                 {{/if}}
                                 {{#if paginate.showFirst}}
-                                <div class="inline"><a class=" page padding-1v p-xs-r-10"  value="0"> 1</a> ... </div>
+                                <div class="inline"><a class=" hint-text  page padding-1v bold text-black p-xs-r-10"  value="0"> 1</a> ... </div>
                                 {{/if}}
                                 {{#each paginate.pages}}
-                                <a class="inline page {{class}}  padding-05v p-xs-l-10 p-t-5 p-b-5"  value="{{this.thePage}}">{{indexPlusConstant this.thePage 1}}</a>
+                                <a class="inline page {{class}}   hint-text padding-05v bold text-black  p-xs-l-10 p-t-5 p-b-5"  value="{{this.thePage}}">{{indexPlusConstant this.thePage 1}}</a>
                                 {{/each}}
                                 {{#if paginate.showLast}}
-                                <div class="inline">... <a class=" page padding-1v p-xs-l-10"  value="{{indexMinusConstant paginate.totalPages 1}}"> {{paginate.totalPages}}</a></div>
+                                <div class="inline">... <a class="  hint-text page bold text-black  padding-1v p-xs-l-10"  value="{{indexMinusConstant paginate.totalPages 1}}"> {{paginate.totalPages}}</a></div>
                                 {{/if}}
                                 {{#if paginate.hasNext}}
-                                <a class="inline p-l-10 page v-align-middle  p-b-5" value="{{indexPlusConstant paginate.currentPage 1}}"><i class=" pg-arrow_lright_line_alt " style="font-size:15px;"></i></a>
+                                <a class="inline p-l-10 page v-align-middle bold text-black hint-text p-b-5" value="{{indexPlusConstant paginate.currentPage 1}}"><i class=" pg-arrow_lright_line_alt " style="font-size:15px;"></i></a>
                                 {{/if}}
                             </div>
                         </div>
@@ -279,7 +279,7 @@
                         <div class="itemWrapper">
                             <div class="row top-xs">
                                 <div class="preview-image auto-margin col-xs" style="margin-top: 0;">
-                                    <a href="/view/{{this.objectID}}"> <img data-original="{{{this.mainPicture.largeUrl}}}" action="/add-viewed-product-session" class="v-align-top lazy"  pic-src="{{{this.mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}" alt="{{../name}}" index="{{@index}}" nb-pic="{{nbImages}}" pic-order="0" _id="{{objectID}}" /></a>
+                                    <a href="/view/{{this.objectID}}"> <img data-original="{{{this.mainPicture.largeUrl}}}" action="/add-viewed-product-session" class="v-align-top lazy object-cover"  pic-src="{{{this.mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}" alt="{{../name}}" index="{{@index}}" nb-pic="{{nbImages}}" pic-order="0" _id="{{objectID}}" /></a>
                                 </div>
                             </div>
                             <div class="item-brand sbold">{{{this.brand.name}}}</div>
@@ -296,14 +296,14 @@
                             <div class="main-options hidden-xs">
                                 <ol class="no-style no-overflow-text">
                                     {{#each  sizes}}
-                                    {{#if  @last}}<li class="inline text-pink-darker sbold no-overflow-text">{{this}}</li>
-                                    {{else}}<li class="inline text-pink-darker sbold no-overflow-text">{{this}} <font class="text-master-light">/</font></li>
+                                    {{#if  @last}}<li class="inline text-master-light fs-11 sbold no-overflow-text">{{this}}</li>
+                                    {{else}}<li class="inline text-master-light  fs-11 sbold no-overflow-text">{{this}} <font class="text-master-light">/</font></li>
                                     {{/if}}
                                     {{/each}}
                                 </ol>
-                                <div class="p-t-10 p-b-10 ">
-                                    <a target="_blank" href="{{{this.productUrl}}}" class="dark bold"><div class="btn  btn-info btn-rounded m-r-5">Gå till butiken</div></a>
-                                    <a class="dark bold" href="/view/{{{this.objectID}}}" index="{{@index }}" action="/add-viewed-product-session" _id="{{{this.objectID}}}"><div class="btn  btn-info btn-rounded  m-l-5 no-border" ><small>Find better prices</small></div></a>
+                                <div class="p-t-5 p-b-10 ">
+                                    <a target="_blank" href="{{{this.productUrl}}}" class="dark bold"><div class="btn fs-12  btn-velvet m-r-5" style="border:1px solid;">Gå till butiken</div></a>
+                                    <a class="dark bold" href="/view/{{{this.objectID}}}" index="{{@index }}" action="/add-viewed-product-session" _id="{{{this.objectID}}}"><div class="btn  btn-info m-t-5 no-border" ><small>Find better prices</small></div></a>
                                 </div>
                             </div>
                             <ol class="small-options no-style">
@@ -311,49 +311,49 @@
                         </div>
                     </div>
                 </li>
-                {{/each}};
+                {{/each}}
             </ol>
             <div class="paginate">
 
                 {{#if paginate}}
                 <div class="clearfix hidden-xs">
-                    <div class="pull-right btn-rounded p-r-10 p-l-10 b-b b-l b-t b-r b-grey  m-xs-r-10 m-b-20" >
+                    <div class="pull-right p-r-10 p-l-10 b-b  b-t  b-grey   m-xs-r-10 m-b-20" >
                         {{#if paginate.hasPrevious}}
-                        <a class="inline p-r-10 page v-align-middle   p-b-5"  value="{{indexMinusConstant paginate.currentPage 1}}"><i class=" pg-arrow_left_line_alt" style="font-size:15px;"></i></a>
+                        <a class="inline p-r-10 page v-align-middle  hint-text bold text-black   p-b-5"  value="{{indexMinusConstant paginate.currentPage 1}}"><i class=" pg-arrow_left_line_alt" style="font-size:15px;"></i></a>
                         {{/if}}
                         {{#if paginate.showFirst}}
-                        <div class="inline"><a class=" page padding-1v p-xs-r-10"  value="0"> 1</a> ... </div>
+                        <div class="inline"><a class=" hint-text  page padding-1v bold text-black p-xs-r-10"  value="0"> 1</a> ... </div>
                         {{/if}}
                         {{#each paginate.pages}}
-                        <a class="inline page {{class}}  padding-05v p-xs-l-10 p-t-5 p-b-5"  value="{{this.thePage}}">{{indexPlusConstant this.thePage 1}}</a>
+                        <a class="inline page {{class}}    padding-05v bold text-black hint-text  p-xs-l-10 p-t-5 p-b-5"  value="{{this.thePage}}">{{indexPlusConstant this.thePage 1}}</a>
                         {{/each}}
                         {{#if paginate.showLast}}
-                        <div class="inline">... <a class=" page padding-1v p-xs-l-10"  value="{{indexMinusConstant paginate.totalPages 1}}"> {{paginate.totalPages}}</a></div>
+                        <div class="inline">... <a class="  hint-text page bold text-black  padding-1v p-xs-l-10"  value="{{indexMinusConstant paginate.totalPages 1}}"> {{paginate.totalPages}}</a></div>
                         {{/if}}
                         {{#if paginate.hasNext}}
-                        <a class="inline p-l-10 page v-align-middle  p-b-5" value="{{indexPlusConstant paginate.currentPage 1}}"><i class=" pg-arrow_lright_line_alt " style="font-size:15px;"></i></a>
+                        <a class="inline p-l-10 page v-align-middle bold text-black hint-text p-b-5" value="{{indexPlusConstant paginate.currentPage 1}}"><i class=" pg-arrow_lright_line_alt " style="font-size:15px;"></i></a>
                         {{/if}}
                     </div>
                 </div>
 
                 <div class="visible-xs p-t-5 p-b-5" style="font-size:20px;">
-                    <div class="full-width btn-rounded p-r-10 p-l-10 b-b b-l b-t b-r b-grey  m-xs-r-10 m-b-20" >
+                    <div class="full-width p-r-10 p-l-10 b-b b-t p-b-5 p-t-5  b-grey  m-xs-r-10 m-b-20" >
                         {{#if paginate.hasPrevious}}
-                        <a class="pull-left page v-align-middle   p-b-5"  value="{{indexMinusConstant paginate.currentPage 1}}" style="font-size: 30px;"><i class=" pg-arrow_left_line_alt" style=""></i></a>
+                        <a class="pull-left page v-align-middle bold text-black hint-text    p-b-5"  value="{{indexMinusConstant paginate.currentPage 1}}" style="font-size: 30px;"><i class=" pg-arrow_left_line_alt" style=""></i></a>
                         {{/if}}
                         {{#if paginate.hasNext}}
-                        <a class="pull-right page v-align-middle  p-b-5" value="{{indexPlusConstant paginate.currentPage 1}}" style="font-size: 30px;"><i class=" pg-arrow_lright_line_alt " style=""></i></a>
+                        <a class="pull-right page v-align-middle bold text-black hint-text   p-b-5" value="{{indexPlusConstant paginate.currentPage 1}}" style="font-size: 30px;"><i class=" pg-arrow_lright_line_alt " style=""></i></a>
                         {{/if}}
 
                         <div class="auto-margin block text-center">
                             {{#if paginate.showFirst}}
-                            <div class="inline"><a class=" page padding-1v p-xs-r-10"  value="0"> 1</a> ... </div>
+                            <div class="inline"><a class=" page padding-1v p-xs-r-10 bold text-black hint-text "  value="0"> 1</a> ... </div>
                             {{/if}}
                             {{#each paginate.pages}}
-                            <a class="inline page {{class}}  padding-05v p-xs-l-10 p-t-5 p-b-5"  value="{{this.thePage}}">{{indexPlusConstant this.thePage 1}}</a>
+                            <a class="inline page {{class}}  padding-05v p-xs-l-10 p-t-5 p-b-5 bold text-black hint-text "  value="{{this.thePage}}">{{indexPlusConstant this.thePage 1}}</a>
                             {{/each}}
                             {{#if paginate.showLast}}
-                            <div class="inline">... <a class=" page padding-1v p-xs-l-10"  value="{{indexMinusConstant paginate.totalPages 1}}"> {{paginate.totalPages}}</a></div>
+                            <div class="inline">... <a class=" page padding-1v p-xs-l-10 bold text-black hint-text "  value="{{indexMinusConstant paginate.totalPages 1}}"> {{paginate.totalPages}}</a></div>
                             {{/if}}
                         </div>
 
@@ -361,6 +361,7 @@
                     </div>
                 </div>
                 {{/if}}
+
 
 
             </div>

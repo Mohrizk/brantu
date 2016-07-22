@@ -206,6 +206,7 @@ var routes = [
     ],
     /*********Favourite Products******************************************/
     [ '/favourite-products', 'get', [
+        session.cookieConcession,
         products.getFavouriteProducts,
         categories.getCategoryTree,
         categories.getDepartment,
@@ -311,6 +312,7 @@ var routes = [
 
 /*********INFORMATION & CONTACT PAGES *************************************/
     [ '/contact-us', 'get', [
+        session.cookieConcession,
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {

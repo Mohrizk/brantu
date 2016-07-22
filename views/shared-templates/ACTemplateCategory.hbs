@@ -1,0 +1,17 @@
+
+    <div class=" text-left b-b b-grey m-b-15">
+        <a class="dark" href="/explore?q=&hFR[products][0]=\{{joinBreadCrumb breadcrumb true}}">
+        <div>\{{#if logoUrl}}<img src="\{{logoUrl}}" width="40" height="auto"/>\{{/if}}</div>
+        <div class=""><div class="name medium"><span class="">\{{{path}}}</span></div></div>
+        </a>
+        \{{#if styles}}
+        <h6 class="no-padding inline bold fs-11 all-caps ">Styles:</h6>
+        \{{#each styles}}
+            <a href="/explore?q=&hFR[products][0]=\{{joinBreadCrumb ../breadcrumb true}}&dFR[style][0]=\{{this}}" class="text-velvet">
+                \{{this}}
+                <font class="text-master bold"> \{{#unless @last}}/\{{/unless}}</font>
+            </a>
+        \{{/each}}
+        \{{/if}}
+    </div>
+

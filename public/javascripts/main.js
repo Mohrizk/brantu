@@ -18,8 +18,10 @@ var searchDropDown = Handlebars.compile($("#searchDropDownTemplate").html());
 var searchDropDownMobile= Handlebars.compile($("#searchDropDownMobileTemplate").html());
 var ACTemplateProduct= Handlebars.compile($("#ACTemplateProductTemplate").html());
 var ACTemplateBrand= Handlebars.compile($("#ACTemplateBrandTemplate").html());
+var ACTemplateCategory= Handlebars.compile($("#ACTemplateCategoryTemplate").html());
 var ACProductPreviewTemplate = Handlebars.compile($("#ACProductPreviewTemplateTemplate").html());
 var newsletterTemplate = Handlebars.compile($("#newsletterTemplateTemplate").html());
+
 
 var client = algoliasearch("D3IWZXC0AH", '3d6a60c228b6e8058770fdf8eab2f652');
 var helper   = algoliasearchHelper(client, 'products',
@@ -101,11 +103,9 @@ $(document).ready( function() {
 					pPcurrentIndex = 100;
 					$('.ACSearchProgress').addClass('hidden');
 					currentDDHits= answer.hits;
-					console.log(answer)
 					$('#ddProductPreview').hide()
 					$('#ddProductPreviewContainer').html('');
 					$('#ddCol2').show();
-					console.log(getUrlFromState());
 					if(answer.hits.length > 7){
 						var urlLink = getUrlFromState(); var returnLink;
 						if(urlLink.indexOf('search')== -1){
@@ -159,6 +159,28 @@ $(document).ready( function() {
 					return '<h5 class="text-left">No Items Found</h5>';
 				}
 			}
+		},
+		{
+			source: function(query, callback) {
+				var index = client.initIndex('categories');
+				var options = {hitsPerPage: 3}
+				if(departmentVerified)options.facetFilters = 'gender:'+DEPARTMENT;
+
+				index.search(query, options).then(function(answer) {
+					callback(answer.hits);
+				}, function() {
+					callback([]);
+				});
+			},
+			displayKey: 'name',
+			templates: {
+				suggestion: function(suggestion, answer) {
+					return ACTemplateCategory(suggestion);
+				},
+				empty: function(empty) {
+					return '<h5 class="text-left">No Items Found</h5>';
+				}
+			}
 		}
 	];
 	var autocompleteOptionsMobile = [
@@ -167,9 +189,10 @@ $(document).ready( function() {
 			source: function(query, callback) {
 				var index = client.initIndex('products');
 				var options = {hitsPerPage: 4}
-				if(departmentVerified)options.facetFilters = 'categories.lvl0:'+DEPARTMENT;
+				if(departmentVerified)options.facetFilters = 'category.lvl0:'+DEPARTMENT;
 				$('.ACSearchProgress').removeClass('hidden');
 				index.search(query, options).then(function(answer) {
+					console.log(answer)
 					pPcurrentIndex = 100;
 					$('.ACSearchProgress').addClass('hidden');
 					currentDDHits= answer.hits;
@@ -234,7 +257,6 @@ $(document).ready( function() {
 		}
 	},autocompleteOptions)
 		.on('autocomplete:selected', function(event, suggestion, dataset) {
-			console.log('done')
 			$('#search').val('');
 			searchBar.blur();
 		})
@@ -346,8 +368,6 @@ $(document).ready( function() {
 
 
 		var x = '/'+path+helperString+page;
-		console.log(helperString)
-		console.log('NEW URL', x)
 
 		return '/'+path+helperString+ page;
 	}
@@ -363,7 +383,6 @@ $(document).ready( function() {
 		next();
 	}
 	function priceBar(){
-		console.log(priceLimits)
 		$("#pricerange").ionRangeSlider({
 			type: "double",
 			min:priceLimits.data.min,
@@ -409,7 +428,6 @@ $(document).ready( function() {
 		lazy()
 	}
 	helper.on('result', function(content) {
-		console.log(content)
 		RENDER(content);
 		$('html, body').scrollTop(0);
 		loading.fadeOut('slow');
@@ -458,15 +476,14 @@ $(document).ready( function() {
 		$.ajax({
 			url: '/api/getProductByID/'+context.state.product,
 		}).success(function(result) {
-			console.log(result)
 			result.lastPath = returnPath;
 			$(document).prop('title', 'Product - '+  result.product.name)
 			    mainSection.html(productView(result) + '<div class="relatedProducts">'+
 				 '<div class="">'+
 				 '<div class="text-center p-t-50 p-b-50">'+
 				 '<div class=" text-center ">' +
-				 '<h4>Söker efter relaterade <b>styles</b> </h4>'+
-				 '<img src="/images/progress/progress-circle-master.svg" style="width:200px height: 200px">'+
+				 '<h4 class="text-velvet">Söker efter relaterade <b>styles</b> </h4>'+
+				 '<img src="/images/progress/progress-circle-danger.svg" style="width:200px height: 200px">'+
 				 '</div>'+
 				 '</div>'+
 				 '</div>'+
@@ -502,7 +519,6 @@ $(document).ready( function() {
 			url: "/add-viewed-product-session",
 			data: {_id:context.state.product}
 		}).success(function(result) {
-			console.log('done');
 		});
 	}
 
@@ -559,9 +575,7 @@ $(document).ready( function() {
 	 * */
 	//*******************************************Filter Actions
 	var body = $('body')
-	body.on( 'mouseover', ' .lazy', function (event) {
-		console.log('hovering')
-	});
+
 	body.on( eventOnTE , ' .category li a', function (event) {
 		var value = $(this).attr('value');
 		helper.clearRefinements('products').toggleRefinement('products', value);
@@ -575,7 +589,6 @@ $(document).ready( function() {
 	});
 	body.on( 'click', ' .brands input', function (event) {
 		var value = $(this).attr('value');
-		console.log(value)
 		if($(this).prop('checked')){
 			helper.addDisjunctiveFacetRefinement('brand.name', value);
 		}
@@ -587,7 +600,6 @@ $(document).ready( function() {
 
 	body.on( 'click', ' .style input', function (event) {
 		var value = $(this).attr('value');
-		console.log(value)
 		if($(this).prop('checked')){
 			helper.addDisjunctiveFacetRefinement('style', value);
 		}
@@ -632,7 +644,6 @@ $(document).ready( function() {
 	body.on( 'change', ' .shops input', function (event) {
 
 		var value = $(this).attr('value');
-		console.log('shops',value )
 		if( $(this).prop('checked')){
 			helper.addDisjunctiveFacetRefinement('shops', value);
 		}
@@ -669,7 +680,6 @@ $(document).ready( function() {
 	});
 	pageContainer.on( eventOnTE, ' .paginate a', function (event) {
 		event.stopPropagation()
-		console.log($(this).attr('value'));
 		helper.setPage($(this).attr('value'));
 		page(getUrlFromState())
 	});
@@ -736,7 +746,6 @@ $(document).ready( function() {
 	 * **/
 	//***************************************SEARCH
 	$('#fakeDesktopSearch').on('keyup',function(){
-		console.log('pressing')
 		searchBar.focus()
 		searchBar.val($(this).val())
 	})
@@ -880,7 +889,6 @@ $(document).ready( function() {
 			})
 	}
 	function openMobileSearch(){
-		console.log('Propogating TO OPEN MOBILE')
 		if($('.page-sidebar').hasClass('visible')){
 			$('.page-sidebar').removeClass('visible');
 			$('.fixed-header').removeClass('sidebar-open');
@@ -909,7 +917,6 @@ $(document).ready( function() {
 		openMobileSearch();
 	});
 	$('#CloseSearchMobile').on(eventOnTE, function(e){
-		console.log('TOuch start Close mobile')
 		e.stopImmediatePropagation();
 		e.preventDefault();
 		e.cancelBubble = true;
@@ -951,12 +958,10 @@ $(document).ready( function() {
 		$(".popout .fab").removeClass("active");
 	}
 	$(document).on('click',".popout .fab",function(e){
-		console.log('OPENING FAV')
 		e.preventDefault();
 		e.stopImmediatePropagation();openFab()
 	});
 	$(document).on(eventOnTS,".panel .close",function(e){
-		console.log('CLOSING FAV')
 		e.preventDefault();
 		e.stopImmediatePropagation();closeFab()
 	});
@@ -1005,23 +1010,20 @@ $(document).ready( function() {
 			    $('.sideBarFavouriteProducts').text(result)
 		});
 	}
-	general.on( eventOnTS,'.jawBone .addFavouriteProduct' ,function(e){
-		console.log('adding')
+	mainSection.on( eventOnTS,'.jawBone .addFavouriteProduct' ,function(e){
 		addRemoveFavoriteProduct($(this).attr('action'), {_id: $(this).attr('_id')})
 		$(this).removeClass('addFavouriteProduct').addClass('removeFavouriteProduct').attr('action','/favourite-product/remove')
 			.find('i').css({opacity:0}).removeClass('fa-heart-o').addClass('fa-heart').addClass('text-pink-darker').animate({opacity:1});
 		e.stopImmediatePropagation(); e.preventDefault();
 	})
-	general.on( eventOnTS,'.jawBone .removeFavouriteProduct' ,function(e){
+	mainSection.on( eventOnTS,'.jawBone .removeFavouriteProduct' ,function(e){
 		e.stopPropagation(); e.preventDefault();
-		console.log('removing')
 		addRemoveFavoriteProduct($(this).attr('action'), {_id: $(this).attr('_id')})
 		$(this).removeClass('removeFavouriteProduct').addClass('addFavouriteProduct').attr('action','/favourite-product/add')
 			.find('i').css({opacity:0}).removeClass('fa-heart').removeClass('text-pink-darker').addClass('fa-heart-o').animate({opacity:1});
 
 	})
 	general.on( 'click','.item .removeFavouriteProduct' ,function(){
-		console.log('removing')
 		$(this).closest('.item').fadeOut();
 		addRemoveFavoriteProduct($(this).attr('action'), {_id: $(this).attr('_id')})
 	})

@@ -8,7 +8,7 @@
                         \{{#each LowerPriceCategoryProducts}}
                             <div class="carousel text-center" >
 
-                                <a _id="\{{{this._id}}}"  href="/view/\{{this._id}}" data-product-info="show"><img class="lazyOwl" data-src="\{{{this.mainPicture.largeUrl}}}"/>
+                                <a _id="\{{{this._id}}}"  href="/view/\{{this._id}}"><img class="lazyOwl" data-src="\{{{this.mainPicture.largeUrl}}}"/>
                                     <p class="text-center">\{{this.price.formatted}} \{{#if this.isItSaving}}<br/> <span class="text-velvet" style="font-size: 12px;"><i><img src="/images/nav/compare.png" style="width:20px; height:auto;"></i>Save <b>\{{this.saving}}</b> (\{{this.savingPercentage}}%)</span>\{{/if}}</p></a>
                             </div>
                         \{{/each}}
@@ -24,7 +24,7 @@
                     <div class="no-style text-center" id="owlBrand">
                         \{{#each sameBrandProducts}}
                             <div class="carousel text-center no-overflow">
-                                <a _id="\{{{this._id}}}" href="/view/\{{this._id}}" data-product-info="show"><img class="lazyOwl" data-src="\{{{this.mainPicture.largeUrl}}}"/>
+                                <a _id="\{{{this._id}}}" href="/view/\{{this._id}}"><img class="lazyOwl" data-src="\{{{this.mainPicture.largeUrl}}}"/>
                                     <p class="text-center">\{{this.price.formatted}} \{{#if this.isItSaving}}<br/> <span class="text-velvet" style="font-size: 12px;"><i><img src="/images/nav/compare.png" style="width:20px; height:auto;"></i>Save <b>\{{this.saving}}</b> (\{{this.savingPercentage}}%)</span> \{{/if}}</p></a>
                             </div>
                         \{{/each}}
@@ -40,7 +40,7 @@
                 <div class="text-center no-style" id="owlCategory">
                     \{{#each sameCategoryProducts}}
                         <div class="flow inline p-b-40">
-                            <a _id="\{{{this._id}}}" href="/view/\{{this._id}}" data-product-info="show"><img class="lazy" data-original="\{{{this.mainPicture.largeUrl}}}"/>
+                            <a _id="\{{{this._id}}}" href="/view/\{{this._id}}"><img class="lazy" data-original="\{{{this.mainPicture.largeUrl}}}"/>
                                 <p class="text-center no-overflow-text">\{{this.name}}</p></a>
                             <p class="text-center no-overflow-text">\{{this.price.formatted}} \{{#if this.isItSaving}}<br/> <span class="text-velvet" style="font-size: 12px;"><i><img src="/images/nav/compare.png" style="width:20px; height:auto;"></i>Save <b>\{{this.saving}}</b> (\{{this.savingPercentage}}%)</span>\{{/if}}  </p></a>
                         </div>

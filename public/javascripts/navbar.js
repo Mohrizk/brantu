@@ -38,7 +38,8 @@ $(document).ready(function() {
 			$('#category-expand-parent').addClass('hidden');
 		})
 	});
-	$('.category-expand').on('click', 'li a, a h5', function(){
+	$('.category-expand').on('click', '.desktopNavColoumns li a, a h4', function(){
+		console.log('lll')
 		$.when( $('.category-expand-wrapper').animate({opacity:0})).done( function() {
 			$('.category-expand-container').addClass('hidden');
 			$('#category-expand-parent').addClass('hidden');
@@ -112,35 +113,45 @@ $(document).ready(function() {
 	})
 	var previousScroll = 0;
 	function navBarScrollActions(){
-			var navSegment = $('#navbarDepartment');
-			var logo = $('.mainLogo');
-			var header= $('.header').height();
-			var current = $(document).scrollTop();
-			var headerSegment = $('#header-Dropdown');
-			if(current > header){
-				headerSegment.slideUp('fast');
-				logo.addClass('scaleDown')
-			}
-			else{
-				headerSegment.slideDown('fast');
-				logo.removeClass('scaleDown')
-			}
-			if(scrollEvent){
+		var navSegment = $('#navbarDepartment');
+		var logo = $('.mainLogo');
+		var header= $('.header').height();
+		var current = $(document).scrollTop();
+		var headerSegment = $('#header-Dropdown');
 
-				if( current - previousScroll  >30){
-					previousScroll= current;
-					navSegment.slideUp('fast');
-				}
-				else if (previousScroll - current > 30 && scrollEvent)
-				{
-					previousScroll= current;
-					navSegment.slideDown('fast');
-				}
+		if(current > header){
+			headerSegment.slideUp('fast');
+			logo.addClass('scaleDown')
+		}
+		else if(current < header){
+			headerSegment.slideDown('fast');
+			logo.removeClass('scaleDown')
+		}
+
+		if(scrollEvent){
+			if( current - previousScroll  >130 && current > header){
+				previousScroll= current;
+				navSegment.slideUp('fast');
 			}
-			else if(!scrollEvent ){
-				if(current < $('.itemList').offset().top) scrollEvent = true;
-				if(navSegment.is(':visible'))navSegment.slideUp('fast');
+			else if (previousScroll - current > 130 && scrollEvent)
+			{
+				console.log('OPSY')
+				previousScroll= current;
+				navSegment.slideDown('fast');
 			}
+		}
+		else if(!scrollEvent && current > header){
+			console.log('OPSY me')
+			if(current < $('.itemList').offset().top) scrollEvent = true;
+			if(navSegment.is(':visible'))navSegment.slideUp('fast');
+		}
+
+		if(isMobile && current> header){
+			$('#menuSearchIcon').fadeIn();
+		}
+		else if(isMobile && current< header){
+			$('#menuSearchIcon').fadeOut();
+		}
 	}
 	$(window).on( 'scroll' ,function(){
 		navBarScrollActions()
