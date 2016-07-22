@@ -2,14 +2,15 @@
 <div class="navigationWrapper">
         <div class="welcome">
             \{{#if welcome.search}}
-            <a class="pull-right visible-xs  closeSearch m-xs-r-10"><i class="pg-close_line fa-2x"></i></a>
-            <h2 class="all-caps text-spaced-medium text-center font-GothamMedium">\{{#if welcome.department}}\{{welcome.department}}/\{{/if}} \{{welcome.name}} <b>"\{{welcome.query}}"</b></h2>
-                \{{#if welcome.suggestedBrands}}
+            <h2 class="all-caps text-spaced-medium hidden-xs text-center font-GothamMedium">\{{#if welcome.department}}\{{welcome.department}}/\{{/if}} \{{welcome.name}} <b>"\{{welcome.query}}"</b></h2>
+            <h4 class="all-caps text-spaced-medium visible-xs text-center font-GothamMedium">\{{#if welcome.department}}\{{welcome.department}}/\{{/if}} \{{welcome.name}} <b>"\{{welcome.query}}"</b></h4>
+
+            \{{#if welcome.suggestedBrands}}
                     <div class="visible-xs p-b-40">
                         <h5 class="all-caps text-spaced-medium text-center font-GothamMedium">\{{{nbBrandHits}}}</h5>
                         <div class="text-center auto-margin block">
                             \{{#each welcome.suggestedBrands}}
-                                <a class="dark inline p-l-20 bold" href="/brand/\{{{name}}}"><div class="brandsAC text-center">
+                                <a class="dark inline p-l-20 bold" href="/brand/\{{{name}}}?q=&hFR[products][0]="><div class="brandsAC text-center">
                                     <span class="">\{{{ _highlightResult.name.value }}}</span>
                                     </div></a>
                                 \{{/each}}
@@ -203,7 +204,7 @@
             <div class="productPane">
                 <div class="productPreview">
                     <div class="row">
-                        <div class="filterTags col-xs-7">
+                        <div class="filterTags col-sm-7 col-xs-12">
                             \{{#each tags.facets}}
                             <div class="inline p-r-5">
                                 <button class="btn btn-tag btn-tag-rounded" style="border:1px solid #ddd;" value="\{{value}}" facet="\{{facet}}" type="\{{type}}"> <font class="sbold">\{{text}}: </font>\{{value}}<i class="pg-close_line p-l-5"></i></button>

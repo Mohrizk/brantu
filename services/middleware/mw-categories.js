@@ -11,6 +11,11 @@ var lvl2_cancelOut = [
     {lvl0:'Kvinna', lvl1:'Outlet',lvl2:['Premium', 'Skönhet','Sport &amp; träning']},
     {lvl0:'Kvinna', lvl1:'Skönhet',lvl2:['Mamma', 'Spa']},
     {lvl0:'Kvinna', lvl1:'Sport &amp; träning',lvl2:[ 'Ryggsäckar', 'Utrustning','Väskor']},
+
+    {lvl0:'Man', lvl1:'Accessoarer',lvl2:[ 'Hörlurar']},
+    {lvl0:'Man', lvl1:'Kläder',lvl2:[ 'Träningskläder']},
+    {lvl0:'Man', lvl1:'Skor',lvl2:[ 'cc.3519.name', 'TOFFLOR & INNESKOR','Outdoorskor', 'Skotillbehör', 'Tofflor & inneskor', 'Tofflor &amp; inneskor','Solprodukter']},
+
 ]
 
 
@@ -67,13 +72,9 @@ module.exports = {
                                         }
                                         var subCategory;
                                         if(index > -1){
-                                            //console.log(category.name, index)
                                             subCategory = subcategory.filter(function(item) {
-                                                //console.log(item.name , lvl2_cancelOut[index].lvl2 , item.name.indexOf(lvl2_cancelOut[index].lvl2))
                                                 return lvl2_cancelOut[index].lvl2.indexOf(item.name) == -1;
                                             });
-                                            //console.log(lvl2_cancelOut[index].lvl2)
-                                            //console.log(subCategory)
                                         }
                                         else subCategory= subcategory
                                         temp.push({'category': category, 'subCategory': subCategory});

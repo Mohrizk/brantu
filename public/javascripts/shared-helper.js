@@ -339,14 +339,12 @@ var renderHelper = {
         if(departmentVerified) breadCrumb=helper.getHierarchicalFacetBreadcrumb('products')
 
         object.price = content.getFacetStats('price.value')
-        console.log( object.price)
         object.welcome = renderHelper.getWelcomeMessage(helper,currentState,breadCrumb, content, currentBrandDDHits);
         object.sale = {content:renderHelper.mapWithout(content.getFacetValues('sale'),['false']), header: HEADERTEXT.facets.sale.header};
         object.discounts={content: renderHelper.mapWithout(content.getFacetValues('discount'), ['0']), header: HEADERTEXT.disjunctionFacets.discount.header};
         object.sizes= {content: content.getFacetValues('sizes'), header: HEADERTEXT.disjunctionFacets.size.header};
 
         object.style= {content: content.getFacetValues('style'), header: HEADERTEXT.disjunctionFacets.style.header};
-        console.log('style', object.style)
 
         object.shops= {content: content.getFacetValues('shops'),header:   HEADERTEXT.disjunctionFacets.shop.header};
         object.paginate = renderHelper.pagination(content);

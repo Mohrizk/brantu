@@ -18,8 +18,8 @@ $(document).ready(function() {
 	});
 
 	$('#footerSignUPButton').on('click', function() {
-
-		registerContainer.stop().addClass('active').css({marginTop:800}).animate({marginTop:50}, 200);
+		var number = (isMobile? 0:50);
+		registerContainer.stop().addClass('active').css({marginTop:800}).animate({marginTop:number}, 200);
 		registerSection.removeClass('hidden').css({opacity:0}).animate({opacity:1});
 	});
 

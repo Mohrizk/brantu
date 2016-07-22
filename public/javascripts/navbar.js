@@ -150,7 +150,7 @@ $(document).ready(function() {
 			$('#menuSearchIcon').fadeIn();
 		}
 		else if(isMobile && current< header){
-			$('#menuSearchIcon').fadeOut();
+			$('#menuSearchIcon').fadeOut('fast');
 		}
 	}
 	$(window).on( 'scroll' ,function(){
