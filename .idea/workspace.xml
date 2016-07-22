@@ -5,53 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="319a9c44-cb0a-494b-a470-9e86d210bc29" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/nav/favourite_black.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/nav/search_black.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/nav/search_filled.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/nav/settings_black.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/shared-templates/ACTemplateCategory.hbs" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/heart.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/home/cashbackheart.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/home/charity.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/home/coveruni.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/home/coverwebbig.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/home/coverwebman.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/home/experience-stroke.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/home/hereComesTheSummer.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/home/icons/Untitled-5.ai" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/home/icons/find.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/home/icons/give.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/home/icons/shop.svg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/icons/AjaxLoader.gif" afterPath="$PROJECT_DIR$/public/images/icons/AjaxLoader.gif" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/www" afterPath="$PROJECT_DIR$/bin/www" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/nav/explore.svg" afterPath="$PROJECT_DIR$/public/images/nav/explore.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/search.svg" afterPath="$PROJECT_DIR$/public/images/search.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/hb-helper.js" afterPath="$PROJECT_DIR$/public/javascripts/hb-helper.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/main.js" afterPath="$PROJECT_DIR$/public/javascripts/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/navbar.js" afterPath="$PROJECT_DIR$/public/javascripts/navbar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/plugins/jquery.lazyload.min.js" afterPath="$PROJECT_DIR$/public/plugins/jquery.lazyload.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/plugins/owl-carousel/owl.theme.css" afterPath="$PROJECT_DIR$/public/plugins/owl-carousel/owl.theme.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/generic.css" afterPath="$PROJECT_DIR$/public/stylesheets/generic.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/pages.css" afterPath="$PROJECT_DIR$/public/stylesheets/pages.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/user-routes.js" afterPath="$PROJECT_DIR$/services/user-routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/men.hbs" afterPath="$PROJECT_DIR$/views/men.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/feed_Back.hbs" afterPath="$PROJECT_DIR$/views/partials/feed_Back.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/footer.hbs" afterPath="$PROJECT_DIR$/views/partials/footer.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/head.hbs" afterPath="$PROJECT_DIR$/views/partials/head.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/loading.hbs" afterPath="$PROJECT_DIR$/views/partials/loading.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/nav.hbs" afterPath="$PROJECT_DIR$/views/partials/nav.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/productNavigation_Back.hbs" afterPath="$PROJECT_DIR$/views/partials/productNavigation_Back.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/productRelated_Back.hbs" afterPath="$PROJECT_DIR$/views/partials/productRelated_Back.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/side-menu.hbs" afterPath="$PROJECT_DIR$/views/partials/side-menu.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/shared-templates/feed.hbs" afterPath="$PROJECT_DIR$/views/shared-templates/feed.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/shared-templates/productNavigation.hbs" afterPath="$PROJECT_DIR$/views/shared-templates/productNavigation.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/shared-templates/productRelated.hbs" afterPath="$PROJECT_DIR$/views/shared-templates/productRelated.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/shared-templates/searchDropDown.hbs" afterPath="$PROJECT_DIR$/views/shared-templates/searchDropDown.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/shared-templates/searchDropDownMobile.hbs" afterPath="$PROJECT_DIR$/views/shared-templates/searchDropDownMobile.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/women.hbs" afterPath="$PROJECT_DIR$/views/women.hbs" />
     </list>
     <ignored path="brantu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -129,8 +83,8 @@
       <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.040983606">
-              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.16393442">
+              <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
               <folding>
                 <element signature="n#!!block;n#dependencies#0;n#!!top" expanded="false" />
                 <element signature="n#!!block;n#devDependencies#0;n#!!top" expanded="false" />
@@ -1109,8 +1063,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.040983606">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.16393442">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
           <folding>
             <element signature="n#!!block;n#dependencies#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#devDependencies#0;n#!!top" expanded="false" />
