@@ -669,7 +669,7 @@ $(document).ready( function() {
 		renderHelper.removeFilterTag(type, facet, value, helper);
 		page(getUrlFromState())
 	});
-	$('.header') .on( eventOnTE, '#navbarTags button', function (event) {
+	/*$('.header') .on( eventOnTE, '#navbarTags button', function (event) {
 		event.stopPropagation()
 		var value = $(this).attr('value');
 		var facet = $(this).attr('facet');
@@ -677,7 +677,7 @@ $(document).ready( function() {
 		renderHelper.removeFilterTag(type, facet, value, helper);
 		page(getUrlFromState())
 
-	});
+	});*/
 	pageContainer.on( eventOnTE, ' .paginate a', function (event) {
 		event.stopPropagation()
 		helper.setPage($(this).attr('value'));
@@ -819,7 +819,7 @@ $(document).ready( function() {
 		var filterWrapperPosition=$('.facetWrapper').offset();
 		var filterHeight = $('.facetWrapper').height();
 
-		var tagSegment = $('#navbarTagsContainer');
+		//var tagSegment = $('#navbarTagsContainer');
 
 		if(filterSelector.length != 0){
 			if(currentScroll +  headerHeight<= filterPosition.top){
@@ -829,7 +829,7 @@ $(document).ready( function() {
 				facetContainer.css('position','absolute').css('top','auto').css('bottom', '10px');
 			}
 			else if(previousScroll<currentScroll ){
-				tagSegment.slideDown();
+				//tagSegment.slideDown();
 
 				if(!upStateChanged && currentScroll + headerHeight >= filterWrapperPosition.top ){
 					facetContainer.css('position','absolute').css('bottom','auto').css('top', filterWrapperPosition.top-filterPosition.top);
@@ -847,7 +847,7 @@ $(document).ready( function() {
 			}
 			else if (previousScroll>currentScroll)
 			{
-				tagSegment.hide();
+				//tagSegment.hide();
 
 				if(!downStateChanged && currentScroll - headerHeight <= filterWrapperPosition.top + filterHeight ){
 					facetContainer.css('position','absolute').css('bottom', 'auto').css('top', filterWrapperPosition.top-filterPosition.top);
