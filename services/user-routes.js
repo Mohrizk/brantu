@@ -19,8 +19,9 @@ var user = require('./middleware/mw-users');
 var routes = [
   /*********REGISTER***************************/
     // Sign up Passport
-      ['/signupUser','post',[function(req, res, next) {
-          console.log('SIGN UP',req.body, req.query)
+     ['/signupUser','post',[function(req, res, next) {
+      console.log('SIGN UP',req.body, req.query);
+        req.body.role = 'user'
         passport.authenticate('local-signup',function(err, user, info) {
             if (err) { return next(err) }
             if (!user) {
@@ -86,11 +87,11 @@ var routes = [
       ],
 
     /*********LOGOUT***************************/
-      [ '/logout', 'get', [ function(req, res, next) {
-          req.logout();
-          res.redirect('/');
-        } ]
-      ],
+    [ '/logout', 'get', [ function(req, res, next) {
+      req.logout();
+      res.redirect('/');
+    } ]
+    ],
 
 
     /*********Settings***************************/
@@ -226,7 +227,6 @@ var routes = [
         res.redirect('/kvinna/upptack-nya-favoriter');
     } ]
     ],
-
     [ '/kvinna/upptack-nya-favoriter', 'get', [
         session.cookieConcession,
         session.addFavouriteDepartment,
@@ -243,7 +243,6 @@ var routes = [
         res.redirect('/man/upptack-nya-favoriter');
     } ]
     ],
-
     [ '/man/upptack-nya-favoriter', 'get', [
         session.cookieConcession,
         session.addFavouriteDepartment,
@@ -385,9 +384,12 @@ var routes = [
         }]
     ],
 
-
-
-
+    [ '/newsletter', 'get', [
+        newsletter.sendWeeklyTrial,
+        function(req, res, next) {
+            res.render('newsletter',{layout: false})
+        }]
+    ],
 
 /*********Internationalization *******************/
     [ '/en', 'get', [ function(req, res, next) {
@@ -432,7 +434,6 @@ var routes = [
     }]
     ]
 ];
-
 routes.forEach(function(arr){
   console.log(arr[1]);
    router[arr[1]](arr[0], arr[2]);

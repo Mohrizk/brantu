@@ -48,12 +48,9 @@ module.exports = function(passport) {
     },
     function(req, email, password, done) {
         console.log('alright then!-------', email, password)
-        // asynchronous
-        // User.findOne wont fire unless data is sent back
+        // asynchronous User.findOne wont fire unless data is sent back
         process.nextTick(function() {
-
-        // find a user whose email is the same as the forms email
-        // we are checking to see if the user trying to login already exists
+        // find a user whose email is the same as the forms email we are checking to see if the user trying to login already exists
         User.findOne({ 'local.email' :  email }, function(err, user) {
             // if there are any errors, return the error
             if (err)
@@ -63,17 +60,13 @@ module.exports = function(passport) {
             if (user) {
                 return done(null, false, {message: 'invalid email or password' });
             } else {
-
-                // if there is no user with that email
-                // create the user
                 var newUser = new User();
-
-                // set the user's local credentials
-                newUser.local.gender   = req.body.gender;
-                //newUser.local.name   = req.body.name;
+                //newUser.local.gender   = req.body.gender;
+                newUser.gender   = req.body.gender;
                 newUser.local.email   = email;
                 newUser.local.password = newUser.generateHash(password);
-
+                if(!req.body.role) newUser.role = req.body.role;
+                newUser.newsletter = true;
                 // save the user
                 newUser.save(function(err) {
                     if (err)
@@ -158,6 +151,7 @@ module.exports = function(passport) {
                         newUser.facebook.picture =  profile.picture;
                         newUser.facebook.gender =  profile.gender;
                         newUser.facebook.email = profile.email;
+                        newUser.newsletter = true;
                         //newUser.facebook.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
 
                         // save our user to the database

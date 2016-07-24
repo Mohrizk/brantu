@@ -73,6 +73,22 @@ var routes = [
         res.redirect('/admin/create-price-card?'+response+'&'+message)
     }]
     ],
+
+ /********* Newsletter ********/
+    [ '/newsletter/confirm-open/:department/:id', 'get', [ function( req, res, next) {
+        var department = req.params.department;
+        var id = req.params.id;
+
+        var buf = new Buffer([
+            0x47, 0x49, 0x46, 0x38, 0x39, 0x61, 0x01, 0x00, 0x01, 0x00,
+            0x80, 0x00, 0x00, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x2c,
+            0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x00, 0x02,
+            0x02, 0x44, 0x01, 0x00, 0x3b]);
+        res.writeHead('200', {'Content-Type': 'image/png'});
+        res.end(buf,'binary');
+    }]
+    ],
+
 ];
 
 routes.forEach(function(arr){

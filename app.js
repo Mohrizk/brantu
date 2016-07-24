@@ -1,8 +1,6 @@
 const Promise = global.Promise || require('promise');
 const compression = require('compression');
 
-const express = require('express');
-
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
@@ -24,6 +22,7 @@ const paginate = require('express-paginate');//Pagination
 
 const User     = require('./services/models/user');
 const passport = require('passport');
+const ConnectRoles = require('connect-roles');
 
 const i18n = require('i18n-2');//Internationalization
 //FOR ROUTES
@@ -31,6 +30,7 @@ const userRoutes = require('./services/user-routes');
 const apiRoutes = require('./services/api-routes');
 const adminRoutes = require('./services/admin-routes');
 
+const express = require('express');
 const app = express();//INITIATE A
 
 //CONNECT DB
@@ -56,14 +56,6 @@ app.use(session({
         ttl: 14 * 24 * 60 * 60 // = 14 days
              })
 }));
-app.use(
-    function(req, res, next){
-        console.log('------------------')
-        console.log(req.session)
-        console.log('------------------')
-        next();
-    }
-)
 /************* Internationalization Config*******/
 
 i18n.expressBind(app, {
@@ -80,7 +72,7 @@ app.use(function(req, res, next) {
 /********view engine setup****/
 // Register `hbs` as our view engine using its bound `engine()` function.
 // Set html in app.engine and app.set so express knows what extension to look for.
-var hbs = exphbs.create({
+hbs = exphbs.create({
         defaultLayout: 'single',
         extname: '.hbs',
         i18n: i18n,
@@ -96,7 +88,6 @@ app.set('view engine', 'hbs');
 app.use(function exposeTemplates(req, res, next) {
     // Uses the `ExpressHandlebars` instance to get the get the **precompiled**
     // templates which will be shared with the client-side of the app.
-    console.log('WHATSAUPPPP')
     hbs.getTemplates('views/shared-templates/', {
             cache      : app.enabled('view cache'),
             precompiled: false
@@ -127,16 +118,39 @@ app.set('views', path.join(__dirname, 'views'));
 /**************************************************************
 *******************BEGINING AUTHENTICATION**********************
 ***************************************************************/
+var user = new ConnectRoles({
+    failureHandler: function (req, res, action) {
+        // optional function to customise code that runs when
+        // user fails authorisation
+        var accept = req.headers.accept || '';
+        res.status(403);
+        if (~accept.indexOf('html')) {
+            res.render('access-denied', {action: action});
+        } else {
+            res.send('Access Denied - You don\'t have permission to: ' + action);
+        }
+    }
+});
 app.use(passport.initialize());
 app.use(passport.session());
-
 require('./config/passport.js')(passport);
-
-
-
+app.use(user.middleware());
+//Role
+user.use(function (req, action) {
+    if (!req.isAuthenticated()) return action === 'access home page';
+})
+user.use('access private page', function (req) {
+    if (req.user.role === 'moderator') {
+        return true;
+    }
+})
+user.use(function (req) {
+    if (req.user.role === 'admin') {
+        return true;
+    }
+});
 /************* ROUTES *******/
 app.set('json spaces', 2);//ONLY DEVELOPMENT
-//app.use(paginate.middleware(10, 50));
 
 app.use(function(req, res, next){
     if(typeof req.session.favProducts !== "undefined")
@@ -157,6 +171,23 @@ app.use(function(req, res, next){
 app.use(userRoutes);
 app.use(adminRoutes);
 app.use(apiRoutes);
+
+app.use(function(req, res, next){
+        console.log('---------SESSION---------')
+        console.log(req.session)
+        console.log('----------USER--------')
+        console.log(req.user)
+        console.log('----------USER Authorization--------')
+        console.log(user)
+        console.log('----------Can access--------')
+        console.log(user.can('access private page'))
+        console.log('------------------------------')
+        next();
+})
+
+//SCHEDULE NEWSLETTER
+require('./services/middleware/mw-newsletter').sendWeekly();
+
 
 
 // catch 404 and forward to error handler

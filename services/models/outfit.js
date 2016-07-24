@@ -10,11 +10,13 @@ var Outfit = mongoose.Schema({
     styleImage:String,
     stylePrice:String,
     styleBrand:String,
+    styleUrl:String,
 
     priceProduct: {type: mongoose.Schema.Types.ObjectId, ref:'Product'},
     priceImage:String,
     pricePrice:String,
     priceBrand:String,
+    priceUrl:String,
 
     saving:{ value:String, discount: Number},
     socialMediaIds:{facebook:String, instagram:String},

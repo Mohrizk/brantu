@@ -1,0 +1,170 @@
+<html>
+<head>
+    <title>Newsletter</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="description" content="Bringing brands to you, customize your shopping experience and find out the flash offers from your favourite brands."  />
+    <meta content="Brantu" name="author" />
+    <style>
+        h1, h2, h3, h4, h5, h6{
+            font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        table{
+            table-layout:fixed;
+            width:600px;vertical-align: top;}
+        a{color: #000000; text-decoration: none;}
+        td{overflow:hidden;white-space:nowrap;}
+        tr td img{
+            height:250px;
+            width:180px;
+            vertical-align: top;
+            object-fit: cover;
+        }
+        h3{
+            font:400 21px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight:300; font-size:18px; line-height: 22px; letter-spacing: 6px; padding-top: 5px; margin: 0;
+        }
+        h4{
+            font:400 21px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight:300; font-size:24px; line-height: 12px; letter-spacing: 6px; padding-top: 5px; margin: 0; margin-top: 10px;
+        }
+        h5{
+            font:400 14px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight:300; font-size:18px; line-height: 18px; padding-top: 5px; margin: 0;
+        }
+        h6{
+            font:700 12px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight:bold; font-size:12px; line-height: 14px; padding-top: 5px; margin: 0;
+        }
+        @media (max-width: 991px){
+            img{
+                height:250px;
+            }
+
+        }
+        @media (max-width: 767px){
+            h3{
+                font-size:16px; line-height: 16px; letter-spacing: 6px; padding-top: 5px; margin: 0;
+            }
+            img{
+                height:200px;
+            }
+            h5{
+            ;font-size:14px;
+            }
+            h6{
+                font-size: 11px;
+            }
+        }
+        @media (max-width: 480px){
+            table{ width:370px;vertical-align: top;}
+            img{
+                height:240px;
+            }
+        }
+    </style>
+</head>
+<body class="fixed-header"  style="background: white;">
+<table>
+    <tbody>
+    <tr style="height: 200px; color: white;">
+        <th style="background-image:url('hhtp://www.brantu.com/images/newsletter/newsletterBanner.jpg'); background-position: center ">
+            <h1 style="font-weight: 300;text-align:center; color: hotpink">Your Weekly <br/>Newsletter</h1>
+        </th>
+    </tr>
+    </tbody>
+</table>
+
+<table>
+    <tbody>
+    <tr>
+        <th style="height: 30px;">
+            <h3 style="font-weight: 200;">This is what you have missed</h3>
+        </th>
+    </tr>
+    {{#each this.priceCards.priceCards}}
+
+        <tr>
+            <th style="margin-bottom: 20px;"  >
+                <div class="">
+                    <div style="border:1px solid #eee; border-radius: 5px; padding-top:10px; text-align: center; ">
+                        <h3  style="font-weight:300;">{{name}}</h3>
+                        <table>
+                            <tbody>
+                            <tr>
+
+                                <td style="text-align: center;">
+                                    <a target="_blank" href="{{{styleUrl}}}">
+                                        <h4 style="border-bottom: 1px solid #eee;line-height: 0; margin:0;">
+                                            <span style="font:400 12px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight:300; text-transform: uppercase; padding: 5px;letter-spacing: 4px; text-align: center; background-color: #ffffff;">Style</span>
+                                        </h4>
+                                        <img style="vertical-align: top; height:178px; width:140px; overflow: hidden; text-align:center;"  src="{{styleImage}}"/>
+
+                                        <h5 style="font:400 14px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight:300; font-size:14px; line-height: 18px; padding-top: 5px; margin: 0;">
+                                            {{stylePrice}}
+                                        </h5>
+
+                                        <h6 style="font:700 12px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight:bold; font-size:12px; line-height: 14px; padding-top: 5px; margin: 0;">
+                                            {{styleBrand}}
+                                        </h6>
+
+                                        <h6 style="font-size: 11px; color:rgba(211, 211, 211, 0.6); border: 1px solid rgba(211, 211, 211, 0.6);text-align: center; padding-top: 5px;padding-right: 15px;padding-left: 15px;padding-bottom: 5px;">Shop Now</h6>
+                                    </a>
+                                </td>
+
+
+                                <td style="text-align: center;">
+                                    <a target="_blank" href="{{{priceUrl}}}">
+                                        <h4 style="border-bottom: 1px solid #eee;line-height: 0;margin:0;">
+                                            <span style="font:400 12px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight:300; text-transform: uppercase; padding: 5px;letter-spacing: 4px; text-align: center; background-color: #ffffff;">Price</span>
+                                        </h4>
+                                        <img  style="vertical-align: top; height:178px; width:140px; overflow: hidden; text-align:center;"  src="{{priceImage}}"/>
+
+                                        <h5 style="font:400 14px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight:300; font-size:14px; line-height: 18px; padding-top: 5px; margin: 0;">
+                                            {{pricePrice}}
+                                        </h5>
+
+                                        <h6 style="font:700 12px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight:bold; font-size:12px; line-height: 14px; padding-top: 5px; margin: 0;">
+                                            {{priceBrand}}
+                                        </h6>
+
+                                        <h6 style="font-size: 11px; color:rgba(211, 211, 211, 0.6); border: 1px solid rgba(211, 211, 211, 0.6);text-align: center; padding-top: 5px;padding-right: 15px;padding-left: 15px;padding-bottom: 5px;">Shop Now</h6>
+                                    </a>
+                                </td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+
+
+                        {{#if saving}}
+                            <div style="margin: 10px 0;">
+                                <h5 style="font:400 12px/21px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight:300; text-transform: uppercase; padding:0; margin:0px; letter-spacing: 4px; line-height: 18px;  text-align: center; background:#840552;color:#fff;">Save {{saving.value}} ({{saving.discount}}%)</h5>
+                                <a href="{{categoryLink}}">
+                                    <button style="color: #AA076B; border:1px solid #AA076B;background:transparent;padding-top: 8px; padding-bottom: 8px; padding-right: 20px;padding-left: 20px;border-radius: 0;margin-top: 8px; font-size:12px;" target="_blank">
+                                        MER {{categoryName}}
+                                    </button>
+                                </a>
+                            </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </th>
+        </tr>
+
+    {{/each}}
+    </tbody>
+</table>
+
+<table>
+    <tbody>
+    <tr style="height: 150px; color: darkgray; text-align:center;">
+        <th style="background:lightgrey; ">
+            <h1 >Your Weekly Newsletter</h1>
+        </th>
+    </tr>
+     <img src="http://localhost:8080/newsletter/confirm-open/{{this.priceCards.department}}/{{this.priceCards.id}}" alt="" />
+    </tbody>
+</table>
+
+</body>
+</html>

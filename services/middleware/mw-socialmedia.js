@@ -10,7 +10,6 @@ var FB = require('fb');
 
 module.exports = {
     facebook:{
-
         getAccessToken:function(req,res,next){
             //GET MANUAL ACCESS TOKEN GO TO https://developers.facebook.com/tools/explorer/
             FB.api('oauth/access_token', {

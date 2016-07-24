@@ -27,7 +27,6 @@ var transporter = nodemailer.createTransport({
 
 //refreshToken: "1/WXHbZ-QDmMPuWEEXN406k_eL6D04kWNugAyWlwzxYak"
 module.exports = {
-
     sendSignupConfirmation: function(userEmail, callback){
         var mailOptions = {
             from: BrantuEmails.confirmation,
@@ -49,5 +48,27 @@ module.exports = {
             transporter.close();
             callback();
         });
-    }
+    },
+    sendNewsLetters:function(department,newsletter,callback){
+
+        var mailOptions = {
+            from: BrantuEmails.confirmation,
+            to: 'makjwbdo@g.com',
+            subject: "Välkommen till Brantu",
+            generateTextFromHTML: true,
+            html:newsletter
+        };
+
+        transporter.sendMail(mailOptions, function(error, response) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log(response);
+            }
+            transporter.close();
+            callback(response);
+        });
+
+    },
+
 }

@@ -2,24 +2,23 @@ var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
 var mongoosePaginate = require('mongoose-paginate');
 var User = mongoose.Schema({
-  local: {
-           email    : String,
-           gender   : String,
-           name     : String,
-           password : String
+        local: {
+               email    : String,
+               name     : String,
+               password : String
 
- },
- facebook: {
-           id       : String,
-           token    : String,
-           email    : String,
-           name     : String,
-           picture  : String,
-           age      : String,
-           gender   : String
-   },
-
- brands:[{type: mongoose.Schema.Types.ObjectId, ref:'Brand'}]
+        },
+        facebook: {
+               id       : String,
+               token    : String,
+               email    : String,
+               name     : String,
+               picture  : String,
+               age      : String
+        },
+        newsletter:  Boolean,
+        createDate:  { type: Date, default: Date.now },
+        brands:[{type: mongoose.Schema.Types.ObjectId, ref:'Brand'}]
 })
 User.plugin(mongoosePaginate);
 // methods =====================

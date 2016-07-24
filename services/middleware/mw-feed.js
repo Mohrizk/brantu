@@ -1,14 +1,7 @@
 var Outfits  = require('../models/outfit');
 var Product  = require('../models/product');
 var webshot = require('webshot');
-var exphbs = require('express-handlebars');//HTML TEMPLATING
-
-
 var helper = {
-    mapGender    :function (string){
-    if(string.toLowerCase()=='kvinna') return 'female';
-    if(string.toLowerCase()=='man') return 'male';
-},
     populateStyleProduct: function (body, callback){
     if(body.styleProduct !== null && body.styleProduct !== ''){
         Product.findOne({_id: body.styleProduct}).populate({path:'brand'}).exec(function(err, product){
@@ -88,6 +81,7 @@ module.exports = {
                     if(body.styleBrand == null || body.priceBrand == ''){
                         body.priceBrand = priceProduct.brand.name;
                     }
+                    body.priceUrl = priceProduct.productUrl;
 
                 }
                 if(styleProduct !== null){
@@ -100,6 +94,7 @@ module.exports = {
                     if(body.styleBrand == null || body.styleBrand == ''){
                         body.styleBrand = styleProduct.brand.name;
                     }
+                    body.styleUrl = priceProduct.styleUrl;
 
                 }
 
@@ -135,48 +130,27 @@ module.exports = {
         })
     },
     renderPriceCard:function(req, res, next){
-        //IT DEPENDS ON RES.LOCALS.TEMPLATES
         if(!req.priceCardCreated){
             req.pictureCreated = false;
             return next();
         }
-            var template;
-            var hbs = exphbs.create({
-            extname: '.hbs',
-            helpers: require("../../public/javascripts/hb-helper.js").helpers,
-        })
-            hbs.getTemplates('views/server-side-templates/')
-                .then(function (templates) {
-                    var extRegex = new RegExp(hbs.extname + '$');
-                    templates = Object.keys(templates).map(function (name) {
-                        return {
-                            name    : name.replace(extRegex, ''),
-                            template: templates[name]
-                        };
-                    });
-                    if (templates.length) {
-                        for(var t in templates){
-                            if(templates[t].name == 'price-card'){
-                                template  = templates[t].template;
+        hbs.render("./views/server-side-templates/price-card.hbs", {priceCard:req.priceCard})
+            .then(function (template) {
+                    webshot(template, './public/images/pricecard.jpg',
+                        {siteType:'html', streamType:'jpg', quality:100},
+                        function(err) {
+                            if(err){
+                                console.log('ERROR',err)
+                                req.message = 'error: problem with creating photo '+req.priceCard._id;
+                                req.pictureCreated = false;
+                                return next(err)
                             }
-                        }
-                        console.log('Rendering starts')
-                        webshot(template({priceCard:req.priceCard}), './public/images/pricecard.jpg',
-                            {siteType:'html', streamType:'jpg', quality:100},
-                            function(err) {
-                                if(err){
-                                    console.log('ERROR',err)
-                                    req.message = 'error: problem with creating photo '+req.priceCard._id;
-                                    req.pictureCreated = false;
-                                    return next(err)
-                                }
-                                console.log('Picture Rendered')
-                                req.pictureCreated = true;
-                                return next()
-                        });
-                    }
-                })
-                .catch(next);
+                            console.log('Picture Rendered')
+                            req.pictureCreated = true;
+                            return next()
+                    });
+            })
+            .catch(next);
     },
     getFeed:function(req,res,next){
 
@@ -185,12 +159,9 @@ module.exports = {
         else{ page = 1;}
         var now = new Date();
 
-        console.log('params ',req.params)
-        console.log('params ',req.params.page)
-        console.log('PAGE ',page)
         var query = {
-            gender: helper.mapGender(res.locals.selectedDepartment),
-            startDate:{"$lt":now}
+            gender   : require('./mw-categories').mapGender(res.locals.selectedDepartment),
+            startDate: {"$lt":now}
         }
         var options = {
             populate: [{path:'styleProduct', populate:{path:'brand'}}, {path:'priceProduct', populate:{path:'brand'}}],
@@ -206,7 +177,25 @@ module.exports = {
             next();
         });
 
-    }
+    },
+    getNewsletter:function(department, callback){
+        var now = new Date();
+        var oneWeekAgo = new Date();
+        oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+        var query = {
+            gender   : category.mapGender(department),
+            startDate: {"$lt":now, $gt: oneWeekAgo}
+        }
+        var options = {
+            populate: [{path:'styleProduct', populate:{path:'brand'}}, {path:'priceProduct', populate:{path:'brand'}}],
+            sort:     { startDate: -1 },
+            lean:     true,
+            limit:     12
+        };
+        Outfits.paginate(query, options).then(function(result) {
+            callback(result.docs)
+        });
+    },
 }
 
 

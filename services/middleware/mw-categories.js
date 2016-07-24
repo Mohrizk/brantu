@@ -1,6 +1,6 @@
 var Categories  = require('../models/category');
 var async = require('async');
-var options = ['kvinna', 'man'];
+var options = [];
 
 
 var lvl1_cancelOut = ['Premium', 'Sport &amp; träning']
@@ -17,29 +17,27 @@ var lvl2_cancelOut = [
     {lvl0:'Man', lvl1:'Skor',lvl2:[ 'cc.3519.name', 'TOFFLOR & INNESKOR','Outdoorskor', 'Skotillbehör', 'Tofflor & inneskor', 'Tofflor &amp; inneskor','Solprodukter']},
 
 ]
-
-
-module.exports = {
-    //GET CATEGORY TREE
+category= {
+    departments : ['kvinna', 'man'],
+    mapGender   :function (string){
+        if(string.toLowerCase()=='kvinna') return 'female';
+        if(string.toLowerCase()=='man') return 'male';
+    },
     getCategoryTree: function (req, res, next) {
         var listOfCategories = new Array();
 
-        async.each(options, function(category, callback) {
-
+        async.each( category['departments'] , function(category, callback) {
             async.waterfall([
-
                 function(callback){
-
                     Categories.findOne({key: category},{'key':1, 'name': 1, breadcrumb: 1}, function (err, mainCategory) {
                         if(err) callback(err);
                         else callback(null, mainCategory);
                     });
-
                 },
-
                 function(mainCategory, callback){
                     if(mainCategory != null){
-                        Categories.find({"parentKey": mainCategory.key}, {'key': 1, 'name': 1, breadcrumb: 1},{sort:{name: 1}}).cache().exec( function (err, categorylist) {
+                        Categories.find({"parentKey": mainCategory.key},
+                            {'key': 1, 'name': 1, breadcrumb: 1},{sort:{name: 1}}).cache().exec( function (err, categorylist) {
                             if(err) callback(err);
                             else{
                                 var categorylist = categorylist.filter(function(item)
@@ -92,22 +90,16 @@ module.exports = {
                                 temp = new Array();
                                 callback(null, temp);
                             }
-
                         });
-
                     }
                     else callback();
-
-
                 }
             ], function (err, result) {
-                // result now equals 'done'
                 callback();
             });
-
         }, function(err) {
             var sortedCategoryList = [];
-            options.forEach(function(option){
+            category['departments'].forEach(function(option){
                 listOfCategories.forEach(function(category){
                     if(category.department.key == option)
                         sortedCategoryList.push(category);
@@ -120,8 +112,6 @@ module.exports = {
         })
 
     },
-    //GET CATEGORY TREE
-
     getDepartment: function(req, res, next){
         var split = req.url.split('/');
         var key = split[1];
@@ -160,8 +150,6 @@ module.exports = {
 
         });
     },
-
-
     getCategoryUrl_old: function (req, res, next) {
         console.log(req.url);
         console.log(req.query.color);
@@ -201,3 +189,4 @@ module.exports = {
         });
     }
 }
+module.exports = category;

@@ -1,16 +1,4 @@
 $(document).ready(function() {
-
-	/*$('#navbar-categories li a').on( 'mouseover',function(){
-		$('.category-expand-container').addClass('hidden');
-		$('#navbar-categories-expand').addClass('expand');
-		var key = $(this).attr('key');
-		$('div[expand-parentKey="'+ key +'"]').removeClass('hidden');
-
-		if($("body").scrollTop() < 50){
-			var totalHeight = $('#navbar-categories-expand').outerHeight();
-		}
-	});*/
-
 	$('#owlNav').owlCarousel({
 
 		navigation : false, // Show next and prev buttons
@@ -128,23 +116,25 @@ $(document).ready(function() {
 			logo.removeClass('scaleDown')
 		}
 
-		if(scrollEvent){
-			if( current - previousScroll  >130 && current > header){
-				previousScroll= current;
-				navSegment.slideUp('fast');
-			}
-			else if (previousScroll - current > 130 && scrollEvent)
-			{
-				console.log('OPSY')
-				previousScroll= current;
-				navSegment.slideDown('fast');
-			}
-		}
-		else if(!scrollEvent && current > header){
-			console.log('OPSY me')
-			if(current < $('.itemList').offset().top) scrollEvent = true;
-			if(navSegment.is(':visible'))navSegment.slideUp('fast');
-		}
+
+	 if( screen.width >480){
+		 if(scrollEvent){
+			 if( current - previousScroll  >130 && current > header ){
+				 previousScroll= current;
+				 navSegment.slideUp('fast');
+			 }
+			 else if (previousScroll - current > 130 && scrollEvent)
+			 {
+				 previousScroll= current;
+				 navSegment.slideDown('fast');
+			 }
+		 }
+		 else if(!scrollEvent && current > header ){
+			 if(current < $('.itemList').offset().top) scrollEvent = true;
+			 if(navSegment.is(':visible'))navSegment.slideUp('fast');
+		 }
+	 }
+
 
 		if(isMobile && current> header){
 			$('#menuSearchIcon').fadeIn();
