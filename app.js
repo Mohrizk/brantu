@@ -89,7 +89,7 @@ app.use(function exposeTemplates(req, res, next) {
     // Uses the `ExpressHandlebars` instance to get the get the **precompiled**
     // templates which will be shared with the client-side of the app.
     hbs.getTemplates('views/shared-templates/', {
-            cache      : app.enabled('view cache'),
+            //cache      : app.enabled('view cache'),
             precompiled: false
         })
         .then(function (templates) {
@@ -118,44 +118,20 @@ app.set('views', path.join(__dirname, 'views'));
 /**************************************************************
 *******************BEGINING AUTHENTICATION**********************
 ***************************************************************/
-var user = new ConnectRoles({
-    failureHandler: function (req, res, action) {
-        // optional function to customise code that runs when
-        // user fails authorisation
-        var accept = req.headers.accept || '';
-        res.status(403);
-        if (~accept.indexOf('html')) {
-            res.render('access-denied', {action: action});
-        } else {
-            res.send('Access Denied - You don\'t have permission to: ' + action);
-        }
-    }
-});
 app.use(passport.initialize());
 app.use(passport.session());
 require('./config/passport.js')(passport);
-app.use(user.middleware());
-//Role
-user.use(function (req, action) {
-    if (!req.isAuthenticated()) return action === 'access home page';
-})
-user.use('access private page', function (req) {
-    if (req.user.role === 'moderator') {
-        return true;
-    }
-})
-user.use(function (req) {
-    if (req.user.role === 'admin') {
-        return true;
-    }
-});
+
 /************* ROUTES *******/
 app.set('json spaces', 2);//ONLY DEVELOPMENT
 
-app.use(function(req, res, next){
-    if(typeof req.session.favProducts !== "undefined")
-        res.locals.nbFavProducts = req.session.favProducts.length;
-    res.locals.url= req.url;
+var sessionMW = require('./services/middleware/mw-session');
+app.use(
+    sessionMW.cookieConcession,
+    sessionMW.signupPopup,
+    function(req, res, next){
+    if(typeof req.session.favProducts !== "undefined"){ res.locals.nbFavProducts = req.session.favProducts.length;}
+        res.locals.url= req.url;
     res.locals.user = req.user;
     if(req.user){
         User
@@ -163,30 +139,22 @@ app.use(function(req, res, next){
             .populate('brands')
             .exec(function (err, user) {
                 if (err) return handleError(err);
+                if(user== null) return next();
                 res.locals.user.brands = user.brands;
             });
     }
+
     next();
 });
+
 app.use(userRoutes);
 app.use(adminRoutes);
 app.use(apiRoutes);
 
-app.use(function(req, res, next){
-        console.log('---------SESSION---------')
-        console.log(req.session)
-        console.log('----------USER--------')
-        console.log(req.user)
-        console.log('----------USER Authorization--------')
-        console.log(user)
-        console.log('----------Can access--------')
-        console.log(user.can('access private page'))
-        console.log('------------------------------')
-        next();
-})
+
 
 //SCHEDULE NEWSLETTER
-require('./services/middleware/mw-newsletter').sendWeekly();
+//require('./services/middleware/mw-newsletter').sendWeekly(function(){});
 
 
 
@@ -202,7 +170,6 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
-    console.log(err);
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
@@ -212,7 +179,6 @@ if (app.get('env') === 'development') {
 }
 
 
-// production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   console.log('Error handler.......')

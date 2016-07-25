@@ -69,7 +69,6 @@
         {{#if selectedDepartment}}
          DEPARTMENT = {{{json selectedDepartment}}};
         {{/if}}
-        console.log(DEPARTMENT)
 
         {{#if TYPE}}
         var  TYPE  = {{{json TYPE}}};
@@ -93,33 +92,30 @@
     <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100974570ns.gif" /></p></noscript></div>
 </head>
 
-
 {{#unless cookieConcession}}
-
     <div id="cookieNotification">
         <div class="pgn-wrapper" data-position="bottom" style="left: 0; right: 0;">
-        <div class="pgn push-on-sidebar-open pgn-bar ">
-            <div class="alert padding-30 padding-xs-5 text-center" style="background: rgba(51, 27, 43, 0.84); ">
-                <span class="medium hidden-xs" style="color:#eed3d3">Brantu.com använder <a class="text-pink-darker" href="/cookie-policy">cookies</a>. Genom att fortsätta på sidan godkänner du användandet av <a class="text-pink-darker" href="/cookie-policy">cookies</a>.</span>
-                <div class="medium visible-xs" style="color:#eed3d3">Brantu.com använder <a class="text-pink-darker" href="/cookie-policy">cookies</a>. Genom att fortsätta på sidan godkänner du användandet av <a class="text-pink-darker" href="/cookie-policy">cookies</a>.</div>
-                <button type="button" class="hidden-xs btn btn-default m-l-30 m-xs-l-0 " id="cookieAccept" data-dismiss="alert">Jag förstår!
-                </button>
-                <div class="visible-xs m-b-10">  <button type="button" class="btn btn-default m-l-30 m-xs-l-0 " id="cookieAcceptMobile" data-dismiss="alert">
-                    Jag förstår!
+            <div class="pgn push-on-sidebar-open pgn-bar ">
+                <div class="alert padding-30 padding-xs-5 text-center" style="background: rgba(51, 27, 43, 0.84); ">
+                    <span class="medium hidden-xs" style="color:#eed3d3">Brantu.com använder <a class="text-pink-darker" href="/cookie-policy">cookies</a>. Genom att fortsätta på sidan godkänner du användandet av <a class="text-pink-darker" href="/cookie-policy">cookies</a>.</span>
+                    <div class="medium visible-xs" style="color:#eed3d3">Brantu.com använder <a class="text-pink-darker" href="/cookie-policy">cookies</a>. Genom att fortsätta på sidan godkänner du användandet av <a class="text-pink-darker" href="/cookie-policy">cookies</a>.</div>
+                    <button type="button" class="hidden-xs btn btn-default m-l-30 m-xs-l-0 " id="cookieAccept" data-dismiss="alert">Jag förstår!
                     </button>
-                  </div>
+                    <div class="visible-xs m-b-10">  <button type="button" class="btn btn-default m-l-30 m-xs-l-0 " id="cookieAcceptMobile" data-dismiss="alert">
+                        Jag förstår!
+                    </button>
+                    </div>
 
+                </div>
             </div>
         </div>
     </div>
-    </div>
     <script>
+        //COOKIE CONCESSION
         function sendCookieConcession(){
-
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (xhttp.readyState == 4 && xhttp.status == 200) {
-                    document.getElementById("demo").innerHTML = xhttp.responseText;
                 }
             };
             xhttp.open("POST", "/cookie-policy", true);
@@ -141,6 +137,31 @@
             sendCookieConcession();
         }
     </script>
+{{/unless}}
+
+
+{{#unless user}}
+    {{#unless signupPopup}}
+    <script>
+        function sendSignupPopup(){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                }
+            };
+            xhttp.open("POST", "/signup-popup", true);
+            xhttp.send();
+        }
+        setTimeout(function(){
+            var registerContainer = $('.registerContainer');
+            var registerSection = $('#AuthenticationPopUp');
+            var number = (isMobile? 0:50);
+            registerContainer.stop().addClass('active').css({marginTop:800}).animate({marginTop:number}, 800);
+            registerSection.removeClass('hidden').css({opacity:0}).animate({opacity:1}, 500);
+            sendSignupPopup();
+        }, 16000)
+    </script>
+    {{/unless}}
 {{/unless}}
 
 

@@ -27,7 +27,6 @@ $(document).ready(function() {
 		})
 	});
 	$('.category-expand').on('click', '.desktopNavColoumns li a, a h4', function(){
-		console.log('lll')
 		$.when( $('.category-expand-wrapper').animate({opacity:0})).done( function() {
 			$('.category-expand-container').addClass('hidden');
 			$('#category-expand-parent').addClass('hidden');

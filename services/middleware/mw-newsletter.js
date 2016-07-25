@@ -52,7 +52,7 @@ newsletter= {
         ,function(err){
         })
     },
-    sendWeekly:function() {
+    sendWeekly:function(callback) {
         var totalEmails = 0, newNewsletter = new marketingNewsletter();
         var rule = new schedule.RecurrenceRule();
         rule.minute = new schedule.Range(0, 59, 1);
@@ -80,7 +80,9 @@ newsletter= {
                     })
                 }
                 ,function(err){
-                    newNewsletter.save();
+                    newNewsletter.save(function(){
+                        callback()
+                    });
                 })
         });
     },

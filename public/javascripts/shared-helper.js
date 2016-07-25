@@ -179,8 +179,18 @@ var renderHelper = {
         if(typeof avafacets.hierarchicalFacetsRefinements !== 'undefined')
             if(typeof avafacets.hierarchicalFacetsRefinements.products !== 'undefined'){
                 var splitted = avafacets.hierarchicalFacetsRefinements.products[0].split(' > ');
-                if(!currentState.search)$(document).prop('title', splitted[0]+' - '+splitted[splitted.length-1]);
-                else $(document).prop('title', 'Search - '+avafacets.query)
+                if(currentState.category)$(document).prop('title', splitted[0]+' - '+splitted[splitted.length-1]);
+                else {
+                    if(currentState.search){ $(document).prop('title', 'Search - '+avafacets.query);}
+                    else if(currentState.brand){
+                        if(typeof avafacets.disjunctiveFacetsRefinements !== 'undefined')
+                            if(typeof avafacets.disjunctiveFacetsRefinements['brand.name'] !== 'undefined'){
+                                $(document).prop('title', 'Brand - '+avafacets.disjunctiveFacetsRefinements['brand.name'])
+                            }
+                    }
+
+
+                }
             }
     },
 
@@ -275,6 +285,26 @@ var renderHelper = {
                     })
             }
 
+            if (object.disjunctiveFacetsRefinements.hasOwnProperty('fit')) {
+                for (var c in object.disjunctiveFacetsRefinements['fit'])
+                    rObject.facets.push({
+                        text: header.disjunctionFacets.fit.filter,
+                        type: 'disjunctive',
+                        value: object.disjunctiveFacetsRefinements['fit'][c],
+                        facet: 'fit'
+                    })
+            }
+
+            if (object.disjunctiveFacetsRefinements.hasOwnProperty('material')) {
+                for (var c in object.disjunctiveFacetsRefinements['material'])
+                    rObject.facets.push({
+                        text: header.disjunctionFacets.material.filter,
+                        type: 'disjunctive',
+                        value: object.disjunctiveFacetsRefinements['material'][c],
+                        facet: 'material'
+                    })
+            }
+
             if (object.disjunctiveFacetsRefinements.hasOwnProperty('color')) {
                 for (var c in object.disjunctiveFacetsRefinements.color)
                     rObject.facets.push({
@@ -345,6 +375,9 @@ var renderHelper = {
         object.sizes= {content: content.getFacetValues('sizes'), header: HEADERTEXT.disjunctionFacets.size.header};
 
         object.style= {content: content.getFacetValues('style'), header: HEADERTEXT.disjunctionFacets.style.header};
+        object.fit= {content: content.getFacetValues('fit'), header: HEADERTEXT.disjunctionFacets.fit.header};
+        object.material= {content: content.getFacetValues('material'), header: HEADERTEXT.disjunctionFacets.material.header};
+
 
         object.shops= {content: content.getFacetValues('shops'),header:   HEADERTEXT.disjunctionFacets.shop.header};
         object.paginate = renderHelper.pagination(content);
@@ -458,6 +491,9 @@ var HEADERTEXT = {
         color:{header: "Färger", filter:"färg"},
         brand:{header: "Märken", filter:"märken"},
         style:{header: "Styles", filter:"style"},
+        material:{header: "Material", filter:"material"},
+        fit:{header: "Fit", filter:"fit"},
+
         shop:{header:"Butiker", filter:"butik"},
         size:{header:"Storlekar", filter:"Storlek"},
         discount:{header:"Rea%", filter:"Rea"}

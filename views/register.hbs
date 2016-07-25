@@ -2,20 +2,24 @@
 
     <!-- START PAGE CONTENT WRAPPER -->
     <div class="page-content-wrapper">
-        <section class="no-overflow" id="mainSection">
+        <section id="mainSection" class="no-overflow bg-Image relative" style="background-image: url('/images/home/authenticate.jpg');">
             <!-- START PAGE CONTENT -->
-            <div class="content">
+            <div class="content  ">
                 <div class="registerContainer active" style="margin-top: 50px;">
-                    <div class="registerCard" style="background: linear-gradient(to top, rgb(117, 127, 154), rgb(0, 0, 0)); ">
-                        <h1 class="title text-center text-pink" style="border-color:#eed3d3; ">
-                            Sign Up
-                        </h1>
-                        {{debug errorMessage}}
-                        {{#if errorMessage}}
-                            <div id="registerError" class="col-sm-12">
-                                <p  class="text-red text-center" > Your account already exist<a href="/login">Login</a></p>
-                            </div>
-                        {{/if}}
+                    <div class="registerCard" style=" ">
+                        <div class="fs-12 title text-center relative">
+                            <img src="/images/brantublacklogo.svg" alt="logo" class="authenticateLogo"/>
+                            <h5 class=" bold text-spaced-medium all-caps text-center">
+                                Tack för att du använder BRANTU!
+                            </h5>
+                            <p class="text-center p-r-20 p-b-20 p-l-20 smallCaps fs-13"><font class="capitalize">Bli</font> Medlem Och Ta Del Utav Det Senaste Inom Mode! Vi Uppdaterar Sidan Med Nya Produkter Och Erbjudanden Varje Vecka, Så Håll Utkik På Facebook Och Vår Hemsida!</p>
+                            {{#if errorMessage}}
+                                <div id="registerError" >
+                                    <p  class="text-red all-caps text-center" > du är redan medlem<a href="/login" class="p-l-10 bold all-caps">Logga in</a></p>
+                                </div>
+                            {{/if}}
+                        </div>
+
                         <!--<div class="button-container padding-1v" style="margin-bottom: 30px;">
                             <a href="/auth/facebook">
                                 <button id="facebookAccess" style="background-color: #3b5998;">
@@ -27,35 +31,35 @@
                         <form id="signupFormPage"  role="form" action="/signupUser" method="post">
 
                             <div class="input-container">
-                                <input type="email" name="email" id="emailSignupPage" class="text-white" required="required"/>
-                                <label for="emailSignupPage" class="text-pink">Din e-postadress</label>
+                                <input type="email" name="email" id="emailSignupPage" required="required"/>
+                                <label for="emailSignupPage" >Din e-postadress</label>
                                 <div class="bar"></div>
 
                             </div>
 
                             <div class="input-container">
-                                <input type="password" name="password" id="passwordSignupPage" class="text-white" required="required"/>
-                                <label for="passwordSignupPage" class="text-pink">Lösenord</label>
+                                <input type="password" name="password" id="passwordSignupPage"  required="required"/>
+                                <label for="passwordSignupPage" >Lösenord</label>
                                 <div class="bar"></div>
                             </div>
 
                             <div class="input-container"  style="margin-bottom: 20px;">
-                                <input type="password"  id="passwordSignupPageConfirm" class="text-white" required="required"/>
-                                <label for="passwordSignupPageConfirm" class="text-pink">Confirm Lösenord</label>
+                                <input type="password"  id="passwordSignupPageConfirm" required="required"/>
+                                <label for="passwordSignupPageConfirm">Upprepa lösenord</label>
                                 <div class="bar"></div>
                             </div>
-                            <div id="registerPagePasswrodError" class="col-sm-12" style="display:none;">
-                                <p  class="text-red text-center" > Make sure your password matches</p>
+                            <div id="registerPagePasswrodError" style="display:none;">
+                                <p  class="text-red text-center all-caps" >Dina lösenord matchar inte</p>
                             </div>
 
                             <div class="input-radio">
                                 <div class="col-xs-8 col-xs-offset-4">
-                                    <div class="radio  radio-pink auto-margin block " id="genderSelectionSignupPage">
+                                    <div class="radio  radio-default auto-margin block " id="genderSelectionSignupPage">
                                         <input type="radio"  value="female"  name="gender" id="femaleSignupPage" />
-                                        <label for="femaleSignupPage"  class="text-pink bold ">Kvinna</label>
+                                        <label for="femaleSignupPage"  class=" bold ">Kvinna</label>
 
                                         <input type="radio"  value="male"   name="gender" id="maleSignupPage" />
-                                        <label for="maleSignupPage"  class=" text-pink bold ">Man</label>
+                                        <label for="maleSignupPage"  class=" bold ">Man</label>
                                     </div>
                                 </div>
                             </div>
@@ -67,13 +71,13 @@
                                         </div>
                                     </div>
                                     <div class="col-xs">
-                                        <label  for="concent" class="text-white">Jag godkänner medlemsvillkoren och att mina personuppgifter behandlas enligt ovan, medlemsvillkoren samt Brantus <a class="text-pink" href="/privacy-policy">Integritetspolicy</a>.</label>
+                                        <label  for="concent"class=" fs-13">Jag godkänner medlemsvillkoren och att mina personuppgifter behandlas enligt ovan, medlemsvillkoren samt Brantus <a class="text-velvet" href="/privacy-policy">Integritetspolicy</a>.</label>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="button-container p-t-10">
-                                <button id="submitRegistration" style="border-color: #eed3d3;"><span class="text-white">Välkommen In</span></button>
+                                <button id="submitRegistration" ><span >Välkommen In</span></button>
                             </div>
                         </form>
 

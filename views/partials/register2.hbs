@@ -1,11 +1,11 @@
-<div id="AuthenticationPopUp" class="hidden authenticationPopUp" style=" ">
+<div id="AuthenticationPopUp" class="hidden authenticationPopUp bg-Image relative" style="background-image: url('/images/home/authenticate.jpg');" >
     <div class="registerContainer " style="margin-top: 50px;">
         <div class="registerCard">
             <h1 class="title text-center">
                 <div class="">
                     <img src="/images/brantublacklogo.svg" alt="logo" class="authenticateLogo" />
                 </div>
-                Login
+                Logga in
                 <div class="close close-AuthenticationPopUp"></div>
             </h1>
            <!-- <div class="button-container padding-1v">
@@ -39,14 +39,15 @@
         </div>
         <div class="registerCard alt">
             <div class="toggle"></div>
-
-            <h1 class="title text-center">
-                <div class="">
-                    <img src="/images/brantuwhitelogo.svg" alt="logo" class="authenticateLogo"/>
-                </div>
-                Sign Up
+            <div class="fs-12 title text-center relative">
+                <img src="/images/brantublacklogo.svg" alt="logo" class="authenticateLogo"/>
                 <div class="close close-AuthenticationPopUp"></div>
-            </h1>
+                <h5 class=" bold text-spaced-medium all-caps text-center">
+                    Tack för att du använder BRANTU!
+                </h5>
+                <p class="text-center p-r-20 p-b-20 p-l-20 smallCaps fs-13"><font class="capitalize">Bli</font> Medlem Och Ta Del Utav Det Senaste Inom Mode! Vi Uppdaterar Sidan Med Nya Produkter Och Erbjudanden Varje Vecka, Så Håll Utkik På Facebook Och Vår Hemsida!</p>
+            </div>
+
             <!--<div class="button-container padding-1v" style="margin-bottom: 30px;">
                 <a href="/auth/facebook">
                     <button id="facebookAccess" style="background-color: #3b5998;">
@@ -71,7 +72,7 @@
 
                 <div class="input-container" style="margin-bottom: 20px;">
                     <input type="password" id="passwordSignUpConfirm" required="required"/>
-                    <label for="passwordSignUpConfirm">Confirm Lösenord</label>
+                    <label for="passwordSignUpConfirm">Upprepa lösenord</label>
                     <div class="bar"></div>
                 </div>
 
@@ -79,11 +80,11 @@
 
                 <div class="input-radio row">
                     <div class="col-xs">
-                        <div class="radio radio-pink  block text-center" id="genderSelection">
+                        <div class="radio  block text-center" id="genderSelection">
                             <input type="radio" class="registration"  value="female"  required name="gender" id="femaleRegistrationPopUp" />
-                            <label for="femaleRegistrationPopUp"  class="text-pink bold relative">Kvinna</label>
+                            <label for="femaleRegistrationPopUp"  class="text-velver bold relative">Kvinna</label>
                             <input type="radio" class="registration"   value="male" required  name="gender" id="maleRegistrationPopUp" />
-                            <label for="maleRegistrationPopUp"  class=" text-pink bold relative">Man</label>
+                            <label for="maleRegistrationPopUp"  class=" text-velver bold relative">Man</label>
                         </div>
                     </div>
                     <div class="col-sm-10 col-sm-offset-1">
@@ -94,7 +95,7 @@
                                 </div>
                             </div>
                             <div class="col-xs">
-                                <label  for="concent" class="text-white">Jag godkänner medlemsvillkoren och att mina personuppgifter behandlas enligt ovan, medlemsvillkoren samt Brantus <a class="text-pink" href="/privacy-policy">Integritetspolicy</a>.</label>
+                                <label  for="concent" class="text-black fs-11">Jag godkänner medlemsvillkoren och att mina personuppgifter behandlas enligt ovan, medlemsvillkoren samt Brantus <a class="text-velvet" target="_blank" href="/privacy-policy">Integritetspolicy</a>.</label>
                             </div>
                         </div>
                     </div>
@@ -107,10 +108,10 @@
                 </div>
 
                 <div class="button-container">
-                    <button type="submit" id="submitRegistration"><span>Välkommen In</span></button>
+                    <button type="submit" id="submitRegistration"><span class="text-velvet">Välkommen In</span></button>
                 </div>
             </form>
-            <div class="full-width text-center" id="fromSignUpToLogin"><button class=" no-border bold btn btn-rounded btn-default"><u>Logga In</u></button></div>
+            <div class="full-width text-center" id="fromSignUpToLogin"><button class=" no-border bold btn  btn-info"><u>Logga In</u></button></div>
         </div>
     </div>
     <div class="registerLoading fixed" style="display: none; top:0; bottom:0; right:0; left:0; z-index:1500;">

@@ -16,6 +16,7 @@ var User = mongoose.Schema({
                picture  : String,
                age      : String
         },
+        role:String,
         newsletter:  Boolean,
         createDate:  { type: Date, default: Date.now },
         brands:[{type: mongoose.Schema.Types.ObjectId, ref:'Brand'}]

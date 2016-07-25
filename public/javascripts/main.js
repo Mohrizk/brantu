@@ -24,16 +24,16 @@ var newsletterTemplate = Handlebars.compile($("#newsletterTemplateTemplate").htm
 
 
 var client = algoliasearch("D3IWZXC0AH", '3d6a60c228b6e8058770fdf8eab2f652');
-var helper   = algoliasearchHelper(client, 'products',
+var helper   = algoliasearchHelper(client, 'products_2',
 	{
 		hitsPerPage: 30,
 		hierarchicalFacets: [{
 		name: 'products',
-		attributes: ['category.lvl0', 'category.lvl1', 'category.lvl2', 'category.lvl3', 'categories.lvl4'],
+		attributes: ['category.lvl0', 'category.lvl1', 'category.lvl2', 'category.lvl3', 'category.lvl4', 'category.lvl5'],
         sortBy: ['count:desc', 'name:asc']
 	}],
 	facets:[  'sale', 'price.value'],
-	disjunctiveFacets:['color','brand.name','sizes', 'shops', 'discount' , 'style']
+	disjunctiveFacets:['color','brand.name','sizes', 'shops', 'discount' , 'style', 'fit', 'material']
 });
 
 var typeVerified = false, departmentVerified= false;
@@ -95,7 +95,7 @@ $(document).ready( function() {
 		{
 			//source: autocomplete.sources.hits(productIndex, {hitsPerPage: 7}),
 			source: function(query, callback) {
-				var index = client.initIndex('products');
+				var index = client.initIndex('products_2');
 				var options = {hitsPerPage: 8}
 				if(departmentVerified)options.facetFilters = 'category.lvl0:'+DEPARTMENT;
 				$('.ACSearchProgress').removeClass('hidden');
@@ -187,7 +187,7 @@ $(document).ready( function() {
 		{
 			//source: autocomplete.sources.hits(productIndex, {hitsPerPage: 7}),
 			source: function(query, callback) {
-				var index = client.initIndex('products');
+				var index = client.initIndex('products_2');
 				var options = {hitsPerPage: 4}
 				if(departmentVerified)options.facetFilters = 'category.lvl0:'+DEPARTMENT;
 				$('.ACSearchProgress').removeClass('hidden');
@@ -608,6 +608,28 @@ $(document).ready( function() {
 		}
 		page(getUrlFromState())
 	});
+
+	body.on( 'click', ' .material input', function (event) {
+		var value = $(this).attr('value');
+		if($(this).prop('checked')){
+			helper.addDisjunctiveFacetRefinement('material', value);
+		}
+		else{
+			helper.removeDisjunctiveFacetRefinement('material', value);
+		}
+		page(getUrlFromState())
+	});
+	body.on( 'click', ' .fit input', function (event) {
+		var value = $(this).attr('value');
+		if($(this).prop('checked')){
+			helper.addDisjunctiveFacetRefinement('fit', value);
+		}
+		else{
+			helper.removeDisjunctiveFacetRefinement('fit', value);
+		}
+		page(getUrlFromState())
+	});
+
 
 	body.on( 'change', ' .sizes input', function (event) {
 		var value = $(this).attr('value');

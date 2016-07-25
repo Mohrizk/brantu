@@ -29,7 +29,7 @@
                                                         <div class="original-price discounted col-xs text-right">{{{this.originalPrice.formatted}}}</div>
                                                         <div class="discounted-price col-xs text-left">{{{this.price.formatted}}}</div>
                                                     </div>
-                                                    <div class="discounted-percentage ">{{{this.discount}}}%</div>
+                                                    <div class="discounted-percentage " style=left:2.4vw;>{{{this.discount}}}%</div>
                                                     {{else}}
                                                     <div class="original-price text-center">{{{this.originalPrice.formatted}}}</div>
                                                     {{/if}}
@@ -48,9 +48,9 @@
                                                             </a>
                                                         </div>
                                                     </div>
-                                                <ol class="small-options no-style">
+                                                <ol class="small-options no-style" style="right:2.4vw;">
                                                     <li class="delete cursor">
-                                                        <a class="removeFavouriteProduct" data-product-info="show" _id="{{{this._id}}}" action="/favourite-product/remove">
+                                                        <a class="removeFavouriteProduct" _id="{{{this._id}}}" action="/favourite-product/remove">
                                                             <i class="pg-close_line fa-2x"></i>
                                                             </a></li>
                                                     </ol>

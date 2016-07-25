@@ -1,21 +1,33 @@
 var nodemailer = require('nodemailer');
 var xoauth2 = require('xoauth2');
+var fs = require('fs')
 var BrantuEmails = {
-    confirmation:"rizk@brantu.com"
+    rizk:{
+        email:"rizk@brantu.com",
+        getToken: xoauth2.createXOAuth2Generator({
+            user: "rizk@brantu.com",
+            clientId: "144499945264-cll1b6e0cblk785eo4t3ovueq2vqu9u7.apps.googleusercontent.com",
+            clientSecret: "F5b5RXTYQDc0pchX9A1iZvyY",
+            refreshToken: '1/WXHbZ-QDmMPuWEEXN406k_eL6D04kWNugAyWlwzxYak',
+            accessToken: 'ya29.Ci8GA1gbELe5qtt5EcaLK7upccVBZhThneadY6uApMqT_f1RqZlfc5ibdGfVBN_bkA'
+        })
+    },
+    granstrom:{
+        email:"granstrom@brantu.com",
+        getToken: xoauth2.createXOAuth2Generator({
+            user: "granstrom@brantu.com",
+            clientId: "144499945264-cll1b6e0cblk785eo4t3ovueq2vqu9u7.apps.googleusercontent.com",
+            clientSecret: "F5b5RXTYQDc0pchX9A1iZvyY",
+            refreshToken: '1/aL-Y-2Nd-o4XHxQgBg-HfRXOfMMZClH-yWXzjqN75a0',
+            accessToken: 'ya29.Ci8rAySrzLXagsBnZ9XrRZMxzzx-5bHtkK1PgiSZUqE9psCheaZ0NQbNMV1073RB2A'
+        })
+    }
 }
+
 // listen for token updates (if refreshToken is set)
 // you probably want to store these to a db
-var generator = xoauth2.createXOAuth2Generator({
-    user: "rizk@brantu.com",
-    clientId: "144499945264-cll1b6e0cblk785eo4t3ovueq2vqu9u7.apps.googleusercontent.com",
-    clientSecret: "F5b5RXTYQDc0pchX9A1iZvyY",
-    refreshToken: '1/WXHbZ-QDmMPuWEEXN406k_eL6D04kWNugAyWlwzxYak',
-    accessToken: 'ya29.Ci8GA1gbELe5qtt5EcaLK7upccVBZhThneadY6uApMqT_f1RqZlfc5ibdGfVBN_bkA'
-})
+var generator = BrantuEmails.granstrom.getToken;
 
-generator.on('token', function(token){
-    console.log('New token for %s: %s', token.user, token.accessToken);
-});
 
 // login
 var transporter = nodemailer.createTransport({
@@ -24,19 +36,23 @@ var transporter = nodemailer.createTransport({
         xoauth2: generator
     }
 });
-
 //refreshToken: "1/WXHbZ-QDmMPuWEEXN406k_eL6D04kWNugAyWlwzxYak"
 module.exports = {
     sendSignupConfirmation: function(userEmail, callback){
         var mailOptions = {
-            from: BrantuEmails.confirmation,
+            from: BrantuEmails.granstrom.email,
             to: userEmail,
             subject: "Välkommen till Brantu",
             generateTextFromHTML: true,
-            html: "<b>Hej nya Shopaholic!</b>"+
-                    "<p>Vad roligt att du har hittat till oss, och varmt välkommen som kund!<br/>Ditt användarnamn är din e-postadress som du behöver för att logga in på <a target='_blank' href='http//www.brantu.com'> BRANTU.COM.</a></p>"+
-                    "<p>Om du har frågor kring något tveka inte på att höra av dig till vår <a href='mailto:support@brantu.com'>kundtjänst</a>.</p>"+
-                    "<p style='padding-top: 30px;'>Blir du shoppingsugen? (Det blir vi) - Gå direkt till <a target='_blank' href='http//www.brantu.com'>BRANTU.COM.</a></p>"
+            html:'<html>'+
+                '<head>'+
+                '<title>Print</title>'+
+                '<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">'+
+                '</head>'+
+                '<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">'+
+                '<img src="/images/newsletter/welcomebrantumail.jpg" width="600" height="1067" alt="">'+
+                '</body>'+
+                ' </html>'
         };
 
         transporter.sendMail(mailOptions, function(error, response) {
@@ -52,8 +68,8 @@ module.exports = {
     sendNewsLetters:function(department,newsletter,callback){
 
         var mailOptions = {
-            from: BrantuEmails.confirmation,
-            to: 'makjwbdo@g.com',
+            from: BrantuEmails.granstrom.email,
+            to: 'rizk@brantu.com',
             subject: "Välkommen till Brantu",
             generateTextFromHTML: true,
             html:newsletter

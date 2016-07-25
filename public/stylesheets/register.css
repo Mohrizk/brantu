@@ -6,11 +6,10 @@
     top:0;
     bottom:0;
     z-index:1000;
-    background:linear-gradient(to top left,rgba(238,211,211,0.2) , rgba(201,201,201,0.4));
 
 }
 .authenticateLogo{
-    width:200px;
+    width:120px;
 }
 /* Container */
 .registerContainer {
@@ -23,7 +22,7 @@
     background: none !important;
 }
 .registerContainer.active .registerCard:nth-child(2) {
-    background: #fafafa;
+    background: #fff;
     margin: 0 10px;
 }
 .registerContainer.active .registerCard.alt {
@@ -33,7 +32,7 @@
     min-width: 100%;
     height: auto;
     border-radius: 5px;
-    padding: 60px 0 20px;
+    padding: 30px 0 20px;
     overflow: hidden;
 }
 .registerContainer.active .registerCard.alt .toggle {
@@ -107,7 +106,7 @@
 }
 .registerCard .input-container {
     position: relative;
-    margin: 0 60px 50px;
+    margin: 0 60px 35px;
 }
 .registerCard .input-container input {
     outline: none;
@@ -118,11 +117,12 @@
     height: 40px;
     border: 0;
     color: #212121;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
 }
 .registerCard .input-container input:focus ~ label {
     color: #9d9d9d;
+    font-size:12px;
     transform: translate(-12%, -50%) scale(0.75);
 }
 .registerCard .input-container input:focus ~ .bar:before, .registerCard .input-container input:focus ~ .bar:after {
@@ -130,6 +130,7 @@
 }
 .registerCard .input-container input:valid ~ label {
     color: #9d9d9d;
+    font-size:12px;
     transform: translate(-12%, -50%) scale(0.75);
 }
 .registerCard .input-container label {
@@ -137,7 +138,7 @@
     top: 0;
     left: 0;
     color: #757575;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
     line-height: 30px;
     -webkit-transition: 0.2s ease;
@@ -155,7 +156,7 @@
 .registerCard .input-container .bar:before, .registerCard .input-container .bar:after {
     content: '';
     position: absolute;
-    background: #ed2553;
+    background: #AA076B;
     width: 0;
     height: 2px;
     transition: .1s ease;
@@ -190,7 +191,7 @@
 .registerCard .button-container button span {
     position: relative;
     z-index: 1;
-    color: #888;
+    color: #AA076B;
     transition: .1s cubic-bezier(.5,0,.1,1);
 }
 .registerCard .button-container button:before {
@@ -208,13 +209,13 @@
     transition: .1s cubic-bezier(.5,0,.1,1);
 }
 .registerCard .button-container button:hover, .registerCard .button-container button:active, .registerCard .button-container button:focus {
-    border-color: #ed2553;
+    border-color: #AA076B;
 }
 .registerCard .button-container button:hover span, .registerCard .button-container button:active span, .registerCard .button-container button:focus span {
     color: #ed2553;
 }
 .registerCard .button-container button:active span, .registerCard .button-container button:focus span {
-    color: #ffffff;
+    color: #000;
 }
 .registerCard .button-container button:active:before, .registerCard .button-container button:focus:before {
     opacity: 1;
@@ -240,8 +241,9 @@
     color: #bababa;
 }
 .registerCard.alt {
+
     position: absolute;
-    top: 500px;
+    top: 455px;
     right: 150px;
     z-index: 10;
     width: 140px;
@@ -257,24 +259,17 @@
     /* Button */
 }
 .registerCard.alt .toggle {
-    background: #7a829d;
     color:black;
     width: 140px;
-    height: 50px;
-    border-radius: 100px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    color: #ffffff;
+    height: 35px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.23), 0 1px 2px rgba(0, 0, 0, 0.24);
     font-size: 12px;
     font-weight: 500;
     cursor:pointer;
-    line-height: 50px;
+    line-height: 35px;
     text-align: center;
 }
 
-.registerContainer.active .registerCard.alt .toggle{
-    background: linear-gradient(to top, rgb(117, 127, 154), rgb(0, 0, 0));
-
-}
 
 .registerCard.alt .toggle:before {
     content: 'New Account';
@@ -291,50 +286,33 @@
 
 .registerCard.alt .title {
     position: relative;
-    border-color: #eed3d3;
-    color: #eed3d3;
+    border-color: transparent;
+    color: #000;
 }
 .registerCard.alt .title .close, .registerCard .title .close {
     cursor: pointer;
     position: absolute;
-    top: 0;
+    top: -6px;
     right: 20px;
     display: inline;
 
     font-size: 58px;
     font-weight: 400;
 }
-.registerCard.alt .title .close{color: #ffffff;}
+.registerCard.alt .title .close{color: #000;}
 .registerCard .title .close{color: #333;}
 .registerCard.alt .title .close:before, .registerCard .title .close:before {
     content: '\00d7';
 }
-.registerCard.alt .input-container input {
-    color: #ffffff;
-}
-.registerCard.alt .input-container input:focus ~ label {
-    color: #ffffff;
-}
-.registerCard.alt .input-container input:focus ~ .bar:before, .registerCard.alt .input-container input:focus ~ .bar:after {
-    background: #ffffff;
-}
-.registerCard.alt .input-container label {
-    color: rgba(255, 255, 255, 0.8);
-}
-.registerCard.alt .input-container .bar {
-    background: rgba(255, 255, 255, 0.8);
-}
+
 .registerCard.alt .button-container button {
     width: 100%;
     background: #ffffff;
-    border-color: #ffffff;
 }
 .registerCard.alt .button-container button span {
-    color: #ed2553;
+    color: #AA076B;
 }
-.registerCard.alt .button-container button:hover {
-    background: rgba(255, 255, 255, 0.9);
-}
+
 .registerCard.alt .button-container button:active:before, .registerCard.alt .button-container button:focus:before {
     display: none;
 }
@@ -349,7 +327,7 @@
     background: #ed2553;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     padding: 10px 20px;
-    color: #ffffff;
+    color: #000;
     text-decoration: none;
     transition:.2s cubic-bezier(.5,0,.1,1);
 }

@@ -12,16 +12,17 @@ var algoliasearch = require('algoliasearch');
 var algoliasearchHelper = require('algoliasearch-helper');
 
 var client   = algoliasearch("D3IWZXC0AH", '3d6a60c228b6e8058770fdf8eab2f652');
-var AgoliaInstance   = algoliasearchHelper(client,'products', {
-    hitsPerPage: 30,
-    hierarchicalFacets: [{
-        name: 'products',
-        attributes: ['category.lvl0', 'category.lvl1', 'category.lvl2', 'category.lvl3', 'categories.lvl4'],
-        sortBy: ['count:desc', 'name:asc']
-    }],
-    facets:[  'sale', 'price.value'],
-    disjunctiveFacets:['color','brand.name','shops','sizes', 'discount' , 'style']
-});
+var AgoliaInstance   = algoliasearchHelper(client, 'products_2',
+    {
+        hitsPerPage: 30,
+        hierarchicalFacets: [{
+            name: 'products',
+            attributes: ['category.lvl0', 'category.lvl1', 'category.lvl2', 'category.lvl3', 'category.lvl4', 'category.lvl5'],
+            sortBy: ['count:desc', 'name:asc']
+        }],
+        facets:[  'sale', 'price.value'],
+        disjunctiveFacets:['color','brand.name','sizes', 'shops', 'discount' , 'style', 'fit', 'material']
+    });
 var sharedHelpers = require('../../public/javascripts/shared-helper');
 
 //HELPER FUNCTIONS
@@ -208,9 +209,15 @@ operations = {
             res.locals.TYPE  = "search"
             res.locals.title = 'search - '+url_parts.query['q'];
         }
-        res.locals.selectedDepartment = url_parts.query['hFR[products][0]'].split(' > ')[0];
+        if(typeof url_parts.query['hFR[products][0]'] !== 'undefined')
+            res.locals.selectedDepartment = url_parts.query['hFR[products][0]'].split(' > ')[0];
 
-        var queryString = decodeURIComponent(url_parts.search).split('?');
+        var tb = url_parts.search;
+        if(tb.indexOf('hFR[products][0]')==-1){
+            tb = tb + 'q=&hFR[products][0]='
+        }
+        var queryString = decodeURIComponent(tb).split('?');
+        console.log(queryString)
         sharedHelpers.helper.urlToState(
             AgoliaInstance,
             queryString[queryString.length-1],

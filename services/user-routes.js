@@ -20,13 +20,12 @@ var routes = [
   /*********REGISTER***************************/
     // Sign up Passport
      ['/signupUser','post',[function(req, res, next) {
-      console.log('SIGN UP',req.body, req.query);
         req.body.role = 'user'
         passport.authenticate('local-signup',function(err, user, info) {
             if (err) { return next(err) }
             if (!user) {
                 var string = encodeURIComponent(info.message);
-                return res.redirect('/sigup?response=' + string);
+                return res.redirect('/signup?response=' + string);
             }
             req.logIn(user, function(err) {
                 console.log('USER LOGGED IN', user)
@@ -46,6 +45,15 @@ var routes = [
           res.render('register', { errorMessage: passedVariable});
         }]
       ],
+
+    [ '/signup-popup', 'post', [
+        function(req, res, next) {
+            req.session.signupPopup = true;
+            req.session.save()
+            console.log('signup POLICY',req.session.signupPopup)
+            res.status(200);
+        }]
+    ],
 
       /*********LOGIN***************************/
         //LOCAL
@@ -97,6 +105,7 @@ var routes = [
     /*********Settings***************************/
     //SETTINGS: START
     ['/settings', 'get', [
+        
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
@@ -207,7 +216,7 @@ var routes = [
     ],
     /*********Favourite Products******************************************/
     [ '/favourite-products', 'get', [
-        session.cookieConcession,
+        
         products.getFavouriteProducts,
         categories.getCategoryTree,
         categories.getDepartment,
@@ -228,7 +237,6 @@ var routes = [
     } ]
     ],
     [ '/kvinna/upptack-nya-favoriter', 'get', [
-        session.cookieConcession,
         session.addFavouriteDepartment,
         categories.getCategoryTree,
         categories.getDepartment,
@@ -244,7 +252,6 @@ var routes = [
     } ]
     ],
     [ '/man/upptack-nya-favoriter', 'get', [
-        session.cookieConcession,
         session.addFavouriteDepartment,
         categories.getCategoryTree,
         categories.getDepartment,
@@ -257,7 +264,7 @@ var routes = [
 
   /*********SHOP***************************/
     [ '/explore', 'get', [
-        session.cookieConcession,
+        
         categories.getCategoryTree,
         categories.getDepartment,
         products.getAlgoliaProducts,
@@ -266,7 +273,7 @@ var routes = [
       } ]
     ],
     [ '/search', 'get', [
-        session.cookieConcession,
+        
         categories.getCategoryTree,
         categories.getDepartment,
         products.getAlgoliaProducts,
@@ -276,7 +283,6 @@ var routes = [
     ],
 
     [ '/view/:id', 'get', [
-        session.cookieConcession,
         categories.getCategoryTree,
         categories.getDepartment,
         products.getProductByID,
@@ -300,7 +306,6 @@ var routes = [
 
 
     [ '/brand/:name', 'get', [
-        session.cookieConcession,
         categories.getCategoryTree,
         products.getAlgoliaProducts,
         categories.getDepartment,
@@ -311,7 +316,7 @@ var routes = [
 
 /*********INFORMATION & CONTACT PAGES *************************************/
     [ '/contact-us', 'get', [
-        session.cookieConcession,
+        
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
@@ -320,7 +325,7 @@ var routes = [
         }]
     ],
     [ '/about-us', 'get', [
-        session.cookieConcession,
+        
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
@@ -329,7 +334,7 @@ var routes = [
         }]
     ],
     [ '/faq', 'get', [
-        session.cookieConcession,
+        
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
@@ -338,7 +343,7 @@ var routes = [
         }]
     ],
     [ '/privacy-policy', 'get', [
-        session.cookieConcession,
+        
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
@@ -348,7 +353,7 @@ var routes = [
     ]
     ],
     [ '/terms-and-conditions', 'get', [
-        session.cookieConcession,
+        
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
@@ -358,7 +363,7 @@ var routes = [
     ]
     ],
     [ '/join-shop', 'get', [
-        session.cookieConcession,
+        
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
@@ -367,7 +372,7 @@ var routes = [
     }]
     ],
     [ '/cookie-policy', 'get', [
-        session.cookieConcession,
+        
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
@@ -383,6 +388,7 @@ var routes = [
             res.status(200);
         }]
     ],
+
 
     [ '/newsletter', 'get', [
         newsletter.sendWeeklyTrial,

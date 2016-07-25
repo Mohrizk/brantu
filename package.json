@@ -2,13 +2,12 @@
   "name": "brantu",
   "version": "1.0.1",
   "description": "Brantu web app",
-  "bin": "./bin/www",
   "private": true,
   "engines": {
     "node": "5.8.0"
   },
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "algoliasearch": "^3.17.0",

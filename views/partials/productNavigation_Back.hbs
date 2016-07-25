@@ -55,7 +55,6 @@
                             </div>
                         </div>
                         <div class="style refinement" >
-
                             {{#if style.content}}
                             <div class="">
                                 <h5>
@@ -75,14 +74,15 @@
                                 </div>
                             </div>
                             {{/if}}
-
                         </div>
                         <div class="price">
                             <h5>
                                 <span class="bg-white text-left all-caps bold">Pris</span>
                             </h5>
-
+                        <div class="cursor">
                             <div id="pricerange"></div>
+                        </div>
+
 
 
                             <div class="sale refinement">
@@ -176,6 +176,32 @@
                             </div>
                             {{/if}}
                         </div>
+
+                        <div class="fit refinement" >
+                            {{#if fit.content}}
+                                <div class="">
+                                    <h5>
+                                        <span class="bg-white text-left all-caps bold">{{fit.header}}</span>
+                                    </h5>
+                                    <div id="listContainer">
+                                        <ul class="list" style="max-height: 160px; overflow: scroll;">
+                                            {{#each fit.content}}
+                                                {{#if (idGenerator this)}}{{/if}}
+                                                {{#if this.isRefined}}
+                                                    <div><input class="input" type="checkbox" value="{{this.name}}" id="{{this.theID}}" checked/> <label class="label" for="{{this.theID}}"><span class="name ">{{this.name}}</span> <span class="count">{{this.count}}</span></label></div>
+                                                {{else}}
+                                                    <div><input class="input" type="checkbox" value="{{this.name}}" id="{{this.theID}}"/> <label class="label" for="{{this.theID}}"><span class="name">{{this.name}}</span><span class="count">{{this.count}}</span></label></div>
+                                                {{/if}}
+                                            {{/each}}
+                                        </ul>
+                                    </div>
+                                </div>
+                            {{/if}}
+                        </div>
+
+
+
+
                         <div class="shops refinement">
                             {{#if shops.content}}
                             <div class="">
@@ -514,6 +540,27 @@
                             {{/if}}
                             {{/each}}
                         </div>
+                        {{/if}}
+                    </div>
+                    <div class="fit refinement" >
+                        {{#if fit.content}}
+                            <div class="">
+                                <h5>
+                                    <span class="bg-white text-left all-caps bold">{{fit.header}}</span>
+                                </h5>
+                                <div id="listContainer">
+                                    <ul class="list" style="max-height: 160px; overflow: scroll;">
+                                        {{#each fit.content}}
+                                            {{#if (idGenerator this)}}{{/if}}
+                                            {{#if this.isRefined}}
+                                                <div><input class="input" type="checkbox" value="{{this.name}}" id="{{this.theID}}" checked/> <label class="label" for="{{this.theID}}"><span class="name ">{{this.name}}</span> <span class="count">{{this.count}}</span></label></div>
+                                            {{else}}
+                                                <div><input class="input" type="checkbox" value="{{this.name}}" id="{{this.theID}}"/> <label class="label" for="{{this.theID}}"><span class="name">{{this.name}}</span><span class="count">{{this.count}}</span></label></div>
+                                            {{/if}}
+                                        {{/each}}
+                                    </ul>
+                                </div>
+                            </div>
                         {{/if}}
                     </div>
                     <div class="shops refinement" >

@@ -12,6 +12,20 @@ module.exports ={
         console.log('',res.locals.cookieConcession)
         next()
     },
+    signupPopup:function(req, res, next){
+        console.log('IN the session the Sign Up concession is ', req.session.signupPopup)
+        if(typeof req.session.signupPopup =='undefined'){
+            res.locals.signupPopup = false;
+            return next()
+        }
+
+        req.session.signupPopup = true;
+        res.locals.signupPopup = true;
+        console.log('',res.locals.signupPopup)
+        next()
+    },
+
+
     addFavouriteDepartment: function(req, res, next){
             req.session.favDepartment = req.url
         next();
