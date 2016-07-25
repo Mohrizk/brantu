@@ -156,8 +156,10 @@
             var registerContainer = $('.registerContainer');
             var registerSection = $('#AuthenticationPopUp');
             var number = (isMobile? 0:50);
-            registerContainer.stop().addClass('active').css({marginTop:800}).animate({marginTop:number}, 800);
-            registerSection.removeClass('hidden').css({opacity:0}).animate({opacity:1}, 500);
+            if(!registerContainer.is(':visible')){
+                registerContainer.stop().addClass('active').css({marginTop:800}).animate({marginTop:number}, 800);
+                registerSection.removeClass('hidden').css({opacity:0}).animate({opacity:1}, 500);
+            }
             sendSignupPopup();
         }, 16000)
     </script>

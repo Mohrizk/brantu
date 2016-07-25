@@ -426,7 +426,7 @@ var COLORS = [
     {
         "key": "petrol",
         "displayName": "Petrol",
-        hex:"#10627a"
+        hex:"#f2f7ce"
 
     },
     {
@@ -447,12 +447,12 @@ var COLORS = [
     {
         "key": "yellow",
         "displayName": "Gul",
-        'hex':'#008000'
+        'hex':'#ffff00'
     },
     {
         "key": "orange",
         "displayName": "Orange",
-        'hex':'#008000'
+        'hex':'#ff7f00'
     },
     {
         "key": "red",

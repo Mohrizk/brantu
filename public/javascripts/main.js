@@ -107,14 +107,8 @@ $(document).ready( function() {
 					$('#ddProductPreviewContainer').html('');
 					$('#ddCol2').show();
 					if(answer.hits.length > 7){
-						var urlLink = getUrlFromState(); var returnLink;
-						if(urlLink.indexOf('search')== -1){
-							returnLink = '/search?'+helper.getStateAsQueryString().split('%20&%20').join('%20%26%20');
-						}
-						else returnLink = urlLink;
-
 						answer.hits.splice(7,1,{
-							linkHref:returnLink,
+							linkHref:'/search?q='+$('#search').val()+'&hFR[products][0]='+DEPARTMENT,
 							more:true,
 							nbHits:answer.nbHits,
 							text:'found search more'
@@ -772,11 +766,13 @@ $(document).ready( function() {
 		searchBar.val($(this).val())
 	})
 	$('#autocompleteForm').submit( function(event){
+
 		event.preventDefault();
 		SEARCH(searchBar);
 	})
 	ddContainer.on( 'click','#ddsearchMore', function(){
-		SEARCH(searchBar)
+		console.log('sup', searchBar.val())
+		$('#autocompleteForm').submit()
 	})
 	mainSection.on( 'click','.closeSearch', function(){})
 	searchSection.on( 'click','.closeSearch', function(){})

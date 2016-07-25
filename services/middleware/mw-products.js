@@ -52,7 +52,6 @@ operations = {
     //API FOR GETTING PRODUCT
     getProductByID  :function(req, res, next){
         var _id = req.params.id;
-        console.log(_id)
         var options = 'brand category otherColors articles articles.shops.shop';
         Products.findOne({"_id":_id}).deepPopulate(options).exec( function(err, product){
             if(err) return next(err);
@@ -102,9 +101,10 @@ operations = {
 
     GetLowerPriceCategoryProducts:function(req,res,next){
         var foundProduct = req.product;
+        console.log('-----------------------')
+        console.log(foundProduct.category)
         var query =    {    "color": new RegExp( '.*' + foundProduct.color  +'.*', 'i'),
-                            "attributes":  { "$in" : foundProduct.attributes },
-                            "category": foundProduct.category,
+                            "category": foundProduct.category._id,
                             "price.value":
                             {
                                 $lt:Math.round(foundProduct.price.value * 1)
@@ -112,6 +112,7 @@ operations = {
                         };
         helper.addAttributesQuery(foundProduct, query);
         Products.find(query).sort( { "price.value": 1 }).lean().exec(function(err, products){
+            console.log('relatedProducts',products.length)
             if(err) return next(err);
             if(products.length == 0) return next();
              var filtered = products.filter(function(product){
@@ -178,7 +179,6 @@ operations = {
             var query = { "_id": { $in: req.session.favProducts }}
             Products.find(query, function(err, productList){
                 if(err) return next(err);
-                console.log(productList);
                 res.locals.productsList = productList
                 next();
             })
@@ -191,7 +191,6 @@ operations = {
 
     getAlgoliaProducts:function(req, res, next){
         var url_parts = url.parse(req.url, true);
-        console.log(url_parts)
         var currentState;
 
         if(url_parts.pathname.indexOf('explore') > -1)  {
@@ -217,7 +216,6 @@ operations = {
             tb = tb + 'q=&hFR[products][0]='
         }
         var queryString = decodeURIComponent(tb).split('?');
-        console.log(queryString)
         sharedHelpers.helper.urlToState(
             AgoliaInstance,
             queryString[queryString.length-1],

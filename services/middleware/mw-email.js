@@ -50,7 +50,7 @@ module.exports = {
                 '<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">'+
                 '</head>'+
                 '<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">'+
-                '<img src="/images/newsletter/welcomebrantumail.jpg" width="600" height="1067" alt="">'+
+                '<img src="http://www.brantu.com/images/newsletter/welcomebrantumail.jpg" width="600" height="1067" alt="">'+
                 '</body>'+
                 ' </html>'
         };

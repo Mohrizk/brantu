@@ -167,8 +167,8 @@ module.exports = {
             populate: [{path:'styleProduct', populate:{path:'brand'}}, {path:'priceProduct', populate:{path:'brand'}}],
             sort:     { startDate: -1 },
             lean:     true,
-            page:       page,
-            limit:     2
+            page:      page,
+            limit:     5
         };
 
         Outfits.paginate(query, options).then(function(result) {

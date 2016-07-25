@@ -5,8 +5,8 @@ var options = [];
 
 var lvl1_cancelOut = ['Premium', 'Sport &amp; träning']
 var lvl2_cancelOut = [
-    {lvl0:'Kvinna', lvl1:'Kläder',lvl2:['Underkläder', 'Sportkläder']},
-    {lvl0:'Kvinna', lvl1:'Accessoarer',lvl2:'Paraplyer'},
+    {lvl0:'Kvinna', lvl1:'Kläder',lvl2:['Sportkläder']},
+    {lvl0:'Kvinna', lvl1:'Accessoarer',lvl2:['Paraplyer']},
     {lvl0:'Kvinna', lvl1:'Skor',lvl2:['Outdoorskor','Skotillbehör', 'Slip-ins & clogs', 'Snörskor', 'Sportskor']},
     {lvl0:'Kvinna', lvl1:'Outlet',lvl2:['Premium', 'Skönhet','Sport &amp; träning']},
     {lvl0:'Kvinna', lvl1:'Skönhet',lvl2:['Mamma', 'Spa']},
@@ -64,7 +64,8 @@ category= {
                                     if (subcategory != null) {
                                         var index = -1;
                                         for (var c in lvl2_cancelOut){
-                                            if(category.name===lvl2_cancelOut[c].lvl1){
+
+                                            if(category.name === lvl2_cancelOut[c].lvl1 && lvl2_cancelOut[c].lvl0 === category.breadcrumb[0].name){
                                                 index = c;
                                             }
                                         }
