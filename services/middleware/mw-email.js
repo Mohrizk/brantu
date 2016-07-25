@@ -13,32 +13,27 @@ var BrantuEmails = {
         })
     },
     granstrom:{
-        email:"granstrom@brantu.com",
-        getToken: xoauth2.createXOAuth2Generator({
-            user: "granstrom@brantu.com",
-            clientId: "144499945264-cll1b6e0cblk785eo4t3ovueq2vqu9u7.apps.googleusercontent.com",
-            clientSecret: "F5b5RXTYQDc0pchX9A1iZvyY",
-            refreshToken: '1/aL-Y-2Nd-o4XHxQgBg-HfRXOfMMZClH-yWXzjqN75a0',
-            accessToken: 'ya29.Ci8rAySrzLXagsBnZ9XrRZMxzzx-5bHtkK1PgiSZUqE9psCheaZ0NQbNMV1073RB2A'
-        })
+        email:"granstrom@brantu.com"
     }
 }
 
-// listen for token updates (if refreshToken is set)
-// you probably want to store these to a db
-var generator = BrantuEmails.granstrom.getToken;
-
-
-// login
-var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        xoauth2: generator
-    }
+var generator = xoauth2.createXOAuth2Generator({
+    user: BrantuEmails.granstrom.email,
+    clientId: "144499945264-cll1b6e0cblk785eo4t3ovueq2vqu9u7.apps.googleusercontent.com",
+    clientSecret: "F5b5RXTYQDc0pchX9A1iZvyY",
+    refreshToken: '1/chTJ8pYfD3ExkrFeVAatUz96ABbVKgFM1OgOvDpVnXI',
+    accessToken: 'ya29.Ci8rA3nnoO-AQ8VwIdjggRx3Whsn3v-u1-ug0Uh7gAcwcRIdQyGXKwobUBUIUEZY3A'
 });
+
 //refreshToken: "1/WXHbZ-QDmMPuWEEXN406k_eL6D04kWNugAyWlwzxYak"
 module.exports = {
     sendSignupConfirmation: function(userEmail, callback){
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                xoauth2: generator
+            }
+        });
         var mailOptions = {
             from: BrantuEmails.granstrom.email,
             to: userEmail,
@@ -66,6 +61,12 @@ module.exports = {
         });
     },
     sendNewsLetters:function(department,newsletter,callback){
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                xoauth2: generator
+            }
+        });
 
         var mailOptions = {
             from: BrantuEmails.granstrom.email,
