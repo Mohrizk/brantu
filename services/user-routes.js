@@ -51,6 +51,7 @@ var routes = [
             req.session.signupPopup = true;
             req.session.save()
             res.status(200);
+            res.end()
         }]
     ],
 
@@ -421,6 +422,7 @@ var routes = [
             req.session.save()
             console.log('COOKIE POLICY',req.session.cookieConcession)
             res.status(200);
+            res.end();
         }]
     ],
 
