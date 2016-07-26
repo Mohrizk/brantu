@@ -352,7 +352,7 @@ $(document).ready( function() {
 	}
 	function getUrlFromState(){
 
-		var pattern = "'%20&%20'",
+		var pattern = "%20&%20",
 		re = new RegExp(pattern, "g");
 		var helperString = helper.getStateAsQueryString().replace(re, '%20%26%20')
 			//helperString = helperString.replace(/'%20&%20').join('%20%26%20');

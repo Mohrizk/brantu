@@ -72,15 +72,21 @@ var register = function(Handlebars) {
             return false;
         },
         joinBreadCrumb: function(array, url){
+            console.log('SUP');
             var breadcrumb = "";
+            console.log('THE ARRAY LENGTH', array.length);
             for (var a in array){
                 if(typeof array[a] !== 'undefined'){
-                    if(a == array.length-1) breadcrumb += array[a].name
-                    else breadcrumb += array[a].name+'%20>%20'
+                    if(typeof array[a].name !== 'undefined'){
+                        if(a == array.length-1) breadcrumb += array[a].name
+                        else breadcrumb += array[a].name+'%20>%20'
+                    }
                 }
             }
             if(url == 'true'){
-                 return breadcrumb.split(" & ").join("%20%26%20")
+                var pattern = " & ",
+                    re = new RegExp(pattern, "g");
+                 return breadcrumb.replace(re, '%20%26%20')
             }
             else {
                 return breadcrumb;
