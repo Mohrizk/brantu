@@ -5,22 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="319a9c44-cb0a-494b-a470-9e86d210bc29" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/forgot.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/newsletter/welcomebrantumail.jpg" afterPath="$PROJECT_DIR$/public/images/newsletter/welcomebrantumail.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/hb-helper.js" afterPath="$PROJECT_DIR$/public/javascripts/hb-helper.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/main.js" afterPath="$PROJECT_DIR$/public/javascripts/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/shared-helper.js" afterPath="$PROJECT_DIR$/public/javascripts/shared-helper.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/middleware/mw-categories.js" afterPath="$PROJECT_DIR$/services/middleware/mw-categories.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/middleware/mw-email.js" afterPath="$PROJECT_DIR$/services/middleware/mw-email.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/middleware/mw-products.js" afterPath="$PROJECT_DIR$/services/middleware/mw-products.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/middleware/mw-users.js" afterPath="$PROJECT_DIR$/services/middleware/mw-users.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/models/user.js" afterPath="$PROJECT_DIR$/services/models/user.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/user-routes.js" afterPath="$PROJECT_DIR$/services/user-routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/favourite-products.hbs" afterPath="$PROJECT_DIR$/views/favourite-products.hbs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/nav.hbs" afterPath="$PROJECT_DIR$/views/partials/nav.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/settings-account.hbs" afterPath="$PROJECT_DIR$/views/partials/settings-account.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/side-menu.hbs" afterPath="$PROJECT_DIR$/views/partials/side-menu.hbs" />
     </list>
     <ignored path="brantu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -141,22 +126,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nav.hbs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="nav.hbs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/partials/nav.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.173913">
-              <caret line="328" column="81" selection-start-line="328" selection-start-column="81" selection-end-line="328" selection-end-column="81" />
+            <state vertical-scroll-proportion="0.47325101">
+              <caret line="334" column="213" selection-start-line="334" selection-start-column="213" selection-end-line="334" selection-end-column="213" />
               <folding>
-                <marker date="1469533832000" expanded="true" signature="23548:23563" placeholder="..." />
+                <marker date="1469534141000" expanded="true" signature="23543:23558" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.18442623">
+            <state vertical-scroll-proportion="-5.869565">
               <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
               <folding />
             </state>
@@ -303,8 +288,8 @@
         <option value="$PROJECT_DIR$/services/middleware/mw-products.js" />
         <option value="$PROJECT_DIR$/public/javascripts/shared-helper.js" />
         <option value="$PROJECT_DIR$/public/javascripts/main.js" />
-        <option value="$PROJECT_DIR$/views/partials/nav.hbs" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/views/partials/nav.hbs" />
       </list>
     </option>
   </component>
@@ -1225,21 +1210,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/nav.hbs">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.173913">
-          <caret line="328" column="81" selection-start-line="328" selection-start-column="81" selection-end-line="328" selection-end-column="81" />
-          <folding>
-            <marker date="1469533832000" expanded="true" signature="23548:23563" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="-5.869565">
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/views/partials/nav.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18442623">
-          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-          <folding />
+        <state vertical-scroll-proportion="0.47325101">
+          <caret line="334" column="213" selection-start-line="334" selection-start-column="213" selection-end-line="334" selection-end-column="213" />
+          <folding>
+            <marker date="1469534141000" expanded="true" signature="23543:23558" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
