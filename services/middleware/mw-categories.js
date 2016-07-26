@@ -58,7 +58,7 @@ category= {
                     var temp = new Array();
                     if(categorylist != null){
                         async.each(categorylist, function (category, callback) {
-                            Categories.find({parentKey: category.key}, {key: 1, name: 1, breadcrumb: 1},{sort:{name: 1}}).cache().exec(function (err, subcategory) {
+                            Categories.find({parentKey: category.key}, {key: 1, name: 1, breadcrumb: 1},{sort:{name: 1}}).lean().cache().exec(function (err, subcategory) {
                                 if (err) {callback(err);}
                                 else {
                                     if (subcategory != null) {
@@ -75,7 +75,8 @@ category= {
                                                 return lvl2_cancelOut[index].lvl2.indexOf(item.name) == -1;
                                             });
                                         }
-                                        else subCategory= subcategory
+                                        else subCategory= subcategory;
+
                                         temp.push({'category': category, 'subCategory': subCategory});
                                     }
                                     callback();

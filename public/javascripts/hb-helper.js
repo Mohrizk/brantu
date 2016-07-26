@@ -74,8 +74,10 @@ var register = function(Handlebars) {
         joinBreadCrumb: function(array, url){
             var breadcrumb = "";
             for (var a in array){
-                if(a == array.length-1) breadcrumb += array[a].name
-                else breadcrumb += array[a].name+'%20>%20'
+                if(typeof array[a] !== 'undefined'){
+                    if(a == array.length-1) breadcrumb += array[a].name
+                    else breadcrumb += array[a].name+'%20>%20'
+                }
             }
             if(url == 'true'){
                  return breadcrumb.split(" & ").join("%20%26%20")
