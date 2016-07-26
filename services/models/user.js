@@ -1,11 +1,18 @@
 var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
+try {
+    crypto = require('crypto');
+} catch (err) {
+    console.log('crypto support is disabled!');
+}
 var mongoosePaginate = require('mongoose-paginate');
 var User = mongoose.Schema({
         local: {
                email    : String,
                name     : String,
-               password : String
+               password : String,
+               resetPasswordToken: String,
+               resetPasswordExpires: Date
 
         },
         facebook: {
@@ -29,7 +36,20 @@ User.methods.generateHash = function(password) {
 };
 
 // checking if password is valid
+User.methods.createToken = function(callback) {
+    var user = this;
+    crypto.randomBytes(20, function(err, buf) {
+        user.local.resetPasswordToken =  buf.toString('hex');
+        user.local.resetPasswordExpires = Date.now() + 3600000;
+        user.save(function(err) {
+            callback()
+        });
+    });
+};
+
+// checking if password is valid
 User.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.local.password);
 };
+
 module.exports = mongoose.model('User', User, 'users');

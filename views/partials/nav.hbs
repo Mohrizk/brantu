@@ -326,13 +326,13 @@
                             <div class=" category-expand-container hidden  padding-1v" expand-parentKey="{{category.key}}">
                                 <div class="category-expand">
                                     <div class="">
-                                        <a href="/explore?q=&hFR[products][0]={{joinBreadCrumb category.breadcrumb true}}&page=0"><h4 class="sbold text-spaced-medium all-caps b-b b-white text-white">{{andfixer category.name}}</h4></a>
+                                        <a href="/explore?q=&hFR[products][0]={{{joinBreadCrumb category.breadcrumb 'true'}}}&page=0"><h4 class="sbold text-spaced-medium all-caps b-b b-white text-white">{{andfixer category.name}}</h4></a>
                                         <div class="inline">
 
                                             <div class="desktopNavColoumns p-b-20">
                                                 <ul>
                                                     {{#each subCategory}}
-                                                        <li class="full-width  b-b m-b-10" style="border-color: rgba(255,255,255,0.1)"><a class=" fs-14  bold"  href="/explore?q=&hFR[products][0]={{joinBreadCrumb this.breadcrumb true}}&page=0">
+                                                        <li class="full-width  b-b m-b-10" style="border-color: rgba(255,255,255,0.1)"><a class=" fs-14  bold"  href="/explore?q=&hFR[products][0]={{{joinBreadCrumb this.breadcrumb 'true'}}}&page=0">
                                                           {{andfixer this.name}}
                                                         </a></li>
                                                     {{/each}}

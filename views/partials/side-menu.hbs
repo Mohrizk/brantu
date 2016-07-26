@@ -77,11 +77,11 @@
                                             <span class="arrow"></span></a>
                                         <ul class="sub-menu">
                                                 <li>
-                                                    <a class=" bold text-black" href="/explore?q=&hFR[products][0]={{joinBreadCrumb category.breadcrumb}}&page=0"  data-page-ref>Alla</a>
+                                                    <a class=" bold text-black" href="/explore?q=&hFR[products][0]={{joinBreadCrumb category.breadcrumb 'true'}}&page=0"  data-page-ref>Alla</a>
                                                 </li>
                                             {{#each subCategory}}
                                                 <li>
-                                                    <a class=" bold text-black" href="/explore?q=&hFR[products][0]={{joinBreadCrumb this.breadcrumb}}&page=0" data-page-ref>{{andfixer this.name}}</a>
+                                                    <a class=" bold text-black" href="/explore?q=&hFR[products][0]={{joinBreadCrumb this.breadcrumb 'true'}}&page=0" data-page-ref>{{andfixer this.name}}</a>
                                                 </li>
                                             {{/each }}
                                         </ul>

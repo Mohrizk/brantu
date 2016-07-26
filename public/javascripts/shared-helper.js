@@ -3,23 +3,20 @@ var renderHelper = {
         helper.clearRefinements();
         helper.setStateFromQueryString(stringQuery);
         //IF CATEGORY HAS ' & '
-        var tempPage=  helper.getPage();
-        if(stringQuery.indexOf(' & ') >-1){
+        //var tempPage=  helper.getPage();
+        /*if(stringQuery.indexOf(' & ') >-1){
             var array= stringQuery.split('hFR[products][0]=');
             var array2 =array[1].split('&');
             var path = array2[0]+'&'+array2[1];
             helper.clearRefinements('products')
             helper.toggleRefinement('products', path);
-        }
-
-
-
+        }*/
         //IF BRAND
 
         if(currentState.brand && brandName !== null && typeof brandName !== 'undefined'){
             helper.addDisjunctiveFacetRefinement('brand.name', brandName);
         }
-        helper.setPage(tempPage);
+        //helper.setPage(tempPage);
     },
     mapColor: function (array, values) {
         var x = [];

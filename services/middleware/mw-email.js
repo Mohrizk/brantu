@@ -13,17 +13,30 @@ var BrantuEmails = {
         })
     },
     granstrom:{
-        email:"granstrom@brantu.com"
+        email:"granstrom@brantu.com",
+        getToken: xoauth2.createXOAuth2Generator({
+            user: "granstrom@brantu.com",
+            clientId: "144499945264-cll1b6e0cblk785eo4t3ovueq2vqu9u7.apps.googleusercontent.com",
+            clientSecret: "F5b5RXTYQDc0pchX9A1iZvyY",
+            refreshToken: "1/i1zVSnAvmKmiBnna1AmEQdoyBUhmO37_SsJD_U964Ak",
+        })
+    },
+    noReply:{
+        email:"no-replay@brantu.com",
+        getToken: xoauth2.createXOAuth2Generator({
+            user: "no-replay@brantu.com",
+            clientId: "144499945264-cll1b6e0cblk785eo4t3ovueq2vqu9u7.apps.googleusercontent.com",
+            clientSecret: "F5b5RXTYQDc0pchX9A1iZvyY",
+            refreshToken: '1/qWkBDNLAuNS-jGc4AkCecwY5irxKpTA_MLW9J9dI6hQ',
+        })
     }
 }
 
-var generator = xoauth2.createXOAuth2Generator({
-    user: BrantuEmails.granstrom.email,
-    clientId: "144499945264-cll1b6e0cblk785eo4t3ovueq2vqu9u7.apps.googleusercontent.com",
-    clientSecret: "F5b5RXTYQDc0pchX9A1iZvyY",
-    refreshToken: '1/chTJ8pYfD3ExkrFeVAatUz96ABbVKgFM1OgOvDpVnXI',
-    accessToken: 'ya29.Ci8rA3nnoO-AQ8VwIdjggRx3Whsn3v-u1-ug0Uh7gAcwcRIdQyGXKwobUBUIUEZY3A'
-});
+
+
+var generatorRizk    = BrantuEmails.rizk.getToken;
+var generatorFredrik = BrantuEmails.granstrom.getToken;
+var generatorNoReply = BrantuEmails.noReply.getToken;
 
 //refreshToken: "1/WXHbZ-QDmMPuWEEXN406k_eL6D04kWNugAyWlwzxYak"
 module.exports = {
@@ -31,7 +44,7 @@ module.exports = {
         var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                xoauth2: generator
+                xoauth2: generatorFredrik
             }
         });
         var mailOptions = {
@@ -47,7 +60,7 @@ module.exports = {
                 '<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">'+
                 '<img src="http://www.brantu.com/images/newsletter/welcomebrantumail.jpg" width="600" height="1067" alt="">'+
                 '</body>'+
-                ' </html>'
+                '</html>'
         };
 
         transporter.sendMail(mailOptions, function(error, response) {
@@ -64,10 +77,9 @@ module.exports = {
         var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                xoauth2: generator
+                xoauth2: generatorNoReply
             }
         });
-
         var mailOptions = {
             from: BrantuEmails.granstrom.email,
             to: 'rizk@brantu.com',
@@ -75,7 +87,33 @@ module.exports = {
             generateTextFromHTML: true,
             html:newsletter
         };
+        transporter.sendMail(mailOptions, function(error, response) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log(response);
+            }
+            transporter.close();
+            callback(response);
+        });
 
+    },
+    sendTokenLink:function(userEmail, link, callback){
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                xoauth2: generatorRizk
+            }
+        });
+        var mailOptions = {
+            from: BrantuEmails.noReply.email,
+            to: userEmail,
+            subject: "Reset Password",
+            text:'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+            'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+            link + '\n\n' +
+            'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+        };
         transporter.sendMail(mailOptions, function(error, response) {
             if (error) {
                 console.log(error);

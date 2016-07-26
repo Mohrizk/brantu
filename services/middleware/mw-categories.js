@@ -29,7 +29,7 @@ category= {
         async.each( category['departments'] , function(category, callback) {
             async.waterfall([
                 function(callback){
-                    Categories.findOne({key: category},{'key':1, 'name': 1, breadcrumb: 1}, function (err, mainCategory) {
+                    Categories.findOne({key: category}, {'key':1, 'name': 1, breadcrumb: 1}).lean().exec(function (err, mainCategory) {
                         if(err) callback(err);
                         else callback(null, mainCategory);
                     });
@@ -37,7 +37,7 @@ category= {
                 function(mainCategory, callback){
                     if(mainCategory != null){
                         Categories.find({"parentKey": mainCategory.key},
-                            {'key': 1, 'name': 1, breadcrumb: 1},{sort:{name: 1}}).cache().exec( function (err, categorylist) {
+                            {'key': 1, 'name': 1, breadcrumb: 1},{sort:{name: 1}}).lean().exec( function (err, categorylist) {
                             if(err) callback(err);
                             else{
                                 var categorylist = categorylist.filter(function(item)

@@ -70,5 +70,24 @@ module.exports = {
             }
 
         });
-    }
+    },
+    forgotPassword:function (req, res, next) {
+        console.log( req.query);
+        console.log( req.body);
+        User.findOne({"local.email" : req.body.email}, function (err, user) {
+            if(err) return next(err);
+            if (user == null) return next();
+            user.createToken(function(){
+                console.log(user.local)
+                require('./mw-email').sendTokenLink(
+                    user.local.email,
+                    'http://'+req.headers.host+'/reset/'+user.local.resetPasswordToken,
+                    function(){
+
+                    })
+            })
+
+        });
+    },
+
 }

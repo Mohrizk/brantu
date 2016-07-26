@@ -78,6 +78,23 @@ var routes = [
           res.render('login', { errorMessage: passedVariable});
         }]
       ],
+    // LOGIN PAGE
+    [ '/forget', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        function(req, res, next) {
+            res.locals.title = "Login - forgot password";
+            res.render('forgot');
+        }]
+    ],
+
+    [ '/forget', 'post', [
+        user.forgotPassword,
+        function(req, res, next) {
+            res.locals.title = "Login to Brantu";
+            res.render('login', { errorMessage: passedVariable});
+        }]
+    ],
        //FACEBOOK
       [ '/auth/facebook', 'get', [
           passport.authenticate('facebook',{ scope : 'email' })

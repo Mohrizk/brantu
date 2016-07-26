@@ -190,6 +190,7 @@ operations = {
     },
 
     getAlgoliaProducts:function(req, res, next){
+        console.log(req.url)
         var url_parts = url.parse(req.url, true);
         var currentState;
 
@@ -215,7 +216,9 @@ operations = {
         if(tb.indexOf('hFR[products][0]')==-1){
             tb = tb + 'q=&hFR[products][0]='
         }
-        var queryString = decodeURIComponent(tb).split('?');
+        var queryString = tb.split('?');
+        console.log(queryString)
+        console.log('-----------')
         sharedHelpers.helper.urlToState(
             AgoliaInstance,
             queryString[queryString.length-1],

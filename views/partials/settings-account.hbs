@@ -1,7 +1,7 @@
 <div class="padding-30 auto-overflow">
    <h2>Account</h2>
-    <div class="m-t-30 b-t">
-        <form id="changeNameForm" action="/settings/change/name">
+    <!--<div class="m-t-30 b-t">
+      <form id="changeNameForm" action="/settings/change/name">
             <h4>Change Name</h4>
             <div class="row">
                 <div class="col-xs-3">Name</div>
@@ -9,8 +9,9 @@
             </div>
             <button type="submit" id="changeNameSubmitButton" class="btn btn-info m-t-20" style="display: none;">Save Changes</button>
         </form>
-    </div>
-    {{#if user.local.name}}
+    </div>-->
+
+    {{#if user.local}}
     <div class="m-t-30 m-b-30 b-t b-b">
         {{debug accountStatus}}
         {{#if (stringContains accountStatus 'password-dont-match')}}

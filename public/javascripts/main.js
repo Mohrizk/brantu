@@ -62,7 +62,7 @@ if(TYPE !=null && TYPE!==''){
 				currentState.category=false;
 				break;
 		}
-		renderHelper.urlToState(helper,decodeURIComponent(window.location.href.split('?')[1]),currentState,brandName)
+		renderHelper.urlToState(helper,window.location.href.split('?')[1],currentState,brandName)
 	}
 
 
@@ -195,6 +195,7 @@ $(document).ready( function() {
 					$('#ddCol2').show()
 					if(answer.nbHits > 4){
 						answer.hits.splice(3,1,{
+							linkHref:'/search?q='+$('#search').val()+'&hFR[products][0]='+DEPARTMENT,
 							more:true,
 							nbHits:answer.nbHits,
 							text:'found search more'
@@ -350,7 +351,12 @@ $(document).ready( function() {
 		location.href = context.path;
 	}
 	function getUrlFromState(){
-		var helperString = helper.getStateAsQueryString().split('%20&%20').join('%20%26%20');
+
+		var pattern = "'%20&%20'",
+		re = new RegExp(pattern, "g");
+		var helperString = helper.getStateAsQueryString().replace(re, '%20%26%20')
+			//helperString = helperString.replace(/'%20&%20').join('%20%26%20');
+
 		var path ;
 		var page = '&page='+helper.getPage();
 		if(currentState.brand){
@@ -362,14 +368,16 @@ $(document).ready( function() {
 
 
 		var x = '/'+path+helperString+page;
+		console.log(x)
+		console.log(helper.getStateAsQueryString())
+		console.log('---------')
 
-		return '/'+path+helperString+ page;
+		return x;
 	}
 	function saveLastPath(context, next){
 		returnPath = context.path;
 		next()
 	}
-
 	function setStateFromUrl(context, next){
 		var stringQuery = context.querystring;
 		renderHelper.urlToState(helper, stringQuery, currentState, context.params.name);
@@ -576,9 +584,10 @@ $(document).ready( function() {
 		page(getUrlFromState())
 	});
 	body.on( 'click', ' .breadcrumb li a', function (event) {
+
 		var value = $(this).attr('value');
 		helper.clearRefinements('products').toggleRefinement('products', value);
-		var path = (currentState.search? 'search':'explore')
+		event.stopPropagation();event.preventDefault();
 		page(getUrlFromState())
 	});
 	body.on( 'click', ' .brands input', function (event) {
