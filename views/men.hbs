@@ -73,6 +73,7 @@
                             <div class="feed" data-page="1" data-total-pages="{{feed.pages}}">
                                 {{> feed_Back}}
                             </div>
+                        {{#unless (compareNumber  1 feed.pages)}}
                             <div class="text-center p-t-20 p-b-20">
                                 <btn id="loadMoreFeed" class="btn btn-velvet bold circle">
                                     Load More
@@ -82,6 +83,7 @@
                                     <img src='/images/progress/progress-circle-danger.svg' style="width:60px; height: 60px;"/>
                                 </div>
                             </div>
+                        {{/unless}}
                         </div>
                     </div>
                     <div class="col-md hidden-sm hidden-xs relative">

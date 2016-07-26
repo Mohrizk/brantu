@@ -11,9 +11,6 @@ var User = mongoose.Schema({
                email    : String,
                name     : String,
                password : String,
-               resetPasswordToken: String,
-               resetPasswordExpires: Date
-
         },
         facebook: {
                id       : String,
@@ -23,6 +20,8 @@ var User = mongoose.Schema({
                picture  : String,
                age      : String
         },
+        resetPasswordToken: String,
+         resetPasswordExpires: Date,
         role:String,
         newsletter:  Boolean,
         createDate:  { type: Date, default: Date.now },
@@ -39,8 +38,8 @@ User.methods.generateHash = function(password) {
 User.methods.createToken = function(callback) {
     var user = this;
     crypto.randomBytes(20, function(err, buf) {
-        user.local.resetPasswordToken =  buf.toString('hex');
-        user.local.resetPasswordExpires = Date.now() + 3600000;
+        user.resetPasswordToken =  buf.toString('hex');
+        user.resetPasswordExpires = Date.now() + 3600000;
         user.save(function(err) {
             callback()
         });

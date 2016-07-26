@@ -18,7 +18,9 @@ var BrantuEmails = {
             user: "granstrom@brantu.com",
             clientId: "144499945264-cll1b6e0cblk785eo4t3ovueq2vqu9u7.apps.googleusercontent.com",
             clientSecret: "F5b5RXTYQDc0pchX9A1iZvyY",
-            refreshToken: "1/i1zVSnAvmKmiBnna1AmEQdoyBUhmO37_SsJD_U964Ak",
+            refreshToken: "1/sQJHYoA7lIzZ-kRgyTtu26CQNKTSD63DgzFemB7GnVk",
+            accessToken: 'ya29.Ci8sAxtCGkw26hybClcoVb6HRd94izdjdzXBlC4N8PlOT-3lH1Hgj_WBOYGvdOSeYw'
+
         })
     },
     noReply:{
@@ -27,7 +29,9 @@ var BrantuEmails = {
             user: "no-replay@brantu.com",
             clientId: "144499945264-cll1b6e0cblk785eo4t3ovueq2vqu9u7.apps.googleusercontent.com",
             clientSecret: "F5b5RXTYQDc0pchX9A1iZvyY",
-            refreshToken: '1/qWkBDNLAuNS-jGc4AkCecwY5irxKpTA_MLW9J9dI6hQ',
+            refreshToken: '1/fuCdrH2_SzCb__NePslGgpjrNh2fmdaTvPbGJXgfKYY',
+            accessToken: 'ya29.Ci8sAwPv92xcdfuPzvgr84YqNB4frgDT1ydLxKeEjt5N1HXqHBhOHRfaLBzf2zNm7A'
+
         })
     }
 }

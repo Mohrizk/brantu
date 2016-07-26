@@ -1,0 +1,71 @@
+
+
+<!-- START PAGE CONTENT WRAPPER -->
+<div class="page-content-wrapper">
+    <section id="mainSection" class="no-overflow bg-Image relative" style="background-image: url('/images/home/authenticate.jpg');">
+        <!-- START PAGE CONTENT -->
+        <div class="content  ">
+            <div class="registerContainer active" style="margin-top: 50px;">
+                    <div class="registerCard" id="forgetMain" style=" ">
+                        <div class="fs-12 title text-center relative">
+                            <img src="/images/brantublacklogo.svg" alt="logo" class="authenticateLogo"/>
+                            <h5 class=" bold text-spaced-medium all-caps text-center">
+                                Nytt lösenord
+                            </h5>
+                            <p class="fs-10 smallCaps text-center"><font class="capitalize">skriv ditt nya lösenord</font> </p>
+                        </div>
+                        <form id="resetForm" action="/reset/{{userToken}}" method="post">
+                            <p class="text-center text-red" id="matchPasswordReset" style="display: none;">Make sure your password match</p>
+                            <div class="input-container">
+                                <input type="password" name="password" id="passwordSignupPage"  required="required"/>
+                                <label for="passwordSignupPage" >Lösenord</label>
+                                <div class="bar"></div>
+                            </div>
+
+                            <div class="input-container"  style="margin-bottom: 20px;">
+                                <input type="password"  id="passwordSignupPageConfirm" required="required"/>
+                                <label for="passwordSignupPageConfirm">Upprepa lösenord</label>
+                                <div class="bar"></div>
+                            </div>
+                            <div class="button-container p-t-10">
+                                <button id="submitRegistration" ><span >återställ</span></button>
+                            </div>
+                        </form>
+                    </div>
+            </div>
+
+            <div class=" fixed" id="resetLoading" style="display: none; top:0; bottom:0; right:0; left:0; z-index:1500;">
+                <div class="loading full-height full-width gradient-velvet-opacity" >
+                    <div class="bgBlurEffect">
+                        <div class="text-center" style="padding-top: 100px;" >
+                            <div class=" text-center ">
+                                <h3 class="text-white">ett ögonblick</h3>
+                                <img src="/images/progress/progress-circle-lg-white.svg" style="width:40px; height:40px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    {{>loading}}
+    {{>footer}}
+    <!-- END PAGE CONTENT -->
+</div>
+<!-- END PAGE CONTENT WRAPPER -->
+<script>
+    $('#resetForm').on('submit', function(e){
+        e.preventDefault();
+        if($('#passwordSignupPage').val()=== $('#passwordSignupPageConfirm').val()){
+            $('#resetForm')[0].submit();
+            $('#resetLoading').show();
+        }
+        else{
+            $('#matchPasswordReset').show();
+        }
+
+    })
+</script>
+
+

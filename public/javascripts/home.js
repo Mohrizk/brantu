@@ -16,7 +16,11 @@
         $('#loadMoreFeed').on('click', function(){
             var currentPage = parseInt(feedSelector.attr('data-page'));
             var totalPage = parseInt(feedSelector.attr('data-total-pages'));
-            if(currentPage >= totalPage) return;
+            if(currentPage >= totalPage){
+                console.log('uhgg')
+                $('#loadMoreFeed').hide();
+                return;
+            }
             $('#loadMoreFeed').hide();
             $('#moreFeedLoader').fadeIn();
 

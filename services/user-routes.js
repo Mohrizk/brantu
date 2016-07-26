@@ -50,7 +50,6 @@ var routes = [
         function(req, res, next) {
             req.session.signupPopup = true;
             req.session.save()
-            console.log('signup POLICY',req.session.signupPopup)
             res.status(200);
         }]
     ],
@@ -83,16 +82,35 @@ var routes = [
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
+            var forgetError = req.query.forgetError;
+            var valid = req.query.valid;
             res.locals.title = "Login - forgot password";
-            res.render('forgot');
+            if(valid == 'true') res.locals.valid =true
+            res.render('forgot', {forgetMessage: forgetError});
         }]
     ],
-
     [ '/forget', 'post', [
         user.forgotPassword,
         function(req, res, next) {
             res.locals.title = "Login to Brantu";
-            res.render('login', { errorMessage: passedVariable});
+            return res.redirect('/forget?valid='+req.valid+'&forgetError='+req.forgetError);
+        }]
+    ],
+    [ '/reset/:token', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        user.findUserToken,
+        function(req, res, next) {
+            res.render('reset', {
+                user: req.user
+            });
+        }]
+    ],
+    [ '/reset/:token', 'post', [
+        user.findUserToken,
+        user.resetPassword,
+        function(req, res, next) {
+            res.redirect('/');
         }]
     ],
        //FACEBOOK

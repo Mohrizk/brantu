@@ -30,8 +30,15 @@ var register = function(Handlebars) {
             }
             return false;
         },
+        compareNumber: function(passedNum, secondNum) {
+            if(passedNum!=null &&  secondNum!=null){
+                if(passedNum === secondNum){
+                    return true;
+                }
+            }
+            return false;
+        },
         stringContains: function(passedString, expression){
-            console.log(passedString, expression)
           if(passedString.indexOf(expression)>-1)
           return true;
             else false;
@@ -72,9 +79,7 @@ var register = function(Handlebars) {
             return false;
         },
         joinBreadCrumb: function(array, url){
-            console.log('SUP');
             var breadcrumb = "";
-            console.log('THE ARRAY LENGTH', array.length);
             for (var a in array){
                 if(typeof array[a] !== 'undefined'){
                     if(typeof array[a].name !== 'undefined'){

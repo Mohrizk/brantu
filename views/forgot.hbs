@@ -6,28 +6,52 @@
             <!-- START PAGE CONTENT -->
             <div class="content  ">
                 <div class="registerContainer active" style="margin-top: 50px;">
-                    <div class="registerCard" style=" ">
-                        <div class="fs-12 title text-center relative">
-                            <img src="/images/brantublacklogo.svg" alt="logo" class="authenticateLogo"/>
-                            <h5 class=" bold text-spaced-medium all-caps text-center">
-                                Forgot Password
-                            </h5>
-                            <p>We will send you an email with a link to change your password</p>
-                        </div>
-                        <form action="/forget" method="post">
-                            <div class="input-container">
-                                <input type="email" name="email" id="emailForgot" required="required"/>
-                                <label for="emailForgot" >Din e-postadress</label>
-                                <div class="bar"></div>
+                    {{debug error}}
+                    {{#if valid}}
+                            <div class="registerCard" id="forgetThankYou">
+                                <div class="fs-12 title text-center relative">
+                                    <img src="/images/brantublacklogo.svg" alt="logo" class="authenticateLogo"/>
+                                    <h5 class=" bold text-spaced-medium all-caps text-center">
+                                        Tack! Du kommer snart att få ett mail från oss
+                                    </h5>
+                                </div>
                             </div>
-                            <div class="button-container p-t-10">
-                                <button id="submitRegistration" ><span >Send Email</span></button>
+                    {{else}}
+                            <div class="registerCard" id="forgetMain" style=" ">
+                                <div class="fs-12 title text-center relative">
+                                    <img src="/images/brantublacklogo.svg" alt="logo" class="authenticateLogo"/>
+                                    <h5 class=" bold text-spaced-medium all-caps text-center">
+                                        Har du glömt ditt lösenord?
+                                    </h5>
+                                    <p class="fs-10 smallCaps text-center"><font class="capitalize">Låt</font> oss hjälpa dig att komma in på ditt konto. Ange bara din e-postadress för återställning.</p>
+                                    {{#if forgetMessage}}
+                                        <p class="text-red"> Fyll i en giltig epostadress.</p>
+                                    {{/if}}
+                                </div>
+                                <form id="forgtForm" action="/forget" method="post">
+                                    <div class="input-container">
+                                        <input type="email" name="email" id="emailForgot" required="required"/>
+                                        <label for="emailForgot" >Din e-postadress</label>
+                                        <div class="bar"></div>
+                                    </div>
+                                    <div class="button-container p-t-10">
+                                        <button id="submitRegistration" ><span >Skicka</span></button>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
-
-
-
-                    </div>
+                            <div class=" fixed" id="forgetLoading" style="display: none; top:0; bottom:0; right:0; left:0; z-index:1500;">
+                                <div class="loading full-height full-width gradient-velvet-opacity" >
+                                    <div class="bgBlurEffect">
+                                        <div class="text-center" style="padding-top: 100px;" >
+                                            <div class=" text-center ">
+                                                <h3 class="text-white">ett ögonblick</h3>
+                                                <img src="/images/progress/progress-circle-lg-white.svg" style="width:40px; height:40px">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    {{/if}}
                 </div>
 
             </div>
@@ -37,5 +61,11 @@
         <!-- END PAGE CONTENT -->
     </div>
     <!-- END PAGE CONTENT WRAPPER -->
+    <script>
+        $('#forgtForm').on('submit', function(){
+            $('#forgetLoading').show();
+
+        })
+    </script>
 
 

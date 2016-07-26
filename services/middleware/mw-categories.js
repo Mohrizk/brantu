@@ -13,6 +13,8 @@ var lvl2_cancelOut = [
     {lvl0:'Kvinna', lvl1:'Sport &amp; träning',lvl2:[ 'Ryggsäckar', 'Utrustning','Väskor']},
 
     {lvl0:'Man', lvl1:'Accessoarer',lvl2:[ 'Hörlurar']},
+    {lvl0:'Man', lvl1:'Outlet',lvl2:[ 'Skönhet']},
+    {lvl0:'Man', lvl1:'Skönhet',lvl2:[ 'Dofter','Kroppen', 'Solprodukter']},
     {lvl0:'Man', lvl1:'Kläder',lvl2:[ 'Träningskläder']},
     {lvl0:'Man', lvl1:'Skor',lvl2:[ 'cc.3519.name', 'TOFFLOR & INNESKOR','Outdoorskor', 'Skotillbehör', 'Tofflor & inneskor', 'Tofflor &amp; inneskor','Solprodukter']},
 

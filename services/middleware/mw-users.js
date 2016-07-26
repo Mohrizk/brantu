@@ -75,19 +75,48 @@ module.exports = {
         console.log( req.query);
         console.log( req.body);
         User.findOne({"local.email" : req.body.email}, function (err, user) {
+
             if(err) return next(err);
-            if (user == null) return next();
+            if (user == null){
+                req.valid = false;
+                req.forgetError = true;
+                return next();
+            }
             user.createToken(function(){
                 console.log(user.local)
                 require('./mw-email').sendTokenLink(
                     user.local.email,
-                    'http://'+req.headers.host+'/reset/'+user.local.resetPasswordToken,
+                    'http://'+req.headers.host+'/reset/'+user.resetPasswordToken,
                     function(){
-
+                        req.valid = true;
+                        req.forgetError = false;
+                        return next();
                     })
             })
 
         });
     },
+    findUserToken:function(req,res,next){
+        console.log(req.params.token)
+        User.findOne({ "resetPasswordToken": req.params.token, "resetPasswordExpires": { $gt: Date.now() } }, function(err, user) {
+            console.log(user)
+            if (!user) {
+                return res.redirect('/forget');
+            }
+            res.locals.userToken = req.params.token;
+            req.user = user
+            next();
+        });
+    },
+    resetPassword:function(req,res,next){
+        req.user.local.password =  req.user.generateHash(req.body.password);
+        req.user.resetPasswordToken = undefined;
+        req.user.resetPasswordExpires = undefined;
 
+        req.user.save(function(err) {
+            req.logIn(req.user, function(err) {
+                next()
+            });
+        });
+    }
 }

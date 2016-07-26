@@ -2,9 +2,10 @@
 
     <!-- START PAGE CONTENT WRAPPER -->
     <div class="page-content-wrapper">
-        <section id="mainSection" class="no-overflow bg-Image relative" style="background-image: url('/images/home/authenticate.jpg');">
+        <section id="mainSection" class="no-overflow bg-Image relative" >
+            <div class="bg-Image " style="background-image: url('/images/home/authenticate.jpg');">
             <!-- START PAGE CONTENT -->
-            <div class="content  ">
+                <div class="content  ">
                 <div class="registerContainer active" style="margin-top: 50px;">
                     <div class="registerCard" style=" ">
                         <div class="fs-12 title text-center relative">
@@ -12,10 +13,10 @@
                             <h5 class=" bold text-spaced-medium all-caps text-center">
                                 Tack för att du använder BRANTU!
                             </h5>
-                            <p class="text-center p-r-20 p-b-20 p-l-20 smallCaps fs-13"><font class="capitalize">Bli</font> Medlem Och Ta Del Utav Det Senaste Inom Mode! Vi Uppdaterar Sidan Med Nya Produkter Och Erbjudanden Varje Vecka, Så Håll Utkik På Facebook Och Vår Hemsida!</p>
+                            <p class="text-center p-r-20 p-b-20 p-l-20 smallCaps fs-13"><font class="capitalize">Bli</font> Medlem Och Ta Del Utav Det Senaste Inom Mode! Vi Uppdaterar Sidan Med Nya Produkter Och Erbjudanden Varje Vecka!</p>
                             {{#if errorMessage}}
                                 <div id="registerError" >
-                                    <p  class="text-red all-caps text-center" > du är redan medlem<a href="/login" class="p-l-10 bold all-caps">Logga in</a></p>
+                                    <p  class="text-red all-caps text-center" >vänligen Försök igen eller<a href="/login" class="p-l-10 bold all-caps">Logga in</a></p>
                                 </div>
                             {{/if}}
                         </div>
@@ -53,8 +54,8 @@
                             </div>
 
                             <div class="input-radio">
-                                <div class="col-xs-8 col-xs-offset-4">
-                                    <div class="radio  radio-default auto-margin block " id="genderSelectionSignupPage">
+                                <div class="col-xs text-center">
+                                    <div class="radio auto-margin block " id="genderSelectionSignupPage">
                                         <input type="radio"  value="female"  name="gender" id="femaleSignupPage" />
                                         <label for="femaleSignupPage"  class=" bold ">Kvinna</label>
 
@@ -85,7 +86,7 @@
                 </div>
                 <div class="registerLoading fixed" style="display: none; top:0; bottom:0; right:0; left:0; z-index:500;">
                     <div class="loading full-height full-width gradient-velvet-opacity" >
-                        <div class="bgBlurEffect">
+                        <div class="">
                             <div class="text-center" style="padding-top: 100px;" >
                                 <div class=" text-center ">
                                     <h3 class="text-white">Vi jämför och hittar dina stilar till det bästa priset</h3>
@@ -95,6 +96,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </section>
         {{>loading}}

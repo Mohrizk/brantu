@@ -969,7 +969,7 @@ $(document).ready( function() {
 	function openFab(){
 		onFab  = true;
 		$('.header').addClass("hidden");
-		$('.page-container').addClass('openFab')
+		$('.page-container').addClass('fixedPage')
 		$('#mobileSubMenu').addClass("hidden");
 		$('#footer').addClass("hidden");
 		$('.fab').addClass("active").closest(".popout").find(".panel").toggleClass("active");;
@@ -980,7 +980,7 @@ $(document).ready( function() {
 		$('.header').removeClass("hidden");
 		$('#mobileSubMenu').removeClass("hidden");
 		$('#footer').removeClass("hidden");
-		$('.page-container').removeClass('openFab')
+		$('.page-container').removeClass('fixedPage')
 		$(".popout .panel").removeClass("active");
 		$(".popout .fab").removeClass("active");
 	}

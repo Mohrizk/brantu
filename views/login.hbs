@@ -3,6 +3,7 @@
     <div class="page-content-wrapper">
     <section class="no-overflow" id="mainSection">
             <!-- START PAGE CONTENT -->
+        <div class="bg-Image " style="background-image: url('/images/home/authenticate.jpg');">
             <div class="content">
 
                 <div class="registerContainer " style="margin-top: 30px;">
@@ -27,7 +28,7 @@
                                 </div>
                                 <div class="input-container">
                                     <input type="password" name="password" id="loginPasswordPage" required="required"/>
-                                    <label for="loginPasswordPage">Password</label>
+                                    <label for="loginPasswordPage">Lösenord</label>
                                     <div class="bar"></div>
                                 </div>
                                 {{debug errorMessage}}
@@ -35,11 +36,11 @@
                                 {{#if errorMessage}}
                                     {{#if (compareStrings errorMessage 'nouser')}}
                                     <div id="loginError" class="col-sm-12">
-                                        <p  class="text-red text-center" > Your account is not registed <a href="/signup">Register Now</a></p>
+                                        <p  class="text-red text-center" > Ditt konto är inte registrerat <a href="/signup">bli medlem här</a></p>
                                     </div>
                                     {{else}}
                                         <div id="loginError" class="col-sm-12">
-                                            <p  class="text-red text-center" > Your password is wrong <a href="/">Hav You forgot your password?</a></p>
+                                            <p  class="text-red text-center" > fel lösenord <a href="/forget">har du glömt ditt lösenord?</a></p>
                                         </div>
                                     {{/if}}
                                 {{/if}}
@@ -47,17 +48,18 @@
 
 
                                     <div class="button-container" id="submitLogin">
-                                    <button type="submit"><span>Login</span></button>
+                                    <button type="submit"><span>Logga in</span></button>
                                 </div>
                                 <div  style="padding-bottom: 20px; padding-top: 20px;">
-                                    <a href="#">Forgot your Password?</a> <br/>
-                                    <a class="all-caps p-t-10 bold" href="/signup"><u>signup</u></a>
+                                    <a class="text-velvet" href="/forget">har du glömt ditt lösenord?</a> <br/>
+                                    <a class="all-caps p-t-10 bold" href="/signup"><u>bli medlem</u></a>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         </section>
     {{>loading}}
     {{>footer}}

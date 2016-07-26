@@ -18,6 +18,7 @@ $(document).ready(function() {
 	});
 
 	$('#footerSignUPButton').on('click', function() {
+		$('.page-container').addClass('fixedPage')
 		var number = (isMobile? 0:50);
 		registerContainer.stop().addClass('active').css({marginTop:800}).animate({marginTop:number}, 200);
 		registerSection.removeClass('hidden').css({opacity:0}).animate({opacity:1});
@@ -29,7 +30,7 @@ $(document).ready(function() {
 
 		else if($(this).attr('data-view')==='signup')
 			registerContainer.stop().addClass('active').css({marginTop:800}).animate({marginTop:50}, 200);
-
+		$('.page-container').addClass('fixedPage')
 		registerSection.removeClass('hidden').css({opacity:0}).animate({opacity:1});
 	});
 
@@ -40,13 +41,14 @@ $(document).ready(function() {
 				registerContainer.stop().removeClass('active').css({marginTop:800}).animate({marginTop:0}, 200);
 			else if($(this).attr('data-view')==='signup')
 				registerContainer.stop().addClass('active').css({marginTop:800}).animate({marginTop:0}, 200);
-
+		$('.page-container').addClass('fixedPage')
 		registerSection.removeClass('hidden').css({opacity:0}).animate({opacity:1});
 	});
 	$('.close-AuthenticationPopUp').on('click', function(e){
 		$.when(registerSection.animate({opacity:0}, 100))
 			.done(function(){
-				registerSection.addClass('hidden')
+				registerSection.addClass('hidden');
+				$('.page-container').removeClass('fixedPage')
 			});
 	})
 

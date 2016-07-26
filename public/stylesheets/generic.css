@@ -16,7 +16,7 @@ img.lazy {
     margin-right: 15px;
 }
 
-.openFab{
+.fixedPage{
     position: fixed;
     overflow: hidden;
 }
