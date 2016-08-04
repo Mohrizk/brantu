@@ -1,62 +1,62 @@
 
 {{#if outfit}}
-<div class="productFeedTemplate m-b-20 m-xs-b-5"  >
+    <div class="productFeedTemplate m-b-20 m-xs-b-5"  >
 
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12  bg-white">
-            <h5 class="all-caps bold text-spaced-medium visible-xs visible-sm text-center p-b-10 p-xs-b-5 p-l-20 p-r-20">{{outfit.name}}</h5>
-            <div class="text-center m-t-5 p-l-40 p-r-40 p-t-5 p-b-15 b-t b-grey visible-xs visible-sm">
-                <p class="">{{outfit.description}}</p>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12  bg-white">
+                <h5 class="all-caps bold text-spaced-medium visible-xs visible-sm text-center p-b-10 p-xs-b-5 p-l-20 p-r-20">{{outfit.name}}</h5>
+                <div class="text-center m-t-5 p-l-40 p-r-40 p-t-5 p-b-15 b-t b-grey visible-xs visible-sm">
+                    <p class="">{{outfit.description}}</p>
 
-            </div>
-            <div class="images row text-center p-t-20" >
-                <div class="col-md-4 text-left">
-                    <div class="p-l-30  hidden-xs hidden-sm  p-b-30">
-                        <h1 class="all-caps p-b-10 p-t-10 p-xs-b-5 p-r-20 b-b b-grey ">{{outfit.name}}</h1>
-                        <div class="text-master text-left bold text-left fs-12 ">{{outfit.dateDifference}}  {{#unless outfit.valid}}<font class="text-red bold"> SLUTSÅLD</font>{{/unless}}</div>
-                        <p class="fs-15 p-t-20">{{outfit.description}}</p>
-                    <div class="p-t-10">
-                        {{#if outfit.saving}}
-                            <div class="circle text-center  m-xs-t-15 m-xs-r-15"style="top:400px; " >
-                                <div class=" text-white  fs-14 all-caps  bg-velvet-dark p-t-10 p-b-10 text-spaced medium"> <span class="circler">Spara  {{outfit.saving.value}}</span> </div>
+                </div>
+                <div class="images row text-center p-t-20" >
+                    <div class="col-md-4 text-left">
+                        <div class="p-l-30  hidden-xs hidden-sm  p-b-30">
+                            <h1 class="all-caps p-b-10 p-t-10 p-xs-b-5 p-r-20 b-b b-grey ">{{outfit.name}}</h1>
+                            <div class="text-master text-left bold text-left fs-12 ">{{outfit.dateDifference}}  {{#unless outfit.valid}}<font class="text-red bold"> SLUTSÅLD</font>{{/unless}}</div>
+                            <p class="fs-15 p-t-20">{{outfit.description}}</p>
+                            <div class="p-t-10">
+                                {{#if outfit.saving}}
+                                    <div class="circle text-center  m-xs-t-15 m-xs-r-15"style="top:400px; " >
+                                        <div class=" text-white  fs-14 all-caps  bg-velvet-dark p-t-10 p-b-10 text-spaced medium"> <span class="circler">Spara  {{outfit.saving.value}}</span> </div>
+                                    </div>
+                                {{/if}}
                             </div>
-                        {{/if}}
+                        </div>
                     </div>
+                    <div class="col-md-3 col-md-offset-1 p-t-20 col-sm-6 col-xs-6 imageInspire relative no-padding ">
+                        <h6 class=" text-center no-padding no-margin " style="border-bottom: 1px solid #eee;line-height: 0;">
+                            <span class="bg-white bold p-l-10 p-r-10 all-caps text-spaced-medium">Style</span>
+                        </h6>
+                        <a target="_blank" href="{{outfit.styleUrl}}"> <img class="p-t-10 small"  src="{{outfit.styleImage}}"/></a>
+                        <div class="">
+                            <h5 class="text-center fs-15 p-t-5 p-b-5 text-black no-margin no-padding medium">{{outfit.stylePrice}}</h5>
+                            <h6 class="text-center bold text-black no-margin no-padding medium">{{outfit.styleBrand}}</h6>
+                            <a class="text-velvet bold" target="_blank" href="{{outfit.styleUrl}}"><button class="btn btn-tag ">SHOPPA NU</button></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3  col-sm col-xs p-t-20 imageCheap relative no-padding " >
+                        <h6 class=" text-center no-padding no-margin " style="border-bottom: 1px solid #eee;line-height: 0;">
+                            <span class="bg-white bold p-l-10 p-r-10 all-caps text-spaced-medium">Price</span>
+                        </h6>
+                        <a target="_blank" href="{{outfit.priceUrl}}"><img class="p-t-10 small" src="{{outfit.priceImage}}"/></a>
+                        <div class="">
+                            <h5 class="text-center fs-15 p-t-5 p-b-5 text-velvet bold no-margin no-padding medium">{{outfit.pricePrice}}</h5>
+                            <h6 class="text-center bold text-black no-margin no-padding ">{{outfit.priceBrand}}</h6>
+                            <a class="text-velvet bold" target="_blank" href="{{outfit.priceUrl}}"><button class="btn btn-tag">SHOPPA NU</button></a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-md-offset-1 p-t-20 col-sm-6 col-xs-6 imageInspire relative no-padding ">
-                    <h6 class=" text-center no-padding no-margin " style="border-bottom: 1px solid #eee;line-height: 0;">
-                        <span class="bg-white bold p-l-10 p-r-10 all-caps text-spaced-medium">Style</span>
-                    </h6>
-                    <a target="_blank" href="{{outfit.styleUrl}}"> <img class="p-t-10 small"  src="{{outfit.styleImage}}"/></a>
-                    <div class="">
-                        <h5 class="text-center fs-15 p-t-5 p-b-5 text-black no-margin no-padding medium">{{outfit.stylePrice}}</h5>
-                        <h6 class="text-center bold text-black no-margin no-padding medium">{{outfit.styleBrand}}</h6>
-                        <a class="text-velvet bold" target="_blank" href="{{outfit.styleUrl}}"><button class="btn btn-tag ">SHOPPA NU</button></a>
+                {{#if outfit.saving}}
+                    <div class="circle text-center visible-xs visible-sm"style="top:400px; " >
+                        <div class=" text-white  fs-13 all-caps bold bg-velvet-dark p-t-5 p-b-5 text-spaced medium"> <span class="circler">Spara  {{outfit.saving.value}}</span> </div>
                     </div>
-                </div>
-                <div class="col-md-3  col-sm col-xs p-t-20 imageCheap relative no-padding " >
-                    <h6 class=" text-center no-padding no-margin " style="border-bottom: 1px solid #eee;line-height: 0;">
-                        <span class="bg-white bold p-l-10 p-r-10 all-caps text-spaced-medium">Price</span>
-                    </h6>
-                    <a target="_blank" href="{{outfit.priceUrl}}"><img class="p-t-10 small" src="{{outfit.priceImage}}"/></a>
-                    <div class="">
-                        <h5 class="text-center fs-15 p-t-5 p-b-5 text-velvet bold no-margin no-padding medium">{{outfit.pricePrice}}</h5>
-                        <h6 class="text-center bold text-black no-margin no-padding ">{{outfit.priceBrand}}</h6>
-                        <a class="text-velvet bold" target="_blank" href="{{outfit.priceUrl}}"><button class="btn btn-tag">SHOPPA NU</button></a>
-                    </div>
-                </div>
+                {{/if}}
+
+
+
             </div>
-            {{#if outfit.saving}}
-                <div class="circle text-center visible-xs visible-sm"style="top:400px; " >
-                    <div class=" text-white  fs-13 all-caps bold bg-velvet-dark p-t-5 p-b-5 text-spaced medium"> <span class="circler">Spara  {{outfit.saving.value}}</span> </div>
-                </div>
-            {{/if}}
-
-
-
         </div>
-    </div>
 
-</div>
+    </div>
 {{/if}}
