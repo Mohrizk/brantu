@@ -13,6 +13,8 @@ var feed = require('./middleware/mw-feed');
 var email = require('./middleware/mw-email');
 var user = require('./middleware/mw-users');
 
+var shared = require('../public/javascripts/shared-helper');
+
 /**************************************************************
 *******************BEGINING ROUTES***************************
 ***************************************************************/
@@ -260,67 +262,103 @@ var routes = [
         res.render('favourite-products');
     } ]
     ],
-    /*********MAIN PAGE******************************************/
-    [ '/', 'get', [function(req, res, next) {
-        if(typeof req.session.favDepartment !== 'undefined'){
-            res.redirect(req.session.favDepartment);
-        }
-        else res.redirect('/kvinna');
-    } ]
-    ],
-    [ '/kvinna', 'get', [session.addFavouriteDepartment,function(req, res, next) {
-        res.redirect('/kvinna/upptack-nya-favoriter');
-    } ]
-    ],
-    [ '/kvinna/upptack-nya-favoriter', 'get', [
-        session.addFavouriteDepartment,
+/*********SHOP***************************/
+    [ '/blogg/:name', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
-        feed.getFeed,
-        function(req, res, next) {
-
-        res.locals.title = res.locals.selectedDepartment+ " - Get Inspired";
-        res.render('women');
-    } ]
-    ],
-    [ '/man', 'get', [session.addFavouriteDepartment,function(req, res, next) {
-        res.redirect('/man/upptack-nya-favoriter');
-    } ]
-    ],
-    [ '/man/upptack-nya-favoriter', 'get', [
-        session.addFavouriteDepartment,
-        categories.getCategoryTree,
-        categories.getDepartment,
-        feed.getFeed,
-        function(req, res, next) {
-        res.locals.title =  res.locals.selectedDepartment +" - Get Inspired";
-        res.render('men');
-    } ]
-    ],
-
-  /*********SHOP***************************/
-    [ '/explore', 'get', [
-        
-        categories.getCategoryTree,
-        categories.getDepartment,
+        feed.getOutfit,
+        products.getForBlog,
         products.getAlgoliaProducts,
         function(req, res, next) {
-        res.render('navigation')
-      } ]
+            res.render('blog', {
+                title                      : 'snyggaste '+req.outfit.categoryName+' - ' +req.outfit.name+' | Brantu.com',
+                description                : req.outfit.description+' - ' +req.outfit.name,
+                outfit                     : req.outfit,
+                blogProductsLink             : req.blogProductsLink,
+            })
+        } ]
     ],
-    [ '/search', 'get', [
-        
+/********SEARCH************/
+    [ '/search/:department', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
+        products.getForSearch,
         products.getAlgoliaProducts,
         function(req, res, next) {
             res.render('navigation')
         } ]
     ],
 
-    [ '/view/:id', 'get', [
+    [ '/s%C3%B6k/:department', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
+        products.getForSearch,
+        products.getAlgoliaProducts,
+        function(req, res, next) {
+            res.render('navigation')
+        } ]
+    ],
+
+    [ '/search', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        products.getForSearch,
+        products.getAlgoliaProducts,
+        function(req, res, next) {
+            res.render('navigation')
+        } ]
+    ],
+    [ '/s%C3%B6k', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        products.getForSearch,
+        products.getAlgoliaProducts,
+        function(req, res, next) {
+            res.render('navigation')
+        } ]
+    ],
+    /*********MAIN PAGE******************************************/
+    [ '/', 'get', [function(req, res, next) {
+        if(typeof req.session.favDepartment !== 'undefined'){
+            res.redirect(req.session.favDepartment);
+        }
+        else res.redirect('/kvinna/');
+    } ]
+    ],
+
+
+/*********View Product***************************/
+    [ '/view/:id', 'get', [
+        products.getProductByID,
+        function(req, res, next) {
+            var path = '';
+            var length= (req.category.breadcrumb.length>=3? 3: req.category.breadcrumb.length)
+            for(var i=0; i< length ;i++){
+                path+= '/'+ shared.helper.urlFriendly(req.category.breadcrumb[i].name);
+            }
+            console.log('kjhvajshvasj')
+            console.log(encodeURI(path+ '/bästa-pris-för/'+req.product._id+'-'+shared.helper.urlFriendly(req.product.name)))
+            res.redirect(encodeURI(path+ '/bästa-pris-för/'+shared.helper.urlFriendly(req.product.name)+'-'+req.product._id))
+        } ]],
+    [ '/b%C3%A4sta-pris-f%C3%B6r/:name', 'get', [
+        function(req,res,next){
+            var splitted = req.params.name.split('-');
+            req.params.id = splitted[splitted.length-1]
+            next();
+        },
+        products.getProductByID,
+        function(req, res, next) {
+            var path = '';
+            var length= (req.category.breadcrumb.length>=3? 3: req.category.breadcrumb.length)
+            for(var i=0; i< length ;i++){
+                path+= '/'+ shared.helper.urlFriendly(req.category.breadcrumb[i].name);
+            }
+            res.redirect(encodeURI(path+ '/bästa-pris-för/'+shared.helper.urlFriendly(req.product.name)+'-'+req.product._id))
+    } ]],
+    [ '/:department/:category/:style/b%C3%A4sta-pris-f%C3%B6r/:name', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        products.getProductIDfromName,
         products.getProductByID,
         products.checkProductIsFavoured,
         products.getSimilarProductsFromSameBrand,
@@ -328,7 +366,30 @@ var routes = [
         products.GetSimilarCategoryProducts,
         function(req, res, next) {
             res.render('product', {
-                title                       : req.product.name,
+                title                   : 'Lägsta priset för '+req.product.name + ' - altid bästa pris inom mode med Brantu',
+                description             : req.product.description+ ' hitta det på lägsta priset i Brantu',
+                product                     : req.product,
+                sameBrandProducts           : req.sameBrandProducts,
+                LowerPriceCategoryProducts  : req.LowerPriceCategoryProducts ,
+                sameCategoryProducts        : req.sameCategoryProducts,
+                style                       : req.style,
+                category                    : req.category,
+                brand                       : req.brand
+            })
+        } ]],
+    [ '/:department/:category/b%C3%A4sta-pris-f%C3%B6r/:name', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        products.getProductIDfromName,
+        products.getProductByID,
+        products.checkProductIsFavoured,
+        products.getSimilarProductsFromSameBrand,
+        products.GetLowerPriceCategoryProducts,
+        products.GetSimilarCategoryProducts,
+        function(req, res, next) {
+            res.render('product', {
+                title                   : 'Lägsta priset för '+req.product.name + ' - altid bästa pris inom mode med Brantu',
+                description             : req.product.description+ ' hitta det på lägsta priset i Brantu',
                 product                     : req.product,
                 sameBrandProducts           :req.sameBrandProducts,
                 LowerPriceCategoryProducts  :req.LowerPriceCategoryProducts ,
@@ -337,18 +398,103 @@ var routes = [
                 category                    : req.category,
                 brand                       : req.brand
             })
+        } ]],
+    [ '/:department/b%C3%A4sta-pris-f%C3%B6r/:name', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        products.getProductIDfromName,
+        products.getProductByID,
+        products.checkProductIsFavoured,
+        products.getSimilarProductsFromSameBrand,
+        products.GetLowerPriceCategoryProducts,
+        products.GetSimilarCategoryProducts,
+        function(req, res, next) {
+            console.log('BEST PRICE ', req.product)
+            res.render('product', {
+                title                   : 'Lägsta priset för '+req.product.name + ' - hitta altid bästa pris på allt du letar inom mode efter med Brantu',
+                description             : req.product.description+ ' hitta bästa pris med Brantu',
+                product                     : req.product,
+                sameBrandProducts           : req.sameBrandProducts,
+                LowerPriceCategoryProducts  : req.LowerPriceCategoryProducts ,
+                sameCategoryProducts        : req.sameCategoryProducts,
+                style                       : req.style,
+                category                    : req.category,
+                brand                       : req.brand
+            })
+        } ]],
+
+
+
+
+/*********BRAND****************/
+    [ '/:department/brand/:name', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        products.getForBrands,
+        products.getAlgoliaProducts,
+        function(req, res, next) {
+            res.render('navigation')
+        } ]
+    ],
+    [ '/:department/m%C3%A4rken/:name', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        products.getForBrands,
+        products.getAlgoliaProducts,
+        function(req, res, next) {
+            res.render('navigation')
+        } ]
+    ],
+    [ '/brand/:name', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        products.getForBrands,
+        products.getAlgoliaProducts,
+        function(req, res, next) {
+            res.render('navigation')
+        } ]
+    ],
+    [ '/m%C3%A4rken/:name', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        products.getForBrands,
+        products.getAlgoliaProducts,
+        function(req, res, next) {
+            res.render('navigation')
+        } ]
+    ],
+
+/********************NAVIGATE******************/
+    [ '/explore', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        products.getAlgoliaProducts,
+        function(req, res, next) {
+            res.render('navigation')
+        } ]
+    ],
+    //kvinna/kläder/toppar-festklader/:
+    [ '/:department/:category/:style', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        products.getForCategories,
+        products.getAlgoliaProducts,
+        function(req, res, next) {
+            res.render('navigation')
+        } ]
+    ],
+    //kvinna/kläder
+    [ '/:department/:category', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        products.getForCategories,
+        products.getAlgoliaProducts,
+        function(req, res, next) {
+            res.render('navigation')
         } ]
     ],
 
 
-    [ '/brand/:name', 'get', [
-        categories.getCategoryTree,
-        products.getAlgoliaProducts,
-        categories.getDepartment,
-        function(req, res, next) {
-            res.render('navigation')
-    } ]
-    ],
 
 /*********INFORMATION & CONTACT PAGES *************************************/
     [ '/contact-us', 'get', [
@@ -356,16 +502,15 @@ var routes = [
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
-            res.locals.title = "Kontakt oss";
+            res.locals.title = "Kontakt oss - Brantu.com";
             res.render('contact-us');
         }]
     ],
     [ '/about-us', 'get', [
-        
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
-            res.locals.title = "Om oss";
+            res.locals.title = "Om oss - Brantu.com";
             res.render('about-us');
         }]
     ],
@@ -374,7 +519,7 @@ var routes = [
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
-            res.locals.title = "FAQ";
+            res.locals.title = "FAQ - Brantu.com";
             res.render('faq');
         }]
     ],
@@ -383,7 +528,7 @@ var routes = [
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
-            res.locals.title = "Privacy policy";
+            res.locals.title = "Privacy policy - Brantu.com";
             res.render('privacy')
         }
     ]
@@ -393,7 +538,7 @@ var routes = [
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
-            res.locals.title = "Terms and conditions";
+            res.locals.title = "Terms and conditions - Brantu.com";
             res.render('terms')
         }
     ]
@@ -412,7 +557,7 @@ var routes = [
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
-            res.locals.title = "Cookie Policy";
+            res.locals.title = "Cookie Policy - Brantu.com";
             res.render('cookie');
         }]
     ],
@@ -433,6 +578,27 @@ var routes = [
             res.render('newsletter',{layout: false})
         }]
     ],
+
+    [ '/:department', 'get', [
+        session.addFavouriteDepartment,
+        categories.getCategoryTree,
+        categories.getDepartment,
+        feed.getFeed,
+        function(req, res, next) {
+            if( res.locals.selectedDepartment == null || typeof res.locals.selectedDepartment == 'undefined')
+                return res.redirect('/kvinna');
+            var department = shared.helper.mapDepartment(res.locals.selectedDepartment);
+            var string = (department == 'MEN'? 'kläder, accessoarer och skor': 'kläder, klänningar, accessoarer och skor')
+
+            res.locals.title = "Hitta "+ string +" till det bästa priset online - "+res.locals.selectedDepartment + "- Brantu.com";
+            res.locals.description = 'Brantu är Sveriges bästa prisjämförelsajt inom mode! Med oss hittar du både relaterade produkter och stilar till det bästa priset. Använd brantu när du ska köpa dina kläder eller skor online...';
+            if(department == 'MEN')res.render('men');
+            else res.render('women');
+
+        } ]
+    ],
+
+
 
 /*********Internationalization *******************/
     [ '/en', 'get', [ function(req, res, next) {
@@ -475,7 +641,8 @@ var routes = [
         function( req, res, next) {
         res.send('cool')
     }]
-    ]
+    ],
+
 ];
 routes.forEach(function(arr){
   console.log(arr[1]);

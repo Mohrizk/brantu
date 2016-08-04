@@ -24,7 +24,7 @@ var newsletterTemplate = Handlebars.compile($("#newsletterTemplateTemplate").htm
 
 
 var client = algoliasearch("D3IWZXC0AH", '3d6a60c228b6e8058770fdf8eab2f652');
-var helper   = algoliasearchHelper(client, 'products_2',
+var helper   = algoliasearchHelper(client, 'test_products',
 	{
 		hitsPerPage: 30,
 		hierarchicalFacets: [{
@@ -40,39 +40,46 @@ var typeVerified = false, departmentVerified= false;
 //INITIALIZE STATES & HELPERS
 var currentState= {search:false , brand:false, category:false}
 if(TYPE !=null && TYPE!==''){
-		var loading = $('.loading');
-		var brandName=null;
-		typeVerified = true;
-		switch (TYPE) {
-			case 'category':
-				currentState.category=true;
-				currentState.brand=false;
-				currentState.search=false;
-				break;
-			case 'brand':
-				currentState.brand=true;
-				currentState.category=false;
-				currentState.search=false;
-				var splitted = window.location.href.split('/')
-				brandName = splitted[splitted.length -1].split('?')[0];
-				break;
-			case 'search':
-				currentState.search=true;
-				currentState.brand=false;
-				currentState.category=false;
-				break;
-		}
-		renderHelper.urlToState(helper,window.location.href.split('?')[1],currentState,brandName)
-	}
+	var loading = $('.loading');
+	typeVerified = true;
 
+	var initialUrl = (typeof blogProductsLink !== 'undefined'?blogProductsLink: window.location.pathname);
+	console.log(initialUrl)
+	switch (TYPE) {
+				case 'category':
+					currentState.category=true;
+					currentState.brand=false;
+					currentState.search=false;
+					helper.setPage(0)
+					renderHelper.urlToStateCategory(initialUrl,helper)
+					break;
+				case 'brand':
+					currentState.brand=true;
+					currentState.category=false;
+					currentState.search=false;
+					helper.setPage(0)
+					renderHelper.urlToStateBrand(initialUrl,helper)
+
+					break;
+				case 'search':
+					currentState.search=true;
+					currentState.brand=false;
+					currentState.category=false;
+					helper.setPage(0)
+					renderHelper.urlToStateSearch(initialUrl,helper)
+					break;
+			}
+
+		}
 
 if( DEPARTMENT!==null){
 	if( DEPARTMENT !== null) {
-		if (DEPARTMENT == 'Kvinna' || DEPARTMENT == 'Man') {
+		if (DEPARTMENT == 'kvinna' || DEPARTMENT == 'man') {
 			departmentVerified = true;
 		}
 	}
 }
+
 /**
  * Ensure that a tag is not filtering the results
  * @param {string} tag tag to remove from the filter
@@ -95,7 +102,7 @@ $(document).ready( function() {
 		{
 			//source: autocomplete.sources.hits(productIndex, {hitsPerPage: 7}),
 			source: function(query, callback) {
-				var index = client.initIndex('products_2');
+				var index = client.initIndex('test_products');
 				var options = {hitsPerPage: 8}
 				if(departmentVerified)options.facetFilters = 'category.lvl0:'+DEPARTMENT;
 				$('.ACSearchProgress').removeClass('hidden');
@@ -161,6 +168,11 @@ $(document).ready( function() {
 				if(departmentVerified)options.facetFilters = 'gender:'+DEPARTMENT;
 
 				index.search(query, options).then(function(answer) {
+					answer.hits = answer.hits.map(function(hit){
+						hit.soUrl = renderHelper.breadCrumbToUrl(hit.breadcrumb);
+						return hit;
+					})
+					console.log(answer.hits)
 					callback(answer.hits);
 				}, function() {
 					callback([]);
@@ -307,8 +319,6 @@ $(document).ready( function() {
 	}
 	loadMainOWl(); loadOtherOWl();
 
-
-
 	var pageContainer = $('.page-container')
 	var mainSection = $('#mainSection');
 	var searchSection = $('#searchSection');
@@ -333,56 +343,69 @@ $(document).ready( function() {
 	/****
 	 *
 	 */
-
 	//DEFINED ROUTES
 	//NAVIGATION
-	page('/view/:id'   , showLoading,  hideHeader, viewProduct, getSimilarProducts, addViewedProduct)
-	page('/explore'    , saveLastPath, showLoading, setCategory, closeSidePage,  setStateFromUrl, showHeader )
-	page('/search'     , saveLastPath, showLoading , setSearch, closeSidePage,  setStateFromUrl, showHeader )
-	page('/brand/:name', saveLastPath, showLoading, setBrand,  closeSidePage,  setStateFromUrl, showHeader )
-	page('/kvinna/*', reload)
-	page('/man/*', reload)
+	page('/search/:department', saveLastPath, showLoading , setSearch, closeSidePage,  setStateFromUrl, showHeader )
+	page('/sök/:department', saveLastPath, showLoading , setSearch, closeSidePage,  setStateFromUrl, showHeader )
+	page('/search/', saveLastPath, showLoading , setSearch, closeSidePage,  setStateFromUrl, showHeader )
+	page('/sök/', saveLastPath, showLoading , setSearch, closeSidePage,  setStateFromUrl, showHeader )
+
+	page('/brand/:name/',showLoading, saveLastPath,  setBrand,  closeSidePage,  setStateFromUrl, showHeader )
+	page('/m%C3%A4rken/:name/',showLoading, saveLastPath,  setBrand,  closeSidePage,  setStateFromUrl, showHeader )
+	page('/märken/:name/', showLoading,  saveLastPath, setBrand,  closeSidePage,  setStateFromUrl, showHeader )
+
+	page('/bästa-pris-för/:name', showLoading,  hideHeader, viewProduct, getSimilarProducts, addViewedProduct)
+	page('/view/:id', showLoading,  hideHeader, viewProduct, getSimilarProducts, addViewedProduct)
+
+	page('/blogg/:name', reload)
 	page('/settings/*', reload)
 	page('/about/*', reload)
 	page('/favourite-products', reload)
+
+
+	page('/:department/:category/:style/',showLoading, saveLastPath, setCategory, closeSidePage,  setStateFromUrl, showHeader )
+	page('/:department/:category/:style', showLoading,  saveLastPath,setCategory, closeSidePage,  setStateFromUrl, showHeader )
+	page('/:department/:category/' , showLoading,  saveLastPath,  setCategory, closeSidePage,  setStateFromUrl, showHeader )
+	page('/:department/:category' , showLoading,  saveLastPath,setCategory, closeSidePage,  setStateFromUrl, showHeader )
+	page('/explore', showLoading,  saveLastPath, setCategory, closeSidePage,  setStateFromUrl, showHeader )
+
+	page('/:department', reload)
 	page({ dispatch: false, decodeURLComponents:false});
 
+
+	function getUrlFromState(){
+		console.log('CONTENT ',currentState)
+		if(currentState.search)
+			return renderHelper.stateToUrlSearch(helper, currentState);
+		else if(currentState.category)
+			return renderHelper.stateToUrlCategory(helper, currentState);
+		else if(currentState.brand)
+			return renderHelper.stateToUrlBrand(helper, currentState);
+	}
+	function setStateFromUrl(context, next){
+		 var string = context.path;
+
+		if(currentState.search){
+			renderHelper.urlToStateSearch(string,helper);
+		}
+		else{
+			if(currentState.category){
+				renderHelper.urlToStateCategory(string,helper);
+			}
+			else if(currentState.brand){
+				renderHelper.urlToStateBrand(string,helper);
+			}
+		}
+		helper.search()
+		next();
+	}
 	function reload(context,next){
 		location.href = context.path;
 	}
-	function getUrlFromState(){
 
-		var pattern = "%20&%20",
-		re = new RegExp(pattern, "g");
-		var helperString = helper.getStateAsQueryString().replace(re, '%20%26%20')
-			//helperString = helperString.replace(/'%20&%20').join('%20%26%20');
-
-		var path ;
-		var page = '&page='+helper.getPage();
-		if(currentState.brand){
-			path = 'brand/'+renderHelper.getBrandName(helper)+'?';
-			helper.clearRefinements('brand.name');
-		}
-		else if(currentState.search)   path ='search?';
-		else if(currentState.category) path ='explore?';
-
-
-		var x = '/'+path+helperString+page;
-		console.log(x)
-		console.log(helper.getStateAsQueryString())
-		console.log('---------')
-
-		return x;
-	}
 	function saveLastPath(context, next){
 		returnPath = context.path;
 		next()
-	}
-	function setStateFromUrl(context, next){
-		var stringQuery = context.querystring;
-		renderHelper.urlToState(helper, stringQuery, currentState, context.params.name);
-		helper.search()
-		next();
 	}
 	function priceBar(){
 		$("#pricerange").ionRangeSlider({
@@ -417,6 +440,7 @@ $(document).ready( function() {
 		});
 	}
 	function RENDER (content){
+        console.log(content)
 		refreshVariables();
 		renderHelper.setTitle(currentState)
 		var renderer = {};
@@ -453,6 +477,13 @@ $(document).ready( function() {
 		currentState.category=false;
 		next();
 	}
+	function setBrand(context,next){
+		console.log('Setting Brand')
+		currentState.brand=true;
+		currentState.search=false;
+		currentState.category=false;
+		next()
+	}
 
 	function SEARCH (searchInput){
 		refreshVariables()
@@ -469,15 +500,24 @@ $(document).ready( function() {
 
 	var owl;
 	function viewProduct(context, next){
-		context.state.product = context.params.id
-		//context.save()
+
+		if(typeof context.params.name !== 'undefined'){
+			var split = context.params.name.split('-')
+			context.state.product = split[split.length-1]
+		}
+		else{
+			if(typeof context.params.id !== 'undefined')
+				context.state.product = context.params.id;
+		}
+		console.log(context.state.product)
+
 		refreshVariables()
 		$('.resultContainer').fadeOut()
-		//$('.facetPane').hide();
 		$('.itemList img').removeClass('selected');
 		$.ajax({
 			url: '/api/getProductByID/'+context.state.product,
 		}).success(function(result) {
+			console.log(result)
 			result.lastPath = returnPath;
 			$(document).prop('title', 'Product - '+  result.product.name)
 			    mainSection.html(productView(result) + '<div class="relatedProducts">'+
@@ -493,15 +533,12 @@ $(document).ready( function() {
 				loadMainOWl();
 
 				$('html, body').scrollTop(0);
-				//$('#header-Dropdown').hide();
 				loading.fadeOut('slow');
 			    mainSection.show().css({'opacity':0}).animate({'opacity':1},'slow')
 				next();
 			})
 
 	}
-
-
 	function getSimilarProducts(context, next){
 		$.ajax({
 			url: '/api/getSimilarProducts/'+ context.state.product,
@@ -523,7 +560,6 @@ $(document).ready( function() {
 		}).success(function(result) {
 		});
 	}
-
 
 	function hideHeader(context,next){
 		if(screen.width < 480){
@@ -562,14 +598,6 @@ $(document).ready( function() {
 		paginate = $('.paginate');
 		loading = $('.loading');
 	}
-
-	function setBrand(context,next){
-		currentState.brand=true;
-		currentState.search=false;
-		currentState.category=false;
-		next()
-	}
-
 	/*
 	 * MAIN RENDER FUNCTION FOR ALL SEARCHES
 	 * AND CATEGORY NAVIGATION
@@ -584,13 +612,14 @@ $(document).ready( function() {
 		page(getUrlFromState())
 	});
 	body.on( 'click', ' .breadcrumb li a', function (event) {
-
 		var value = $(this).attr('value');
 		helper.clearRefinements('products').toggleRefinement('products', value);
 		event.stopPropagation();event.preventDefault();
+		renderHelper.stateToUrlCategory(helper);
 		page(getUrlFromState())
 	});
 	body.on( 'click', ' .brands input', function (event) {
+
 		var value = $(this).attr('value');
 		if($(this).prop('checked')){
 			helper.addDisjunctiveFacetRefinement('brand.name', value);
@@ -598,6 +627,8 @@ $(document).ready( function() {
 		else{
 			helper.removeDisjunctiveFacetRefinement('brand.name', value);
 		}
+
+		renderHelper.stateToUrlBrand(helper, {brand:true, category:false, search:false});
 		page(getUrlFromState())
 	});
 
@@ -609,6 +640,7 @@ $(document).ready( function() {
 		else{
 			helper.removeDisjunctiveFacetRefinement('style', value);
 		}
+
 		page(getUrlFromState())
 	});
 
@@ -694,15 +726,7 @@ $(document).ready( function() {
 		renderHelper.removeFilterTag(type, facet, value, helper);
 		page(getUrlFromState())
 	});
-	/*$('.header') .on( eventOnTE, '#navbarTags button', function (event) {
-		event.stopPropagation()
-		var value = $(this).attr('value');
-		var facet = $(this).attr('facet');
-		var type = $(this).attr('type');
-		renderHelper.removeFilterTag(type, facet, value, helper);
-		page(getUrlFromState())
 
-	});*/
 	pageContainer.on( eventOnTE, ' .paginate a', function (event) {
 		event.stopPropagation()
 		helper.setPage($(this).attr('value'));

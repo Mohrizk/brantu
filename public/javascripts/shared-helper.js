@@ -1,28 +1,296 @@
 var renderHelper = {
-    urlToState:function (helper,stringQuery, currentState,brandName, query){
-        helper.clearRefinements();
-        helper.setStateFromQueryString(stringQuery);
-        //IF CATEGORY HAS ' & '
-        //var tempPage=  helper.getPage();
-        /*if(stringQuery.indexOf(' & ') >-1){
-            var array= stringQuery.split('hFR[products][0]=');
-            var array2 =array[1].split('&');
-            var path = array2[0]+'&'+array2[1];
-            helper.clearRefinements('products')
-            helper.toggleRefinement('products', path);
-        }*/
-        //IF BRAND
-
-        if(currentState.brand && brandName !== null && typeof brandName !== 'undefined'){
-            helper.addDisjunctiveFacetRefinement('brand.name', brandName);
+    mapGender   :function (string){
+        var str = string.toLowerCase()
+        var women = ['kvinna','women','female']
+        var men = ['men','man','male']
+        for(var w in women){
+            if(women[w] === str) return 'female'
         }
-        //helper.setPage(tempPage);
+        for(var m in men){
+            if(men[m] === str) return 'male'
+        }
+
     },
+    mapDepartment   :function (string){
+        var str = string.toLowerCase()
+        var women = ['kvinna','women','female']
+        var men = ['men','man','male']
+        for(var w in women){
+            if(women[w] === str) return 'WOMEN'
+        }
+        for(var m in men){
+            if(men[m] === str) return 'MEN'
+        }
+
+    },
+
+    breadCrumbToUrl: function(array){
+        //console.log(array)
+        var path=''
+        for(var i = 0; i<2;i++) {
+            if(typeof array[i] !== 'undefined' && array[i] !==null)
+                path += '/' + renderHelper.urlFriendly(array[i].name);
+        }
+        path+= '/';
+        if(array.length> 2) {
+            array = array.splice(2, array.length-1);
+            var temp = ''
+            for (var p = 0; p < array.length; p++) {
+                if (p < array.length - 1)temp += renderHelper.urlFriendly(array[p].name) + '-';
+                else temp += renderHelper.urlFriendly(array[p].name);
+            }
+            path += temp+'/';
+        }
+        //console.log(path)
+        return path;
+    },
+    urlFriendly:function (string, leaveDash){
+        var newString = string.toLowerCase()
+            .replace(/[\/\*\+\.\?\=\)\(\}\{\<\>_]/g," ") //|(?:\,\ )|(?:\,)
+            .replace(/(?:\')/g,"")
+            .replace(/(?:\ \ )/g," ")
+            .replace(/(?:\ )/g,"_")
+            .replace(/(?:\&)/g,"˜");
+        if(typeof leaveDash !== 'undefined') return newString;
+        else return newString.replace(/\-/g, " ")
+    },
+    decodeUrlFriendly:function (string){
+        return string.replace(/(?:\_)/g,' ').replace(/\˜/g,"&")
+    },
+
+    //ENCODE THE STATE TO URL
+    stateToUrlCategory:function(helper, currentState){
+        var theState =  helper.getState(['query', 'attribute:*']);
+        var path ='', query='';
+        if (typeof theState["hierarchicalFacetsRefinements"] == 'undefined')  return '';
+        if (typeof theState["hierarchicalFacetsRefinements"]['products'] == 'undefined') return '';
+        var pathArray = theState["hierarchicalFacetsRefinements"]['products'][0].split(' > ')
+        for(var i = 0; i<2;i++) {
+            if(typeof pathArray[i] !== 'undefined' && pathArray[i] !==null)
+                path += '/' + renderHelper.urlFriendly(pathArray[i]);
+        }
+        path+= '/';
+        if(pathArray.length> 2) {
+            pathArray = pathArray.splice(2, pathArray.length-1);
+            var temp = ''
+            for (var p = 0; p < pathArray.length; p++) {
+                if (p < pathArray.length - 1)temp += renderHelper.urlFriendly(pathArray[p]) + '-';
+                else temp += renderHelper.urlFriendly(pathArray[p]);
+            }
+            path += temp+'/';
+        }
+        query = renderHelper.stateToUrlQuery(helper, currentState)
+        if(query !== '') path+= '?'+query;
+        return path;
+    },
+    stateToUrlBrand:function(helper, currentState){
+        var theState =  helper.getState(['query', 'attribute:*']);
+        var path ='', query='';
+        if (typeof theState["disjunctiveFacetsRefinements"] == 'undefined')  return '';
+        if (typeof theState["disjunctiveFacetsRefinements"]['brand.name'] == 'undefined') return '';
+        path+='/märken/'+ renderHelper.urlFriendly(theState["disjunctiveFacetsRefinements"]['brand.name'][0]) +'/'
+        query = renderHelper.stateToUrlQuery(helper, currentState)
+        if(query !== '') path+= '?'+query;
+        console.log(path)
+        return path;
+    },
+    stateToUrlSearch:function(helper, currentState){
+        var query = renderHelper.stateToUrlQuery(helper, currentState);
+        var path ='/sök/';
+        if(query !== '') path+= '?'+query;
+        return path;
+    },
+    stateToUrlQuery:function(helper, currentState){
+        var uri = '';
+        var object =  helper.getState(['query', 'attribute:*']);
+        if(typeof object.query !== 'undefined' && object.query!== '' && currentState.search) uri+= 'q='+object.query;
+        if (typeof object.hierarchicalFacetsRefinements !== 'undefined' && !currentState.category) {
+            if (typeof object.hierarchicalFacetsRefinements['products'] !== 'undefined') {
+                var newString = object.hierarchicalFacetsRefinements['products'][0].split(' > ').join('-')
+                uri+= '&category='+renderHelper.urlFriendly(newString,true);
+            }
+        }
+
+        if (typeof object.disjunctiveFacetsRefinements !== 'undefined') {
+            if (object.disjunctiveFacetsRefinements.hasOwnProperty('discount')) {
+                for (var c in object.disjunctiveFacetsRefinements.discount)
+                    uri+= '&discount='+ renderHelper.urlFriendly(object.disjunctiveFacetsRefinements.discount[c]);
+
+            }
+            console.log(currentState)
+            if (object.disjunctiveFacetsRefinements.hasOwnProperty('brand.name') && !currentState.brand) {
+                for (var c in object.disjunctiveFacetsRefinements['brand.name'])
+                    uri+= '&brand='+ renderHelper.urlFriendly(object.disjunctiveFacetsRefinements["brand.name"][c]);
+            }
+            if (object.disjunctiveFacetsRefinements.hasOwnProperty('style')) {
+                for (var c in object.disjunctiveFacetsRefinements['style'])
+                    uri+= '&style='+ renderHelper.urlFriendly(object.disjunctiveFacetsRefinements["style"][c]);
+            }
+
+            if (object.disjunctiveFacetsRefinements.hasOwnProperty('fit')) {
+                for (var c in object.disjunctiveFacetsRefinements['fit'])
+                    uri+= '&fit='+ renderHelper.urlFriendly(object.disjunctiveFacetsRefinements["fit"][c]);
+
+            }
+
+            if (object.disjunctiveFacetsRefinements.hasOwnProperty('material')) {
+                for (var c in object.disjunctiveFacetsRefinements['material'])
+                    uri+= '&material='+ renderHelper.urlFriendly(object.disjunctiveFacetsRefinements["material"][c]);
+
+            }
+
+            if (object.disjunctiveFacetsRefinements.hasOwnProperty('color')) {
+                for (var c in object.disjunctiveFacetsRefinements.color)
+                    uri+= '&color='+ renderHelper.urlFriendly(object.disjunctiveFacetsRefinements["color"][c]);
+            }
+
+            if (object.disjunctiveFacetsRefinements.hasOwnProperty('shops')) {
+                for (var c in object.disjunctiveFacetsRefinements['shops'])
+                    uri+= '&shop='+ renderHelper.urlFriendly(object.disjunctiveFacetsRefinements["shops"][c]);
+            }
+
+            if (object.disjunctiveFacetsRefinements.hasOwnProperty('sizes')) {
+                for (var c in object.disjunctiveFacetsRefinements.sizes)
+                    uri+= '&size='+ renderHelper.urlFriendly(object.disjunctiveFacetsRefinements["sizes"][c]);
+
+            }
+        }
+
+        if (typeof object.numericRefinements !== 'undefined') {
+            if (object.numericRefinements['price.value'] !== 'undefined') {
+                var o = object.numericRefinements['price.value'];
+                if(typeof o['>']!=='undefined') uri+= '&priceFrom='+ o['>'][0];
+                if(typeof o['<']!=='undefined') uri+= '&priceTo='+ o['<'][0];
+            }
+        }
+
+        if (typeof object['facetsRefinements'] !== 'undefined') {
+            if (object['facetsRefinements']['sale'] !== 'undefined') {
+                console.log(object.facetsRefinements["sale"])
+                uri+= '&sale='+ renderHelper.urlFriendly(object.facetsRefinements["sale"][0]);
+            }
+        }
+
+        if(helper.getPage() > 0)uri+= '&page='+helper.getPage();
+        return uri;
+    },
+
+    //DECODE THE URL TO STATE
+    urlToStateCategory:function(url, helper){
+        helper.clearRefinements().setQuery('');
+        var splitted = url.split('?'), href = splitted[0], query = splitted[1];
+        if(href.charAt(0) =='/')href = href.slice(1, href.length);
+        if(href.charAt(href.length-1) =='/') href = href.slice(0, href.length-1);
+        var path = href.split('/'), currentState, type, category;
+        currentState= {brand: false, category:true, search:false}
+        type  = "category";
+
+        category = path[0]+' > '+path[1];
+        if(path[2] !== null && typeof path[2] !== 'undefined'){
+            var styles =  path[2].split('-').join(' > ');
+            category += ' > '+styles;
+        }
+        category = renderHelper.decodeUrlFriendly(decodeURI(category))
+        helper.toggleRefinement('products', category);
+        renderHelper.urlToStateQuery(query, helper)
+        return {currentState : currentState, type: type}
+    },
+    urlToStateBrand:function(url, helper){
+        helper.clearRefinements().setQuery('');;
+        var splitted = url.split('?'), href = splitted[0], query = splitted[1];
+        if(href.charAt(0) =='/')href = href.slice(1, href.length);
+        if(href.charAt(href.length-1) =='/') href = href.slice(0, href.length-1);
+        console.log(href)
+        var path = href.split('/'), currentState, type, category;
+        currentState= {brand: true, category:false, search:false}
+        type = "brand";
+        console.log(path[path.length-1])
+        helper.addDisjunctiveFacetRefinement('brand.name', renderHelper.decodeUrlFriendly(path[path.length-1]));
+
+        if(path.length >2){
+            helper.toggleRefinement('products', renderHelper.decodeUrlFriendly(path[0]));
+        }
+        renderHelper.urlToStateQuery(query, helper)
+        return {currentState : currentState, type: type}
+
+    },
+    urlToStateSearch:function(url, helper){
+        helper.clearRefinements().setQuery('');
+        var splitted = url.split('?'), href = splitted[0], query = splitted[1];
+        if(href.charAt(0) =='/')href = href.slice(1, href.length);
+        if(href.charAt(href.length-1) =='/') href = href.slice(0, href.length-1);
+        var path = href.split('/'), currentState, type, category;
+        currentState= {brand: false, category:false, search:true}
+        type  = "search"
+        console.log('PATH  ',path )
+        if(path.length >1){
+            helper.toggleRefinement('products', renderHelper.decodeUrlFriendly(path[1]));
+        }
+        renderHelper.urlToStateQuery(query, helper)
+        return {currentState : currentState, type: type}
+    },
+    urlToStateQuery:function(query, helper){
+        //LETS CHECK THE QUERY
+        if(typeof query !=='undefined')
+        {
+            var querySplit  = query.split('&');
+            querySplit.forEach(function(q){
+                var qSplit = q.split('='), qName = qSplit[0], qValue = qSplit[1];
+                switch (qName){
+                    case 'q':
+                        if(qValue!=='')
+                            helper.setQuery(qValue);
+                        break;
+                    case 'brand':
+                        helper.addDisjunctiveFacetRefinement('brand.name', renderHelper.decodeUrlFriendly(qValue));
+                        break;
+                    case 'style':
+                        helper.addDisjunctiveFacetRefinement('style', renderHelper.decodeUrlFriendly(qValue));
+                        break;
+                    case 'fit':
+                        helper.addDisjunctiveFacetRefinement('fit', renderHelper.decodeUrlFriendly(qValue));
+                        break;
+                    case 'material':
+                        helper.addDisjunctiveFacetRefinement('material', renderHelper.decodeUrlFriendly(qValue));
+                        break;
+                    case 'size':
+                        helper.addDisjunctiveFacetRefinement('sizes', renderHelper.decodeUrlFriendly(qValue));
+                        break;
+                    case 'discount':
+                        helper.addDisjunctiveFacetRefinement('discount', renderHelper.decodeUrlFriendly(qValue));
+                        break;
+                    case 'color':
+                        helper.addDisjunctiveFacetRefinement('color', renderHelper.decodeUrlFriendly(qValue));
+                        break;
+                    case 'shop':
+                        helper.addDisjunctiveFacetRefinement('shops', renderHelper.decodeUrlFriendly(qValue));
+                        break;
+                    case 'sale':
+                        helper.addFacetRefinement('sale', renderHelper.decodeUrlFriendly(qValue));
+                        break;
+                    case 'priceFrom':
+                        helper.addNumericRefinement('price.value','>', renderHelper.decodeUrlFriendly(qValue));
+                        break;
+                    case 'priceTo':
+                        helper.addNumericRefinement('price.value','<', renderHelper.decodeUrlFriendly(qValue));
+                        break;
+                    case 'page':
+                        helper.setPage(renderHelper.decodeUrlFriendly(qValue))
+                        break;
+                    case 'category':
+                        var categoryValue = renderHelper.decodeUrlFriendly(qValue).split('-').join(' > ')
+                        helper.clearRefinements('products').toggleRefinement('products', categoryValue);
+                        break;
+                }
+            })
+        }
+    },
+
     mapColor: function (array, values) {
         var x = [];
         for (var a in array) {
             for (var b in values) {
-                if (array[a].name == values[b].displayName) {
+                if (array[a].name == values[b].displayName.toLowerCase()) {
                     array[a].hex = values[b].hex;
                     x.push(array[a]);
                 }
@@ -32,7 +300,6 @@ var renderHelper = {
     },
     mapWithout: function (array, values) {
         var x = [];
-
         for (var a in array) {
             for (var b in values) {
                 if (array[a].name !== values[b]) {
@@ -361,9 +628,11 @@ var renderHelper = {
         return rObject;
     },
     getAllFacetValues:function( object,helper, content, currentState, currentBrandDDHits, COLORS, HEADERTEXT, departmentVerified){
-        //console.log(currentState)
         var breadCrumb = [];
-        if(departmentVerified) breadCrumb=helper.getHierarchicalFacetBreadcrumb('products')
+        var temp =  helper.getState(['query', 'attribute:*']);
+        if(typeof temp.hierarchicalFacetsRefinements !== 'undefined')
+                  breadCrumb=helper.getHierarchicalFacetBreadcrumb('products')
+
 
         object.price = content.getFacetStats('price.value')
         object.welcome = renderHelper.getWelcomeMessage(helper,currentState,breadCrumb, content, currentBrandDDHits);
@@ -381,7 +650,9 @@ var renderHelper = {
 
         object.category = renderHelper.categoryRefinement(content.hierarchicalFacets, breadCrumb, HEADERTEXT.hierarchicalFacets.header);
         object.products = content.hits;
+
         object.colors = {header: HEADERTEXT.disjunctionFacets.color.header , content: renderHelper.mapColor(content.getFacetValues('color'),COLORS)}
+
         object.tags = renderHelper.getAllRefinements(helper.getState(['attribute:*']), HEADERTEXT, currentState);
         if(!currentState.brand){
             object.brands={ content: content.getFacetValues('brand.name'), header: HEADERTEXT.disjunctionFacets.brand.header}

@@ -20,7 +20,8 @@ var routes = [
         products.getProductByID,
         products.checkProductIsFavoured,
         function( req, res, next) {
-            //console.log(req.product)
+            console.log('FÅÅÅÅÅÅÅÅÅÅ')
+            console.log(req.product)
             res.send({product:req.product});
         }]
     ],

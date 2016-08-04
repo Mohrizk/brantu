@@ -70,23 +70,23 @@
                     <h5 class=" text-uppercase text-spaced text-black p-b-10 sbold">Kategorier </h5>
                     <ul class="no-style no-margin no-padding">
                         {{#each categories}}
-                        <li class="m-b-5   m-xs-b-0  no-padding "><a class="dark" data-department-explore = "{{this.department.name}}"  href="/explore?q=&hFR[products][0]={{joinBreadCrumb category.breadcrumb}}&page=0">{{andfixer this.category.name}}</a></li>
+                        <li class="m-b-5   m-xs-b-0  no-padding "><a class="dark" data-department-explore = "{{this.department.name}}"  href="{{category.url}}">{{andfixer this.category.name}}</a></li>
                         {{/each}}
                     </ul>
                 </div>
                     {{/if}}
             {{/each}}
 
-            {{#if (compareStrings 'Kvinna' selectedDepartment)}}
+            {{#if (compareStrings 'kvinna' selectedDepartment)}}
                 <div class="text-center col-sm col-xs-5">
                     <h5 class="font-GothamBold text-uppercase text-spaced no-overflow-text text-black p-b-10 sbold hidden-xs">Populära Styles </h5>
                     <h5 class="hiidden font-GothamBold text-uppercase text-spaced no-overflow-text text-black p-b-10 sbold visible-xs">Styles </h5>
                     <ul class="no-style no-margin no-padding">
-                        <li class="m-b-5  m-xs-b-0  "><a class="dark capitalize"  href="/explore?q=&dFR[style][0]=Bomber%20Jackets&hFR[products][0]=Kvinna%20%3E%20Kl%C3%A4der%20%3E%20Jackor%20%3E%20Tunna%20jackor&page=0">Bomber Jackets</a></li>
-                        <li class="m-b-5  m-xs-b-0  "><a class="dark capitalize"  href="/explore?q=&dFR[style][0]=Party%20Jumpsuits&hFR[products][0]=Kvinna%20%3E%20Kl%C3%A4der%20%3E%20Kl%C3%A4nningar%20%3E%20Jumpsuits&page=0">Party Jumpsuits</a></li>
-                        <li class="m-b-5  m-xs-b-0  "><a class="dark capitalize"  href="/search?q=plunge&dFR[color][0]=Svart&dFR[color][1]=Flerfärgad&dFR[color][2]=Orange&dFR[color][3]=Vit&dFR[color][4]=Beige&dFR[color][5]=Blå&hFR[products][0]=Kvinna%20>%20Kläder%20>%20Badmode%20>%20Baddräkter&page=0">Plunge Swimsuite</a></li>
-                        <li class="m-b-5  m-xs-b-0  "><a class="dark capitalize" href="/search?q=fringe&hFR[products][0]=Kvinna%20%3E%20Skor&page=0">Fringe Shoes</a></li>
-                        <li class="m-b-5  m-xs-b-0  "><a class="dark capitalize"  href="/search?q=round&hFR[products][0]=Kvinna%20%3E%20Accessoarer%20%3E%20Solglas%C3%B6gon&page=0">runda solglasögon</a></li>
+                        <li class="m-b-5  m-xs-b-0  "><a class="dark capitalize"  href="/kvinna/kläder/jackor/?&style=bomber_jackets">Bomber Jackets</a></li>
+                        <li class="m-b-5  m-xs-b-0  "><a class="dark capitalize"  href="/kvinna/kläder/klänningar-jumpsuits/">Party Jumpsuits</a></li>
+                        <li class="m-b-5  m-xs-b-0  "><a class="dark capitalize"  href="/kvinna/kläder/badmode/?&style=beach_playsuits">Beach Playsuits</a></li>
+                        <li class="m-b-5  m-xs-b-0  "><a class="dark capitalize" href="/kvinna/skor/sandaler_˜_sandaletter/">SANDALER & SANDALETTER</a></li>
+                        <li class="m-b-5  m-xs-b-0  "><a class="dark capitalize"  href="/kvinna/accessoarer/solglasögon/?&style=round">runda solglasögon</a></li>
 
                     </ul>
                 </div>
@@ -95,11 +95,11 @@
                         <h5 class="font-GothamBold text-uppercase text-spaced no-overflow-text text-black p-b-10 sbold hidden-xs">Populära Styles </h5>
                         <h5 class="hiidden font-GothamBold text-uppercase text-spaced no-overflow-text text-black p-b-10 sbold visible-xs">Styles </h5>
                         <ul class="no-style no-margin no-padding">
-                            <li class="m-b-5  m-xs-b-0  "><a class="dark capitalize" href="/explore?q=&dFR[style][0]=Chino&hFR[products][0]=Man%20%3E%20Kl%C3%A4der%20%3E%20Byxor%20%26%20shorts&page=0">Chino Shorts</a></li>
-                            <li class="m-b-5  m-xs-b-0  "><a class="dark capitalize" href="/explore?q=&hFR[products][0]=Man%20%3E%20Kl%C3%A4der%20%3E%20Kostymer%20%3E%20Kavajer&page=0">Kavajer</a></li>
-                            <li class="m-b-5  m-xs-b-0  "><a class="dark capitalize" href="/explore?q=&hFR[products][0]=Man%20%3E%20Skor%20%3E%20Låga%20skor%20%3E%20Loafers&page=0">Loafers</a></li>
-                            <li class="m-b-5  m-xs-b-0  "><a class="dark capitalize" href="/explore?q=&dFR[style][0]=Wayfarer%20%26%20Square&hFR[products][0]=Man%20%3E%20Accessoarer%20%3E%20Solglasögon&page=0">Wayfarer Solglasögon</a></li>
-                            <li class="m-b-5  m-xs-b-0  "><a class="dark capitalize" href="/explore?q=&dFR[style][0]=Jeans&hFR[products][0]=Man%20%3E%20Kläder%20%3E%20Skjortor%20%3E%20Casual&page=0">Jeans Shirts</a></li>
+                            <li class="m-b-5  m-xs-b-0  "><a class="dark capitalize" href="/man/kläder/byxor_˜_shorts-chinos/">Chinos</a></li>
+                            <li class="m-b-5  m-xs-b-0  "><a class="dark capitalize" href="man/kläder/kostymer-kavajer/">Kavajer</a></li>
+                            <li class="m-b-5  m-xs-b-0  "><a class="dark capitalize" href="/man/skor/låga_skor-loafers/">Loafers</a></li>
+                            <li class="m-b-5  m-xs-b-0  "><a class="dark capitalize" href="/man/accessoarer/solglasögon/?&style=wayfarer_˜_square">Wayfarer Solglasögon</a></li>
+                            <li class="m-b-5  m-xs-b-0  "><a class="dark capitalize" href="/man/kläder/skjortor/?&style=jeans">Jeans Shirts</a></li>
 
                         </ul>
                     </div>
@@ -110,11 +110,11 @@
                    <h5 class="font-GothamBold text-uppercase text-spaced no-overflow-text text-black p-b-10 sbold hidden-xs">Populära Märken </h5>
                    <h5 class="font-GothamBold text-uppercase text-spaced no-overflow-text text-black p-b-10 sbold visible-xs">Märken </h5>
                    <ul class="no-style no-margin no-padding">
-                       <li class="m-b-5  m-xs-b-0  "><a class="dark" href="/brand/NIKE ACTION SPORTS?q=&hFR[products][0]={{selectedDepartment}}">Nike</a></li>
-                       <li class="m-b-5  m-xs-b-0  "><a class="dark" href="/brand/Filippa%20K?q=&hFR[products][0]={{selectedDepartment}}">Fillipa K</a></li>
-                       <li class="m-b-5  m-xs-b-0  "><a class="dark" href="/brand/Tiger of Sweden Jeans?q=&hFR[products][0]={{selectedDepartment}}">Tiger of Sweden Jeans</a></li>
-                       <li class="m-b-5  m-xs-b-0  "><a class="dark " href="/brand/Diesel?q=&hFR[products][0]={{selectedDepartment}}">Diesel</a></li>
-                       <li class="m-b-5  m-xs-b-0  "><a class="dark" href="/brand/adidas%20Originals?q=&hFR[products][0]={{selectedDepartment}}">Adidas Original</a></li>
+                       <li class="m-b-5  m-xs-b-0  "><a class="dark" href="/märken/nike">Nike</a></li>
+                       <li class="m-b-5  m-xs-b-0  "><a class="dark" href="/märken/filippa_k">Fillipa K</a></li>
+                       <li class="m-b-5  m-xs-b-0  "><a class="dark" href="/brand/tiger_of_sweden">Tiger of Sweden Jeans</a></li>
+                       <li class="m-b-5  m-xs-b-0  "><a class="dark " href="/brand/diesel">Diesel</a></li>
+                       <li class="m-b-5  m-xs-b-0  "><a class="dark" href="/brand/adidas_originals">Adidas Original</a></li>
 
                    </ul>
                </div>

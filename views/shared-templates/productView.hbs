@@ -42,7 +42,7 @@
                                         <div class="col-xs bottom-xs"><h4 class="text-left medium no-padding no-margin v-align-bottom text-black"> \{{product.name}}</h4></div> 
                                         </div> 
                                     <div class="row bottom-xs start-xs"> 
-                                        <a class="col-xs bottom-xs dark" href="/brand/\{{product.brand.name}}?q=&hFR[products][0]=\{{product.DEPARTMENT}}"><h5 class="sbold no-margin no-padding text-spaced-medium text-left v-align-bottom" >\{{product.brand.name}}</h5></a>
+                                        <a class="col-xs bottom-xs dark" href="/brand/\{{urlFriendly product.brand.name}}"><h5 class="sbold no-margin no-padding text-spaced-medium text-left v-align-bottom" >\{{product.brand.name}}</h5></a>
                                         </div> 
                                     </div> 
                                 <div class="col-xs bottom-xs"> 
@@ -72,7 +72,7 @@
                                                 <h6 class="bold text-black">Colors</h6>
                                                 <ol class="JBColorList no-style no-padding no-margin">
                                                     \{{#if product.color}}<li class="inline no-padding no-margin"><img class="active bg-image" src="\{{{product.mainPicture.mediumUrl}}}"/><div class="text-center no-overflow-text text-black sbold">\{{product.color}}</div></li>\{{/if}}
-                                                    \{{#each product.otherColors}}<li class="inline no-padding no-margin"><a data-product-info="show" _id="\{{this._id}}"><img class="bg-image" src="\{{{this.mainPicture.mediumUrl}}}"/><div class="text-center no-overflow-text text-black sbold">\{{this.color}}</div></a></li>\{{/each}}
+                                                    \{{#each product.otherColors}}<li class="inline no-padding no-margin"><a href="/bästa-pris-för/\{{{urlFriendly this.name}}}-\{{this._id}}"><img class="bg-image" src="\{{{this.mainPicture.mediumUrl}}}"/><div class="text-center no-overflow-text text-black sbold">\{{this.color}}</div></a></li>\{{/each}}
                                                     </ol>
                                                 </div>
                                             </div>
@@ -86,10 +86,11 @@
                                     <th class="sorting no-padding" rowspan="1" colspan="1">Shop</th>
                                     <th class="sorting no-padding hidden-xs" rowspan="1" colspan="1">Colors</th>
                                     <th class="sorting no-padding hidden-xs" rowspan="1" colspan="1">Prices</th>
+                                    <th class="sorting no-padding " rowspan="1" colspan="1"></th>
                                     <th class="sorting no-padding" rowspan="1" colspan="1">Lowest Price</th>
                                     <th class="sorting no-padding hidden-xs" rowspan="1" colspan="1">Shipping & Return </th>
                                     <th class="sorting no-padding visible-xs" rowspan="1" colspan="1">Free Return </th>
-                                    <th class="sorting no-padding " rowspan="1" colspan="1"></th>
+
                                     </tr></thread>
                                 <tbody style="background-color: rgba(255,255,255,0.9);">
                                 \{{#each product.articles.shops}}
@@ -98,23 +99,29 @@
                                     <td class="v-align-middle no-padding p-t-10 p-l-5 hidden-xs">
                                         <ol class="no-padding no-margin no-style">
                                             \{{#each this.units}}
-                                                <li><p class="no-padding no-margin bold">\{{this.color}}</p></li>
+                                            <a target="_blank" href="\{{this.articleUrl}}">  <li><p class="no-padding no-margin bold">\{{this.color}}</p></li></a>
                                                 \{{/each}}
                                              </ol>
                                         </td>
                                     <td class="v-align-middle no-padding p-t-10 p-l-5 hidden-xs">
                                         <ol class="no-padding no-margin no-style">
                                             \{{#each this.units}}
-                                                <li>
-                                                    <p class="no-padding no-margin">\{{this.price.formatted}}\{{#if discount}} <span class="bold text-velvet">(\{{this.discount}}%)</span>\{{/if}}</p>
-                                                    </li>
+                                            <a target="_blank" href="\{{this.articleUrl}}">   <li>
+                                                   <p class="no-padding no-margin">\{{this.price.formatted}}\{{#if discount}} <span class="bold text-velvet">(\{{this.discount}}%)</span>\{{/if}}</p>
+                                                    </li></a>
                                                 \{{/each}}
                                              </ol>
                                         </td>
 
+                                    <td class="v-align-middle p-t-5 no-padding">
+                                        \{{#each this.units}}
+                                            <a href="\{{this.articleUrl}}" class="text-velvet" target="_blank"><div class="p-t-5"> <button class="btn btn-tag bold no-padding all-caps b-b  no-margin p-r-5 p-l-5" style="color:#AA076B !important;">Go to Shop</button></div> </a>
+                                        \{{/each}}
+                                    </td>
+
                                     <td class="v-align-middle no-padding p-t-10"> 
                                         <p class="bold">\{{lowest.price.formatted}}</p> 
-                                        </td>
+                                    </td>
 
                                     <td class="v-align-middle no-padding p-t-10 p-b-5 hidden-xs"> 
                                         <h6 class="bold no-padding no-margin"><font class="text-master medium">Free Return: </font>\{{#if this.shop.freeReturn}} Yes \{{else}} No \{{/if}}</h6> 
@@ -123,14 +130,11 @@
                                         <h6 class="bold no-padding no-margin"><font class="text-master medium">Shipping Period: </font>\{{this.shop.standardShippingTime}}</h6> 
                                         <h6 class="bold no-padding no-margin"><font class="text-master medium">Free Shipping After: </font>\{{this.shop.freeAfter}}</h6> 
                                         </td>
-                                    <td class="v-align-middle no-padding p-t-10 p-b-5 visible-xs"> 
-                                        <p class="bold no-padding no-margin"><font class="text-master medium"></font>\{{#if this.shop.freeReturn}} Yes \{{else}} No \{{/if}}</p> 
+                                    <td class="v-align-middle no-padding p-t-10 p-b-5 visible-xs">
+                                        <p class="bold no-padding no-margin"><font class="text-master medium"></font>\{{#if this.shop.freeReturn}} Yes \{{else}} No \{{/if}}</p>
                                         </td>
 
-                                    <td class="v-align-middle no-padding">
-                                        <a href="\{{../product.productUrl}}" target="_blank"> <button class="btn btn-tag sbold">Go to Shop</button></a>
 
-                                    </td>
                                     </tr>
                                 \{{/each}}
                                 </tbody>

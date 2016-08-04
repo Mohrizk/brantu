@@ -1,6 +1,8 @@
 var Outfits  = require('../models/outfit');
 var Product  = require('../models/product');
 var webshot = require('webshot');
+var url = require('url');
+var shared = require('../../public/javascripts/shared-helper');
 var helper = {
     populateStyleProduct: function (body, callback){
     if(body.styleProduct !== null && body.styleProduct !== ''){
@@ -22,10 +24,24 @@ var helper = {
             return callback(null,product);
         })
     }
-}
+},
+
 }
 
-module.exports = {
+ var feed = {
+    getDateDifference:function(date){
+        var now = new Date()
+        //var dif = now.getTime() - date.getTime();
+        var timeDiff = Math.abs(date.getTime() - now.getTime());
+        var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+        if (diffDays < 7) return diffDays+' days ago';
+        else if(diffDays>=7 && diffDays<14) return 'one week ago';
+        else if(diffDays>=14 && diffDays<21)return 'two week ago';
+        else if(diffDays>=21 && diffDays<28)return 'three week ago';
+        else if(diffDays>28)return 'more than a month';
+
+    },
     createPriceCard:function(req, res, next){
         var body = req.body;
         if((body.styleProduct == null || body.styleProduct == '') &&
@@ -153,6 +169,8 @@ module.exports = {
             .catch(next);
     },
     getFeed:function(req,res,next){
+        if( res.locals.selectedDepartment == null || typeof res.locals.selectedDepartment == 'undefined')
+        return next();
 
         var page;
         if(typeof req.params.page !== 'undefined'){page =  req.params.page;}
@@ -160,7 +178,7 @@ module.exports = {
         var now = new Date();
 
         var query = {
-            gender   : require('./mw-categories').mapGender(res.locals.selectedDepartment),
+            gender   : shared.helper.mapGender(res.locals.selectedDepartment),
             startDate: {"$lt":now}
         }
         var options = {
@@ -172,10 +190,38 @@ module.exports = {
         };
 
         Outfits.paginate(query, options).then(function(result) {
+            result.docs.map(function(outfit){
+                outfit.dateDifference = feed.getDateDifference(outfit.startDate)
+                return outfit;
+            })
             res.locals.feed = result;
-            console.log(result.docs.length)
+            //console.log(result.docs.length)
+            //console.log('we are here')
             next();
         });
+
+    },
+    getOutfit:function(req,res,next){
+        var id;
+        if(req.params.id){
+            id = req.params.id;
+        }
+        else{
+            var splitted = req.params.name.split('-');
+            id = splitted[splitted.length-1];
+        }
+
+        Outfits.findOne({_id:id}).lean().exec(function(err, outfit){
+            if(err) return next(err);
+            if(outfit== null) next();
+
+            outfit.dateDifference = feed.getDateDifference(outfit.startDate);
+            var url_parts = url.parse(outfit.categoryLink, true);
+            req.blogProductsLink = url_parts.path;
+            console.log('products BLOG LINK ',req.blogProductsLink)
+            req.outfit = outfit;
+            next()
+        })
 
     },
     getNewsletter:function(department, callback){
@@ -198,4 +244,4 @@ module.exports = {
     },
 }
 
-
+module.exports = feed;

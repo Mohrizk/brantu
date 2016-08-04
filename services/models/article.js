@@ -22,4 +22,4 @@ var Article = mongoose.Schema({
         }
     ]
 })
-module.exports = mongoose.model('Article', Article, 'articles');
+module.exports = mongoose.model('Article', Article, 'articles_test');

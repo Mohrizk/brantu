@@ -12,7 +12,7 @@ var algoliasearch = require('algoliasearch');
 var algoliasearchHelper = require('algoliasearch-helper');
 
 var client   = algoliasearch("D3IWZXC0AH", '3d6a60c228b6e8058770fdf8eab2f652');
-var AgoliaInstance   = algoliasearchHelper(client, 'products_2',
+var AgoliaInstance   = algoliasearchHelper(client, 'test_products',
     {
         hitsPerPage: 30,
         hierarchicalFacets: [{
@@ -23,7 +23,7 @@ var AgoliaInstance   = algoliasearchHelper(client, 'products_2',
         facets:[  'sale', 'price.value'],
         disjunctiveFacets:['color','brand.name','sizes', 'shops', 'discount' , 'style', 'fit', 'material']
     });
-var sharedHelpers = require('../../public/javascripts/shared-helper');
+var shared = require('../../public/javascripts/shared-helper');
 
 //HELPER FUNCTIONS
 function getHex(product, callback){
@@ -50,8 +50,16 @@ function getHex(product, callback){
 
 operations = {
     //API FOR GETTING PRODUCT
+    getProductIDfromName:function(req, res,next){
+        var string =  req.params.name;
+        var splited = string.split('-');
+        req.params.id= splited[splited.length-1];
+        next()
+
+    },
     getProductByID  :function(req, res, next){
         var _id = req.params.id;
+        console.log('_id',req.params);
         var options = 'brand category otherColors articles articles.shops.shop';
         Products.findOne({"_id":_id}).deepPopulate(options).exec( function(err, product){
             if(err) return next(err);
@@ -71,7 +79,6 @@ operations = {
             return next();
             })
     },
-
     getSimilarProductsFromSameBrand:function(req,res,next){
         var foundProduct = req.product;
         var query = {   "brand": foundProduct.brand,
@@ -98,11 +105,10 @@ operations = {
             next();
         })
     },
-
     GetLowerPriceCategoryProducts:function(req,res,next){
         var foundProduct = req.product;
         console.log('-----------------------')
-        console.log(foundProduct.category)
+       // console.log(foundProduct.category)
         var query =    {    "color": new RegExp( '.*' + foundProduct.color  +'.*', 'i'),
                             "category": foundProduct.category._id,
                             "price.value":
@@ -126,7 +132,6 @@ operations = {
         })
 
     },
-
     GetSimilarCategoryProducts:function(req,res,next){
         var foundProduct = req.product;
         var query =    {    "color": new RegExp( '.*' + foundProduct.color  +'.*', 'i'),
@@ -156,7 +161,6 @@ operations = {
         })
 
     },
-
     checkProductIsFavoured :function(req, res, next){
         if(req.product !== null && typeof req.session.favProducts !=='undefined'){
             var found = false;
@@ -189,62 +193,73 @@ operations = {
         }
     },
 
-    getAlgoliaProducts:function(req, res, next){
-        console.log(req.url)
+    getForBlog:function(req, res, next){
+        if(typeof req.outfit == 'undefined') return next();
+
+        var url_parts = url.parse(req.outfit.categoryLink, true);
+        var href = decodeURI(url_parts.pathname);
+        var search = ['search', 'sök']
+        var brand = ['brand', 'märken']
+        console.log('HREFFFFF ', decodeURI(url_parts.href))
+        if(search.indexOf(href) > -1){
+            req.currentState  = shared.helper.urlToStateSearch(decodeURI(url_parts.path), AgoliaInstance);
+            res.locals.TYPE = 'search';
+        }
+        else if(brand.indexOf(href) > -1){
+            console.log(AgoliaInstance.getState(['query','attribute:*']));
+
+            req.currentState  = shared.helper.urlToStateBrand(decodeURI(url_parts.path), AgoliaInstance);
+            res.locals.TYPE = 'brand';
+        }
+        else {
+            req.currentState  = shared.helper.urlToStateCategory(decodeURI(url_parts.path), AgoliaInstance);
+            res.locals.TYPE = 'category';
+        }
+        next();
+    },
+    getForBrands:function(req, res, next){
         var url_parts = url.parse(req.url, true);
-        var currentState;
+        console.log('HREFFFFF ', decodeURI(url_parts.href))
+        req.currentState  = shared.helper.urlToStateBrand(decodeURI(url_parts.href), AgoliaInstance);
+        res.locals.TYPE = 'brand';
+        next();
+    },
+    getForCategories:function(req, res, next){
+        var url_parts = url.parse(req.url, true);
+        req.currentState  = shared.helper.urlToStateCategory(decodeURI(url_parts.href), AgoliaInstance);
+        res.locals.TYPE = 'category';
+        console.log('HREFFFFF ', decodeURI(url_parts.href))
+        next();
+    },
+    getForSearch:function(req, res, next){
+        var url_parts = url.parse(req.url, true);
+        req.currentState  = shared.helper.urlToStateSearch(decodeURI(url_parts.href), AgoliaInstance);
+        res.locals.TYPE = 'search';
+        console.log('HREFFFFF ', decodeURI(url_parts.href))
+        next();
 
-        if(url_parts.pathname.indexOf('explore') > -1)  {
-            currentState= {brand: false, category:true, search:false}
-            res.locals.TYPE  = "category"
-            res.locals.title = url_parts.query['hFR[products][0]']
-        }
-        else if(url_parts.pathname.indexOf('brand') > -1){
-            currentState= {brand: true, category:false, search:false}
-            res.locals.TYPE  = "brand"
-            res.locals.title = 'brand - '+req.params.name;
-        }
-        else if(url_parts.pathname.indexOf('search') > -1){
-            currentState= {brand: false, category:false, search:true}
-            res.locals.TYPE  = "search"
-            res.locals.title = 'search - '+url_parts.query['q'];
-        }
-        if(typeof url_parts.query['hFR[products][0]'] !== 'undefined')
-            res.locals.selectedDepartment = url_parts.query['hFR[products][0]'].split(' > ')[0];
-
-        var tb = url_parts.search;
-        if(tb.indexOf('hFR[products][0]')==-1){
-            tb = tb + 'q=&hFR[products][0]='
-        }
-        var queryString = tb.split('?');
-        console.log(queryString)
-        console.log('-----------')
-        sharedHelpers.helper.urlToState(
-            AgoliaInstance,
-            queryString[queryString.length-1],
-            currentState,
-            req.params.name
-        )
+    },
+    getAlgoliaProducts:function(req, res, next){
+        if(typeof req.currentState =='undefined') return next();
+        console.log(AgoliaInstance.getState(['query','attribute:*']));
         AgoliaInstance.search()
         AgoliaInstance.once('result', function(content){
-            console.log('Hits',content.hits.length)
-            console.log('2 start')
-            sharedHelpers.helper.getAllFacetValues(
+            console.log('THE TOTAL Hits ',content.hits.length);
+            shared.helper.getAllFacetValues(
                 res.locals,
                 AgoliaInstance,
                 content,
-                currentState,
+                req.currentState.currentState,
                 null,
-                sharedHelpers.colors,
-                sharedHelpers.translation,
+                shared.colors,
+                shared.translation,
                 true);
 
-            console.log('2 end')
-            console.log(res.locals.welcome)
             next()
         }).on('error',function(err){
             return next(err);
         })
+
     }
 }
 
@@ -320,7 +335,7 @@ var helper = {
         products.sort(function(a, b) {
             return a.levenshtein - b.levenshtein;
         });
-        for(var x in products) console.log(products[x]._id, products[x].levenshtein)
+        //for(var x in products) console.log(products[x]._id, products[x].levenshtein)
         return products;
     }
 

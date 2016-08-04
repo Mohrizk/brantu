@@ -305,7 +305,7 @@
                         <div class="itemWrapper">
                             <div class="row top-xs">
                                 <div class="preview-image auto-margin col-xs" style="margin-top: 0;">
-                                    <a href="/view/{{this.objectID}}"> <img data-original="{{{this.mainPicture.largeUrl}}}" action="/add-viewed-product-session" class="v-align-top lazy object-cover"  pic-src="{{{this.mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}" alt="{{../name}}" index="{{@index}}" nb-pic="{{nbImages}}" pic-order="0" _id="{{objectID}}" /></a>
+                                    <a href="/bästa-pris-för/{{{urlFriendly this.name}}}-{{this.objectID}}"> <img data-original="{{{this.mainPicture.largeUrl}}}" action="/add-viewed-product-session" class="v-align-top lazy object-cover"  pic-src="{{{this.mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}" alt="{{../name}}" index="{{@index}}" nb-pic="{{nbImages}}" pic-order="0" _id="{{objectID}}" /></a>
                                 </div>
                             </div>
                             <div class="item-brand sbold">{{{this.brand.name}}}</div>

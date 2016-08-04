@@ -46,4 +46,4 @@ var Product = mongoose.Schema({
 
 Product.plugin(deepPopulate);
 
-module.exports = mongoose.model('Product', Product ,'products');
+module.exports = mongoose.model('Product', Product ,'products_test');

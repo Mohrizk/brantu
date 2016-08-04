@@ -2,6 +2,9 @@
 .productFeedTemplate img{
     height: 35vw; max-width:100%; object-fit: cover;
 }
+.productFeedTemplate img.small{
+    height: 20vw; max-width:100%; object-fit: cover;
+}
 img.lazy {
     display: block;
     /* optional way, set loading as background */
@@ -291,6 +294,22 @@ input:-webkit-autofill {
 }
 
 
+
+
+/* landing Page*/
+.mainJumbtron{
+    height:28vw;
+}
+.mainJumbtron .text-section{
+    margin-top:7vw;
+}
+.mainJumbtron .gradient-grey{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,656565+44,656565+63,ffffff+100&0+0,0.28+44,0.34+60,0+100 */
+    background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(101,101,101,0.28) 44%, rgba(101,101,101,0.14) 60%, rgba(101,101,101,0.14) 63%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(101,101,101,0.28) 44%,rgba(101,101,101,0.14) 60%,rgba(101,101,101,0.14) 63%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(101,101,101,0.28) 44%,rgba(101,101,101,0.14) 60%,rgba(101,101,101,0.14) 63%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+}
 /* landing menue
 ------------------------------------*/
 
@@ -872,6 +891,7 @@ ul.circle li:hover div{
 }
 .list input[type=checkbox], .colorList input[type=checkbox]{display: none !important;}
 .list input[type=checkbox] + label{
+    text-transform: capitalize;
     display: block;
     font-weight: 400;
     padding: 3px 5px;
@@ -1067,8 +1087,17 @@ ul.circle li:hover div{
     }
 }
 @media (max-width: 991px){
+    .mainJumbtron{
+        height:28vw;
+    }
+    .mainJumbtron .text-section{
+        margin-top:4vw;
+    }
     .productFeedTemplate img{
         height: 54vw;
+    }
+    .productFeedTemplate img.small{
+        height: 34vw;
     }
     .similarProducts .flow img{
        height:36vw;
@@ -1148,7 +1177,12 @@ ul.circle li:hover div{
 
 }
 @media (max-width: 767px){
-
+    .mainJumbtron{
+        height:35vw;
+    }
+    .mainJumbtron .text-section{
+        margin-top:7vw;
+    }
     .table-responsive th {font-size:12px;}
     .dataTables_wrapper td  img{
         width:70px;
@@ -1178,6 +1212,12 @@ ul.circle li:hover div{
     .vertical .item .discounted-percentage { top:30vw; left:1vw;  }
 }
 @media (max-width: 480px){
+    .mainJumbtron{
+        height:55vw;
+    }
+    .mainJumbtron .text-section{
+        margin-top:7vw;
+    }
     .productFeedTemplate img{
         height: 300px;
     }

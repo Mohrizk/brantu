@@ -26,6 +26,7 @@ var Outfit = mongoose.Schema({
     categoryLink : String ,
     categoryName : String ,
     gender: String,
+    valid: Boolean,
     type:String
 })
 Outfit.plugin(mongoosePaginate);

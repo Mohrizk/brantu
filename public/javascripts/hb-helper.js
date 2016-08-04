@@ -96,7 +96,18 @@ var register = function(Handlebars) {
             else {
                 return breadcrumb;
             }
-        }
+        },
+        urlFriendly:function (string){
+            var newString = string.toLowerCase()
+                .replace(/[\/\*\+\.\?\=\)\(\}\{\<\>_]/g," ") //|(?:\,\ )|(?:\,)
+                .replace(/(?:\')/g,"")
+                .replace(/(?:\ \ )/g," ")
+                .replace(/(?:\ )/g,"_")
+                .replace(/(?:\&)/g,"˜");
+            return newString;
+            // if(typeof leaveDash !== 'undefined') ;
+            //else return newString.replace(/\-/g, " ")
+        },
     };
 
 if (Handlebars && typeof Handlebars.registerHelper === "function") {

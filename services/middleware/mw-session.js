@@ -1,6 +1,6 @@
 module.exports ={
     cookieConcession:function(req, res, next){
-        console.log('IN the session the cookie concession is ', req.session.cookieConcession)
+        //console.log('IN the session the cookie concession is ', req.session.cookieConcession)
         if(typeof req.session.cookieConcession =='undefined'){
             //req.session.cookieConcession = false
             res.locals.cookieConcession = false;
@@ -9,11 +9,11 @@ module.exports ={
 
         req.session.cookieConcession = true;
         res.locals.cookieConcession = true;
-        console.log('',res.locals.cookieConcession)
+        //console.log('',res.locals.cookieConcession)
         next()
     },
     signupPopup:function(req, res, next){
-        console.log('IN the session the Sign Up concession is ', req.session.signupPopup)
+      //  console.log('IN the session the Sign Up concession is ', req.session.signupPopup)
         if(typeof req.session.signupPopup =='undefined'){
             res.locals.signupPopup = false;
             return next()
@@ -21,13 +21,14 @@ module.exports ={
 
         req.session.signupPopup = true;
         res.locals.signupPopup = true;
-        console.log('',res.locals.signupPopup)
+       // console.log('',res.locals.signupPopup)
         next()
     },
 
 
     addFavouriteDepartment: function(req, res, next){
-            req.session.favDepartment = req.url
+
+        req.session.favDepartment = req.url
         next();
     },
     addFavouriteProduct: function(req, res, next){

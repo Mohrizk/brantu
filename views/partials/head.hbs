@@ -4,12 +4,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <meta name="description" content="Bringing brands to you, customize your shopping experience and find out the flash offers from your favourite brands."  />
+    <meta name="description" content={{description}}  />
     <meta content="Brantu" name="author" />
-
-    <meta name="verification" content="f851a1b5b1329e21b3fe0e610bb66367" />
-    <!-- TradeDoubler site verification 2845825 -->
+    
 
     <!--***********************************************************************
     **********************************  STYLE SHEETS ***************************
@@ -75,6 +74,10 @@
 
         {{#if TYPE}}
         var  TYPE  = {{{json TYPE}}};
+        {{/if}}
+
+        {{#if blogProductsLink}}
+        var  blogProductsLink  = {{{json blogProductsLink}}};
         {{/if}}
 
 

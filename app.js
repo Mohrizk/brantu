@@ -146,10 +146,11 @@ app.use(
 
     next();
 });
-
-app.use(userRoutes);
 app.use(adminRoutes);
 app.use(apiRoutes);
+app.use(userRoutes);
+
+
 
 
 
