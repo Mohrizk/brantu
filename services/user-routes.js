@@ -466,6 +466,12 @@ var routes = [
     ],
 
 /********************NAVIGATE******************/
+    [ '/:department/uptack-nya-favoriter', 'get', [
+        function(req, res, next) {
+            res.redirect('/'+req.params.department)
+        } ]
+    ],
+
     [ '/explore', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
@@ -579,6 +585,7 @@ var routes = [
             res.render('newsletter',{layout: false})
         }]
     ],
+
 
     [ '/:department', 'get', [
         session.addFavouriteDepartment,

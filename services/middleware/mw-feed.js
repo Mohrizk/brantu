@@ -88,6 +88,7 @@ var helper = {
             helper.populatePriceProduct(body,function(err,  priceProduct){
                    body.currency = priceProduct.price.currency;
                 if(priceProduct !== null){
+                    body.priceUrl = priceProduct.productUrl;
                     if(body.priceImage == null || body.priceImage == ''){
                         body.priceImage = priceProduct.mainPicture.largeUrl;
                     }
@@ -97,10 +98,11 @@ var helper = {
                     if(body.styleBrand == null || body.priceBrand == ''){
                         body.priceBrand = priceProduct.brand.name;
                     }
-                    body.priceUrl = priceProduct.productUrl;
+
 
                 }
                 if(styleProduct !== null){
+                    body.styleUrl = styleProduct.productUrl;
                     if(body.styleImage == null || body.styleImage == ''){
                         body.styleImage = styleProduct.mainPicture.largeUrl;
                     }
@@ -110,8 +112,6 @@ var helper = {
                     if(body.styleBrand == null || body.styleBrand == ''){
                         body.styleBrand = styleProduct.brand.name;
                     }
-                    body.styleUrl = priceProduct.styleUrl;
-
                 }
 
 
