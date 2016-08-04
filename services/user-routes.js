@@ -272,7 +272,7 @@ var routes = [
         products.getAlgoliaProducts,
         function(req, res, next) {
             res.render('blog', {
-                title                      : 'snyggaste '+req.outfit.categoryName+' - ' +req.outfit.name+' | Brantu.com',
+                title                      : 'snyggaste '+req.outfit.categoryName+' - ' +req.outfit.name+' | Brantu',
                 description                : req.outfit.description+' - ' +req.outfit.name,
                 outfit                     : req.outfit,
                 blogProductsLink             : req.blogProductsLink,
@@ -514,7 +514,7 @@ var routes = [
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
-            res.locals.title = "Kontakt oss - Brantu.com";
+            res.locals.title = "Kontakt oss - Brantu";
             res.render('contact-us');
         }]
     ],
@@ -522,7 +522,7 @@ var routes = [
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
-            res.locals.title = "Om oss - Brantu.com";
+            res.locals.title = "Om oss - Brantu";
             res.render('about-us');
         }]
     ],
@@ -531,7 +531,7 @@ var routes = [
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
-            res.locals.title = "FAQ - Brantu.com";
+            res.locals.title = "FAQ - Brantu";
             res.render('faq');
         }]
     ],
@@ -540,7 +540,7 @@ var routes = [
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
-            res.locals.title = "Privacy policy - Brantu.com";
+            res.locals.title = "Privacy policy - Brantu";
             res.render('privacy')
         }
     ]
@@ -550,7 +550,7 @@ var routes = [
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
-            res.locals.title = "Terms and conditions - Brantu.com";
+            res.locals.title = "Terms and conditions - Brantu";
             res.render('terms')
         }
     ]
@@ -569,7 +569,7 @@ var routes = [
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
-            res.locals.title = "Cookie Policy - Brantu.com";
+            res.locals.title = "Cookie Policy - Brantu";
             res.render('cookie');
         }]
     ],
@@ -603,7 +603,7 @@ var routes = [
             var department = shared.helper.mapDepartment(res.locals.selectedDepartment);
             var string = (department == 'MEN'? 'kläder, accessoarer och skor': 'kläder, klänningar, accessoarer och skor')
 
-            res.locals.title = "Hitta "+ string +" till det bästa priset online - "+res.locals.selectedDepartment + "- Brantu.com";
+            res.locals.title = "Hitta "+ string +" till det bästa priset online - "+res.locals.selectedDepartment + "- Brantu";
             res.locals.description = 'Brantu är Sveriges bästa prisjämförelsajt inom mode! Med oss hittar du både relaterade produkter och stilar till det bästa priset. Använd brantu när du ska köpa dina kläder eller skor online...';
             if(department == 'MEN')res.render('men');
             else res.render('women');
