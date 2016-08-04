@@ -99,14 +99,14 @@
                                     <td class="v-align-middle no-padding p-t-10 p-l-5 hidden-xs">
                                         <ol class="no-padding no-margin no-style">
                                             {{#each this.units}}
-                                            <a target="_blank" href="{{this.articleUrl}}">  <li><p class="no-padding no-margin bold">{{this.color}}</p></li></a>
+                                            <a target="_blank" rel="nofollow" href="{{this.articleUrl}}">  <li><p class="no-padding no-margin bold">{{this.color}}</p></li></a>
                                             {{/each}}
                                         </ol>
                                     </td>
                                     <td class="v-align-middle no-padding p-t-10 p-l-5 hidden-xs">
                                         <ol class="no-padding no-margin no-style">
                                             {{#each this.units}}
-                                            <a target="_blank" href="{{this.articleUrl}}">   <li>
+                                            <a target="_blank" rel="nofollow" href="{{this.articleUrl}}">   <li>
                                                 <p class="no-padding no-margin">{{this.price.formatted}}{{#if discount}} <span class="bold text-velvet">({{this.discount}}%)</span>{{/if}}</p>
                                             </li></a>
                                             {{/each}}
@@ -115,7 +115,7 @@
 
                                     <td class="v-align-middle p-t-5 no-padding">
                                         {{#each this.units}}
-                                        <a href="{{this.articleUrl}}" class="text-velvet" target="_blank"><div class="p-t-5"> <button class="btn btn-tag bold no-padding all-caps b-b  no-margin p-r-5 p-l-5" style="color:#AA076B !important;">Go to Shop</button></div> </a>
+                                        <a href="{{this.articleUrl}}" rel="nofollow" class="text-velvet" target="_blank"><div class="p-t-5"> <button class="btn btn-tag bold no-padding all-caps b-b  no-margin p-r-5 p-l-5" style="color:#AA076B !important;">Go to Shop</button></div> </a>
                                         {{/each}}
                                     </td>
 

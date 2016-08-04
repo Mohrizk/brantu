@@ -34,7 +34,7 @@ const express = require('express');
 const app = express();//INITIATE A
 
 //CONNECT DB
-if (app.get('env') === 'development') mongoose.connect(require('./config/database.js').local);
+if (app.get('env') === 'development') mongoose.connect(require('./config/database.js').remote);
 else mongoose.connect(require('./config/database.js').remote);
 
 app.use(logger('dev'));

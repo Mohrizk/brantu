@@ -59,12 +59,14 @@ operations = {
     },
     getProductByID  :function(req, res, next){
         var _id = req.params.id;
-        console.log('_id',req.params);
         var options = 'brand category otherColors articles articles.shops.shop';
+             console.log(_id)
         Products.findOne({"_id":_id}).deepPopulate(options).exec( function(err, product){
+            console.log(product)
             if(err) return next(err);
             if(product == null) return next();
             var x= product.toObject();
+
             helper.getLowestPrice(x);
             helper.getShippingReturn(x, req)
             req.product = x;

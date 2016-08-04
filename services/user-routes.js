@@ -344,6 +344,7 @@ var routes = [
         function(req,res,next){
             var splitted = req.params.name.split('-');
             req.params.id = splitted[splitted.length-1]
+            console.log('WE REACH HERE')
             next();
         },
         products.getProductByID,
