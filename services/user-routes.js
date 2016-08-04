@@ -19,7 +19,8 @@ var shared = require('../public/javascripts/shared-helper');
 *******************BEGINING ROUTES***************************
 ***************************************************************/
 var routes = [
-  /*********REGISTER***************************/
+
+/*********REGISTER***************************/
     // Sign up Passport
      ['/signupUser','post',[function(req, res, next) {
         req.body.role = 'user'
@@ -344,7 +345,6 @@ var routes = [
         function(req,res,next){
             var splitted = req.params.name.split('-');
             req.params.id = splitted[splitted.length-1]
-            console.log('WE REACH HERE')
             next();
         },
         products.getProductByID,
@@ -366,6 +366,10 @@ var routes = [
         products.GetLowerPriceCategoryProducts,
         products.GetSimilarCategoryProducts,
         function(req, res, next) {
+
+
+
+
             res.render('product', {
                 title                   : 'Lägsta priset för '+req.product.name + ' - altid bästa pris inom mode med Brantu',
                 description             : req.product.description+ ' hitta det på lägsta priset i Brantu',
@@ -466,8 +470,9 @@ var routes = [
     ],
 
 /********************NAVIGATE******************/
-    [ '/:department/uptack-nya-favoriter', 'get', [
+    [ '/:department/upptack-nya-favoriter', 'get', [
         function(req, res, next) {
+            console.log('FUCKKKKK')
             res.redirect('/'+req.params.department)
         } ]
     ],

@@ -30,11 +30,28 @@ const userRoutes = require('./services/user-routes');
 const apiRoutes = require('./services/api-routes');
 const adminRoutes = require('./services/admin-routes');
 
-const express = require('express');
-const app = express();//INITIATE A
+const express = require('express'), sm = require('sitemap');
+const app = express(), sitemap = sm.createSitemap ({
+    hostname: 'http://www.brantu.com',
+    cacheTime: 600000,        // 600 sec - cache purge period
+    urls: [
+        { url: '/kvinna/',  changefreq: 'weekly', priority: 0.7 },
+        { url: '/man/',  changefreq: 'weekly',  priority: 0.7 },
+        { url: '/signup/',  changefreq: 'monthly',  priority: 0.7 },
+        { url: '/login/',  changefreq: 'monthly',  priority: 0.7 },
+        { url: '/contact-us/',  changefreq: 'monthly',  priority: 0.7 },
+        { url: '/about-us/',  changefreq: 'monthly',  priority: 0.7 },
+        { url: '/faq/',  changefreq: 'monthly',  priority: 0.7 },
+        { url: '/privacy-policy/',  changefreq: 'monthly',  priority: 0.7 },
+        { url: '/terms-and-conditions/',  changefreq: 'monthly',  priority: 0.7 },
+        { url: '/cookie-policy/',  changefreq: 'monthly',  priority: 0.7 },
+        //{ url: '/page-3/'},    changefreq: 'weekly',  priority: 0.5
+        //{ url: '/page-4/',   img: "http://urlTest.com" }
+    ]
+});
 
 //CONNECT DB
-if (app.get('env') === 'development') mongoose.connect(require('./config/database.js').remote);
+if (app.get('env') === 'development') mongoose.connect(require('./config/database.js').local);
 else mongoose.connect(require('./config/database.js').remote);
 
 app.use(logger('dev'));
@@ -146,6 +163,19 @@ app.use(
 
     next();
 });
+
+//SITEMAP
+app.get('/sitemap.xml',[
+    require('./services/middleware/mw-categories').getCategoryTree,
+    function(req, res, next) {
+    sitemap.toXML( function (err, xml) {
+        if (err) {
+            return res.status(500).end();
+        }
+        res.header('Content-Type', 'application/xml');
+        res.send( xml );
+    });
+}]);
 app.use(adminRoutes);
 app.use(apiRoutes);
 app.use(userRoutes);
