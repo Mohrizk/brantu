@@ -1,4 +1,5 @@
 const Promise = global.Promise || require('promise');
+var robots = require('robots.txt');
 const compression = require('compression');
 
 const session = require('express-session');
@@ -31,29 +32,14 @@ const apiRoutes = require('./services/api-routes');
 const adminRoutes = require('./services/admin-routes');
 
 const express = require('express'), sm = require('sitemap');
-const app = express(), sitemap = sm.createSitemap ({
-    hostname: 'http://www.brantu.com',
-    cacheTime: 600000,        // 600 sec - cache purge period
-    urls: [
-        { url: '/kvinna/',  changefreq: 'weekly', priority: 0.7 },
-        { url: '/man/',  changefreq: 'weekly',  priority: 0.7 },
-        { url: '/signup/',  changefreq: 'monthly',  priority: 0.7 },
-        { url: '/login/',  changefreq: 'monthly',  priority: 0.7 },
-        { url: '/contact-us/',  changefreq: 'monthly',  priority: 0.7 },
-        { url: '/about-us/',  changefreq: 'monthly',  priority: 0.7 },
-        { url: '/faq/',  changefreq: 'monthly',  priority: 0.7 },
-        { url: '/privacy-policy/',  changefreq: 'monthly',  priority: 0.7 },
-        { url: '/terms-and-conditions/',  changefreq: 'monthly',  priority: 0.7 },
-        { url: '/cookie-policy/',  changefreq: 'monthly',  priority: 0.7 },
-        //{ url: '/page-3/'},    changefreq: 'weekly',  priority: 0.5
-        //{ url: '/page-4/',   img: "http://urlTest.com" }
-    ]
-});
+const app = express();
+
 
 //CONNECT DB
 if (app.get('env') === 'development') mongoose.connect(require('./config/database.js').local);
 else mongoose.connect(require('./config/database.js').remote);
 
+app.use(robots(__dirname + '/robots.txt'))
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -164,21 +150,78 @@ app.use(
     next();
 });
 
+
+
+
 //SITEMAP
-app.get('/sitemap.xml',[
+var static_sitemap = sm.createSitemap ({
+    hostname: 'http://www.brantu.com',
+    cacheTime: 600000,        // 600 sec - cache purge period
+    urls: [
+        { url: '/',  changefreq: 'weekly', priority: 1 },
+        { url: '/kvinna/',  changefreq: 'weekly', priority: 1 , lastmodrealtime: true, lastmodfile: 'app/views/women.hbs' },
+        { url: '/man/',  changefreq: 'weekly',  priority: 1 , lastmodrealtime: true, lastmodfile: 'app/views/men.hbs'},
+        { url: '/signup/',  changefreq: 'monthly',  priority: 0.7 , lastmodrealtime: true, lastmodfile: 'app/views/register.hbs'},
+        { url: '/login/',  changefreq: 'monthly',  priority: 0.7 , lastmodrealtime: true, lastmodfile: 'app/views/login.hbs'},
+        { url: '/contact-us/',changefreq: 'monthly',  priority: 0.7 , lastmodrealtime: true, lastmodfile: 'app/views/contact-us.hbs'},
+        { url: '/about-us/',  changefreq: 'monthly',  priority: 0.7 , lastmodrealtime: true, lastmodfile: 'app/views/about-us.hbs'},
+        { url: '/faq/',  changefreq: 'weekly',  priority: 0.5 , lastmodrealtime: true, lastmodfile: 'app/views/faq.hbs'},
+        { url: '/privacy-policy/',  changefreq: 'monthly',  priority: 0.5 , lastmodrealtime: true, lastmodfile: 'app/views/privacy.hbs'},
+        { url: '/terms-and-conditions/',  changefreq: 'monthly',  priority: 0.5 , lastmodrealtime: true, lastmodfile: 'app/views/terms.hbs'},
+        { url: '/cookie-policy/',  changefreq: 'monthly',  priority: 0.5 , lastmodrealtime: true, lastmodfile: 'app/views/cookie.hbs'},
+    ]
+});
+app.get('/static-sitemap.xml',[
     require('./services/middleware/mw-categories').getCategoryTree,
     function(req, res, next) {
-    sitemap.toXML( function (err, xml) {
-        if (err) {
-            return res.status(500).end();
+        static_sitemap.toXML( function (err, xml) {
+            if (err) {return res.status(500).end();}
+            res.header('Content-Type', 'application/xml');
+            res.send( xml );
+        });
+    }]);
+
+var category_sitemap = sm.createSitemap ({
+    hostname: 'http://www.brantu.com',
+    cacheTime: 600000})
+app.get('/category-sitemap.xml',[
+    require('./services/middleware/mw-categories').getSitemapCategories,
+    function(req, res, next) {
+        for(var s in req.categoryList){
+            category_sitemap.add({url: req.categoryList[s] , changefreq:'weekly', priority: 0.5});
         }
-        res.header('Content-Type', 'application/xml');
-        res.send( xml );
-    });
+        category_sitemap.toXML( function (err, xml) {
+            if (err) {
+                return res.status(500).end();
+            }
+            res.header('Content-Type', 'application/xml');
+            res.send( xml );
+        });
 }]);
+
+var blog_sitemap = sm.createSitemap ({
+    hostname: 'http://www.brantu.com',
+    cacheTime: 600000})
+app.get('/blog-sitemap.xml',[
+    require('./services/middleware/mw-feed').getAllOutfits,
+    function(req, res, next) {
+        for(var b in res.locals.feed){
+            blog_sitemap.add({url: res.locals.feed[b].url , changefreq:'weekly', priority: 0.8});
+        }
+        blog_sitemap.toXML( function (err, xml) {
+            if (err) {return res.status(500).end();}
+            res.header('Content-Type', 'application/xml');
+            res.send( xml );
+        });
+    }]);
+
+
+
 app.use(adminRoutes);
 app.use(apiRoutes);
 app.use(userRoutes);
+
+
 
 
 

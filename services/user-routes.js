@@ -264,7 +264,20 @@ var routes = [
     } ]
     ],
 /*********SHOP***************************/
-    [ '/blogg/:name', 'get', [
+    [ '/blog/', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        feed.getFeed,
+        function(req, res, next) {
+            res.render('blog', {
+                title                      : 'snyggaste '+req.outfit.categoryName+' - ' +req.outfit.name+' | Brantu',
+                description                : req.outfit.description+' - ' +req.outfit.name,
+                outfit                     : req.outfit,
+                blogProductsLink             : req.blogProductsLink,
+            })
+        } ]
+    ],
+    [ '/blog/:name', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
         feed.getOutfit,
@@ -366,10 +379,6 @@ var routes = [
         products.GetLowerPriceCategoryProducts,
         products.GetSimilarCategoryProducts,
         function(req, res, next) {
-
-
-
-
             res.render('product', {
                 title                   : 'Lägsta priset för '+req.product.name + ' - altid bästa pris inom mode med Brantu',
                 description             : req.product.description+ ' hitta det på lägsta priset i Brantu',

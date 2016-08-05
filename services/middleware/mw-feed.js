@@ -34,8 +34,8 @@ var helper = {
         //var dif = now.getTime() - date.getTime();
         var timeDiff = Math.abs(date.getTime() - now.getTime());
         var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-
-        if (diffDays < 7) return diffDays+' days ago';
+        if (diffDays == 1) return 'today';
+        else if (diffDays < 7) return (diffDays -1)+' days ago';
         else if(diffDays>=7 && diffDays<14) return 'one week ago';
         else if(diffDays>=14 && diffDays<21)return 'two week ago';
         else if(diffDays>=21 && diffDays<28)return 'three week ago';
@@ -168,6 +168,19 @@ var helper = {
             })
             .catch(next);
     },
+    getAllOutfits:function(req, res, next){
+        Outfits.find().lean().exec(function(err,result) {
+            if(err) return next(err);
+            result.map(function(outfit){
+                outfit.url = '/blog/'+shared.helper.urlFriendly(outfit.name)+'-'+outfit._id;
+                console.log(outfit.url)
+            })
+
+            res.locals.feed = result;
+            next();
+        });
+
+    },
     getFeed:function(req,res,next){
         if( res.locals.selectedDepartment == null || typeof res.locals.selectedDepartment == 'undefined')
         return next();
@@ -195,8 +208,6 @@ var helper = {
                 return outfit;
             })
             res.locals.feed = result;
-            //console.log(result.docs.length)
-            //console.log('we are here')
             next();
         });
 

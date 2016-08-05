@@ -102,7 +102,7 @@ var register = function(Handlebars) {
                 .replace(/[\/\*\+\.\?\=\)\(\}\{\<\>_]/g," ") //|(?:\,\ )|(?:\,)
                 .replace(/(?:\')/g,"")
                 .replace(/(?:\ \ )/g," ")
-                .replace(/(?:\ )/g,"_")
+                .replace(/(?:\ )/g,"-")
                 .replace(/(?:\&)/g,"˜");
             return newString;
             // if(typeof leaveDash !== 'undefined') ;

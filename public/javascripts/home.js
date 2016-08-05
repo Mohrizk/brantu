@@ -17,7 +17,6 @@
             var currentPage = parseInt(feedSelector.attr('data-page'));
             var totalPage = parseInt(feedSelector.attr('data-total-pages'));
             if(currentPage >= totalPage){
-                console.log('uhgg')
                 $('#loadMoreFeed').hide();
                 return;
             }
@@ -32,6 +31,7 @@
                 feedSelector.attr('data-page', currentPage+1)
                 console.log(html)
                 feedSelector.append(html);
+                $('img.lazy').lazyload({effect: "fadeIn", threshold:300}).removeClass("lazy");
                 $('#moreFeedLoader').fadeOut('hide')
 
                 if(feedSelector.attr('data-page') < totalPage)

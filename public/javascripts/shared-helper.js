@@ -36,7 +36,7 @@ var renderHelper = {
             array = array.splice(2, array.length-1);
             var temp = ''
             for (var p = 0; p < array.length; p++) {
-                if (p < array.length - 1)temp += renderHelper.urlFriendly(array[p].name) + '-';
+                if (p < array.length - 1)temp += renderHelper.urlFriendly(array[p].name) + '.';
                 else temp += renderHelper.urlFriendly(array[p].name);
             }
             path += temp+'/';
@@ -44,18 +44,21 @@ var renderHelper = {
         //console.log(path)
         return path;
     },
-    urlFriendly:function (string, leaveDash){
+    urlFriendly:function (string, leaveDot){
         var newString = string.toLowerCase()
-            .replace(/[\/\*\+\.\?\=\)\(\}\{\<\>_]/g," ") //|(?:\,\ )|(?:\,)
+            .replace(/[\/\*\+\-\?\=\)\(\}\{\<\>_]/g," ")
             .replace(/(?:\')/g,"")
-            .replace(/(?:\ \ )/g," ")
-            .replace(/(?:\ )/g,"_")
-            .replace(/(?:\&)/g,"˜");
-        if(typeof leaveDash !== 'undefined') return newString;
-        else return newString.replace(/\-/g, " ")
+            .replace(/(?:\ \ )/g," ");
+
+        if(typeof leaveDot !== 'undefined'){
+            return newString.replace(/(?:\ )/g,"-").replace(/(?:\&)/g,"˜");
+        }
+        else{
+            return newString.replace(/\./g, " ").replace(/(?:\ )/g,"-").replace(/(?:\&)/g,"˜");
+        }
     },
     decodeUrlFriendly:function (string){
-        return string.replace(/(?:\_)/g,' ').replace(/\˜/g,"&")
+        return string.replace(/(?:\-)/g,' ').replace(/\˜/g,"&")
     },
 
     //ENCODE THE STATE TO URL
@@ -74,7 +77,7 @@ var renderHelper = {
             pathArray = pathArray.splice(2, pathArray.length-1);
             var temp = ''
             for (var p = 0; p < pathArray.length; p++) {
-                if (p < pathArray.length - 1)temp += renderHelper.urlFriendly(pathArray[p]) + '-';
+                if (p < pathArray.length - 1)temp += renderHelper.urlFriendly(pathArray[p]) + '.';
                 else temp += renderHelper.urlFriendly(pathArray[p]);
             }
             path += temp+'/';
@@ -106,7 +109,9 @@ var renderHelper = {
         if(typeof object.query !== 'undefined' && object.query!== '' && currentState.search) uri+= 'q='+object.query;
         if (typeof object.hierarchicalFacetsRefinements !== 'undefined' && !currentState.category) {
             if (typeof object.hierarchicalFacetsRefinements['products'] !== 'undefined') {
-                var newString = object.hierarchicalFacetsRefinements['products'][0].split(' > ').join('-')
+                var newString = object.hierarchicalFacetsRefinements['products'][0].split(' > ').join('.');
+                console.log(renderHelper.urlFriendly(newString,true))
+                console.log(renderHelper.urlFriendly(newString))
                 uri+= '&category='+renderHelper.urlFriendly(newString,true);
             }
         }
@@ -117,7 +122,6 @@ var renderHelper = {
                     uri+= '&discount='+ renderHelper.urlFriendly(object.disjunctiveFacetsRefinements.discount[c]);
 
             }
-            console.log(currentState)
             if (object.disjunctiveFacetsRefinements.hasOwnProperty('brand.name') && !currentState.brand) {
                 for (var c in object.disjunctiveFacetsRefinements['brand.name'])
                     uri+= '&brand='+ renderHelper.urlFriendly(object.disjunctiveFacetsRefinements["brand.name"][c]);
@@ -152,7 +156,6 @@ var renderHelper = {
             if (object.disjunctiveFacetsRefinements.hasOwnProperty('sizes')) {
                 for (var c in object.disjunctiveFacetsRefinements.sizes)
                     uri+= '&size='+ renderHelper.urlFriendly(object.disjunctiveFacetsRefinements["sizes"][c]);
-
             }
         }
 
@@ -187,7 +190,7 @@ var renderHelper = {
 
         category = path[0]+' > '+path[1];
         if(path[2] !== null && typeof path[2] !== 'undefined'){
-            var styles =  path[2].split('-').join(' > ');
+            var styles =  path[2].split('.').join(' > ');
             category += ' > '+styles;
         }
         category = renderHelper.decodeUrlFriendly(decodeURI(category))
@@ -278,7 +281,8 @@ var renderHelper = {
                         helper.setPage(renderHelper.decodeUrlFriendly(qValue))
                         break;
                     case 'category':
-                        var categoryValue = renderHelper.decodeUrlFriendly(qValue).split('-').join(' > ')
+                        var categoryValue = renderHelper.decodeUrlFriendly(qValue).split('.').join(' > ')
+                        console.log(categoryValue)
                         helper.clearRefinements('products').toggleRefinement('products', categoryValue);
                         break;
                 }

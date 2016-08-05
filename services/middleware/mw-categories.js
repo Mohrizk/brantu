@@ -22,6 +22,25 @@ var lvl2_cancelOut = [
 ]
 category= {
     departments : ['kvinna', 'man'],
+    getSitemapCategories: function (req, res, next)  {
+        Categories.find({}).lean().exec( function(err, categories) {
+            if (err) return next(err);
+            if (categories.length == 0) return next()
+            req.categoryList = categories.filter(function(category){
+                if(typeof category.numOfProducts == 'undefined') return false;
+
+                if(category.numOfProducts > 0
+                    && category.name.toLowerCase()!=='kvinna'
+                    && category.name.toLowerCase()!=='man')
+                    return true;
+                else false;
+            }).map(function(category){
+                return category.url = shared.helper.breadCrumbToUrl(category.breadcrumb);
+            })
+            //console.log(req.categoryList);
+            next()
+        });
+    },
     getCategoryTree: function (req, res, next) {
         var listOfCategories = [];
         async.each( category['departments'] , function(category, callback) {
@@ -41,15 +60,13 @@ category= {
                             if(err) callback(err);
                             else{
                                 var categorylist = categorylist.filter(function(item)
-                                {
-                                    return lvl1_cancelOut.indexOf(item.name) == -1;
-                                })
-                                .map(function(item){
-                                    item.url = shared.helper.breadCrumbToUrl(item.breadcrumb)
-                                    //console.log(item.url)
-                                    //console.log(item.url)
-                                    return item;
-                                });
+                                    {
+                                        return lvl1_cancelOut.indexOf(item.name) == -1;
+                                    })
+                                    .map(function(item){
+                                        item.url = shared.helper.breadCrumbToUrl(item.breadcrumb)
+                                        return item;
+                                    });
                                 callback(null, mainCategory, categorylist);
                             }
 
@@ -112,12 +129,12 @@ category= {
             });
         }, function(err) {
             /*var sortedCategoryList = [];
-            category['departments'].forEach(function(option){
-                listOfCategories.forEach(function(category){
-                    if(category.department.key == option)
-                        sortedCategoryList.push(category);
-                })
-            })*/
+             category['departments'].forEach(function(option){
+             listOfCategories.forEach(function(category){
+             if(category.department.key == option)
+             sortedCategoryList.push(category);
+             })
+             })*/
             listOfCategories.sort(function(a,b){
                 var A = a.department.key;
                 var B = b.department.key;

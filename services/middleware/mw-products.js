@@ -60,9 +60,9 @@ operations = {
     getProductByID  :function(req, res, next){
         var _id = req.params.id;
         var options = 'brand category otherColors articles articles.shops.shop';
-             console.log(_id)
+            // console.log(_id)
         Products.findOne({"_id":_id}).deepPopulate(options).exec( function(err, product){
-            console.log(product)
+            //console.log(product)
             if(err) return next(err);
             if(product == null) return next();
             var x= product.toObject();
@@ -202,14 +202,11 @@ operations = {
         var href = decodeURI(url_parts.pathname);
         var search = ['search', 'sök']
         var brand = ['brand', 'märken']
-        console.log('HREFFFFF ', decodeURI(url_parts.href))
         if(search.indexOf(href) > -1){
             req.currentState  = shared.helper.urlToStateSearch(decodeURI(url_parts.path), AgoliaInstance);
             res.locals.TYPE = 'search';
         }
         else if(brand.indexOf(href) > -1){
-            console.log(AgoliaInstance.getState(['query','attribute:*']));
-
             req.currentState  = shared.helper.urlToStateBrand(decodeURI(url_parts.path), AgoliaInstance);
             res.locals.TYPE = 'brand';
         }
@@ -221,7 +218,6 @@ operations = {
     },
     getForBrands:function(req, res, next){
         var url_parts = url.parse(req.url, true);
-        console.log('HREFFFFF ', decodeURI(url_parts.href))
         req.currentState  = shared.helper.urlToStateBrand(decodeURI(url_parts.href), AgoliaInstance);
         res.locals.TYPE = 'brand';
         next();
@@ -230,23 +226,19 @@ operations = {
         var url_parts = url.parse(req.url, true);
         req.currentState  = shared.helper.urlToStateCategory(decodeURI(url_parts.href), AgoliaInstance);
         res.locals.TYPE = 'category';
-        console.log('HREFFFFF ', decodeURI(url_parts.href))
         next();
     },
     getForSearch:function(req, res, next){
         var url_parts = url.parse(req.url, true);
         req.currentState  = shared.helper.urlToStateSearch(decodeURI(url_parts.href), AgoliaInstance);
         res.locals.TYPE = 'search';
-        console.log('HREFFFFF ', decodeURI(url_parts.href))
         next();
 
     },
     getAlgoliaProducts:function(req, res, next){
         if(typeof req.currentState =='undefined') return next();
-        console.log(AgoliaInstance.getState(['query','attribute:*']));
         AgoliaInstance.search()
         AgoliaInstance.once('result', function(content){
-            console.log('THE TOTAL Hits ',content.hits.length);
             shared.helper.getAllFacetValues(
                 res.locals,
                 AgoliaInstance,
@@ -262,7 +254,7 @@ operations = {
             return next(err);
         })
 
-    }
+    },
 }
 
 var helper = {
@@ -320,7 +312,7 @@ var helper = {
     console.log(product.articles.shops);
 },
     getCountryFromLanguage:function(req){
-    console.log(req.i18n.getLocale())
+    //console.log(req.i18n.getLocale())
     switch(req.i18n.getLocale()){
         case 'sv':
             return 'sweden';
