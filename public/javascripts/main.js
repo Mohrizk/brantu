@@ -90,7 +90,8 @@ $(document).ready( function() {
 	function lazy(){
 		$('img.lazy').lazyload({effect: "fadeIn", threshold:300}).removeClass("lazy");
 	}
-	lazy()
+	var initialLazyLoaded = true;
+
 	if(typeVerified){
 		priceBar();
 	}
@@ -921,6 +922,10 @@ $(document).ready( function() {
 		previousScroll= currentScroll;
 	}
 	$(window).scroll(function () {
+		if(initialLazyLoaded){
+			lazy();
+			initialLazyLoaded = false;
+		}
 		if((mainSection.is(':visible') || searchSection.is(':visible')) && $('.itemList').hasClass('vertical') && $('.itemList').is(':visible')){
 			mainFacetPaneScroll();
 		}
