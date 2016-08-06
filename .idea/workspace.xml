@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="319a9c44-cb0a-494b-a470-9e86d210bc29" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/men.hbs" afterPath="$PROJECT_DIR$/views/men.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/feed_Back.hbs" afterPath="$PROJECT_DIR$/views/partials/feed_Back.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/shared-templates/feed.hbs" afterPath="$PROJECT_DIR$/views/shared-templates/feed.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/women.hbs" afterPath="$PROJECT_DIR$/views/women.hbs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/footer.hbs" afterPath="$PROJECT_DIR$/views/partials/footer.hbs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/nav.hbs" afterPath="$PROJECT_DIR$/views/partials/nav.hbs" />
     </list>
     <ignored path="brantu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,12 +27,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.18442623">
+            <state vertical-scroll-proportion="-5.869565">
               <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nav.hbs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/partials/nav.hbs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.9846153">
+              <caret line="388" column="67" selection-start-line="388" selection-start-column="67" selection-end-line="388" selection-end-column="67" />
+              <folding>
+                <element signature="n#style#0;n#li#1;n#ul#0;n#div#2;n#div#3;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <marker date="1470500288000" expanded="true" signature="24403:24418" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="footer.hbs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/partials/footer.hbs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.60775864">
+              <caret line="42" column="113" selection-start-line="42" selection-start-column="113" selection-end-line="42" selection-end-column="113" />
+              <folding>
+                <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -195,51 +217,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="www" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bin/www">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="shared-helper.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/shared-helper.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-              <folding>
-                <element signature="e#55#359#0" expanded="false" />
-                <element signature="e#399#701#0" expanded="false" />
-                <element signature="e#740#1430#0" expanded="false" />
-                <element signature="e#2108#3242#0" expanded="false" />
-                <element signature="e#2524#2681#0" expanded="false" />
-                <element signature="e#3294#3861#0" expanded="false" />
-                <element signature="e#3914#4084#0" expanded="false" />
-                <element signature="e#4136#8059#0" expanded="false" />
-                <element signature="e#8136#9028#0" expanded="false" />
-                <element signature="e#9071#9931#0" expanded="false" />
-                <element signature="e#9975#10689#0" expanded="false" />
-                <element signature="e#10734#13640#0" expanded="false" />
-                <element signature="e#13682#14000#0" expanded="false" />
-                <element signature="e#14043#14288#0" expanded="false" />
-                <element signature="e#14365#16521#0" expanded="false" />
-                <element signature="e#16583#16965#0" expanded="false" />
-                <element signature="e#17002#19493#0" expanded="false" />
-                <element signature="e#19531#20562#0" expanded="false" />
-                <element signature="e#20654#22080#0" expanded="false" />
-                <element signature="e#22116#22444#0" expanded="false" />
-                <element signature="e#22509#28151#0" expanded="false" />
-                <element signature="e#28282#30292#0" expanded="false" />
-                <element signature="e#30309#31979#0" expanded="false" />
-                <element signature="e#31997#33343#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -277,7 +254,6 @@
         <option value="$PROJECT_DIR$/services/models/outfit.js" />
         <option value="$PROJECT_DIR$/services/models/product.js" />
         <option value="$PROJECT_DIR$/services/models/article.js" />
-        <option value="$PROJECT_DIR$/views/partials/footer.hbs" />
         <option value="$PROJECT_DIR$/views/partials/outfit_Back.hbs" />
         <option value="$PROJECT_DIR$/views/blog.hbs" />
         <option value="$PROJECT_DIR$/views/partials/productNavigation_Back.hbs" />
@@ -297,7 +273,6 @@
         <option value="$PROJECT_DIR$/services/middleware/mw-products.js" />
         <option value="$PROJECT_DIR$/services/middleware/mw-categories.js" />
         <option value="$PROJECT_DIR$/public/javascripts/shared-helper.js" />
-        <option value="$PROJECT_DIR$/views/partials/nav.hbs" />
         <option value="$PROJECT_DIR$/bin/www" />
         <option value="$PROJECT_DIR$/services/middleware/mw-feed.js" />
         <option value="$PROJECT_DIR$/app.js" />
@@ -307,6 +282,8 @@
         <option value="$PROJECT_DIR$/views/men.hbs" />
         <option value="$PROJECT_DIR$/views/women.hbs" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/views/partials/nav.hbs" />
+        <option value="$PROJECT_DIR$/views/partials/footer.hbs" />
       </list>
     </option>
   </component>
@@ -768,13 +745,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/images/join-shop/direct.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/images/join-shop/itemsAboutUs.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -988,13 +958,6 @@
             <element signature="e#12726#12856#0" expanded="false" />
             <element signature="e#12915#13306#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/nav.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35857144">
-          <caret line="97" column="166" selection-start-line="97" selection-start-column="166" selection-end-line="97" selection-end-column="166" />
         </state>
       </provider>
     </entry>
@@ -1227,9 +1190,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18442623">
+        <state vertical-scroll-proportion="-5.869565">
           <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/nav.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.9846153">
+          <caret line="388" column="67" selection-start-line="388" selection-start-column="67" selection-end-line="388" selection-end-column="67" />
+          <folding>
+            <element signature="n#style#0;n#li#1;n#ul#0;n#div#2;n#div#3;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <marker date="1470500288000" expanded="true" signature="24403:24418" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/footer.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.60775864">
+          <caret line="42" column="113" selection-start-line="42" selection-start-column="113" selection-end-line="42" selection-end-column="113" />
+          <folding>
+            <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
