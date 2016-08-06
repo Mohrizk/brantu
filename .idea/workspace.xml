@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="319a9c44-cb0a-494b-a470-9e86d210bc29" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/main.js" afterPath="$PROJECT_DIR$/public/javascripts/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/middleware/mw-feed.js" afterPath="$PROJECT_DIR$/services/middleware/mw-feed.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/feed_Back.hbs" afterPath="$PROJECT_DIR$/views/partials/feed_Back.hbs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/shared-templates/feed.hbs" afterPath="$PROJECT_DIR$/views/shared-templates/feed.hbs" />
     </list>
     <ignored path="brantu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,8 +33,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/javascripts/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="610" column="80" selection-start-line="610" selection-start-column="43" selection-end-line="610" selection-end-column="80" />
+            <state vertical-scroll-proportion="-18.407408">
+              <caret line="359" column="15" selection-start-line="359" selection-start-column="15" selection-end-line="359" selection-end-column="15" />
               <folding>
                 <element signature="e#3963#4598#0" expanded="false" />
                 <element signature="e#4627#4750#0" expanded="false" />
@@ -84,9 +87,9 @@
                 <element signature="e#33449#33485#0" expanded="false" />
                 <element signature="e#33569#33924#0" expanded="false" />
                 <element signature="e#34121#34207#0" expanded="false" />
-                <marker date="1470299496000" expanded="true" signature="18402:18743" placeholder="..." />
-                <marker date="1470299496000" expanded="true" signature="18657:18680" placeholder="..." />
-                <marker date="1470299496000" expanded="true" signature="18657:18682" placeholder="..." />
+                <marker date="1470478550000" expanded="true" signature="18402:18743" placeholder="..." />
+                <marker date="1470478550000" expanded="true" signature="18657:18680" placeholder="..." />
+                <marker date="1470478550000" expanded="true" signature="18657:18682" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -95,7 +98,7 @@
       <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.3043479">
+            <state vertical-scroll-proportion="0.0">
               <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
               <folding />
             </state>
@@ -106,7 +109,7 @@
         <entry file="file://$PROJECT_DIR$/services/middleware/mw-feed.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="36" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
+              <caret line="229" column="0" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
               <folding>
                 <element signature="e#279#664#0" expanded="false" />
                 <element signature="e#717#1101#0" expanded="false" />
@@ -115,10 +118,29 @@
                 <element signature="e#6773#7490#0" expanded="false" />
                 <element signature="e#7567#7931#0" expanded="false" />
                 <element signature="e#7967#8989#0" expanded="false" />
-                <element signature="e#9027#9718#0" expanded="false" />
                 <element signature="e#9070#9113#0" expanded="false" />
-                <element signature="e#9768#10396#0" expanded="false" />
+                <element signature="e#9850#10478#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="feed_Back.hbs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/partials/feed_Back.hbs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.2">
+              <caret line="56" column="22" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="feed.hbs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/shared-templates/feed.hbs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.67094016">
+              <caret line="66" column="209" selection-start-line="66" selection-start-column="209" selection-end-line="66" selection-end-column="209" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -141,33 +163,23 @@
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="161" column="62" selection-start-line="161" selection-start-column="62" selection-end-line="161" selection-end-column="62" />
+              <caret line="38" column="93" selection-start-line="38" selection-start-column="93" selection-end-line="38" selection-end-column="93" />
               <folding>
                 <element signature="e#594#630#0" expanded="false" />
-                <element signature="e#1825#2044#0" expanded="false" />
-                <element signature="e#6635#6698#0" expanded="false" />
-                <element signature="e#6732#7226#0" expanded="false" />
-                <element signature="e#7360#7809#0" expanded="false" />
+                <element signature="e#1826#2045#0" expanded="false" />
+                <element signature="e#6636#6699#0" expanded="false" />
+                <element signature="e#6733#7227#0" expanded="false" />
+                <element signature="e#7361#7810#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="www" pinned="false" current-in-tab="true">
+      <file leaf-file-name="www" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/www">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.27888447">
-              <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="robots.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/robots.txt">
-          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -278,7 +290,6 @@
         <option value="$PROJECT_DIR$/views/women.hbs" />
         <option value="$PROJECT_DIR$/services/models/product.js" />
         <option value="$PROJECT_DIR$/services/models/article.js" />
-        <option value="$PROJECT_DIR$/public/javascripts/main.js" />
         <option value="$PROJECT_DIR$/views/partials/footer.hbs" />
         <option value="$PROJECT_DIR$/views/partials/outfit_Back.hbs" />
         <option value="$PROJECT_DIR$/views/blog.hbs" />
@@ -293,19 +304,20 @@
         <option value="$PROJECT_DIR$/views/partials/side-menu.hbs" />
         <option value="$PROJECT_DIR$/robot.txt" />
         <option value="$PROJECT_DIR$/robots.txt" />
-        <option value="$PROJECT_DIR$/views/partials/feed_Back.hbs" />
-        <option value="$PROJECT_DIR$/views/shared-templates/feed.hbs" />
         <option value="$PROJECT_DIR$/public/javascripts/hb-helper.js" />
         <option value="$PROJECT_DIR$/services/user-routes.js" />
         <option value="$PROJECT_DIR$/public/javascripts/home.js" />
         <option value="$PROJECT_DIR$/services/middleware/mw-products.js" />
         <option value="$PROJECT_DIR$/services/middleware/mw-categories.js" />
         <option value="$PROJECT_DIR$/public/javascripts/shared-helper.js" />
-        <option value="$PROJECT_DIR$/services/middleware/mw-feed.js" />
         <option value="$PROJECT_DIR$/views/partials/nav.hbs" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/bin/www" />
+        <option value="$PROJECT_DIR$/public/javascripts/main.js" />
+        <option value="$PROJECT_DIR$/services/middleware/mw-feed.js" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/views/partials/feed_Back.hbs" />
+        <option value="$PROJECT_DIR$/views/shared-templates/feed.hbs" />
       </list>
     </option>
   </component>
@@ -318,8 +330,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="104" />
-    <option name="y" value="115" />
-    <option name="width" value="1052" />
+    <option name="y" value="23" />
+    <option name="width" value="1248" />
     <option name="height" value="873" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -372,6 +384,16 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brantu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
@@ -412,21 +434,7 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="partials">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="brantu">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="services">
+            <PATH_ELEMENT USER_OBJECT="shared-templates">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -454,19 +462,27 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="bin">
+            <PATH_ELEMENT USER_OBJECT="public">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="javascripts">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
           <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="brantu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="brantu">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="bin">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -569,10 +585,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="104" y="115" width="1052" height="873" extended-state="0" />
+    <frame x="104" y="23" width="1248" height="873" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25218233" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21189894" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.060179256" sideWeight="0.5025974" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -643,12 +659,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/javascripts/main.js</url>
-          <line>821</line>
+          <line>822</line>
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/javascripts/main.js</url>
-          <line>819</line>
+          <line>820</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -663,7 +679,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/javascripts/main.js</url>
-          <line>739</line>
+          <line>740</line>
           <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -673,17 +689,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/javascripts/main.js</url>
-          <line>952</line>
+          <line>953</line>
           <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/javascripts/main.js</url>
-          <line>729</line>
+          <line>730</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/javascripts/main.js</url>
-          <line>841</line>
+          <line>842</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -728,7 +744,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/javascripts/main.js</url>
-          <line>441</line>
+          <line>442</line>
           <option name="timeStamp" value="68" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -970,20 +986,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/feed_Back.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20491803">
-          <caret line="25" column="46" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/shared-templates/feed.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5642077">
-          <caret line="51" column="91" selection-start-line="51" selection-start-column="91" selection-end-line="51" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/hb-helper.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.25298014">
@@ -1035,25 +1037,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35857144">
           <caret line="97" column="166" selection-start-line="97" selection-start-column="166" selection-end-line="97" selection-end-column="166" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/middleware/mw-feed.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="36" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
-          <folding>
-            <element signature="e#279#664#0" expanded="false" />
-            <element signature="e#717#1101#0" expanded="false" />
-            <element signature="e#1789#6481#0" expanded="false" />
-            <element signature="e#6527#7523#0" expanded="false" />
-            <element signature="e#6773#7490#0" expanded="false" />
-            <element signature="e#7567#7931#0" expanded="false" />
-            <element signature="e#7967#8989#0" expanded="false" />
-            <element signature="e#9027#9718#0" expanded="false" />
-            <element signature="e#9070#9113#0" expanded="false" />
-            <element signature="e#9768#10396#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1127,30 +1110,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/services/middleware/mw-categories.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
-          <folding>
-            <element signature="e#2046#7259#0" expanded="false" />
-            <element signature="e#2224#2565#0" expanded="false" />
-            <element signature="e#7304#7763#0" expanded="false" />
-          </folding>
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/bin/www">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3043479">
-          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="610" column="80" selection-start-line="610" selection-start-column="43" selection-end-line="610" selection-end-column="80" />
+        <state vertical-scroll-proportion="-18.407408">
+          <caret line="359" column="15" selection-start-line="359" selection-start-column="15" selection-end-line="359" selection-end-column="15" />
           <folding>
             <element signature="e#3963#4598#0" expanded="false" />
             <element signature="e#4627#4750#0" expanded="false" />
@@ -1203,9 +1182,21 @@
             <element signature="e#33449#33485#0" expanded="false" />
             <element signature="e#33569#33924#0" expanded="false" />
             <element signature="e#34121#34207#0" expanded="false" />
-            <marker date="1470299496000" expanded="true" signature="18402:18743" placeholder="..." />
-            <marker date="1470299496000" expanded="true" signature="18657:18680" placeholder="..." />
-            <marker date="1470299496000" expanded="true" signature="18657:18682" placeholder="..." />
+            <marker date="1470478550000" expanded="true" signature="18402:18743" placeholder="..." />
+            <marker date="1470478550000" expanded="true" signature="18657:18680" placeholder="..." />
+            <marker date="1470478550000" expanded="true" signature="18657:18682" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/middleware/mw-categories.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+          <folding>
+            <element signature="e#2046#7259#0" expanded="false" />
+            <element signature="e#2224#2565#0" expanded="false" />
+            <element signature="e#7304#7763#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1213,21 +1204,47 @@
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="161" column="62" selection-start-line="161" selection-start-column="62" selection-end-line="161" selection-end-column="62" />
+          <caret line="38" column="93" selection-start-line="38" selection-start-column="93" selection-end-line="38" selection-end-column="93" />
           <folding>
             <element signature="e#594#630#0" expanded="false" />
-            <element signature="e#1825#2044#0" expanded="false" />
-            <element signature="e#6635#6698#0" expanded="false" />
-            <element signature="e#6732#7226#0" expanded="false" />
-            <element signature="e#7360#7809#0" expanded="false" />
+            <element signature="e#1826#2045#0" expanded="false" />
+            <element signature="e#6636#6699#0" expanded="false" />
+            <element signature="e#6733#7227#0" expanded="false" />
+            <element signature="e#7361#7810#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/www">
+    <entry file="file://$PROJECT_DIR$/services/middleware/mw-feed.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27888447">
-          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="229" column="0" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
+          <folding>
+            <element signature="e#279#664#0" expanded="false" />
+            <element signature="e#717#1101#0" expanded="false" />
+            <element signature="e#1789#6481#0" expanded="false" />
+            <element signature="e#6527#7523#0" expanded="false" />
+            <element signature="e#6773#7490#0" expanded="false" />
+            <element signature="e#7567#7931#0" expanded="false" />
+            <element signature="e#7967#8989#0" expanded="false" />
+            <element signature="e#9070#9113#0" expanded="false" />
+            <element signature="e#9850#10478#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/feed_Back.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.2">
+          <caret line="56" column="22" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/shared-templates/feed.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.67094016">
+          <caret line="66" column="209" selection-start-line="66" selection-start-column="209" selection-end-line="66" selection-end-column="209" />
           <folding />
         </state>
       </provider>

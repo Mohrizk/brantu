@@ -345,6 +345,7 @@ $(document).ready( function() {
 	 */
 	//DEFINED ROUTES
 	//NAVIGATION
+
 	page('/search/:department', saveLastPath, showLoading , setSearch, closeSidePage,  setStateFromUrl, showHeader )
 	page('/sök/:department', saveLastPath, showLoading , setSearch, closeSidePage,  setStateFromUrl, showHeader )
 	page('/search/', saveLastPath, showLoading , setSearch, closeSidePage,  setStateFromUrl, showHeader )
@@ -356,11 +357,11 @@ $(document).ready( function() {
 
 	page('/bästa-pris-för/:name', showLoading,  hideHeader, viewProduct, getSimilarProducts, addViewedProduct)
 	page('/view/:id', showLoading,  hideHeader, viewProduct, getSimilarProducts, addViewedProduct)
-
-	page('/blogg/:name', reload)
+	page('/blog/:name', reload)
 	page('/settings/*', reload)
 	page('/about/*', reload)
 	page('/favourite-products', reload)
+
 
 
 	page('/:department/:category/:style/',showLoading, saveLastPath, setCategory, closeSidePage,  setStateFromUrl, showHeader )

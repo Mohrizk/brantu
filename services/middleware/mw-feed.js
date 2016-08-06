@@ -218,8 +218,10 @@ var helper = {
             id = req.params.id;
         }
         else{
+            console.log('PARAMSSSS ',req.params.name)
             var splitted = req.params.name.split('-');
             id = splitted[splitted.length-1];
+            console.log(id)
         }
 
         Outfits.findOne({_id:id}).lean().exec(function(err, outfit){
