@@ -115,7 +115,7 @@ $(document).ready( function() {
 					$('#ddCol2').show();
 					if(answer.hits.length > 7){
 						answer.hits.splice(7,1,{
-							linkHref:'/search?q='+$('#search').val()+'&hFR[products][0]='+DEPARTMENT,
+							linkHref:'/search?q='+$('#search').val()+'&category='+DEPARTMENT,
 							more:true,
 							nbHits:answer.nbHits,
 							text:'found search more'
@@ -193,7 +193,7 @@ $(document).ready( function() {
 		{
 			//source: autocomplete.sources.hits(productIndex, {hitsPerPage: 7}),
 			source: function(query, callback) {
-				var index = client.initIndex('products_2');
+				var index = client.initIndex('test_products');
 				var options = {hitsPerPage: 4}
 				if(departmentVerified)options.facetFilters = 'category.lvl0:'+DEPARTMENT;
 				$('.ACSearchProgress').removeClass('hidden');
@@ -207,7 +207,7 @@ $(document).ready( function() {
 					$('#ddCol2').show()
 					if(answer.nbHits > 4){
 						answer.hits.splice(3,1,{
-							linkHref:'/search?q='+$('#search').val()+'&hFR[products][0]='+DEPARTMENT,
+							linkHref:'/search?q='+$('#search').val()+'&category='+DEPARTMENT,
 							more:true,
 							nbHits:answer.nbHits,
 							text:'found search more'
