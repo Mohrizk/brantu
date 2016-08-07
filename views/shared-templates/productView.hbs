@@ -4,8 +4,8 @@
             <div class="selectedItemPictureContainer">
                 <div class="selectedItemZoomPicture">
                     <div id="mainJawBoneImageContainer" >
-                        <div class=" next-item"><i class=" fa  fa-angle-right"></i></div>
-                        <div class=" prev-item"><i class="fa  fa-angle-left"></i></div>
+                        <div class=" next-item"><i class="pg-arrow_right"></i></div>
+                        <div class=" prev-item"><i class="pg-arrow_left"></i></div>
                         <div id="owl-main" class=" no-style">
                             <div><img  imageorder ="0" data-src="\{{product.mainPicture.largeUrl}}" class="lazyOwl"/></div>
                             \{{#each product.auxPictures}}
@@ -171,10 +171,10 @@
                         <li class="like cursor p-l-10 sm-p-t-10">
                             \{{#if product.isFavored}}
                                 <a class="removeFavouriteProduct" _id="\{{{product._id}}}" action="/favourite-product/remove">
-                                    <i class="fa fa-heart text-pink-darker"></i></a>
+                                    <i class="pg-like1 text-pink-darker"></i></a>
                             \{{else}}
                                 <a class="addFavouriteProduct" _id="\{{{product._id}}}" action="/favourite-product/add">
-                                    <i class="fa fa-heart-o"></i></a>
+                                    <i class="pg-like"></i></a>
                             \{{/if}}
                         </li>
                     </ol>
@@ -189,10 +189,10 @@
         <li class="like cursor p-l-10 sm-p-t-10">
             \{{#if product.isFavored}}
                 <a class="removeFavouriteProduct" _id="\{{{product._id}}}" action="/favourite-product/remove">
-                    <i class="fa fa-heart text-pink-darker"></i></a>
+                    <i class="pg-like text-pink-darker"></i></a>
             \{{else}}
                 <a class="addFavouriteProduct" _id="\{{{product._id}}}" action="/favourite-product/add">
-                    <i class="fa fa-heart-o"></i></a>
+                    <i class="pg-like1"></i></a>
             \{{/if}}
         </li>
     </ol>

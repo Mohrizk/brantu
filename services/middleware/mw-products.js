@@ -23,7 +23,7 @@ var AgoliaInstance   = algoliasearchHelper(client, 'test_products',
         facets:[  'sale', 'price.value'],
         disjunctiveFacets:['color','brand.name','sizes', 'shops', 'discount' , 'style', 'fit', 'material']
     });
-var shared = require('../../public/javascripts/shared-helper');
+var shared = require('../../public/javascripts/helper');
 
 //HELPER FUNCTIONS
 function getHex(product, callback){
@@ -59,110 +59,51 @@ operations = {
     },
     getProductByID  :function(req, res, next){
         var _id = req.params.id;
-        var options = 'brand category otherColors articles articles.shops.shop';
-            // console.log(_id)
-        Products.findOne({"_id":_id}).deepPopulate(options).exec( function(err, product){
-            //console.log(product)
-            if(err) return next(err);
-            if(product == null) return next();
-            var x= product.toObject();
-
-            helper.getLowestPrice(x);
-            helper.getShippingReturn(x, req)
-            req.product = x;
-            //req.productCategoryPath = x.category.get
-            req.brand = x.brand;
-            req._id = x._id;
-            for(var a in x.attributes){
-                if( x.attributes[a].name == 'style'|| x.attributes[a].name == 'Style')
-                    req.style = x.attributes[a].value;
+        helper.getProduct(req, _id, function(product){
+            req.product = product;
+            req.brand = product.brand;
+            req._id = product._id;
+            for(var a in product.attributes){
+                if( product.attributes[a].name == 'style'|| product.attributes[a].name == 'Style')
+                    req.style = product.attributes[a].value;
             }
-            req.category = x.category;
-            return next();
-            })
+            req.category = product.category;
+            next();
+        })
     },
     getSimilarProductsFromSameBrand:function(req,res,next){
-        var foundProduct = req.product;
-        var query = {   "brand": foundProduct.brand,
-                         "category": foundProduct.category,
-                        "price.value":
-                        {   $gt: Math.round(foundProduct.price.value * 0.2),
-                            $lte:Math.round(foundProduct.price.value * 1.3)
-                            }
-                };
-        helper.addAttributesQuery(foundProduct, query);
-        Products.find(query).sort( { "price.value": 1 }).lean().exec(function(err, products){
-            if(err) return next(err);
-            if(products.length == 0) return next();
-            var filtered= products.filter(function(product){
-                if (foundProduct._id.toString() == product._id.toString()) return false;
-                for (var o in foundProduct.otherColors){
-                    if (product._id.toString() == foundProduct.otherColors[o].toString())
-                    return false;
-                }
-                return true;
+            var foundProduct = req.product;
+            helper.getSimilarProductsFromSameBrand(foundProduct, function(err,filtered){
+                if(err) return next(err);
+                if(typeof filtered == 'undefined') return next();
+                //var sorted = sortbyNearestDescription(req.product, filtered)
+                req.sameBrandProducts = helper.calculateSaving(req.product, filtered)
+                next();
             })
-            //var sorted = sortbyNearestDescription(req.product, filtered)
-            req.sameBrandProducts = helper.calculateSaving(req.product, filtered)
-            next();
-        })
     },
-    GetLowerPriceCategoryProducts:function(req,res,next){
+    GetLowerPriceCategoryProducts:function(req,res,next) {
         var foundProduct = req.product;
-        console.log('-----------------------')
-       // console.log(foundProduct.category)
-        var query =    {    "color": new RegExp( '.*' + foundProduct.color  +'.*', 'i'),
-                            "category": foundProduct.category._id,
-                            "price.value":
-                            {
-                                $lt:Math.round(foundProduct.price.value * 1)
-                            }
-                        };
-        helper.addAttributesQuery(foundProduct, query);
-        Products.find(query).sort( { "price.value": 1 }).lean().exec(function(err, products){
-            console.log('relatedProducts',products.length)
+        helper.GetLowerPriceCategoryProducts(foundProduct,function(err,filtered){
             if(err) return next(err);
-            if(products.length == 0) return next();
-             var filtered = products.filter(function(product){
-                if (foundProduct._id.toString() !== product._id.toString()  &&  foundProduct.brand.toString() !== product.brand.toString()){
-                    return true;
-                }
-            });
-            //var sort= sortbyNearestDescription(req.product, filtered)
-            req.LowerPriceCategoryProducts = helper.calculateSaving(req.product,filtered);
-            next();
-        })
+            if(typeof filtered == 'undefined') return next();
+        //var sort= sortbyNearestDescription(req.product, filtered)
+             req.LowerPriceCategoryProducts = helper.calculateSaving(req.product, filtered);
+             next();
+     })
 
     },
     GetSimilarCategoryProducts:function(req,res,next){
         var foundProduct = req.product;
-        var query =    {    "color": new RegExp( '.*' + foundProduct.color  +'.*', 'i'),
-            "category": foundProduct.category,
-            "price.value":
-            {
-                $lte:Math.round(foundProduct.price.value * 2.5)
-            }
-        };
-        helper.addAttributesQuery(foundProduct, query);
-        Products.find(query).sort( { "price.value": 1 }).lean().exec(function(err, products){
+        helper.GetSimilarCategoryProducts(req, foundProduct,function(err,filtered){
             if(err) return next(err);
-            if(products.length == 0) return next();
-            var filtered = products.filter(function(product){
-                if (foundProduct._id.toString() == product._id.toString()) return false;
-                for (var j in req.LowerPriceCategoryProducts)
-                    if(req.LowerPriceCategoryProducts[j]._id.toString() == product._id.toString())  return false
-                for (var k in req.sameBrandProducts)
-                    if(req.sameBrandProducts[k]._id.toString() == product._id.toString())  return false
-
-                    return true;
-            });
+            if(typeof filtered == 'undefined') return next();
             //req.sameCategoryProducts = sortbyNearestDescription(req.product, filtered)
             req.sameCategoryProducts = helper.calculateSaving(req.product,filtered);
             console.log(req.sameCategoryProducts.length)
             next();
         })
-
     },
+
     checkProductIsFavoured :function(req, res, next){
         if(req.product !== null && typeof req.session.favProducts !=='undefined'){
             var found = false;
@@ -173,7 +114,6 @@ operations = {
         }
         next();
     },
-
     getFavouriteProducts   : function (req, res, next) {
         for(var f in req.session.favProducts){
             if(req.session.favProducts[f]==''){
@@ -199,14 +139,15 @@ operations = {
         if(typeof req.outfit == 'undefined') return next();
 
         var url_parts = url.parse(req.outfit.categoryLink, true);
-        var href = decodeURI(url_parts.pathname);
+        var href = decodeURI(url_parts.pathname).replace(/\//g,' ');
         var search = ['search', 'sök']
         var brand = ['brand', 'märken']
-        if(search.indexOf(href) > -1){
+
+        if(href.match(/(?:search|sök)/g)){
             req.currentState  = shared.helper.urlToStateSearch(decodeURI(url_parts.path), AgoliaInstance);
             res.locals.TYPE = 'search';
         }
-        else if(brand.indexOf(href) > -1){
+        else if(href.match(/(?:märken|brand)/g)){
             req.currentState  = shared.helper.urlToStateBrand(decodeURI(url_parts.path), AgoliaInstance);
             res.locals.TYPE = 'brand';
         }
@@ -248,8 +189,7 @@ operations = {
                 shared.colors,
                 shared.translation,
                 true);
-
-            next()
+            return next()
         }).on('error',function(err){
             return next(err);
         })
@@ -258,6 +198,87 @@ operations = {
 }
 
 var helper = {
+    getProduct: function(req,id, callback){
+        var options = 'brand category otherColors articles articles.shops.shop';
+        Products.findOne({"_id":id}).deepPopulate(options).exec(function(err, product){
+                //console.log(product)
+                if(err) return next(err);
+                if(product == null) return next();
+                var x= product.toObject();
+                helper.getLowestPrice(x);
+                helper.getShippingReturn(x, req);
+                callback(x);
+        });
+    },
+    getSimilarProductsFromSameBrand:function(foundProduct,callback){
+        var query = {   "brand": foundProduct.brand,
+            "category": foundProduct.category,
+            "price.value":
+            {   $gt: Math.round(foundProduct.price.value * 0.2),
+                $lte:Math.round(foundProduct.price.value * 1.3)
+            }
+        };
+        helper.addAttributesQuery(foundProduct, query);
+        Products.find(query).sort( { "price.value": 1 }).lean().exec(function(err, products){
+                if(err) return callback(err);
+                if(products.length == 0) return callback();
+                var filtered= products.filter(function(product){
+                    if (foundProduct._id.toString() == product._id.toString()) return false;
+                    for (var o in foundProduct.otherColors){
+                        if (product._id.toString() == foundProduct.otherColors[o].toString())
+                            return false;
+                    }
+                    return true;
+                })
+             callback(null,filtered)
+        });
+    },
+    GetLowerPriceCategoryProducts:function(foundProduct,callback){
+        var query =    {    "color": new RegExp( '.*' + foundProduct.color  +'.*', 'i'),
+            "category": foundProduct.category._id,
+            "price.value":
+            {
+                $lt:Math.round(foundProduct.price.value * 1)
+            }
+        };
+        helper.addAttributesQuery(foundProduct, query);
+        Products.find(query).sort( { "price.value": 1 }).lean().exec(function(err, products){
+                console.log('relatedProducts',products.length)
+                if(err) return callback(err);
+                if(products.length == 0) return callback();
+                var filtered = products.filter(function(product){
+                    if (foundProduct._id.toString() !== product._id.toString()  &&  foundProduct.brand.toString() !== product.brand.toString()){
+                        return true;
+                    }
+                });
+            callback(null,filtered)
+        })
+    },
+    GetSimilarCategoryProducts: function (req, foundProduct, callback) {
+        var query =    {"color": new RegExp( '.*' + foundProduct.color  +'.*', 'i'),
+            "category": foundProduct.category,
+            "price.value":
+            {
+                $lte:Math.round(foundProduct.price.value * 2.5)
+            }
+        };
+        helper.addAttributesQuery(foundProduct, query);
+        Products.find(query).sort( { "price.value": 1 }).lean().exec(function(err, products){
+                if(err) return callback(err);
+                if(products.length == 0) callback();
+                var filtered = products.filter(function(product){
+                    if (foundProduct._id.toString() == product._id.toString()) return false;
+                    for (var j in req.LowerPriceCategoryProducts)
+                        if(req.LowerPriceCategoryProducts[j]._id.toString() == product._id.toString())  return false;
+                    for (var k in req.sameBrandProducts)
+                        if(req.sameBrandProducts[k]._id.toString() == product._id.toString())  return false;
+
+                    return true;
+                });
+            callback(null,filtered);
+        })
+    },
+
     addAttributesQuery:function(foundProduct, query){
         if(foundProduct.attributes.length!==0){
             console.log('ATTRIBUTES FOUND', foundProduct.attributes)
@@ -270,7 +291,6 @@ var helper = {
     },
     calculateSaving: function (item, products){
     for(var p in products){
-
         products[p].saving = (item.price.value - products[p].price.value) +' '+item.price.currency ;
         products[p].isItSaving = (item.price.value - products[p].price.value > 0? true :false);
         products[p].savingPercentage = Math.round(((item.price.value - products[p].price.value)/ item.price.value)*100);
@@ -309,18 +329,18 @@ var helper = {
         product.articles.shops[s].shop.freeReturn = easy.return.free;
         product.articles.shops[s].shop.returnPeriod = easy.return.period;
     }
-    console.log(product.articles.shops);
+    //console.log(product.articles.shops);
 },
     getCountryFromLanguage:function(req){
-    //console.log(req.i18n.getLocale())
-    switch(req.i18n.getLocale()){
+        //console.log(req.i18n.getLocale())
+        switch(req.i18n.getLocale()){
         case 'sv':
             return 'sweden';
         default:
             return 'sweden';
 
     }
-},
+    },
     sortbyNearestDescription: function (item, products){
         for(var p in products){
             var l = new Levenshtein( products[p].description, item.description)

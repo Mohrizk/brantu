@@ -1,7 +1,7 @@
 var Categories  = require('../models/category');
 var async = require('async');
 var options = [];
-var shared = require('../../public/javascripts/shared-helper');
+var shared = require('../../public/javascripts/helper');
 
 
 var lvl1_cancelOut = ['Premium', 'Sport &amp; träning']
@@ -138,7 +138,6 @@ category= {
             listOfCategories.sort(function(a,b){
                 var A = a.department.key;
                 var B = b.department.key;
-                console.log(A,B)
                 if (A < B){
                     return -1;
                 }else if (A > B){
@@ -154,15 +153,22 @@ category= {
 
     },
     getDepartment: function(req, res, next){
-        if(typeof req.params.department !=='undefined')
+        if(typeof req.params.department !=='undefined'){
             res.locals.selectedDepartment = req.params.department;
+        }
         else{
-            if(req.session.favDepartment !== null && typeof req.session.favDepartment !== 'undefined')
-            {    res.locals.selectedDepartment = req.session.favDepartment.replace( /(?:\/)/g,"");}
-            else {
-                res.locals.selectedDepartment = null;
+            if(req.url.split('/')[1].match(/(?:kvinna|man)/i)){
+                res.locals.selectedDepartment = req.url.split('/')[1].toLowerCase();
+            }
+            else{
+                if(req.session.favDepartment !== null && typeof req.session.favDepartment !== 'undefined')
+                {    res.locals.selectedDepartment = req.session.favDepartment.replace( /(?:\/)/g,"");}
+                else {
+                    res.locals.selectedDepartment = null;
+                }
             }
         }
+
         next()
     }
 }

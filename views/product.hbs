@@ -5,12 +5,27 @@
         <div class="jawBoneFadeInPlaceContainer"> 
             <div class="jawBoneContainer">
                 {{> productView_Back}}
-                {{> productRelated_Back}}
+                <div class="relatedProducts">
+                    <div class="">
+                    <div class="text-center p-t-50 p-b-50">
+                        <div class=" text-center ">
+                            <h4 class="text-velvet">Söker efter relaterade <b>styles</b> </h4>
+                            <img src="/dist/images/progress/progress-circle-danger.svg" style="width:200px height: 200px">
+                            </div>
+                        </div>
+                    </div>
+                    </div >
+                </div>
             </div> 
         </div> 
     </div> 
 </div>
     </section>
+      <script>
+              {{#if product}}
+                var  getRelatedProductsID  = {{{json product._id}}};
+              {{/if}}
+      </script>
     {{>loading}}
     {{>footer}}
 </div>

@@ -6,11 +6,7 @@
     height: 20vw; max-width:100%; object-fit: cover;
 }
 img.lazy {
-    display: block;
-    /* optional way, set loading as background */
-    background-image: url('/plugins/owl-carousel/AjaxLoader.gif');
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
+    display: none;
 }
 .nav-margin{
     margin-right: 35px;
@@ -753,13 +749,13 @@ ul.circle li:hover div{
     .selectedItemZoomPicture .next-item{
         left: 32%;
         top:45%;
-        padding-left: 1vw;
+        padding-left: 0.5vw;
     }
 
     .selectedItemZoomPicture .prev-item{
         left: -1.5%;
         top: 45%;
-        padding-left: 0.8vw;
+        padding-left: 0.2vw;
     }
   .selectedItemZoomPicture .next-item i, .selectedItemZoomPicture .prev-item i{
       font-size:2vw;
@@ -926,7 +922,7 @@ ul.circle li:hover div{
     height: 2vw;
     border-radius: 50%;
     text-align: center;
-    border:3px solid transparent;
+    border:1px solid #dddddd;
 }
 .colorList input[type=checkbox] + label span.name{
     display: block;

@@ -1,7 +1,7 @@
 <nav class="page-sidebar hidden-md hidden-xlg hidden-lg" >
     <!-- BEGIN SIDEBAR MENU TOP TRAY CONTENT-->
     <div class="sidebar-overlay-slide from-top" id="departmentMenu">
-        <h2 class="text-white">Select Department</h2>
+        <h class="text-white">Select Department</h>
         <div class="row">
             <div class="col-xs-12 p-t-20 ">
                 <a href="/kvinna" class="p-l-10 sbold" href="/kvinna"  style="font-size: 24px;" data-department="Kvinna">
@@ -57,7 +57,7 @@
                         <!--<span class="details">234 New Updates</span>-->
                     </a>
                  <span class="icon-thumbnail">
-                    <i><img src="/images/nav/lookbook_black.png" style="width:34px;"/></i>
+                    <i><img src="/dist/images/nav/lookbook_black.png" style="width:34px;"/></i>
                  </span>
                 </li>
                  <li class="m-t-10 b-b b-transparent-white open active">
@@ -66,7 +66,7 @@
                         <span class="arrow "></span>
                     </a>
                         <span class="icon-thumbnail ">
-                           <i><img src="/images/nav/explore_black.png" style="width:34px;"/></i>
+                           <i><img src="/dist/images/nav/explore_black.png" style="width:34px;"/></i>
                         </span>
                     {{#each categoryTree}}
                         {{#if (compareStrings this.department.name ../selectedDepartment)}}
@@ -97,14 +97,14 @@
                     <span class="title all-caps bold text-black" >Compare Prices</span>
                 </a>
                     <span class="icon-thumbnail" style="margin-right:25px; margin-top: 5px;">
-                    <img src="/images/nav/search_filled.png"  style="width:52px;"/>
+                    <img src="/dist/images/nav/search_filled.png"  style="width:52px;"/>
                     </span>
                 <input class="fakeMobileSearchButton bigSquare"/>
                 </li>
                 <li class="m-t-10 b-b b-transparent-white">
                     <a href="/favourite-products"><span class="title all-caps bold text-black" >Favourite</span></a>
                     <span class="icon-thumbnail">
-                         <i><img src="/images/nav/favourite_black.png" style="width:33px;"/></i>
+                         <i><img src="/dist/images/nav/favourite_black.png" style="width:33px;"/></i>
                     </span>
                     <!--<span class="detail">{{#if nbFavProducts}} {{nbFavProducts}} {{else}}0{{/if}}</span>-->
                 </li>
@@ -114,7 +114,7 @@
                             <span class="title text-black  all-caps bold" >Settings</span>
                         </a>
                          <span class="icon-thumbnail">
-                             <i><img src="/images/nav/settings_black.png" style="width:38px;"/></i>
+                             <i><img src="/dist/images/nav/settings_black.png" style="width:38px;"/></i>
                          </span>
                 </li>
                 <li  class="m-t-50 full-width text-center " data-view="signup">

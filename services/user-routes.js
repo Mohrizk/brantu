@@ -13,7 +13,7 @@ var feed = require('./middleware/mw-feed');
 var email = require('./middleware/mw-email');
 var user = require('./middleware/mw-users');
 
-var shared = require('../public/javascripts/shared-helper');
+var shared = require('../public/javascripts/helper');
 
 /**************************************************************
 *******************BEGINING ROUTES***************************
@@ -293,7 +293,10 @@ var routes = [
         } ]
     ],
 /********SEARCH************/
-    [ '/search/:department', 'get', [
+    [
+        ['/search', '/s%C3%B6k', '/s%C3%B6k/:department', '/search/:department']
+        , 'get',
+        [
         categories.getCategoryTree,
         categories.getDepartment,
         products.getForSearch,
@@ -303,34 +306,6 @@ var routes = [
         } ]
     ],
 
-    [ '/s%C3%B6k/:department', 'get', [
-        categories.getCategoryTree,
-        categories.getDepartment,
-        products.getForSearch,
-        products.getAlgoliaProducts,
-        function(req, res, next) {
-            res.render('navigation')
-        } ]
-    ],
-
-    [ '/search', 'get', [
-        categories.getCategoryTree,
-        categories.getDepartment,
-        products.getForSearch,
-        products.getAlgoliaProducts,
-        function(req, res, next) {
-            res.render('navigation')
-        } ]
-    ],
-    [ '/s%C3%B6k', 'get', [
-        categories.getCategoryTree,
-        categories.getDepartment,
-        products.getForSearch,
-        products.getAlgoliaProducts,
-        function(req, res, next) {
-            res.render('navigation')
-        } ]
-    ],
     /*********MAIN PAGE******************************************/
     [ '/', 'get', [function(req, res, next) {
         if(typeof req.session.favDepartment !== 'undefined'){
@@ -342,7 +317,7 @@ var routes = [
 
 
 /*********View Product***************************/
-    [ '/view/:id', 'get', [
+   /* [ '/view/:id', 'get', [
         products.getProductByID,
         function(req, res, next) {
             var path = '';
@@ -353,84 +328,24 @@ var routes = [
             console.log('kjhvajshvasj')
             console.log(encodeURI(path+ '/bästa-pris-för/'+req.product._id+'-'+shared.helper.urlFriendly(req.product.name)))
             res.redirect(encodeURI(path+ '/bästa-pris-för/'+shared.helper.urlFriendly(req.product.name)+'-'+req.product._id))
-        } ]],
-    [ '/b%C3%A4sta-pris-f%C3%B6r/:name', 'get', [
-        function(req,res,next){
-            var splitted = req.params.name.split('-');
-            req.params.id = splitted[splitted.length-1]
-            next();
-        },
-        products.getProductByID,
-        function(req, res, next) {
-            var path = '';
-            var length= (req.category.breadcrumb.length>=3? 3: req.category.breadcrumb.length)
-            for(var i=0; i< length ;i++){
-                path+= '/'+ shared.helper.urlFriendly(req.category.breadcrumb[i].name);
-            }
-            res.redirect(encodeURI(path+ '/bästa-pris-för/'+shared.helper.urlFriendly(req.product.name)+'-'+req.product._id))
-    } ]],
-    [ '/:department/:category/:style/b%C3%A4sta-pris-f%C3%B6r/:name', 'get', [
+        } ]],*/
+    [ '/b%C3%A4sta-pris-f%C3%B6r/:name', 'get',[
         categories.getCategoryTree,
         categories.getDepartment,
         products.getProductIDfromName,
         products.getProductByID,
         products.checkProductIsFavoured,
-        products.getSimilarProductsFromSameBrand,
-        products.GetLowerPriceCategoryProducts,
-        products.GetSimilarCategoryProducts,
+        //products.getSimilarProductsFromSameBrand,
+        //products.GetLowerPriceCategoryProducts,
+        //products.GetSimilarCategoryProducts,
         function(req, res, next) {
             res.render('product', {
                 title                   : 'Lägsta priset för '+req.product.name + ' - altid bästa pris inom mode med Brantu',
                 description             : req.product.description+ ' hitta det på lägsta priset i Brantu',
                 product                     : req.product,
-                sameBrandProducts           : req.sameBrandProducts,
-                LowerPriceCategoryProducts  : req.LowerPriceCategoryProducts ,
-                sameCategoryProducts        : req.sameCategoryProducts,
-                style                       : req.style,
-                category                    : req.category,
-                brand                       : req.brand
-            })
-        } ]],
-    [ '/:department/:category/b%C3%A4sta-pris-f%C3%B6r/:name', 'get', [
-        categories.getCategoryTree,
-        categories.getDepartment,
-        products.getProductIDfromName,
-        products.getProductByID,
-        products.checkProductIsFavoured,
-        products.getSimilarProductsFromSameBrand,
-        products.GetLowerPriceCategoryProducts,
-        products.GetSimilarCategoryProducts,
-        function(req, res, next) {
-            res.render('product', {
-                title                   : 'Lägsta priset för '+req.product.name + ' - altid bästa pris inom mode med Brantu',
-                description             : req.product.description+ ' hitta det på lägsta priset i Brantu',
-                product                     : req.product,
-                sameBrandProducts           :req.sameBrandProducts,
-                LowerPriceCategoryProducts  :req.LowerPriceCategoryProducts ,
-                sameCategoryProducts        : req.sameCategoryProducts,
-                style                       : req.style,
-                category                    : req.category,
-                brand                       : req.brand
-            })
-        } ]],
-    [ '/:department/b%C3%A4sta-pris-f%C3%B6r/:name', 'get', [
-        categories.getCategoryTree,
-        categories.getDepartment,
-        products.getProductIDfromName,
-        products.getProductByID,
-        products.checkProductIsFavoured,
-        products.getSimilarProductsFromSameBrand,
-        products.GetLowerPriceCategoryProducts,
-        products.GetSimilarCategoryProducts,
-        function(req, res, next) {
-            console.log('BEST PRICE ', req.product)
-            res.render('product', {
-                title                   : 'Lägsta priset för '+req.product.name + ' - hitta altid bästa pris på allt du letar inom mode efter med Brantu',
-                description             : req.product.description+ ' hitta bästa pris med Brantu',
-                product                     : req.product,
-                sameBrandProducts           : req.sameBrandProducts,
-                LowerPriceCategoryProducts  : req.LowerPriceCategoryProducts ,
-                sameCategoryProducts        : req.sameCategoryProducts,
+                //sameBrandProducts           : req.sameBrandProducts,
+                //LowerPriceCategoryProducts  : req.LowerPriceCategoryProducts ,
+                //sameCategoryProducts        : req.sameCategoryProducts,
                 style                       : req.style,
                 category                    : req.category,
                 brand                       : req.brand
@@ -441,34 +356,8 @@ var routes = [
 
 
 /*********BRAND****************/
-    [ '/:department/brand/:name', 'get', [
-        categories.getCategoryTree,
-        categories.getDepartment,
-        products.getForBrands,
-        products.getAlgoliaProducts,
-        function(req, res, next) {
-            res.render('navigation')
-        } ]
-    ],
-    [ '/:department/m%C3%A4rken/:name', 'get', [
-        categories.getCategoryTree,
-        categories.getDepartment,
-        products.getForBrands,
-        products.getAlgoliaProducts,
-        function(req, res, next) {
-            res.render('navigation')
-        } ]
-    ],
-    [ '/brand/:name', 'get', [
-        categories.getCategoryTree,
-        categories.getDepartment,
-        products.getForBrands,
-        products.getAlgoliaProducts,
-        function(req, res, next) {
-            res.render('navigation')
-        } ]
-    ],
-    [ '/m%C3%A4rken/:name', 'get', [
+
+    [ ['/brand/:name', '/m%C3%A4rken/:name', '/:department/m%C3%A4rken/:name',  '/:department/brand/:name'], 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
         products.getForBrands,
@@ -479,33 +368,18 @@ var routes = [
     ],
 
 /********************NAVIGATE******************/
-    [ '/:department/upptack-nya-favoriter', 'get', [
-        function(req, res, next) {
-            console.log('FUCKKKKK')
-            res.redirect('/'+req.params.department)
-        } ]
-    ],
 
-    [ '/explore', 'get', [
+
+   /* [ '/explore', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
         products.getAlgoliaProducts,
         function(req, res, next) {
             res.render('navigation')
         } ]
-    ],
+    ],*/
     //kvinna/kläder/toppar-festklader/:
-    [ '/:department/:category/:style', 'get', [
-        categories.getCategoryTree,
-        categories.getDepartment,
-        products.getForCategories,
-        products.getAlgoliaProducts,
-        function(req, res, next) {
-            res.render('navigation')
-        } ]
-    ],
-    //kvinna/kläder
-    [ '/:department/:category', 'get', [
+    [ ['/:department/:category','/:department/:category/:style'], 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
         products.getForCategories,
@@ -519,7 +393,6 @@ var routes = [
 
 /*********INFORMATION & CONTACT PAGES *************************************/
     [ '/contact-us', 'get', [
-        
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
@@ -536,7 +409,6 @@ var routes = [
         }]
     ],
     [ '/faq', 'get', [
-        
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
@@ -545,7 +417,6 @@ var routes = [
         }]
     ],
     [ '/privacy-policy', 'get', [
-        
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
@@ -555,7 +426,6 @@ var routes = [
     ]
     ],
     [ '/terms-and-conditions', 'get', [
-        
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
@@ -601,7 +471,7 @@ var routes = [
     ],
 
 
-    [ '/:department', 'get', [
+    [ ["/kvinna", "/man", '/:department/upptack-nya-favoriter'], 'get', [
         session.addFavouriteDepartment,
         categories.getCategoryTree,
         categories.getDepartment,
@@ -621,7 +491,6 @@ var routes = [
     ],
 
 
-
 /*********Internationalization *******************/
     [ '/en', 'get', [ function(req, res, next) {
         res.cookie('brantuLang', 'en');
@@ -633,16 +502,7 @@ var routes = [
         res.redirect('/');
     }]
     ],
-/*********Error ***************************************************/
-    [ '/error', 'get', [
-        categories.getCategoryTree,
-        categories.getDepartment,
-        function( req, res, next) {
-            res.status( 500);
-            res.render('error')
-        }
-        ]
-    ],
+
 /********* Saving Session ********/
     [ '/favourite-product/add', 'post', [
         session.addFavouriteProduct,

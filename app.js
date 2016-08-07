@@ -33,10 +33,11 @@ const adminRoutes = require('./services/admin-routes');
 
 const express = require('express'), sm = require('sitemap');
 const app = express();
+app.use(compression());
 
 
 //CONNECT DB
-if (app.get('env') === 'development') mongoose.connect(require('./config/database.js').remote);
+if (app.get('env') === 'development') mongoose.connect(require('./config/database.js').local);
 else mongoose.connect(require('./config/database.js').remote);
 
 app.use(robots(__dirname + '/robots.txt'))
@@ -45,7 +46,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 

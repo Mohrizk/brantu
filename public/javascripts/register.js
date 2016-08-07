@@ -1,5 +1,4 @@
-(function($) {
-    'use strict';
+
 $(document).ready(function() {
 	var registerContainer = $('.registerContainer');
 	var registerSection = $('#AuthenticationPopUp');
@@ -82,7 +81,6 @@ $(document).ready(function() {
 
 });
 
-})(window.jQuery);
 
 
 

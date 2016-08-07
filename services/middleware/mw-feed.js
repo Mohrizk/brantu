@@ -2,7 +2,7 @@ var Outfits  = require('../models/outfit');
 var Product  = require('../models/product');
 var webshot = require('webshot');
 var url = require('url');
-var shared = require('../../public/javascripts/shared-helper');
+var shared = require('../../public/javascripts/helper');
 var helper = {
     populateStyleProduct: function (body, callback){
     if(body.styleProduct !== null && body.styleProduct !== ''){

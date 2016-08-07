@@ -9,13 +9,16 @@
     <meta name="description" content={{description}}  />
     <meta content="Brantu" name="author" />
 
-    <link rel="publisher" href="https://plus.google.com/+Brantu"/>
+    <link rel="publisher" href="https://plus.google.com/109001896893774937354"/>
+    <meta property="og:title" content="Shop smarter"/>
+    <meta property="og:image" content="http://www.brantu.com/images/logo_facebook.jpg"/>
+    <meta property="og:site_name" content="Brantu"/>
+    <meta property="og:description" content="Compare and find best prices in fashion"/>
     <!--***********************************************************************
     **********************************  STYLE SHEETS ***************************
     ************************************************************************-->
-
-    <link rel="stylesheet" href="/stylesheets/style.css"/>
-    <!--Plugins / THIRDPARY-->
+    <link rel="stylesheet" href="/dist/style.min.css"/>
+    <!--Plugins / THIRDPARY
     <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.css"/>
     <link rel="stylesheet" href="/stylesheets/flexboxgrid.min.css"/>
     <link rel="stylesheet" href="/plugins/ion.rangeSlider/css/normalize.css" />
@@ -23,35 +26,21 @@
     <link rel="stylesheet" href="/plugins/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css" />
     <link href="/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/pages-icons.css" rel="stylesheet" type="text/css"/>
-    <link href="/stylesheets/pages-icons.css" rel="stylesheet" type="text/css"/>
     <link href="/plugins/owl-carousel/owl.theme.css" rel="stylesheet" type="text/css"/>
     <link href="/plugins/owl-carousel/owl.carousel.css" rel="stylesheet" type="text/css"/>
 
 
-    <!--VENDOR-->
+
     <link  href="/stylesheets/pages.css" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/search.css" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/landing.css" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/settings.css" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/generic.css" rel="stylesheet" type="text/css" />
-    <link href="/stylesheets/register.css" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/register.css" rel="stylesheet" type="text/css" />-->
 
     <!--********************* CONDITIONAL STYLING ***************************-->
     <script type="text/javascript" src='/plugins/jquery/jquery-1.11.1.min.js'></script>
-    <script type="text/javascript" src="/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/plugins/bootstrap/js/util.js"></script>
-    <script type="text/javascript" src="/plugins/jquery-bez/jquery.bez.min.js"></script>
-    <script type="text/javascript" src="/plugins/ion.rangeSlider/js/ion.rangeSlider.js"></script>
-    <script type="text/javascript" src="/plugins/owl-carousel/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="/plugins/jquery.lazyload.min.js"></script>
-
-
-
-    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-    <script src="//cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
-    <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
-    <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+    <script  src="/plugins/handlebars/handlebars-v4.0.5.js"></script>
 
     <script type="application/ld+json">
         {
@@ -65,7 +54,6 @@
           }
         }
     </script>
-
     <script type="application/ld+json">
         {
             "@context": "http://schema.org",
@@ -85,11 +73,6 @@
               ]
         }
     </script>
-
-
-
-
-    <script type="text/javascript" src="/javascripts/hb-helper.js"></script>
     {{#each templates}}
         <script type="text/x-handlebars-template" id="{{{this.name}}}Template">{{{this.template}}}</script>
     {{/each}}
@@ -109,11 +92,6 @@
         var  TYPE  = {{{json TYPE}}};
         {{/if}}
 
-        {{#if blogProductsLink}}
-        var  blogProductsLink  = {{{json blogProductsLink}}};
-        {{/if}}
-
-
         var priceLimits = {}
         priceLimits['change'] = true;
 
@@ -124,8 +102,6 @@
         {{/if}}
 
     </script>
-
-
     <!-- Facebook Pixel Code -->
     <script>
         !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -144,8 +120,8 @@
 
     <div class="hidden">
     <a title="Web Analytics" href="http://clicky.com/100974570"><img alt="Web Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
-    <script src="//static.getclicky.com/js" type="text/javascript"></script>
-    <script type="text/javascript">try{ clicky.init(100974570); }catch(e){}</script>
+    <script async src="//static.getclicky.com/js"  type="text/javascript"></script>
+    <script async type="text/javascript">try{ clicky.init(100974570); }catch(e){}</script>
     <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100974570ns.gif" /></p></noscript></div>
 </head>
 

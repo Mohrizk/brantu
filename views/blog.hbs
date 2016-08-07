@@ -8,6 +8,11 @@
           <div class="b-t">
             {{> productNavigation_Back}}
           </div>
+          <script>
+              {{#if blogProductsLink}}
+                  var  blogProductsLink  = {{{json blogProductsLink}}};
+              {{/if}}
+          </script>
       </section>
       {{>loading}}
       {{>footer}}
