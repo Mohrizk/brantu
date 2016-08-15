@@ -90,7 +90,6 @@ operations = {
             if(typeof filtered == 'undefined') return next();
             //req.sameCategoryProducts = sortbyNearestDescription(req.product, filtered)
             req.sameCategoryProducts = helper.calculateSaving(req.product,filtered);
-            console.log(req.sameCategoryProducts.length)
             next();
         })
     },
@@ -191,7 +190,6 @@ var helper = {
         var options = 'brand category otherColors articles articles.shops.shop';
         var clothArray = [],accessoryArray = [], shoesArray = [];
         Article.find({"shops":{"$not":{"$size":1}}}, {_id: 1}).exec(function(err, docs){
-            console.log('SIZE OF DOCS', docs.length)
             var ids = docs.map(function(doc) { return doc._id;});
             Products.find({"articles":{$in: ids}, "genders": shared.helper.mapDepartment(department)})
                 .deepPopulate(options).limit(30).lean().exec(function(err, products){
@@ -273,7 +271,7 @@ var helper = {
         };
         helper.addAttributesQuery(foundProduct, query);
         Products.find(query).sort( { "price.value": 1 }).lean().exec(function(err, products){
-                console.log('relatedProducts',products.length)
+
                 if(err) return callback(err);
                 if(products.length == 0) return callback();
                 var filtered = products.filter(function(product){
@@ -311,7 +309,6 @@ var helper = {
 
     addAttributesQuery:function(foundProduct, query){
         if(foundProduct.attributes.length!==0){
-            console.log('ATTRIBUTES FOUND', foundProduct.attributes)
             var values = []
             for(var a in foundProduct.attributes){
                 values.push(foundProduct.attributes[a].value);
@@ -328,7 +325,6 @@ var helper = {
     return products;
 },
     getLowestPrice:function(product){
-        console.log(product.length)
     for (var s in product.articles.shops){
         var lowest;
         for(var u in product.articles.shops[s].units){
