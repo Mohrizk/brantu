@@ -286,8 +286,8 @@ $(document).ready( function() {
 	function loadMainOWl(){
 		owlClothes = $("#owl-clothes")
 		owlClothes .owlCarousel({
-			items :3,
-			itemsDesktop : [1200,2],
+			items :4,
+			itemsDesktop : [1200,4],
 			itemsDesktopSmall : [1024,3],
 			itemsTablet: [600,2],
 			itemsMobile : false,
