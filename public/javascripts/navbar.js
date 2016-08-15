@@ -108,11 +108,11 @@ $(document).ready(function() {
 
 		if(current > header){
 			headerSegment.slideUp('fast');
-			logo.addClass('scaleDown')
+			//logo.addClass('scaleDown')
 		}
 		else if(current < header){
 			headerSegment.slideDown('fast');
-			logo.removeClass('scaleDown')
+			//logo.removeClass('scaleDown')
 		}
 
 

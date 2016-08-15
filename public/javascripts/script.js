@@ -26,13 +26,13 @@ var newsletterTemplate = Handlebars.compile($("#newsletterTemplateTemplate").htm
 var client = algoliasearch("D3IWZXC0AH", '3d6a60c228b6e8058770fdf8eab2f652');
 var helper   = algoliasearchHelper(client, 'test_products',
 	{
-		hitsPerPage: 30,
+		hitsPerPage: 50,
 		hierarchicalFacets: [{
 		name: 'products',
 		attributes: ['category.lvl0', 'category.lvl1', 'category.lvl2', 'category.lvl3', 'category.lvl4', 'category.lvl5'],
         sortBy: [ 'name:asc', 'count:desc']
 	}],
-	facets:[  'sale', 'price.value'],
+	facets:[  'sale', 'price.value', 'compare'],
 	disjunctiveFacets:['color','brand.name','sizes', 'shops', 'discount' , 'style', 'fit', 'material']
 });
 
@@ -284,6 +284,37 @@ $(document).ready( function() {
 		});
 
 	function loadMainOWl(){
+		owlClothes = $("#owl-clothes")
+		owlClothes .owlCarousel({
+			items :3,
+			itemsDesktop : [1200,2],
+			itemsDesktopSmall : [1024,3],
+			itemsTablet: [600,2],
+			itemsMobile : false,
+			lazyLoad : true
+		});
+
+		owlShoes = $("#owl-shoes")
+		owlShoes.owlCarousel({
+			items :3,
+			itemsDesktop : [1200,2],
+			itemsDesktopSmall : [1024,3],
+			itemsTablet: [600,2],
+			itemsMobile : false,
+			lazyLoad : true
+		});
+
+		owlAccessories = $("#owl-accessories");
+		owlAccessories.owlCarousel({
+			items :3,
+			itemsDesktop : [1200,2],
+			itemsDesktopSmall : [1024,3],
+			itemsTablet: [600,2],
+			itemsMobile : false,
+			lazyLoad : true
+		});
+
+
 		owl = $("#owl-main")
 		owl.owlCarousel({
 			items : 3,
@@ -451,7 +482,9 @@ $(document).ready( function() {
 	}
 	helper.on('result', function(content) {
 		RENDER(content);
-		$('html, body').scrollTop(0);
+		if(itemScrollindex == null)$('html, body').scrollTop(0);
+		else $('html, body').scrollTop(itemScrollindex);
+		itemScrollindex = null;
 		loading.fadeOut('slow');
 		general.css({'opacity':0.5}).animate({'opacity':1});
 	})
@@ -508,6 +541,8 @@ $(document).ready( function() {
 		refreshVariables()
 		$('.resultContainer').fadeOut()
 		$('.itemList img').removeClass('selected');
+		if(currentState.search || currentState.category)itemScrollindex = $(document).scrollTop();
+		else itemScrollindex=null;
 		$.ajax({
 			url: '/api/getProductByID/'+context.state.product,
 		}).success(function(result) {
@@ -534,7 +569,7 @@ $(document).ready( function() {
 	}
 	function getSimilarProducts(context, next){
 		var id = context.state.product;
-		ajaxSimilarProducts(id,function(){
+		ajaxSimilarProducts(id, function(){
 			next();
 		})
 	}
@@ -547,7 +582,7 @@ $(document).ready( function() {
 					loadOtherOWl();
 					lazy()
 					$('.relatedProducts').css({'opacity':0}).animate({'opacity':1})
-					callback();
+					callback;
 				})
 		});
 	}
@@ -630,7 +665,6 @@ $(document).ready( function() {
 		else{
 			helper.removeDisjunctiveFacetRefinement('brand.name', value);
 		}
-
 		page(getUrlFromState())
 	});
 
@@ -642,7 +676,6 @@ $(document).ready( function() {
 		else{
 			helper.removeDisjunctiveFacetRefinement('style', value);
 		}
-
 		page(getUrlFromState())
 	});
 
@@ -721,6 +754,16 @@ $(document).ready( function() {
 		}
 		page(getUrlFromState())
 	});
+	body.on( 'change', ' .compare input', function (event) {
+		var value = $(this).attr('value');
+		if( $(this).prop('checked')){
+			helper.addFacetRefinement('compare', value);
+		}
+		else{
+			helper.removeFacetRefinement('compare', value);
+		}
+		page(getUrlFromState())
+	});
 	body.on( eventOnTE, '  .filterTags button', function (event) {
 		var value = $(this).attr('value');
 		var facet = $(this).attr('facet');
@@ -764,18 +807,37 @@ $(document).ready( function() {
 			clearInterval(productPreviewTimer);
 		}
 	});
+
+	/*
+	 * side bar
+	 *
+	 * **/
+	mainSection.on('click','#compareClothes .next-page',function(){
+		owlClothes.trigger('owl.next');
+	})
+	mainSection.on('click','#compareClothes .prev-page',function(){
+		owlClothes.trigger('owl.prev');
+	})
+	mainSection.on('click','#compareShoes .next-page',function(){
+		owlShoes.trigger('owl.next');
+	})
+	mainSection.on('click','#compareShoes .prev-page',function(){
+		owlShoes.trigger('owl.prev');
+	})
+
+
 	/*
     * View Product
     *
     * **/
-	mainSection.on( 'click','a[data-product-info = "show"], img[data-product-info="show"]' , function (e) {
+	/*mainSection.on( 'click','a[data-product-info = "show"], img[data-product-info="show"]' , function (e) {
 		$(this).addClass('selected')
 		closeMobileSearch();
 		var index = $(this).attr('index'), _id =  $(this).attr('_id');
 		if(index !== null)itemScrollindex = index;
 		page('/view/'+_id);
 		e.stopPropagation();e.preventDefault();
-	});
+	});*/
 	mainSection.on('click','#mainJawBoneImageContainer .next-item',function(){
 		owl.trigger('owl.next');
 	})

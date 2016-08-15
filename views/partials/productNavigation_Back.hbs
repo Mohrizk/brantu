@@ -9,7 +9,7 @@
             <h5 class="all-caps text-spaced-medium text-center font-GothamMedium">{{{nbBrandHits}}}</h5>
             <div class="text-center auto-margin block">
                 {{#each welcome.suggestedBrands}}
-                <a class="dark inline p-l-20 bold" href="/brand/{{{name}}}"><div class="brandsAC text-center">
+                <a class="dark inline p-l-20 bold" href="/brand/{{{urlFriendly name}}}"><div class="brandsAC text-center">
                     <span class="">{{{ _highlightResult.name.value }}}</span>
                 </div></a>
                 {{/each}}
@@ -75,6 +75,18 @@
                             </div>
                             {{/if}}
                         </div>
+                       
+                        <div class="compare refinement">
+                            {{#each compare.content}}
+                            {{#if (idGenerator this)}}{{/if}}
+                            {{#if this.isRefined}}<div class="checkbox  checkbox-circle"><input type="checkbox" name="checkbox" value="{{this.name}}"  id="{{this.theID}}" checked/> <label for="{{this.theID}}"><span class="bold">{{../compare.header}}</span></label></div>
+                            {{else}}<div class="checkbox  checkbox-circle"><input type="checkbox" name="checkbox" value="{{this.name}}" id="{{this.theID}}" /> <label for="{{this.theID}}"><span class="bold">{{../compare.header}}</span></label></div>
+                            {{/if}}
+                            {{/each}}
+                        </div>
+                        
+                        
+                        
                         <div class="price">
                             <h5>
                                 <span class="bg-white text-left all-caps bold">Pris</span>

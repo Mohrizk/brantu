@@ -9,7 +9,7 @@
                     <div class="carousel text-center" >
 
                         <a _id="{{{this._id}}}"  href="/bästa-pris-för/{{{urlFriendly this.name}}}-{{this._id}}"><img class="lazyOwl" data-src="{{{this.mainPicture.largeUrl}}}"/>
-                            <p class="text-center">{{this.price.formatted}} {{#if this.isItSaving}}<br/> <span class="text-velvet" style="font-size: 12px;"><i><img src="/images/nav/compare.png" style="width:20px; height:auto;"></i>Save <b>{{this.saving}}</b> ({{this.savingPercentage}}%)</span>{{/if}}</p></a>
+                            <p class="text-center">{{this.price.formatted}} {{#if this.isItSaving}}<br/> <span class="text-velvet" style="font-size: 12px;"><i><img src="/images/nav/compare.png" style="width:20px; height:auto;"></i>spara <b>{{this.saving}}</b> ({{this.savingPercentage}}%)</span>{{/if}}</p></a>
                     </div>
                     {{/each}}
                 </div>
@@ -24,8 +24,13 @@
                 <div class="no-style text-center" id="owlBrand">
                     {{#each sameBrandProducts}}
                     <div class="carousel text-center no-overflow">
-                        <a _id="{{{this._id}}}" href="/bästa-pris-för/{{{urlFriendly this.name}}}-{{this._id}}"><img class="lazyOwl" data-src="{{{this.mainPicture.largeUrl}}}"/>
-                            <p class="text-center">{{this.price.formatted}} {{#if this.isItSaving}}<br/> <span class="text-velvet" style="font-size: 12px;"><i><img src="/images/nav/compare.png" style="width:20px; height: auto;"></i>Save <b>{{this.saving}}</b> ({{this.savingPercentage}}%)</span> {{/if}}</p></a>
+                        <a _id="{{{this._id}}}" href="/bästa-pris-för/{{{urlFriendly this.name}}}-{{this._id}}">
+                            <img class="lazyOwl" data-src="{{{this.mainPicture.largeUrl}}}"/>
+                            <p class="text-center">{{this.price.formatted}} {{#if this.isItSaving}}<br/> <span class="text-velvet" style="font-size: 12px;"><i><img src="/images/nav/compare.png" style="width:20px; height: auto;"></i>spara <b>{{this.saving}}</b> ({{this.savingPercentage}}%)</span> {{/if}}</p>
+                        </a>
+                        <a class="light sbold text-white " href="/bästa-pris-för/{{{urlFriendly this.name}}}-{{this._id}}">
+                            <i class="pg-italic"></i>Mer information
+                        </a>
                     </div>
                     {{/each}}
                 </div>
@@ -42,7 +47,7 @@
                 <div class="flow inline p-b-40">
                     <a _id="{{{this._id}}}" href="/bästa-pris-för/{{{urlFriendly this.name}}}-{{this._id}}"><img class="lazy" data-original="{{{this.mainPicture.largeUrl}}}"/>
                         <p class="text-center no-overflow-text">{{this.name}}</p></a>
-                    <p class="text-center no-overflow-text">{{this.price.formatted}} {{#if this.isItSaving}}<br/> <span class="text-velvet" style="font-size: 12px;"><i><img src="/images/nav/compare.png" style="width:20px; height:auto;"></i>Save <b>{{this.saving}}</b> ({{this.savingPercentage}}%)</span>{{/if}}  </p></a>
+                    <p class="text-center no-overflow-text">{{this.price.formatted}} {{#if this.isItSaving}}<br/> <span class="text-velvet" style="font-size: 12px;"><i><img src="/images/nav/compare.png" style="width:20px; height:auto;"></i>spara <b>{{this.saving}}</b> ({{this.savingPercentage}}%)</span>{{/if}}  </p></a>
                 </div>
                 {{/each}}
             </div>

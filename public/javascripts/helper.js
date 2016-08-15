@@ -168,9 +168,14 @@ var renderHelper = {
         }
 
         if (typeof object['facetsRefinements'] !== 'undefined') {
-            if (object['facetsRefinements']['sale'] !== 'undefined') {
-                console.log(object.facetsRefinements["sale"])
+            console.log(object['facetsRefinements'])
+            if (typeof object['facetsRefinements']['sale'] !== 'undefined') {
                 uri+= '&sale='+ renderHelper.urlFriendly(object.facetsRefinements["sale"][0]);
+            }
+
+            if (typeof object['facetsRefinements']['compare'] !== 'undefined') {
+
+                uri+= '&compare='+ renderHelper.urlFriendly(object.facetsRefinements["compare"][0]);
             }
         }
 
@@ -271,6 +276,9 @@ var renderHelper = {
                     case 'sale':
                         helper.addFacetRefinement('sale', renderHelper.decodeUrlFriendly(qValue));
                         break;
+                    case 'compare':
+                        helper.addFacetRefinement('compare', renderHelper.decodeUrlFriendly(qValue));
+                        break;
                     case 'priceFrom':
                         helper.addNumericRefinement('price.value','>', renderHelper.decodeUrlFriendly(qValue));
                         break;
@@ -282,7 +290,6 @@ var renderHelper = {
                         break;
                     case 'category':
                         var categoryValue = renderHelper.decodeUrlFriendly(qValue).split('.').join(' > ')
-                        console.log(categoryValue)
                         helper.clearRefinements('products').toggleRefinement('products', categoryValue);
                         break;
                 }
@@ -628,6 +635,15 @@ var renderHelper = {
                 }
                 rObject.facets.push(temp)
             }
+            if (object.facetsRefinements.hasOwnProperty('compare')) {
+                var temp = {
+                    text: header.facets.compare.filter,
+                    type: 'facet',
+                    value: object.facetsRefinements.compare,
+                    facet: 'compare'
+                }
+                rObject.facets.push(temp)
+            }
         }
         return rObject;
     },
@@ -641,6 +657,10 @@ var renderHelper = {
         object.price = content.getFacetStats('price.value')
         object.welcome = renderHelper.getWelcomeMessage(helper,currentState,breadCrumb, content, currentBrandDDHits);
         object.sale = {content:renderHelper.mapWithout(content.getFacetValues('sale'),['false']), header: HEADERTEXT.facets.sale.header};
+        object.compare = {content:renderHelper.mapWithout(content.getFacetValues('compare'),['false']), header: HEADERTEXT.facets.compare.header};
+
+
+
         object.discounts={content: renderHelper.mapWithout(content.getFacetValues('discount'), ['0']), header: HEADERTEXT.disjunctionFacets.discount.header};
         object.sizes= {content: content.getFacetValues('sizes', {sortBy: ['name:asc']}), header: HEADERTEXT.disjunctionFacets.size.header};
 
@@ -772,6 +792,7 @@ var HEADERTEXT = {
     },
     facets:{
         sale: {header: "Bara Rea", filter:"Bara Rea"},
+        compare: {header: "Bara jämför", filter:"Bara jämför"},
         price:{header: "Pris"   , filter:"pris"}
     },
     search:{

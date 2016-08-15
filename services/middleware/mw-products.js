@@ -14,42 +14,33 @@ var algoliasearchHelper = require('algoliasearch-helper');
 var client   = algoliasearch("D3IWZXC0AH", '3d6a60c228b6e8058770fdf8eab2f652');
 var AgoliaInstance   = algoliasearchHelper(client, 'test_products',
     {
-        hitsPerPage: 30,
+        hitsPerPage: 50,
         hierarchicalFacets: [{
             name: 'products',
             attributes: ['category.lvl0', 'category.lvl1', 'category.lvl2', 'category.lvl3', 'category.lvl4', 'category.lvl5'],
             sortBy: ['count:desc', 'name:asc']
         }],
-        facets:[  'sale', 'price.value'],
+        facets:[  'sale', 'price.value', 'compare'],
         disjunctiveFacets:['color','brand.name','sizes', 'shops', 'discount' , 'style', 'fit', 'material']
     });
 var shared = require('../../public/javascripts/helper');
 
-//HELPER FUNCTIONS
-function getHex(product, callback){
-    var color = product.color;
-    var colorReg = new RegExp( '.*' + color +'.*', 'i');
-    Colors.findOne({displayName: colorReg}, function(err, colorFound){
-        if(err) return callback(err)
-        product.color = {};
-        if(colorFound != null){
-           // console.log('COLOR Found', colorFound)
-            product.color.name = colorFound.displayName;
-            product.color.hex = colorFound.hex;
-            return callback()
-        }
-        product.color.name = color;
-        //console.log('COLOR', product.color.name, product.color.hex)
-        callback()
-    })
-}
 
 
 
 
 
 operations = {
+    categories:{sv:['kläder', 'skor', 'accessoarer']},
     //API FOR GETTING PRODUCT
+    getCompare:function(req,res,next){
+        helper.getCompare(req, res.locals.selectedDepartment, operations.categories, function(err, clothes, shoes, accessory){
+            res.locals.compareClothes = clothes
+            res.locals.compareShoes = shoes
+            res.locals.compareAcessories = accessory
+            next();
+        })
+    },
     getProductIDfromName:function(req, res,next){
         var string =  req.params.name;
         var splited = string.split('-');
@@ -103,7 +94,6 @@ operations = {
             next();
         })
     },
-
     checkProductIsFavoured :function(req, res, next){
         if(req.product !== null && typeof req.session.favProducts !=='undefined'){
             var found = false;
@@ -134,7 +124,6 @@ operations = {
             next()
         }
     },
-
     getForBlog:function(req, res, next){
         if(typeof req.outfit == 'undefined') return next();
 
@@ -198,11 +187,52 @@ operations = {
 }
 
 var helper = {
+    getCompare:function(req, department, categoryOptions,callback){
+        var options = 'brand category otherColors articles articles.shops.shop';
+        var clothArray = [],accessoryArray = [], shoesArray = [];
+        Article.find({"shops":{"$not":{"$size":1}}}, {_id: 1}).exec(function(err, docs){
+            console.log('SIZE OF DOCS', docs.length)
+            var ids = docs.map(function(doc) { return doc._id;});
+            Products.find({"articles":{$in: ids}, "genders": shared.helper.mapDepartment(department)})
+                .deepPopulate(options).limit(30).lean().exec(function(err, products){
+                if(err) return callback(err);
+                if(products.length == 0 ) return callback()
+                for(var x in products){
+                    if(typeof products[x].category.breadcrumb[1] !== 'undefined'){
+                        var branch = products[x].category.breadcrumb[1].name.toLowerCase();
+                        for (var y in categoryOptions.sv){
+                            if(categoryOptions.sv[y]== branch){
+                                switch (categoryOptions.sv[y]){
+                                    case 'kläder':
+                                        helper.getShippingReturn(products[x], req);
+                                        helper.getLowestPrice(products[x])
+                                        clothArray.push(products[x]);
+                                        break;
+                                    case'skor':
+                                        helper.getShippingReturn(products[x], req);
+                                        helper.getLowestPrice(products[x])
+                                        shoesArray.push(products[x]);
+                                        break;
+                                    case'accessoarer':
+                                        helper.getShippingReturn(products[x], req);
+                                        helper.getLowestPrice(products[x])
+                                        accessoryArray.push(products[x]);
+                                        break;
+                                }
+                            }
+                        }
+                    }
+                }
+                return callback(null, clothArray, shoesArray, accessoryArray);
+            });
+        });
+
+    },
     getProduct: function(req,id, callback){
         var options = 'brand category otherColors articles articles.shops.shop';
         Products.findOne({"_id":id}).deepPopulate(options).exec(function(err, product){
                 //console.log(product)
-                if(err) return next(err);
+                if(err) return callback(err);
                 if(product == null) return next();
                 var x= product.toObject();
                 helper.getLowestPrice(x);
@@ -298,6 +328,7 @@ var helper = {
     return products;
 },
     getLowestPrice:function(product){
+        console.log(product.length)
     for (var s in product.articles.shops){
         var lowest;
         for(var u in product.articles.shops[s].units){
@@ -312,7 +343,6 @@ var helper = {
         }
         product.articles.shops[s].lowest = lowest;
     }
-    console.log(product.articles.shops);
 },
     getShippingReturn:function (product, req){
     var country = helper.getCountryFromLanguage(req);
@@ -352,7 +382,6 @@ var helper = {
         //for(var x in products) console.log(products[x]._id, products[x].levenshtein)
         return products;
     }
-
 }
 
 module.exports = operations;

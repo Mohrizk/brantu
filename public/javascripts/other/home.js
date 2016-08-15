@@ -50,10 +50,9 @@
 
         $(window).scroll(function(){
 
-                var feed = $('.feed');
+           /*     var feed = $('.feed');
 
             if(feed.length !== 0 ){
-
                 var sideAd = $('#sideBanner')
                 var currentScroll = $(document).scrollTop();
                 var headerHeight = $('.header').height();
@@ -71,7 +70,7 @@
                     sideAd.css('position','absolute').css('top','auto').css('bottom',30);
                 }
 
-            }
+            }*/
 
 
         })

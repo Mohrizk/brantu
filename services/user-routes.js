@@ -317,18 +317,7 @@ var routes = [
 
 
 /*********View Product***************************/
-   /* [ '/view/:id', 'get', [
-        products.getProductByID,
-        function(req, res, next) {
-            var path = '';
-            var length= (req.category.breadcrumb.length>=3? 3: req.category.breadcrumb.length)
-            for(var i=0; i< length ;i++){
-                path+= '/'+ shared.helper.urlFriendly(req.category.breadcrumb[i].name);
-            }
-            console.log('kjhvajshvasj')
-            console.log(encodeURI(path+ '/bästa-pris-för/'+req.product._id+'-'+shared.helper.urlFriendly(req.product.name)))
-            res.redirect(encodeURI(path+ '/bästa-pris-för/'+shared.helper.urlFriendly(req.product.name)+'-'+req.product._id))
-        } ]],*/
+
     [ '/b%C3%A4sta-pris-f%C3%B6r/:name', 'get',[
         categories.getCategoryTree,
         categories.getDepartment,
@@ -369,16 +358,6 @@ var routes = [
 
 /********************NAVIGATE******************/
 
-
-   /* [ '/explore', 'get', [
-        categories.getCategoryTree,
-        categories.getDepartment,
-        products.getAlgoliaProducts,
-        function(req, res, next) {
-            res.render('navigation')
-        } ]
-    ],*/
-    //kvinna/kläder/toppar-festklader/:
     [ ['/:department/:category','/:department/:category/:style'], 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
@@ -475,17 +454,15 @@ var routes = [
         session.addFavouriteDepartment,
         categories.getCategoryTree,
         categories.getDepartment,
+        products.getCompare,
         feed.getFeed,
         function(req, res, next) {
             if( res.locals.selectedDepartment == null || typeof res.locals.selectedDepartment == 'undefined')
                 return res.redirect('/kvinna');
             var department = shared.helper.mapDepartment(res.locals.selectedDepartment);
-            var string = (department == 'MEN'? 'kläder, accessoarer och skor': 'kläder, klänningar, accessoarer och skor')
-
-            res.locals.title = "Hitta "+ string +" till det bästa priset online - "+res.locals.selectedDepartment + "- Brantu";
+            res.locals.title =  "Brantu | "+"Jämför och hitta det bästa priset inom mode |" + res.locals.selectedDepartment;
             res.locals.description = 'Brantu är Sveriges bästa prisjämförelsajt inom mode! Med oss hittar du både relaterade produkter och stilar till det bästa priset. Använd brantu när du ska köpa dina kläder eller skor online...';
-            if(department == 'MEN')res.render('men');
-            else res.render('women');
+            res.render('landing');
 
         } ]
     ],

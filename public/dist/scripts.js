@@ -5977,6 +5977,18 @@ var register = function(Handlebars) {
             // if(typeof leaveDash !== 'undefined') ;
             //else return newString.replace(/\-/g, " ")
         },
+        mapDepartment   :function (string){
+            var str = string.toLowerCase()
+            var women = ['kvinna','women','female']
+            var men = ['men','man','male']
+            for(var w in women){
+                if(women[w] === str) return 'WOMEN'
+            }
+            for(var m in men){
+                if(men[m] === str) return 'MEN'
+            }
+
+        }
     };
 
 if (Handlebars && typeof Handlebars.registerHelper === "function") {
@@ -6170,9 +6182,14 @@ var renderHelper = {
         }
 
         if (typeof object['facetsRefinements'] !== 'undefined') {
-            if (object['facetsRefinements']['sale'] !== 'undefined') {
-                console.log(object.facetsRefinements["sale"])
+            console.log(object['facetsRefinements'])
+            if (typeof object['facetsRefinements']['sale'] !== 'undefined') {
                 uri+= '&sale='+ renderHelper.urlFriendly(object.facetsRefinements["sale"][0]);
+            }
+
+            if (typeof object['facetsRefinements']['compare'] !== 'undefined') {
+
+                uri+= '&compare='+ renderHelper.urlFriendly(object.facetsRefinements["compare"][0]);
             }
         }
 
@@ -6273,6 +6290,9 @@ var renderHelper = {
                     case 'sale':
                         helper.addFacetRefinement('sale', renderHelper.decodeUrlFriendly(qValue));
                         break;
+                    case 'compare':
+                        helper.addFacetRefinement('compare', renderHelper.decodeUrlFriendly(qValue));
+                        break;
                     case 'priceFrom':
                         helper.addNumericRefinement('price.value','>', renderHelper.decodeUrlFriendly(qValue));
                         break;
@@ -6284,7 +6304,6 @@ var renderHelper = {
                         break;
                     case 'category':
                         var categoryValue = renderHelper.decodeUrlFriendly(qValue).split('.').join(' > ')
-                        console.log(categoryValue)
                         helper.clearRefinements('products').toggleRefinement('products', categoryValue);
                         break;
                 }
@@ -6630,6 +6649,15 @@ var renderHelper = {
                 }
                 rObject.facets.push(temp)
             }
+            if (object.facetsRefinements.hasOwnProperty('compare')) {
+                var temp = {
+                    text: header.facets.compare.filter,
+                    type: 'facet',
+                    value: object.facetsRefinements.compare,
+                    facet: 'compare'
+                }
+                rObject.facets.push(temp)
+            }
         }
         return rObject;
     },
@@ -6643,6 +6671,10 @@ var renderHelper = {
         object.price = content.getFacetStats('price.value')
         object.welcome = renderHelper.getWelcomeMessage(helper,currentState,breadCrumb, content, currentBrandDDHits);
         object.sale = {content:renderHelper.mapWithout(content.getFacetValues('sale'),['false']), header: HEADERTEXT.facets.sale.header};
+        object.compare = {content:renderHelper.mapWithout(content.getFacetValues('compare'),['false']), header: HEADERTEXT.facets.compare.header};
+
+
+
         object.discounts={content: renderHelper.mapWithout(content.getFacetValues('discount'), ['0']), header: HEADERTEXT.disjunctionFacets.discount.header};
         object.sizes= {content: content.getFacetValues('sizes', {sortBy: ['name:asc']}), header: HEADERTEXT.disjunctionFacets.size.header};
 
@@ -6774,6 +6806,7 @@ var HEADERTEXT = {
     },
     facets:{
         sale: {header: "Bara Rea", filter:"Bara Rea"},
+        compare: {header: "Bara jämför", filter:"Bara jämför"},
         price:{header: "Pris"   , filter:"pris"}
     },
     search:{
@@ -6924,11 +6957,11 @@ $(document).ready(function() {
 
 		if(current > header){
 			headerSegment.slideUp('fast');
-			logo.addClass('scaleDown')
+			//logo.addClass('scaleDown')
 		}
 		else if(current < header){
 			headerSegment.slideDown('fast');
-			logo.removeClass('scaleDown')
+			//logo.removeClass('scaleDown')
 		}
 
 
@@ -7173,13 +7206,13 @@ var newsletterTemplate = Handlebars.compile($("#newsletterTemplateTemplate").htm
 var client = algoliasearch("D3IWZXC0AH", '3d6a60c228b6e8058770fdf8eab2f652');
 var helper   = algoliasearchHelper(client, 'test_products',
 	{
-		hitsPerPage: 30,
+		hitsPerPage: 50,
 		hierarchicalFacets: [{
 		name: 'products',
 		attributes: ['category.lvl0', 'category.lvl1', 'category.lvl2', 'category.lvl3', 'category.lvl4', 'category.lvl5'],
         sortBy: [ 'name:asc', 'count:desc']
 	}],
-	facets:[  'sale', 'price.value'],
+	facets:[  'sale', 'price.value', 'compare'],
 	disjunctiveFacets:['color','brand.name','sizes', 'shops', 'discount' , 'style', 'fit', 'material']
 });
 
@@ -7431,6 +7464,37 @@ $(document).ready( function() {
 		});
 
 	function loadMainOWl(){
+		owlClothes = $("#owl-clothes")
+		owlClothes .owlCarousel({
+			items :3,
+			itemsDesktop : [1200,2],
+			itemsDesktopSmall : [1024,3],
+			itemsTablet: [600,2],
+			itemsMobile : false,
+			lazyLoad : true
+		});
+
+		owlShoes = $("#owl-shoes")
+		owlShoes.owlCarousel({
+			items :3,
+			itemsDesktop : [1200,2],
+			itemsDesktopSmall : [1024,3],
+			itemsTablet: [600,2],
+			itemsMobile : false,
+			lazyLoad : true
+		});
+
+		owlAccessories = $("#owl-accessories");
+		owlAccessories.owlCarousel({
+			items :3,
+			itemsDesktop : [1200,2],
+			itemsDesktopSmall : [1024,3],
+			itemsTablet: [600,2],
+			itemsMobile : false,
+			lazyLoad : true
+		});
+
+
 		owl = $("#owl-main")
 		owl.owlCarousel({
 			items : 3,
@@ -7598,7 +7662,9 @@ $(document).ready( function() {
 	}
 	helper.on('result', function(content) {
 		RENDER(content);
-		$('html, body').scrollTop(0);
+		if(itemScrollindex == null)$('html, body').scrollTop(0);
+		else $('html, body').scrollTop(itemScrollindex);
+		itemScrollindex = null;
 		loading.fadeOut('slow');
 		general.css({'opacity':0.5}).animate({'opacity':1});
 	})
@@ -7655,6 +7721,8 @@ $(document).ready( function() {
 		refreshVariables()
 		$('.resultContainer').fadeOut()
 		$('.itemList img').removeClass('selected');
+		if(currentState.search || currentState.category)itemScrollindex = $(document).scrollTop();
+		else itemScrollindex=null;
 		$.ajax({
 			url: '/api/getProductByID/'+context.state.product,
 		}).success(function(result) {
@@ -7681,7 +7749,7 @@ $(document).ready( function() {
 	}
 	function getSimilarProducts(context, next){
 		var id = context.state.product;
-		ajaxSimilarProducts(id,function(){
+		ajaxSimilarProducts(id, function(){
 			next();
 		})
 	}
@@ -7694,7 +7762,7 @@ $(document).ready( function() {
 					loadOtherOWl();
 					lazy()
 					$('.relatedProducts').css({'opacity':0}).animate({'opacity':1})
-					callback();
+					callback;
 				})
 		});
 	}
@@ -7777,7 +7845,6 @@ $(document).ready( function() {
 		else{
 			helper.removeDisjunctiveFacetRefinement('brand.name', value);
 		}
-
 		page(getUrlFromState())
 	});
 
@@ -7789,7 +7856,6 @@ $(document).ready( function() {
 		else{
 			helper.removeDisjunctiveFacetRefinement('style', value);
 		}
-
 		page(getUrlFromState())
 	});
 
@@ -7868,6 +7934,16 @@ $(document).ready( function() {
 		}
 		page(getUrlFromState())
 	});
+	body.on( 'change', ' .compare input', function (event) {
+		var value = $(this).attr('value');
+		if( $(this).prop('checked')){
+			helper.addFacetRefinement('compare', value);
+		}
+		else{
+			helper.removeFacetRefinement('compare', value);
+		}
+		page(getUrlFromState())
+	});
 	body.on( eventOnTE, '  .filterTags button', function (event) {
 		var value = $(this).attr('value');
 		var facet = $(this).attr('facet');
@@ -7911,18 +7987,37 @@ $(document).ready( function() {
 			clearInterval(productPreviewTimer);
 		}
 	});
+
+	/*
+	 * side bar
+	 *
+	 * **/
+	mainSection.on('click','#compareClothes .next-page',function(){
+		owlClothes.trigger('owl.next');
+	})
+	mainSection.on('click','#compareClothes .prev-page',function(){
+		owlClothes.trigger('owl.prev');
+	})
+	mainSection.on('click','#compareShoes .next-page',function(){
+		owlShoes.trigger('owl.next');
+	})
+	mainSection.on('click','#compareShoes .prev-page',function(){
+		owlShoes.trigger('owl.prev');
+	})
+
+
 	/*
     * View Product
     *
     * **/
-	mainSection.on( 'click','a[data-product-info = "show"], img[data-product-info="show"]' , function (e) {
+	/*mainSection.on( 'click','a[data-product-info = "show"], img[data-product-info="show"]' , function (e) {
 		$(this).addClass('selected')
 		closeMobileSearch();
 		var index = $(this).attr('index'), _id =  $(this).attr('_id');
 		if(index !== null)itemScrollindex = index;
 		page('/view/'+_id);
 		e.stopPropagation();e.preventDefault();
-	});
+	});*/
 	mainSection.on('click','#mainJawBoneImageContainer .next-item',function(){
 		owl.trigger('owl.next');
 	})

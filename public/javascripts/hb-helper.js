@@ -108,6 +108,18 @@ var register = function(Handlebars) {
             // if(typeof leaveDash !== 'undefined') ;
             //else return newString.replace(/\-/g, " ")
         },
+        mapDepartment   :function (string){
+            var str = string.toLowerCase()
+            var women = ['kvinna','women','female']
+            var men = ['men','man','male']
+            for(var w in women){
+                if(women[w] === str) return 'WOMEN'
+            }
+            for(var m in men){
+                if(men[m] === str) return 'MEN'
+            }
+
+        }
     };
 
 if (Handlebars && typeof Handlebars.registerHelper === "function") {

@@ -21,11 +21,11 @@ img.lazy {
 }
 .mainLogo{
     transition: all .24s cubic-bezier(.5,0,.1,1);
-    background: url('/images/logo.svg') no-repeat top left;
+    background: url('/dist/images/logo.svg') no-repeat top left;
     background-size: contain;
-    width:100%;
+    width:175px;
     height:44px;
-    margin:auto;
+    margin-top:12px;
     display: block;
     text-align: left;
     position: relative;
@@ -39,7 +39,7 @@ input:-webkit-autofill {
    
 }
 #mainSection, #searchSection, #compareSection{
-    margin-top:200px;
+    margin-top:100px;
 }
 .hoverish{
     border:2px solid white;
@@ -85,11 +85,12 @@ input:-webkit-autofill {
 
 }
 .glassViolet{
-    background: linear-gradient(to top, rgba(111,54,98,0.96),  rgba(111,54,98,0.79));
-    background: -webkit-linear-gradient(to top, rgba(111,54,98,0.96),  rgba(111,54,98,0.79));
-    background: -moz-linear-gradient(to top, rgba(111,54,98,0.96),  rgba(111,54,98,0.79));
-    background: -o-linear-gradient(to top, rgba(111,54,98,0.96),  rgba(111,54,98,0.79));
+    background: linear-gradient(to top, rgba(47, 18, 44, 0.96),  rgba(111,54,98,0.79));
+    background: -webkit-linear-gradient(to top, rgba(47, 18, 44, 0.96),  rgba(111,54,98,0.79));
+    background: -moz-linear-gradient(to top, rgba(47, 18, 44, 0.96),  rgba(111,54,98,0.79));
+    background: -o-linear-gradient(to top, rgba(47, 18, 44, 0.96),  rgba(111,54,98,0.79));
 }
+
 .boxShadowed{
     box-shadow: 1px 1px 2px 2px rgba(51,51,51,0.1)
 }
@@ -253,6 +254,17 @@ input:-webkit-autofill {
  /* NAV BAR----------
  -----------------------------------*/
 
+ #likedProducts{
+     width: 20px; font-size:18px; padding-top: 12px;
+ }
+
+ #searchBarLoading{
+     right:22%; padding-top:5px;
+ }
+#searchBarLoading img{
+    width:22px; height: 20px;
+}
+
 .header .notification-list {
     display: inline-block;
     padding-top: 0px;
@@ -294,10 +306,10 @@ input:-webkit-autofill {
 
 /* landing Page*/
 .mainJumbtron{
-    height:28vw;
+    height:280px;
 }
 .mainJumbtron .text-section{
-    margin-top:7vw;
+    margin-top:50px;
 }
 .mainJumbtron .gradient-grey{
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,656565+44,656565+63,ffffff+100&0+0,0.28+44,0.34+60,0+100 */
@@ -370,72 +382,46 @@ ul.circle li:hover div{
 }
 
 
- /* Today
+ /* Home Compare Carousel
 ------------------------------------*/
 
-.today, .upcoming{ text-align: center; }
-
-.today ul, .upcoming ul{
-	text-decoration:none;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: center;
-
-
+.mainCompareCarousel .overlayer{
+    display: none;
+    opacity: 0;
+    transition:all 240ms cubic-bezier(0.86, 0, 0.07, 1);
 }
-.today .main{display:block; width:100%; min-height:40vw; overflow:hidden;}
-.today .main img.display{display:block; width:100%; height:auto;}
-
-
-.today ul li,.today ul a, .upcoming ul li, .today ul .offer{ flex: 1 1 30%; border: 3px solid white; font-family:"Sharp Sans"; font-weight: 500; text-transform:capitalize; position:relative; cursor:pointer;  min-height:20vw; overflow:hidden;}
-.today ul li.mini{flex: 1 1 10%; height:15vw; }
-.today ul li .image, .upcoming ul li .image{
-	width:100%;
-	height:100%;
-	background-size:     cover;                      /* <------ */
-    background-repeat:   no-repeat;
-    background-position: top center;
-	transition:all .54s cubic-bezier(.5,0,.1,1);
+.mainCompareCarousel:hover .overlayer{
+    display: block;
+    opacity: 1;
+}
+.mainCompareContainer .owl-controls{
+        display: none !important;
 }
 
-.today ul li:hover .image, .upcoming ul li:hover .image{transform: scale(1.02);}
-.today ul li span, .upcoming ul li span{position:absolute; bottom:0.5vw; height:5vw; right:0vw; width:90%; padding:0.5vw 0.5vw; text-align:left; font-size:1.2vw; color:#333; z-index:10;}
-.today ul li.main span{ height:10vw; background:rgba(245,245,245,0.85); width:30%; padding:0.5vw 0.5vw; text-align:left; font-size:1.6vw; color:#333; z-index:10;}
-.today ul li.main button{ text-align:right}
-.today ul li span img, .upcoming li span img{width:5vw; height:auto; padding-right:0.5vw;}
-.today ul li:hover span{ }
-.upcoming ul li:hover span{ background: linear-gradient(to left, rgba(101,101,101,0.6) , rgba(250,172,168,0.8)); color:white;}
 
-.upcoming ul li .dark{
-	position:absolute;
-	right:0;
-	left:0;
-	bottom:0;
-	top:0;
-	z-index:5;
-	background:rgba(0,0,0,0.35)
-}
-.upcoming ul li:hover .dark{
-	background:rgba(0,0,0,0.65)
+.sideBarCarousel{
+    height: 520px;
 }
 
-.upcoming ul li .offerpercentage, .today ul li .expiresin{
-	position:absolute;
-	right:0.5vw;
-	top:0.5vw;
-	z-index:10;
-	color:white;
-	background:rgba(0,0,0,0.6);
-	padding:0.5vw;
+.carouselPreview .next-page, .carouselPreview .prev-page{
+    z-index:10;
+    font-size:80px;
+    color:#ddd;
+    cursor: pointer;
+    top:34% !important;
+    position: absolute;
+    transition:all 240ms cubic-bezier(0.86, 0, 0.07, 1);
+}
+.carouselPreview .next-page:hover, .carouselPreview .prev-page:hover{
+    color:#333;
+}
+
+.carouselPreview .next-page{
+    right:0;
 
 }
-.today ul li .expiresin{
-	opacity:0;
-	transition:all .54s cubic-bezier(.5,0,.1,1);
-}
-.today ul li:hover .expiresin{
-	opacity:1;
+.carouselPreview .prev-page{
+     left:0;
 }
 
 
@@ -787,7 +773,7 @@ ul.circle li:hover div{
 
 
  .selectedItemSave{ position: absolute;  top:1vw; right:0vw; font-size:1.4vw; display:block; margin:auto; z-index:10; list-style-type: none}
- .selectedItemSave li{margin-bottom:1.5vw; }
+ .selectedItemSave li{margin-bottom:1.5vw; font-size:28px;}
 .selectedItemSave .delete{color:#333; opacity:0.8;  }
 .selectedItemSave .like{color:#E50914; opacity:0.8; }
 .selectedItemSave .cart{color:#28ABE3 ; opacity:0.8; }
@@ -839,6 +825,13 @@ ul.circle li:hover div{
     max-width:98%; height:28vw;
     margin: auto;}
 
+.carousel .CarouselOptions, .flow .CarouselOptions{
+    opacity:0;
+    transition:all 240ms cubic-bezier(0.86, 0, 0.07, 1);
+}
+.carousel:hover .CarouselOptions, .flow:hover .CarouselOptions{
+    opacity:1;
+}
 .similarProducts div .discountedPrice{color:#E50914;}
 .similarProducts div .originalPrice.discounted{ text-decoration:line-through; }
 
@@ -1082,12 +1075,30 @@ ul.circle li:hover div{
         margin-right: 0px;
     }
 }
+
+@media (max-width: 1110px){
+    .nav-margin{
+        margin-right:20px;
+    }
+    .nav-margin-small{
+        margin-right: 0px;
+    }
+}
+
+@media (max-width: 1024px){
+    .sideBarCarousel{
+        height: 150px;
+    }
+}
 @media (max-width: 991px){
     .mainJumbtron{
         height:28vw;
     }
     .mainJumbtron .text-section{
         margin-top:4vw;
+    }
+    .sideBarCarousel{
+        height: 120px;
     }
     .productFeedTemplate img{
         height: 54vw;
@@ -1173,6 +1184,18 @@ ul.circle li:hover div{
 
 }
 @media (max-width: 767px){
+    .mainLogo{
+        width:140px;
+        height: 39px;
+        margin-top: 0;
+    }
+    #mainLogoContainter{
+        width:140px;
+    }
+    #CloseSearchMobile i{
+        font-size:30px;
+    }
+    #menuBurgerIcon{z-index:20;}
     .mainJumbtron{
         height:35vw;
     }
@@ -1231,10 +1254,18 @@ ul.circle li:hover div{
 
     }
     .selectedItemSave i { color: #cdcdcd;}
-    .mainLogo{
-        width:140px;
-        height: 39px;
+    #headerMainWrapper{
+        background: #fff;
+     }
+
+    .carouselPreview .next-page, .carouselPreview .prev-page{
+        top: 28% !important;
+        font-size: 50px;
     }
+
+
+
+
     /********VERTICAL IMAGES*******/
     .vertical .item img{ height:240px; max-width:100%; }
     .vertical{padding-left: 0px; height: auto;}
