@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="319a9c44-cb0a-494b-a470-9e86d210bc29" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/script.js" afterPath="$PROJECT_DIR$/public/javascripts/script.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/style.css" afterPath="$PROJECT_DIR$/public/dist/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/style.min.css" afterPath="$PROJECT_DIR$/public/dist/style.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/pages.css" afterPath="$PROJECT_DIR$/public/stylesheets/pages.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/landing.hbs" afterPath="$PROJECT_DIR$/views/landing.hbs" />
     </list>
     <ignored path="brantu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="landing.hbs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="landing.hbs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/landing.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.344828">
-              <caret line="207" column="52" selection-start-line="207" selection-start-column="52" selection-end-line="207" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.36804566">
+              <caret line="77" column="60" selection-start-line="77" selection-start-column="60" selection-end-line="77" selection-end-column="60" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#a#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#!!top" expanded="false" />
@@ -43,10 +47,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/javascripts/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4697802">
+            <state vertical-scroll-proportion="-12.666667">
               <caret line="289" column="34" selection-start-line="289" selection-start-column="34" selection-end-line="289" selection-end-column="34" />
               <folding>
                 <element signature="e#4640#4763#0" expanded="false" />
@@ -109,6 +113,16 @@
                 <marker date="1471301673000" expanded="true" signature="19309:19332" placeholder="..." />
                 <marker date="1471301673000" expanded="true" signature="19309:19334" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pages.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/stylesheets/pages.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.4941177">
+              <caret line="2726" column="37" selection-start-line="2726" selection-start-column="37" selection-end-line="2726" selection-end-column="37" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -178,7 +192,6 @@
         <option value="$PROJECT_DIR$/views/partials/productRelated_Back.hbs" />
         <option value="$PROJECT_DIR$/views/partials/register2.hbs" />
         <option value="$PROJECT_DIR$/public/stylesheets/register.css" />
-        <option value="$PROJECT_DIR$/public/stylesheets/pages.css" />
         <option value="$PROJECT_DIR$/public/javascripts/helper.js" />
         <option value="$PROJECT_DIR$/views/layouts/single.hbs" />
         <option value="$PROJECT_DIR$/views/partials/nav.hbs" />
@@ -190,8 +203,9 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/services/middleware/mw-products.js" />
         <option value="$PROJECT_DIR$/public/dist/images/logo.svg" />
-        <option value="$PROJECT_DIR$/views/landing.hbs" />
         <option value="$PROJECT_DIR$/public/javascripts/script.js" />
+        <option value="$PROJECT_DIR$/public/stylesheets/pages.css" />
+        <option value="$PROJECT_DIR$/views/landing.hbs" />
       </list>
     </option>
   </component>
@@ -311,7 +325,7 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="javascripts">
+            <PATH_ELEMENT USER_OBJECT="stylesheets">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -429,7 +443,7 @@
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22269204" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22269204" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.060179256" sideWeight="0.5025974" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -915,13 +929,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/pages.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5974026">
-          <caret line="343" column="13" selection-start-line="343" selection-start-column="13" selection-end-line="343" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/register.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.48">
@@ -1075,24 +1082,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/landing.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.344828">
-          <caret line="207" column="52" selection-start-line="207" selection-start-column="52" selection-end-line="207" selection-end-column="52" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#a#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#a#1;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#table#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#1;n#section#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#1;n#section#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4697802">
+        <state vertical-scroll-proportion="-12.666667">
           <caret line="289" column="34" selection-start-line="289" selection-start-column="34" selection-end-line="289" selection-end-column="34" />
           <folding>
             <element signature="e#4640#4763#0" expanded="false" />
@@ -1154,6 +1146,29 @@
             <marker date="1471301673000" expanded="true" signature="19049:19395" placeholder="..." />
             <marker date="1471301673000" expanded="true" signature="19309:19332" placeholder="..." />
             <marker date="1471301673000" expanded="true" signature="19309:19334" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/pages.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.4941177">
+          <caret line="2726" column="37" selection-start-line="2726" selection-start-column="37" selection-end-line="2726" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/landing.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36804566">
+          <caret line="77" column="60" selection-start-line="77" selection-start-column="60" selection-end-line="77" selection-end-column="60" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#a#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#a#1;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#table#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#1;n#section#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#1;n#section#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
