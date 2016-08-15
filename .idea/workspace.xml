@@ -29,11 +29,13 @@
       <file leaf-file-name="landing.hbs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/landing.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6168091">
-              <caret line="320" column="60" selection-start-line="320" selection-start-column="60" selection-end-line="320" selection-end-column="60" />
+            <state vertical-scroll-proportion="0.77761835">
+              <caret line="207" column="52" selection-start-line="207" selection-start-column="52" selection-end-line="207" selection-end-column="52" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#a#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#a#1;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#table#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#1;n#section#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#1;n#section#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -1149,11 +1151,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/landing.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6168091">
-          <caret line="320" column="60" selection-start-line="320" selection-start-column="60" selection-end-line="320" selection-end-column="60" />
+        <state vertical-scroll-proportion="0.77761835">
+          <caret line="207" column="52" selection-start-line="207" selection-start-column="52" selection-end-line="207" selection-end-column="52" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#a#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#a#1;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#table#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#1;n#section#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#1;n#section#0;n#div#0;n#!!top" expanded="true" />
           </folding>
