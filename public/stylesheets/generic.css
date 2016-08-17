@@ -1,6 +1,6 @@
 /*FEEEEED*******/
 .productFeedTemplate img{
-    height: 35vw; max-width:100%; object-fit: cover;
+    height: 28vw; max-width:100%; object-fit: cover;
 }
 .productFeedTemplate img.small{
     height: 20vw; max-width:100%; object-fit: cover;

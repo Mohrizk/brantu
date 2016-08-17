@@ -1,74 +1,72 @@
 
 \{{#each feed.docs}}
-    <div class="productFeedTemplate m-b-20 m-xs-b-5"  >
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12  bg-white" style="border:1px solid #eee; border-radius: 5px; box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);">
-                <div class="row" style="padding: 0px 10px;">
-                    <div class="col-xs-12">
-                        <h5 class="all-caps bold text-spaced-medium visible-xs no-margin p-t-15 visible-sm text-center  p-l-5 p-r-5 ">\{{this.name}}</h5>
-                    </div>
-                    <div class="col-xs-12 visible-xs">
-                        <div class="text-master-light text-center bold text-right fs-12 ">\{{this.dateDifference}}  \{{#unless this.valid}}<font class="text-red bold"> Expired</font>\{{/unless}}</div>
-                    </div>
+    <div class="productFeedTemplate  col-md-6 col-sm-12 col-xs-12 m-b-20 m-xs-b-5 padding-10"  >
+        <div class="bg-white full-width" style="border:1px solid #eee; border-radius: 5px; box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);">
+            <div class="row" style="padding: 0px 10px;">
+                <div class="col-xs-12">
+                    <h5 class="all-caps bold text-spaced-medium visible-xs no-margin p-t-15 visible-sm text-center  p-l-5 p-r-5 ">\{{this.name}}</h5>
                 </div>
-                <div class="images row text-center p-t-20" >
-                    <div class="col-md-4 col-sm-6 col-xs-6 imageInspire relative no-padding ">
-                        <h6 class=" text-center no-padding no-margin " style="border-bottom: 1px solid #eee;line-height: 0;">
-                            <span class="bg-white bold p-l-10 p-r-10 all-caps text-spaced-medium">Style</span>
-                        </h6>
-                        <a target="_blank" rel="nofollow" href="\{{this.styleUrl}}"> <img class="p-t-10 lazy"  alt="stylish - \{{this.name}}" data-original="\{{this.styleImage}}"/></a>
-                        <div class="">
-                            <h5 class="text-center fs-15 p-t-5 p-b-5 text-black no-margin no-padding medium">\{{this.stylePrice}}</h5>
-                            <h6 class="text-center bold text-black no-margin no-padding medium">\{{this.styleBrand}}</h6>
-                            <a class="text-velvet bold" target="_blank" rel="nofollow" href="\{{this.styleUrl}}"><button class="btn btn-tag ">SHOPPA NU</button></a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm col-xs imageCheap relative no-padding " >
-                        <h6 class=" text-center no-padding no-margin " style="border-bottom: 1px solid #eee;line-height: 0;">
-                            <span class="bg-white bold p-l-10 p-r-10 all-caps text-spaced-medium">Price</span>
-                        </h6>
-                        <a target="_blank" rel="nofollow" href="\{{this.priceUrl}}"><img alt="bästa pris för - \{{this.name}}" class="p-t-10 lazy" data-original="\{{this.priceImage}}"/></a>
-                        <div class="">
-                            <h5 class="text-center fs-15 p-t-5 p-b-5 text-velvet bold no-margin no-padding medium">\{{this.pricePrice}}</h5>
-                            <h6 class="text-center bold text-black no-margin no-padding ">\{{this.priceBrand}}</h6>
-                            <a class="text-velvet bold" target="_blank" rel="nofollow" href="\{{this.priceUrl}}"><button class="btn btn-tag">SHOPPA NU</button></a>
-                        </div>
-
-                    </div>
-                    <div class="col-md  p-l-20 p-r-20 hidden-xs hidden-sm text-left p-t-50">
-                        <h5 class="all-caps bold text-spaced-medium text-left p-b-10 p-t-10 p-xs-b-5 p-r-20 b-b b-t b-grey ">\{{this.name}} </h5>
-                        <span class="text-master fs-12">\{{this.dateDifference}}  \{{#unless this.valid}}<font class="text-red bold"> - Expired</font>\{{/unless}}</span>
-
-                        <p class="fs-13 p-t-20">\{{this.description}}</p>
-                        <div class="p-t-40">
-                            \{{#if this.saving}}
-                                <div class="circle text-center  m-xs-t-15 m-xs-r-15"style="top:400px; " >
-                                    <div class=" text-white  fs-14 all-caps  bg-velvet-dark p-t-10 p-b-10 text-spaced medium"> <span class="circler">Spara  \{{this.saving.value}}</span> </div>
-                                </div>
-                            \{{/if}}
-                        </div>
-                        <div>
-                            <div class="m-t-20">
-                                <a class="text-velvet b-b bold all-caps fs-11 "  href="/blog/\{{urlFriendly categoryName}}-\{{this._id}}">
-                                    <button class="btn btn-velvet btn-block">MER \{{categoryName}}</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-xs-12 visible-xs">
+                    <div class="text-master text-center bold text-right fs-12 ">\{{this.dateDifference}}  \{{#unless this.valid}}<font class="text-red bold"> SLUTSÅLD</font>\{{/unless}}</div>
                 </div>
-                \{{#if this.saving}}
-                    <div class="circle text-center visible-xs visible-sm"style="top:400px; " >
-                        <div class=" text-white  fs-13 all-caps bold bg-velvet-dark p-t-5 p-b-5 text-spaced medium"> <span class="circler">Spara  \{{this.saving.value}}</span> </div>
-                    </div>
-                \{{/if}}
-                <div class="text-center m-t-5 p-l-40 p-r-40 p-t-5 p-b-15 b-t b-grey visible-xs visible-sm">
-                    <p class="">\{{this.description}}</p>
-                    <div>
-                        <div class="m-t-20"> <a class="text-velvet b-b bold all-caps p-r-10 fs-11 p-l-10 p-t-5  p-b-5" style="border: 1px solid #AA076B;" href="/blog/\{{urlFriendly categoryName}}-\{{this._id}}">MER \{{categoryName}}</a></div>
-                    </div>
-                </div>
-
             </div>
+            <div class="images row no-padding text-center p-t-20" >
+                <div class="col-md-6 col-sm-6 col-xs-6 imageInspire relative p-r-0">
+                    <h6 class=" text-center no-padding no-margin " style="border-bottom: 1px solid #eee;line-height: 0;">
+                        <span class="bg-white bold p-l-10 p-r-10 all-caps text-spaced-medium">Style</span>
+                    </h6>
+                    <a target="_blank" rel="nofollow" href="\{{this.styleUrl}}"> <img alt="Stylish - \{{this.name}}" class="p-t-10 lazy"   data-original="\{{this.styleImage}}"/></a>
+                    <div class="">
+                        <h5 class="text-center fs-15 p-t-5 p-b-5 text-black no-margin no-padding medium">\{{this.stylePrice}}</h5>
+                        <h6 class="text-center bold text-black no-margin no-padding medium">\{{this.styleBrand}}</h6>
+                        <a class="text-velvet bold" target="_blank" rel="nofollow" href="\{{this.styleUrl}}"><button class="btn btn-tag ">SHOPPA NU</button></a>
+                    </div>
+                </div>
+                <div class="col-md col-sm col-xs imageCheap relative p-l-0 " >
+                    <h6 class=" text-center no-padding no-margin " style="border-bottom: 1px solid #eee;line-height: 0;">
+                        <span class="bg-white bold p-l-10 p-r-10 all-caps text-spaced-medium">Price</span>
+                    </h6>
+                    <a target="_blank" rel="nofollow" href="\{{this.priceUrl}}"><img alt="bästa pris för - \{{this.name}}" class="p-t-10 lazy" data-original="\{{this.priceImage}}"/></a>
+                    <div class="">
+                        <h5 class="text-center fs-15 p-t-5 p-b-5 text-velvet bold no-margin no-padding medium">\{{this.pricePrice}}</h5>
+                        <h6 class="text-center bold text-black no-margin no-padding ">\{{this.priceBrand}}</h6>
+                        <a class="text-velvet bold" target="_blank" rel="nofollow" href="\{{this.priceUrl}}"><button class="btn btn-tag">SHOPPA NU</button></a>
+                    </div>
+
+                </div>
+                <div class="col-md-12  p-l-20 p-r-20 hidden-xs hidden-sm text-left">
+                    <h5 class="all-caps bold text-spaced-medium text-left p-b-10 p-t-10 p-xs-b-5 p-r-20 b-b b-t b-grey ">\{{this.name}} </h5>
+                    <span class="text-master fs-12">\{{this.dateDifference}}  \{{#unless this.valid}}<font class="text-red bold"> - SLUTSÅLD</font>\{{/unless}}</span>
+
+                    <p class="fs-13">\{{this.description}}</p>
+                    <div class="">
+                        \{{#if this.saving}}
+                            <div class="circle text-center  m-xs-t-15 m-xs-r-15"style="top:400px; " >
+                                <div class=" text-white  fs-14 all-caps  bg-velvet-dark p-t-10 p-b-10 text-spaced medium"> <span class="circler">Spara  \{{this.saving.value}}</span> </div>
+                            </div>
+                        \{{/if}}
+                    </div>
+                    <div>
+                        <div class="m-t-5 m-b-10">
+                            <a class="text-velvet b-b bold all-caps fs-11 "  href="/blog/\{{urlFriendly categoryName}}-\{{this._id}}">
+                                <button class="btn btn-velvet btn-block">MER \{{categoryName}}</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            \{{#if this.saving}}
+                <div class="circle text-center visible-xs visible-sm"style="top:400px; " >
+                    <div class=" text-white  fs-13 all-caps bold bg-velvet-dark p-t-5 p-b-5 text-spaced medium"> <span class="circler">Spara  \{{this.saving.value}}</span> </div>
+                </div>
+            \{{/if}}
+            <div class="text-center m-t-5 m-b-5 p-l-40 p-r-40 p-t-5 p-b-15 b-t b-grey visible-xs visible-sm">
+                <p class="">\{{this.description}}</p>
+                <div>
+                    <div> <a class="text-velvet b-b bold all-caps p-r-10 fs-11 p-l-10 p-t-5  p-b-5" style="border: 1px solid #AA076B;" href="/blog/\{{urlFriendly categoryName}}-\{{this._id}}">MER \{{categoryName}}</a></div>
+                </div>
+            </div>
+
         </div>
     </div>
 \{{/each}}

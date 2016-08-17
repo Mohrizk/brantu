@@ -199,7 +199,7 @@ var helper = {
             sort:     { startDate: -1 },
             lean:     true,
             page:      page,
-            limit:     5
+            limit:     6
         };
 
         Outfits.paginate(query, options).then(function(result) {

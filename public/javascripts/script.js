@@ -858,12 +858,9 @@ $(document).ready( function() {
 	 *
 	 * **/
 	//***************************************SEARCH
-	$('#fakeDesktopSearch').on('keyup',function(){
-		searchBar.focus()
-		searchBar.val($(this).val())
-	})
-	$('#autocompleteForm').submit( function(event){
 
+	$('#autocompleteForm').submit( function(event){
+		console.log('SUBMIT')
 		event.preventDefault();
 		SEARCH(searchBar);
 	})
@@ -912,10 +909,7 @@ $(document).ready( function() {
 		$('.searchMainPageOverlay').hide();
 		$('#containerHintAC').hide();
 	})
-	searchBar.on('keyup',function(){
-		var fake = $('#fakeDesktopSearch');
-		fake.val($(this).val());
-	})
+
 
 	/*
 	 * Scrolling ACTIONS
