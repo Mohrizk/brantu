@@ -1,0 +1,43 @@
+
+<div class="page-content-wrapper">
+    <section class="general content" id="mainSection">
+        <div>
+            <div class="row p-b-80">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="row b-b b-grey ">
+                        <div class="col-xs-9">
+                            <h1 class="all-caps bold text-spaced-medium">{{job.name}} <span class="fs-15 text-spaced text-purple">{{job.type}}</span> </h1>
+                        </div>
+                        <div class="col-xs">
+                            <div class="p-t-20">
+                                <a  href="/jobs">
+                                    <button class="btn btn-info">
+                                        All listing
+                                    </button>
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <span class="medium hint-text medium full-width"> <span class="p-r-5">Location: <font class="bold">{{job.location}}</font> </span> |  <span class="text-purple capitalize p-l-5 p-r-5">{{#if job.valid}}open {{else}}closed{{/if}}</span> | <span class="p-l-5 p-r-5 bold">{{job.date}}</span></span>
+                    <div>
+                        {{{job.description}}}
+                    </div>
+
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+{{>loading}}
+{{>footer}}
+</div>

@@ -389,8 +389,7 @@ $(document).ready( function() {
 	page('/settings/*', reload)
 	page('/about/*', reload)
 	page('/favourite-products', reload)
-
-
+	page('/jobs/*', reload)
 
 	page('/:department/:category/:style/',showLoading, saveLastPath, setCategory, closeSidePage,  setStateFromUrl, showHeader )
 	page('/:department/:category/:style', showLoading,  saveLastPath,setCategory, closeSidePage,  setStateFromUrl, showHeader )

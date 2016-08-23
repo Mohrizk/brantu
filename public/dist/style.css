@@ -6960,7 +6960,7 @@ input:-webkit-autofill {
    
 }
 #mainSection, #searchSection, #compareSection{
-    margin-top:100px;
+    margin-top:110px;
 }
 .hoverish{
     border:2px solid white;
@@ -10710,9 +10710,9 @@ h6 {
   color: #2c2c2c;
 }
 h1 {
-  font-size: 3.3vw;
-  line-height: 3.5vw;
-  letter-spacing: 0.2vw;
+  font-size: 36px;
+  line-height: 45px;
+  letter-spacing: 9.9px;
 }
 h2 {
   font-size: 31px;

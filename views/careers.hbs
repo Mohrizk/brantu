@@ -1,0 +1,39 @@
+
+<div class="page-content-wrapper">
+    <section class="general content" id="mainSection">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class=" ">
+                    <h1 class="b-b b-grey all-caps bold text-spaced-medium" style="font-size: 33px;">Careers</h1>
+                    <h2 class=" medium" style="font-size: 28px;">Om Brantu</h2>
+                    <h5>
+                        Brantu is a price comparison startup that specializes in fashion with the vision to offer the best price by comparing and finding from all online fashion stores
+                    </h5>
+
+                </div>
+                <div class=" m-t-50 b-t b-grey">
+                    <h2 class=" medium ">Openings</h2>
+                    <p>We are looking for great talents to join our vision</p>
+                    <div class="row">
+                        {{#each jobList}}
+                                <div class="col-md-3 text-center padding-20 ">
+                                    <a class="text-purple" href="/jobs/{{urlFriendly name}}-{{_id}}">
+                                        <p class="b-b b-t b-l b-r p-t-20 p-b-20 bold">
+                                            {{name}} <br/> <span class="hint-text ">{{location}}</span>
+                                        </p>
+                                    </a>
+                                </div>
+                        {{/each}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </section>
+    {{>loading}}
+    {{>footer}}
+</div>
+
+

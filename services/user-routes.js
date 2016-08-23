@@ -12,6 +12,7 @@ var session = require('./middleware/mw-session');
 var feed = require('./middleware/mw-feed');
 var email = require('./middleware/mw-email');
 var user = require('./middleware/mw-users');
+var job = require('./middleware/mw-jobs');
 
 var shared = require('../public/javascripts/helper');
 
@@ -263,6 +264,26 @@ var routes = [
         res.render('favourite-products');
     } ]
     ],
+/****************JOBS****************/
+    [ '/jobs', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        job.getAll,
+        function( req, res, next) {
+            res.render('careers')
+        }]
+    ],
+
+    [ '/jobs/:name', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        job.getJob,
+        function( req, res, next) {
+            res.render('job')
+        }]
+    ],
+
+
 /*********SHOP***************************/
     [ '/blog/', 'get', [
         categories.getCategoryTree,
@@ -340,10 +361,6 @@ var routes = [
                 brand                       : req.brand
             })
         } ]],
-
-
-
-
 /*********BRAND****************/
 
     [ ['/brand/:name', '/m%C3%A4rken/:name', '/:department/m%C3%A4rken/:name',  '/:department/brand/:name'], 'get', [
