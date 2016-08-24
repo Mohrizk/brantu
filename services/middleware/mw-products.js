@@ -51,6 +51,7 @@ operations = {
     getProductByID  :function(req, res, next){
         var _id = req.params.id;
         helper.getProduct(req, _id, function(product){
+            if(product== null || typeof product == 'undefined') return next();
             req.product = product;
             req.brand = product.brand;
             req._id = product._id;
@@ -231,7 +232,7 @@ var helper = {
         Products.findOne({"_id":id}).deepPopulate(options).exec(function(err, product){
                 //console.log(product)
                 if(err) return callback(err);
-                if(product == null) return next();
+                if(product == null) return callback();
                 var x= product.toObject();
                 helper.getLowestPrice(x);
                 helper.getShippingReturn(x, req);

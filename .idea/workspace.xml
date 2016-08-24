@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="319a9c44-cb0a-494b-a470-9e86d210bc29" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/careers.hbs" afterPath="$PROJECT_DIR$/views/careers.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/job.hbs" afterPath="$PROJECT_DIR$/views/job.hbs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/middleware/mw-products.js" afterPath="$PROJECT_DIR$/services/middleware/mw-products.js" />
     </list>
     <ignored path="brantu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,9 +40,37 @@
       <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.869565">
+            <state vertical-scroll-proportion="-0.65217394">
               <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mw-products.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/services/middleware/mw-products.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.66088116">
+              <caret line="53" column="45" selection-start-line="53" selection-start-column="45" selection-end-line="53" selection-end-column="45" />
+              <folding>
+                <element signature="e#1624#1777#0" expanded="false" />
+                <element signature="e#2146#2321#0" expanded="false" />
+                <element signature="e#2463#2915#0" expanded="false" />
+                <element signature="e#2974#3394#0" expanded="false" />
+                <element signature="e#3939#4278#0" expanded="false" />
+                <element signature="e#4335#4944#0" expanded="false" />
+                <element signature="e#4985#5865#0" expanded="false" />
+                <element signature="e#5908#6118#0" expanded="false" />
+                <element signature="e#6165#6381#0" expanded="false" />
+                <element signature="e#6424#6637#0" expanded="false" />
+                <element signature="e#10162#11184#0" expanded="false" />
+                <element signature="e#10184#10443#0" expanded="false" />
+                <element signature="e#10593#11176#0" expanded="false" />
+                <element signature="e#12192#13321#0" expanded="false" />
+                <element signature="e#12217#12454#0" expanded="false" />
+                <element signature="e#13702#14078#0" expanded="false" />
+                <element signature="e#15629#15759#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -50,11 +78,9 @@
       <file leaf-file-name="nav.hbs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/partials/nav.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.245902">
+            <state vertical-scroll-proportion="0.0">
               <caret line="187" column="99" selection-start-line="187" selection-start-column="99" selection-end-line="187" selection-end-column="99" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#button#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <marker date="1471968683000" expanded="true" signature="17389:17404" placeholder="..." />
               </folding>
             </state>
@@ -64,7 +90,7 @@
       <file leaf-file-name="job.hbs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/job.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.076923">
+            <state vertical-scroll-proportion="0.0">
               <caret line="30" column="28" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="208" />
               <folding />
             </state>
@@ -74,7 +100,7 @@
       <file leaf-file-name="landing.hbs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/landing.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-250.43478">
+            <state vertical-scroll-proportion="0.0">
               <caret line="384" column="21" selection-start-line="384" selection-start-column="21" selection-end-line="384" selection-end-column="21" />
               <folding />
             </state>
@@ -84,19 +110,17 @@
       <file leaf-file-name="footer.hbs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/partials/footer.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="10.826087">
+            <state vertical-scroll-proportion="0.0">
               <caret line="55" column="111" selection-start-line="55" selection-start-column="111" selection-end-line="55" selection-end-column="111" />
-              <folding>
-                <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="careers.hbs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="careers.hbs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/careers.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.18595041">
+            <state vertical-scroll-proportion="-7.9565215">
               <caret line="9" column="205" selection-start-line="9" selection-start-column="205" selection-end-line="9" selection-end-column="205" />
               <folding />
             </state>
@@ -118,16 +142,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="job.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/services/models/job.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -174,7 +188,6 @@
         <option value="$PROJECT_DIR$/public/javascripts/helper.js" />
         <option value="$PROJECT_DIR$/views/layouts/single.hbs" />
         <option value="$PROJECT_DIR$/views/partials/head.hbs" />
-        <option value="$PROJECT_DIR$/services/middleware/mw-products.js" />
         <option value="$PROJECT_DIR$/public/dist/images/logo.svg" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/public/images/logo.svg" />
@@ -200,6 +213,7 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/views/job.hbs" />
         <option value="$PROJECT_DIR$/views/careers.hbs" />
+        <option value="$PROJECT_DIR$/services/middleware/mw-products.js" />
       </list>
     </option>
   </component>
@@ -265,7 +279,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -287,7 +300,25 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="views">
+            <PATH_ELEMENT USER_OBJECT="services">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="brantu">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="services">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="middleware">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -304,6 +335,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -551,12 +583,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/services/middleware/mw-products.js</url>
-          <line>105</line>
+          <line>106</line>
           <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/services/middleware/mw-products.js</url>
-          <line>64</line>
+          <line>65</line>
           <option name="timeStamp" value="66" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -576,7 +608,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/services/middleware/mw-products.js</url>
-          <line>166</line>
+          <line>167</line>
           <option name="timeStamp" value="71" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -611,7 +643,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/services/middleware/mw-products.js</url>
-          <line>85</line>
+          <line>86</line>
           <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -876,33 +908,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/services/middleware/mw-products.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#1624#1777#0" expanded="false" />
-            <element signature="e#1824#2324#0" expanded="false" />
-            <element signature="e#2067#2242#0" expanded="false" />
-            <element signature="e#2384#2836#0" expanded="false" />
-            <element signature="e#2895#3315#0" expanded="false" />
-            <element signature="e#3860#4199#0" expanded="false" />
-            <element signature="e#4256#4865#0" expanded="false" />
-            <element signature="e#4906#5786#0" expanded="false" />
-            <element signature="e#5829#6039#0" expanded="false" />
-            <element signature="e#6086#6302#0" expanded="false" />
-            <element signature="e#6345#6558#0" expanded="false" />
-            <element signature="e#10079#11101#0" expanded="false" />
-            <element signature="e#10101#10360#0" expanded="false" />
-            <element signature="e#10510#11093#0" expanded="false" />
-            <element signature="e#12109#13238#0" expanded="false" />
-            <element signature="e#12134#12371#0" expanded="false" />
-            <element signature="e#13619#13995#0" expanded="false" />
-            <element signature="e#15546#15676#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/services/middleware/mw-email.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -936,7 +941,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2216" column="23" selection-start-line="2216" selection-start-column="23" selection-end-line="2216" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -951,7 +955,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="71" selection-start-line="26" selection-start-column="71" selection-end-line="26" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1078,37 +1081,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/partials/nav.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.245902">
+        <state vertical-scroll-proportion="0.0">
           <caret line="187" column="99" selection-start-line="187" selection-start-column="99" selection-end-line="187" selection-end-column="99" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#button#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <marker date="1471968683000" expanded="true" signature="17389:17404" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.869565">
-          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/partials/footer.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="10.826087">
+        <state vertical-scroll-proportion="0.0">
           <caret line="55" column="111" selection-start-line="55" selection-start-column="111" selection-end-line="55" selection-end-column="111" />
-          <folding>
-            <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/landing.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-250.43478">
+        <state vertical-scroll-proportion="0.0">
           <caret line="384" column="21" selection-start-line="384" selection-start-column="21" selection-end-line="384" selection-end-column="21" />
           <folding />
         </state>
@@ -1116,7 +1107,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/job.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.076923">
+        <state vertical-scroll-proportion="0.0">
           <caret line="30" column="28" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="208" />
           <folding />
         </state>
@@ -1124,9 +1115,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/careers.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18595041">
+        <state vertical-scroll-proportion="-7.9565215">
           <caret line="9" column="205" selection-start-line="9" selection-start-column="205" selection-end-line="9" selection-end-column="205" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65217394">
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/middleware/mw-products.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66088116">
+          <caret line="53" column="45" selection-start-line="53" selection-start-column="45" selection-end-line="53" selection-end-column="45" />
+          <folding>
+            <element signature="e#1624#1777#0" expanded="false" />
+            <element signature="e#2146#2321#0" expanded="false" />
+            <element signature="e#2463#2915#0" expanded="false" />
+            <element signature="e#2974#3394#0" expanded="false" />
+            <element signature="e#3939#4278#0" expanded="false" />
+            <element signature="e#4335#4944#0" expanded="false" />
+            <element signature="e#4985#5865#0" expanded="false" />
+            <element signature="e#5908#6118#0" expanded="false" />
+            <element signature="e#6165#6381#0" expanded="false" />
+            <element signature="e#6424#6637#0" expanded="false" />
+            <element signature="e#10162#11184#0" expanded="false" />
+            <element signature="e#10184#10443#0" expanded="false" />
+            <element signature="e#10593#11176#0" expanded="false" />
+            <element signature="e#12192#13321#0" expanded="false" />
+            <element signature="e#12217#12454#0" expanded="false" />
+            <element signature="e#13702#14078#0" expanded="false" />
+            <element signature="e#15629#15759#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
