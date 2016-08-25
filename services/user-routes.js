@@ -270,7 +270,10 @@ var routes = [
         categories.getDepartment,
         job.getAll,
         function( req, res, next) {
-            res.render('careers')
+            res.render('careers', {
+                title:'Career Portal | Brantu',
+                description: 'Job opening in brantu team including marketing and technology '
+            })
         }]
     ],
 
@@ -279,7 +282,11 @@ var routes = [
         categories.getDepartment,
         job.getJob,
         function( req, res, next) {
-            res.render('job')
+            res.render('job',
+            {
+                title                      : res.locals.job.name + '| Brantu',
+                description                : 'Brantu is currently hiring a '+ res.locals.job.name + ', '+res.locals.job.type +' to join the team',
+            })
         }]
     ],
 
