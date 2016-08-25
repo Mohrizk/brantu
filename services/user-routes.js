@@ -272,7 +272,7 @@ var routes = [
         function( req, res, next) {
             res.render('careers', {
                 title:'Career Portal | Brantu',
-                description: 'Job opening in brantu team including marketing and technology '
+                description: 'Job openings in brantu team | marketing, development and technology'
             })
         }]
     ],
