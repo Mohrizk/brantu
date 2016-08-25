@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="319a9c44-cb0a-494b-a470-9e86d210bc29" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/logo_facebook.jpg" afterPath="$PROJECT_DIR$/public/images/logo_facebook.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/head.hbs" afterPath="$PROJECT_DIR$/views/partials/head.hbs" />
     </list>
     <ignored path="brantu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,13 +64,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="head.hbs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="head.hbs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/partials/head.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="144" column="5" selection-start-line="144" selection-start-column="5" selection-end-line="144" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.3875">
+              <caret line="15" column="100" selection-start-line="15" selection-start-column="100" selection-end-line="15" selection-end-column="100" />
               <folding>
-                <element signature="e#6506#8944#0#Handlebars" expanded="false" />
+                <element signature="e#6530#8968#0#Handlebars" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -99,10 +98,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="landing.hbs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="landing.hbs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/landing.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.34944752">
+            <state vertical-scroll-proportion="-95.86957">
               <caret line="147" column="14" selection-start-line="147" selection-start-column="14" selection-end-line="147" selection-end-column="14" />
               <folding />
             </state>
@@ -194,8 +193,8 @@
         <option value="$PROJECT_DIR$/views/job.hbs" />
         <option value="$PROJECT_DIR$/views/careers.hbs" />
         <option value="$PROJECT_DIR$/services/middleware/mw-products.js" />
-        <option value="$PROJECT_DIR$/views/partials/head.hbs" />
         <option value="$PROJECT_DIR$/views/landing.hbs" />
+        <option value="$PROJECT_DIR$/views/partials/head.hbs" />
       </list>
     </option>
   </component>
@@ -293,6 +292,24 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="views">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="brantu">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="views">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="partials">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -1122,16 +1139,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/head.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="144" column="5" selection-start-line="144" selection-start-column="5" selection-end-line="144" selection-end-column="5" />
-          <folding>
-            <element signature="e#6506#8944#0#Handlebars" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/images/logo_facebook.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1139,9 +1146,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/landing.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34944752">
+        <state vertical-scroll-proportion="-95.86957">
           <caret line="147" column="14" selection-start-line="147" selection-start-column="14" selection-end-line="147" selection-end-column="14" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/head.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3875">
+          <caret line="15" column="100" selection-start-line="15" selection-start-column="100" selection-end-line="15" selection-end-column="100" />
+          <folding>
+            <element signature="e#6530#8968#0#Handlebars" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
