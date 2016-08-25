@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="319a9c44-cb0a-494b-a470-9e86d210bc29" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/logo_facebook.jpg" afterPath="$PROJECT_DIR$/public/images/logo_facebook.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/head.hbs" afterPath="$PROJECT_DIR$/views/partials/head.hbs" />
     </list>
     <ignored path="brantu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,7 +40,7 @@
         <entry file="file://$PROJECT_DIR$/services/middleware/mw-products.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="53" column="45" selection-start-line="53" selection-start-column="45" selection-end-line="53" selection-end-column="45" />
+              <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
               <folding>
                 <element signature="e#1624#1777#0" expanded="false" />
                 <element signature="e#2146#2321#0" expanded="false" />
@@ -68,10 +67,10 @@
       <file leaf-file-name="head.hbs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/partials/head.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.31034482">
-              <caret line="15" column="100" selection-start-line="15" selection-start-column="100" selection-end-line="15" selection-end-column="100" />
+            <state vertical-scroll-proportion="0.3744799">
+              <caret line="15" column="41" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
               <folding>
-                <element signature="e#6530#8968#0#Handlebars" expanded="false" />
+                <element signature="e#6581#9019#0#Handlebars" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -1106,10 +1105,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/landing.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="147" column="14" selection-start-line="147" selection-start-column="14" selection-end-line="147" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/services/middleware/mw-products.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="45" selection-start-line="53" selection-start-column="45" selection-end-line="53" selection-end-column="45" />
+          <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
           <folding>
             <element signature="e#1624#1777#0" expanded="false" />
             <element signature="e#2146#2321#0" expanded="false" />
@@ -1132,20 +1139,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/landing.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="147" column="14" selection-start-line="147" selection-start-column="14" selection-end-line="147" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/partials/head.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31034482">
-          <caret line="15" column="100" selection-start-line="15" selection-start-column="100" selection-end-line="15" selection-end-column="100" />
+        <state vertical-scroll-proportion="0.3744799">
+          <caret line="15" column="41" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
           <folding>
-            <element signature="e#6530#8968#0#Handlebars" expanded="false" />
+            <element signature="e#6581#9019#0#Handlebars" expanded="false" />
           </folding>
         </state>
       </provider>
