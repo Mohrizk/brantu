@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="319a9c44-cb0a-494b-a470-9e86d210bc29" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/logo_facebook.jpg" afterPath="$PROJECT_DIR$/public/images/logo_facebook_updated.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/head.hbs" afterPath="$PROJECT_DIR$/views/partials/head.hbs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/careers.hbs" afterPath="$PROJECT_DIR$/views/careers.hbs" />
     </list>
     <ignored path="brantu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,10 +64,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="head.hbs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="head.hbs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/partials/head.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35075653">
+            <state vertical-scroll-proportion="-11.086957">
               <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
               <folding>
                 <element signature="e#6371#8809#0#Handlebars" expanded="false" />
@@ -148,11 +147,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="careers.hbs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="careers.hbs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/careers.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="205" selection-start-line="9" selection-start-column="205" selection-end-line="9" selection-end-column="205" />
+            <state vertical-scroll-proportion="0.20632738">
+              <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -219,12 +218,12 @@
         <option value="$PROJECT_DIR$/services/middleware/mw-jobs.js" />
         <option value="$PROJECT_DIR$/views/partials/nav.hbs" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/views/careers.hbs" />
         <option value="$PROJECT_DIR$/services/middleware/mw-products.js" />
         <option value="$PROJECT_DIR$/views/landing.hbs" />
         <option value="$PROJECT_DIR$/services/user-routes.js" />
         <option value="$PROJECT_DIR$/views/job.hbs" />
         <option value="$PROJECT_DIR$/views/partials/head.hbs" />
+        <option value="$PROJECT_DIR$/views/careers.hbs" />
       </list>
     </option>
   </component>
@@ -322,6 +321,38 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="views">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="brantu">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="views">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="partials">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="brantu">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="services">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
@@ -341,24 +372,6 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="brantu">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="public">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="images">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -372,19 +385,19 @@
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/plugins/algolia" />
-      <recent name="$PROJECT_DIR$/public/plugins" />
-      <recent name="$PROJECT_DIR$/views/partials" />
-      <recent name="$PROJECT_DIR$/views" />
-      <recent name="$PROJECT_DIR$/services/models" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/images" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/public/dist" />
       <recent name="$PROJECT_DIR$/public/javascripts/other" />
       <recent name="$PROJECT_DIR$/public/plugins/handlebars" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/plugins/algolia" />
+      <recent name="$PROJECT_DIR$/public/plugins" />
+      <recent name="$PROJECT_DIR$/views/partials" />
+      <recent name="$PROJECT_DIR$/views" />
+      <recent name="$PROJECT_DIR$/services/models" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.Basic_Config">
@@ -1088,14 +1101,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/careers.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="205" selection-start-line="9" selection-start-column="205" selection-end-line="9" selection-end-column="205" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1165,6 +1170,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/head.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.086957">
+          <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
+          <folding>
+            <element signature="e#6371#8809#0#Handlebars" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/job.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-20.869566">
@@ -1173,13 +1188,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/head.hbs">
+    <entry file="file://$PROJECT_DIR$/views/careers.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35075653">
-          <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
-          <folding>
-            <element signature="e#6371#8809#0#Handlebars" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.20632738">
+          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
