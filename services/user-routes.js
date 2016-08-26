@@ -284,8 +284,8 @@ var routes = [
         function( req, res, next) {
             res.render('job',
             {
-                title                      : res.locals.job.name + '| Brantu',
-                description                : 'Brantu is currently hiring a '+ res.locals.job.name + ', '+res.locals.job.type +' to join the team',
+                title                      : res.locals.job.name + ' - '+ res.locals.job.location +' | Brantu',
+                description                : 'Brantu is currently hiring a '+ res.locals.job.name + ', '+res.locals.job.type +' to join the team at our office in '+ res.locals.job.location,
             })
         }]
     ],

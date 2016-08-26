@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="319a9c44-cb0a-494b-a470-9e86d210bc29" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/user-routes.js" afterPath="$PROJECT_DIR$/services/user-routes.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/careers.hbs" afterPath="$PROJECT_DIR$/views/careers.hbs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/job.hbs" afterPath="$PROJECT_DIR$/views/job.hbs" />
     </list>
     <ignored path="brantu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -67,7 +69,7 @@
       <file leaf-file-name="head.hbs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/partials/head.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.086957">
+            <state vertical-scroll-proportion="0.0">
               <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
               <folding>
                 <element signature="e#6371#8809#0#Handlebars" expanded="false" />
@@ -76,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user-routes.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="user-routes.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/services/user-routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="274" column="97" selection-start-line="274" selection-start-column="97" selection-end-line="274" selection-end-column="97" />
+            <state vertical-scroll-proportion="0.69733334">
+              <caret line="287" column="161" selection-start-line="287" selection-start-column="159" selection-end-line="287" selection-end-column="161" />
               <folding>
                 <element signature="e#972#1564#0" expanded="false" />
                 <element signature="e#3915#4049#0" expanded="false" />
@@ -98,7 +100,7 @@
                 <element signature="e#7786#7926#0" expanded="false" />
                 <element signature="e#8063#8239#0" expanded="false" />
                 <element signature="e#8361#8565#0" expanded="false" />
-                <element signature="e#11432#12554#0" expanded="false" />
+                <element signature="e#11508#12630#0" expanded="false" />
                 <element signature="n#!!block;n#isLoggedIn#0" expanded="false" />
               </folding>
             </state>
@@ -120,8 +122,8 @@
       <file leaf-file-name="job.hbs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/job.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.869566">
-              <caret line="32" column="157" selection-start-line="32" selection-start-column="157" selection-end-line="32" selection-end-column="157" />
+            <state vertical-scroll-proportion="-19.565218">
+              <caret line="30" column="121" selection-start-line="30" selection-start-column="121" selection-end-line="30" selection-end-column="121" />
               <folding />
             </state>
           </provider>
@@ -147,11 +149,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="careers.hbs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="careers.hbs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/careers.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.20632738">
-              <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+            <state vertical-scroll-proportion="-5.869565">
+              <caret line="9" column="117" selection-start-line="9" selection-start-column="117" selection-end-line="9" selection-end-column="117" />
               <folding />
             </state>
           </provider>
@@ -220,10 +222,10 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/services/middleware/mw-products.js" />
         <option value="$PROJECT_DIR$/views/landing.hbs" />
-        <option value="$PROJECT_DIR$/services/user-routes.js" />
-        <option value="$PROJECT_DIR$/views/job.hbs" />
         <option value="$PROJECT_DIR$/views/partials/head.hbs" />
         <option value="$PROJECT_DIR$/views/careers.hbs" />
+        <option value="$PROJECT_DIR$/views/job.hbs" />
+        <option value="$PROJECT_DIR$/services/user-routes.js" />
       </list>
     </option>
   </component>
@@ -289,17 +291,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="brantu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -374,6 +365,17 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brantu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -472,7 +474,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="873" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="873" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22269204" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -480,19 +482,19 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.060179256" sideWeight="0.5025974" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.006385696" sideWeight="0.47339323" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.025791325" sideWeight="0.72291666" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24876674" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32950193" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39976552" sideWeight="0.49722221" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.025791325" sideWeight="0.72291666" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913843" sideWeight="0.89771944" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32822478" sideWeight="0.4974026" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39976552" sideWeight="0.49722221" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1143,10 +1145,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/services/user-routes.js">
+    <entry file="file://$PROJECT_DIR$/views/partials/head.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="274" column="97" selection-start-line="274" selection-start-column="97" selection-end-line="274" selection-end-column="97" />
+          <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
+          <folding>
+            <element signature="e#6371#8809#0#Handlebars" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/careers.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.869565">
+          <caret line="9" column="117" selection-start-line="9" selection-start-column="117" selection-end-line="9" selection-end-column="117" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/job.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.565218">
+          <caret line="30" column="121" selection-start-line="30" selection-start-column="121" selection-end-line="30" selection-end-column="121" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/user-routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69733334">
+          <caret line="287" column="161" selection-start-line="287" selection-start-column="159" selection-end-line="287" selection-end-column="161" />
           <folding>
             <element signature="e#972#1564#0" expanded="false" />
             <element signature="e#3915#4049#0" expanded="false" />
@@ -1164,35 +1192,9 @@
             <element signature="e#7786#7926#0" expanded="false" />
             <element signature="e#8063#8239#0" expanded="false" />
             <element signature="e#8361#8565#0" expanded="false" />
-            <element signature="e#11432#12554#0" expanded="false" />
+            <element signature="e#11508#12630#0" expanded="false" />
             <element signature="n#!!block;n#isLoggedIn#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/head.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.086957">
-          <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
-          <folding>
-            <element signature="e#6371#8809#0#Handlebars" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/job.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.869566">
-          <caret line="32" column="157" selection-start-line="32" selection-start-column="157" selection-end-line="32" selection-end-column="157" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/careers.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20632738">
-          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
