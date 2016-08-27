@@ -2,17 +2,18 @@
 <div class="page-content-wrapper">
     <section class="general content" id="mainSection">
         <div>
+
             <div class="row p-b-80">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="row b-b b-grey ">
                         <div class="col-xs-9">
                             <h1 class="all-caps bold text-spaced-medium">{{job.name}} <span class="fs-15 text-spaced text-purple">{{job.type}}</span> </h1>
                         </div>
-                        <div class="col-xs">
+                        <div class="col-xs hidden-xs">
                             <div class="p-t-20">
                                 <a  href="/jobs">
                                     <button class="btn btn-info">
-                                        All listing
+                                        All openings
                                     </button>
                                 </a>
                             </div>
@@ -21,17 +22,219 @@
 
                     </div>
                     <span class="medium hint-text medium full-width"> <span class="p-r-5">Location: <font class="bold">{{job.location}}</font> </span> |  <span class="text-purple capitalize p-l-5 p-r-5">{{#if job.valid}}open {{else}}closed{{/if}}</span> | <span class="p-l-5 p-r-5 bold">{{job.date}}</span></span>
+
                     <div>
                         {{{job.description}}}
                     </div>
 
+
+
+
+                    <div class=" m-t-50 m-b-50 b-t b-grey">
+                        <h2 class=" medium text-purple">Perks, your happiness is a priority</h2>
+                        <p>We’ve got all types of cool stuff (free snacks, free drinks, open work space), but this is what makes Brantu a different kind of place to work.</p>
+                        <div class="row p-t-20">
+                            <div class="col-md-4 p-b-20">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                     width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                <circle fill="#660066" cx="50.359" cy="50.455" r="47.725"/>
+                                <g id="Chart-piece" transform="translate(382.000000, 1156.000000)" sketch:type="MSLayerGroup">
+                                    <path id="Shape_523_" sketch:type="MSShapeGroup" fill="#FFFFFF" d="M-330.59-1126.826c-1.051-0.154-1.693-0.099-2.787-0.099
+                                        c-12.337,0-22.366,10.044-22.366,22.384s10.029,22.387,22.366,22.387c12.334,0,22.363-10.047,22.363-22.387
+                                        c0-1.042,0.133-1.802-0.006-2.799l-22.291,2.895L-330.59-1126.826L-330.59-1126.826z"/>
+                                    <path id="Shape_524_" sketch:type="MSShapeGroup" fill="#FFFFFF" d="M-324.616-1129.845l-2.847,19.7l19.923-2.796
+                                        C-308.76-1121.66-315.761-1128.583-324.616-1129.845L-324.616-1129.845z"/>
+                                </g>
+                                </svg>
+
+                                    </div>
+                                    <div class="col-xs">
+                                        <h5 class="sbold text-purple">Ownership</h5>
+                                        <p>
+                                            We all own shares of Brantu because we all have a stake in our success.
+                                        </p>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-4 p-b-20">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    <circle fill="#660066" cx="50.359" cy="50.455" r="47.725"/>
+                                    <path id="Dollar" sketch:type="MSShapeGroup" fill="#FFFFFF" d="M60.474,57.839c0-5.091-4.079-9.323-9.044-10.155V37.51
+                                        c1.514,0.469,3.079,0.586,3.709,2.012c0.571,1.286,2.015,1.835,3.22,1.231c1.211-0.607,1.721-2.145,1.153-3.433
+                                        c-1.421-3.202-4.632-4.488-8.038-5.07v-6.239h-2.953v6.206c-4.998,0.754-8.996,5.016-8.996,10.161c0,5.136,3.977,9.393,8.996,10.161
+                                        v10.242c-1.61-0.445-3.103-0.595-3.761-2.088c-0.565-1.292-2.006-1.841-3.208-1.237c-1.213,0.604-1.73,2.136-1.165,3.427
+                                        c1.445,3.274,4.668,4.599,8.182,5.139v6.047h2.817V68C56.332,67.183,60.474,62.939,60.474,57.839L60.474,57.839z M44.368,42.379
+                                        c0-2.325,1.796-4.277,4.244-4.905v9.819C46.164,46.659,44.368,44.71,44.368,42.379L44.368,42.379z M51.409,62.726v-9.774
+                                        c2.448,0.676,4.235,2.598,4.235,4.887C55.644,60.127,53.857,62.05,51.409,62.726L51.409,62.726z"/>
+                                    </svg>
+
+                                    </div>
+                                    <div class="col-xs">
+                                        <h5 class="sbold text-purple">No Drama Salaries</h5>
+                                        <p>
+                                            Competitive, fixed salaries at every employment level.
+                                        </p>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-4 p-b-20">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    <circle fill="#660066" cx="50.359" cy="50.455" r="47.725"/>
+                                    <g>
+                                        <circle fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1.8825" stroke-miterlimit="10" cx="50.184" cy="50" r="15.84"/>
+
+                                            <line fill="none" stroke="#FFFFFF" stroke-width="1.8825" stroke-miterlimit="10" x1="50.184" y1="68.825" x2="50.184" y2="79.178"/>
+
+                                            <line fill="none" stroke="#FFFFFF" stroke-width="1.8825" stroke-miterlimit="10" x1="50.184" y1="20.822" x2="50.184" y2="31.175"/>
+                                        <line fill="none" stroke="#FFFFFF" stroke-width="1.8825" stroke-miterlimit="10" x1="31.36" y1="50" x2="21.006" y2="50"/>
+                                        <line fill="none" stroke="#FFFFFF" stroke-width="1.8825" stroke-miterlimit="10" x1="79.363" y1="50" x2="69.009" y2="50"/>
+
+                                            <line fill="none" stroke="#FFFFFF" stroke-width="1.8825" stroke-miterlimit="10" x1="36.626" y1="63.559" x2="29.552" y2="70.633"/>
+
+                                            <line fill="none" stroke="#FFFFFF" stroke-width="1.8825" stroke-miterlimit="10" x1="70.816" y1="29.367" x2="63.743" y2="36.441"/>
+
+                                            <line fill="none" stroke="#FFFFFF" stroke-width="1.8825" stroke-miterlimit="10" x1="63.743" y1="63.559" x2="70.816" y2="70.633"/>
+
+                                            <line fill="none" stroke="#FFFFFF" stroke-width="1.8825" stroke-miterlimit="10" x1="29.552" y1="29.367" x2="36.626" y2="36.441"/>
+                                    </g>
+                                    </svg>
+
+                                    </div>
+                                    <div class="col-xs">
+                                        <h5 class="sbold text-purple">Unlimited Vacation</h5>
+                                        <p>
+                                            Be task oriented, take a break and detach.
+                                        </p>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-4 p-b-20">
+                                <div class="row ">
+                                    <div class="col-xs-4">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    <circle fill="#660066" cx="50.359" cy="50.455" r="47.725"/>
+                                    <g id="_x31_31" transform="translate(721.000000, 1933.000000)" sketch:type="MSLayerGroup">
+                                        <path id="Shape_1163_" sketch:type="MSShapeGroup" fill="#FFFFFF" d="M-684.987-1901.251c-0.532-3.585-3.606-5.737-7.363-5.737
+                                            c-4.126,0-7.478,3.337-7.478,7.442c0,4.114,3.349,7.444,7.478,7.444c0.496,0,0.982-0.054,1.451-0.148l-6.012-9.031
+                                            L-684.987-1901.251L-684.987-1901.251z"/>
+                                        <path id="Shape_1164_" sketch:type="MSShapeGroup" fill="#FFFFFF" d="M-669.735-1879.782l18.335-18.06l-39.293-0.079l18.262,18.135
+                                            v12.184l-6.187,5.951h15.143l-6.181-5.933L-669.735-1879.782L-669.735-1879.782z M-684.177-1894.898l25.976,0.124l-5.398,5.138
+                                            c-1.421,0.045-3.452-0.266-6.22-1.463c-3.684-1.336-7.018,1.224-8.152,2.246L-684.177-1894.898L-684.177-1894.898z"/>
+                                    </g>
+                                    </svg>
+
+                                    </div>
+                                    <div class="col-xs">
+                                        <h5 class="sbold text-purple">Ways to unwind</h5>
+                                        <p>
+                                            Ping pong & games, basketball & bikes, even karaoke.
+                                        </p>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-4 p-b-20">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	                                 width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    <circle fill="#660066" cx="50.359" cy="50.455" r="47.725"/>
+                                    <path id="_x31_13" sketch:type="MSShapeGroup" fill="#FFFFFF" d="M56.133,68.993c-5.322,0-5.987-1.352-6.068-1.619
+                                        c-0.332-1.147,1.674-3.593,3.244-4.925l-0.088-0.134c7.003-2.173,12.4-14.765,12.4-22.061c0-8.003-6.482-14.491-14.468-14.491
+                                        s-14.468,6.488-14.468,14.491c0,7.654,5.922,21.126,13.423,22.308c-1.28,1.505-2.563,3.602-1.99,5.544
+                                        c0.642,2.195,3.192,3.218,8.022,3.218c0.401,0,0.586,0.479,0.221,0.994c-1.081,1.489-3.964,3.228-8.534,3.228v2.332
+                                        c7.071,0,10.99-3.807,10.99-6.44c0-0.756-0.3-1.42-0.831-1.863C57.511,69.192,56.889,68.993,56.133,68.993L56.133,68.993z
+                                         M41.948,40.903c0,2.241-1.941,1.29-1.941-1.967c0-5.498,4.338-9.96,9.7-9.96c3.186,0,4.133,1.997,1.938,1.997
+                                        C46.293,30.975,41.948,35.402,41.948,40.903L41.948,40.903z"/>
+                                    </svg>
+
+                                    </div>
+                                    <div class="col-xs">
+                                        <h5 class="sbold text-purple">Events & Education</h5>
+                                        <p>
+                                            Parties, happy hours, continued learning and more.
+                                        </p>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-4 p-b-20">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    <circle fill="#660066" cx="50.359" cy="50.455" r="47.725"/>
+                                    <g id="_x31_58" transform="translate(437.000000, 1886.000000)" sketch:type="MSLayerGroup">
+                                        <path id="Shape_1113_" sketch:type="MSShapeGroup" fill="#FFFFFF" d="M-381.001-1835.767l-4.005,7.326
+                                            c-0.19,0.356-0.568,0.562-1.017,0.522c-0.421-0.04-0.768-0.323-0.882-0.706l-2.995-10.185l-3.726,12.12
+                                            c-0.114,0.43-0.513,0.734-0.974,0.743h-0.028c-0.448,0-0.848-0.286-0.98-0.703l-5.4-17.286l-3.492,7.636
+                                            c-0.178,0.326-0.387,0.673-0.771,0.673h-4.792c5.178,14.095,23.205,21.184,23.205,21.184s17.953-7.049,23.07-21.322H-381.001
+                                            L-381.001-1835.767z"/>
+                                        <path id="Shape_1114_" sketch:type="MSShapeGroup" fill="#FFFFFF" d="M-406.04-1839.336l4.377-9.546
+                                            c0.19-0.375,0.584-0.602,1.007-0.556c0.421,0.043,0.771,0.329,0.891,0.731l5.059,16.927l3.75-12.777
+                                            c0.111-0.452,0.516-0.771,0.98-0.777h0.012c0.461,0,0.869,0.307,0.992,0.75l3.345,11.88l3.093-5.922
+                                            c0.178-0.338,0.531-0.709,0.909-0.709h18.447c0.473-1.889,0.749-3.726,0.749-5.839c0-6.84-5.544-12.381-12.381-12.381
+                                            c-5.906,0-10.839,4.14-12.077,9.672c-1.287-5.538-6.241-9.672-12.175-9.672c-6.911,0-12.51,5.602-12.51,12.51
+                                            c0,2.064,0.276,3.858,0.749,5.71H-406.04L-406.04-1839.336z"/>
+                                    </g>
+                                    </svg>
+
+
+                                    </div>
+                                    <div class="col-xs">
+                                        <h5 class="sbold text-purple">Health & Wellness</h5>
+                                        <p>
+                                            Healthy snacks and in house nutritionist.
+                                        </p>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="b-t b-grey">
-                        <h2 class=" medium" style="font-size: 28px;">About Brantu</h2>
+
+                        <h2 class=" medium text-purple" style="font-size: 28px;">About Brantu</h2>
                         <h5>
                             Brantu is a growing fashion price comparison startup with the vision to create the excitement of getting a bargain everyday. Our business idea supports the vision by offering a search engine that compares prices from all online fashion shops enabling users to shop simple and smart, saving them money.
 
                             We strive to provide the highest quality service for our users, and we’re striving to create a business model that reflects that.
                         </h5>
+                        <div class="">
+                            <div class="p-t-20">
+                                <a  href="/jobs">
+                                    <button class="btn btn-block btn-purple p-t-20 p-b-20">
+                                        All openings
+                                    </button>
+                                </a>
+                            </div>
+
+                        </div>
 
                     </div>
 

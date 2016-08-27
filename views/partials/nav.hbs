@@ -110,6 +110,7 @@
               </div>
           </div>
             <div class="col-sm-6  relative  hidden-xs">
+                {{#if selectedDepartment}}
                 <div class="auto-margin block relative p-t-5 p-l-40 text-center" >
                     <form id="autocompleteForm">
                         <div class="search-link">
@@ -137,6 +138,7 @@
                         </div>
                     </form>
                 </div>
+                {{/if}}
             </div>
             <div class="p-t-5 top-right hidden-xs">
              <!-- START User Info-->
@@ -204,6 +206,7 @@
                          </ul>
                      </div>
                  </div>
+                 {{#if selectedDepartment}}
                  <div class="hidden-xs pull-right nav-margin-small">
                     <ul class="nav navbar-nav">
                          <li data-view="login" class="authenticate no-overflow-text "><a class="dark bold no-overflow-text " >Logga In </a></li>
@@ -211,9 +214,10 @@
                         <li data-view="signup" class="authenticate no-overflow-text"><a class="dark bold no-overflow-text " >Bli medlem</a></li>
                     </ul>
                 </div>
+                 {{/if}}
              {{/if}}
 
-
+                {{#if selectedDepartment}}
                <div class="visible-lg visible-md pull-right hidden-sm hidden-xs nav-margin p-t-5" >
                    <ul class="notification-list no-margin  no-style inline">
                        <li class="inline relative" >
@@ -227,6 +231,7 @@
 
                    </ul>
                </div>
+                    {{/if}}
 
 
 

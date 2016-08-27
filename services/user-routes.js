@@ -266,8 +266,7 @@ var routes = [
     ],
 /****************JOBS****************/
     [ '/jobs', 'get', [
-        categories.getCategoryTree,
-        categories.getDepartment,
+
         job.getAll,
         function( req, res, next) {
             res.render('careers', {
@@ -278,8 +277,7 @@ var routes = [
     ],
 
     [ '/jobs/:name', 'get', [
-        categories.getCategoryTree,
-        categories.getDepartment,
+
         job.getJob,
         function( req, res, next) {
             res.render('job',

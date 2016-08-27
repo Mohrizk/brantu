@@ -6960,7 +6960,7 @@ input:-webkit-autofill {
    
 }
 #mainSection, #searchSection, #compareSection{
-    margin-top:110px;
+    padding-top:110px;
 }
 .hoverish{
     border:2px solid white;
@@ -8136,7 +8136,7 @@ ul.circle li:hover div{
         transition-delay: 0.2s;
     }
 
-    #mainSection, #searchSection, #compareSection{  margin-top: 0px;  }
+    #mainSection, #searchSection, #compareSection{  padding-top: 0px;  }
     .page-container .page-content-wrapper .content{  padding: 0;  }
 
     .vertical .item img{ height:40vw; max-width:100%; }
