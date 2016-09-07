@@ -5,25 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="319a9c44-cb0a-494b-a470-9e86d210bc29" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/home/men/jumbotron.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/home/women/jumbotron.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/services/admin-routes.js" afterPath="$PROJECT_DIR$/routes/admin-routes.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/services/api-routes.js" afterPath="$PROJECT_DIR$/routes/api-routes.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/services/user-routes.js" afterPath="$PROJECT_DIR$/routes/user-routes.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/views/partials/nav.hbs" afterPath="$PROJECT_DIR$/views/partials/nav/nav.hbs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/views/partials/settings-account.hbs" afterPath="$PROJECT_DIR$/views/partials/settings/settings-account.hbs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/views/partials/settings-brands.hbs" afterPath="$PROJECT_DIR$/views/partials/settings/settings-brands.hbs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/views/partials/settings-notifications.hbs" afterPath="$PROJECT_DIR$/views/partials/settings/settings-notifications.hbs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/views/partials/settings-sizes.hbs" afterPath="$PROJECT_DIR$/views/partials/settings/settings-sizes.hbs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/views/partials/side-menu.hbs" afterPath="$PROJECT_DIR$/views/partials/nav/side-menu.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/flexboxgrid.min.css" afterPath="$PROJECT_DIR$/public/stylesheets/flexboxgrid.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/pages.css" afterPath="$PROJECT_DIR$/public/stylesheets/pages.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/middleware/mw-jobs.js" afterPath="$PROJECT_DIR$/services/middleware/mw-jobs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/landing.hbs" afterPath="$PROJECT_DIR$/views/landing.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/head.hbs" afterPath="$PROJECT_DIR$/views/partials/head.hbs" />
     </list>
     <ignored path="brantu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,11 +28,21 @@
     <splitter split-orientation="horizontal" split-proportion="0.74418604">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.37942857">
+                <state vertical-scroll-proportion="-12.296296">
                   <caret line="39" column="16" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="16" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/package.json">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.15358362">
+                  <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
                   <folding />
                 </state>
               </provider>
@@ -211,7 +203,7 @@
           <file leaf-file-name="landing.hbs" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/views/landing.hbs">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.5542857">
+                <state vertical-scroll-proportion="0.55365294">
                   <caret line="138" column="137" selection-start-line="138" selection-start-column="137" selection-end-line="138" selection-end-column="137" />
                   <folding>
                     <element signature="n#div#0;n#div#0;n#section#0;n#div#0;n#!!top" expanded="false" />
@@ -283,7 +275,6 @@
         <option value="$PROJECT_DIR$/views/job.hbs" />
         <option value="$PROJECT_DIR$/services/middleware/mw-jobs.js" />
         <option value="$PROJECT_DIR$/services/user-routes.js" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/views/partials/head.hbs" />
         <option value="$PROJECT_DIR$/views/partials/nav/nav.hbs" />
         <option value="$PROJECT_DIR$/public/stylesheets/flexboxgrid.min.css" />
@@ -294,6 +285,7 @@
         <option value="$PROJECT_DIR$/routes/user-routes.js" />
         <option value="$PROJECT_DIR$/public/stylesheets/pages.css" />
         <option value="$PROJECT_DIR$/views/landing.hbs" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -1094,14 +1086,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18543956">
-          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/partials/head.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="8.478261">
@@ -1235,7 +1219,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/landing.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5542857">
+        <state vertical-scroll-proportion="0.55365294">
           <caret line="138" column="137" selection-start-line="138" selection-start-column="137" selection-end-line="138" selection-end-column="137" />
           <folding>
             <element signature="n#div#0;n#div#0;n#section#0;n#div#0;n#!!top" expanded="false" />
@@ -1258,8 +1242,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37942857">
+        <state vertical-scroll-proportion="-12.296296">
           <caret line="39" column="16" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15358362">
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
           <folding />
         </state>
       </provider>
