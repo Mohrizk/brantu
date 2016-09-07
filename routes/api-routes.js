@@ -4,28 +4,27 @@ var passport    = require('passport');
 
 
 /********** Middleware******/
-var categories = require('./middleware/mw-categories');
-var brands = require('./middleware/mw-brands');
-var products = require('./middleware/mw-products');
-var newsletter = require('./middleware/mw-newsletter');
-var session = require('./middleware/mw-session');
-var user = require('./middleware/mw-users');
-var feed = require('./middleware/mw-feed');
+var categories = require('../services/middleware/mw-categories');
+var brands = require('../services/middleware/mw-brands');
+var products = require('../services/middleware/mw-products');
+var newsletter = require('../services/middleware/mw-newsletter');
+var session = require('../services/middleware/mw-session');
+var user = require('../services/middleware/mw-users');
+var feed = require('../services/middleware/mw-feed');
 
 /**************************************************************
  *******************BEGINING ROUTES***************************
  ***************************************************************/
 var routes = [
-    [ '/api/getProductByID/:id', 'get', [
+    [ '/getProductByID/:id', 'get', [
         products.getProductByID,
         products.checkProductIsFavoured,
         function( req, res, next) {
-            console.log('FÅÅÅÅÅÅÅÅÅÅ')
             console.log(req.product)
             res.send({product:req.product});
         }]
     ],
-    [ '/api/getSimilarProducts/:id', 'get', [
+    [ '/getSimilarProducts/:id', 'get', [
         products.getProductByID,
         products.getSimilarProductsFromSameBrand,
         products.GetLowerPriceCategoryProducts,
@@ -42,7 +41,7 @@ var routes = [
                 });
         }]
     ],
-    [ '/api/getFeed/:page', 'get', [
+    [ '/getFeed/:page', 'get', [
         categories.getDepartment,
         feed.getFeed,
         function( req, res, next) {

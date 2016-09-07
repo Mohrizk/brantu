@@ -4,15 +4,15 @@ var passport    = require('passport');
 
 
 /********** Middleware******/
-var categories = require('./middleware/mw-categories');
-var brands = require('./middleware/mw-brands');
-var products = require('./middleware/mw-products');
-var newsletter = require('./middleware/mw-newsletter');
-var session = require('./middleware/mw-session');
-var feed = require('./middleware/mw-feed');
-var email = require('./middleware/mw-email');
-var user = require('./middleware/mw-users');
-var job = require('./middleware/mw-jobs');
+var categories = require('../services/middleware/mw-categories');
+var brands = require('../services/middleware/mw-brands');
+var products = require('../services/middleware/mw-products');
+var newsletter = require('../services/middleware/mw-newsletter');
+var session = require('../services/middleware/mw-session');
+var feed = require('../services/middleware/mw-feed');
+var email = require('../services/middleware/mw-email');
+var user = require('../services/middleware/mw-users');
+var job = require('../services/middleware/mw-jobs');
 
 var shared = require('../public/javascripts/helper');
 
@@ -523,6 +523,8 @@ var routes = [
     ],
 
 ];
+
+
 routes.forEach(function(arr){
   console.log(arr[1]);
    router[arr[1]](arr[0], arr[2]);

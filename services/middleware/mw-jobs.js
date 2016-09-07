@@ -1,7 +1,6 @@
 var Job  = require('../models/job');
 var jobs = {
     getAll:function(req,res,next){
-
         Job.find({"valid":true}).lean().sort("department").exec(function(err, jobs){
            if(err) return next(err)
            res.locals.jobList = jobs;

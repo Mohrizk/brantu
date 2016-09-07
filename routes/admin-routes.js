@@ -4,15 +4,15 @@ var passport    = require('passport');
 
 
 /********** Middleware******/
-var categories = require('./middleware/mw-categories');
-var brands = require('./middleware/mw-brands');
-var products = require('./middleware/mw-products');
-var newsletter = require('./middleware/mw-newsletter');
-var feed = require('./middleware/mw-feed');
-var session = require('./middleware/mw-session');
-var email = require('./middleware/mw-email');
-var socialMedia = require('./middleware/mw-socialmedia');
-var user = require('./middleware/mw-users');
+var categories = require('../services/middleware/mw-categories');
+var brands = require('../services/middleware/mw-brands');
+var products = require('../services/middleware/mw-products');
+var newsletter = require('../services/middleware/mw-newsletter');
+var feed = require('../services/middleware/mw-feed');
+var session = require('../services/middleware/mw-session');
+var email = require('../services/middleware/mw-email');
+var socialMedia = require('../services/middleware/mw-socialmedia');
+var user = require('../services/middleware/mw-users');
 
 /**************************************************************
  *******************BEGINING ROUTES***************************

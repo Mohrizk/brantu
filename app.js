@@ -27,9 +27,9 @@ const ConnectRoles = require('connect-roles');
 
 const i18n = require('i18n-2');//Internationalization
 //FOR ROUTES
-const userRoutes = require('./services/user-routes');
-const apiRoutes = require('./services/api-routes');
-const adminRoutes = require('./services/admin-routes');
+const userRoutes = require('./routes/user-routes');
+const apiRoutes = require('./routes/api-routes');
+const adminRoutes = require('./routes/admin-routes');
 
 const express = require('express'), sm = require('sitemap');
 const app = express();
@@ -45,7 +45,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
@@ -82,6 +81,8 @@ hbs = exphbs.create({
         helpers: require("./public/javascripts/hb-helper.js").helpers,
         partialsDir: [
             'views/partials/',
+            'views/partials/nav/',
+            'views/partials/settings/',
             'views/shared-templates/'
         ]
     })
@@ -219,7 +220,7 @@ app.get('/blog-sitemap.xml',[
 
 
 app.use(adminRoutes);
-app.use(apiRoutes);
+app.use('/api',apiRoutes);
 app.use(userRoutes);
 
 
