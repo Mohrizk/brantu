@@ -6,10 +6,14 @@
        <style>
            .special-border{border:2px solid #f5f5f5;}
            .mainJumbtron.MEN{
-               background-image:url('/images/home/men/jumbotron.jpg');
+               background-image:url('');
            }
            .mainJumbtron.WOMEN{
-               background-image:url('/images/home/women/jumbotron.jpg');
+               background-image:url('');
+           }
+
+           .mainCompareCarousel img{
+               width: 180px;
            }
 
 
@@ -40,14 +44,18 @@
                text-align: center;
            }
 
-           .landing-item{
-               width: 100%;
-               height: 200px;
+           .gallery-item.condensed{
+               max-width: 280px !important;
+               width: 100% !important;
+               height: 150px !important;
+               margin-bottom: 0 !important;
            }
-           .landing-item img{
-               width: 100%;
+           #compareBoxCloth{
+           }
+           #compareBoxShoes{
+           }
 
-           }
+
 
            @media (max-width: 480px){
                .mainJumbtron.MEN{
@@ -83,22 +91,20 @@
 
 
        <div class="container no-padding bg-white" id="owlLanding">
-           <div>
-                   <div class="bg-image mainJumbtron relative no-overflow relative {{mapDepartment selectedDepartment}}">
-                       <div class="col-md-4 full-height relative" >
-                           <div class="padding-1v col-xs-12  hidden-xs text-section">
-                               <h1 class="text-spaced  bold text-black all-caps">Jämför priser <br/> inom mode</h1>
-                               <h5>bästa pris fär kläder, skor och m.m </h5>
 
+           <div class="bg-image mainJumbtron relative no-overflow relative {{mapDepartment selectedDepartment}}">
+                       <div class="col-md-4 full-height relative" >
+                           <div class=" col-xs-12  hidden-xs text-section">
+                               <h1 class="text-spaced light  text-black all-caps">Jämför <font class=" sbold text-purple">priser</font> <br/> inom <font class="sbold">mode</font></h1>
+                               <h5>bästa pris fär kläder, skor och m.m </h5>
                            </div>
                            <div class="padding-1v col-xs-12 text-center visible-xs text-section">
                                <h4 class="text-spaced all-caps bold text-black all-caps">Jämför <font class="hidden">priser</font> och hitta det bästa priset inom mode.</h4>
                            </div>
                        </div>
 
-                       <div class="col-md-8 full-height special-border text-center" style="background:rgba(61, 21, 212, 0.7);" >
-                           <div class="padding-1v col-xs-12  hidden-xs text-section">
-                               <h4 class="bold text-white">Sök nu </h4>
+                       <div class="col-md-8 full-height special-border text-center" style="background:rgba(108, 108, 225, 0.6);" >
+                           <div class="col-xs-12  hidden-xs text-section">
                                <h5 class="text-white bold">produk, märken eller kategori </h5>
                            </div>
                            <form id="autocompleteForm">
@@ -111,18 +117,14 @@
 
                        </div>
                    </div>
-           </div>
 
 
-           <div class=" no-padding"  id="landingPageContent" >
-
-
-               <div class=" hidden-xs p-xs-r-5    p-xs-l-5 p-xs-t-5 bg-master-light" id="featuresLandingPage" >
-                  <div class="row  no-margin   bg-master-lighters">
+           <div class=""  id="compareBox" >
+               <div class=" hidden-xs p-xs-r-5 p-xs-l-5 p-xs-t-5 bg-white" >
+                  <div class="row  no-margin   bg-whites">
                       <div class="col-sm-4 col-xs-12 special-border no-padding">
                         <div class="col-xs-6 no-padding" >
-                            <div class="landing-item">
-                                <img  src="http://cdn-static.farfetch.com/content/images/home_cms/2016_09_06/Women/01_medium.jpg" />
+                            <div class="gallery-item condensed" id="compareBoxCloth" >
                             </div>
                         </div>
 
@@ -133,14 +135,13 @@
                           </div>
                       </div>
 
-                      <div class="col-sm-4 no-padding col-xs-12 bg-white  special-border">
+                      <div class="col-sm-4 no-padding col-xs-12 special-border">
                           <div class="col-xs-6 no-padding no-padding" >
-                              <div class="landing-item">
-                                  <img  src="http://cdn-static.farfetch.com/content/images/home_cms/2016_09_06/Women/module03_large_a.jpg" />
+                              <div class="gallery-item condensed" id="compareBoxShoes">
                               </div>
                           </div>
 
-                          <div class="col-xs-6 text-left bg-white p-t-30 p-l-20 p-b-30">
+                          <div class="col-xs-6 text-left p-t-30 p-l-20 p-b-30">
                               <h6 class="text-purple text-left no-margin no-padding "> Jämfor Priser</h6>
                               <h4 class="text-left bold no-margin no-padding">Skor</h4>
                               <a class="bold">Gå nu</a>
@@ -150,7 +151,8 @@
 
                       <div class="col-sm-4 no-padding col-xs-12 special-border">
                           <div class="col-xs-6 no-padding">
-                              <img  src="http://cdn-static.farfetch.com/content/images/home_cms/2016_09_06/Women/01_medium.jpg" />
+                              <div class="gallery-item condensed" id="compareBoxAccessory">
+                              </div>
                           </div>
 
                           <div class="col-xs-6 text-left p-t-30  p-l-20 p-b-30">
@@ -158,109 +160,80 @@
                               <h4 class="text-left bold no-margin no-padding">Accessoarer</h4>
                               <a class="bold">Gå nu</a>
                           </div>
-
                       </div>
-
                   </div>
-
-
-                   <div class="row no-margin hidden">
-                       <div class="col-sm-4 p-t-20 p-b-20 col-xs-12" >
-                           <div >
-                               <h4 class=" text-purple bold hidden-xs"> <i class="pg-shopping_cart  inline"></i> Jämför priser för samma produkt</h4>
-                               <h5 class="no-padding no-margin text-purple visible-xs "><i class="pg-shopping_cart text-white inline"></i> Jämför priser för samma produkt</h5>
-                           </div >
-                       </div>
-                       <div class="col-sm-4 p-t-20 p-b-20 col-xs-12">
-                           <div >
-                               <h4 class=" text-purple bold hidden-xs"> <i class="pg-layouts "></i>  Samma stil till bättre pris</h4>
-                               <h5 class=" text-purple visible-xs"><i class="pg-layouts text-white"></i> Samma stil till bättre pris</h5>
-                           </div >
-                       </div>
-                       <div class="col-sm p-t-20 p-b-20 col-xs-12" >
-                           <div class="">
-                               <h4 class=" text-purple bold hidden-xs"><i class="pg-cupboard"></i> Alla dina favoritbutiker på ett ställe</h4>
-                               <h5 class=" text-purple visible-xs"><i class="pg-cupboard text-white"></i> Alla dina favoritbutiker på ett ställe</h5>
-                           </div >
-                       </div>
-                   </div>
                </div>
+           </div>
 
-
-
-
-
-
-
+           <div id="popularCompareCloth" class="row no-margin ">
                {{#if compareClothes}}
-                   <div class="row no-margin b-rad-lg p-t-40 p-b-20 p-xs-t-10" id="compareClothes">
-                       <!--<div class="col-md-3 m-xs-b-20 no-padding  col-xs-12">
-               <div>
-                   <div class="no-padding bg-image sideBarCarousel {{mapDepartment selectedDepartment}}">
-                       <div class="full-height full-width" >
-                           <div class="padding-15 m-xs-b-10 padding-xs-10 row">
-                               <div class="col-md-12 col-sm-8 col-xs-6">
-                                   <h3 class="text-master hidden-xs all-caps no-margin no-padding">
-                                       <font class="text-spaced-medium sbold text-black">Samma Plagg</font>
-                                   </h3>
-                                   <h4 class="text-master visible-xs all-caps no-margin no-padding">
-                                       <font class="text-spaced-medium sbold text-black">Samma Plagg</font>
-                                   </h4>
-                                   <h4 class="text-black hidden-xs bold ">
-                                       Olika Butiker | Olika Priser
-                                   </h4>
-                                   <h6 class="text-black visible-xs bold ">
-                                       Olika Butiker | Olika Priser
-                                   </h6>
-                                   <p class="hidden-xs bold p-t-20">
-                                       jämföra butikernas priser på kläder som båda butikerna säljer. Det gäller att välja rätt i butikerna!
-                                   </p>
-                               </div>
-                               <div class="col-md-12 col-sm col-xs ">
-                                   <div class="m-t-10"><a href="/{{selectedDepartment}}/kläder/?compare=true"><button class="btn btn-info sbold"> Alla samma produkter</button></a></div>
-                                   <div class="m-t-10"><a href="/{{selectedDepartment}}/kläder/"><button class="btn btn-info sbold">Alla kläder</button></a></div>
+                   <div class="p-xs-t-10 bg-master" id="compareClothes">
+                       <div class="col-md-4 m-xs-b-20 col-xs-12">
+                           <div>
+                               <div class="no-padding bg-image {{mapDepartment selectedDepartment}}">
+                                   <div class="full-width" >
+                                       <div class="padding-15 m-xs-b-10 padding-xs-10 row">
+                                           <div class="col-md-12 col-sm-8 col-xs-6">
+                                               <div class="col-xs-12  hidden-xs text-section">
+                                                   <h2 class="text-spaced light  text-white all-caps">Jämför <font class=" sbold ">priser</font> <br/> inom <font class="sbold">mode</font></h2>
+                                                   <h5>bästa pris fär kläder, skor och m.m </h5>
+                                               </div>
+                                               <h4 class="text-master visible-xs all-caps no-margin no-padding">
+                                                   <font class="text-spaced-medium sbold text-black">Samma Plagg</font>
+                                               </h4>
+                                               <h4 class="text-black hidden-xs bold ">
+                                                   Olika Butiker | Olika Priser
+                                               </h4>
+                                               <h6 class="text-black visible-xs bold ">
+                                                   Olika Butiker | Olika Priser
+                                               </h6>
+                                               <p class="hidden-xs bold p-t-20">
+                                                   jämföra butikernas priser på kläder som båda butikerna säljer. Det gäller att välja rätt i butikerna!
+                                               </p>
+                                           </div>
+                                           <div class="col-md-12 col-sm col-xs ">
+                                               <div class="m-t-10"><a href="/{{selectedDepartment}}/kläder/?compare=true"><button class="btn btn-info sbold"> Alla samma produkter</button></a></div>
+                                               <div class="m-t-10"><a href="/{{selectedDepartment}}/kläder/"><button class="btn btn-info sbold">Alla kläder</button></a></div>
+                                           </div>
+                                       </div>
+                                   </div>
                                </div>
                            </div>
                        </div>
-                   </div>
-               </div>
-           </div>-->
-                       <h2 class="text-center full-width text-black medium all-caps ">
-                           Jämför priser för samma produkt
-                       </h2>
-                       <div class="col-md-10 col-md-offset-1 no-padding col-xs-12 col-sm-12" style="border:1px solid #eee; border-radius: 5px; box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);">
+                       <div class="col-md-8 col-xs-12 col-sm-12 bg-white">
                            <div class="carouselPreview relative mainCompareContainer">
-                               <div class="next-page "><i class="pg-arrow_lright_line_alt"></i></div>
-                               <div class="prev-page "><i class="pg-arrow_left_line_alt"></i></div>
-                               <div class="no-style text-center v-align-bottom " id="owl-clothes">
+                               <div class="no-style text-center v-align-bottom row p-t-40" >
                                    {{#each compareClothes}}
-                                       <div class="carousel mainCompareCarousel text-center no-overflow">
-                                           <a  href="{{this.productUrl}}"  rel="nofollow"  target="_blank">
-                                               <div class="relative">
-                                                   <img class="lazyOwl full-width" data-src="{{{this.mainPicture.largeUrl}}}"/>
-                                                   <div class="overlayer bottom-left hidden-xs full-width">
-                                                       <div class="overlayer-wrapper item-info more-content">
-                                                           <div class="gradient-black p-l-20 p-r-20 p-t-20 p-b-5">
-                                                               <a target="_blank" href="{{this.productUrl}}" rel="nofollow">
-                                                                   <button class="btn btn-default sbold"> Go to shop</button>
-                                                               </a>
-                                                               <div class="m-t-5">
-                                                                   <a class="light sbold text-white " href="/bästa-pris-för/{{{urlFriendly this.name}}}-{{this._id}}">
-                                                                       <i class="pg-italic"></i>More information
+                                       <div class="col-xs-4 m-b-50">
+                                           <div class="mainCompareCarousel text-center no-overflow">
+                                               <a  href="{{this.productUrl}}"  rel="nofollow"  target="_blank">
+                                                   <div class=" relative">
+                                                       <img class="" src="{{{this.mainPicture.largeUrl}}}"/>
+                                                       <div class="overlayer bottom-left hidden-xs full-width">
+                                                           <div class="overlayer-wrapper item-info more-content">
+                                                               <div class="gradient-grey p-l-20 p-r-20 p-t-20 p-b-5">
+                                                                   <a target="_blank" href="{{this.productUrl}}" rel="nofollow">
+                                                                       <button class="btn btn-default sbold"> Go to shop</button>
                                                                    </a>
-                                                               </div>
+                                                                   <div class="m-t-5">
+                                                                       <a class="light sbold text-white " href="/bästa-pris-för/{{{urlFriendly this.name}}}-{{this._id}}">
+                                                                           <i class="pg-italic"></i>More information
+                                                                       </a>
+                                                                   </div>
 
+                                                               </div>
                                                            </div>
                                                        </div>
                                                    </div>
-                                               </div>
-                                           </a>
-                                           <a  href="{{this.productUrl}}" rel="nofollow" target="_blank">
-                                               <p class="text-center no-margin bold b-b">{{this.brand.name}}
-                                                   {{#if this.isItSaving}}<br/> <span class="text-velvet" style="font-size: 12px;"><i><img src="/images/nav/compare.png" style="width:20px; height: auto;"></i>Spara <b>{{this.saving}}</b> ({{this.savingPercentage}}%)</span> {{/if}}
+                                               </a>
+                                               <a  href="{{this.productUrl}}" rel="nofollow" target="_blank">
+                                               <p class="text-center no-margin bold">{{this.brand.name}}
+                                           <!--  this.isItSaving-->
+                                                       <br/> <span class="text-velvet" style="font-size: 12px;"><i><img src="/images/nav/compare.png" style="width:20px; height: auto;"></i>Spara <b>{{this.saving}}</b> ({{this.savingPercentage}}%)</span>
+
                                                </p>
                                            </a>
-                                           <table class="auto-margin compareTable table-condensed" >
+                                               <!--<table class="auto-margin compareTable table-condensed" >
                                                {{#each this.articles.shops}}
                                                    <tr class="no-padding no-margin b-b p-t-5 b-grey">
                                                        <td class="inline no-padding p-t-5 p-b-5 v-align-middle no-margin ">
@@ -280,102 +253,87 @@
                                                        </td>
                                                    </tr>
                                                {{/each}}
-                                           </table>
-                                           <div class="text-center visible-xs p-t-10">
-                                               <a class="dark sbold fs-10 " href="/bästa-pris-för/{{{urlFriendly this.name}}}-{{this._id}}">
-                                                   <i class="pg-italic"></i>More information
-                                               </a>
+                                           </table>-->
+                                               <div class="text-center visible-xs p-t-10">
+                                                   <a class="dark sbold fs-10 " href="/bästa-pris-för/{{{urlFriendly this.name}}}-{{this._id}}">
+                                                       <i class="pg-italic"></i>More information
+                                                   </a>
+                                               </div>
                                            </div>
+
                                        </div>
                                    {{/each}}
                                </div>
-                               <a href="/{{selectedDepartment}}/kläder/?compare=true">
-                                   <button class="btn fs-14 bold btn-block btn-velvet">
-                                       Fler Prisjämförelser
-                                   </button>
-                               </a>
                            </div>
                        </div>
+
                    </div>
                {{/if}}
-
-
-
-
-
-
-
-               <div class="row no-margin m-t-100 m-xs-t-30 bg-master-lighter" >
-                   <div class="no-padding m-t-20 m-b-50 m-xs-t-0 full-width text-center p-xs-l-10 bg-image p-xs-r-10" id="findStyles">
-                       <h2 class="text-center text-black medium all-caps  ">
-                           Hitta stiler och jämför priser
-                       </h2>
-
-                       <p class="bold text-master-dark">
-                           Jämför samma stil till olika priser på kläder, skor och accessoarer. Det bästa priset för en och samma stil!
-                       </p>
-                   </div>
-                   <div class="col-md-10 col-md-offset-1 col-xs-12 col-sm-12">
-                       <div>
-                           <div class="feed row" data-page="1" data-total-pages="{{feed.pages}}">
-                               {{> feed_Back}}
-                           </div>
-                           {{#unless (compareNumber  1 feed.pages)}}
-                               <div class="text-center p-t-20 p-b-20">
-                                   <btn id="loadMoreFeed" class="btn btn-velvet bold circle">
-                                       Load More
-
-                                   </btn>
-                                   <div id="moreFeedLoader" class=" text-center" style="display: none;">
-                                       <img src='/dist/images/progress/progress-circle-danger.svg' style="width:60px; height: 60px;"/>
-                                   </div>
-                               </div>
-                           {{/unless}}
-                       </div>
-                   </div>
-                   <!-- <div class="col-md hidden-sm hidden-xs relative">
-                            <div id="sideBanner" >
-                                <p class="hint-text no-margin no-padding all-caps medium p-l-5"style="font-size: 8px; line-height: 8px;">annons</p>
-                                <a href="http://ad.zanox.com/ppc/?38687671C1960088891T" target="_blank"><img src="http://ad.zanox.com/ppv/?38687671C1960088891" align="bottom" width="120" height="600" border="0" hspace="1" alt="River Island Women"></a>
-                            </div>
-                    </div>-->
-               </div>
-
-
-               <div id="ourPartners" class="p-t-30 p-b-30 p-t-20 p-b-20 hidden-xs">
-                   <h3 class="text-center full-width text-white  bold all-caps m-b-20">
-                       Partners
-                   </h3>
-                   <div class="row p-t-5 shopLogo">
-                       <div class="col-xs-3 text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38716083C1837840187T"><img alt="asos-logo" src="/dist/images/shop-logos/asos.png" height="38" width="auto"/></a></div>
-                       <div class="col-xs-3 text-center"> <a target="_blank" rel="nofollow" href="https://clk.tradedoubler.com/click?p=227648&a=2845810&g=22955234"><img alt="boozt-logo" src="/dist/images/shop-logos/boozt.png" width="auto" height="32"/></a></div>
-                       <div class="col-xs-3 text-center"><a target="_blank" rel="nofollow" href="https://clk.tradedoubler.com/click?p=246777&a=2845810&g=21733454"><img alt="daniel-wellington-logo" src="/dist/images/shop-logos/danielwellington.png" width="auto" height="45"/></a></div>
-                       <div class="col-xs text-center "><a target="_blank" rel="nofollow" class="m-t-5" href="https://clk.tradedoubler.com/click?p=151948&a=2845810&g=18352288"><img alt="ellos-logo" src="/dist/images/shop-logos/ellos.png" width="auto" height="35"/></a></div>
-                   </div>
-
-                   <div class="row p-t-5 shopLogo">
-                       <div class="col-xs-3 text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38526299C41157032T"><img alt="mr-porter-logo" src="/dist/images/shop-logos/mrporter.png" width="auto" height="38"/></a></div>
-                       <div class="col-xs-3 text-center"><a target="_blank" rel="nofollow" href="https://clk.tradedoubler.com/click?p=270159&a=2845810&g=23120192"><img alt="nakd-logo" src="/dist/images/shop-logos/nakd.png" width="auto" height="30"/></a></div>
-                       <div class="col-xs-3 text-center"><a target="_blank" rel="nofollow" href="https://clk.tradedoubler.com/click?p=17833&a=2845810&g=17114610"><img alt="nelly-logo" src="/dist/images/shop-logos/nelly.png" width="auto" height="36"/></a></div>
-                       <div class="col-xs text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38093533C37559022T"><img class="m-t-5" alt="river-island-logo" src="/dist/images/shop-logos/riverisland.png"  width="auto" height="23"/></a></div>
-                   </div>
-
-                   <div class="row shopLogo" >
-                       <div class="col-xs-3 text-center"><a target="_blank" rel="nofollow"  href="https://ad.zanox.com/ppc/?38718725C26195304&ulp=[[http://www.farfetch.com]]"><img class="m-t-10" alt="farfetch-logo"  src="/dist/images/shop-logos/farfetch.png" width="auto" height="26"/></a></div>
-                       <div class="col-xs-3 text-center"><a target="_blank"  rel="nofollow" href="http://ad.zanox.com/ppc/?38223421C59905408T"><img class="m-t-0"  src="/dist/images/shop-logos/happysocks.png" alt="happysocks-logo" width="auto" height="50"/></a></div>
-                       <div class="col-xs-3 text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38514929C65783720T"><img class="m-t-10"  src="/dist/images/shop-logos/hope.png" alt="hope-logo" width="auto" height="28"/></a></div>
-                       <div class="col-xs text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38129541C17502336T"><img class="m-t-10"  src="/dist/images/shop-logos/miinto.png" alt="miinto-logo" width="auto" height="30"/></a></div>
-                   </div>
-                   <div class="row p-t-15 shopLogo">
-                       <div class="col-xs-3 text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38327053C74631457T"><img src="/dist/images/shop-logos/sarenza.png" alt="sarenza-logo" style="margin-top:4px;" width="auto" height="22"/></a></div>
-                       <div class="col-xs-3 text-center"><a target="_blank"rel="nofollow"  href="http://ad.zanox.com/ppc/?38147178C67665694T"><img src="/dist/images/shop-logos/stylepit.png" alt="stylepit-logo" width="auto" height="30"/></a></div>
-                       <div class="col-xs-3 text-center"><a target="_blank" rel="nofollow"  href="http://ad.zanox.com/ppc/?38165721C89270335T"><img src="/dist/images/shop-logos/topman.png" alt="topman-logo" style="margin-top:4px;" width="auto" height="22"/></a></div>
-                       <div class="col-xs text-center hidden-sm hidde-xs"><a rel="nofollow" target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38637325C44813741T"><img alt="urban-outfitters-logo" src="/dist/images/shop-logos/urban-outfitters.png" width="auto" height="34"/></a></div>
-                   </div>
-               </div>
            </div>
 
+           <div class="row no-margin m-xs-t-30 bg-master" >
+                       <div class="col-md-8 bg-master-lighter  no-margin no-padding col-xs-12 col-sm-12">
+                           <div>
+                               <div class="feed row" data-page="1" data-total-pages="{{feed.pages}}">
+                                   {{> feed_Back}}
+                               </div>
+                               {{#unless (compareNumber  1 feed.pages)}}
+                                   <div class="text-center p-t-20 p-b-20">
+                                       <btn id="loadMoreFeed" class="btn btn-velvet bold circle">
+                                           Load More
 
+                                       </btn>
+                                       <div id="moreFeedLoader" class=" text-center" style="display: none;">
+                                           <img src='/dist/images/progress/progress-circle-danger.svg' style="width:60px; height: 60px;"/>
+                                       </div>
+                                   </div>
+                               {{/unless}}
+                           </div>
+                       </div>
+                       <div class="col-md-4 m-t-20 m-b-50 m-xs-t-0  full-width text-center p-xs-l-10 bg-image p-xs-r-10 " id="findStyles">
+                           <div class="padding-20">
+                               <h2 class="text-spaced light text-left text-white all-caps">Hitta  <font class=" sbold ">stiler</font> <br/> och jämför <font class="sbold">priser</font></h2>
+                               <p class="bold text-left text-master-dark">
+                                   Jämför samma stil till olika priser på kläder, skor och accessoarer. Det bästa priset för en och samma stil!
+                               </p>
+                           </div>
+                           <div>
+                               <div id="ourPartners" class=" p-t-20 p-b-20 hidden-xs">
+                                   <h3 class="text-center full-width text-white bold all-caps m-b-20">
+                                       Partners
+                                   </h3>
+                                   <div class="row  no-margin no-padding shopLogo">
+                                       <div class="col-xs-6 p-t-10 text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38716083C1837840187T"><img alt="asos-logo" src="/dist/images/shop-logos/asos.png" height="38" width="auto"/></a></div>
+                                       <div class="col-xs-6 p-t-10 text-center"> <a target="_blank" rel="nofollow" href="https://clk.tradedoubler.com/click?p=227648&a=2845810&g=22955234"><img alt="boozt-logo" src="/dist/images/shop-logos/boozt.png" width="auto" height="32"/></a></div>
+                                       <div class="col-xs-6 p-t-10 text-center"><a target="_blank" rel="nofollow" href="https://clk.tradedoubler.com/click?p=246777&a=2845810&g=21733454"><img alt="daniel-wellington-logo" src="/dist/images/shop-logos/danielwellington.png" width="auto" height="45"/></a></div>
+                                       <div class="col-xs-6 p-t-10 text-center "><a target="_blank" rel="nofollow" class="m-t-5" href="https://clk.tradedoubler.com/click?p=151948&a=2845810&g=18352288"><img alt="ellos-logo" src="/dist/images/shop-logos/ellos.png" width="auto" height="35"/></a></div>
+
+                                       <div class="col-xs-6 p-t-10  text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38526299C41157032T"><img alt="mr-porter-logo" src="/dist/images/shop-logos/mrporter.png" width="auto" height="38"/></a></div>
+                                       <div class="col-xs-6 p-t-105  text-center"><a target="_blank" rel="nofollow" href="https://clk.tradedoubler.com/click?p=270159&a=2845810&g=23120192"><img alt="nakd-logo" src="/dist/images/shop-logos/nakd.png" width="auto" height="30"/></a></div>
+                                       <div class="col-xs-6 p-t-10  text-center"><a target="_blank" rel="nofollow" href="https://clk.tradedoubler.com/click?p=17833&a=2845810&g=17114610"><img alt="nelly-logo" src="/dist/images/shop-logos/nelly.png" width="auto" height="36"/></a></div>
+                                       <div class="col-xs-6 p-t-10  text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38093533C37559022T"><img class="m-t-5" alt="river-island-logo" src="/dist/images/shop-logos/riverisland.png"  width="auto" height="23"/></a></div>
+
+                                       <div class="col-xs-6 p-t-10  text-center"><a target="_blank" rel="nofollow"  href="https://ad.zanox.com/ppc/?38718725C26195304&ulp=[[http://www.farfetch.com]]"><img class="m-t-10" alt="farfetch-logo"  src="/dist/images/shop-logos/farfetch.png" width="auto" height="26"/></a></div>
+                                       <div class="col-xs-6 p-t-10  text-center"><a target="_blank"  rel="nofollow" href="http://ad.zanox.com/ppc/?38223421C59905408T"><img class="m-t-0"  src="/dist/images/shop-logos/happysocks.png" alt="happysocks-logo" width="auto" height="50"/></a></div>
+                                       <div class="col-xs-6 p-t-10  text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38514929C65783720T"><img class="m-t-10"  src="/dist/images/shop-logos/hope.png" alt="hope-logo" width="auto" height="28"/></a></div>
+                                       <div class="col-xs-6 p-t-10  text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38129541C17502336T"><img class="m-t-10"  src="/dist/images/shop-logos/miinto.png" alt="miinto-logo" width="auto" height="30"/></a></div>
+
+                                       <div class="col-xs-6 p-t-10  text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38327053C74631457T"><img src="/dist/images/shop-logos/sarenza.png" alt="sarenza-logo" style="margin-top:4px;" width="auto" height="22"/></a></div>
+                                       <div class="col-xs-6 p-t-10 text-center"><a target="_blank"rel="nofollow"  href="http://ad.zanox.com/ppc/?38147178C67665694T"><img src="/dist/images/shop-logos/stylepit.png" alt="stylepit-logo" width="auto" height="30"/></a></div>
+                                       <div class="col-xs-6 p-t-10  text-center"><a target="_blank" rel="nofollow"  href="http://ad.zanox.com/ppc/?38165721C89270335T"><img src="/dist/images/shop-logos/topman.png" alt="topman-logo" style="margin-top:4px;" width="auto" height="22"/></a></div>
+                                       <div class="col-xs-6 p-t-10  text-center hidden-sm hidde-xs"><a rel="nofollow" target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38637325C44813741T"><img alt="urban-outfitters-logo" src="/dist/images/shop-logos/urban-outfitters.png" width="auto" height="34"/></a></div>
+                                   </div>
+                               </div>
+
+                           </div>
+                       </div>
+                       <!-- <div class="col-md hidden-sm hidden-xs relative">
+                                <div id="sideBanner" >
+                                    <p class="hint-text no-margin no-padding all-caps medium p-l-5"style="font-size: 8px; line-height: 8px;">annons</p>
+                                    <a href="http://ad.zanox.com/ppc/?38687671C1960088891T" target="_blank"><img src="http://ad.zanox.com/ppv/?38687671C1960088891" align="bottom" width="120" height="600" border="0" hspace="1" alt="River Island Women"></a>
+                                </div>
+                        </div>-->
+                   </div>
        </div>
 
 

@@ -192,6 +192,7 @@ var helper = {
         var clothArray = [],accessoryArray = [], shoesArray = [];
         Article.find({"shops":{"$not":{"$size":1}}}, {_id: 1}).exec(function(err, docs){
             var ids = docs.map(function(doc) { return doc._id;});
+
             Products.find({"articles":{$in: ids}, "genders": shared.helper.mapDepartment(department)})
                 .deepPopulate(options).limit(30).lean().exec(function(err, products){
                 if(err) return callback(err);
@@ -222,7 +223,12 @@ var helper = {
                         }
                     }
                 }
-                return callback(null, clothArray, shoesArray, accessoryArray);
+                var returnArray = [];
+                for(var i = 0; i< 6;i++){
+                    returnArray.push(clothArray[i]);
+
+                }
+                return callback(null, returnArray, shoesArray, accessoryArray);
             });
         });
 
