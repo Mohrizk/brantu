@@ -28,6 +28,7 @@
     "express-session": "^1.10.1",
     "express-sitemap": "^1.6.3",
     "fb": "^1.1.1",
+    "form-data": "^1.0.1",
     "i18n-2": "^0.6.3",
     "levenshtein": "^1.0.5",
     "mongodb": "^1.4.4",
