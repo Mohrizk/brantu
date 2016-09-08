@@ -1,18 +1,2 @@
 # global
-User-agent: *
-Disallow: /admin/*
-Disallow: /email/*
-Disallow: /fb/*
-Disallow: /newsletter
-Disallow: /newsletter/*
-Disallow: /api/*
-Disallow: /reset/*
-Disallow: /auth/*
-Disallow: /images/icons/*
-Disallow: /images/nav/*
-
-
-# Define website sitemaps
-Sitemap: http://www.brantu.com/static-sitemap.xml
-Sitemap: http://www.brantu.com/category-sitemap.xml
-Sitemap: http://www.brantu.com/blog-sitemap.xml
+Disallow: /*

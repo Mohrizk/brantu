@@ -48,8 +48,12 @@ input:-webkit-autofill {
 }
 .hoverish:hover{
     border:2px solid black;
-    opacity: 0.8;
+    opacity: 0.2;
 }
+
+
+
+
 .no-overflow-text{
     white-space: nowrap;
     overflow: hidden;
@@ -385,23 +389,9 @@ ul.circle li:hover div{
  /* Home Compare Carousel
 ------------------------------------*/
 
-.mainCompareCarousel .overlayer{
-    display: none;
-    opacity: 0;
-    transition:all 240ms cubic-bezier(0.86, 0, 0.07, 1);
-}
-.mainCompareCarousel:hover .overlayer{
-    display: block;
-    opacity: 1;
-}
-.mainCompareContainer .owl-controls{
-        display: none !important;
-}
 
 
-.sideBarCarousel{
-    height: 520px;
-}
+
 
 .carouselPreview .next-page, .carouselPreview .prev-page{
     z-index:10;

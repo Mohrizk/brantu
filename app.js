@@ -83,6 +83,8 @@ hbs = exphbs.create({
             'views/partials/',
             'views/partials/nav/',
             'views/partials/settings/',
+            'views/partials/product/',
+            'views/partials/blog/',
             'views/shared-templates/'
         ]
     })
