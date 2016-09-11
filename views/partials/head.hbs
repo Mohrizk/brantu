@@ -160,6 +160,7 @@
     </div>
     <script>
         //COOKIE CONCESSION
+        console.log('ites read')
         function sendCookieConcession(){
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
@@ -189,29 +190,27 @@
 
 
 {{#unless user}}
-    {{#unless signupPopup}}
+
     <script>
+        console.log('ites read2');
         function sendSignupPopup(){
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    console.log(xhttp.responseText);
+                    var tutorialSection = $('#tutorialPopup');
+                    tutorialSection.removeClass('hidden').css({opacity:0}).animate({opacity:1}, 500);
                 }
             };
             xhttp.open("POST", "/signup-popup", true);
             xhttp.send();
         }
         setTimeout(function(){
-            var registerContainer = $('.registerContainer');
-            var registerSection = $('#AuthenticationPopUp');
-            var number = (isMobile? 0:50);
-            if(!registerContainer.is(':visible')){
-                registerContainer.stop().addClass('active').css({marginTop:800}).animate({marginTop:number}, 800);
-                registerSection.removeClass('hidden').css({opacity:0}).animate({opacity:1}, 500);
-            }
+            console.log('sending now')
             sendSignupPopup();
-        }, 16000)
+        }, 10000)
     </script>
-    {{/unless}}
+
 {{/unless}}
 
 

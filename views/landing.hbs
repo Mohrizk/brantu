@@ -118,37 +118,41 @@
 
 
 
+
        <div class="container no-padding bg-white" id="owlLanding">
+           
 
-           <div class="bg-image mainJumbtron special-border relative no-overflow relative ">
-               <div class="col-md-4 full-height relative" >
-                   <div class=" col-xs-12 p-t-20  hidden-xs text-section">
-                       <h1 class="text-spaced light  text-black all-caps">Jämför <font class=" sbold text-purple">priser</font> <br/> inom <font class="sbold">mode.</font></h1>
-                   </div>
-                   <div class="padding-1v col-xs-12 text-center visible-xs text-section">
-                       <h4 class="text-spaced all-caps bold text-black all-caps">Jämför <font class="hidden">priser</font> och hitta det bästa priset inom mode.</h4>
-                   </div>
-               </div>
-
-               <div class="col-md-8 relative full-height  text-center bg-image {{mapDepartment selectedDepartment}}" >
-                   <div style="" class="top-left bottom-right"  data-gradient>
-                       <div class="col-xs-12 p-t-20 hidden-xs text-section">
-                           <h3 class="text-black light all-caps text-spaced">fynda <font class="sbold">nu!</font> </h3>
+           <div class="bg-image mainJumbtron special-border relative no-overflow relative " data-pages="parallax">
+               <div class="inner">
+                   <div class="col-md-4 full-height relative" >
+                       <div class=" col-xs-12 p-t-20  hidden-xs text-section">
+                           <h1 class="text-spaced light  text-black all-caps">Jämför <font class=" sbold text-purple">priser</font> <br/> inom <font class="sbold">mode.</font></h1>
                        </div>
-                       <form id="autocompleteForm">
-                           <div class="m-t-100">
-                               <div class="search-link landing ">
-                                   <form id="searchForm">
-                                       <input type="text" placeholder="sök produkt, märke eller kategori " id="search"/>
-                                   </form>
+                       <div class="padding-1v col-xs-12 text-center visible-xs text-section">
+                           <h4 class="text-spaced all-caps bold text-black all-caps">Jämför <font class="hidden">priser</font> och hitta det bästa priset inom mode.</h4>
+                       </div>
+                   </div>
+                   <div class="col-md-8 relative full-height  text-center bg-image {{mapDepartment selectedDepartment}}" >
+                       <a class="" search-link>
+                           <div style="" class="top-left bottom-right"  data-gradient>
+                               <div class="col-xs-12 p-t-20 hidden-xs text-section">
+                                   <h3 class="text-black light all-caps text-spaced">fynda <font class="sbold">nu!</font> </h3>
                                </div>
-                           </div>
+                               <form id="autocompleteForm">
+                                   <div class="m-t-100">
+                                       <div class="search-link landing ">
+                                           <form id="searchForm">
+                                               <input type="text" placeholder="sök produkt, märke eller kategori " id="search"/>
+                                           </form>
+                                       </div>
+                                   </div>
 
-                       </form>
+                               </form>
+                           </div>
+                       </a>
+
 
                    </div>
-
-
                </div>
            </div>
 
@@ -206,8 +210,8 @@
                {{#if compareClothes}}
                    <div class="p-xs-t-10 bg-master-light row no-margin" id="compareClothes">
                        <div class="col-md-4 m-xs-b-20 col-xs-12 relative  special-border-side  col-xs-height">
-                           <div class="bottom-left top-right bg-image sideBarCarousel {{mapDepartment selectedDepartment}}">
-                               <div class="no-padding  ">
+                           <div class=" bottom-left top-right bg-image sideBarCarousel {{mapDepartment selectedDepartment}}">
+                               <div class="inner no-padding  ">
                                    <div class="full-width p-t-1" >
                                        <div class="padding-30 m-xs-b-10 padding-xs-10 row">
                                            <div class="col-md-12 col-sm-8 col-xs-6">
@@ -234,7 +238,7 @@
                                                <a  href="{{this.productUrl}}"  rel="nofollow"  target="_blank">
 
                                                    <div class=" relative auto-width">
-                                                       <img src="{{{this.mainPicture.largeUrl}}}"/>
+                                                       <img class="lazy"  data-original="{{{this.mainPicture.largeUrl}}}"/>
                                                        <div class="overlayer bottom-left hidden-xs full-width">
                                                            <div class="overlayer-wrapper item-info deep-content ">
                                                                <div class="gradient-white p-l-20 p-r-20 p-t-5 p-b-5">
@@ -303,10 +307,10 @@
            </div>
             <div class="container no-padding">
                 <div class="row  no-margin m-xs-t-30 bg-master-light special-border" >
-                    <div class="col-md-8 no-margin no-padding col-xs-12 col-sm-12 ">
+                    <div class="col-md-8 no-margin no-padding col-xs-12 col-sm-12">
                         <div>
                             <div class=" {{mapDepartment selectedDepartment}} special-border bg-image" id="sameStyle">
-                                <div class="padding-20">
+                                <div class="padding-20 ">
                                     <h2 class="text-spaced light text-left text-black all-caps">Hitta  <font class=" sbold text-purple">stiler</font> <br/> och jämför <font class="sbold">priser</font></h2>
                                     <p class="bold text-left ">
                                         Jämför samma stil till olika priser på kläder, skor och accessoarer. <font class="hidden">Det bästa priset för en och samma stil!</font>
@@ -332,55 +336,160 @@
                     </div>
                     <div class="col-md-4 special-border m-xs-t-0 text-center p-xs-l-10   bg-image p-xs-r-10 " id="findStyles">
 
-                        <div>
-                            <div id="" class=" p-t-20 p-b-20 hidden-xs">
-                                <h2 class="text-center light full-width text-black all-caps m-b-20">
-                                    Våra <font class="sbold">partners</font>
-                                </h2>
-                                <div class="row  no-margin no-padding ">
-                                    <div class="col-xs-12 p-t-10 text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38716083C1837840187T"><img alt="asos-logo" src="/dist/images/shop-logos/asos.png" height="38" width="auto"/></a></div>
-                                    <div class="col-xs-12 p-t-10 text-center"> <a target="_blank" rel="nofollow" href="https://clk.tradedoubler.com/click?p=227648&a=2845810&g=22955234"><img alt="boozt-logo" src="/dist/images/shop-logos/boozt.png" width="auto" height="32"/></a></div>
-                                    <div class="col-xs-12 p-t-10 text-center"><a target="_blank" rel="nofollow" href="https://clk.tradedoubler.com/click?p=246777&a=2845810&g=21733454"><img alt="daniel-wellington-logo" src="/dist/images/shop-logos/danielwellington.png" width="auto" height="45"/></a></div>
-                                    <div class="col-xs-12 p-t-10 text-center "><a target="_blank" rel="nofollow" class="m-t-5" href="https://clk.tradedoubler.com/click?p=151948&a=2845810&g=18352288"><img alt="ellos-logo" src="/dist/images/shop-logos/ellos.png" width="auto" height="35"/></a></div>
 
-                                    <div class="col-xs-12 p-t-10  text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38526299C41157032T"><img alt="mr-porter-logo" src="/dist/images/shop-logos/mrporter.png" width="auto" height="38"/></a></div>
-                                    <div class="col-xs-12 p-t-10  text-center"><a target="_blank" rel="nofollow" href="https://clk.tradedoubler.com/click?p=270159&a=2845810&g=23120192"><img alt="nakd-logo" src="/dist/images/shop-logos/nakd.png" width="auto" height="30"/></a></div>
-                                    <div class="col-xs-12 p-t-10  text-center"><a target="_blank" rel="nofollow" href="https://clk.tradedoubler.com/click?p=17833&a=2845810&g=17114610"><img alt="nelly-logo" src="/dist/images/shop-logos/nelly.png" width="auto" height="36"/></a></div>
-                                    <div class="col-xs-12 p-t-10  text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38093533C37559022T"><img class="m-t-5" alt="river-island-logo" src="/dist/images/shop-logos/riverisland.png"  width="auto" height="23"/></a></div>
+                        <div id="" class=" p-t-20 p-b-20 hidden-xs b-a b-thick">
+                            <h2 class="text-center light full-width text-purple all-caps m-b-20">
+                                Våra <font class="sbold">partners</font>
+                            </h2>
+                            <div class="row  no-margin no-padding hint-text">
+                                <div class="col-xs-12 p-t-10 text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38716083C1837840187T"><img alt="asos-logo" class="lazy" src="/dist/images/shop-logos/asos.png" height="38" width="auto"/></a></div>
+                                <div class="col-xs-12 p-t-30 text-center"> <a target="_blank" rel="nofollow" href="https://clk.tradedoubler.com/click?p=227648&a=2845810&g=22955234"><img alt="boozt-logo" class="lazy" src="/dist/images/shop-logos/boozt.png" width="auto" height="28"/></a></div>
+                                <div class="col-xs-12 p-t-30 text-center"><a target="_blank" rel="nofollow" href="https://clk.tradedoubler.com/click?p=246777&a=2845810&g=21733454"><img alt="daniel-wellington-logo" class="lazy" src="/dist/images/shop-logos/danielwellington.png" width="auto" height="57"/></a></div>
+                                <div class="col-xs-12 p-t-20 text-center "><a target="_blank" rel="nofollow" class="m-t-5" href="https://clk.tradedoubler.com/click?p=151948&a=2845810&g=18352288"><img alt="ellos-logo" class="lazy" src="/dist/images/shop-logos/ellos.png" width="auto" height="42"/></a></div>
 
-                                    <div class="col-xs-12 p-t-10  text-center"><a target="_blank" rel="nofollow"  href="https://ad.zanox.com/ppc/?38718725C26195304&ulp=[[http://www.farfetch.com]]"><img class="m-t-10" alt="farfetch-logo"  src="/dist/images/shop-logos/farfetch.png" width="auto" height="26"/></a></div>
-                                    <div class="col-xs-12 p-t-10  text-center"><a target="_blank"  rel="nofollow" href="http://ad.zanox.com/ppc/?38223421C59905408T"><img class="m-t-0"  src="/dist/images/shop-logos/happysocks.png" alt="happysocks-logo" width="auto" height="50"/></a></div>
-                                    <div class="col-xs-12 p-t-10  text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38514929C65783720T"><img class="m-t-10"  src="/dist/images/shop-logos/hope.png" alt="hope-logo" width="auto" height="28"/></a></div>
-                                    <div class="col-xs-12 p-t-10  text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38129541C17502336T"><img class="m-t-10"  src="/dist/images/shop-logos/miinto.png" alt="miinto-logo" width="auto" height="30"/></a></div>
+                                <div class="col-xs-12 p-t-30  text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38526299C41157032T"><img alt="mr-porter-logo" class="lazy" src="/dist/images/shop-logos/mrporter.png" width="auto" height="38"/></a></div>
+                                <div class="col-xs-12 p-t-30  text-center"><a target="_blank" rel="nofollow" href="https://clk.tradedoubler.com/click?p=270159&a=2845810&g=23120192"><img class="lazy" alt="nakd-logo" src="/dist/images/shop-logos/nakd.png" width="auto" height="32"/></a></div>
+                                <div class="col-xs-12 p-t-30  text-center"><a target="_blank" rel="nofollow" href="https://clk.tradedoubler.com/click?p=17833&a=2845810&g=17114610"><img class="lazy" alt="nelly-logo" src="/dist/images/shop-logos/nelly.png" width="auto" height="36"/></a></div>
+                                <div class="col-xs-12 p-t-30  text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38093533C37559022T"><img class="m-t-5" alt="river-island-logo" class="lazy" src="/dist/images/shop-logos/riverisland.png"  width="auto" height="23"/></a></div>
 
-                                    <div class="col-xs-12 p-t-10  text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38327053C74631457T"><img src="/dist/images/shop-logos/sarenza.png" alt="sarenza-logo" style="margin-top:4px;" width="auto" height="22"/></a></div>
-                                    <div class="col-xs-12 p-t-10 text-center"><a target="_blank"rel="nofollow"  href="http://ad.zanox.com/ppc/?38147178C67665694T"><img src="/dist/images/shop-logos/stylepit.png" alt="stylepit-logo" width="auto" height="30"/></a></div>
-                                    <div class="col-xs-12 p-t-10  text-center"><a target="_blank" rel="nofollow"  href="http://ad.zanox.com/ppc/?38165721C89270335T"><img src="/dist/images/shop-logos/topman.png" alt="topman-logo" style="margin-top:4px;" width="auto" height="22"/></a></div>
-                                    <div class="col-xs-12 p-t-10  text-center hidden-sm hidde-xs"><a rel="nofollow" target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38637325C44813741T"><img alt="urban-outfitters-logo" src="/dist/images/shop-logos/urban-outfitters.png" width="auto" height="34"/></a></div>
-                                </div>
+                                <div class="col-xs-12 p-t-30  text-center"><a target="_blank" rel="nofollow"  href="https://ad.zanox.com/ppc/?38718725C26195304&ulp=[[http://www.farfetch.com]]"><img class="m-t-10" alt="farfetch-logo"  class="lazy" src="/dist/images/shop-logos/farfetch.png" width="auto" height="26"/></a></div>
+                                <div class="col-xs-12 p-t-30  text-center"><a target="_blank"  rel="nofollow" href="http://ad.zanox.com/ppc/?38223421C59905408T"><img class="m-t-0"  class="lazy" src="/dist/images/shop-logos/happysocks.png" alt="happysocks-logo" width="auto" height="62"/></a></div>
+                                <div class="col-xs-12 p-t-30  text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38514929C65783720T"><img class="m-t-10"  class="lazy" src="/dist/images/shop-logos/hope.png" alt="hope-logo" width="auto" height="28"/></a></div>
+                                <div class="col-xs-12 p-t-30  text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38129541C17502336T"><img class="m-t-10"  class="lazy" src="/dist/images/shop-logos/miinto.png" alt="miinto-logo" width="auto" height="30"/></a></div>
+
+                                <div class="col-xs-12 p-t-30  text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38327053C74631457T"><img class="lazy" src="/dist/images/shop-logos/sarenza.png" alt="sarenza-logo" style="margin-top:4px;" width="auto" height="22"/></a></div>
+                                <div class="col-xs-12 p-t-30 text-center"><a target="_blank"rel="nofollow"  href="http://ad.zanox.com/ppc/?38147178C67665694T"><img class="lazy" src="/dist/images/shop-logos/stylepit.png" alt="stylepit-logo" width="auto" height="30"/></a></div>
+                                <div class="col-xs-12 p-t-30  text-center"><a target="_blank" rel="nofollow"  href="http://ad.zanox.com/ppc/?38165721C89270335T"><img class="lazy" src="/dist/images/shop-logos/topman.png" alt="topman-logo" style="margin-top:4px;" width="auto" height="22"/></a></div>
+                                <div class="col-xs-12 p-t-30  text-center hidden-sm hidde-xs"><a rel="nofollow" target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38637325C44813741T"><img alt="urban-outfitters-logo" class="lazy" src="/dist/images/shop-logos/urban-outfitters.png" width="auto" height="39"/></a></div>
                             </div>
+                        </div>
+
+                        <div class="m-t-30  p-t-20 p-b-20 hidden-xs b-a b-thick b-white">
+                            <h2 class="b-b b-transparent-white p-b-10">
+                                How Brantu <font class="sbold">Works</font>
+                            </h2>
+                            <ul class="no-style text-left p-l-60">
+                                <li class="fs-16 bold ">
+                                    <div>
+                                        <div class="inline">
+                                            <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px"
+                                                 viewBox="0 0 65 63" enable-background="new 0 0 65 63" xml:space="preserve">
+                                            <title>Zoom-out</title>
+                                            <desc>Created with Sketch.</desc>
+                                            <g id="Page-1" sketch:type="MSPage">
+                                                <g id="Zoom-out" transform="translate(1.000000, 1.000000)" sketch:type="MSLayerGroup">
+                                                    <path id="Shape" sketch:type="MSShapeGroup" fill="none" stroke="#630D54" stroke-width="2" d="M41.39,32.486L62,53.08L55.081,60
+                                                        L35.188,40.107"/>
+                                                    <circle id="Oval" sketch:type="MSShapeGroup" fill="none" stroke="#6D6E71" stroke-width="2" cx="22.017" cy="22.017" r="22.017">
+                                                    </circle>
+                                                </g>
+                                            </g>
+                                            </svg>
+                                        </div>
+                                        <div class="inline p-l-20 v-align-top p-t-5">Quick Search</div>
+                                    </div>
+                                </li>
+
+                                <li class="fs-16 bold p-t-20">
+                                    <div class="inline">
+                                        <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px"
+                                         viewBox="0 0 56 63" enable-background="new 0 0 56 63" xml:space="preserve">
+                                    <title>Target</title>
+                                    <desc>Created with Sketch.</desc>
+                                    <g id="Page-1" sketch:type="MSPage">
+                                        <g id="Target" transform="translate(1.000000, 0.000000)" sketch:type="MSLayerGroup">
+                                            <circle id="Oval" sketch:type="MSShapeGroup" fill="none" stroke="#6D6E71" stroke-width="2.4091" cx="27" cy="31.5" r="26.5">
+                                            </circle>
+
+                                                <circle id="Oval_1_" sketch:type="MSShapeGroup" fill="none" stroke="#6D6E71" stroke-width="2.4091" cx="27" cy="31.5" r="19.273">
+                                            </circle>
+
+                                                <circle id="Oval_2_" sketch:type="MSShapeGroup" fill="none" stroke="#6D6E71" stroke-width="2.4091" cx="27" cy="31.5" r="10.841">
+                                            </circle>
+
+                                                <circle id="Oval_3_" sketch:type="MSShapeGroup" fill="none" stroke="#630D54" stroke-width="2.4091" cx="27" cy="31.5" r="3.614">
+                                            </circle>
+                                        </g>
+                                    </g>
+                                    </svg>
+                                    </div>
+                                    <div class="inline p-l-20 v-align-top p-t-5">Easy Filter</div>
+
+                                </li >
+
+                                <li class="fs-16 bold p-t-20">
+                                    <div class="inline">
+                                         <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px"
+                                         viewBox="0 0 64 60" enable-background="new 0 0 64 60" xml:space="preserve">
+                                    <title>Balance</title>
+                                    <desc>Created with Sketch.</desc>
+                                    <g id="Page-1" sketch:type="MSPage">
+                                        <g id="Balance" transform="translate(1.000000, 1.000000)" sketch:type="MSLayerGroup">
+                                            <path id="Shape" sketch:type="MSShapeGroup" fill="none" stroke="#6D6E71" stroke-width="2" d="M31,6v47"/>
+                                            <circle id="Oval" sketch:type="MSShapeGroup" fill="none" stroke="#630D54" stroke-width="2" cx="31" cy="3" r="3">
+                                            </circle>
+                                            <path id="Shape_1_" sketch:type="MSShapeGroup" fill="none" stroke="#6D6E71" stroke-width="2" d="M7,13h48"/>
+                                            <path id="Shape_2_" sketch:type="MSShapeGroup" fill="none" stroke="#630D54" stroke-width="2" d="M11,54h40"/>
+                                            <path id="Shape_3_" sketch:type="MSShapeGroup" fill="none" stroke="#630D54" stroke-width="2" d="M6,58h50"/>
+                                            <path id="Shape_4_" sketch:type="MSShapeGroup" fill="none" stroke="#6D6E71" stroke-width="2" d="M0,37v3h14v-3"/>
+                                            <path id="Shape_5_" sketch:type="MSShapeGroup" fill="none" stroke="#6D6E71" stroke-width="2" d="M48,37v3h14v-3"/>
+                                            <path id="Shape_6_" sketch:type="MSShapeGroup" fill="none" stroke="#6D6E71" stroke-width="2" d="M1,35l6-22l6,22"/>
+                                            <path id="Shape_7_" sketch:type="MSShapeGroup" fill="none" stroke="#6D6E71" stroke-width="2" d="M49,35l6-22l6,22"/>
+                                        </g>
+                                    </g>
+                                    </svg>
+                                    </div>
+                                    <div class="inline p-l-20 v-align-top p-t-5">Compare Products</div>
+                                </li >
+
+                                <li class="fs-16 bold p-t-20">
+                                    <div class="inline">
+                                        <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px"
+                                             viewBox="0 0 64 56" enable-background="new 0 0 64 56" xml:space="preserve">
+                                        <title>T-shirt</title>
+                                        <desc>Created with Sketch.</desc>
+                                        <g id="Page-1" sketch:type="MSPage">
+                                            <g id="T-shirt" transform="translate(1.000000, 1.000000)" sketch:type="MSLayerGroup">
+                                                <path id="Shape_3_" sketch:type="MSShapeGroup" fill="none" stroke="#6D6E71" stroke-width="2" d="M52,0H38.931
+                                                    C38.438,3.945,35.078,7,31,7s-7.438-3.055-7.931-7H10H0v15h10v39h42V15h10V0H52L52,0z"/>
+                                                <path id="Shape" sketch:type="MSShapeGroup" fill="none" stroke="#630D54" stroke-width="2" d="M11,50h32"/>
+                                                <path id="Shape_1_" sketch:type="MSShapeGroup" fill="none" stroke="#630D54" stroke-width="2" d="M4,1v11"/>
+                                                <path id="Shape_2_" sketch:type="MSShapeGroup" fill="none" stroke="#630D54" stroke-width="2" d="M58,1v11"/>
+                                            </g>
+                                        </g>
+                                        </svg>
+                                    </div>
+                                    <div class="inline p-l-20 v-align-top p-t-5">Compare Styles</div>
+                                </li>
+                            </ul>
 
                         </div>
 
-                        <div class="col-md hidden-sm hidden-xs relative">
+
+
+                        <div class="col-md hidden-sm hidden-xs relative m-t-20">
                             <div id="sideBanner" >
                                 {{#if (compareStrings 'kvinna' selectedDepartment)}}
                                     <script type="text/javascript">
                                         var uri = 'https://impse.tradedoubler.com/imp?type(img)g(21435536)a(2845810)' + new String (Math.random()).substring (2, 11);
-                                        document.write('<a href="https://clk.tradedoubler.com/click?p=240446&a=2845810&g=21435536" target="_BLANK"><img src="'+uri+'" border=0></a>');
+                                        document.write('<a href="https://clk.tradedoubler.com/click?p=240446&a=2845810&g=21435536" target="_BLANK"><img class="lazy" data-original="'+uri+'" border=0></a>');
                                     </script>
                                     <script type="text/javascript">
                                         var uri = 'https://impse.tradedoubler.com/imp?type(img)g(22583584)a(2845810)' + new String (Math.random()).substring (2, 11);
-                                        document.write('<a href="https://clk.tradedoubler.com/click?p=151948&a=2845810&g=22583584" target="_BLANK"><img src="'+uri+'" border=0></a>');
+                                        document.write('<a href="https://clk.tradedoubler.com/click?p=151948&a=2845810&g=22583584" target="_BLANK"><img class="lazy" data-original="'+uri+'" border=0></a>');
                                     </script>
                                     <script type="text/javascript">
                                         var uri = 'https://impse.tradedoubler.com/imp?type(img)g(21141366)a(2845810)' + new String (Math.random()).substring (2, 11);
-                                        document.write('<a href="https://clk.tradedoubler.com/click?p=227648&a=2845810&g=21141366" target="_BLANK"><img src="'+uri+'" border=0></a>');
+                                        document.write('<a href="https://clk.tradedoubler.com/click?p=227648&a=2845810&g=21141366" target="_BLANK"><img class="lazy" data-original="'+uri+'" border=0></a>');
                                     </script>
                                 {{else}}
                                     <script type="text/javascript">
                                         var uri = 'https://impse.tradedoubler.com/imp?type(img)g(21984950)a(2845810)' + new String (Math.random()).substring (2, 11);
-                                        document.write('<a href="https://clk.tradedoubler.com/click?p=227648&a=2845810&g=21984950" target="_BLANK"><img src="'+uri+'" border=0></a>');
+                                        document.write('<a href="https://clk.tradedoubler.com/click?p=227648&a=2845810&g=21984950" target="_BLANK"><img class="lazy" data-original="'+uri+'" border=0></a>');
                                     </script>
 
                                     <!-- START of the zanox affiliate HTML code -->
@@ -390,7 +499,7 @@
 
                                     <script type="text/javascript">
                                         var uri = 'https://impse.tradedoubler.com/imp?type(img)g(21141366)a(2845810)' + new String (Math.random()).substring (2, 11);
-                                        document.write('<a href="https://clk.tradedoubler.com/click?p=227648&a=2845810&g=21141366" target="_BLANK"><img src="'+uri+'" border=0></a>');
+                                        document.write('<a href="https://clk.tradedoubler.com/click?p=227648&a=2845810&g=21141366" target="_BLANK"><img class="lazy" data-original="'+uri+'" border=0></a>');
                                     </script>
 
                                 {{/if}}

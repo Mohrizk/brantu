@@ -27,9 +27,12 @@ const ConnectRoles = require('connect-roles');
 
 const i18n = require('i18n-2');//Internationalization
 //FOR ROUTES
-const userRoutes = require('./routes/user-routes');
-const apiRoutes = require('./routes/api-routes');
-const adminRoutes = require('./routes/admin-routes');
+const indexRoutes = require('./routes/index');
+const userRoutes = require('./routes/user');
+const blogRoutes = require('./routes/blog');
+const jobsRoutes = require('./routes/blog');
+const apiRoutes = require('./routes/api');
+const adminRoutes = require('./routes/admin');
 
 const express = require('express'), sm = require('sitemap');
 const app = express();
@@ -220,15 +223,15 @@ app.get('/blog-sitemap.xml',[
     }]);
 
 
-
+/***
+ * ROUTES
+ * ****/
 app.use(adminRoutes);
 app.use('/api',apiRoutes);
+app.use('/jobs',jobsRoutes);
+app.use('/blog',blogRoutes);
 app.use(userRoutes);
-
-
-
-
-
+app.use(indexRoutes);
 
 
 //SCHEDULE NEWSLETTER
