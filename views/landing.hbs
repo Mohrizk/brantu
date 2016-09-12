@@ -22,7 +22,8 @@
 
 
            .mainCompareCarousel img{
-               width: 180px;
+               width:100%;
+               max-width: 180px;
            }
 
            #compareBoxCloth.MEN{
@@ -88,7 +89,8 @@
                    min-height:120px;
                }
                .mainCompareCarousel img{
-                   width: 140px;
+                   width:100%;
+                   max-width: 150px;
                }
 
                #compareClothes .sideBarCarousel.MEN{
@@ -104,7 +106,9 @@
                    min-height:100px;
                }
                .mainCompareCarousel img{
-                   width: 80px;
+
+                   width:100%;
+                   max-width: 160px;
                }
                .mainJumbtron.MEN{
                    background-image:url('/images/home/men/jumbtron_mobile.jpg');
@@ -135,10 +139,6 @@
            }
 
        </style>
-
-
-
-
        <div class="container  bg-white" id="owlLanding">
 
            <div class="bg-image mainJumbtron special-border relative no-overflow relative " data-pages="parallax">
@@ -232,7 +232,7 @@
 
            <div id="popularCompareCloth" class="special-border">
                {{#if compareClothes}}
-                   <div class="p-xs-t-10 bg-master-light row no-margin" id="compareClothes">
+                   <div class="bg-master-light row no-margin" id="compareClothes">
 
 
                        <div class="col-md-4 col-xs-12 special-border-side bg-image sideBarCarousel padding-20 {{mapDepartment selectedDepartment}}">
@@ -260,10 +260,9 @@
                            <div class="relative ">
                                <div class=" no-style text-center v-align-bottom p-t-40" >
                                    {{#each compareClothes}}
-                                       <div class="col-xs-4 m-b-50 no-border">
+                                       <div class="col-xs-6 col-sm-4 m-b-50 no-border">
                                            <div class="mainCompareCarousel gallery-item  bg-white text-center no-overflow" data-flex-width="1" data-height="0">
                                                <a  href="{{this.productUrl}}"  rel="nofollow"  target="_blank">
-
                                                    <div class=" relative auto-width">
                                                        <img class="lazy"  data-original="{{{this.mainPicture.largeUrl}}}"/>
                                                        <div class="overlayer bottom-left hidden-xs full-width">
@@ -275,7 +274,6 @@
                                                                            <span class="text-black" style="font-size: 12px;">
                                                                                <i><img src="/images/nav/compare.png" style="width:20px; height: auto;"></i>Spara
                                                                                <b>{{this.saving}}</b> ({{this.savingPercentage}}%)</span>
-
                                                                        </p>
                                                                    </a>
                                                                    <div class="p-t-15">

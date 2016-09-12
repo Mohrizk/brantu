@@ -5,80 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="319a9c44-cb0a-494b-a470-9e86d210bc29" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/2E8607-restorable.plist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Screen Shot 2016-09-09 at 12.40.55.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Screen Shot 2016-09-09 at 12.40.55@2x.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Screen Shot 2016-09-09 at 12.41.27.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Screen Shot 2016-09-09 at 12.41.27@2x.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Screen Shot 2016-09-09 at 12.44.20.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Screen Shot 2016-09-09 at 12.44.20@2x.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Screen Shot 2016-09-09 at 12.44.32.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Screen Shot 2016-09-09 at 12.44.32@2x.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Screen Shot 2016-09-09 at 12.47.26.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Screen Shot 2016-09-09 at 12.47.26@2x.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/brantu_hype_generated_script.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/2E8607-restorable.plist" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Screen Shot 2016-09-09 at 12.40.55.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Screen Shot 2016-09-09 at 12.40.55@2x.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Screen Shot 2016-09-09 at 12.41.27.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Screen Shot 2016-09-09 at 12.41.27@2x.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Screen Shot 2016-09-09 at 12.44.20.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Screen Shot 2016-09-09 at 12.44.20@2x.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Screen Shot 2016-09-09 at 12.44.32.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Screen Shot 2016-09-09 at 12.44.32@2x.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Screen Shot 2016-09-09 at 12.47.26.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Screen Shot 2016-09-09 at 12.47.26@2x.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/brantu_hype_generated_script.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/HYPE-458.full.min.js" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/HYPE-458.full.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/HYPE-458.thin.min.js" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/HYPE-458.thin.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/PIE.htc" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/PIE.htc" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Pasted-1.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Pasted-1.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Pasted-1@2x.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Pasted-1@2x.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Pasted-2.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Pasted-2.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Pasted-2@2x.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Pasted-2@2x.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Pasted-3.png" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Pasted-3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Pasted-3@2x.png" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Pasted-3@2x.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Pasted-4.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Pasted-4.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Pasted-4@2x.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Pasted-4@2x.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Pasted-5.png" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Pasted-5.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Pasted-5@2x.png" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Pasted-5@2x.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Pasted-6.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Pasted-6.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Pasted-6@2x.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Pasted-6@2x.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Pasted-7.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Pasted-7.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Pasted-7@2x.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Pasted-7@2x.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Pasted-8.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Pasted-8.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Pasted-8@2x.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Pasted-8@2x.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Pasted.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Pasted.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Pasted@2x.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Pasted@2x.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Screen Shot 2016-09-09 at 12.09.02.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Screen Shot 2016-09-09 at 12.09.02.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Screen Shot 2016-09-09 at 12.09.02@2x.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Screen Shot 2016-09-09 at 12.09.02@2x.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Screen Shot 2016-09-09 at 14.35.39.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Screen Shot 2016-09-09 at 14.35.39.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Screen Shot 2016-09-09 at 14.35.39@2x.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Screen Shot 2016-09-09 at 14.35.39@2x.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Screen Shot 2016-09-09 at 15.55.24.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Screen Shot 2016-09-09 at 15.55.24.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Screen Shot 2016-09-09 at 15.55.24@2x.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Screen Shot 2016-09-09 at 15.55.24@2x.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Screen Shot 2016-09-09 at 15.57.05.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Screen Shot 2016-09-09 at 15.57.05.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Screen Shot 2016-09-09 at 15.57.05@2x.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Screen Shot 2016-09-09 at 15.57.05@2x.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Screen Shot 2016-09-09 at 16.04.34.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Screen Shot 2016-09-09 at 16.04.34.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Screen Shot 2016-09-09 at 16.04.34@2x.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Screen Shot 2016-09-09 at 16.04.34@2x.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Screen Shot 2016-09-09 at 16.09.09.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Screen Shot 2016-09-09 at 16.09.09.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Screen Shot 2016-09-09 at 16.09.09@2x.jpg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Screen Shot 2016-09-09 at 16.09.09@2x.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Sharp-Bold.eot" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Sharp-Bold.eot" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Sharp-Bold.svg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Sharp-Bold.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Sharp-Bold.ttf" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Sharp-Bold.ttf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Sharp-Bold.woff" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Sharp-Bold.woff" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Sharp-Book.eot" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Sharp-Book.eot" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Sharp-Book.svg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Sharp-Book.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Sharp-Book.ttf" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Sharp-Book.ttf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Sharp-Book.woff" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Sharp-Book.woff" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Sharp-Light.eot" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Sharp-Light.eot" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Sharp-Light.svg" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Sharp-Light.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Sharp-Light.ttf" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Sharp-Light.ttf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/Sharp-Light.woff" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/Sharp-Light.woff" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/blank.gif" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/blank.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/brantu_multi.png" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/brantu_multi.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/BRANTU.hyperesources/brantu_multi@2x.png" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/brantu_multi@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/cache.manifest" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/Brantu.hyperesources/2E8607-restorable.plist" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/2E8607-restorable.plist" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/generic.css" afterPath="$PROJECT_DIR$/public/stylesheets/generic.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/Brantu.hyperesources/brantu_hype_generated_script.js" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/brantu_hype_generated_script.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/pages.css" afterPath="$PROJECT_DIR$/public/stylesheets/pages.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/landing.hbs" afterPath="$PROJECT_DIR$/views/landing.hbs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/footer.hbs" afterPath="$PROJECT_DIR$/views/partials/footer.hbs" />
     </list>
@@ -104,12 +35,9 @@
       <file leaf-file-name="landing.hbs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/landing.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.4339623">
-              <caret line="101" column="10" selection-start-line="101" selection-start-column="10" selection-end-line="101" selection-end-column="37" />
-              <folding>
-                <element signature="n#div#1;n#div#0;n#section#0;n#div#0;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#div#0;n#div#2;n#div#0;n#section#0;n#div#0;n#!!top" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="-4.125">
+              <caret line="243" column="176" selection-start-line="243" selection-start-column="173" selection-end-line="243" selection-end-column="176" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -117,14 +45,21 @@
       <file leaf-file-name="footer.hbs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/partials/footer.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.611797">
-              <caret line="160" column="63" selection-start-line="160" selection-start-column="63" selection-end-line="160" selection-end-column="63" />
+            <state vertical-scroll-proportion="0.61">
+              <caret line="167" column="98" selection-start-line="167" selection-start-column="98" selection-end-line="167" selection-end-column="98" />
               <folding>
-                <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pages.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/stylesheets/pages.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.5243902">
+              <caret line="1524" column="17" selection-start-line="1524" selection-start-column="17" selection-end-line="1524" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -132,7 +67,7 @@
       <file leaf-file-name="generic.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/stylesheets/generic.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.35">
+            <state vertical-scroll-proportion="-1039.7391">
               <caret line="1087" column="0" selection-start-line="1087" selection-start-column="0" selection-end-line="1087" selection-end-column="0" />
               <folding />
             </state>
@@ -142,18 +77,8 @@
       <file leaf-file-name="navigation.hbs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/navigation.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-2.6086957">
               <caret line="4" column="57" selection-start-line="4" selection-start-column="57" selection-end-line="4" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="productNavigation_Back.hbs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/partials/product/productNavigation_Back.hbs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="1" column="39" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -250,7 +175,6 @@
         <option value="$PROJECT_DIR$/routes/api-routes.js" />
         <option value="$PROJECT_DIR$/services/middleware/mw-products.js" />
         <option value="$PROJECT_DIR$/views/partials/feed_Back.hbs" />
-        <option value="$PROJECT_DIR$/public/stylesheets/pages.css" />
         <option value="$PROJECT_DIR$/views/partials/nav/nav.hbs" />
         <option value="$PROJECT_DIR$/robots.txt" />
         <option value="$PROJECT_DIR$/package.json" />
@@ -274,6 +198,7 @@
         <option value="$PROJECT_DIR$/views/partials/product/productRelated_Back.hbs" />
         <option value="$PROJECT_DIR$/views/shared-templates/productRelated.hbs" />
         <option value="$PROJECT_DIR$/public/stylesheets/generic.css" />
+        <option value="$PROJECT_DIR$/public/stylesheets/pages.css" />
         <option value="$PROJECT_DIR$/views/landing.hbs" />
         <option value="$PROJECT_DIR$/views/partials/footer.hbs" />
       </list>
@@ -341,7 +266,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -363,31 +287,14 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="views">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="brantu">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="views">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="partials">
+            <PATH_ELEMENT USER_OBJECT="public">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -409,19 +316,19 @@
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/public/BRANTU.hyperesources" />
-      <recent name="$PROJECT_DIR$/routes" />
-      <recent name="$PROJECT_DIR$/public/BRANTUnew.hyperesources" />
-      <recent name="$PROJECT_DIR$/public/" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/views/partials/blog" />
       <recent name="$PROJECT_DIR$/views/partials/product" />
       <recent name="$PROJECT_DIR$/public/images/home/men" />
       <recent name="$PROJECT_DIR$/public/images/home" />
       <recent name="$PROJECT_DIR$/public/images" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/Brantu.hyperesources" />
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/public/BRANTU.hyperesources" />
+      <recent name="$PROJECT_DIR$/routes" />
+      <recent name="$PROJECT_DIR$/public/BRANTUnew.hyperesources" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.Basic_Config">
@@ -496,7 +403,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="873" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="873" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22269204" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1085,25 +992,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/Brantu.hyperesources/PIE.htc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/partials/product/productRelated_Back.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="27" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/navigation.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="57" selection-start-line="4" selection-start-column="57" selection-end-line="4" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1155,41 +1047,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/pages.css">
+    <entry file="file://$PROJECT_DIR$/views/navigation.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="-2.6086957">
+          <caret line="4" column="57" selection-start-line="4" selection-start-column="57" selection-end-line="4" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/generic.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.35">
+        <state vertical-scroll-proportion="-1039.7391">
           <caret line="1087" column="0" selection-start-line="1087" selection-start-column="0" selection-end-line="1087" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/pages.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.5243902">
+          <caret line="1524" column="17" selection-start-line="1524" selection-start-column="17" selection-end-line="1524" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/landing.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.4339623">
-          <caret line="101" column="10" selection-start-line="101" selection-start-column="10" selection-end-line="101" selection-end-column="37" />
-          <folding>
-            <element signature="n#div#1;n#div#0;n#section#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#div#2;n#div#0;n#section#0;n#div#0;n#!!top" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="-4.125">
+          <caret line="243" column="176" selection-start-line="243" selection-start-column="173" selection-end-line="243" selection-end-column="176" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/partials/footer.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.611797">
-          <caret line="160" column="63" selection-start-line="160" selection-start-column="63" selection-end-line="160" selection-end-column="63" />
+        <state vertical-scroll-proportion="0.61">
+          <caret line="167" column="98" selection-start-line="167" selection-start-column="98" selection-end-line="167" selection-end-column="98" />
           <folding>
-            <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>

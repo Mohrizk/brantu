@@ -1520,6 +1520,10 @@ top:14%; left:7px;
   width: 7px;
 }
 /* Other overides */
+.container {
+  padding-left: 0px;
+  padding-right: 0px;
+}
 .container-fluid {
   padding-left: 30px;
   padding-right: 30px;
