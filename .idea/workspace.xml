@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="319a9c44-cb0a-494b-a470-9e86d210bc29" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/cache.manifest" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/Brantu.hyperesources/2E8607-restorable.plist" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/2E8607-restorable.plist" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/Brantu.hyperesources/brantu_hype_generated_script.js" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/brantu_hype_generated_script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/pages.css" afterPath="$PROJECT_DIR$/public/stylesheets/pages.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/landing.hbs" afterPath="$PROJECT_DIR$/views/landing.hbs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/Brantu.hyperesources/cache.manifest" afterPath="$PROJECT_DIR$/public/Brantu.hyperesources/cache.manifest" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/footer.hbs" afterPath="$PROJECT_DIR$/views/partials/footer.hbs" />
     </list>
     <ignored path="brantu.iws" />
@@ -45,8 +43,8 @@
       <file leaf-file-name="footer.hbs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/partials/footer.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.61">
-              <caret line="167" column="98" selection-start-line="167" selection-start-column="98" selection-end-line="167" selection-end-column="98" />
+            <state vertical-scroll-proportion="0.6685714">
+              <caret line="154" column="28" selection-start-line="154" selection-start-column="28" selection-end-line="154" selection-end-column="28" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -1081,8 +1079,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/partials/footer.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61">
-          <caret line="167" column="98" selection-start-line="167" selection-start-column="98" selection-end-line="167" selection-end-column="98" />
+        <state vertical-scroll-proportion="0.6685714">
+          <caret line="154" column="28" selection-start-line="154" selection-start-column="28" selection-end-line="154" selection-end-column="28" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
