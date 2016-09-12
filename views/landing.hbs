@@ -83,9 +83,29 @@
                background-position: 50% 40%;
            }
 
+           @media (max-width: 991px){
+               .sideBarCarouselWrapper{
+                   min-height:120px;
+               }
+               .mainCompareCarousel img{
+                   width: 140px;
+               }
 
+               #compareClothes .sideBarCarousel.MEN{
+                   background-image: url('/images/home/men/sidecarousel_cloth_men_mobile.jpg');
+               }
+               #compareClothes .sideBarCarousel.WOMEN{
+                   background-image: url('/images/home/women/sidecarousel_cloth_women_mobile.jpg');
+               }
+           }
 
            @media (max-width: 480px){
+               .sideBarCarouselWrapper{
+                   min-height:100px;
+               }
+               .mainCompareCarousel img{
+                   width: 80px;
+               }
                .mainJumbtron.MEN{
                    background-image:url('/images/home/men/jumbtron_mobile.jpg');
                }
@@ -119,62 +139,66 @@
 
 
 
-       <div class="container no-padding bg-white" id="owlLanding">
-           
+       <div class="container  bg-white" id="owlLanding">
 
            <div class="bg-image mainJumbtron special-border relative no-overflow relative " data-pages="parallax">
                <div class="inner">
-                   <div class="col-md-4 full-height relative" >
-                       <div class=" col-xs-12 p-t-20  hidden-xs text-section">
-                           <h1 class="text-spaced light  text-black all-caps">Jämför <font class=" sbold text-purple">priser</font> <br/> inom <font class="sbold">mode.</font></h1>
-                       </div>
-                       <div class="padding-1v col-xs-12 text-center visible-xs text-section">
-                           <h4 class="text-spaced all-caps bold text-black all-caps">Jämför <font class="hidden">priser</font> och hitta det bästa priset inom mode.</h4>
-                       </div>
-                   </div>
-                   <div class="col-md-8 relative full-height  text-center bg-image {{mapDepartment selectedDepartment}}" >
-                       <a class="" search-link>
-                           <div style="" class="top-left bottom-right"  data-gradient>
-                               <div class="col-xs-12 p-t-20 hidden-xs text-section">
-                                   <h3 class="text-black light all-caps text-spaced">fynda <font class="sbold">nu!</font> </h3>
-                               </div>
-                               <form id="autocompleteForm">
-                                   <div class="m-t-100">
-                                       <div class="search-link landing ">
-                                           <form id="searchForm">
-                                               <input type="text" placeholder="sök produkt, märke eller kategori " id="search"/>
-                                           </form>
-                                       </div>
-                                   </div>
-
-                               </form>
+                   <div class=row>
+                       <div class="col-md-4 col-sm-4 col-xs-12  hidden-xs full-height relative " >
+                           <div class=" col-xs-12 p-t-20  hidden-xs text-section">
+                               <h1 class="text-spaced light  text-black all-caps">Jämför <font class=" sbold text-purple">priser</font> <br/> inom <font class="sbold">mode.</font></h1>
                            </div>
-                       </a>
+                           <div class="padding-1v col-xs-12 text-center visible-xs text-section">
+                               <h4 class="text-spaced all-caps bold text-black all-caps">Jämför <font class="hidden">priser</font> och hitta det bästa priset inom mode.</h4>
+                           </div>
+                       </div>
+                       <div class="col-md-8 col-sm-8 col-xs-12  relative full-height  text-center bg-image {{mapDepartment selectedDepartment}}" >
+                           <a class="" search-link>
+                               <div style="" class="top-left bottom-right"  data-gradient>
+                                   <div class="col-xs-12 p-t-20 text-section">
+                                       <h3 class="text-black light all-caps text-spaced hidden-sm hidden-xs">fynda <font class="sbold">nu!</font> </h3>
+                                       <h2 class="text-spaced light visible-sm visible-xs  text-black all-caps">Jämför <font class=" sbold text-purple">priser</font> <br/> inom <font class="sbold">mode.</font></h2>
+
+                                   </div>
+                                   <form id="autocompleteForm " class="hidden-xs">
+                                       <div class="m-t-100">
+                                           <div class="search-link landing ">
+                                               <form id="searchForm">
+                                                   <input type="text" placeholder="sök produkt, märke eller kategori " id="search"/>
+                                               </form>
+                                           </div>
+                                       </div>
+
+                                   </form>
+                               </div>
+                           </a>
 
 
+                       </div>
                    </div>
+
                </div>
            </div>
 
            <div id="compareBox" >
-               <div class=" hidden-xs p-xs-r-5 p-xs-l-5 p-xs-t-5 bg-white" >
-                  <div class="row  no-margin special-border  ">
-                      <div class="col-sm-4 col-xs-12  no-padding special-border-side b-thick b-grey">
-                        <div class="col-xs-6 no-padding" >
+               <div class="" >
+                  <div class="row no-margin special-border  ">
+                      <div class="col-sm-4 col-xs-12  special-border-side b-thick b-grey">
+                        <div class="col-xs-6 " >
                             <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
                                 <div class="top-left bottom-right bg-image  {{mapDepartment selectedDepartment}}" data-hover id="compareBoxCloth" >
                                 </div>
                             </div>
                         </div>
 
-                          <div class="col-xs-6 text-left   p-t-50  p-l-20 p-b-30">
+                          <div class="col-xs-6 text-left p-t-50  p-l-20 p-b-30">
                               <h6 class="text-purple  no-margin no-padding "> Jämfor priser för</h6>
                               <h4 class="  bold no-margin no-padding all-caps">Kläder</h4>
                               <a class="bold ">Fynda nu</a>
                           </div>
                       </div>
 
-                      <div class="col-sm-4 no-padding col-xs-12 special-border-side b-thick b-grey">
+                      <div class="col-sm-4 col-xs-12 special-border-side b-thick b-grey">
                           <div class="col-xs-6 no-padding no-padding" >
                               <div class="gallery-item bg-white no-margin" data-flex-width="1" data-flex-height="1">
                                   <div class="top-left bottom-right bg-image  {{mapDepartment selectedDepartment}}" data-hover id="compareBoxShoes" >
@@ -188,7 +212,7 @@
                           </div>
                       </div>
 
-                      <div class="col-sm-4 no-padding col-xs-12 special-border-side b-thick b-grey">
+                      <div class="col-sm-4 col-xs-12 special-border-side b-thick b-grey">
                           <div class="col-xs-6 no-padding">
                               <div class="gallery-item no-margin bg-white" data-flex-width="1" data-flex-height="1" >
                                   <div class="top-left bottom-right bg-image  {{mapDepartment selectedDepartment}}" data-hover id="compareBoxAccessory">
@@ -206,30 +230,33 @@
                </div>
            </div>
 
-           <div id="popularCompareCloth" class="container no-padding special-border">
+           <div id="popularCompareCloth" class="special-border">
                {{#if compareClothes}}
                    <div class="p-xs-t-10 bg-master-light row no-margin" id="compareClothes">
-                       <div class="col-md-4 m-xs-b-20 col-xs-12 relative  special-border-side  col-xs-height">
-                           <div class=" bottom-left top-right bg-image sideBarCarousel {{mapDepartment selectedDepartment}}">
-                               <div class="inner no-padding  ">
-                                   <div class="full-width p-t-1" >
-                                       <div class="padding-30 m-xs-b-10 padding-xs-10 row">
-                                           <div class="col-md-12 col-sm-8 col-xs-6">
-                                               <div class="col-xs-12  hidden-xs text-section">
-                                                   <h2 class="text-spaced light  all-caps">Jämför <br/><font class="sbold text-white">priser</font> <br/> för samma <font class="sbold text-white">produkt.</font></h2>
-                                                   <h5>Hitta bästa priset för <br/>kläder, skor och mycket mer! </h5>
-                                               </div>
 
+
+                       <div class="col-md-4 col-xs-12 special-border-side bg-image sideBarCarousel padding-20 {{mapDepartment selectedDepartment}}">
+                           <div>
+                                   <div class="full-width" >
+                                       <div class="m-xs-b-10 padding-xs-5">
+                                           <div class="col-md-12 col-sm-8 col-xs-9">
+                                               <div class="col-xs-12 text-section">
+                                                   <h2 class="text-spaced light  all-caps hidden-xs hidden-sm">Jämför <font class="sbold text-white">priser</font> <br/> för samma <font class="sbold text-white">produkt.</font></h2>
+                                                   <h2 class="text-spaced light  all-caps visible-xs visible-sm">Jämför <font class="sbold text-white">priser</font> för samma <font class="sbold text-white">produkt.</font></h2>
+                                                   <h5 class="">Hitta bästa priset för <br/>kläder, skor och mycket mer! </h5>
+                                               </div>
                                            </div>
                                            <div class="col-md-12 col-sm col-xs ">
-                                               <div class="m-t-10"><a href="/{{selectedDepartment}}/kläder/?compare=true"><button class="btn fs-16 btn-info sbold"> Fynda nu</button></a></div>
+                                               <div class="m-t-10 "><a href="/{{selectedDepartment}}/kläder/?compare=true"><button class="btn fs-16 btn-info sbold"> Fynda nu</button></a></div>
                                            </div>
                                        </div>
                                    </div>
-                               </div>
                            </div>
                        </div>
-                       <div class="col-md-8 no-padding  col-xs-12 col-sm-12 special-border-side bg-white">
+
+
+
+                       <div class="col-md-8 col-xs-12 col-sm-12 special-border-side bg-white">
                            <div class="relative ">
                                <div class=" no-style text-center v-align-bottom p-t-40" >
                                    {{#each compareClothes}}
@@ -305,9 +332,11 @@
                    </div>
                {{/if}}
            </div>
-            <div class="container no-padding">
-                <div class="row  no-margin m-xs-t-30 bg-master-light special-border" >
-                    <div class="col-md-8 no-margin no-padding col-xs-12 col-sm-12">
+
+
+           <div class="">
+                <div class="row no-margin m-xs-t-30 bg-master-light special-border" >
+                    <div class="col-md-8 no-padding col-xs-12 col-sm-12">
                         <div>
                             <div class=" {{mapDepartment selectedDepartment}} special-border bg-image" id="sameStyle">
                                 <div class="padding-20 ">
@@ -334,7 +363,7 @@
                             {{/unless}}
                         </div>
                     </div>
-                    <div class="col-md-4 special-border m-xs-t-0 text-center p-xs-l-10   bg-image p-xs-r-10 " id="findStyles">
+                    <div class="col-md-4 no-padding special-border m-xs-t-0 text-center p-xs-l-10   bg-image p-xs-r-10 " id="findStyles">
 
 
                         <div id="" class=" p-t-20 p-b-20 hidden-xs b-a b-thick">

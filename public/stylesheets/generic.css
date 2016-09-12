@@ -1076,9 +1076,7 @@ ul.circle li:hover div{
 }
 
 @media (max-width: 1024px){
-    .sideBarCarousel{
-        height: 150px;
-    }
+
 }
 @media (max-width: 991px){
     .mainJumbtron{
@@ -1087,9 +1085,7 @@ ul.circle li:hover div{
     .mainJumbtron .text-section{
         margin-top:4vw;
     }
-    .sideBarCarousel{
-        height: 120px;
-    }
+
     .productFeedTemplate img{
         height: 54vw;
     }

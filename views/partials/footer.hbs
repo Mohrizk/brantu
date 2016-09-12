@@ -145,10 +145,22 @@
             url('/fonts/sharp/Sharp-Book.ttf') format('truetype'),
             url('/fonts/sharp/Sharp-Book.svg#SharpSansBook') format('svg');
         }
+
+        .tutorialPopupWrapper{
+            padding-top:80px;
+        }
+
+        @media (max-width: 480px){
+            .tutorialPopupWrapper{
+                padding-top:20px;
+            }
+        }
     </style>
     <div class="full-width full-height relative">
-        <div class="close top-right text-white p-r-40 p-t-40"><i class="pg-close fa-2x"></i></div>
-        <div class="p-t-80">
+        <div class="close hidden-xs top-right text-white p-r-40 p-t-40"><i class="pg-close fa-2x"></i></div>
+        <div class="close visible-xs top-right text-black p-r-30 p-t-20" style="z-index:1000;"><i class="pg-close fa-2x"></i></div>
+
+        <div class=" tutorialPopupWrapper">
             <div id="brantu_hype_container" style="margin:auto;position:relative;width:1200px;height:600px;overflow:hidden;" aria-live="polite">
                 <script type="text/javascript">
                     function downloadJSAtOnload() {
