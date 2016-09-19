@@ -30,7 +30,7 @@ const i18n = require('i18n-2');//Internationalization
 const indexRoutes = require('./routes/index');
 const userRoutes = require('./routes/user');
 const blogRoutes = require('./routes/blog');
-const jobsRoutes = require('./routes/blog');
+const jobsRoutes = require('./routes/jobs');
 const apiRoutes = require('./routes/api');
 const adminRoutes = require('./routes/admin');
 
@@ -72,6 +72,7 @@ i18n.expressBind(app, {
 });
 app.use(function(req, res, next) {
     req.i18n.setLocaleFromCookie();
+    res.locals.LANG = req.i18n.getLocale();
     next();
 });
 /********view engine setup****/
@@ -85,6 +86,8 @@ hbs = exphbs.create({
         partialsDir: [
             'views/partials/',
             'views/partials/nav/',
+            'views/partials/information/',
+            'views/partials/jobs/',
             'views/partials/settings/',
             'views/partials/product/',
             'views/partials/blog/',
@@ -226,10 +229,11 @@ app.get('/blog-sitemap.xml',[
 /***
  * ROUTES
  * ****/
-app.use(adminRoutes);
+
 app.use('/api',apiRoutes);
 app.use('/jobs',jobsRoutes);
 app.use('/blog',blogRoutes);
+app.use(adminRoutes);
 app.use(userRoutes);
 app.use(indexRoutes);
 

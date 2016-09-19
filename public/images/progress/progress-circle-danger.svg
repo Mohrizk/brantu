@@ -5,17 +5,34 @@
 	 width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
 <circle opacity="0.1" fill="none" stroke="#000000" stroke-width="3" enable-background="new    " cx="25" cy="25" r="20"/>
 <g transform="translate(25,25) rotate(-90)">
-	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="-21.5" x2="43" y2="-21.5">
-		<stop  offset="0" style="stop-color:#61045F"/>
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="205" y1="-521.5" x2="226.5033" y2="-484.2551" gradientTransform="matrix(0 1 1 0 521.5 -205)">
+		<stop  offset="0" style="stop-color:#6104B3"/>
+		<stop  offset="0.0418" style="stop-color:#75059F"/>
+		<stop  offset="0.1097" style="stop-color:#900684"/>
+		<stop  offset="0.1702" style="stop-color:#A00774"/>
+		<stop  offset="0.2166" style="stop-color:#A6076E"/>
+		<stop  offset="0.2458" style="stop-color:#A6076E"/>
+		<stop  offset="0.4802" style="stop-color:#A6076E"/>
+		<stop  offset="0.4834" style="stop-color:#A30770"/>
+		<stop  offset="0.5172" style="stop-color:#8C0680"/>
+		<stop  offset="0.5557" style="stop-color:#7A058D"/>
+		<stop  offset="0.602" style="stop-color:#6D0495"/>
+		<stop  offset="0.6632" style="stop-color:#66049B"/>
+		<stop  offset="0.7981" style="stop-color:#64049C"/>
+		<stop  offset="0.8189" style="stop-color:#740591"/>
+		<stop  offset="0.8578" style="stop-color:#8C0680"/>
+		<stop  offset="0.8991" style="stop-color:#9D0674"/>
+		<stop  offset="0.9442" style="stop-color:#A7076D"/>
 		<stop  offset="1" style="stop-color:#AA076B"/>
 	</linearGradient>
 	
 		<circle fill="none" stroke="url(#SVGID_1_)" stroke-width="3" stroke-linecap="round" stroke-dasharray="110" cx="0" cy="0" r="20">
 	
-		<animate  fill="freeze" keyTimes="0;1" keySplines="0.41,0.314,0.8,0.54" restart="always" attributeName="stroke-dashoffset" values="360;140" calcMode="spline" accumulate="none" begin="0" dur="2.2s" repeatCount="indefinite" additive="replace">
+		<animate  fill="freeze" dur="2.2s" keySplines="0.41,0.314,0.8,0.54" begin="0" repeatCount="indefinite" accumulate="none" restart="always" keyTimes="0;1" calcMode="spline" additive="replace" attributeName="stroke-dashoffset" values="360;140">
 		</animate>
 	
-		<animateTransform  type="rotate" fill="remove" keyTimes="0;0.74;1" restart="always" attributeName="transform" values="0;274;360" calcMode="linear" accumulate="none" begin="0" dur="2.2s" repeatCount="indefinite" additive="replace">
+		<animateTransform  fill="remove" type="rotate" dur="2.2s" begin="0" repeatCount="indefinite" accumulate="none" restart="always" keyTimes="0;0.74;1" calcMode="linear" additive="replace" attributeName="transform" values="0;274;360">
 		</animateTransform>
 	</circle>
 </g>

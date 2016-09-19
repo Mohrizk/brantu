@@ -1,5 +1,10 @@
-<div class="jawBone container" nb-pic="{{product.numOfImages}}" pic-src="{{{product.mainPicture.largeUrl}}}{{#each product.auxPictures}}/BREAK/{{{this.largeUrl}}}{{/each}}">
-    <div class="mainWrapper relative row">
+<div class="container">
+    <div class="jawBoneContent open" id="jawbone">
+        <div class="jawBoneOpenContainer">
+            <div class="jawBoneFadeInPlaceContainer">
+                <div class="jawBoneContainer">
+                    <div class="jawBone" nb-pic="{{product.numOfImages}}" pic-src="{{{product.mainPicture.largeUrl}}}{{#each product.auxPictures}}/BREAK/{{{this.largeUrl}}}{{/each}}">
+    <div class="mainWrapper relative row no-margin">
         <div class=" jbImageContainer hidden-xs hidden-sm">
             <div class="selectedItemPictureContainer">
                 <div class="selectedItemZoomPicture">
@@ -197,4 +202,18 @@
         </li>
     </ol>
 </div>
-
+                    <div class="relatedProducts">
+                        <div class="">
+                            <div class="text-center p-t-50 p-b-50">
+                                <div class=" text-center ">
+                                    <h4 class="text-velvet">Söker efter relaterade <b>styles</b> </h4>
+                                    <img src="/dist/images/progress/progress-circle-danger.svg" style="width:200px height: 200px">
+                                </div>
+                            </div>
+                        </div>
+                    </div >
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

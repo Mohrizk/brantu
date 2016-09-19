@@ -1,29 +1,40 @@
 
-<div class="page-content-wrapper ">
-    <section class="general content" id="mainSection">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="">
-                    <h1 class="b-b b-grey all-caps bold text-spaced-medium" style="font-size: 33px;">Careers</h1>
-                    <h2 class=" medium text-purple" style="font-size: 28px;">About Brantu</h2>
-                    <h5>
-                        Brantu is a growing fashion price comparison startup with the vision to create the excitement of getting a bargain everyday.
-                    </h5>
-                    <p>
-                    Our business idea supports the vision by offering a search engine that compares prices from all online fashion shops enabling users to shop simple and smart, saving them money. We strive to provide the highest quality service for our users, and we’re striving to create a business model that reflects that.
-                    </p>
+        <div class="container" style="margin-top: 60px;">
+            <div class="row p-b-80">
+                <div class="col-md-10 col-md-offset-1 ">
+                    <div class="row b-b b-grey ">
+                        <div class="col-xs-9">
+                            <h1 class="all-caps bold text-spaced-medium">{{job.name}} <span class="fs-15 text-spaced text-purple">{{job.type}}</span> </h1>
+                        </div>
+                        <div class="col-xs hidden-xs">
+                            <div class="p-t-20">
+                                <a  href="/jobs">
+                                    <button class="btn btn-info">
+                                        All openings
+                                    </button>
+                                </a>
+                            </div>
 
-                </div>
+                        </div>
+
+                    </div>
+                    <span class="medium hint-text medium full-width"> <span class="p-r-5">Location: <font class="bold">{{job.location}}</font> </span> |  <span class="text-purple capitalize p-l-5 p-r-5">{{#if job.valid}}open {{else}}closed{{/if}}</span> | <span class="p-l-5 p-r-5 bold">{{job.date}}</span></span>
+
+                    <div>
+                        {{{job.description}}}
+                    </div>
 
 
-                <div class=" m-t-50 m-b-50 b-t b-grey">
-                    <h2 class=" medium text-purple ">Perks, your happiness is a priority</h2>
-                    <p>We’ve got all types of cool stuff (free snacks, free drinks, open work space), but this is what makes Brantu a different kind of place to work.</p>
-                    <div class="row p-t-20">
-                        <div class="col-md-4 p-b-20">
-                            <div class="row">
-                                <div class="col-xs-4">
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+
+
+                    <div class=" m-t-50 m-b-50 b-t b-grey">
+                        <h2 class=" medium text-purple ">Perks, your happiness is a priority</h2>
+                        <p>We’ve got all types of cool stuff (free snacks, free drinks, open work space), but this is what makes Brantu a different kind of place to work.</p>
+                        <div class="row p-t-20">
+                            <div class="col-md-4 p-b-20">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                      width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
                                 <circle fill="#660066" cx="50.359" cy="50.455" r="47.725"/>
                                 <g id="Chart-piece" transform="translate(382.000000, 1156.000000)" sketch:type="MSLayerGroup">
@@ -35,22 +46,22 @@
                                 </g>
                                 </svg>
 
-                                </div>
-                                <div class="col-xs">
-                                    <h5 class="sbold text-purple">Ownership</h5>
-                                    <p>
-                                        We all own shares of Brantu because we all have a stake in our success.
-                                    </p>
-                                </div>
+                                    </div>
+                                    <div class="col-xs">
+                                        <h5 class="sbold text-purple">Ownership</h5>
+                                        <p>
+                                            We all own shares of Brantu because we all have a stake in our success.
+                                        </p>
+                                    </div>
 
+
+                                </div>
 
                             </div>
-
-                        </div>
-                        <div class="col-md-4 p-b-20">
-                            <div class="row">
-                                <div class="col-xs-4">
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                            <div class="col-md-4 p-b-20">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                          width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
                                     <circle fill="#660066" cx="50.359" cy="50.455" r="47.725"/>
                                     <path id="Dollar" sketch:type="MSShapeGroup" fill="#FFFFFF" d="M60.474,57.839c0-5.091-4.079-9.323-9.044-10.155V37.51
@@ -62,22 +73,22 @@
                                         c2.448,0.676,4.235,2.598,4.235,4.887C55.644,60.127,53.857,62.05,51.409,62.726L51.409,62.726z"/>
                                     </svg>
 
-                                </div>
-                                <div class="col-xs">
-                                    <h5 class="sbold text-purple">No Drama Salaries</h5>
-                                    <p>
-                                        Competitive, fixed salaries at every employment level.
-                                    </p>
-                                </div>
+                                    </div>
+                                    <div class="col-xs">
+                                        <h5 class="sbold text-purple">No Drama Salaries</h5>
+                                        <p>
+                                            Competitive, fixed salaries at every employment level.
+                                        </p>
+                                    </div>
 
+
+                                </div>
 
                             </div>
-
-                        </div>
-                        <div class="col-md-4 p-b-20">
-                            <div class="row">
-                                <div class="col-xs-4">
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                            <div class="col-md-4 p-b-20">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                          width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
                                     <circle fill="#660066" cx="50.359" cy="50.455" r="47.725"/>
                                     <g>
@@ -99,22 +110,22 @@
                                     </g>
                                     </svg>
 
-                                </div>
-                                <div class="col-xs">
-                                    <h5 class="sbold text-purple">Unlimited Vacation</h5>
-                                    <p>
-                                        Be task oriented, take a break and detach.
-                                    </p>
-                                </div>
+                                    </div>
+                                    <div class="col-xs">
+                                        <h5 class="sbold text-purple">Unlimited Vacation</h5>
+                                        <p>
+                                            Be task oriented, take a break and detach.
+                                        </p>
+                                    </div>
 
+
+                                </div>
 
                             </div>
-
-                        </div>
-                        <div class="col-md-4 p-b-20">
-                            <div class="row ">
-                                <div class="col-xs-4">
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                            <div class="col-md-4 p-b-20">
+                                <div class="row ">
+                                    <div class="col-xs-4">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                          width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
                                     <circle fill="#660066" cx="50.359" cy="50.455" r="47.725"/>
                                     <g id="_x31_31" transform="translate(721.000000, 1933.000000)" sketch:type="MSLayerGroup">
@@ -127,22 +138,22 @@
                                     </g>
                                     </svg>
 
-                                </div>
-                                <div class="col-xs">
-                                    <h5 class="sbold text-purple">Ways to unwind</h5>
-                                    <p>
-                                        Ping pong & games, basketball & bikes, even karaoke.
-                                    </p>
-                                </div>
+                                    </div>
+                                    <div class="col-xs">
+                                        <h5 class="sbold text-purple">Ways to unwind</h5>
+                                        <p>
+                                            Ping pong & games, basketball & bikes, even karaoke.
+                                        </p>
+                                    </div>
 
+
+                                </div>
 
                             </div>
-
-                        </div>
-                        <div class="col-md-4 p-b-20">
-                            <div class="row">
-                                <div class="col-xs-4">
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                            <div class="col-md-4 p-b-20">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	                                 width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
                                     <circle fill="#660066" cx="50.359" cy="50.455" r="47.725"/>
                                     <path id="_x31_13" sketch:type="MSShapeGroup" fill="#FFFFFF" d="M56.133,68.993c-5.322,0-5.987-1.352-6.068-1.619
@@ -154,22 +165,22 @@
                                         C46.293,30.975,41.948,35.402,41.948,40.903L41.948,40.903z"/>
                                     </svg>
 
-                                </div>
-                                <div class="col-xs">
-                                    <h5 class="sbold text-purple">Events & Education</h5>
-                                    <p>
-                                        Parties, happy hours, continued learning and more.
-                                    </p>
-                                </div>
+                                    </div>
+                                    <div class="col-xs">
+                                        <h5 class="sbold text-purple">Events & Education</h5>
+                                        <p>
+                                            Parties, happy hours, continued learning and more.
+                                        </p>
+                                    </div>
 
+
+                                </div>
 
                             </div>
-
-                        </div>
-                        <div class="col-md-4 p-b-20">
-                            <div class="row">
-                                <div class="col-xs-4">
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                            <div class="col-md-4 p-b-20">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                          width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
                                     <circle fill="#660066" cx="50.359" cy="50.455" r="47.725"/>
                                     <g id="_x31_58" transform="translate(437.000000, 1886.000000)" sketch:type="MSLayerGroup">
@@ -188,44 +199,43 @@
                                     </svg>
 
 
-                                </div>
-                                <div class="col-xs">
-                                    <h5 class="sbold text-purple">Health & Wellness</h5>
-                                    <p>
-                                        Healthy snacks and in house nutritionist.
-                                    </p>
-                                </div>
+                                    </div>
+                                    <div class="col-xs">
+                                        <h5 class="sbold text-purple">Health & Wellness</h5>
+                                        <p>
+                                            Healthy snacks and in house nutritionist.
+                                        </p>
+                                    </div>
 
 
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="b-t b-grey">
+
+                        <h2 class=" medium text-purple" style="font-size: 28px;">About Brantu</h2>
+                        <h5>
+                            Brantu is a growing fashion price comparison startup with the vision to create the excitement of getting a bargain everyday. Our business idea supports the vision by offering a search engine that compares prices from all online fashion shops enabling users to shop simple and smart, saving them money.
+
+                            We strive to provide the highest quality service for our users, and we’re striving to create a business model that reflects that.
+                        </h5>
+                        <div class="">
+                            <div class="p-t-20">
+                                <a  href="/jobs">
+                                    <button class="btn btn-block btn-purple p-t-20 p-b-20">
+                                        All openings
+                                    </button>
+                                </a>
                             </div>
 
                         </div>
-                    </div>
-                </div>
 
-                <div class=" m-t-50 m-b-50 b-t b-grey">
-                    <h2 class=" medium text-purple">Openings</h2>
-                    <p>We are looking for great talents to join our vision</p>
-                    <div class="row">
-                        {{#each jobList}}
-                            <div class="col-md-3 text-center padding-20 ">
-                                <a class="text-purple" href="/jobs/{{urlFriendly name}}-{{_id}}">
-                                    <p class="b-b b-t b-l b-r p-t-20 p-b-20 bold">
-                                        {{name}} <br/> <span class="hint-text ">{{location}}</span>
-                                    </p>
-                                </a>
-                            </div>
-                        {{/each}}
                     </div>
-                </div>
 
+                </div>
             </div>
+
         </div>
-
-
-    </section>
-    {{>loading}}
-    {{>footer}}
-</div>
-
-

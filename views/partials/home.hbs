@@ -1,0 +1,367 @@
+
+<style>
+    .searchMainPageOverlay div{
+        z-index:-1 !important;
+        background: rgba(51,51,51,0) !important;
+    }
+    #home .search-link input[type="text"]:nth-child(1){
+        color:transparent !important;
+        background: transparent!important;
+    }
+    #home .search-link input[type="text"]:nth-child(2){
+        background: #fff !important;
+    }
+    #home .ACSearchProgress{
+        top:5px;
+    }
+    #home #containerHintAC{
+        width:100%;
+    }
+    #home #containerAC{
+        position: relative !important;
+    }
+    #home .aa-dropdown-menu{
+        position: relative !important;
+        top:10px!important;
+        z-index: 0 !important;
+        background: #FFFFFF;
+    }
+    #home .aa-dropdown-menu:after, .styleTip:after{
+        left:50% !important;
+        border-width: 0 !important;
+    }
+    #home .aa-dropdown-menu:before, .styleTip:before{
+        left:calc(50% - 1px) !important;
+        border-width: 0 !important;
+    }
+    #home .search-button{
+        top:10px!important;
+    }
+    #home  #h1Home, #logoHome{
+        transition:all 0.2s cubic-bezier(.5,0,.1,1);
+    }
+    #home  #h1Home.small{
+        font-size:20px
+    }
+    #home  #logoHome.small{
+        width:140px
+    }
+
+
+    #home #mainContent{
+        background: #fff;
+    }
+    #home  #mainContent .search-link{
+        margin: auto;
+        text-align: center;
+    }
+    #home #mainContent .search-link input[type="text"]{
+        text-align: center !important;
+        border: 1px solid #f1f2f2;
+        background:white !important;
+        width:600px;;
+        height:40px !important;
+        line-height: 40px !important;
+        font-size: 19px !important;
+        margin-top:10px;
+        margin-bottom: 10px;
+    }
+
+    #home .textFind{
+        top:230px;
+    }
+    #home  .textFind h3{
+        margin: auto;
+        width:200px;
+        padding-top:15px;
+        padding-bottom:15px;
+        border:2px solid whitesmoke;
+        color: black;
+        font-weight: 900;
+    }
+
+
+    #home .departmentSelector{
+
+        position: relative;
+        overflow: hidden;
+    }
+    #home .departmentSelector .WOMEN, .departmentSelector .MEN{
+        border-bottom: 2px solid white;
+        height:100%;
+        height:540px;
+        width:100%;
+        background-position: 50% 60%;
+        background-repeat: no-repeat;
+        transition:all 0.2s linear;
+        cursor: pointer;
+    }
+
+    #home .departmentSelector .WOMEN{
+        background-image: url('/images/home/home_women.jpg');
+        animation-name: hueme;
+        animation-duration: 8s;
+        animation-iteration-count: infinite;
+
+    }
+    #home .departmentSelector .MEN{
+        background-image: url('/images/home/home_men.jpg');
+        animation-name: hueme;
+        animation-duration: 8s;
+        animation-delay: 4s;
+        animation-iteration-count: infinite;
+
+    }
+
+    #home .departmentSelector:hover .WOMEN{
+
+    }
+
+    #home .departmentSelector:hover .MEN{
+    }
+
+    #home #infoArea{
+        position: absolute;
+        text-align: center;
+        top:320px;
+        left:415px;
+        z-index: 30;
+        background: rgba(245,245,245,1);
+        border:4px solid white;
+        padding-right:25px;
+        padding-left:25px;
+        padding-bottom: 10px;
+    }
+   #home #selectionHome{
+        border-top:2px solid black;
+    }
+
+    @keyframes hueme {
+        0% {filter: hue-rotate(0deg);}
+        12% {filter: hue-rotate(90deg);}
+        25% {filter: hue-rotate(180deg);}
+        37% {filter: hue-rotate(270deg);}
+        50% {filter: hue-rotate(360deg);}
+        100% {filter: hue-rotate(360deg);}
+    }
+</style>
+<div class="container no-header" id="home" >
+                   <div class="row no-margin">
+                       <div class="special-border relative no-overflow relative full-width" >
+                           <div class=" relative">
+                               <div class="" id="mainContent">
+                                   <div class=" p-t-5 relative full-width" id="headerHome">
+                                       <div class="">
+                                           <div class="text-center" style="">
+                                               <img src="/images/logo_multi.png" width="200" id="logoHome"/>
+                                           </div>
+                                           <div class="bg-black" style="padding:5px 0;">
+                                               <h1 id="h1Home" class="text-spaced light text-center  text-master-light all-caps" style="font-size:28px; line-height:30px;">Jämför <font class=" sbold ">priser</font> inom <font class="sbold">mode</font></h1>
+                                           </div>
+                                            <div style="background-color: #dddddd">
+                                                <form id="autocompleteForm" class="hidden-xs no-margin">
+                                                    <div class="">
+                                                        <div class="search-link ">
+                                                            <input type="text" placeholder="Sök produkt, märke eller kategori " id="search"/>
+                                                            <div class="dropdown">
+                                                                <div class="dropdown-menu styleTip" id="containerHintAC">
+                                                                    <div class="text-center p-t-10 all-caps">
+                                                                        <font class="bold fs-16">You can search for</font>
+                                                                        <ul class="no-style">
+                                                                            <li class="medium text-purple">Products</li>
+                                                                            <li class="medium text-purple">Brands</li>
+                                                                            <li class="medium text-purple">Styles/category</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ACSearchProgress hidden" >
+                                                                <div class=" text-center">
+                                                                    <img src='/dist/images/progress/progress-circle-danger.svg' alt="search-loading-icon" style="width:30px; height: 30px;"/>
+                                                                </div>
+                                                            </div>
+                                                            <button type="submit" class="search-button"><i class=" pg-search"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+
+                                           <div class="">
+                                               <div class=" no-style text-left text-center row p-t-5 p-b-5" style="color:#aaa;">
+                                                   <div class=" col-xs-3 fs-16  b-r b-grey bold inline p-r-40">
+                                                       <div>
+                                                           <div class="inline">
+                                                               <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px"
+                                                 viewBox="0 0 65 63" enable-background="new 0 0 65 63" xml:space="preserve">
+                                            <title>Zoom-out</title>
+                                            <desc>Created with Sketch.</desc>
+                                            <g id="Page-1" sketch:type="MSPage">
+                                                <g id="Zoom-out" transform="translate(1.000000, 1.000000)" sketch:type="MSLayerGroup">
+                                                    <path id="Shape" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M41.39,32.486L62,53.08L55.081,60
+                                                        L35.188,40.107"/>
+                                                    <circle id="Oval" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" cx="22.017" cy="22.017" r="22.017">
+                                                    </circle>
+                                                </g>
+                                            </g>
+                                            </svg>
+                                                           </div>
+                                                           <div class="inline p-l-5 v-align-top p-t-5">Quick Search</div>
+                                                       </div>
+                                                   </div>
+
+                                                   <div class="col-xs-3 fs-16  b-r b-grey bold inline p-r-40">
+                                                       <div class="inline">
+                                                           <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px"
+                                         viewBox="0 0 56 63" enable-background="new 0 0 56 63" xml:space="preserve">
+                                    <title>Target</title>
+                                    <desc>Created with Sketch.</desc>
+                                    <g id="Page-1" sketch:type="MSPage">
+                                        <g id="Target" transform="translate(1.000000, 0.000000)" sketch:type="MSLayerGroup">
+                                            <circle id="Oval" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2.4091" cx="27" cy="31.5" r="26.5">
+                                            </circle>
+
+                                                <circle id="Oval_1_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2.4091" cx="27" cy="31.5" r="19.273">
+                                            </circle>
+
+                                                <circle id="Oval_2_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2.4091" cx="27" cy="31.5" r="10.841">
+                                            </circle>
+
+                                                <circle id="Oval_3_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2.4091" cx="27" cy="31.5" r="3.614">
+                                            </circle>
+                                        </g>
+                                    </g>
+                                    </svg>
+                                                       </div>
+                                                       <div class="inline p-l-5 v-align-top p-t-5">Easy Filter</div>
+
+                                                   </div >
+
+                                                   <div class="col-xs-3 fs-16  b-r b-grey bold inline p-r-40">
+                                                       <div class="inline">
+                                                           <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px"
+                                         viewBox="0 0 64 60" enable-background="new 0 0 64 60" xml:space="preserve">
+                                    <title>Balance</title>
+                                    <desc>Created with Sketch.</desc>
+                                    <g id="Page-1" sketch:type="MSPage">
+                                        <g id="Balance" transform="translate(1.000000, 1.000000)" sketch:type="MSLayerGroup">
+                                            <path id="Shape" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M31,6v47"/>
+                                            <circle id="Oval" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" cx="31" cy="3" r="3">
+                                            </circle>
+                                            <path id="Shape_1_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M7,13h48"/>
+                                            <path id="Shape_2_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M11,54h40"/>
+                                            <path id="Shape_3_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M6,58h50"/>
+                                            <path id="Shape_4_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M0,37v3h14v-3"/>
+                                            <path id="Shape_5_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M48,37v3h14v-3"/>
+                                            <path id="Shape_6_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M1,35l6-22l6,22"/>
+                                            <path id="Shape_7_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M49,35l6-22l6,22"/>
+                                        </g>
+                                    </g>
+                                    </svg>
+                                                       </div>
+                                                       <div class="inline p-l-5 v-align-top p-t-5">Compare Products</div>
+                                                   </div >
+
+                                                   <div class="col-xs-3 fs-16  bold inline">
+                                                       <div class="inline">
+                                                           <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px"
+                                             viewBox="0 0 64 56" enable-background="new 0 0 64 56" xml:space="preserve">
+                                        <title>T-shirt</title>
+                                        <desc>Created with Sketch.</desc>
+                                        <g id="Page-1" sketch:type="MSPage">
+                                            <g id="T-shirt" transform="translate(1.000000, 1.000000)" sketch:type="MSLayerGroup">
+                                                <path id="Shape_3_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M52,0H38.931
+                                                    C38.438,3.945,35.078,7,31,7s-7.438-3.055-7.931-7H10H0v15h10v39h42V15h10V0H52L52,0z"/>
+                                                <path id="Shape" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M11,50h32"/>
+                                                <path id="Shape_1_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M4,1v11"/>
+                                                <path id="Shape_2_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M58,1v11"/>
+                                            </g>
+                                        </g>
+                                        </svg>
+                                                       </div>
+                                                       <div class="inline p-l-5 v-align-top p-t-5">Compare Styles</div>
+                                                   </div>
+                                               </div>
+                                               <div class="full-width bg-white" id="containerAC">
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+
+                                   <div class="relative" id="selectionHome">
+                                       <div class="row no-margin"  >
+
+                                                <div class="col-xs-6 departmentSelector no-padding" >
+                                                    <a href="/kvinna">
+                                                           <div class="WOMEN bg-image b-a b-thick b-white">
+                                                           </div>
+                                                           <div class="top-right text-center bottom-left textFind">
+                                                               <h3 class="sbold all-caps text-black">Kvinna</h3>
+                                                           </div>
+                                                           <div class="b-r b-grey">
+                                                               <div class="row no-margin special-border  text-center">
+                                                                  <div class="col-xs-4">
+                                                                        <h5>Skor</h5>
+                                                                  </div>
+
+                                                                   <div class="col-xs-4">
+                                                                       <h5>Kläder</h5>
+                                                                   </div>
+
+                                                                   <div class="col-xs-4">
+                                                                       <h5>Accessoarer</h5>
+                                                                   </div>
+                                                               </div>
+                                                           </div>
+                                                    </a>
+                                           </div>
+
+
+                                            <div class="col-xs-6 departmentSelector bg-image text-left no-padding">
+                                              <a href="/man">
+                                                <div class="Men bg-image b-a b-thick b-white">
+                                               </div>
+                                                <div class="top-right text-center bottom-left textFind">
+                                                   <h3 class="sbold all-caps text-black">Man</h3>
+                                               </div>
+                                                <div class="b-l b-grey">
+                                                   <div class="row no-margin special-border  text-center">
+                                                       <div class="col-xs-4">
+                                                           <h5>Skor</h5>
+                                                       </div>
+
+                                                       <div class="col-xs-4">
+                                                           <h5>Kläder</h5>
+                                                       </div>
+
+                                                       <div class="col-xs-4">
+                                                           <h5>Accessoarer</h5>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                              </a>
+                                           </div>
+
+                                       </div>
+
+                                       <div class="text-center"  id="infoArea">
+                                           <h4>YOUR <font class="sbold">DESTINATION</font> TO <br/>FIND BEST <font class="sbold">PRICES</font> IN <font class="sbold">FASHION</font></h4>
+                                           <p>Shop from over 850 of the best brands. <br/>Plus, get your daily fix of the freshest style.</p>
+                                       </div>
+
+                                   </div>
+
+                               </div>
+
+
+
+                           </div>
+
+                       </div>
+                   </div>
+       </div>
+

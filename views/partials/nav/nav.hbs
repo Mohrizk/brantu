@@ -1,4 +1,4 @@
-<div id="headerMainContainer ">
+<div id="headerMainContainer" data-department="{{encodeDepartment selectedDepartment}}">
     <div class="header" >
         <div class="bg-white boxshadowed">
             <div class="container">
@@ -41,7 +41,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="ACSearchProgress hidden top-right" id="searchBarLoading" >
+                                    <div class="ACSearchProgress hidden" id="searchBarLoading" >
                                         <div class=" text-center">
                                             <img src='/dist/images/progress/progress-circle-danger.svg' alt="loading" />
                                         </div>
@@ -103,9 +103,7 @@
                                     <div class="auto-margin block relative p-t-5 p-l-40 text-center" >
                                         <form id="autocompleteForm">
                                             <div class="search-link">
-                                                <form id="searchForm">
-                                                    <input type="text" placeholder="Sök och jämför priser" id="search"/>
-                                                </form>
+                                                <input type="text" placeholder="Sök och jämför priser" id="search"/>
                                                 <div class="dropdown">
                                                     <div class="dropdown-menu styleTip" id="containerHintAC">
                                                         <div class="p-l-10 p-t-10 all-caps">
@@ -118,7 +116,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="ACSearchProgress hidden top-right" style="right:15%; padding-top:10px; z-index: 10;" >
+                                                <div class="ACSearchProgress hidden"  >
                                                     <div class=" text-center">
                                                         <img src='/dist/images/progress/progress-circle-danger.svg' alt="search-loading-icon" style="width:30px; height: 30px;"/>
                                                     </div>
@@ -284,10 +282,7 @@
                     {{#if (compareStrings 'kvinna' selectedDepartment)}}
 
                         <div class="bottom-right p-r-40" >
-                            <script type="text/javascript">
-                                var uri = 'https://impse.tradedoubler.com/imp?type(img)g(23323710)a(2845810)' + new String (Math.random()).substring (2, 11);
-                                document.write('<a href="https://clk.tradedoubler.com/click?p=270159&a=2845810&g=23323710" target="_BLANK"><img style="max-width: 100%" src="'+uri+'" border=0></a>');
-                            </script>
+                            <a href="http://ad.zanox.com/ppc/?39585183C1076049580T"><img src="http://ad.zanox.com/ppv/?39585183C1076049580" align="bottom" width="200" height="200" border="0" hspace="1" alt="female_outlet_200x200"></a>
                         </div>
                     {{else}}
                         <div class="bottom-right p-r-40" >

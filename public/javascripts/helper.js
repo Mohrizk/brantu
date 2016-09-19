@@ -11,7 +11,8 @@ var renderHelper = {
         }
 
     },
-    mapDepartment   :function (string){
+    encodeDepartment   :function (string){
+        if(typeof string == 'undefined') return null;
         var str = string.toLowerCase()
         var women = ['kvinna','women','female']
         var men = ['men','man','male']
@@ -20,6 +21,20 @@ var renderHelper = {
         }
         for(var m in men){
             if(men[m] === str) return 'MEN'
+        }
+
+    },
+    decodeDepartment: function (gender, lang){
+        if(typeof gender == 'undefined' || typeof lang == 'undefined') return null;
+        if(gender == 'WOMEN'){
+            switch (lang){
+                case 'sv': return 'kvinna';
+            }
+        }
+        else if(gender == 'MEN'){
+            switch (lang){
+                case 'sv': return 'man';
+            }
         }
 
     },
@@ -110,8 +125,6 @@ var renderHelper = {
         if (typeof object.hierarchicalFacetsRefinements !== 'undefined' && !currentState.category) {
             if (typeof object.hierarchicalFacetsRefinements['products'] !== 'undefined') {
                 var newString = object.hierarchicalFacetsRefinements['products'][0].split(' > ').join('.');
-                console.log(renderHelper.urlFriendly(newString,true))
-                console.log(renderHelper.urlFriendly(newString))
                 uri+= '&category='+renderHelper.urlFriendly(newString,true);
             }
         }

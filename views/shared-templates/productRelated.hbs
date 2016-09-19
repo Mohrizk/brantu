@@ -1,7 +1,7 @@
 <div class="similarProducts">
-    <div class=" ">
+    <div class="row ">
         \{{#if LowerPriceCategoryProducts}}
-            <div class="p-xs-t-10   col-sm-12 col-xs-12 p-b-10 b-b">
+            <div class="p-xs-t-10 bg-white  col-sm-12 col-xs-12 p-b-10 ">
                 <h4 class="text-center all-caps ">\{{#if style}}\{{style}} \{{else}} \{{category.name}} \{{/if}} till lägre <b>pris</b></h4>
                 <div id="frameSameCategory" class="auto-margin block">
                     <div class="no-style" id="owlLowerCategory">
@@ -30,7 +30,7 @@
         \{{/if}}
 
         \{{#if sameBrandProducts}}
-            <div class="p-xs-t-10  p-t-20 p-b-10  col-sm-12 col-xs-12 b-b">
+            <div class="p-xs-t-10  m-t-50 p-b-10  col-sm-12 col-xs-12 ">
                 <h4 class="text-center all-caps">Relaterade Produkter från <b>\{{brand.name}}</b></h4>
                 <div id="frameSameBrand" class="auto-margin block">
                     <div class="no-style text-center" id="owlBrand">
@@ -59,8 +59,8 @@
         \{{/if}}
     </div>
     \{{#if sameCategoryProducts}}
-        <div class="p-t-30 p-b-30 b-b">
-            <h3 class="text-center all-caps">Relaterade <b>Styles</b></h3>
+        <div class="m-t-50  bg-white p-b-50">
+            <h3 class="p-t-10 p-b-10 text-center all-caps">Relaterade <b>Styles</b></h3>
             <div id="frameSameCategory" class="auto-margin block">
                 <div class="text-center no-style" id="owlCategory">
                     \{{#each sameCategoryProducts}}

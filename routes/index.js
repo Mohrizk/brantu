@@ -11,8 +11,7 @@ var newsletter = require('../services/middleware/mw-newsletter');
 var session = require('../services/middleware/mw-session');
 var feed = require('../services/middleware/mw-feed');
 var email = require('../services/middleware/mw-email');
-var user = require('../services/middleware/mw-users');
-var job = require('../services/middleware/mw-jobs');
+
 
 var shared = require('../public/javascripts/helper');
 
@@ -20,14 +19,29 @@ var shared = require('../public/javascripts/helper');
 *******************BEGINING ROUTES***************************
 ***************************************************************/
 var routes = [
+
+    [ '/', 'get', [
+        function(req, res, next) {
+            /* if(typeof req.session.favDepartment !== 'undefined'){
+            res.redirect(req.session.favDepartment);
+        }
+        else{*/
+            res.render('general', {
+                layout:'no-nav',
+                generalPartial: function() {
+                    return "home";
+                }
+            });
+    } ]
+    ],
+
     [ '/signup-popup', 'post', [
         function(req, res, next) {
             req.session.signupPopup = true;
             req.session.save()
             res.send('fuck');
             res.end()
-        }]
-    ],
+        }]],
     /********SEARCH************/
     [
         ['/search', '/s%C3%B6k', '/s%C3%B6k/:department', '/search/:department']
@@ -39,38 +53,22 @@ var routes = [
         products.getAlgoliaProducts,
         function(req, res, next) {
             res.render('navigation')
-        } ]
-    ],
-
-    /*********MAIN PAGE******************************************/
-    [ '/', 'get', [function(req, res, next) {
-        if(typeof req.session.favDepartment !== 'undefined'){
-            res.redirect(req.session.favDepartment);
-        }
-        else res.redirect('/kvinna/');
-    } ]
-    ],
+        } ]],
 
 
 /*********View Product***************************/
 
     [ '/b%C3%A4sta-pris-f%C3%B6r/:name', 'get',[
         categories.getCategoryTree,
-        categories.getDepartment,
         products.getProductIDfromName,
         products.getProductByID,
         products.checkProductIsFavoured,
-        //products.getSimilarProductsFromSameBrand,
-        //products.GetLowerPriceCategoryProducts,
-        //products.GetSimilarCategoryProducts,
+        categories.getDepartment,
         function(req, res, next) {
             res.render('product', {
                 title                   : 'Lägsta priset för '+req.product.name + ' - altid bästa pris inom mode med Brantu',
                 description             : req.product.description+ ' hitta det på lägsta priset i Brantu',
                 product                     : req.product,
-                //sameBrandProducts           : req.sameBrandProducts,
-                //LowerPriceCategoryProducts  : req.LowerPriceCategoryProducts ,
-                //sameCategoryProducts        : req.sameCategoryProducts,
                 style                       : req.style,
                 category                    : req.category,
                 brand                       : req.brand
@@ -85,22 +83,7 @@ var routes = [
         products.getAlgoliaProducts,
         function(req, res, next) {
             res.render('navigation')
-        } ]
-    ],
-
-/********************NAVIGATE******************/
-
-    [ ['/:department/:category','/:department/:category/:style'], 'get', [
-        categories.getCategoryTree,
-        categories.getDepartment,
-        products.getForCategories,
-        products.getAlgoliaProducts,
-        function(req, res, next) {
-            res.render('navigation')
-        } ]
-    ],
-
-
+        } ]],
 
 /*********INFORMATION & CONTACT PAGES *************************************/
     [ '/contact-us', 'get', [
@@ -108,62 +91,81 @@ var routes = [
         categories.getDepartment,
         function(req, res, next) {
             res.locals.title = "Kontakt oss - Brantu";
-            res.render('contact-us');
-        }]
-    ],
+            res.render('general', {
+                generalPartial: function() {
+                    return "contact-us";
+                }
+            });
+        }]],
     [ '/about-us', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
             res.locals.title = "Om oss - Brantu";
-            res.render('about-us');
-        }]
-    ],
+            res.render('general', {
+                generalPartial: function() {
+                    return "about-us";
+                }
+            });
+        }]],
     [ '/faq', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
             res.locals.title = "FAQ - Brantu";
-            res.render('faq');
-        }]
-    ],
+            res.render('general', {
+                generalPartial: function() {
+                    return "faq";
+                }
+            });
+        }]],
     [ '/privacy-policy', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
             res.locals.title = "Privacy policy - Brantu";
-            res.render('privacy')
+            res.render('general', {
+                generalPartial: function() {
+                    return "privacy";
+                }
+            });
         }
-    ]
-    ],
+    ]],
     [ '/terms-and-conditions', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
             res.locals.title = "Terms and conditions - Brantu";
-            res.render('terms')
+            res.render('general', {
+                generalPartial: function() {
+                    return "terms";
+                }
+            });
         }
-    ]
-    ],
+    ]],
     [ '/join-shop', 'get', [
-        
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
         res.locals.title = "Join our tribe";
-        res.render('join-shop');
-    }]
-    ],
+            res.render('general', {
+                generalPartial: function() {
+                    return "join-shop";
+                }
+            });
+    }]],
 
     [ '/cookie-policy', 'get', [
-        
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
             res.locals.title = "Cookie Policy - Brantu";
-            res.render('cookie');
-        }]
-    ],
+            res.render('general', {
+                generalPartial: function() {
+                    return "cookie";
+                }
+            });
+        }]],
     [ '/cookie-policy', 'post', [
         function(req, res, next) {
             req.session.cookieConcession = true;
@@ -171,25 +173,46 @@ var routes = [
             console.log('COOKIE POLICY',req.session.cookieConcession)
             res.status(200);
             res.end();
-        }]
-    ],
+        }]],
 
-    [ ["/kvinna", "/man", '/:department/upptack-nya-favoriter'], 'get', [
+
+
+
+/*********MAIN PAGE******************************************/
+
+    [ ['/:department/:category','/:department/:category/:style'], 'get', [
+        categories.getDepartment,
+        categories.getCategoryTree,
+        products.getForCategories,
+        products.getAlgoliaProducts,
+        function(req, res, next) {
+            res.render('navigation')
+        } ]],
+
+    [ ["/:department"], 'get', [
         session.addFavouriteDepartment,
         categories.getCategoryTree,
         categories.getDepartment,
         products.getCompare,
         feed.getFeed,
         function(req, res, next) {
-            if( res.locals.selectedDepartment == null || typeof res.locals.selectedDepartment == 'undefined')
-                return res.redirect('/kvinna');
-            var department = shared.helper.mapDepartment(res.locals.selectedDepartment);
-            res.locals.title =  "Brantu | "+"Jämför och hitta det bästa priset inom mode |" + res.locals.selectedDepartment;
-            res.locals.description = 'Brantu är Sveriges bästa prisjämförelsajt inom mode! Med oss hittar du både relaterade produkter och stilar till det bästa priset. Använd brantu när du ska köpa dina kläder eller skor online...';
-            res.render('landing');
+            var department = shared.helper.encodeDepartment(res.locals.selectedDepartment);
+            res.render('general', {
+                title :  "Brantu | "+"Jämför och hitta det bästa priset inom mode |" + res.locals.selectedDepartment,
+                description :
+                'Brantu är Sveriges bästa prisjämförelsajt inom mode! ' +
+                'Med oss hittar du både relaterade produkter och stilar till det bästa priset. ' +
+                'Använd brantu när du ska köpa dina kläder eller skor online...',
+                generalPartial: function() {
+                    return "department";
+                }
+            });
+        } ]],
 
-        } ]
-    ],
+
+
+
+
 /*********Internationalization *******************/
     [ '/en', 'get', [ function(req, res, next) {
         res.cookie('brantuLang', 'en');

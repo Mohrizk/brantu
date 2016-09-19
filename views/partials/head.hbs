@@ -82,13 +82,16 @@
             USER = {{{json user}}};
         {{/if}}
 
-        var DEPARTMENT = '', TYPE='';
+        var DEPARTMENT = '', TYPE='', LANG = '';
         {{#if selectedDepartment}}
-         DEPARTMENT = {{{json selectedDepartment}}};
+         DEPARTMENT = {{{json (encodeDepartment selectedDepartment)}}};
         {{/if}}
 
         {{#if TYPE}}
-        var  TYPE  = {{{json TYPE}}};
+        TYPE  = {{{json TYPE}}};
+        {{/if}}
+        {{#if LANG}}
+        LANG  = {{{json LANG}}};
         {{/if}}
 
         var priceLimits = {}

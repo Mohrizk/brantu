@@ -1,6 +1,7 @@
 var express     = require('express');
 var router      = express.Router();
 var passport    = require('passport');
+var async       = require('async');
 
 
 /********** Middleware******/
@@ -22,8 +23,7 @@ var routes = [
         function( req, res, next) {
             console.log(req.product)
             res.send({product:req.product});
-        }]
-    ],
+        }]],
     [ '/getSimilarProducts/:id', 'get', [
         products.getProductByID,
         products.getSimilarProductsFromSameBrand,
@@ -39,15 +39,58 @@ var routes = [
                     brand                       : req.brand,
                     _id                       : req._id
                 });
-        }]
-    ],
+        }]],
     [ '/getFeed/:page', 'get', [
         categories.getDepartment,
         feed.getFeed,
         function( req, res, next) {
             res.send(res.locals.feed);
-        }]
-    ]
+        }]],
+
+    [ '/home', 'get', [
+        function(req, res, next) {
+            hbs.render('views/partials/home.hbs', {
+                    precompiled: true
+                })
+                .then(function (template) {
+                    res.send(template);
+                    res.end();
+                })
+        } ]],
+    [ '/nav/:department', 'get', [
+        categories.getDepartment,
+        categories.getCategoryTree,
+        function(req, res, next) {
+            hbs.render('views/partials/nav/nav.hbs',
+                {selectedDepartment: res.locals.selectedDepartment,
+                 categoryTree:   res.locals.categoryTree},
+                {precompiled: true})
+                .then(function (template) {
+
+                    res.send(template);
+                    res.end();
+                })
+        } ]],
+    [ '/:department', 'get', [
+        categories.getDepartment,
+        products.getCompare,
+        feed.getFeed,
+        function(req, res, next) {
+            console.log('PARAMS ',req.params , res.locals.selectedDepartment);
+            hbs.render('views/partials/department.hbs',
+                {
+                    selectedDepartment: res.locals.selectedDepartment,
+                    compareClothes: res.locals.compareClothes,
+                    feed: res.locals.feed
+                },
+                {
+                    precompiled: true
+                })
+                .then(function (template) {
+                    res.send(template);
+                    res.end();
+                })
+        } ]],
 ];
 
 routes.forEach(function(arr){

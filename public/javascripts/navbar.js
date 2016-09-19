@@ -1,6 +1,5 @@
 $(document).ready(function() {
 	$('#owlNav').owlCarousel({
-
 		navigation : false, // Show next and prev buttons
 		autoPlay:  7000,
 		pagination:false,
@@ -10,8 +9,8 @@ $(document).ready(function() {
 		stopOnHover:true,
 		singleItem:true
 	});
-
-	$('li a[expand-key]').on('touchend click',function(e){
+    var navContainer = $('#navContainer')
+	navContainer.on('touchend click', 'li a[expand-key]',function(e){
 		e.preventDefault();
 		$('.category-expand-container').addClass('hidden');
 
@@ -20,13 +19,14 @@ $(document).ready(function() {
 		$('div[expand-parentKey="'+ key +'"]').removeClass('hidden');
 		$('.category-expand-wrapper').animate({opacity:1});
 	});
-	$('#navbarDepartment').on('mouseleave',function(){
+	navContainer.on('mouseleave','#navbarDepartment',function(){
 		$.when( $('.category-expand-wrapper').animate({opacity:0})).done( function() {
 			$('.category-expand-container').addClass('hidden');
 			$('#category-expand-parent').addClass('hidden');
 		})
 	});
-	$('.category-expand').on('click', '.desktopNavColoumns li a, a h4', function(){
+	//'.category-expand'
+	navContainer.on('click', '.desktopNavColoumns li a, a h4', function(){
 		$.when( $('.category-expand-wrapper').animate({opacity:0})).done( function() {
 			$('.category-expand-container').addClass('hidden');
 			$('#category-expand-parent').addClass('hidden');

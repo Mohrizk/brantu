@@ -4,11 +4,15 @@
  * @type {string}
  */
 
+
+
+
 var isMobile = false, eventOnTE = 'click', eventOnTS = 'click', scrollEvent = true;
 //Device
 if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent)
 	|| /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(navigator.userAgent.substr(0,4)))
 {	isMobile = true;eventOnTE = 'touchend';eventOnTS = 'touchstart'; }
+
 
 //GetTemplate
 var productNavigate = Handlebars.compile($("#productNavigationTemplate").html());
@@ -24,7 +28,7 @@ var newsletterTemplate = Handlebars.compile($("#newsletterTemplateTemplate").htm
 
 
 var client = algoliasearch("D3IWZXC0AH", '3d6a60c228b6e8058770fdf8eab2f652');
-var helper   = algoliasearchHelper(client, 'test_products',
+var helper = algoliasearchHelper(client, 'test_products',
 	{
 		hitsPerPage: 50,
 		hierarchicalFacets: [{
@@ -74,7 +78,7 @@ if(TYPE !=null && TYPE!==''){
 
 if( DEPARTMENT!==null){
 	if( DEPARTMENT !== null) {
-		if (DEPARTMENT == 'kvinna' || DEPARTMENT == 'man') {
+		if (DEPARTMENT == 'WOMEN' || DEPARTMENT == 'MEN') {
 			departmentVerified = true;
 		}
 	}
@@ -93,195 +97,236 @@ $(document).ready( function() {
 	if(typeVerified){
 		priceBar();
 	}
+
 	//_________AUTCOMPLETE
+	var searchDepartment = DEPARTMENT; // Global variable to switch easy between women and men department in men without changing actual department
+	var changeDepartment = false; //Global Boolean to indicate weather we need to change the department or not - needed for the footer and nav
 	var currentDDHits=[];
 	var currentBrandDDHits=[];
 	var pPcurrentIndex = 100;  // needed for hovering effect
-	var autocompleteOptions = [
-		{
-			//source: autocomplete.sources.hits(productIndex, {hitsPerPage: 7}),
-			source: function(query, callback) {
-				var index = client.initIndex('test_products');
-				var options = {hitsPerPage: 8}
-				if(departmentVerified)options.facetFilters = 'category.lvl0:'+DEPARTMENT;
-				$('.ACSearchProgress').removeClass('hidden');
-				index.search(query, options).then(function(answer) {
-					pPcurrentIndex = 100;
-					$('.ACSearchProgress').addClass('hidden');
-					currentDDHits= answer.hits;
-					$('#ddProductPreview').hide()
-					$('#ddProductPreviewContainer').html('');
-					$('#ddCol2').show();
-					if(answer.hits.length > 7){
-						answer.hits.splice(7,1,{
-							linkHref:'/search?q='+$('#search').val()+'&category='+DEPARTMENT,
-							more:true,
-							nbHits:answer.nbHits,
-							text:'found search more'
-						})
+
+
+	function initiateAC(searchPhrase){
+		var autocompleteOptions = [
+			{
+				//source: autocomplete.sources.hits(productIndex, {hitsPerPage: 7}),
+				source: function(query, callback) {
+					var index = client.initIndex('test_products');
+					var options = {hitsPerPage: 8}
+					if(searchDepartment == 'WOMEN' || searchDepartment == 'MEN' )
+						options.facetFilters = 'category.lvl0:' + renderHelper.decodeDepartment(searchDepartment,LANG);
+
+					$('.ACSearchProgress').removeClass('hidden');
+					index.search(query, options).then(function(answer) {
+						pPcurrentIndex = 100;
+						$('.ACSearchProgress').addClass('hidden');
+						currentDDHits= answer.hits;
+						$('#ddProductPreview').hide()
+						$('#ddProductPreviewContainer').html('');
+						$('#ddCol2').show();
+						if(answer.hits.length > 7){
+							answer.hits.splice(7,1,{
+								linkHref:'/search?q='+$('#search').val()+'&category=' + renderHelper.decodeDepartment(searchDepartment,LANG),
+								more:true,
+								nbHits:answer.nbHits,
+								text:'found search more'
+							})
+						}
+						callback(answer.hits);
+					}, function() {
+						callback([]);
+					});
+				},
+				name:'0',
+				displayKey: 'name',
+				templates: {
+					suggestion: function(suggestion) {
+						suggestion.autoComplete = HEADERTEXT.autoComplete.productList;
+						return ACTemplateProduct(suggestion);
+					},
+					empty: function(empty) {
+						return '<h5 class="text-left">No Items Found</h5>';
 					}
-					callback(answer.hits);
-				}, function() {
-					callback([]);
-				});
-			},
-			displayKey: 'name',
-			templates: {
-				suggestion: function(suggestion) {
-					suggestion.autoComplete = HEADERTEXT.autoComplete.productList;
-					return ACTemplateProduct(suggestion);
-				},
-				empty: function(empty) {
-					return '<h5 class="text-left">No Items Found</h5>';
 				}
-			}
-		} ,
-		{
-			source: function(query, callback) {
-				var index = client.initIndex('brands');
-				var options = {hitsPerPage: 5}
-				if(departmentVerified)options.facetFilters = 'genders:'+DEPARTMENT;
-				index.search(query, options).then(function(answer) {
-					answer.hits.map(function(hit){
-						return hit.DEPARTMENT = DEPARTMENT;
-					})
-					callback(answer.hits);
-				}, function() {
-					callback([]);
-				});
-			},
-			displayKey: 'name',
-			templates: {
-				suggestion: function(suggestion, answer) {
-					return ACTemplateBrand(suggestion);
-				},
-				empty: function(empty) {
-					return '<h5 class="text-left">No Items Found</h5>';
-				}
-			}
-		},
-		{
-			source: function(query, callback) {
-				var index = client.initIndex('categories');
-				var options = {hitsPerPage: 3}
-				if(departmentVerified)options.facetFilters = 'gender:'+DEPARTMENT;
-
-				index.search(query, options).then(function(answer) {
-					answer.hits = answer.hits.map(function(hit){
-						hit.soUrl = renderHelper.breadCrumbToUrl(hit.breadcrumb);
-						return hit;
-					})
-					callback(answer.hits);
-				}, function() {
-					callback([]);
-				});
-			},
-			displayKey: 'name',
-			templates: {
-				suggestion: function(suggestion, answer) {
-					return ACTemplateCategory(suggestion);
-				},
-				empty: function(empty) {
-					return '<h5 class="text-left">No Items Found</h5>';
-				}
-			}
-		}
-	];
-	var autocompleteOptionsMobile = [
-		{
-			//source: autocomplete.sources.hits(productIndex, {hitsPerPage: 7}),
-			source: function(query, callback) {
-				var index = client.initIndex('test_products');
-				var options = {hitsPerPage: 4}
-				if(departmentVerified)options.facetFilters = 'category.lvl0:'+DEPARTMENT;
-				$('.ACSearchProgress').removeClass('hidden');
-				index.search(query, options).then(function(answer) {
-					pPcurrentIndex = 100;
-					$('.ACSearchProgress').addClass('hidden');
-					currentDDHits= answer.hits;
-					$('#ddProductPreview').hide()
-					$('#ddProductPreviewContainer').html('');
-					$('#ddCol2').show()
-					if(answer.nbHits > 4){
-						answer.hits.splice(3,1,{
-							linkHref:'/search?q='+$('#search').val()+'&category='+DEPARTMENT,
-							more:true,
-							nbHits:answer.nbHits,
-							text:'found search more'
+			} ,
+			{
+				source: function(query, callback) {
+					var index = client.initIndex('brands');
+					var options = {hitsPerPage: 5}
+					if(searchDepartment == 'WOMEN' || searchDepartment == 'MEN' )
+						options.facetFilters = 'genders:'+ renderHelper.decodeDepartment(searchDepartment,LANG);
+					index.search(query, options).then(function(answer) {
+						answer.hits.map(function(hit){
+							return hit.DEPARTMENT = renderHelper.decodeDepartment(searchDepartment,LANG);
 						})
+						callback(answer.hits);
+					}, function() {
+						callback([]);
+					});
+				},
+				name:'1',
+				displayKey: 'name',
+				templates: {
+					suggestion: function(suggestion, answer) {
+						return ACTemplateBrand(suggestion);
+					},
+					empty: function(empty) {
+						return '<h5 class="text-left">No Items Found</h5>';
 					}
-
-					callback(answer.hits);
-				}, function() {
-					callback([]);
-				});
+				}
 			},
-			displayKey: 'name',
-			templates: {
-				suggestion: function(suggestion) {
-					suggestion.autoComplete = HEADERTEXT.autoComplete.productList;
-					return ACTemplateProduct(suggestion);
+			{
+				source: function(query, callback) {
+					var index = client.initIndex('categories');
+					var options = {hitsPerPage: 3}
+					if(searchDepartment == 'WOMEN' || searchDepartment == 'MEN' )
+						options.facetFilters = 'gender:' + renderHelper.decodeDepartment(searchDepartment,LANG);
+
+					index.search(query, options).then(function(answer) {
+						answer.hits = answer.hits.map(function(hit){
+							hit.soUrl = renderHelper.breadCrumbToUrl(hit.breadcrumb);
+							return hit;
+						})
+						callback(answer.hits);
+					}, function() {
+						callback([]);
+					});
 				},
-				empty: function(empty) {
-					return '<h5 class="text-left">No Items Found</h5>';
+				name:'2',
+				displayKey: 'name',
+				templates: {
+					suggestion: function(suggestion, answer) {
+						return ACTemplateCategory(suggestion);
+					},
+					empty: function(empty) {
+						return '<h5 class="text-left">No Items Found</h5>';
+					}
 				}
 			}
-		} ,
-		{
-			source: function(query, callback) {
-				var index = client.initIndex('brands');
-				var options = {hitsPerPage: 4}
-				if(departmentVerified)options.facetFilters = 'genders:'+DEPARTMENT;
-				index.search(query, options).then(function(answer) {
-					currentBrandDDHits = answer.hits;
-					var returnedArray =[];
-					if(currentBrandDDHits.length>=5)returnedArray= answer.hits.slice(0,5);
-					else returnedArray = answer.hits;
-					callback(returnedArray);
-				}, function() {
-					callback([]);
-				});
-			},
-			displayKey: 'name',
-			templates: {
-				suggestion: function(suggestion, answer) {
-					return ACTemplateBrand(suggestion);
+		];
+		var autocompleteOptionsMobile = [
+			{
+				//source: autocomplete.sources.hits(productIndex, {hitsPerPage: 7}),
+				source: function(query, callback) {
+					var index = client.initIndex('test_products');
+					var options = {hitsPerPage: 4}
+					if(searchDepartment == 'WOMEN' || searchDepartment == 'MEN' )
+						options.facetFilters = 'category.lvl0:' + renderHelper.decodeDepartment(searchDepartment,LANG);
+					$('.ACSearchProgress').removeClass('hidden');
+					index.search(query, options).then(function(answer) {
+						pPcurrentIndex = 100;
+						$('.ACSearchProgress').addClass('hidden');
+						currentDDHits= answer.hits;
+						$('#ddProductPreview').hide()
+						$('#ddProductPreviewContainer').html('');
+						$('#ddCol2').show()
+						if(answer.nbHits > 4){
+							answer.hits.splice(3,1,{
+								linkHref:'/search?q='+$('#search').val() +
+											(searchDepartment == 'WOMEN' || searchDepartment == 'MEN'?'&category='+renderHelper.decodeDepartment(searchDepartment,LANG):''),
+								more:true,
+								nbHits:answer.nbHits,
+								text:'found search more'
+							})
+						}
+
+						callback(answer.hits);
+					}, function() {
+						callback([]);
+					});
 				},
-				empty: function(empty) {
-					return '<h5 class="text-left">No Items Found</h5>';
+				displayKey: 'name',
+				templates: {
+					suggestion: function(suggestion) {
+						suggestion.autoComplete = HEADERTEXT.autoComplete.productList;
+						return ACTemplateProduct(suggestion);
+					},
+					empty: function(empty) {
+						return '<h5 class="text-left">No Items Found</h5>';
+					}
+				}
+			} ,
+			{
+				source: function(query, callback) {
+					var index = client.initIndex('brands');
+					var options = {hitsPerPage: 4}
+					if(searchDepartment == 'WOMEN' || searchDepartment == 'MEN' )
+						options.facetFilters = 'genders:' + renderHelper.decodeDepartment(searchDepartment,LANG);
+					index.search(query, options).then(function(answer) {
+						currentBrandDDHits = answer.hits;
+						var returnedArray =[];
+						if(currentBrandDDHits.length>=5)returnedArray= answer.hits.slice(0,5);
+						else returnedArray = answer.hits;
+						callback(returnedArray);
+					}, function() {
+						callback([]);
+					});
+				},
+				displayKey: 'name',
+				templates: {
+					suggestion: function(suggestion, answer) {
+						return ACTemplateBrand(suggestion);
+					},
+					empty: function(empty) {
+						return '<h5 class="text-left">No Items Found</h5>';
+					}
 				}
 			}
+		];
+		autocomplete('#search', {
+			debug:($('#selectionHome').length>0),
+			dropdownMenuContainer: '#containerAC',
+			openOnFocus:true,
+			templates: {
+				dropdownMenu: function() {
+					return searchDropDown();
+				}
+			}
+		},autocompleteOptions)
+			.on('autocomplete:selected', function(event, suggestion, dataset) {
+				$('#search').val('');
+				searchBar.blur();
+			})
+			.on('autocomplete:shown', function(event, suggestion, dataset) {
+				$('#containerHintAC').hide();
+			});
+		autocomplete('#searchMobile', {
+			dropdownMenuContainer: '#mobileContainerAC',
+			hints:true,
+			templates: {
+				dropdownMenu: searchDropDownMobile
+			}
+		},autocompleteOptionsMobile)
+			.on('autocomplete:selected', function(event, suggestion, dataset) {
+				$('#searchMobile').val('');
+				searchBar.blur();
+			})
+			.on('autocomplete:shown', function(event, suggestion, dataset) {
+				$('#mobileContainerHintAC').hide();
+			});
+		switch(searchDepartment){
+			case'WOMEN':
+				if(!$('input[data-search=WOMEN]').is(':checked')){
+					$('input[data-search=WOMEN]').attr('checked', 'checked')
+				}
+				break;
+			case'MEN':
+				if(!$('input[data-search=MEN]').is(':checked')){
+					$('input[data-search=MEN]').attr('checked', 'checked')
+				}
+				break;
+			default:
+				if(!$('input[data-search=ALL]').is(':checked')){
+					$('input[data-search=ALL]').attr('checked', 'checked')
+				}
+				break;
 		}
-	];
-	autocomplete('#search', {
-		dropdownMenuContainer: '#containerAC',
-		hints:true,
-		templates: {
-			dropdownMenu: searchDropDown
-		}
-	},autocompleteOptions)
-		.on('autocomplete:selected', function(event, suggestion, dataset) {
-			$('#search').val('');
-			searchBar.blur();
-		})
-		.on('autocomplete:shown', function(event, suggestion, dataset) {
-			$('#containerHintAC').hide();
-		});
-
-	autocomplete('#searchMobile', {
-		dropdownMenuContainer: '#mobileContainerAC',
-		hints:true,
-		templates: {
-			dropdownMenu: searchDropDownMobile
-		}
-	},autocompleteOptionsMobile)
-		.on('autocomplete:selected', function(event, suggestion, dataset) {
-			$('#searchMobile').val('');
-			searchBar.blur();
-		})
-		.on('autocomplete:shown', function(event, suggestion, dataset) {
-			$('#mobileContainerHintAC').hide();
-		});
+		if(typeof searchPhrase == 'undefined') return null;
+		var searchSelector= $('#search')
+		searchSelector.val(searchPhrase);
+		searchSelector.focus();
+	}
+	initiateAC();
 
 	function loadMainOWl(){
 		owlClothes = $("#owl-clothes")
@@ -351,7 +396,6 @@ $(document).ready( function() {
 	var mainSection = $('#mainSection');
 	var searchSection = $('#searchSection');
 	var general = $('.general');
-	var ddContainer = $('#containerAC');
 	var mainContainer = $('.resultContainer');
 	var filterSelector = $('#mainFacetPane');
 	var facetContainer = $('#mainFacetContainer');
@@ -373,31 +417,30 @@ $(document).ready( function() {
 	 */
 	//DEFINED ROUTES
 	//NAVIGATION
-
-	page('/search/:department', saveLastPath, showLoading , setSearch, closeSidePage,  setStateFromUrl, showHeader )
-	page('/sök/:department', saveLastPath, showLoading , setSearch, closeSidePage,  setStateFromUrl, showHeader )
-	page('/search/', saveLastPath, showLoading , setSearch, closeSidePage,  setStateFromUrl, showHeader )
-	page('/sök/', saveLastPath, showLoading , setSearch, closeSidePage,  setStateFromUrl, showHeader )
-
-	page('/brand/:name/',showLoading, saveLastPath,  setBrand,  closeSidePage,  setStateFromUrl, showHeader )
-	page('/m%C3%A4rken/:name/',showLoading, saveLastPath,  setBrand,  closeSidePage,  setStateFromUrl, showHeader )
-	page('/märken/:name/', showLoading,  saveLastPath, setBrand,  closeSidePage,  setStateFromUrl, showHeader )
-
-	page('/bästa-pris-för/:name', showLoading,  hideHeader, viewProduct, getSimilarProducts, addViewedProduct)
-	page('/view/:id', showLoading,  hideHeader, viewProduct, getSimilarProducts, addViewedProduct)
+	page('/jobs/:name', reload)
+	page('/jobs', reload)
 	page('/blog/:name', reload)
 	page('/settings/*', reload)
 	page('/about/*', reload)
 	page('/favourite-products', reload)
-	page('/jobs/*', reload)
 
-	page('/:department/:category/:style/',showLoading, saveLastPath, setCategory, closeSidePage,  setStateFromUrl, showHeader )
-	page('/:department/:category/:style', showLoading,  saveLastPath,setCategory, closeSidePage,  setStateFromUrl, showHeader )
-	page('/:department/:category/' , showLoading,  saveLastPath,  setCategory, closeSidePage,  setStateFromUrl, showHeader )
-	page('/:department/:category' , showLoading,  saveLastPath,setCategory, closeSidePage,  setStateFromUrl, showHeader )
-	page('/explore', showLoading,  saveLastPath, setCategory, closeSidePage,  setStateFromUrl, showHeader )
+	page('/search/:department', saveLastPath, showLoading , setSearch, closeSidePage, setStateFromUrl, fetchNav, showHeader )
+	page('/sök/:department', saveLastPath, showLoading , setSearch, closeSidePage, setStateFromUrl, fetchNav, showHeader )
+	page('/search/', saveLastPath, showLoading , setSearch, closeSidePage, setStateFromUrl, fetchNav, showHeader )
+	page('/sök/', saveLastPath, showLoading , setSearch, closeSidePage, setStateFromUrl, fetchNav, showHeader )
 
-	page('/:department', reload)
+	page('/brand/:name/',showLoading, saveLastPath,  setBrand,  closeSidePage, setStateFromUrl, fetchNav, showHeader )
+	page('/m%C3%A4rken/:name/',showLoading, saveLastPath,  setBrand,  closeSidePage, setStateFromUrl, fetchNav, showHeader )
+	page('/märken/:name/', showLoading,  saveLastPath, setBrand,  closeSidePage,  setStateFromUrl, fetchNav, showHeader )
+
+	page('/bästa-pris-för/:name', showLoading,  hideHeader,viewProduct,fetchNav, getSimilarProducts, addViewedProduct)
+	page('/view/:id', showLoading,  hideHeader, viewProduct, fetchNav, getSimilarProducts, addViewedProduct)
+
+	page('/:department/:category/:style/',showLoading, saveLastPath, setCategory, closeSidePage,  setStateFromUrl, fetchNav, showHeader )
+	page('/:department/:category/' , showLoading,  saveLastPath,  setCategory, closeSidePage, setStateFromUrl, fetchNav, showHeader )
+	page('/:department', showLoading, saveLastPath, setNone, closeSidePage, fetchDepartment, fetchNav, hideLoading)
+	page('/', showLoading, saveLastPath, setNone, removeNav, closeSidePage, fetchHome, hideLoading)
+
 	page({ dispatch: false, decodeURLComponents:false});
 
 
@@ -411,7 +454,6 @@ $(document).ready( function() {
 	}
 	function setStateFromUrl(context, next){
 		 var string = context.path;
-
 		if(currentState.search){
 			renderHelper.urlToStateSearch(string,helper);
 		}
@@ -492,7 +534,59 @@ $(document).ready( function() {
 		loading.show();
 		next();
 	}
+	function hideLoading (context, next){
+		loading.fadeOut(100);
+	}
 
+	function fetchNav(context, next){
+		if($('#headerMainContainer').length > 0 && !changeDepartment) return next();
+		changeDepartment = false;
+		$.ajax({
+			type: "get",
+			url: "/api/nav/" + renderHelper.decodeDepartment(DEPARTMENT,LANG),
+		}).success(function(result) {
+			$('#navContainer').html(result);
+			refreshVariables()
+			initiateAC();
+			next();
+		});
+	}
+	function removeNav(context, next){
+		$('#headerMainContainer').remove();
+		next();
+	}
+
+	function fetchHome(context, next){
+		$.ajax({
+			type: "get",
+			url: "/api/home",
+		}).success(function(result) {
+			mainSection.html(result);
+			initiateAC()
+			next();
+		});
+	}
+	function fetchDepartment(context, next){
+		DEPARTMENT = renderHelper.encodeDepartment(context['pathname'].split('/')[1]);
+		searchDepartment = DEPARTMENT;
+		departmentVerified = true;
+		$.ajax({
+			type: "get",
+			url: "/api" + context.pathname,
+		}).success(function(result) {
+			mainSection.html(result);
+			changeDepartment = true;
+			lazy()
+			next();
+		});
+	}
+
+	function setNone(context, next){
+		currentState.category=false;
+		currentState.search=false;
+		currentState.brand=false;
+		next();
+	}
 	function setCategory(context, next){
 		currentState.category=true;
 		currentState.search=false;
@@ -515,19 +609,25 @@ $(document).ready( function() {
 	function SEARCH (searchInput){
 		refreshVariables()
 		$('.ACSearchProgress').addClass('hidden');
-		var q = searchInput.val(); searchInput.blur(); searchInput.val('');
+		var q = searchInput.val();
+		searchInput.blur(); searchInput.val('');
 		if(q.length ==  0){return;}
 		currentState.search=true;
 		currentState.brand=false;
 		currentState.category=false;
 		helper.clearRefinements().setQuery(q);
-		if(!jQuery.isEmptyObject(DEPARTMENT)) helper.toggleRefinement('products', DEPARTMENT);
+		if(searchDepartment == 'WOMEN' || searchDepartment == 'MEN'){
+			helper.toggleRefinement('products', renderHelper.decodeDepartment(searchDepartment,LANG));
+			DEPARTMENT = searchDepartment;
+			if(DEPARTMENT !== $('#headerMainContainer').attr('data-department')){
+				changeDepartment = true;
+			}
+		}
 		page(getUrlFromState())
 	}
 
 	var owl;
 	function viewProduct(context, next){
-
 		if(typeof context.params.name !== 'undefined'){
 			var split = context.params.name.split('-')
 			context.state.product = split[split.length-1]
@@ -545,20 +645,11 @@ $(document).ready( function() {
 		$.ajax({
 			url: '/api/getProductByID/'+context.state.product,
 		}).success(function(result) {
-			result.lastPath = returnPath;
-			$(document).prop('title', 'Product - '+  result.product.name)
-			    mainSection.html(productView(result) + '<div class="relatedProducts">'+
-				 '<div class="">'+
-				 '<div class="text-center p-t-50 p-b-50">'+
-				 '<div class=" text-center ">' +
-				 '<h4 class="text-velvet">Söker efter relaterade <b>styles</b> </h4>'+
-				 '<img src="/dist/images/progress/progress-circle-danger.svg" style="width:200px height: 200px">'+
-				 '</div>'+
-				 '</div>'+
-				 '</div>'+
-				 '</div >')
+				result.lastPath = returnPath;
+				$(document).prop('title', result.product.name)
+				var html = productView(result)
+				mainSection.html(html)
 				loadMainOWl();
-
 				$('html, body').scrollTop(0);
 				loading.fadeOut('slow');
 			    mainSection.show().css({'opacity':0}).animate({'opacity':1},'slow')
@@ -613,9 +704,6 @@ $(document).ready( function() {
 	}
 	function refreshVariables(){
 		mainSection = $('#mainSection');
-		searchSection = $('#searchSection');
-
-		ddContainer = $('#containerAC');
 
 		mainContainer = $('.resultContainer');
 		filterSelector = $('#mainFacetPane');
@@ -722,7 +810,7 @@ $(document).ready( function() {
 	});
 	body.on( 'change', '  .colors input', function (event) {
 		var value = $(this).attr('value');
-		//console.log(value)
+
 
 		if( $(this).prop('checked')){
 			helper.addDisjunctiveFacetRefinement('color', value);
@@ -829,27 +917,19 @@ $(document).ready( function() {
     * View Product
     *
     * **/
-	/*mainSection.on( 'click','a[data-product-info = "show"], img[data-product-info="show"]' , function (e) {
-		$(this).addClass('selected')
-		closeMobileSearch();
-		var index = $(this).attr('index'), _id =  $(this).attr('_id');
-		if(index !== null)itemScrollindex = index;
-		page('/view/'+_id);
-		e.stopPropagation();e.preventDefault();
-	});*/
 	mainSection.on('click','#mainJawBoneImageContainer .next-item',function(){
 		owl.trigger('owl.next');
 	})
 	mainSection.on('click','#mainJawBoneImageContainer .prev-item',function(){
 		owl.trigger('owl.prev');
 	})
-	mainSection.on( eventOnTE,'.jawBone .delete' , function (e) {
+	mainSection.on( eventOnTE,'.jawBone .delete' , function (event) {
 		page($(this).attr('data-path'))
-		e.preventDefault();
+		event.preventDefault();
 	})
-	mainSection.on( eventOnTE,'.jawBone .back' , function (e) {
+	mainSection.on( eventOnTE,'.jawBone .back' , function (event) {
 		page.back();
-		e.preventDefault();
+		event.preventDefault();
 	})
 
 	/*
@@ -857,18 +937,24 @@ $(document).ready( function() {
 	 *
 	 * **/
 	//***************************************SEARCH
-
-	$('#autocompleteForm').submit( function(event){
-		console.log('SUBMIT')
+	$(document).on('keyup',function(event){
+		if(!$('input').is(':focus') && event.keyCode !== 13){
+			$('#search').focus();
+		}
+	});
+	$(document).on('submit','#autocompleteForm', function(event){
 		event.preventDefault();
-		SEARCH(searchBar);
-	})
-	ddContainer.on( 'click','#ddsearchMore', function(){
+		SEARCH($('#search'));
+	});
+	$(document).on('change','input[type=radio][name=optionSearch]',function() {
+		searchDepartment = $(this).val();
+		initiateAC($('#search').val())
+	});
+	$(document).on( 'click','#containerAC #ddsearchMore', function(){
 		$('#autocompleteForm').submit()
-	})
-	mainSection.on( 'click','.closeSearch', function(){})
-	searchSection.on( 'click','.closeSearch', function(){})
-	ddContainer.on( 'mouseover','#dditemList',function(event){
+	});
+
+	$(document).on( 'mouseover','#dditemList',function(event){
 		$('#ddCol2').hide();
 		$('#ddProductPreview').show();
 	}).on('mouseout' ,'#dditemList' , function (event) {
@@ -876,8 +962,7 @@ $(document).ready( function() {
 		$('#ddProductPreviewContainer').html('');
 		$('#ddCol2').show()
 	})
-	ddContainer.on( 'mouseover','#dditemList .productsAC' , function (event) {
-
+	$(document).on( 'mouseover','#dditemList .productsAC' , function (event) {
 		var content;
 		var _id = $(this).attr('data-id');
 		var pPreviewSelector = $('#ddProductPreview')
@@ -898,18 +983,86 @@ $(document).ready( function() {
 				pPreviewContainer.animate({opacity: 1, left:"0"}, 100, $.bez([.6, 0, .1, 1]));
 			})
 	})
-	searchBar.focus(function(){
-		$('.searchMainPageOverlay').fadeIn('slow');
+	$(document).on('focus','#search',function(){
+		$('#h1Home').addClass("small");
+		$('#logoHome').addClass("small");
+		$('.searchMainPageOverlay').fadeIn(200);
 		if(this.value == ''){
 			$('#containerHintAC').show();
 		}
 	})
-	searchBar.blur(function(){
+	$(document).on('blur','#search',function(){
+		$('#logoHome').removeClass("small");
+		$('#h1Home').removeClass("small");
 		$('.searchMainPageOverlay').hide();
 		$('#containerHintAC').hide();
 	})
-	$('a[search-link]').click(function(){
+	$(document).on('click','a[search-link]',function(){
 		searchBar.focus();
+	})
+	$(document).on('focus','a[search-link] input',function(){
+		searchBar.focus();
+	})
+
+	/*
+	 * MOBILE
+	 * Search
+	 *
+	 * */
+	function closeMobileSearch(){
+		$('#searchMobile').val('').blur();
+		$('#fakeMobileSearchButton').show();
+		var searchContainer = $('#searchMobileContainer');
+		$.when(searchContainer.animate({opacity: 0},50))
+			.done( function() {
+				searchContainer.addClass('hidden')
+			})
+	}
+	function openMobileSearch(){
+		if($('.page-sidebar').hasClass('visible')){
+			$('.page-sidebar').removeClass('visible');
+			$('.fixed-header').removeClass('sidebar-open');
+			$('.page-sidebar-cover').addClass('hidden');
+		}
+		$.when($('#searchMobileContainer').removeClass('hidden').css({opacity:0}).animate({opacity: 1}, 20))
+			.done( function() {
+				$('#searchMobileForm').find('.algolia-autocomplete').find('input').focus();
+			})
+	}
+	$('#searchMobileForm').submit(function(e){
+		event.preventDefault();
+		SEARCH($('#searchMobile'))
+	}).keyup(function(e) {
+		if (e.which == 13) {
+			SEARCH($('#searchMobile'))
+		}
+	});
+	$('#mobileContainerAC').on( 'click','#ddsearchMore', function(){
+		SEARCH($('#searchMobile'))
+	})
+	$('.fakeMobileSearchButton').focus(function(e){
+		e.stopImmediatePropagation();
+		e.preventDefault();
+		e.cancelBubble = true;
+		openMobileSearch();
+	});
+	$('#CloseSearchMobile').on(eventOnTE, function(e){
+		e.stopImmediatePropagation();
+		e.preventDefault();
+		e.cancelBubble = true;
+		//closeSEARCH()
+		closeMobileSearch();
+	})
+	//$('.page-container-wrapper').on('click', closeMobileSearch)
+	mobileSearchBar.focus(function(){
+		$('.searchMainPageOverlay').show();
+		if(this.value == ''){
+			$('#mobileContainerHintAC').show();
+		}
+	})
+	mobileSearchBar.blur(function(){
+		$('.searchMainPageOverlay').hide();
+		$('#mobileContainerHintAC').hide();
 	})
 
 	/*
@@ -983,66 +1136,7 @@ $(document).ready( function() {
 		}
 	});
 
-	/*
-	 * MOBILE
-	 * Search
-	 *
-	 * */
-	function closeMobileSearch(){
-		$('#searchMobile').val('').blur();
-		$('#fakeMobileSearchButton').show();
-		var searchContainer = $('#searchMobileContainer');
-		$.when(searchContainer.animate({opacity: 0},50))
-			.done( function() {
-				searchContainer.addClass('hidden')
-			})
-	}
-	function openMobileSearch(){
-		if($('.page-sidebar').hasClass('visible')){
-			$('.page-sidebar').removeClass('visible');
-			$('.fixed-header').removeClass('sidebar-open');
-			$('.page-sidebar-cover').addClass('hidden');
-		}
-		$.when($('#searchMobileContainer').removeClass('hidden').css({opacity:0}).animate({opacity: 1}, 20))
-			.done( function() {
-				$('#searchMobileForm').find('.algolia-autocomplete').find('input').focus();
-			})
-	}
-	$('#searchMobileForm').submit(function(e){
-		event.preventDefault();
-		SEARCH($('#searchMobile'))
-	}).keyup(function(e) {
-		if (e.which == 13) {
-			SEARCH($('#searchMobile'))
-		}
-	});
-	$('#mobileContainerAC').on( 'click','#ddsearchMore', function(){
-		SEARCH($('#searchMobile'))
-	})
-	$('.fakeMobileSearchButton').focus(function(e){
-		e.stopImmediatePropagation();
-		e.preventDefault();
-		e.cancelBubble = true;
-		openMobileSearch();
-	});
-	$('#CloseSearchMobile').on(eventOnTE, function(e){
-		e.stopImmediatePropagation();
-		e.preventDefault();
-		e.cancelBubble = true;
-		//closeSEARCH()
-		closeMobileSearch();
-	})
-	//$('.page-container-wrapper').on('click', closeMobileSearch)
-	mobileSearchBar.focus(function(){
-		$('.searchMainPageOverlay').show();
-		if(this.value == ''){
-			$('#mobileContainerHintAC').show();
-		}
-	})
-	mobileSearchBar.blur(function(){
-		$('.searchMainPageOverlay').hide();
-		$('#mobileContainerHintAC').hide();
-	})
+
 	/*
 	 * MOBILE
 	 * FLOATING ACTION BUTTON
@@ -1250,7 +1344,6 @@ $(document).ready( function() {
 
 	$(window).on('load', function() {
 		$('[data-pages="parallax"]').each(function() {
-			console.log('we loaded parale')
 			var $parallax = $(this)
 			$parallax.parallax($parallax.data())
 		})

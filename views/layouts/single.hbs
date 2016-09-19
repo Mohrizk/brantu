@@ -4,12 +4,19 @@
           {{>side-menu}}
         <div class="page-container bg-master-lightest">
             {{>register2}}
-            {{>nav}}
+            <div id="navContainer">
+                {{>nav}}
+            </div>
             {{{ body }}}
+
+            <div>
+                {{>footer}}
+            </div>
+            {{>loading}}
         </div>
       </body>
 
-    <script type="text/javascript" src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="/plugins/bootstrap/js/bootstrap.min.js"></script>
    <script type="text/javascript" src="/plugins/jquery-bez/jquery.bez.min.js"></script>
    <script type="text/javascript" src="/plugins/ion.rangeSlider/js/ion.rangeSlider.js"></script>
    <script type="text/javascript" src="/plugins/owl-carousel/owl.carousel.min.js"></script>

@@ -337,10 +337,14 @@ margin: auto;
 
   text-align:center;
 }
-
+.ACSearchProgress{
+  position:absolute;
+  top:0;
+  right:50px; padding-top:10px; z-index: 10;
+}
 .search-link input[type="text"]:nth-child(1){
   box-shadow: 0 2px 2px -2px gray;
-  color:#fff;
+  color:transparent;
 }
 .search-link input[type="text"]:focus {
   color:#000;
@@ -1125,6 +1129,9 @@ top:14%; left:7px;
 .page-container .page-content-wrapper {
   min-height: 100%;
   position: relative;
+  background-color:#fafafa;
+}
+.page-container .page-content-wrapper #mainSection > .container{
   background-color:#fff;
 }
 .page-container .page-content-wrapper .content {
@@ -5971,11 +5978,20 @@ fieldset[disabled] .form-control {
 .radio label {
   margin-bottom: 6px;
 }
+
+.radio.radio-search-selection  label{
+  margin-bottom: 0;
+  padding: 12px 25px;
+}
 .radio label:before {
   bottom: 2.5px;
   border-radius: 99px;
   -webkit-transition: border 0.3s 0s cubic-bezier(0.455, 0.03, 0.215, 1.33);
   transition: border 0.3s 0s cubic-bezier(0.455, 0.03, 0.215, 1.33);
+}
+.radio.radio-search-selection label:before {
+  display:none;
+  margin-right: 0;
 }
 .radio input[type=radio]:checked + label:before {
   border-width: 5px;
@@ -5993,7 +6009,7 @@ fieldset[disabled] .form-control {
   border-color: #ee99ae;
 }
 .radio.radio-primary input[type=radio]:checked + label:before {
-  border-color: #6d5cae;
+  border-color: #630d54;
 }
 .radio.radio-info input[type=radio]:checked + label:before {
   border-color: #3b4752;
@@ -6013,6 +6029,12 @@ fieldset[disabled] .form-control {
 .checkbox label {
   transition: border 0.2s linear 0s, color 0.2s linear 0s;
   white-space: nowrap;
+}
+
+.radio.radio-search-selection input[type=radio]:checked + label {
+  border:1px solid #8c1079;
+  background: #630d54;
+  color: #fff;
 }
 .checkbox label:before {
   top: 1.4px;

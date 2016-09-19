@@ -39,8 +39,10 @@ var register = function(Handlebars) {
             return false;
         },
         stringContains: function(passedString, expression){
-          if(passedString.indexOf(expression)>-1)
-          return true;
+            if(typeof passedString == 'undefined' ||  typeof expression == 'undefined') return false;
+
+            if(passedString.indexOf(expression)>-1)
+            return true;
             else false;
         },
         json: function(context){
@@ -108,8 +110,9 @@ var register = function(Handlebars) {
             // if(typeof leaveDash !== 'undefined') ;
             //else return newString.replace(/\-/g, " ")
         },
-        mapDepartment   :function (string){
-            var str = string.toLowerCase()
+        encodeDepartment   :function (string){
+            if(typeof string == 'undefined') return null;
+            var str = string.toLowerCase();
             var women = ['kvinna','women','female']
             var men = ['men','man','male']
             for(var w in women){

@@ -24,9 +24,13 @@ var routes = [
     [ '/', 'get', [
         job.getAll,
         function( req, res, next) {
-            res.render('careers', {
+            console.log('REACHING HERE')
+            res.render('general', {
                 title:'Career Portal | Brantu',
-                description: 'Job openings in brantu team | marketing, development and technology'
+                description: 'Job openings in brantu team | marketing, development and technology',
+                generalPartial: function() {
+                    return "careers";
+                }
             })
         }]
     ],
@@ -34,10 +38,14 @@ var routes = [
     [ '/:name', 'get', [
         job.getJob,
         function( req, res, next) {
-            res.render('job',
+            console.log('GETTING JOB')
+            res.render('general',
             {
                 title                      : res.locals.job.name + ' - '+ res.locals.job.location +' | Brantu',
                 description                : 'Brantu is currently hiring a '+ res.locals.job.name + ', '+res.locals.job.type +' to join the team at our office in '+ res.locals.job.location,
+                generalPartial: function() {
+                return "job";
+                }
             })
         }]
     ]

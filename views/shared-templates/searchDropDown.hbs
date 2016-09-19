@@ -1,22 +1,35 @@
 <div class="my-custom-menu">
-    <div class="row padding-2v">
-        <div class="col-xs-5 col-md-4 col-md-offset-1 col-sm-offset-1 text-center" id="dditemListContainer">
-            <h6 class="text-left b-b bold all-caps text-spaced-medium text-pink-darker">Products</h6>
-            <div class="aa-dataset-0" id="dditemList"></div>
+    <div class="padding-10">
+        <div class=" auto-margin text-center bg-master-lightest">
+            <div class="radio radio-primary radio-search-selection">
+                <input type="radio" value="none" name="optionSearch" id="allSearch" data-search="ALL">
+                <label for="allSearch" class="bold fs-16 all-caps"> Alla </label>
+                <input type="radio" value="WOMEN" name="optionSearch" id="womenSearch" data-search="WOMEN">
+                <label for="womenSearch" class="bold fs-16 all-caps"> Kvinna </label>
+                <input type="radio" value="MEN" name="optionSearch" id="menSearch" data-search="MEN">
+                <label for="menSearch" class="bold fs-16 all-caps"> Man</label>
             </div>
-        <div class="col-md-3 col-sm-offset-1 col-xs-5  col-xs-12 text-center" id="ddCol2"> 
-            <div id="ddBrands">
-                <h6 class="text-left b-b bold all-caps text-spaced-medium text-pink-darker" >Brands</h6>
-                <div class="aa-dataset-1"></div>
-            </div>
-            <div id="ddCategory">
-                <h6 class="text-left b-b bold all-caps text-spaced-medium text-pink-darker" >Categories</h6>
-                <div class="aa-dataset-2"></div>
-            </div>
+
         </div>
-        <div class="col-xs col-xs-offset-1 relative text-center no-overflow" style="display: none; " id="ddProductPreview"> 
-            <div class="top-left bottom-right" id="ddProductPreviewContainer"> 
-                </div> 
-            </div> 
-        </div>
+        <div class="row">
+            <div class="col-xs-5 col-md-5 col-md-offset-1 col-sm-offset-1 text-center" id="dditemListContainer">
+                <h6 class="text-left b-b bold all-caps text-spaced-medium text-purple sbold">Products</h6>
+                <div class="aa-dataset-0" id="dditemList"></div>
+                </div>
+            <div class="col-md-5 col-sm-offset-1  col-xs-5 text-center" id="ddCol2">
+                <div id="ddBrands">
+                    <h6 class="text-left b-b bold all-caps text-spaced-medium text-purple sbold" >Brands</h6>
+                    <div class="aa-dataset-1"></div>
+                </div>
+                <div id="ddCategory">
+                    <h6 class="text-left b-b bold all-caps text-spaced-medium text-purple sbold" >Categories</h6>
+                    <div class="aa-dataset-2"></div>
+                </div>
+            </div>
+            <div class="col-xs col-xs-offset-1 relative text-center no-overflow" style="display: none; " id="ddProductPreview">
+                <div class="top-left bottom-right" id="ddProductPreviewContainer">
+                    </div>
+                </div>
+            </div>
     </div>
+</div>

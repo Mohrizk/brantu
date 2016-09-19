@@ -1,4 +1,8 @@
+.searchMainPageOverlay div{
+   z-index:200; top:0; bottom:0;  right: 0; left: 0; background: rgba(51,51,51,0.3);
+}
 /*FEEEEED*******/
+
 .productFeedTemplate img{
     height: 28vw; max-width:100%; object-fit: cover;
 }
@@ -38,9 +42,14 @@ input:-webkit-autofill {
     background: transparent !important;
    
 }
-#mainSection, #searchSection, #compareSection{
-    padding-top:110px;
+#mainSection > .container, #searchSection > .container, #compareSection > .container{
+    margin-top:110px;
 }
+
+#mainSection > .container.no-header, #searchSection > .container.no-header, #compareSection > .container.no-header{
+    margin-top:0px;
+}
+
 .hoverish{
     border:2px solid white;
     transition: all .1s cubic-bezier(.5,0,.1,1);
@@ -630,13 +639,10 @@ ul.circle li:hover div{
 
 }
 .jawBoneContent .jawBoneOpenContainer .jawBoneContainer{
-	background-color:#fff;
+	background-color:#fafafa;
 	position:relative;
 }
 
-.jawBoneContent.open .jawBoneOpenContainer .jawBoneContainer{
-   min-height:40vw;
-}
 
 .jawBoneContainer .jawBone{
     top:0;
@@ -644,10 +650,12 @@ ul.circle li:hover div{
     right:0;
     bottom:0;
     background-color:#fff;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     position:relative;
     padding: 0%;
     height:auto;
     z-index:10 !important;
+    overflow-y: hidden;
 }
 
 
@@ -669,10 +677,14 @@ ul.circle li:hover div{
 
  .similarProducts{
     width:100%;
-    margin-top:1vw;
+    margin-top:50px;
     min-height:8vw;
     height:auto;
-    border-top:2px solid #333;
+
+
+}
+.similarProducts > div{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 /*** Jawbone Content****/
@@ -690,7 +702,7 @@ ul.circle li:hover div{
     .selectedItemImageColoumn ol li img{max-width:3vw; height:auto; margin: 0.2vw 0; border:0.1vw solid #ddd;}
     #selectedItemInformation{
         background:rgba(255,255,255,0.80);
-        min-height: 45vw;
+        min-height: 500px;
 
     }
     .selectedItemZoomPicture img{

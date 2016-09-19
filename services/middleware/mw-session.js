@@ -25,9 +25,7 @@ module.exports ={
         next()
     },
 
-
     addFavouriteDepartment: function(req, res, next){
-
         req.session.favDepartment = req.url
         next();
     },

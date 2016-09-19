@@ -193,7 +193,7 @@ var helper = {
         Article.find({"shops":{"$not":{"$size":1}}}, {_id: 1}).exec(function(err, docs){
             var ids = docs.map(function(doc) { return doc._id;});
 
-            Products.find({"articles":{$in: ids}, "genders": shared.helper.mapDepartment(department)})
+            Products.find({"articles":{$in: ids}, "genders": shared.helper.encodeDepartment(department)})
                 .deepPopulate(options).limit(30).lean().exec(function(err, products){
                 if(err) return callback(err);
                 if(products.length == 0 ) return callback()
