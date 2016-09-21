@@ -31,7 +31,9 @@ var shared = require('../../public/javascripts/helper');
 
 
 operations = {
-    categories:{sv:['kläder', 'skor', 'accessoarer']},
+    categories:{
+        sv:['kläder', 'skor', 'accessoarer']
+    },
     //API FOR GETTING PRODUCT
     getCompare:function(req,res,next){
         helper.getCompare(req, res.locals.selectedDepartment, operations.categories, function(err, clothes, shoes, accessory){
@@ -60,6 +62,9 @@ operations = {
                     req.style = product.attributes[a].value;
             }
             req.category = product.category;
+            if(product.genders.length !== 0){
+                res.locals.selectedDepartment = shared.helper.decodeDepartment(product.genders[0], res.locals.LANG);
+            }
             next();
         })
     },
@@ -278,7 +283,6 @@ var helper = {
         };
         helper.addAttributesQuery(foundProduct, query);
         Products.find(query).sort( { "price.value": 1 }).lean().exec(function(err, products){
-
                 if(err) return callback(err);
                 if(products.length == 0) return callback();
                 var filtered = products.filter(function(product){

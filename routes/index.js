@@ -28,6 +28,11 @@ var routes = [
         else{*/
             res.render('general', {
                 layout:'no-nav',
+                title :  "Brantu | Jämför och hitta det bästa priset inom mode",
+                description :
+                'Brantu är Sveriges bästa prisjämförelsajt inom mode! ' +
+                'Med oss hittar du både relaterade produkter och stilar till det bästa priset. ' +
+                'Använd brantu när du ska köpa dina kläder eller skor online...',
                 generalPartial: function() {
                     return "home";
                 }
@@ -39,7 +44,7 @@ var routes = [
         function(req, res, next) {
             req.session.signupPopup = true;
             req.session.save()
-            res.send('fuck');
+            res.send('tutorial pop up');
             res.end()
         }]],
     /********SEARCH************/
@@ -52,7 +57,12 @@ var routes = [
         products.getForSearch,
         products.getAlgoliaProducts,
         function(req, res, next) {
-            res.render('navigation')
+            console.log('we have the products')
+            res.render('general', {
+                generalPartial: function() {
+                    return "productNavigation_Back";
+                }
+            });
         } ]],
 
 
@@ -63,7 +73,6 @@ var routes = [
         products.getProductIDfromName,
         products.getProductByID,
         products.checkProductIsFavoured,
-        categories.getDepartment,
         function(req, res, next) {
             res.render('product', {
                 title                   : 'Lägsta priset för '+req.product.name + ' - altid bästa pris inom mode med Brantu',
@@ -82,7 +91,11 @@ var routes = [
         products.getForBrands,
         products.getAlgoliaProducts,
         function(req, res, next) {
-            res.render('navigation')
+            res.render('general', {
+                generalPartial: function() {
+                    return "productNavigation_Back";
+                }
+            });
         } ]],
 
 /*********INFORMATION & CONTACT PAGES *************************************/
@@ -186,7 +199,11 @@ var routes = [
         products.getForCategories,
         products.getAlgoliaProducts,
         function(req, res, next) {
-            res.render('navigation')
+            res.render('general', {
+                generalPartial: function() {
+                    return "productNavigation_Back";
+                }
+            });
         } ]],
 
     [ ["/:department"], 'get', [
@@ -198,7 +215,7 @@ var routes = [
         function(req, res, next) {
             var department = shared.helper.encodeDepartment(res.locals.selectedDepartment);
             res.render('general', {
-                title :  "Brantu | "+"Jämför och hitta det bästa priset inom mode |" + res.locals.selectedDepartment,
+                title :  res.locals.selectedDepartment + " | Jämför och hitta det bästa priset inom mode | Brantu",
                 description :
                 'Brantu är Sveriges bästa prisjämförelsajt inom mode! ' +
                 'Med oss hittar du både relaterade produkter och stilar till det bästa priset. ' +

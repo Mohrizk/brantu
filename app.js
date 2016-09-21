@@ -65,14 +65,15 @@ app.use(session({
 
 i18n.expressBind(app, {
     // setup some locales - other locales default to en silently
-    locales: ['en', 'sv'],
+    locales: ['sv'],
     defaultLocale: 'sv',
     // change the cookie name from 'lang' to 'locale'
     cookieName: 'brantuLang'
 });
 app.use(function(req, res, next) {
-    req.i18n.setLocaleFromCookie();
     res.locals.LANG = req.i18n.getLocale();
+    //req.i18n.setLocaleFromCookie();
+
     next();
 });
 /********view engine setup****/

@@ -2,7 +2,6 @@
    z-index:200; top:0; bottom:0;  right: 0; left: 0; background: rgba(51,51,51,0.3);
 }
 /*FEEEEED*******/
-
 .productFeedTemplate img{
     height: 28vw; max-width:100%; object-fit: cover;
 }
@@ -30,6 +29,7 @@ img.lazy {
     width:175px;
     height:44px;
     margin-top:12px;
+    margin-left: 12px;
     display: block;
     text-align: left;
     position: relative;
@@ -633,6 +633,7 @@ ul.circle li:hover div{
 }
 .jawBoneContent.open{
     display:block;
+
 }
 .jawBoneContent.open .jawBoneOpenContainer{
 	border-bottom:1px solid #ddd;
@@ -645,18 +646,20 @@ ul.circle li:hover div{
 
 
 .jawBoneContainer .jawBone{
+    margin-top: 5px;
     top:0;
     left:0;
     right:0;
     bottom:0;
     background-color:#fff;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 4px 2px -2px rgba(0,0,0,0.16);
     position:relative;
     padding: 0%;
     height:auto;
     z-index:10 !important;
-    overflow-y: hidden;
+
 }
+
 
 
 .jawBone .selectedItemImageWrapper{width:55%; padding:0; margin:0; display:inline-block;}
@@ -675,17 +678,63 @@ ul.circle li:hover div{
     background:#fff;
 }
 
+.jawBone .productDescription{
+    height: 100px;
+    text-overflow: ellipsis;
+}
+.read-more-state {
+    display: none;
+}
+
+.read-more-target {
+    opacity: 0;
+    max-height: 0;
+    font-size: 0;
+    transition: .25s ease;
+}
+
+.read-more-state:checked ~ .read-more-wrap .read-more-target {
+    opacity: 1;
+    font-size: inherit;
+    max-height: 999em;
+}
+
+.read-more-state ~ .read-more-trigger:before {
+    content: 'Show more';
+}
+
+.read-more-state:checked ~ .read-more-trigger:before {
+    content: 'Show less';
+}
+
+.read-more-trigger {
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 .5em;
+    color: #666;
+    font-size: .9em;
+    line-height: 2;
+    border: 1px solid #ddd;
+    border-radius: .25em;
+}
+
  .similarProducts{
     width:100%;
     margin-top:50px;
     min-height:8vw;
     height:auto;
-
-
+     background: #fafafa;
 }
 .similarProducts > div{
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
+.box-elevated{
+    box-shadow: 0 3px 3px rgba(0,0,0,0.10), 0 3px 3px rgba(0,0,0,0.16);
+}
+.similarProducts > div:nth-child(1),
+.similarProducts > div:nth-child(2),
+.similarProducts > div:nth-child(3)
+{ margin-top: 50px;}
 
 /*** Jawbone Content****/
   .pictureWrapper{
@@ -701,7 +750,8 @@ ul.circle li:hover div{
   }
     .selectedItemImageColoumn ol li img{max-width:3vw; height:auto; margin: 0.2vw 0; border:0.1vw solid #ddd;}
     #selectedItemInformation{
-        background:rgba(255,255,255,0.80);
+        background:rgba(242, 232, 245, 0.83);
+        -webkit-backdrop-filter: blur(3px);
         min-height: 500px;
 
     }
@@ -959,7 +1009,10 @@ ul.circle li:hover div{
 }
 /*****PRICE COMPARISON TABLE*****/
 .dataTables_wrapper td  img{
-    width:120px;
+    width:80px;
+}
+.similarProducts .owl-theme .owl-controls{
+    margin-top: 0;
 }
 
 /***FLOATING ACTION BUTTON*****/

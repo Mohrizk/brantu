@@ -9,6 +9,7 @@ Generated From LESS
 2. View Ports
 3. Chat
 4. Panels
+
 5. Typography
 6. Buttons
 7. Alerts
@@ -236,6 +237,9 @@ a.light{
   right:-12px;
   float: right;
 }
+#logoSection, #searchSection{
+  display: inline-block;
+}
 
 .search-mobile input[type="text"]{
   padding-left: 12px;
@@ -293,9 +297,10 @@ display: inline !important;
     right:23vw;
     top:0;
 }
+
 .search-link{
   position: relative;
-  max-width:600px;
+  width:500px;
 }
 
 .search-link input::-webkit-input-placeholder {
@@ -1532,8 +1537,11 @@ top:14%; left:7px;
   padding-right: 0px;
 }
 .container-fluid {
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.row{
+  margin:0;
 }
 .copyright {
   padding: 25px 0;
@@ -1782,8 +1790,10 @@ top:14%; left:7px;
 .panel .panel-heading .panel-title {
   text-transform: uppercase;
   color:white;
+  white-space: nowrap;
   display: inline-block;
   letter-spacing: 0.5em;
+  font-weight: bold;
   margin: 0;
   padding: 0;
   line-height: normal;
@@ -1793,6 +1803,21 @@ top:14%; left:7px;
   filter: alpha(opacity=40);
   -webkit-transition: opacity 0.3s ease;
   transition: opacity 0.3s ease;
+}
+.panel .panel-heading .panel-title .collapsed .descriptionHint{
+  letter-spacing: 0;
+  text-transform: lowercase;
+  padding-top: 10px;
+  padding-right:40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  display:block;
+}
+.panel .panel-heading .panel-title .descriptionHint{
+  padding-top: 0px;
+  padding-right:0px;
+  display:none;
 }
 .panel .panel-heading .panel-controls {
   float: right;
@@ -2478,8 +2503,9 @@ hr.dotted {
 /* Primary
 ------------------------------------
 */
+
 .bg-primary {
-  background-color: #ffbbee;
+  background-color: #630d54;
 }
 .bg-primary-dark {
   background-color: #ff5588;
@@ -5066,8 +5092,13 @@ body > .pgn-wrapper {
   .modal.slide-up .modal-dialog {
     width: calc(100% - 20px);
   }
+  #logoSection, #searchSection{
+    display: none !important;
+  }
 }
 @media (min-width: 768px) {
+
+
   .modal.stick-up .modal-dialog {
     margin: -5px auto;
   }
@@ -5989,6 +6020,7 @@ fieldset[disabled] .form-control {
   -webkit-transition: border 0.3s 0s cubic-bezier(0.455, 0.03, 0.215, 1.33);
   transition: border 0.3s 0s cubic-bezier(0.455, 0.03, 0.215, 1.33);
 }
+
 .radio.radio-search-selection label:before {
   display:none;
   margin-right: 0;
@@ -6033,9 +6065,24 @@ fieldset[disabled] .form-control {
 
 .radio.radio-search-selection input[type=radio]:checked + label {
   border:1px solid #8c1079;
-  background: #630d54;
+  background: radial-gradient( #8c1079, #5a196e);
   color: #fff;
 }
+.radio.radio-search-selection input[type=radio]:checked + label:after {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(90, 25, 110, 0);
+  border-top-color: #5a196e;
+  border-width: 10px;
+  margin-left: -10px;
+}
+
 .checkbox label:before {
   top: 1.4px;
   border-radius: 3px;
@@ -7605,6 +7652,16 @@ div.cs-skin-slide .cs-options ul li.cs-selected span {
 .table {
   margin-top: 5px;
 }
+
+.table > thead > tr > th:nth-child(1),
+.table > tbody > tr > th:nth-child(1),
+.table > tfoot > tr > th:nth-child(1),
+.table > thead > tr > td:nth-child(1),
+.table > tbody > tr > td:nth-child(1),
+.table > tfoot > tr > td:nth-child(1){
+  padding: 8px 8px 8px 22px;
+}
+
 .table thead tr th {
   text-transform: uppercase;
   font-weight: 500;
@@ -7616,6 +7673,9 @@ div.cs-skin-slide .cs-options ul li.cs-selected span {
   border-bottom: 1px solid rgba(230, 230, 230, 0.7);
   color: rgba(44, 44, 44, 0.35);
 }
+
+
+
 .table thead tr th[class*='sorting_'] {
   color: #2c2c2c;
 }
@@ -12068,7 +12128,9 @@ Main components
 }
 /*** General tablets and phones ***/
 @media (max-width: 991px) {
-
+  .search-link{
+    width:300px;
+  }
   .btn{
     font-size:14px;
     padding:10px 12px;
@@ -12309,8 +12371,7 @@ Main components
   .header .logo-container{
       height: 44px;
   }
-  .header .notification-list,
-  .header .search-link {
+  .header .notification-list{
     display: none;
   }
 
@@ -12324,7 +12385,9 @@ Main components
     height: 19px;
     width: 16px;
     overflow: hidden;
+
   }
+
   .jumbotron,
   .container-fluid {
     padding-left: 0;

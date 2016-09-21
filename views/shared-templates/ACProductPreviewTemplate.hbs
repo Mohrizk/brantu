@@ -1,43 +1,45 @@
-<div class="row"> 
-    <div class="col-xs-7"><img  src="\{{mainPicture.largeUrl}}" style="width: 100%"/> 
-        </div> 
-    <div class="col-xs col-xs-offset-1"><ol class="slidee no-style">
-        \{{#each auxPictures}}
-            \{{#if (upToIndex @index 1)}}<li class="p-t-1v"><img src="\{{largeUrl}}" style="width: 100%" /></li>\{{/if}}
-            \{{/each}}
-        </ol>
+<div class="relative">
+    <div class="row">
+        <div class="col-md-7 col-sm-12 col-xs-12 no-padding">
+            <img  src="\{{mainPicture.largeUrl}}" style="width: 100%;"/>
+
+        </div>
+        <div class="col-xs-5 hidden-sm hidden-xs no-padding">
+            <ol class="slidee no-style">
+                \{{#each auxPictures}}
+                    \{{#if (upToIndex @index 1)}}<li class=""><img src="\{{largeUrl}}" style="width: 100%" /></li>\{{/if}}
+                \{{/each}}
+            </ol>
         </div>
     </div>
-<div class="overlayer bottom-left full-width"> 
-    <div class="overlayer-wrapper item-info more-content"> 
-        <div class="gradient-grey p-l-20 p-r-20 p-t-20 p-b-5"> 
-            <div class="row top-xs"> 
-                <div class="col-xs-6 bottom-xs"> 
-                    <div class="row bottom-xs start-xs"> 
-                        <div class="col-xs bottom-xs"><h4 class="text-left medium text-white no-padding no-margin v-align-bottom"> \{{name}}</h4></div> 
-                        </div> 
-                    <div class="row bottom-xs start-xs"> 
-                        <div class="col-xs bottom-xs"><h5 class="sbold no-margin no-padding text-pink-dark text-left v-align-bottom" style="font-size: 15px;"><span class="light text-white">\{{autoComplete.brand}} :</span> \{{brand.name}}</h5></div> 
-                        </div> 
-                    <div class="row bottom-xs start-xs"> 
-                        <div class="col-xs bottom-xs"><p class="bold text-left text-white v-align-bottom"><span class="light">\{{autoComplete.shop}} :</span> \{{shop.name}}</p></div>
-                        </div> 
-                    </div> 
-                <div class="col-xs bottom-xs"> 
-                    \{{#if sale}} 
-                        <div class="row bottom-xs end-xs"> 
-                            <div class="col-xs"><h3 class="text-right bold text-white no-padding no-margin">\{{{discount}}}%</h3></div> 
-                            </div> 
-                        <div class="row bottom-xs end-xs"> 
-                            <div class="col-xs bottom-xs"><h4 class="medium no-margin text-right no-padding text-pink-dark" ><span class="text-white" style="text-decoration: line-through; font-size:15px;">\{{{originalPrice.formatted}}}</span>\{{{price.formatted}}}</h4></div> 
-                            </div> 
-                        \{{else}}
-                        <div class="row bottom-xs end-xs"> 
-                            <div class="col-xs"><h4 class="medium no-margin no-padding text-pink-dark text-right" style="">\{{{price.formatted}}}</h4></div> 
-                            </div> 
-                        \{{/if}}
-                    </div> 
-                </div> 
-            </div> 
+    <div class="overlayer bottom-left full-width">
+        <div class="overlayer-wrapper item-info more-content">
+            <div class="gradient-white p-l-20 p-r-20 p-t-20 p-b-5">
+                <div class="row ">
+                    <div class="col-xs-6 bottom-xs">
+                        <div class="row bottom-xs start-xs">
+                            <div class="col-xs bottom-xs"><h6 class="text-left bold text-black no-padding no-margin v-align-bottom"> \{{name}}</h6></div>
+                            </div>
+                        <div class="row bottom-xs start-xs">
+                            <div class="col-xs bottom-xs"><h5 class="sbold no-margin no-padding text-purple text-left v-align-bottom" style="font-size: 15px;"><span class="light text-black">\{{autoComplete.brand}} :</span> \{{brand.name}}</h5></div>
+                            </div>
+                        </div>
+                    <div class="col-xs-6 bottom-xs text-right">
+                        \{{#if sale}}
+                            <div class="row bottom-xs end-xs">
+                                <div class="col-xs"><h4 class="text-right bold text-black no-padding no-margin">\{{{discount}}}%</h4></div>
+                                </div>
+                            <div class="row bottom-xs end-xs">
+                                <div class="col-xs bottom-xs"><h4 class="sbold no-margin text-right no-padding text-purple fs-16" ><span class="text-black fs-14 medium" style="text-decoration: line-through; ">\{{{originalPrice.formatted}}}</span>\{{{price.formatted}}}</h4></div>
+                                </div>
+                            \{{else}}
+                            <div class="row bottom-xs end-xs">
+                                <div class="col-xs"><h5 class=" no-margin no-padding sbold text-purple text-right fs-16" style="">\{{{price.formatted}}}</h5></div>
+                                </div>
+                            \{{/if}}
+                        </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>

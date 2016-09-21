@@ -107,14 +107,17 @@ $(document).ready( function() {
 
 
 	function initiateAC(searchPhrase){
+            console.log(searchDepartment, LANG)
 		var autocompleteOptions = [
 			{
 				//source: autocomplete.sources.hits(productIndex, {hitsPerPage: 7}),
 				source: function(query, callback) {
 					var index = client.initIndex('test_products');
 					var options = {hitsPerPage: 8}
-					if(searchDepartment == 'WOMEN' || searchDepartment == 'MEN' )
+					if(searchDepartment == 'WOMEN' || searchDepartment == 'MEN' ){
+						console.log('THAT WHY ',renderHelper.decodeDepartment(searchDepartment, LANG))
 						options.facetFilters = 'category.lvl0:' + renderHelper.decodeDepartment(searchDepartment,LANG);
+					}
 
 					$('.ACSearchProgress').removeClass('hidden');
 					index.search(query, options).then(function(answer) {
@@ -210,8 +213,10 @@ $(document).ready( function() {
 				source: function(query, callback) {
 					var index = client.initIndex('test_products');
 					var options = {hitsPerPage: 4}
-					if(searchDepartment == 'WOMEN' || searchDepartment == 'MEN' )
+					if(searchDepartment == 'WOMEN' || searchDepartment == 'MEN' ){
 						options.facetFilters = 'category.lvl0:' + renderHelper.decodeDepartment(searchDepartment,LANG);
+					}
+
 					$('.ACSearchProgress').removeClass('hidden');
 					index.search(query, options).then(function(answer) {
 						pPcurrentIndex = 100;
@@ -276,11 +281,10 @@ $(document).ready( function() {
 		autocomplete('#search', {
 			debug:($('#selectionHome').length>0),
 			dropdownMenuContainer: '#containerAC',
+			hint:true,
 			openOnFocus:true,
 			templates: {
-				dropdownMenu: function() {
-					return searchDropDown();
-				}
+				dropdownMenu: searchDropDown
 			}
 		},autocompleteOptions)
 			.on('autocomplete:selected', function(event, suggestion, dataset) {
@@ -289,7 +293,8 @@ $(document).ready( function() {
 			})
 			.on('autocomplete:shown', function(event, suggestion, dataset) {
 				$('#containerHintAC').hide();
-			});
+			})
+
 		autocomplete('#searchMobile', {
 			dropdownMenuContainer: '#mobileContainerAC',
 			hints:true,
@@ -375,7 +380,7 @@ $(document).ready( function() {
 	}
 	function loadOtherOWl(){
 		$("#owlBrand").owlCarousel({
-			items :6,
+			items :5,
 			itemsDesktopSmall : [900,3],
 			itemsTablet: [600,2],
 			itemsMobile : false,
@@ -383,7 +388,7 @@ $(document).ready( function() {
 		});
 
 		$("#owlLowerCategory").owlCarousel({
-			items : 6,
+			items : 5,
 			itemsDesktopSmall : [900,3],
 			itemsTablet: [600,2],
 			itemsMobile : false,
@@ -562,12 +567,14 @@ $(document).ready( function() {
 			url: "/api/home",
 		}).success(function(result) {
 			mainSection.html(result);
+			$(document).prop('title', 'Brantu | Jämför priser inom mode');
 			initiateAC()
 			next();
 		});
 	}
 	function fetchDepartment(context, next){
-		DEPARTMENT = renderHelper.encodeDepartment(context['pathname'].split('/')[1]);
+		var decodedDepartment = context['pathname'].split('/')[1];
+		DEPARTMENT = renderHelper.encodeDepartment(decodedDepartment);
 		searchDepartment = DEPARTMENT;
 		departmentVerified = true;
 		$.ajax({
@@ -575,6 +582,7 @@ $(document).ready( function() {
 			url: "/api" + context.pathname,
 		}).success(function(result) {
 			mainSection.html(result);
+			$(document).prop('title', decodedDepartment+' | Jämför priser inom mode | Brantu');
 			changeDepartment = true;
 			lazy()
 			next();
@@ -645,6 +653,17 @@ $(document).ready( function() {
 		$.ajax({
 			url: '/api/getProductByID/'+context.state.product,
 		}).success(function(result) {
+				if(result.product !== null && typeof result.product !== 'undefined'){
+					if(result.product.genders !== null && typeof result.product.genders  !== 'undefined'){
+						if(result.product.genders.length !== 0){
+							if(DEPARTMENT !== result.product.genders[0]){
+								DEPARTMENT = result.product.genders[0];
+								changeDepartment = true
+							}
+						}
+					}
+
+				}
 				result.lastPath = returnPath;
 				$(document).prop('title', result.product.name)
 				var html = productView(result)
@@ -947,6 +966,7 @@ $(document).ready( function() {
 		SEARCH($('#search'));
 	});
 	$(document).on('change','input[type=radio][name=optionSearch]',function() {
+		console.log('DETECTED CHANGE')
 		searchDepartment = $(this).val();
 		initiateAC($('#search').val())
 	});
@@ -986,7 +1006,7 @@ $(document).ready( function() {
 	$(document).on('focus','#search',function(){
 		$('#h1Home').addClass("small");
 		$('#logoHome').addClass("small");
-		$('.searchMainPageOverlay').fadeIn(200);
+		$('.searchMainPageOverlay').slideDown(200);
 		if(this.value == ''){
 			$('#containerHintAC').show();
 		}
@@ -1227,14 +1247,14 @@ $(document).ready( function() {
 	mainSection.on( eventOnTS,'.jawBone .addFavouriteProduct' ,function(e){
 		addRemoveFavoriteProduct($(this).attr('action'), {_id: $(this).attr('_id')})
 		$(this).removeClass('addFavouriteProduct').addClass('removeFavouriteProduct').attr('action','/favourite-product/remove')
-			.find('i').css({opacity:0}).removeClass('pg-like').addClass('pg-like1').addClass('text-pink-darker').animate({opacity:1});
+			.find('i').css({opacity:0}).removeClass('pg-like').addClass('pg-like1').addClass('text-purple').animate({opacity:1});
 		e.stopImmediatePropagation(); e.preventDefault();
 	})
 	mainSection.on( eventOnTS,'.jawBone .removeFavouriteProduct' ,function(e){
 		e.stopPropagation(); e.preventDefault();
 		addRemoveFavoriteProduct($(this).attr('action'), {_id: $(this).attr('_id')})
 		$(this).removeClass('removeFavouriteProduct').addClass('addFavouriteProduct').attr('action','/favourite-product/add')
-			.find('i').css({opacity:0}).removeClass('pg-like1').removeClass('text-pink-darker').addClass('pg-like').animate({opacity:1});
+			.find('i').css({opacity:0}).removeClass('pg-like1').removeClass('text-purple').addClass('pg-like').animate({opacity:1});
 
 	})
 	general.on( 'click','.item .removeFavouriteProduct' ,function(){

@@ -72,61 +72,66 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="hidden-xs ">
-                                <div class=" sm-table">
-                                    <div class="">
-                                        <div class="" style="width: auto;">
-                                            <div class="relative inline">
-                                                <a href="/">
-                                                    <div class="mainLogo">
+
+
+                            <div class="inline" id="logoSection">
+                                    <div class=" sm-table">
+                                        <div class="">
+                                            <div class="" style="width: auto;">
+                                                <div class="relative inline">
+                                                    <a href="/">
+                                                        <div class="mainLogo">
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="v-align-top  p-t-10 inline">
+                                                    <div class="b-l  p-l-10">
+                                                        <ul class=" no-style ">
+                                                            {{#each categoryTree}}
+                                                                <li class="v-align-top ">
+                                                                    <a class="all-caps text-spaced fs-13  p-r-10 p-l-10  {{#if ../selectedDepartment}}{{#if (compareStrings this.department.name ../selectedDepartment)}}sbold bg-black b-rad-lg text-white {{else}} bold text-purple{{/if}}{{/if}}"  key="{{this.department.key}}" href="/{{this.department.key}}/">
+                                                                        {{this.department.name}}</a>
+                                                                </li>
+                                                            {{/each}}
+                                                        </ul>
                                                     </div>
-                                                </a>
-                                            </div>
-                                            <div class="v-align-top  p-t-10 inline">
-                                                <div class="b-l  p-l-10">
-                                                    <ul class=" no-style ">
-                                                        {{#each categoryTree}}
-                                                            <li class="v-align-top ">
-                                                                <a class="all-caps text-spaced fs-13  p-r-10 p-l-10  {{#if ../selectedDepartment}}{{#if (compareStrings this.department.name ../selectedDepartment)}}sbold bg-black b-rad-lg text-white {{else}} bold text-purple{{/if}}{{/if}}"  key="{{this.department.key}}" href="/{{this.department.key}}/">
-                                                                    {{this.department.name}}</a>
-                                                            </li>
-                                                        {{/each}}
-                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6  relative  hidden-xs">
-                                {{#if selectedDepartment}}
-                                    <div class="auto-margin block relative p-t-5 p-l-40 text-center" >
-                                        <form id="autocompleteForm">
-                                            <div class="search-link">
-                                                <input type="text" placeholder="Sök och jämför priser" id="search"/>
-                                                <div class="dropdown">
-                                                    <div class="dropdown-menu styleTip" id="containerHintAC">
-                                                        <div class="p-l-10 p-t-10 all-caps">
-                                                            You can search for
-                                                            <ul>
-                                                                <li class="medium text-velvet">Products</li>
-                                                                <li class="medium text-velvet">Brands</li>
-                                                                <li class="medium text-velvet">Styles/category</li>
-                                                            </ul>
+                                </div >
+                            <div class="inline v-align-top relative" id="searchSection">
+                                <div class=" hidden-xs ">
+                                    {{#if selectedDepartment}}
+                                        <div class="auto-margin block relative p-t-5 p-l-40 text-center" >
+                                            <form id="autocompleteForm">
+                                                <div class="search-link">
+                                                    <input type="text" placeholder="Sök och jämför priser" id="search"/>
+                                                    <div class="dropdown">
+                                                        <div class="dropdown-menu styleTip" id="containerHintAC">
+                                                            <div class="p-l-10 p-t-10 all-caps">
+                                                                You can search for
+                                                                <ul>
+                                                                    <li class="medium text-velvet">Products</li>
+                                                                    <li class="medium text-velvet">Brands</li>
+                                                                    <li class="medium text-velvet">Styles/category</li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="ACSearchProgress hidden"  >
-                                                    <div class=" text-center">
-                                                        <img src='/dist/images/progress/progress-circle-danger.svg' alt="search-loading-icon" style="width:30px; height: 30px;"/>
+                                                    <div class="ACSearchProgress hidden"  >
+                                                        <div class=" text-center">
+                                                            <img src='/dist/images/progress/progress-circle-danger.svg' alt="search-loading-icon" style="width:30px; height: 30px;"/>
+                                                        </div>
                                                     </div>
+                                                    <button type="submit" class="search-button"><i class=" pg-search"></i></button>
                                                 </div>
-                                                <button type="submit" class="search-button"><i class=" pg-search"></i></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                {{/if}}
+                                            </form>
+                                        </div>
+                                    {{/if}}
+                                </div>
                             </div>
+
                             <div class="p-t-5 top-right hidden-xs">
                                 <!-- START User Info-->
                                 {{#if user}}
@@ -247,7 +252,6 @@
                 </div>
             </div>
         </div>
-
         <div class="container">
             <div id="category-expand-parent" class="hidden" style=" background: transparent;">
                 <div class=" p-l-50 bgBlurEffect  category-expand-wrapper relative" style="opacity:0; box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.2); background: rgba(0,0,0,0.82); width:1000px; height: 250px;">
@@ -294,6 +298,7 @@
             </div>
         </div>
     </div>
+
     <div class="text-center full-width no-overflow visible-xs bg-master-lighter" id="mobileSubMenu" style="padding-top:40px;">
         <div class="row b-b">
             <a class="col-xs  dark light text-center subMenuMobile {{#if (stringContains url "upptack-nya-favoriter")}}active{{/if}}" href="/{{selectedDepartment}}"  data-page>

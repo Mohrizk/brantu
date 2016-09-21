@@ -50,6 +50,9 @@
     #compareBoxAccessory.WOMEN{
         background-image: url('/images/home/women/bags.png'); background-position: 50% 60%;
     }
+    #ourPartners img{
+        filter:invert(100%);
+    }
 
 
 
@@ -225,12 +228,10 @@
        </div>
    </div>
 
-   <div id="popularCompareCloth" class="special-border">
+   <div id="popularCompareCloth" class="special-border container-fluid no-padding">
        {{#if compareClothes}}
-           <div class="bg-master-light row no-margin" id="compareClothes">
-
-
-               <div class="col-md-4 col-xs-12 special-border-side bg-image sideBarCarousel padding-20 {{encodeDepartment selectedDepartment}}">
+           <div class="bg-master-light row " id="compareClothes">
+               <div class="col-md-4 col-xs-12 special-border-side bg-image sideBarCarousel {{encodeDepartment selectedDepartment}}">
                    <div>
                            <div class="full-width" >
                                <div class="m-xs-b-10 padding-xs-5">
@@ -327,9 +328,9 @@
    </div>
 
 
-   <div class="">
-        <div class="row no-margin m-xs-t-30 bg-master-light special-border" >
-            <div class="col-md-8 no-padding col-xs-12 col-sm-12">
+   <div class="container-fluid no-padding">
+        <div class="row m-xs-t-30 bg-master-light special-border" >
+            <div class="col-md-8 col-xs-12 col-sm-12 no-padding">
                 <div>
                     <div class=" {{encodeDepartment selectedDepartment}} special-border bg-image" id="sameStyle">
                         <div class="padding-20 ">
@@ -339,7 +340,6 @@
                             </p>
                         </div>
                     </div>
-
                     <div class="feed row" data-page="1" data-total-pages="{{feed.pages}}">
                         {{> feed_Back}}
                     </div>
@@ -355,14 +355,14 @@
                     {{/unless}}
                 </div>
             </div>
-            <div class="col-md-4 no-padding special-border m-xs-t-0 text-center p-xs-l-10   bg-image p-xs-r-10 " id="findStyles">
+            <div class="col-md-4 col-xs-12 col-sm-12 no-padding special-border m-xs-t-0 text-center p-xs-l-10 bg-black  bg-image p-xs-r-10 " id="findStyles">
 
 
                 <div id="" class=" p-t-20 p-b-20 hidden-xs b-a b-thick">
-                    <h2 class="text-center light full-width text-purple all-caps m-b-20">
+                    <h3 class=" b-b b-t text-center medium full-width text-purple all-caps m-b-20">
                         Våra <font class="sbold">partners</font>
-                    </h2>
-                    <div class="row  no-margin no-padding hint-text">
+                    </h3>
+                    <div class="row  no-margin no-padding hint-text"  id="ourPartners">
                         <div class="col-xs-12 p-t-10 text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38716083C1837840187T"><img alt="asos-logo" class="lazy" src="/dist/images/shop-logos/asos.png" height="38" width="auto"/></a></div>
                         <div class="col-xs-12 p-t-30 text-center"> <a target="_blank" rel="nofollow" href="https://clk.tradedoubler.com/click?p=227648&a=2845810&g=22955234"><img alt="boozt-logo" class="lazy" src="/dist/images/shop-logos/boozt.png" width="auto" height="28"/></a></div>
                         <div class="col-xs-12 p-t-30 text-center"><a target="_blank" rel="nofollow" href="https://clk.tradedoubler.com/click?p=246777&a=2845810&g=21733454"><img alt="daniel-wellington-logo" class="lazy" src="/dist/images/shop-logos/danielwellington.png" width="auto" height="57"/></a></div>
@@ -385,11 +385,11 @@
                     </div>
                 </div>
 
-                <div class="m-t-30  p-t-20 p-b-20 hidden-xs b-a b-thick b-white">
-                    <h2 class="b-b b-transparent-white p-b-10">
+                <div class="m-t-30 p-t-20 p-b-20 hidden-xs bg-white b-a b-thick b-black">
+                    <h2 class="b-b b-transparent-white p-b-10 all-caps text-master">
                         How Brantu <font class="sbold">Works</font>
                     </h2>
-                    <ul class="no-style text-left p-l-60">
+                    <ul class="no-style text-left p-l-60 text-purple">
                         <li class="fs-16 bold ">
                             <div>
                                 <div class="inline">
@@ -528,7 +528,6 @@
                     </div>
                 </div> -->
             </div>
-
         </div>
     </div>
 </div>

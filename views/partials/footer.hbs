@@ -1,7 +1,7 @@
 <section class=" xs-p-b-20 relative bg-master-lightest"  id="footer">
     <div class="container b-t bg-white">
     <div class="row no-margin b-b bg-image relative "  style="background-image:url('/images/footer/blimedlem2.jpg'); ">
-            <div class="col-xs p-t-30 p-b-30 text-center " >
+            <div class="col-xs-12 p-t-30 p-b-30 text-center " >
                 <h2 class="medium text-spaced-medium">BLI MEDLEM</h2>
                 <div id="BLI MEDLEM">
                     <h4 class=" text-spaced all-caps">få de senaste <font class="text-velvet">s</font>tylesen till det bästa <font class="text-velvet">p</font>riset</h4>
@@ -14,7 +14,7 @@
     </div>
 
     <div class="row p-b-1v relative hidden-xs" id="informationFooterSection" >
-        <div class="col-xs text-center padding-5">
+        <div class="col-xs-12 text-center padding-5">
             <h4 class=" text-spaced  bold capitalize">Brantu | bringing brands to you</h4>
             <h5 class=" " >
                 Vi är en prisjämförelsesajt som samlar alla modebutiker på en plats.<br/>Med oss hittar du relaterade produkter och <font class="text-velvet">stilar</font> till det bästa <font class="text-velvet">priset</font>.
@@ -27,7 +27,7 @@
     <div class="no-padding full-width" id="siteMapFooterSection" >
         <div class=" p-xs-b-50">
             <div class="row no-margin no-padding center-xs">
-                <div class="text-center col-sm col-xs-5 no-margin no-padding no-overflow-text">
+                <div class="text-center col-sm-4 col-xs-6 no-margin no-padding no-overflow-text">
                    <h5 class=" text-uppercase text-black text-spaced p-b-10 sbold">Brantu </h5>
                    <ul class="no-style no-overflow-text no-margin no-padding">
                        <li class="m-b-5  m-xs-b-0 no-padding "><a class="dark " href="/">Hem</a></li>
@@ -40,7 +40,7 @@
                </div>
             {{#each categoryTree}}
                 {{#if (compareStrings this.department.name ../selectedDepartment)}}
-                <div class="text-center col-sm col-xs-5 no-margin no-padding no-overflow-text">
+                <div class="text-center col-sm-4 col-xs-6 no-margin no-padding no-overflow-text">
                     <h5 class=" text-uppercase text-spaced text-black p-b-10 sbold">Kategorier </h5>
                     <ul class="no-style no-margin no-padding">
                         {{#each categories}}
@@ -52,7 +52,7 @@
             {{/each}}
 
             {{#if (compareStrings 'kvinna' selectedDepartment)}}
-                <div class="text-center col-sm col-xs-5">
+                <div class="text-center col-sm-4 col-xs-6">
                     <h5 class="font-GothamBold text-uppercase text-spaced no-overflow-text text-black p-b-10 sbold hidden-xs">Populära Styles </h5>
                     <h5 class="hiidden font-GothamBold text-uppercase text-spaced no-overflow-text text-black p-b-10 sbold visible-xs">Styles </h5>
                     <ul class="no-style no-margin no-padding">
@@ -65,7 +65,7 @@
                     </ul>
                 </div>
             {{else}}
-                    <div class="text-center col-sm col-xs-5">
+                    <div class="text-center col-sm-4 col-xs-6">
                         <h5 class="font-GothamBold text-uppercase text-spaced no-overflow-text text-black p-b-10 sbold hidden-xs">Populära Styles </h5>
                         <h5 class="hiidden font-GothamBold text-uppercase text-spaced no-overflow-text text-black p-b-10 sbold visible-xs">Styles </h5>
                         <ul class="no-style no-margin no-padding">
@@ -80,7 +80,7 @@
             {{/if}}
 
 
-               <div class="text-center col-sm col-xs-5">
+               <div class="text-center col-sm-4 col-xs-6">
                    <h5 class="font-GothamBold text-uppercase text-spaced no-overflow-text text-black p-b-10 sbold hidden-xs">Populära Märken </h5>
                    <h5 class="font-GothamBold text-uppercase text-spaced no-overflow-text text-black p-b-10 sbold visible-xs">Märken </h5>
                    <ul class="no-style no-margin no-padding">

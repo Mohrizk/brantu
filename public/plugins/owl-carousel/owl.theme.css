@@ -79,6 +79,8 @@
 
 /* preloading images */
 .owl-item.loading{
-	min-height: 150px;
-	background: url(AjaxLoader.gif) no-repeat center center
+	min-height: 290px;
+    min-width: 230px;
+	position: relative;
+	background: url(brantuajax.jpg) no-repeat center center
 }

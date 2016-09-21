@@ -111,7 +111,7 @@ var register = function(Handlebars) {
             //else return newString.replace(/\-/g, " ")
         },
         encodeDepartment   :function (string){
-            if(typeof string == 'undefined') return null;
+            if(typeof string == 'undefined' || string == null) return null;
             var str = string.toLowerCase();
             var women = ['kvinna','women','female']
             var men = ['men','man','male']

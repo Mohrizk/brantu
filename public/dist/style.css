@@ -7554,30 +7554,32 @@ ul.circle li:hover div{
 }
 .jawBoneContent.open{
     display:block;
+
 }
 .jawBoneContent.open .jawBoneOpenContainer{
 	border-bottom:1px solid #ddd;
 
 }
 .jawBoneContent .jawBoneOpenContainer .jawBoneContainer{
-	background-color:#fff;
+	background-color:#fafafa;
 	position:relative;
 }
 
-.jawBoneContent.open .jawBoneOpenContainer .jawBoneContainer{
-   min-height:40vw;
-}
 
 .jawBoneContainer .jawBone{
+    margin-top: 5px;
     top:0;
     left:0;
     right:0;
     bottom:0;
     background-color:#fff;
+    box-shadow: 0 4px 2px -2px rgba(0,0,0,0.16);
     position:relative;
     padding: 0%;
     height:auto;
     z-index:10 !important;
+    padding-bottom: 30px;
+    overflow-y: hidden;
 }
 
 
@@ -7599,11 +7601,18 @@ ul.circle li:hover div{
 
  .similarProducts{
     width:100%;
-    margin-top:1vw;
+    margin-top:50px;
     min-height:8vw;
     height:auto;
-    border-top:2px solid #333;
+     background: #fafafa;
 }
+.similarProducts > div{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.similarProducts > div:nth-child(1),
+.similarProducts > div:nth-child(2),
+.similarProducts > div:nth-child(3)
+{ margin-top: 50px;}
 
 /*** Jawbone Content****/
   .pictureWrapper{
@@ -8883,7 +8892,7 @@ margin: auto;
 }
 .search-link input[type="text"]:nth-child(1){
   box-shadow: 0 2px 2px -2px gray;
-  color:#fff;
+  color:transparent;
 }
 .search-link input[type="text"]:focus {
   color:#000;
@@ -14303,10 +14312,20 @@ fieldset[disabled] .form-control {
 .radio label {
   margin-bottom: 6px;
 }
+
+.radio.radio-search-selection  label{
+  margin-bottom: 0;
+  padding: 12px 25px;
+}
 .radio label:before {
   bottom: 2.5px;
   border-radius: 99px;
   transition: border 0.3s 0s cubic-bezier(0.455, 0.03, 0.215, 1.33);
+}
+
+.radio.radio-search-selection label:before {
+  display:none;
+  margin-right: 0;
 }
 .radio input[type=radio]:checked + label:before {
   border-width: 5px;
@@ -14324,7 +14343,7 @@ fieldset[disabled] .form-control {
   border-color: #ee99ae;
 }
 .radio.radio-primary input[type=radio]:checked + label:before {
-  border-color: #6d5cae;
+  border-color: #630d54;
 }
 .radio.radio-info input[type=radio]:checked + label:before {
   border-color: #3b4752;
@@ -14345,6 +14364,27 @@ fieldset[disabled] .form-control {
   transition: border 0.2s linear 0s, color 0.2s linear 0s;
   white-space: nowrap;
 }
+
+.radio.radio-search-selection input[type=radio]:checked + label {
+  border:1px solid #8c1079;
+  background: radial-gradient(#5a196e, #8c1079);
+  color: #fff;
+}
+.radio.radio-search-selection input[type=radio]:checked + label:after {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(90, 25, 110, 0);
+  border-top-color: #5a196e;
+  border-width: 10px;
+  margin-left: -10px;
+}
+
 .checkbox label:before {
   top: 1.4px;
   border-radius: 3px;
