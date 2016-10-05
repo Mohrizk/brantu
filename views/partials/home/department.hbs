@@ -1,0 +1,819 @@
+
+
+
+<style>
+    /*.special-border{border:2px solid #f5f5f5;}
+    .special-border-side{
+        border-left:2px solid #f5f5f5;
+        border-right:2px solid #f5f5f5;
+    }*/
+    .mainJumbtron .MEN{
+        background-image:url('/images/home/men/jumbtron.jpg');
+    }
+    .mainJumbtron .MEN div[data-gradient]{
+    }
+    .mainJumbtron .WOMEN{
+        background-image:url('/images/home/women/jumbotron.jpg');
+    }
+
+
+    .mainCompareCarousel img{
+        width:100%;
+        max-width: 180px;
+    }
+
+    #compareBoxCloth.MEN{
+        background-image: url('https://s-media-cache-ak0.pinimg.com/564x/5e/c0/29/5ec0293f86d10c82b16bf072b2f18734.jpg');
+        background-position: center;
+    }
+    #compareBoxCloth.WOMEN{
+        background-image: url('/images/home/women/jackets3.png');
+        background-position: 50% 15%;
+    }
+
+    #compareBoxShoes.MEN{
+        background-image: url('https://cdn-images.farfetch.com/11/58/11/60/11581160_7425391_1000.jpg');
+        background-position: center;
+    }
+    #compareBoxShoes.WOMEN{
+        background-image: url('/images/home/women/shoes1.png');
+        background-position: 50% 40%;
+    }
+
+    #compareBoxAccessory.MEN{
+        background-image: url('https://cdn-images.farfetch.com/11/59/83/29/11598329_7591018_322.jpg');
+        background-position: center;
+
+    }
+    #compareBoxAccessory.WOMEN{
+        background-image: url('/images/home/women/bags1.png'); background-position: 50% 70%;
+    }
+    #ourPartners img{
+        filter:invert(50%);
+    }
+
+
+
+    #compareClothes .sideBarCarousel.MEN{
+        background-image: url('/images/home/men/sidecarousel_cloth_men.jpg');
+    }
+    #compareClothes .sideBarCarousel.WOMEN{
+        background-image: url('/images/home/women/sidecarousel_cloth_women.jpg');
+    }
+
+    #compareShoes .sideBarCarousel.MEN{
+        background-image: url('/dist/images/home/men/sidecarousel_shoes_men.jpg');
+    }
+
+    #compareShoes .sideBarCarousel.WOMEN{
+        background-image: url('/dist/images/home/women/sidecarousel_shoes_women.jpg');
+    }
+
+    #featuresLandingPage div, #featuresLandingPage h4, #featuresLandingPage h5{
+        text-align: center;
+    }
+
+
+    #sameStyle.MEN{
+        background-image: url('/images/home/men/samestyle.jpg');
+        background-position: center;
+    }
+    #sameStyle.WOMEN{
+        background-image: url('/images/home/women/samestyle1.jpg');
+        background-position: 50% 40%;
+    }
+
+    @media (max-width: 991px){
+        .sideBarCarouselWrapper{
+            min-height:120px;
+        }
+        .mainCompareCarousel img{
+            width:100%;
+            max-width: 150px;
+        }
+
+
+    }
+    @media (max-width: 768px){
+        #compareClothes .sideBarCarousel.MEN{
+            background-image: url('/images/home/men/sidecarousel_cloth_men_mobile.jpg');
+        }
+        #compareClothes .sideBarCarousel.WOMEN{
+            background-image: url('/images/home/women/sidecarousel_cloth_women_mobile.jpg');
+        }
+    }
+
+    @media (max-width: 480px){
+        .sideBarCarouselWrapper{
+            min-height:100px;
+        }
+        .mainCompareCarousel img{
+
+            width:100%;
+            max-width: 160px;
+        }
+        .mainJumbtron.MEN{
+            background-image:url('/images/home/men/jumbtron_mobile.jpg');
+        }
+        .mainJumbtron.WOMEN{
+            background-image:url('/images/home/women/jumbtron_mobile.jpg');
+        }
+        #featuresLandingPage div, #featuresLandingPage h4, #featuresLandingPage h5{
+            text-align: left;
+        }
+        .sideBarCarousel button{
+            font-size:10px;
+            padding:8px 3px;
+        }
+        #shopImage{
+            width: 30px;
+        }
+        .compareTable .price p{
+            font-size:10px;
+        }
+        .compareTable .color p{
+            font-size:10px;
+        }
+        #landingPageContent{
+            padding-top: 0 !important;
+        }
+
+    }
+</style>
+<div class="container bg-white" id="owlLanding">
+   <div class="bg-image mainJumbtron special-border relative no-overflow relative " data-pages="parallax">
+       <div class="inner bg-image {{encodeDepartment selectedDepartment}}">
+           <div class=row>
+               <div class="col-md-6 col-sm-6 col-xs-12  hidden-xs full-height relative ">
+                   <div class=" col-xs-12 p-t-20  hidden-xs text-section">
+                       <h1 class=" bold  text-black all-caps text-spaced">Handla kläder du gillar. Bara på Bästa Pris.</h1>
+                       <p>
+                           Compare styles to the best
+                           price from all your favourite
+                           fashion stores
+                       </p>
+                   </div>
+                   <div class="padding-1v col-xs-12 text-center visible-xs text-section">
+                       <h4 class="text-spaced all-caps bold text-black all-caps">Jämför <font class="hidden">priser</font> och hitta det bästa priset inom mode.</h4>
+                   </div>
+               </div>
+               <div class="col-md-6 col-sm-6 col-xs-12  relative full-height  text-center  " >
+                   <a class="" search-link>
+                       <div style="" class="top-left bottom-right" >
+                           <div class="col-xs-12 p-t-20 text-section no-text-overflow">
+                               <h4 class="text-black light all-caps text-spaced hidden-sm hidden-xs">fynda produkter nu! </h4>
+                               <h2 class="text-spaced light visible-sm visible-xs  text-black all-caps">Jämför <font class=" sbold text-purple">priser</font> <br/> inom <font class="sbold">mode.</font></h2>
+                           </div>
+                           <form id="autocompleteForm " class="hidden-xs">
+                               <div class="m-t-100">
+                                   <div class="search-link landing">
+                                       <form id="searchForm">
+                                           <input type="text" placeholder="sök produkt, märke eller kategori "/>
+                                       </form>
+                                   </div>
+                               </div>
+
+                           </form>
+                       </div>
+                   </a>
+               </div>
+           </div>
+       </div>
+   </div>
+    <div class="b-b b-grey p-t-20 p-b-20" style="background: {{#if (compareStrings selectedDepartment 'kvinna')}}rgb(69,37,51){{else}}#3d5c66{{/if}};">
+        <div class="text-center row p-t-5 p-b-5" style="color:#aaa;">
+            <div class=" col-xs-3 fs-16  b-r b-grey medium inline p-r-40">
+                <div>
+                    <a class="bright" data-target=".quick-search" data-toggle="modal">
+                        <div class="inline">
+                            <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 65 63" enable-background="new 0 0 65 63" xml:space="preserve">
+                                                <title>Zoom-out</title>
+                                                <desc>Created with Sketch.</desc>
+                                                <g id="Page-1" sketch:type="MSPage">
+                                                    <g id="Zoom-out" transform="translate(1.000000, 1.000000)" sketch:type="MSLayerGroup">
+                                                        <path id="Shape" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M41.39,32.486L62,53.08L55.081,60
+                                                            L35.188,40.107"></path>
+                                                        <circle id="Oval" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" cx="22.017" cy="22.017" r="22.017">
+                                                        </circle>
+                                                    </g>
+                                                </g>
+                                                </svg>
+                        </div>
+                        <div class="inline p-l-5 v-align-top p-t-5">Quick Search</div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-xs-3 fs-16  b-r b-grey medium inline p-r-40">
+                    <a class="bright" data-target=".easy-filter" data-toggle="modal">
+                    <div class="inline">
+                        <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 56 63" enable-background="new 0 0 56 63" xml:space="preserve">
+                                        <title>Target</title>
+                                        <desc>Created with Sketch.</desc>
+                                        <g id="Page-1" sketch:type="MSPage">
+                                            <g id="Target" transform="translate(1.000000, 0.000000)" sketch:type="MSLayerGroup">
+                                                <circle id="Oval" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2.4091" cx="27" cy="31.5" r="26.5">
+                                                </circle>
+
+                                                    <circle id="Oval_1_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2.4091" cx="27" cy="31.5" r="19.273">
+                                                </circle>
+
+                                                    <circle id="Oval_2_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2.4091" cx="27" cy="31.5" r="10.841">
+                                                </circle>
+
+                                                    <circle id="Oval_3_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2.4091" cx="27" cy="31.5" r="3.614">
+                                                </circle>
+                                            </g>
+                                        </g>
+                                        </svg>
+                    </div>
+                    <div class="inline p-l-5 v-align-top p-t-5">Easy Filter</div>
+                </a>
+            </div>
+            <div class="col-xs-3 fs-16  b-r b-grey medium inline p-r-40">
+                <a class="bright" data-target=".compare-products" data-toggle="modal">
+                    <div class="inline">
+                        <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 64 60" enable-background="new 0 0 64 60" xml:space="preserve">
+                                        <title>Balance</title>
+                                        <desc>Created with Sketch.</desc>
+                                        <g id="Page-1" sketch:type="MSPage">
+                                            <g id="Balance" transform="translate(1.000000, 1.000000)" sketch:type="MSLayerGroup">
+                                                <path id="Shape" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M31,6v47"></path>
+                                                <circle id="Oval" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" cx="31" cy="3" r="3">
+                                                </circle>
+                                                <path id="Shape_1_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M7,13h48"></path>
+                                                <path id="Shape_2_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M11,54h40"></path>
+                                                <path id="Shape_3_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M6,58h50"></path>
+                                                <path id="Shape_4_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M0,37v3h14v-3"></path>
+                                                <path id="Shape_5_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M48,37v3h14v-3"></path>
+                                                <path id="Shape_6_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M1,35l6-22l6,22"></path>
+                                                <path id="Shape_7_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M49,35l6-22l6,22"></path>
+                                            </g>
+                                        </g>
+                                        </svg>
+                    </div>
+                    <div class="inline p-l-5 v-align-top p-t-5">Compare Products</div>
+                </a>
+            </div>
+            <div class="col-xs-3 fs-16  medium inline">
+                <a class="bright"  data-target=".compare-styles" data-toggle="modal">
+                    <div class="inline">
+                        <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 64 56" enable-background="new 0 0 64 56" xml:space="preserve">
+                                            <title>T-shirt</title>
+                                            <desc>Created with Sketch.</desc>
+                                            <g id="Page-1" sketch:type="MSPage">
+                                                <g id="T-shirt" transform="translate(1.000000, 1.000000)" sketch:type="MSLayerGroup">
+                                                    <path id="Shape_3_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M52,0H38.931
+                                                        C38.438,3.945,35.078,7,31,7s-7.438-3.055-7.931-7H10H0v15h10v39h42V15h10V0H52L52,0z"></path>
+                                                    <path id="Shape" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M11,50h32"></path>
+                                                    <path id="Shape_1_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M4,1v11"></path>
+                                                    <path id="Shape_2_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M58,1v11"></path>
+                                                </g>
+                                            </g>
+                                            </svg>
+                    </div>
+                    <div class="inline p-l-5 v-align-top p-t-5">Compare Styles</div>
+                </a>
+            </div>
+        </div>
+        <div class="modal fade quick-search" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="inline">
+                            <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 65 63" enable-background="new 0 0 65 63" xml:space="preserve">
+                                                <title>Zoom-out</title>
+                                                <desc>Created with Sketch.</desc>
+                                                <g id="Page-1" sketch:type="MSPage">
+                                                    <g id="Zoom-out" transform="translate(1.000000, 1.000000)" sketch:type="MSLayerGroup">
+                                                        <path id="Shape" sketch:type="MSShapeGroup" fill="none" stroke="#9e8130" stroke-width="2" d="M41.39,32.486L62,53.08L55.081,60
+                                                            L35.188,40.107"></path>
+                                                        <circle id="Oval" sketch:type="MSShapeGroup" fill="none" stroke="#9e8130" stroke-width="2" cx="22.017" cy="22.017" r="22.017">
+                                                        </circle>
+                                                    </g>
+                                                </g>
+                                                </svg>
+
+                        </div>
+                        <h4 class="modal-title all-caps bold text-purple">Quick Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div  style="background-image:url('/images/home/quick-search.jpg'); height:400px;" class="full-width bg-image relative">
+                            <div class="pull-bottom v-align-middle p-t-10 p-b-10" style="background: rgba(255,255,255,0.7);">
+                                <p class="fs-16 text-center bold">
+                                    We know how hard it can be to go through all stores to find your style to your budget.
+                                    So now when you view a product and we will find you
+                                    similar styles from all over the stores at a lower price
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade easy-filter" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="inline">
+                            <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 56 63" enable-background="new 0 0 56 63" xml:space="preserve">
+                                        <title>Target</title>
+                                        <desc>Created with Sketch.</desc>
+                                        <g id="Page-1" sketch:type="MSPage">
+                                            <g id="Target" transform="translate(1.000000, 0.000000)" sketch:type="MSLayerGroup">
+                                                <circle id="Oval" sketch:type="MSShapeGroup" fill="none" stroke="#9e8130" stroke-width="2.4091" cx="27" cy="31.5" r="26.5">
+                                                </circle>
+
+                                                    <circle id="Oval_1_" sketch:type="MSShapeGroup" fill="none" stroke="#9e8130" stroke-width="2.4091" cx="27" cy="31.5" r="19.273">
+                                                </circle>
+
+                                                    <circle id="Oval_2_" sketch:type="MSShapeGroup" fill="none" stroke="#9e8130" stroke-width="2.4091" cx="27" cy="31.5" r="10.841">
+                                                </circle>
+
+                                                    <circle id="Oval_3_" sketch:type="MSShapeGroup" fill="none" stroke="#9e8130" stroke-width="2.4091" cx="27" cy="31.5" r="3.614">
+                                                </circle>
+                                            </g>
+                                        </g>
+                                        </svg>
+                        </div>
+                        <h4 class="modal-title all-caps bold text-purple">Easy Filter</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div  style="background-image:url('/images/home/easy-filter.jpg'); height:400px;" class="full-width bg-image">
+                            <div class="pull-bottom p-t-10 p-b-10" style="background: rgba(255,255,255,0.7);">
+                                <p class="fs-16 text-center bold">
+                                    We know how hard it can be to go through all stores to find your style to your budget.
+                                    So now when you view a product and we will find you
+                                    similar styles from all over the stores at a lower price
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade compare-products" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="inline">
+                            <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 64 60" enable-background="new 0 0 64 60" xml:space="preserve">
+                                        <title>Balance</title>
+                                        <desc>Created with Sketch.</desc>
+                                        <g id="Page-1" sketch:type="MSPage">
+                                            <g id="Balance" transform="translate(1.000000, 1.000000)" sketch:type="MSLayerGroup">
+                                                <path id="Shape" sketch:type="MSShapeGroup" fill="none" stroke="#9e8130" stroke-width="2" d="M31,6v47"></path>
+                                                <circle id="Oval" sketch:type="MSShapeGroup" fill="none" stroke="#9e8130" stroke-width="2" cx="31" cy="3" r="3">
+                                                </circle>
+                                                <path id="Shape_1_" sketch:type="MSShapeGroup" fill="none" stroke="#9e8130" stroke-width="2" d="M7,13h48"></path>
+                                                <path id="Shape_2_" sketch:type="MSShapeGroup" fill="none" stroke="#9e8130" stroke-width="2" d="M11,54h40"></path>
+                                                <path id="Shape_3_" sketch:type="MSShapeGroup" fill="none" stroke="#9e8130" stroke-width="2" d="M6,58h50"></path>
+                                                <path id="Shape_4_" sketch:type="MSShapeGroup" fill="none" stroke="#9e8130" stroke-width="2" d="M0,37v3h14v-3"></path>
+                                                <path id="Shape_5_" sketch:type="MSShapeGroup" fill="none" stroke="#9e8130" stroke-width="2" d="M48,37v3h14v-3"></path>
+                                                <path id="Shape_6_" sketch:type="MSShapeGroup" fill="none" stroke="#9e8130" stroke-width="2" d="M1,35l6-22l6,22"></path>
+                                                <path id="Shape_7_" sketch:type="MSShapeGroup" fill="none" stroke="#9e8130" stroke-width="2" d="M49,35l6-22l6,22"></path>
+                                            </g>
+                                        </g>
+                                        </svg>
+                        </div>
+                        <h4 class="modal-title all-caps bold text-purple">Compare Product Prices</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div  style="background-image:url('/images/home/compare-products.jpg'); height:400px;" class="full-width bg-image">
+                            <div class="pull-bottom p-t-10 p-b-10" style="background: rgba(255,255,255,0.7);">
+                                <p class="fs-16 text-center bold">
+                                    We know how hard it can be to go through all stores to find your style to your budget.
+                                    So now when you view a product and we will find you
+                                    similar styles from all over the stores at a lower price
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade compare-styles" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="inline">
+                            <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 64 56" enable-background="new 0 0 64 56" xml:space="preserve">
+                                            <title>T-shirt</title>
+                                            <desc>Created with Sketch.</desc>
+                                            <g id="Page-1" sketch:type="MSPage">
+                                                <g id="T-shirt" transform="translate(1.000000, 1.000000)" sketch:type="MSLayerGroup">
+                                                    <path id="Shape_3_" sketch:type="MSShapeGroup" fill="none" stroke="#9e8130" stroke-width="2" d="M52,0H38.931
+                                                        C38.438,3.945,35.078,7,31,7s-7.438-3.055-7.931-7H10H0v15h10v39h42V15h10V0H52L52,0z"></path>
+                                                    <path id="Shape" sketch:type="MSShapeGroup" fill="none" stroke="#9e8130" stroke-width="2" d="M11,50h32"></path>
+                                                    <path id="Shape_1_" sketch:type="MSShapeGroup" fill="none" stroke="#9e8130" stroke-width="2" d="M4,1v11"></path>
+                                                    <path id="Shape_2_" sketch:type="MSShapeGroup" fill="none" stroke="#9e8130" stroke-width="2" d="M58,1v11"></path>
+                                                </g>
+                                            </g>
+                                            </svg>
+                        </div>
+                        <h4 class="modal-title all-caps bold">Compare Styles</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div  style="background-image:url('/images/home/compare-styles.jpg'); height:400px;" class="full-width bg-image">
+                           <div class="pull-bottom p-t-10 p-b-10" style="background: rgba(255,255,255,0.7);">
+                                <p class="fs-16 text-center bold">
+                                    We know how hard it can be to go through all stores to find your style to your budget.
+                                    So now when you view a product and we will find you
+                                    similar styles from all over the stores at a lower price
+
+                                </p>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="brands" class="m-t-40">
+        <div class="autoHeightSwiper">
+            <div class="row no-margin special-border  ">
+                <h2 class="section-title">Find by Brands</h2>
+                <div class="swiper-container swiper-general">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide b-a b-grey">
+                            <a href="/brand/filippa-k{{#if (compareStrings selectedDepartment 'kvinna')}}/?&category=kvinna{{else}}/?&category=man{{/if}}">
+                            <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
+                                <div class="top-left bottom-right bg-image no-background-image"
+                                     style="background-image: url('/images/brands/filippa-k-logo.jpg'); background-size: 90%;     background-position: 50% 50%;" >
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide b-a b-grey">
+                            <a href="/brand/boss-orange{{#if (compareStrings selectedDepartment 'kvinna')}}/?&category=kvinna{{else}}/?&category=man{{/if}}">
+                            <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
+                                <div class="top-left bottom-right bg-image no-background-image "
+                                     style="background-image: url('/images/brands/hugo-boss-logo.svg.png'); background-size: 50%; background-position: 50% 50%;">
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide b-a b-grey">
+                            <a href="/brand/tiger-of-sweden{{#if (compareStrings selectedDepartment 'kvinna')}}/?&category=kvinna{{else}}/?&category=man{{/if}}">
+                            <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
+                                <div class="top-left bottom-right bg-image no-background-image "
+                                     style="background-image: url('/images/brands/tiger-of-sweden-logo.jpg'); background-size: 60%; background-position: center;" >
+                                </div>
+                            </div>
+                                </a>
+                        </div>
+                        <div class="swiper-slide b-a b-grey">
+                            <a href="/brand/tiger-of-sweden{{#if (compareStrings selectedDepartment 'kvinna')}}/?&category=kvinna{{else}}/?&category=man{{/if}}">
+                                <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
+                                    <div class="top-left bottom-right bg-image no-background-image "
+                                         style="background-image: url('/images/brands/tiger-of-sweden-logo.jpg'); background-size: 60%; background-position: center;" >
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide b-a b-grey">
+                            <a href="/brand/tiger-of-sweden{{#if (compareStrings selectedDepartment 'kvinna')}}/?&category=kvinna{{else}}/?&category=man{{/if}}">
+                                <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
+                                    <div class="top-left bottom-right bg-image no-background-image "
+                                         style="background-image: url('/images/brands/tiger-of-sweden-logo.jpg'); background-size: 60%; background-position: center;" >
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+   <div id="categories"  class="m-t-60">
+       <div>
+           <h2 class="section-title">Find by categories</h2>
+          <div class="row no-margin   ">
+              <div class="col-sm-4 col-xs-12 special-border-side b-thick b-grey">
+                  <a href="/{{selectedDepartment}}/kläder/jackor/">
+                  <div class="col-xs-8 no-padding" >
+                      <div class="gallery-item bg-white no-margin bg-image relative b-a b-grey" data-flex-width="1" data-flex-height="1"  >
+                        <div class="top-left bottom-right bg-image no-background-image {{encodeDepartment selectedDepartment}}" data-hover id="compareBoxCloth" >
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-4 text-left p-t-50  p-l-20 p-b-30 no-overflow-text">
+                      <h6 class="bold  no-margin no-padding "> Jämfor priser för</h6>
+                      <h4 class="no-margin no-padding all-caps">Jackor</h4>
+                      <a class="bold ">Fynda nu</a>
+                  </div>
+                  </a>
+              </div>
+
+              <div class="col-sm-4 col-xs-12 special-border-side b-thick b-grey">
+                  <a href="/{{selectedDepartment}}/skor/sneakers">
+                  <div class="col-xs-8 no-padding no-text-overflow" >
+                      <div class="gallery-item bg-white no-margin b-a b-grey" data-flex-width="1" data-flex-height="1">
+                          <div class="top-left bottom-right bg-image no-background-image  {{encodeDepartment selectedDepartment}}" data-hover id="compareBoxShoes" >
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-xs-4 text-left p-t-50 p-l-20 p-b-30 no-overflow-text">
+                      <h6 class="bold text-left no-margin no-padding "> Jämfor priser för</h6>
+                      <h4 class="text-left no-margin no-padding all-caps">Sneakers</h4>
+                      <a class="bold">Fynda nu</a>
+                  </div>
+                  </a>
+              </div>
+
+              <div class="col-sm-4 col-xs-12special-border-side b-thick b-grey no-overflow-text">
+                  <a href="/{{selectedDepartment}}/accessoarer/väskor/">
+                  <div class="col-xs-8 no-padding">
+                      <div class="gallery-item no-margin bg-white b-a b-grey" data-flex-width="1" data-flex-height="1" >
+                          <div class="top-left bottom-right bg-image no-background-image  {{encodeDepartment selectedDepartment}}" data-hover id="compareBoxAccessory">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-xs-4 text-left p-t-50  p-l-20 p-b-30 ">
+                      <h6 class="bold text-left no-margin no-padding "> Jämfor priser för</h6>
+                      <h4 class="text-left no-margin no-padding all-caps">väskor</h4>
+                      <a class="bold">Fynda nu</a>
+                  </div>
+                  </a>
+              </div>
+          </div>
+       </div>
+   </div>
+
+   <div id="popularCompareCloth" class="hidden special-border container-fluid no-padding">
+       {{#if compareClothes}}
+           <div class="bg-master-light row" id="compareClothes">
+               <div class=" col-md-4 col-sm-4 col-xs-12 special-border-side v-align-top  col-sm-height bg-image no-background-image sideBarCarousel {{encodeDepartment selectedDepartment}}">
+                   <div>
+                           <div class="full-width" >
+                               <div class="m-xs-b-10 padding-xs-5">
+                                   <div class="">
+                                       <div class="text-section">
+                                           <h2 class="text-spaced light all-caps ">Jämför <font class="sbold text-white">priser</font> <br/> för samma <font class="sbold text-white">produkt.</font></h2>
+
+                                           <h5 class="">Hitta bästa priset för <br/>kläder, skor och mycket mer! </h5>
+                                       </div>
+                                   </div>
+                                   <div class=" ">
+                                       <div class="m-t-10 "><a href="/{{selectedDepartment}}/kläder/?compare=true"><button class="btn fs-16 btn-velvet sbold"> Fynda nu</button></a></div>
+                                   </div>
+                               </div>
+                           </div>
+                   </div>
+               </div>
+               <div class="col-md-8 col-sm-height col-xs-12 col-sm-12 special-border-side hidden-xs bg-white">
+                   <div class="relative ">
+                       <div class=" no-style text-center v-align-bottom p-t-40" >
+                           {{#each compareClothes}}
+                               <div class="col-xs-6 col-sm-4 m-b-50 no-border">
+                                   <div class="mainCompareCarousel gallery-item  bg-white text-center no-overflow" data-flex-width="1" data-height="0">
+                                       <a  href="{{this.productUrl}}"  rel="nofollow"  target="_blank">
+                                           <div class=" relative auto-width">
+                                               <img class="lazy"  data-original="{{{this.mainPicture.largeUrl}}}"/>
+                                               <div class="overlayer bottom-left hidden-xs full-width">
+                                                   <div class="overlayer-wrapper item-info deep-content ">
+                                                       <div class="gradient-white p-l-20 p-r-20 p-t-5 p-b-5">
+                                                           <a  href="{{this.productUrl}}" rel="nofollow" target="_blank">
+                                                               <p class="text-center text-black lh-10  no-margin bold">{{this.brand.name}}
+                                                                   <span class="" style="font-size: 12px;">
+                                                                       <i><img src="/images/nav/compare.png" style="width:20px; height: auto;"></i>
+                                                                       Spara <font class="sbold ">{{this.saving}} %</font>
+                                                                   </span>
+                                                               </p>
+                                                           </a>
+                                                           <div class="p-t-15">
+                                                               <a target="_blank" href="{{this.productUrl}}" rel="nofollow">
+                                                                   <button class="btn btn-info sbold fs-12"> Go to shop</button>
+                                                               </a>
+                                                               <div class="m-t-5">
+                                                                   <a class="light sbold text-black fs-13" href="/bästa-pris-för/{{{urlFriendly this.name}}}-{{this._id}}">
+                                                                       <i class="pg-italic"></i>More information
+                                                                   </a>
+                                                               </div>
+
+                                                           </div>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </a>
+                                       <div class="text-center visible-xs p-t-10">
+                                           <a class="dark sbold fs-10 " href="/bästa-pris-för/{{{urlFriendly this.name}}}-{{this._id}}">
+                                               <i class="pg-italic"></i>More information
+                                           </a>
+                                       </div>
+                                   </div>
+
+                               </div>
+                           {{/each}}
+                       </div>
+                   </div>
+               </div>
+           </div>
+       {{/if}}
+   </div>
+
+   <div class="container-fluid no-padding m-t-100">
+       <h2 class="section-title"> Find Trends at the best price</h2>
+        <div class="row m-xs-t-30" >
+            <div class="col-md-8 col-xs-12 col-sm-12 no-padding">
+                <div>
+                    <div class=" {{encodeDepartment selectedDepartment}} special-border bg-image no-background-image" id="sameStyle">
+                        <div class="padding-20 ">
+                            <h3 class="text-spaced light text-left text-black all-caps">Hitta  stiler<br/> och jämför priser</h3>
+                            <p class="bold text-left ">
+                                Jämför samma stil till olika priser på kläder, skor och accessoarer. <font class="hidden">Det bästa priset för en och samma stil!</font>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="feed row" data-department="{{selectedDepartment}}" data-page="1" data-total-pages="{{feed.pages}}">
+                            {{#each feed.docs}}
+                                {{> priceCard}}
+                            {{/each}}
+                    </div>
+                    {{#unless (compareNumber  1 feed.pages)}}
+                        <div class="text-center bg-white p-t-20 p-b-20">
+                            <btn id="loadMoreFeed" class="btn btn-velvet bold circle">
+                                Load More
+                            </btn>
+                            <div id="moreFeedLoader" class=" text-center" style="display: none;">
+                                <img src='/dist/images/progress/progress-circle-danger.svg' style="width:60px; height: 60px;"/>
+                            </div>
+                        </div>
+                    {{/unless}}
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12 col-sm-12 no-padding special-border m-xs-t-0 text-center p-xs-l-10 bg-image p-xs-r-10 " id="findStyles">
+                <div id="" class=" p-t-20 p-b-20 hidden-xs b-a b-grey">
+                    <h4 class=" title-borders all-caps m-b-20 gold">
+                        <span class="sbold"> Våra partners</span>
+                    </h4>
+                    <div class="row  no-margin no-padding hint-text"  id="ourPartners">
+                        <div class="col-xs-12 p-t-10 text-center">
+                            <a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38716083C1837840187T">
+                                <img alt="asos-logo" class="" src="/dist/images/shop-logos/asos.png" height="38" width="auto"/>
+                            </a>
+                        </div>
+                        <div class="col-xs-12 p-t-30 text-center"> <a target="_blank" rel="nofollow" href="https://clk.tradedoubler.com/click?p=227648&a=2845810&g=22955234"><img alt="boozt-logo" class="" src="/dist/images/shop-logos/boozt.png" width="auto" height="28"/></a></div>
+                        <div class="col-xs-12 p-t-30 text-center"><a target="_blank" rel="nofollow" href="https://clk.tradedoubler.com/click?p=246777&a=2845810&g=21733454"><img alt="daniel-wellington-logo" class="" src="/dist/images/shop-logos/danielwellington.png" width="auto" height="57"/></a></div>
+                        <div class="col-xs-12 p-t-20 text-center "><a target="_blank" rel="nofollow" class="m-t-5" href="https://clk.tradedoubler.com/click?p=151948&a=2845810&g=18352288"><img alt="ellos-logo" class="" src="/dist/images/shop-logos/ellos.png" width="auto" height="42"/></a></div>
+
+                        <div class="col-xs-12 p-t-30  text-center"><img alt="mr-porter-logo" class="" src="/dist/images/shop-logos/mrporter.png" width="auto" height="38"/></div>
+                        <div class="col-xs-12 p-t-30  text-center"><a target="_blank" rel="nofollow" href="https://clk.tradedoubler.com/click?p=270159&a=2845810&g=23120192"><img class="" alt="nakd-logo" src="/dist/images/shop-logos/nakd.png" width="auto" height="32"/></a></div>
+                        <div class="col-xs-12 p-t-30  text-center"><a target="_blank" rel="nofollow" href="https://clk.tradedoubler.com/click?p=17833&a=2845810&g=17114610"><img class="" alt="nelly-logo" src="/dist/images/shop-logos/nelly.png" width="auto" height="36"/></a></div>
+                        <div class="col-xs-12 p-t-30  text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38093533C37559022T"><img class="m-t-5 " alt="river-island-logo"  src="/dist/images/shop-logos/riverisland.png"  width="auto" height="23"/></a></div>
+
+                        <div class="col-xs-12 p-t-30  text-center"><a target="_blank" rel="nofollow"  href="https://ad.zanox.com/ppc/?38718725C26195304&ulp=[[http://www.farfetch.com]]"><img class="m-t-10 " alt="farfetch-logo" src="/dist/images/shop-logos/farfetch.png" width="auto" height="26"/></a></div>
+                        <div class="col-xs-12 p-t-30  text-center"><a target="_blank"  rel="nofollow" href="http://ad.zanox.com/ppc/?38223421C59905408T"><img class=" "   src="/dist/images/shop-logos/happysocks.png" alt="happysocks-logo" width="auto" height="62"/></a></div>
+                        <div class="col-xs-12 p-t-30  text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38514929C65783720T"><img class="m-t-10 "  src="/dist/images/shop-logos/hope.png" alt="hope-logo" width="auto" height="28"/></a></div>
+                        <div class="col-xs-12 p-t-30  text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38129541C17502336T"><img class="m-t-10 "  src="/dist/images/shop-logos/miinto.png" alt="miinto-logo" width="auto" height="30"/></a></div>
+
+                        <div class="col-xs-12 p-t-30  text-center"><a target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38327053C74631457T"><img class="" src="/dist/images/shop-logos/sarenza.png" alt="sarenza-logo" style="margin-top:4px;" width="auto" height="22"/></a></div>
+                        <div class="col-xs-12 p-t-30 text-center"><a target="_blank"rel="nofollow"  href="http://ad.zanox.com/ppc/?38147178C67665694T"><img class="" src="/dist/images/shop-logos/stylepit.png" alt="stylepit-logo" width="auto" height="30"/></a></div>
+                        <div class="col-xs-12 p-t-30  text-center"><a target="_blank" rel="nofollow"  href="http://ad.zanox.com/ppc/?38165721C89270335T"><img class="" src="/dist/images/shop-logos/topman.png" alt="topman-logo" style="margin-top:4px;" width="auto" height="22"/></a></div>
+                        <div class="col-xs-12 p-t-30  text-center hidden-sm hidde-xs"><a rel="nofollow" target="_blank" rel="nofollow" href="http://ad.zanox.com/ppc/?38637325C44813741T"><img alt="urban-outfitters-logo" class="" src="/dist/images/shop-logos/urban-outfitters.png" width="auto" height="39"/></a></div>
+                    </div>
+                </div>
+                <div class="m-t-30 p-t-20 p-b-20 hidden-xs b-a b-grey">
+                    <h4 class=" title-borders all-caps m-b-20 gold">
+                        <span class="sbold"> How Brantu works</span>
+                    </h4>
+                    <ul class="no-style text-left p-l-60">
+                        <li class="fs-16 bold ">
+                            <div>
+                                <div class="inline">
+                                    <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px"
+                                         viewBox="0 0 65 63" enable-background="new 0 0 65 63" xml:space="preserve">
+                                    <title>Zoom-out</title>
+                                    <desc>Created with Sketch.</desc>
+                                    <g id="Page-1" sketch:type="MSPage">
+                                        <g id="Zoom-out" transform="translate(1.000000, 1.000000)" sketch:type="MSLayerGroup">
+                                            <path id="Shape" sketch:type="MSShapeGroup" fill="none" stroke="#9E8130" stroke-width="2" d="M41.39,32.486L62,53.08L55.081,60
+                                                L35.188,40.107"/>
+                                            <circle id="Oval" sketch:type="MSShapeGroup" fill="none" stroke="#6D6E71" stroke-width="2" cx="22.017" cy="22.017" r="22.017">
+                                            </circle>
+                                        </g>
+                                    </g>
+                                    </svg>
+                                </div>
+                                <div class="inline p-l-20 v-align-top p-t-5">Quick Search</div>
+                            </div>
+                        </li>
+
+                        <li class="fs-16 bold p-t-20">
+                            <div class="inline">
+                                <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px"
+                                 viewBox="0 0 56 63" enable-background="new 0 0 56 63" xml:space="preserve">
+                            <title>Target</title>
+                            <desc>Created with Sketch.</desc>
+                            <g id="Page-1" sketch:type="MSPage">
+                                <g id="Target" transform="translate(1.000000, 0.000000)" sketch:type="MSLayerGroup">
+                                    <circle id="Oval" sketch:type="MSShapeGroup" fill="none" stroke="#6D6E71" stroke-width="2.4091" cx="27" cy="31.5" r="26.5">
+                                    </circle>
+
+                                        <circle id="Oval_1_" sketch:type="MSShapeGroup" fill="none" stroke="#6D6E71" stroke-width="2.4091" cx="27" cy="31.5" r="19.273">
+                                    </circle>
+
+                                        <circle id="Oval_2_" sketch:type="MSShapeGroup" fill="none" stroke="#6D6E71" stroke-width="2.4091" cx="27" cy="31.5" r="10.841">
+                                    </circle>
+
+                                        <circle id="Oval_3_" sketch:type="MSShapeGroup" fill="none" stroke="#9E8130" stroke-width="2.4091" cx="27" cy="31.5" r="3.614">
+                                    </circle>
+                                </g>
+                            </g>
+                            </svg>
+                            </div>
+                            <div class="inline p-l-20 v-align-top p-t-5">Easy Filter</div>
+
+                        </li >
+
+                        <li class="fs-16 bold p-t-20">
+                            <div class="inline">
+                                 <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px"
+                                 viewBox="0 0 64 60" enable-background="new 0 0 64 60" xml:space="preserve">
+                            <title>Balance</title>
+                            <desc>Created with Sketch.</desc>
+                            <g id="Page-1" sketch:type="MSPage">
+                                <g id="Balance" transform="translate(1.000000, 1.000000)" sketch:type="MSLayerGroup">
+                                    <path id="Shape" sketch:type="MSShapeGroup" fill="none" stroke="#6D6E71" stroke-width="2" d="M31,6v47"/>
+                                    <circle id="Oval" sketch:type="MSShapeGroup" fill="none" stroke="#9E8130" stroke-width="2" cx="31" cy="3" r="3">
+                                    </circle>
+                                    <path id="Shape_1_" sketch:type="MSShapeGroup" fill="none" stroke="#6D6E71" stroke-width="2" d="M7,13h48"/>
+                                    <path id="Shape_2_" sketch:type="MSShapeGroup" fill="none" stroke="#9E8130" stroke-width="2" d="M11,54h40"/>
+                                    <path id="Shape_3_" sketch:type="MSShapeGroup" fill="none" stroke="#9E8130" stroke-width="2" d="M6,58h50"/>
+                                    <path id="Shape_4_" sketch:type="MSShapeGroup" fill="none" stroke="#6D6E71" stroke-width="2" d="M0,37v3h14v-3"/>
+                                    <path id="Shape_5_" sketch:type="MSShapeGroup" fill="none" stroke="#6D6E71" stroke-width="2" d="M48,37v3h14v-3"/>
+                                    <path id="Shape_6_" sketch:type="MSShapeGroup" fill="none" stroke="#6D6E71" stroke-width="2" d="M1,35l6-22l6,22"/>
+                                    <path id="Shape_7_" sketch:type="MSShapeGroup" fill="none" stroke="#6D6E71" stroke-width="2" d="M49,35l6-22l6,22"/>
+                                </g>
+                            </g>
+                            </svg>
+                            </div>
+                            <div class="inline p-l-20 v-align-top p-t-5">Compare Products</div>
+                        </li >
+
+                        <li class="fs-16 bold p-t-20">
+                            <div class="inline">
+                                <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px"
+                                     viewBox="0 0 64 56" enable-background="new 0 0 64 56" xml:space="preserve">
+                                <title>T-shirt</title>
+                                <desc>Created with Sketch.</desc>
+                                <g id="Page-1" sketch:type="MSPage">
+                                    <g id="T-shirt" transform="translate(1.000000, 1.000000)" sketch:type="MSLayerGroup">
+                                        <path id="Shape_3_" sketch:type="MSShapeGroup" fill="none" stroke="#6D6E71" stroke-width="2" d="M52,0H38.931
+                                            C38.438,3.945,35.078,7,31,7s-7.438-3.055-7.931-7H10H0v15h10v39h42V15h10V0H52L52,0z"/>
+                                        <path id="Shape" sketch:type="MSShapeGroup" fill="none" stroke="#9E8130" stroke-width="2" d="M11,50h32"/>
+                                        <path id="Shape_1_" sketch:type="MSShapeGroup" fill="none" stroke="#9E8130" stroke-width="2" d="M4,1v11"/>
+                                        <path id="Shape_2_" sketch:type="MSShapeGroup" fill="none" stroke="#9E8130" stroke-width="2" d="M58,1v11"/>
+                                    </g>
+                                </g>
+                                </svg>
+                            </div>
+                            <div class="inline p-l-20 v-align-top p-t-5">Compare Styles</div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/javascripts/other/blog.js"> </script>
+
+
+

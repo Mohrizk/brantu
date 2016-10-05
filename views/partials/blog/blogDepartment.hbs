@@ -1,0 +1,34 @@
+<div class="container bg-white" id="owlLanding">
+    <div class="container-fluid no-padding">
+    <div class="row m-xs-t-30 bg-master-light special-border" >
+        <div class="col-md-12 col-xs-12 col-sm-12 no-padding">
+            <div>
+                <div class=" {{encodeDepartment selectedDepartment}} special-border bg-image no-background-image" id="sameStyle">
+                    <div class="padding-20 ">
+                        <h2 class="text-spaced light text-left text-black all-caps">Hitta  <font class=" sbold text-purple">stiler</font> <br/> och jämför <font class="sbold">priser</font></h2>
+                        <p class="bold text-left ">
+                            Jämför samma stil till olika priser på kläder, skor och accessoarer. <font class="hidden">Det bästa priset för en och samma stil!</font>
+                        </p>
+                    </div>
+                </div>
+                <div class="feed row" data-department="{{selectedDepartment}}" data-page="1" data-total-pages="{{feed.pages}}">
+                    {{#each feed.docs}}
+                        {{> priceCard}}
+                    {{/each}}
+                </div>
+                {{#unless (compareNumber  1 feed.pages)}}
+                    <div class="text-center bg-white p-t-20 p-b-20">
+                        <btn id="loadMoreFeed" class="btn btn-velvet bold circle">
+                            Load More
+                        </btn>
+                        <div id="moreFeedLoader" class=" text-center" style="display: none;">
+                            <img src='/dist/images/progress/progress-circle-danger.svg' style="width:60px; height: 60px;"/>
+                        </div>
+                    </div>
+                {{/unless}}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript" src="/javascripts/other/blog.js"> </script>

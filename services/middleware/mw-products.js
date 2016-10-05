@@ -55,6 +55,24 @@ operations = {
         helper.getProduct(req, _id, function(product){
             if(product== null || typeof product == 'undefined') return next();
             req.product = product;
+            if(typeof product.articles !== 'undefined') req.product.nbShops = product.articles.shops.length;
+            req.product.colorVariation = false;
+            if(typeof product.articles !== 'undefined'){
+                for(var x in req.product.articles.shops){
+                    if(req.product.articles.shops[x].units.length > 1){
+                        req.product.articles.shops[x].colorVariation = true;
+                        req.product.articles.shops[x].sizeVariation = true;
+                        req.product.colorVariation = true;
+                    }
+                    req.product.articles.shops[x].bestDiscount = 0;
+                    for (var y in req.product.articles.shops[x].units){
+                        if(req.product.articles.shops[x].units[y].discount > req.product.articles.shops[x].bestDiscount){
+                            req.product.articles.shops[x].bestDiscount = req.product.articles.shops[x].units[y].discount;
+                        }
+                    }
+                    console.log('DISCOUNT   ',req.product.articles.shops[x].bestDiscount );
+                }
+            }
             req.brand = product.brand;
             req._id = product._id;
             for(var a in product.attributes){
@@ -73,19 +91,43 @@ operations = {
             helper.getSimilarProductsFromSameBrand(foundProduct, function(err,filtered){
                 if(err) return next(err);
                 if(typeof filtered == 'undefined') return next();
+                console.log('getSimilarProductsFromSameBrand', filtered.length);
                 //var sorted = sortbyNearestDescription(req.product, filtered)
-                req.sameBrandProducts = helper.calculateSaving(req.product, filtered)
+                req.sameBrandProducts = helper.calculateSaving(req.product, filtered);
+                req.sameBrandProductsInsight = '';
+                if(req.sameBrandProducts.length > 0){
+                    req.sameBrandProductsInsight = '<div class="b-a bg-master-light b-thick padding-5">' +
+                        '<a class="option cursor fs-14" data-toggle="tooltip" title="Similar products from the '+ foundProduct.brand.name +'at lower price were found" >'+
+                        '<font class="text-velvet"><i class="pg-shopping_cart"></i>'+
+                        ' Similar Brands</font>'+
+                        '</a></div>';
+                }
+                else req.sameBrandProductsInsight = false;
                 next();
             })
     },
+
     GetLowerPriceCategoryProducts:function(req,res,next) {
         var foundProduct = req.product;
         helper.GetLowerPriceCategoryProducts(foundProduct,function(err,filtered){
+
             if(err) return next(err);
             if(typeof filtered == 'undefined') return next();
-        //var sort= sortbyNearestDescription(req.product, filtered)
-             req.LowerPriceCategoryProducts = helper.calculateSaving(req.product, filtered);
-             next();
+            console.log('GetLowerPriceCategoryProducts', filtered.length)
+            //var sort= sortbyNearestDescription(req.product, filtered)
+            req.LowerPriceCategoryProducts = helper.calculateSaving(req.product, filtered);
+            if(req.LowerPriceCategoryProducts.length > 0){
+                req.sameCategoryProductsInsight =
+                '<div class="b-a bg-master-light b-thick padding-5">' +
+                '<a class="option cursor fs-14" data-toggle="tooltip" title="Similar style at lower price were found" >'+
+                '<font class="text-velvet"><i class="pg-shopping_cart"></i>'+
+                ' Similar Styles</font>'+
+                '</a></div>';
+            }
+            else {
+                req.sameCategoryProductsInsight = false;
+            }
+            next();
      })
 
     },
@@ -94,41 +136,22 @@ operations = {
         helper.GetSimilarCategoryProducts(req, foundProduct,function(err,filtered){
             if(err) return next(err);
             if(typeof filtered == 'undefined') return next();
+            console.log('GetSimilarCategoryProducts', filtered.length);
             //req.sameCategoryProducts = sortbyNearestDescription(req.product, filtered)
             req.sameCategoryProducts = helper.calculateSaving(req.product,filtered);
             next();
         })
     },
     checkProductIsFavoured :function(req, res, next){
-        if(req.product !== null && typeof req.session.favProducts !=='undefined'){
+        if(req.product == null || !req.user) return next();
             var found = false;
-            for(var f in req.session.favProducts)
-                if(req.session.favProducts[f] == req.product._id)
+            for(var f in req.user.products)
+                if(req.user.products[f].toString() == req.product._id.toString())
                     found= true;
             req.product.isFavored = found;
-        }
         next();
     },
-    getFavouriteProducts   : function (req, res, next) {
-        for(var f in req.session.favProducts){
-            if(req.session.favProducts[f]==''){
-                req.session.favProducts.splice(f, 1);
-            }
-        }
 
-        if(typeof req.session.favProducts !== 'undefined'){
-            var query = { "_id": { $in: req.session.favProducts }}
-            Products.find(query, function(err, productList){
-                if(err) return next(err);
-                res.locals.productsList = productList
-                next();
-            })
-        }
-        else {
-            res.locals.favouriteProductsList = [];
-            next()
-        }
-    },
     getForBlog:function(req, res, next){
         if(typeof req.outfit == 'undefined') return next();
 
@@ -187,51 +210,92 @@ operations = {
         }).on('error',function(err){
             return next(err);
         })
-
     },
 }
 
 var helper = {
+    getProductUrl:function(product){
+        return '/bästa-pris-för/'+ shared.helper.urlFriendly(product.name)+'-'+product._id;
+    },
     getCompare:function(req, department, categoryOptions,callback){
-        var options = 'brand category otherColors articles articles.shops.shop';
-        var clothArray = [],accessoryArray = [], shoesArray = [];
+        var options = 'brand category articles articles.shops.shop';
+        var clothArray = [], shoesArray = [], accessoryArray;
         Article.find({"shops":{"$not":{"$size":1}}}, {_id: 1}).exec(function(err, docs){
             var ids = docs.map(function(doc) { return doc._id;});
-
             Products.find({"articles":{$in: ids}, "genders": shared.helper.encodeDepartment(department)})
-                .deepPopulate(options).limit(30).lean().exec(function(err, products){
+                .deepPopulate(options)
+                .limit(30).lean()
+                .exec(function(err, products){
                 if(err) return callback(err);
                 if(products.length == 0 ) return callback()
+                /**
+                 * FILTER AND MAP PRODUCTS
+                 * */
+                //loop through found products
                 for(var x in products){
                     if(typeof products[x].category.breadcrumb[1] !== 'undefined'){
-                        var branch = products[x].category.breadcrumb[1].name.toLowerCase();
-                        for (var y in categoryOptions.sv){
-                            if(categoryOptions.sv[y]== branch){
-                                switch (categoryOptions.sv[y]){
-                                    case 'kläder':
-                                        helper.getShippingReturn(products[x], req);
-                                        helper.getLowestPrice(products[x])
-                                        clothArray.push(products[x]);
-                                        break;
-                                    case'skor':
-                                        helper.getShippingReturn(products[x], req);
-                                        helper.getLowestPrice(products[x])
-                                        shoesArray.push(products[x]);
-                                        break;
-                                    case'accessoarer':
-                                        helper.getShippingReturn(products[x], req);
-                                        helper.getLowestPrice(products[x])
-                                        accessoryArray.push(products[x]);
-                                        break;
+                        var found = false, currentProduct = products[x];
+                        /**
+                         * REMOVE OTHER COLORS
+                         * */
+                        //loop through our current array
+                        for(var y in clothArray){
+                           var arrayProduct = clothArray[y];
+                            //loop through otherColors
+                            for(var z in arrayProduct.otherColors){
+                                if(arrayProduct.otherColors[z].toString() === currentProduct['_id'].toString()){
+                                    found = true;
                                 }
                             }
                         }
+                        if(!found){
+                            /**
+                             *
+                             *CALCULATE PRICE SAVING and sort by highest saving
+                             * */
+                            for(var a in currentProduct.articles.shops){
+                                // GET LOWEST PRICE IN EACH SHOP
+                                var lowestPriceShop, highestPriceShop;
+                                for(var b in currentProduct.articles.shops[a].units){
+                                    var unit = currentProduct.articles.shops[a].units[b];
+                                    if(b == 0){
+                                        lowestPriceShop = unit.price.value;
+                                        highestPriceShop = unit.price.value;
+                                    }
+                                    else{
+                                        if( unit.price.value < lowestPriceShop){
+                                            lowestPriceShop = unit.price.value;
+                                        }
+                                        else if( unit.price.value > highestPriceShop){
+                                            highestPriceShop = unit.price.value
+                                        }
+                                    }
+                                }
+                                if(a == 0){
+                                    currentProduct.lowestPrice = lowestPriceShop;
+                                    currentProduct.HighestPrice = highestPriceShop;
+                                }
+                                else{
+                                    if(lowestPriceShop  < currentProduct.lowestPrice){
+                                        currentProduct.lowestPrice = lowestPriceShop;
+                                    }
+                                    else if(highestPriceShop  > currentProduct.HighestPrice){
+                                        currentProduct.HighestPrice = highestPriceShop;
+                                    }
+                                }
+                            }
+                            currentProduct.saving = Math.round(((currentProduct.HighestPrice - currentProduct.lowestPrice)/currentProduct.HighestPrice )*100)
+                            clothArray.push(currentProduct);
+                        }
                     }
                 }
+
+                clothArray.sort(function(a,b){
+                        return b.saving - a.saving;
+                });
                 var returnArray = [];
                 for(var i = 0; i< 6;i++){
-                    returnArray.push(clothArray[i]);
-
+                returnArray.push(clothArray[i]);
                 }
                 return callback(null, returnArray, shoesArray, accessoryArray);
             });
@@ -250,6 +314,7 @@ var helper = {
                 callback(x);
         });
     },
+
     getSimilarProductsFromSameBrand:function(foundProduct,callback){
         var query = {   "brand": foundProduct.brand,
             "category": foundProduct.category,
@@ -265,11 +330,14 @@ var helper = {
                 var filtered= products.filter(function(product){
                     if (foundProduct._id.toString() == product._id.toString()) return false;
                     for (var o in foundProduct.otherColors){
-                        if (product._id.toString() == foundProduct.otherColors[o].toString())
+                        if (product._id.toString() == foundProduct.otherColors[o].toString());
                             return false;
                     }
                     return true;
-                })
+                }).map(function(product){
+                    product.url = helper.getProductUrl(product);
+                    return product;
+                });
              callback(null,filtered)
         });
     },
@@ -289,10 +357,14 @@ var helper = {
                     if (foundProduct._id.toString() !== product._id.toString()  &&  foundProduct.brand.toString() !== product.brand.toString()){
                         return true;
                     }
+                }).map(function(product){
+                    product.url = helper.getProductUrl(product);
+                    return product;
                 });
             callback(null,filtered)
         })
     },
+
     GetSimilarCategoryProducts: function (req, foundProduct, callback) {
         var query =    {"color": new RegExp( '.*' + foundProduct.color  +'.*', 'i'),
             "category": foundProduct.category,
@@ -311,9 +383,11 @@ var helper = {
                         if(req.LowerPriceCategoryProducts[j]._id.toString() == product._id.toString())  return false;
                     for (var k in req.sameBrandProducts)
                         if(req.sameBrandProducts[k]._id.toString() == product._id.toString())  return false;
-
                     return true;
-                });
+                }).map(function(product){
+                    product.url = helper.getProductUrl(product);
+                    return product;
+                });;
             callback(null,filtered);
         })
     },
@@ -328,12 +402,13 @@ var helper = {
         }
     },
     calculateSaving: function (item, products){
-    for(var p in products){
-        products[p].saving = (item.price.value - products[p].price.value) +' '+item.price.currency ;
-        products[p].isItSaving = (item.price.value - products[p].price.value > 0? true :false);
-        products[p].savingPercentage = Math.round(((item.price.value - products[p].price.value)/ item.price.value)*100);
-    }
-    return products;
+        for(var p in products){
+            products[p].saving = (item.price.value - products[p].price.value) +' '+item.price.currency ;
+            products[p].isItSaving = (item.price.value - products[p].price.value > 0? true :false);
+            products[p].savingPercentage = Math.round(((item.price.value - products[p].price.value)/ item.price.value)*100);
+
+        }
+        return products;
 },
     getLowestPrice:function(product){
     for (var s in product.articles.shops){

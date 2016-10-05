@@ -1,19 +1,22 @@
 
 
     <!-- START PAGE CONTENT WRAPPER -->
-    <div class="page-content-wrapper">
-        <section id="mainSection" class="no-overflow bg-Image relative" >
-            <div class="bg-Image " style="background-image: url('/dist/images/home/authenticate.jpg');">
+    <div class="page-content-wrapper bg-transparent">
+        <section id="mainSection" class="no-header" >
+            <div >
             <!-- START PAGE CONTENT -->
                 <div class="content  ">
-                <div class="registerContainer active" style="margin-top: 50px;">
+                <div class="registerContainer" style="margin-top: 50px;">
                     <div class="registerCard" style=" ">
                         <div class="fs-12 title text-center relative">
-                            <img src="/dist/images/logo.svg" alt="logo" class="authenticateLogo"/>
-                            <h5 class=" bold text-spaced-medium all-caps text-center">
-                                Tack för att du använder BRANTU!
+                            <div class="">
+                                <a href="/">
+                                    <img src="/dist/images/logo_white.svg" alt="logo"  width="180"/>
+                                </a>
+                            </div>
+                            <h5 class=" bold text-spaced-medium all-caps text-center text-white">
+                                Stay updated with price drops on your favourite items and brands BRANTU!
                             </h5>
-                            <p class="text-center p-r-20 p-b-20 p-l-20 smallCaps fs-13"><font class="capitalize">Bli</font> Medlem Och Ta Del Utav Det Senaste Inom Mode! Vi Uppdaterar Sidan Med Nya Produkter Och Erbjudanden Varje Vecka!</p>
                             {{#if errorMessage}}
                                 <div id="registerError" >
                                     <p  class="text-red all-caps text-center" >vänligen Försök igen eller<a href="/login" class="p-l-10 bold all-caps">Logga in</a></p>
@@ -55,12 +58,12 @@
 
                             <div class="input-radio">
                                 <div class="col-xs text-center">
-                                    <div class="radio auto-margin block " id="genderSelectionSignupPage">
+                                    <div class="radio radio-primary auto-margin block " id="genderSelectionSignupPage">
                                         <input type="radio"  value="female"  name="gender" id="femaleSignupPage" />
-                                        <label for="femaleSignupPage"  class=" bold ">Kvinna</label>
+                                        <label for="femaleSignupPage"  class=" bold text-white">Kvinna</label>
 
                                         <input type="radio"  value="male"   name="gender" id="maleSignupPage" />
-                                        <label for="maleSignupPage"  class=" bold ">Man</label>
+                                        <label for="maleSignupPage"  class=" bold text-white">Man</label>
                                     </div>
                                 </div>
                             </div>
@@ -71,8 +74,8 @@
                                             <input class="pull-right" type="checkbox" name="concent" id="concent" required/>
                                         </div>
                                     </div>
-                                    <div class="col-xs">
-                                        <label  for="concent"class=" fs-13">Jag godkänner medlemsvillkoren och att mina personuppgifter behandlas enligt ovan, medlemsvillkoren samt Brantus <a class="text-velvet" href="/privacy-policy">Integritetspolicy</a>.</label>
+                                    <div class="col-xs-11">
+                                        <label  for="concent"class=" fs-13 text-white">Jag godkänner medlemsvillkoren och att mina personuppgifter behandlas enligt ovan, medlemsvillkoren samt Brantus <a class="text-velvet" href="/privacy-policy">Integritetspolicy</a>.</label>
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +83,19 @@
                             <div class="button-container p-t-10">
                                 <button id="submitRegistration" ><span >Välkommen In</span></button>
                             </div>
+
                         </form>
+                        <div class="text-center">
+                            <a class="text-white bold b-b" href="/login">LOGGA IN</a>
+                            <div class="p-t-20">
+                                <a class="all-caps  bold text-white" href="/">
+                                    Go to Home
+                                </a>
+                            </div>
+                        </div>
+
+
+
 
                     </div>
                 </div>

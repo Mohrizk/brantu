@@ -8,20 +8,40 @@
                             <div class=" jbImageContainer hidden-xs hidden-sm">
                                 <div class="selectedItemPictureContainer">
                                     <div class="selectedItemZoomPicture">
-                                        <div id="mainJawBoneImageContainer" >
-                                            <div class=" next-item"><i class="  pg-arrow_right"></i></div>
-                                            <div class=" prev-item"><i class="pg-arrow_left"></i></div>
-                                            <div id="owl-main" class=" no-style">
-                                                <div><img  imageorder ="0" data-src="\{{product.mainPicture.largeUrl}}" class="lazyOwl"/></div>
+                                        <div id="mainJawBoneImageContainer" class="swiper-container" >
+                                            <div class="swiper-wrapper no-style">
+                                                <div class="swiper-slide">
+                                                    <img  imageorder ="0" class="swiper-lazy" data-src="\{{product.mainPicture.largeUrl}}"/>
+                                                    <div class="swiper-lazy-preloader swiper-lazy-preloader-brantu"></div>
+                                                </div>
                                                 \{{#each product.auxPictures}}
-                                                    <div><img  imageorder ="\{{indexPlusConstant @index 1}}" data-src="\{{largeUrl}}" class="lazyOwl"/></div>
+                                                <div class="swiper-slide">
+                                                    <img  imageorder ="\{{indexPlusConstant @index 1}}" class="swiper-lazy" data-src="\{{largeUrl}}" />
+                                                    <div class="swiper-lazy-preloader swiper-lazy-preloader-brantu"></div>
+                                                </div>
                                                 \{{/each}}
-                                                <div></div><div></div>
+                                            </div>
+                                            <div class="next-item"><i class="  pg-arrow_right"></i></div>
+                                            <div class="prev-item"><i class="pg-arrow_left"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="top:103%; left:0;">
+                                    <div class="option wrapper p-t-10">
+                                        <div class="row p-t-5">
+                                            <div class="col-xs-6" style="padding-left:0;">
+                                                <div class="text-center" id="sameCategoryInsight">
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6" style="padding-right:0;">
+                                                <div class="text-center "  id="sameBrandInsight">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                             <div class=" col-xs-12 col-sm-12 visible-xs visible-sm">
                                 <div class="selectedItemPictureContainer">
                                     <div class="selectedItemZoomPicture">
@@ -36,39 +56,115 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8 col-md-offset-4  col-sm-12 col-xs-12 p-t-10 p-l-20 p-r-20" id="selectedItemInformation" style="vertical-align: bottom;">
+
+
+                            <div class=" col-lg-7 col-md-8 col-lg-offset-5 col-md-offset-4  col-sm-12 col-xs-12 p-l-20 p-r-20 p-xs-l-5 p-xs-r-5" id="selectedItemInformation">
                                 <div class="row">
                                     <div class="col-xs-12 no-padding">
                                         <div class="item-info b-b more-content">
                                             <div class=" p-t-10 p-b-5">
                                                 <div class="row top-xs">
-                                                    <div class="col-xs-6 no-padding bottom-xs">
+                                                    <div class="col-xs-6 no-padding">
                                                         <div class="row bottom-xs start-xs">
                                                             <div class="col-xs-12 bottom-xs">
                                                                 <h4 class="text-left medium no-padding no-margin v-align-bottom text-black"> \{{product.name}}</h4>
                                                             </div>
                                                         </div>
-                                                        <div class="row bottom-xs start-xs">
-                                                            <a class="col-xs-12 bottom-xs dark" href="/brand/\{{urlFriendly product.brand.name}}">
-                                                                <h5 class="sbold no-margin no-padding text-spaced-medium text-left v-align-bottom" >\{{product.brand.name}}</h5>
-                                                            </a>
-                                                        </div>
                                                     </div>
-                                                    <div class="col-xs-6 bottom-xs text-right ">
+                                                    <div class="col-xs-6 text-right p-r-60 p-xs-r-5">
                                                         \{{#if product.sale}}
-                                                            <div class="row bottom-xs end-xs">
-                                                                <div class="col-xs-12 p-r-60"><h3 class="text-right  no-padding no-margin sbold">\{{{product.discount}}}%</h3></div>
+                                                            <div class="row">
+                                                                <div class="col-xs-12  "><h4 class="medium text-purple-glow no-margin text-right no-padding sbold" ><span  class="fs-15 text-muted" style="text-decoration: line-through;">\{{{product.originalPrice.formatted}}}</span>\{{{product.price.formatted}}}</h4></div>
                                                             </div>
-                                                            <div class="row bottom-xs end-xs">
-                                                                <div class="col-xs-12 p-r-60 bottom-xs "><h4 class="medium text-purple no-margin text-right no-padding sbold" ><span style="text-decoration: line-through; font-size:15px;">\{{{product.originalPrice.formatted}}}</span>\{{{product.price.formatted}}}</h4></div>
+                                                            <div class="row">
+                                                                <div class="col-xs-12 "><h5 class="text-right  no-padding no-margin sbold" style="line-height: 20px;"> Rea \{{{product.discount}}}%</h5></div>
                                                             </div>
+
                                                         \{{else}}
                                                             <div class="row bottom-xs end-xs">
-                                                                <div class="col-xs-12 p-r-60"><h4 class="medium no-margin no-padding text-purple text-right sbold" >\{{{product.price.formatted}}}</h4></div>
+                                                                <div class="col-xs-12"><h4 class="medium no-margin no-padding text-purple text-right sbold" >\{{{product.price.formatted}}}</h4></div>
                                                             </div>
                                                         \{{/if}}
                                                     </div>
                                                 </div>
+                                                <div class="row">
+                                                    <div class="col-xs-6 no-padding">
+                                                        <div class="row p-t-5">
+                                                            <div class="col-xs-7" style="padding-right:0;">
+                                                                <div class=" v-align-top">
+                                                                    <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left" href="/brand/\{{urlFriendly product.brand.name}}">
+                                                                        \{{product.brand.name}}
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-5 no-padding">
+                                                                <div class="text-left " >
+                                                                    \{{#if user}}
+                                                                    \{{#if product.brand.isFavored}}
+                                                                    <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                                       data-toggle="tooltip" data-placement="bottom" title="unfollow \{{product.brand.name}} price drops, discount and coupons"
+                                                                       data-favourite="removeBrand"  id="\{{product.brand._id}}" name="\{{product.brand.name}}" key="\{{product.brand.key}}"
+                                                                       action="/favourite-brands/remove">
+                                                                        <button class="btn btn-tag btn-follow active"  >following</button>
+                                                                    </a>
+                                                                    \{{else}}
+                                                                    <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                                       data-toggle="tooltip" data-placement="bottom" title="follow \{{product.brand.name}} price drops, discount and coupons"
+                                                                       data-favourite="addBrand"  id="\{{product.brand._id}}" name="\{{product.brand.name}}" key="\{{product.brand.key}}"
+                                                                       action="/favourite-brands/add">
+                                                                        <button class="btn btn-tag btn-follow">follow</button>
+                                                                    </a>
+                                                                    \{{/if}}
+                                                                    \{{else}}
+                                                                    <a data-view="signup" class="authenticate" data-toggle="tooltip" data-placement="bottom" title="follow \{{product.brand.name}} price drops, discount and coupons">
+                                                                        <button class="btn btn-tag btn-follow">follow</button>
+                                                                    </a>
+                                                                    \{{/if}}
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 text-right p-r-60">
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row p-t-5">
+                                            <div class="col-xs-6 p-r-5 p-l-5">
+                                                    \{{#if user}}
+                                                        \{{#if product.isFavored}}
+                                                        <a class="removeFavouriteProduct" _id="\{{{product._id}}}"
+                                                           action="/favourite-product/remove" data-toggle="tooltip" data-placement="bottom"
+                                                           title="remove item from price watcher">
+                                                            <button data-text="add products to price watcher" class="btn btn-velvet btn-block active " >
+                                                                Watching product for price drops
+                                                            </button>
+                                                        </a>
+                                                        \{{else}}
+                                                        <a class="addFavouriteProduct" _id="\{{{product._id}}}"
+                                                           action="/favourite-product/add" data-toggle="tooltip"
+                                                           data-placement="bottom" title="add item to price watcher">
+                                                            <button data-text="Watching product for price drops" class="btn btn-velvet btn-block">
+                                                                add products to price watcher
+                                                            </button>
+                                                        </a>
+                                                        \{{/if}}
+                                                    \{{else}}
+                                                    <a class="authenticate" data-view="signup"
+                                                       data-toggle="tooltip" data-placement="bottom" title="add item to price watcher">
+                                                        <button data-text="Watching product for price drops" class="btn btn-velvet btn-block">
+                                                            add products to price watcher
+                                                        </button>
+                                                    </a>
+                                                    \{{/if}}
+                                            </div>
+                                            <div class="col-xs-6 p-r-5 p-l-5">
+                                                <button class="btn btn-velvet filled btn-block">
+                                                    go to shop
+                                                </button>
                                             </div>
                                         </div>
                                         <div class="selectedItemDetail full-width ">
@@ -77,8 +173,8 @@
                                                     <div class="tab-pane active" id="tabDetails">
                                                         <div class="row column-seperation">
                                                             <div class="col-xs-12">
-                                                                <div class="p-t-20">
-                                                                    <h6 class="bold text-black">Colors</h6>
+                                                                <div class="p-t-5">
+                                                                    <h6 class="sbold text-black">Colors</h6>
                                                                     <ol class="JBColorList no-style no-padding no-margin">
                                                                         \{{#if product.color}}<li class="inline no-padding no-margin"><img class="active bg-image" src="\{{{product.mainPicture.mediumUrl}}}"/><div class="text-center no-overflow-text text-black sbold">\{{product.color}}</div></li>\{{/if}}
                                                                         \{{#each product.otherColors}}<li class="inline no-padding no-margin"><a href="/bästa-pris-för/\{{{urlFriendly this.name}}}-\{{this._id}}"><img class="bg-image" src="\{{{this.mainPicture.mediumUrl}}}"/><div class="text-center no-overflow-text text-black sbold">\{{this.color}}</div></a></li>\{{/each}}
@@ -90,99 +186,206 @@
                                                 </div>
                                             </div>
 
-                                            <div class="panel panel-transparent no-margin  ">
-                                                <div class="panel-body no-padding " style="height:auto;"> <div class="dataTables_wrapper form-inline no-footer">
-                                                    <div class="table-responsive no-border">
-                                                    <table class="table table-hover demo-table-search dataTable no-footer box-elevated bg-master-light">
-                                                    <thread>
-                                                        <tr role="row">
-                                                            <th class="sorting fs-14 text-purple" rowspan="1" colspan="1">Shop</th>
-                                                            <th class="sorting fs-14 text-purple hidden-xs" rowspan="1" colspan="1">Colors</th>
-                                                            <th class="sorting  fs-14 text-purple hidden-xs"  rowspan="1" colspan="1">Prices</th>
-                                                            <th class="sorting fs-14 text-purple " rowspan="1" colspan="1"></th>
-                                                            <th class="sorting fs-14 text-purple"  rowspan="1" colspan="1">Lowest Price</th>
-                                                            <th class="sorting fs-14 text-purple hidden-xs" rowspan="1" colspan="1">Shipping & Return </th>
-                                                            <th class="sorting fs-14 text-purple visible-xs"  rowspan="1" colspan="1">Free Return </th>
-                                                        </tr>
-                                                    </thread>
-                                                    <tbody style="background-color: rgba(255,255,255,1);">
+                                            <div>
 
-
-
-                                                    \{{#each product.articles.shops}}
-                                                        <tr >
-                                                            <td class="v-align-middle p-t-10 "><img src="\{{this.shop.logoUrl}}" /></td>
-                                                            <td class="v-align-middle p-t-10 p-l-5 hidden-xs">
-                                                                <ol class="no-style">
-                                                                    \{{#each this.units}}
-                                                                        <a target="_blank" rel="nofollow" href="\{{this.articleUrl}}">
-                                                                            <li>
-                                                                                <p class="no-margin bold">\{{this.color}}</p>
-                                                                            </li>
-                                                                        </a>
-                                                                    \{{/each}}
-                                                                </ol>
-                                                            </td>
-                                                            <td class="v-align-middle p-t-10 p-l-5 hidden-xs">
-                                                                <ol class="no-padding no-margin no-style">
-                                                                    \{{#each this.units}}
-                                                                        <a target="_blank" rel="nofollow" href="\{{this.articleUrl}}">   <li>
-                                                                            <p class="no-padding no-margin">\{{this.price.formatted}}\{{#if discount}} <span class="bold text-velvet">(\{{this.discount}}%)</span>\{{/if}}</p>
-                                                                        </li></a>
-                                                                    \{{/each}}
-                                                                </ol>
-                                                            </td>
-
-                                                            <td class="v-align-middle p-t-5 no-padding">
-                                                                \{{#each this.units}}
-                                                                    <a href="\{{this.articleUrl}}" rel="nofollow" class="text-velvet" target="_blank">
-                                                                        <div class="p-t-5">
-                                                                            <button class="btn btn-primary btn-tag bold no-padding all-caps b-b  no-margin p-r-5 p-l-5"  style="color: #5a196e;">Go to Shop</button>
-                                                                        </div>
-                                                                    </a>
-                                                                \{{/each}}
-                                                            </td>
-
-                                                            <td class="v-align-middle p-t-10">
-                                                                <p class="bold">\{{lowest.price.formatted}}</p>
-                                                            </td>
-
-                                                            <td class="v-align-middle p-t-10 p-b-5 hidden-xs">
-                                                                <h6 class="bold no-padding no-margin"><font class="text-master medium">Free Return: </font>\{{#if this.shop.freeReturn}} Yes \{{else}} No \{{/if}}</h6>
-                                                                <h6 class="bold no-padding no-margin"><font class="text-master medium">Return Period: </font>\{{this.shop.returnPeriod}}</h6>
-                                                                <h6 class="bold no-padding no-margin"><font class="text-master medium">Shipping Cost: </font>\{{this.shop.standardShippingCost}}</h6>
-                                                                <h6 class="bold no-padding no-margin"><font class="text-master medium">Shipping Period: </font>\{{this.shop.standardShippingTime}}</h6>
-                                                                <h6 class="bold no-padding no-margin"><font class="text-master medium">Free Shipping After: </font>\{{this.shop.freeAfter}}</h6>
-                                                            </td>
-                                                            <td class="v-align-middle no-padding p-t-10 p-b-5 visible-xs">
-                                                                <p class="bold no-padding no-margin"><font class="text-master medium"></font>\{{#if this.shop.freeReturn}} Yes \{{else}} No \{{/if}}</p>
-                                                            </td>
-
-
-                                                        </tr>
-                                                    \{{/each}}
-                                                    </tbody>
-                                                </table></div></div></div>
                                             </div>
-                                            <!--<div class="hidden-xs" >
-                                                <h6 class="text-purple  b-b sbold b-transparent-white">Description</h6>
-                                                <div class="description text-black medium">\{{product.description}}</div>
 
-                                                <div>
-                                                    <input type="checkbox" class="read-more-state" id="post-1" />
-
-                                                    <p class="read-more-wrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <span class="read-more-target">\{{product.description}}</span></p>
-
-                                                    <label for="post-1" class="read-more-trigger"></label>
+                                            <div class="panel panel-transparent no-margin  " id="priceTable">
+                                                <div class="panel-body no-padding " style="height:auto;"> <div class="dataTables_wrapper form-inline no-footer">
+                                                    <div class="table-responsive">
+                                                        <div class="dataTables_wrapper form-inline no-footer">
+                                                            <table class="table table-hover table-condensed table-detailed dataTable no-footer" role="grid">
+                                                                <div  class="bg-black p-t-5 p-b-5 p-l-20">
+                                                                    <div class="sorting fs-14 text-white bg-black" >
+                                                                        <div class="v-align-middle inline">
+                                                                            <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                                                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="22px" height="23px"
+                                                                         viewBox="0 0 62 53" enable-background="new 0 0 62 53" xml:space="preserve">
+                                                                    <title>Chart-4</title>
+                                                                    <desc>Created with Sketch.</desc>
+                                                                    <g id="Page-1" sketch:type="MSPage">
+                                                                        <g id="Chart-4" sketch:type="MSLayerGroup">
+                                                                            <path id="Shape" sketch:type="MSShapeGroup" fill="none" stroke="#FFFFFF" stroke-width="2" d="M7,0v53"/>
+                                                                            <path id="Shape_1_" sketch:type="MSShapeGroup" fill="none" stroke="#FFFFFF" stroke-width="4" d="M62,46H0"/>
+                                                                            <path id="Shape_2_" sketch:type="MSShapeGroup" fill="none" stroke="#9E8130" stroke-width="4" d="M45,27v16"/>
+                                                                            <path id="Shape_3_" sketch:type="MSShapeGroup" fill="#8ECA00" stroke="#9E8130" stroke-width="4" d="M33,9v34"/>
+                                                                            <path id="Shape_4_" sketch:type="MSShapeGroup" fill="none" stroke="#9E8130" stroke-width="4" d="M21,17v26"/>
+                                                                        </g>
+                                                                    </g>
+                                                                    </svg>
+                                                                        </div>
+                                                                        <div class="v-align-middle bold inline">We have \{{product.nbShops}} shop selling that exact item
+                                                                            \{{#if product.colorVariation}}, Also color variaion found \{{/if}}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <thread>
+                                                                    <tr role="row">
+                                                                        <th class="sorting fs-12 text-black bold" rowspan="1" width="150">Shop</th>
+                                                                        <th class="sorting fs-12 text-black bold hidden-xs" rowspan="1" colspan="1">Colors</th>
+                                                                        <th class="sorting fs-12 text-black bold"  rowspan="1" colspan="1">Lowest Price / \{{product.price.currency}}</th>
+                                                                        <th class="sorting  fs-12 text-black bold hidden-xs"  rowspan="1" colspan="1">Discount</th>
+                                                                        <th class="sorting  fs-12 text-black bold hidden-xs"  rowspan="1" colspan="1">Sizes</th>
+                                                                        <th class="sorting fs-12 text-black bold"  rowspan="1" colspan="1">Free Return </th>
+                                                                    </tr>
+                                                                </thread>
+                                                                <tbody class="bg-white">
+                                                                \{{#each product.articles.shops}}
+                                                                <tr class="informationList odd" >
+                                                                    <td class="v-align-middle">
+                                                                        <img src="\{{this.shop.logoUrl}}" />
+                                                                    </td>
+                                                                    <td class="v-align-middle p-t-15">
+                                                                        <div>
+                                                                            <p class="bold">
+                                                                                \{{#if this.colorVariation}} multiple \{{else}} Single\{{/if}}
+                                                                            </p>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="v-align-middle p-t-15">
+                                                                        <div>
+                                                                            <p class="text-purple bold">
+                                                                                \{{lowest.price.value}}
+                                                                            </p>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="v-align-middle p-t-15">
+                                                                        <div>
+                                                                            <p class="bold">
+                                                                                \{{{this.bestDiscount}}}
+                                                                            </p>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="v-align-middle p-t-15">
+                                                                        <div>
+                                                                            <p class="bold">
+                                                                                \{{#if this.sizeVariation}} multiple \{{else}} one size\{{/if}}
+                                                                            </p>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="v-align-middle p-t-15">
+                                                                        <div>
+                                                                            <p class="bold">
+                                                                                \{{#if this.shop.freeReturn}} Yes \{{else}} No \{{/if}}
+                                                                            </p>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="row-details hidden">
+                                                                    <td colspan="6" class="bg-master">
+                                                                        <table class="table table-inline">
+                                                                            <thread>
+                                                                                <tr role="row">
+                                                                                    <th class="sorting fs-12 text-black bold" rowspan="1" colspan="1">Colors</th>
+                                                                                    <th class="sorting  fs-12 text-black bold"  rowspan="1" colspan="1">Prices</th>
+                                                                                    <th class="sorting  fs-12 text-black bold"  rowspan="1" colspan="1">Discount</th>
+                                                                                    <th class="sorting  fs-12 text-black bold"  rowspan="1" colspan="1">Sizes</th>
+                                                                                    <th class="sorting fs-12 text-black bold" rowspan="1" colspan="1">Link</th>
+                                                                                    <th class="sorting fs-12 text-black bold" rowspan="1" colspan="1">Shipping & Return </th>
+                                                                                </tr>
+                                                                            </thread>
+                                                                            <tbody>
+                                                                            <tr>
+                                                                                <td class="v-align-top p-t-10 p-l-20">
+                                                                                    <div>
+                                                                                        <ol class="no-style">
+                                                                                            \{{#each this.units}}
+                                                                                            <li class="no-overflow-text">
+                                                                                                <a target="_blank" rel="nofollow" class="no-margin bold" href="\{{this.articleUrl}}">
+                                                                                                    \{{this.color}}
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            \{{/each}}
+                                                                                        </ol>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td class="v-align-top p-t-10 p-l-5">
+                                                                                    <div>
+                                                                                        <ol class="no-padding no-margin no-style">
+                                                                                            \{{#each this.units}}
+                                                                                            <li class="no-overflow-text">
+                                                                                                <a target="_blank" class="no-padding no-margin bold" rel="nofollow" href="\{{this.articleUrl}}">
+                                                                                                    \{{this.price.formatted}}
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            \{{/each}}
+                                                                                        </ol>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td class="v-align-top p-t-10 p-l-5">
+                                                                                    <div>
+                                                                                        <ol class="no-padding no-margin no-style">
+                                                                                            \{{#each this.units}}
+                                                                                            <li class="no-overflow-text">
+                                                                                                <a target="_blank" class="no-padding no-margin" rel="nofollow" href="\{{this.articleUrl}}">
+                                                                                                    \{{#if discount}} <font class="bold">\{{this.discount}}%</font>\{{/if}}
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            \{{/each}}
+                                                                                        </ol>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td class="v-align-top p-t-10 p-l-5">
+                                                                                    <div>
+                                                                                        <ol class="no-padding no-margin no-style">
+                                                                                            \{{#each this.units}}
+                                                                                            <li class="no-overflow-text">
+                                                                                                <a target="_blank" class="no-padding no-margin" rel="nofollow" href="\{{this.articleUrl}}">
+                                                                                                    \{{#if sizes}} <font class="bold text-purple" data-toggle="tooltip"  title="\{{this.sizes}}">Sizes</font>\{{/if}}
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            \{{/each}}
+                                                                                        </ol>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td class="v-align-top p-t-10 no-padding">
+                                                                                    <div>
+                                                                                        <ol class="no-padding no-margin no-style">
+                                                                                            \{{#each this.units}}
+                                                                                            <li class="no-overflow-text">
+                                                                                                <a href="\{{this.articleUrl}}" rel="nofollow" class="text-purple-glow" target="_blank">
+                                                                                                    <div class="">
+                                                                                                        <button class="btn btn-primary btn-tag sbold no-padding all-caps b-b  no-margin p-r-5 p-l-5 hidden-xs" >Go to Shop</button>
+                                                                                                        <button class="btn btn-primary btn-tag sbold no-padding all-caps b-b  no-margin p-r-5 p-l-5 visible-xs" >\{{this.color}}</button>
+                                                                                                    </div>
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            \{{/each}}
+                                                                                        </ol>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td class="v-align-top p-t-10 p-b-5 p-l-5" >
+                                                                                    <div>
+                                                                                        <ol class="no-padding no-margin no-style">
+                                                                                            <li class="bold no-padding no-margin fs-12 b-b b-grey"><font class="text-master medium fs-10 lh-10">Free Return: </font><br/>\{{#if this.shop.freeReturn}} Yes \{{else}} No \{{/if}}</li>
+                                                                                            <li class="bold no-padding no-margin fs-12 b-b b-grey"><font class="text-master medium fs-10 lh-10">Return within: </font><br/>\{{this.shop.returnPeriod}}</li>
+                                                                                            <li class="bold no-padding no-margin fs-12 b-b b-grey"><font class="text-master medium fs-10 lh-10">Shipping Cost: </font><br/>\{{this.shop.standardShippingCost}}</li>
+                                                                                            <li class="bold no-padding no-margin fs-12 b-b b-grey"><font class="text-master medium fs-10 lh-10">Shipping Period: </font><br/>\{{this.shop.standardShippingTime}}</li>
+                                                                                            <li class="bold no-padding no-margin fs-12 b-b b-grey"><font class="text-master medium fs-10 lh-10">Free Shipping After: </font><br/>\{{this.shop.freeAfter}}</li>
+                                                                                        </ol>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                \{{/each}}
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>-->
+                                            </div>
+
+
                                             <div class="">
                                                 <div class="panel-group box-elevated" id="accordion" role="tablist" aria-multiselectable="true">
                                                     <div class="panel panel-default">
                                                         <div class="panel-heading bg-white" role="tab" id="headingOne">
                                                             <h4 class="panel-title ">
                                                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="collapsed">
-                                                                   <font class="text-purple sbold"> Description </font> <br/><div class="descriptionHint ">\{{product.description}}</div>
+                                                                   <font class="sbold p-l-30"> Description </font> <br/><div class="descriptionHint ">\{{product.description}}</div>
                                                                 </a>
                                                             </h4>
                                                         </div>
@@ -195,19 +398,31 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-md hidden-sm hidden-xs relative">
+                                    <div class="col-md hidden-sm hidden-xs">
                                         <ol class="selectedItemSave ">
-                                            \{{#if lastPath}}<li class="delete p-l-10 p-b-10" data-path="\{{lastPath}}">
-                                                <div ><i class=" pg-close_line"> </i></div>
-                                            </li>\{{/if}}
-                                            <li class="like cursor p-l-10 sm-p-t-10">
-                                                \{{#if product.isFavored}}
-                                                    <a class="removeFavouriteProduct" _id="\{{{product._id}}}" action="/favourite-product/remove">
-                                                        <i class="pg-like1 text-pink-darker"></i></a>
-                                                \{{else}}
-                                                    <a class="addFavouriteProduct" _id="\{{{product._id}}}" action="/favourite-product/add">
-                                                        <i class="pg-like"></i></a>
-                                                \{{/if}}
+                                            \{{#if lastPath}}
+                                            <li class="delete " data-path="\{{lastPath}}">
+                                                <a class="dark bold fs-12"><u>Go back</u></a>
+                                            </li>
+                                            \{{/if}}
+                                            <li class="like cursor visible-xs visible-sm p-l-10 sm-p-t-10">
+                                                <div >
+                                                    \{{#if user}}
+                                                        \{{#if product.isFavored}}
+                                                        <a class="removeFavouriteProduct" _id="\{{{product._id}}}" action="/favourite-product/remove" data-toggle="tooltip" data-placement="bottom" title="remove item from price watcher">
+                                                            <i class="pg-shopping_cart text-purple-glow"></i>
+                                                        </a>
+                                                        \{{else}}
+                                                        <a class="addFavouriteProduct" _id="\{{{product._id}}}" action="/favourite-product/add" data-toggle="tooltip" data-placement="bottom" title="add item to price watcher">
+                                                            <i class="pg-shopping_cart"></i>
+                                                        </a>
+                                                        \{{/if}}
+                                                    \{{else}}
+                                                    <a class="authenticate" data-view="signup" data-toggle="tooltip" data-placement="bottom" title="add item to price watcher">
+                                                        <i class="pg-shopping_cart"></i>
+                                                    </a>
+                                                    \{{/if}}
+                                                </div>
                                             </li>
                                         </ol>
                                     </div>
@@ -219,12 +434,20 @@
                                 <div ><i class=" pg-close_line"> </i></div>
                             </li>
                             <li class="like cursor p-l-10 sm-p-t-10">
-                                \{{#if product.isFavored}}
-                                    <a class="removeFavouriteProduct" _id="\{{{product._id}}}" action="/favourite-product/remove">
-                                        <i class="pg-like1 text-pink-darker"></i></a>
+                                \{{#if user}}
+                                    \{{#if product.isFavored}}
+                                        <a class="removeFavouriteProduct" _id="\{{{product._id}}}" action="/favourite-product/remove">
+                                            <i class="pg-shopping_cart text-purple-glow"></i>
+                                        </a>
+                                    \{{else}}
+                                        <a class="addFavouriteProduct" _id="\{{{product._id}}}" action="/favourite-product/add">
+                                            <i class="pg-shopping_cart"></i>
+                                        </a>
+                                    \{{/if}}
                                 \{{else}}
-                                    <a class="addFavouriteProduct" _id="\{{{product._id}}}" action="/favourite-product/add">
-                                        <i class="pg-like"></i></a>
+                                        <a class="authenticate" data-view="login">
+                                            <i class="pg-shopping_cart"></i>
+                                        </a>
                                 \{{/if}}
                             </li>
                         </ol>
@@ -233,8 +456,8 @@
                         <div class="">
                             <div class="text-center p-t-50 p-b-50">
                                 <div class=" text-center ">
-                                    <h4 class="text-velvet">Söker efter relaterade <b>styles</b> </h4>
-                                    <img src="/images/loading.gif" style="width:100px; height: 100px;"/>
+                                    <h4 class="text-purple-glow">Söker efter relaterade <b>styles</b> </h4>
+                                    <img src="/images/progress/progress-circle-danger.svg" style="width:70px; height: 70px;"/>
                                 </div>
                             </div>
                         </div>
@@ -244,3 +467,6 @@
         </div>
     </div>
 </div>
+<script>
+
+</script>

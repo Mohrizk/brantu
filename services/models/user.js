@@ -21,11 +21,13 @@ var User = mongoose.Schema({
                age      : String
         },
         resetPasswordToken: String,
-         resetPasswordExpires: Date,
+        resetPasswordExpires: Date,
         role:String,
         newsletter:  Boolean,
         createDate:  { type: Date, default: Date.now },
-        brands:[{type: mongoose.Schema.Types.ObjectId, ref:'Brand'}]
+        brands:[{type: mongoose.Schema.Types.ObjectId, ref:'Brand'}],
+        products:[{type: mongoose.Schema.Types.ObjectId, ref:'Product'}],
+        viewedProducts:[{type: mongoose.Schema.Types.ObjectId, ref:'Product'}]
 })
 User.plugin(mongoosePaginate);
 // methods =====================

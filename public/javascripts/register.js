@@ -8,50 +8,50 @@ $(document).ready(function() {
 		$('.fixed-header').removeClass('sidebar-open');
 		$('.page-sidebar-cover').addClass('hidden');
 	}
-	registerSection.on('click','.toggle', function() {
-		registerContainer.stop().addClass('active');
+	$(document).on('click','.registerContainer .toggle', function() {
+		$('.registerContainer').stop().addClass('active');
 	});
 
-	$('#fromSignUpToLogin').on('click', function() {
-		registerContainer.stop().removeClass('active');
+	$(document).on('click', '#fromSignUpToLogin',function() {
+		$('.registerContainer').stop().removeClass('active');
 	});
 
-	$('#footerSignUPButton').on('click', function() {
+	$(document).on('click', '#footerSignUPButton',function() {
 		$('.page-container').addClass('fixedPage')
 		var number = (isMobile? 0:50);
-		registerContainer.stop().addClass('active').css({marginTop:800}).animate({marginTop:number}, 200);
-		registerSection.removeClass('hidden').css({opacity:0}).animate({opacity:1});
+		$('.registerContainer').stop().addClass('active').css({marginTop:800}).animate({marginTop:number}, 200);
+		$('#AuthenticationPopUp').removeClass('hidden').css({opacity:0}).animate({opacity:1});
 	});
 
-	$('.authenticate').on('click', function (event) {
+	$(document).on('click', '.authenticate',function (event) {
 		if($(this).attr('data-view')==='login')
-			registerContainer.stop().removeClass('active').css({marginTop:800}).animate({marginTop:50}, 200);
+			$('.registerContainer').stop().removeClass('active').css({marginTop:800}).animate({marginTop:50}, 200);
 
 		else if($(this).attr('data-view')==='signup')
-			registerContainer.stop().addClass('active').css({marginTop:800}).animate({marginTop:50}, 200);
+			$('.registerContainer').stop().addClass('active').css({marginTop:800}).animate({marginTop:50}, 200);
 		$('.page-container').addClass('fixedPage')
-		registerSection.removeClass('hidden').css({opacity:0}).animate({opacity:1});
+		$('#AuthenticationPopUp').removeClass('hidden').css({opacity:0}).animate({opacity:1});
 	});
 
-	$('.authenticateMobile').on('touchend click', function (e) {
+	$(document).on('touchend click', '.authenticateMobile',function (e) {
 		e.preventDefault();e.stopPropagation();
 			closeSideBar()
 			if($(this).attr('data-view')==='login')
-				registerContainer.stop().removeClass('active').css({marginTop:800}).animate({marginTop:0}, 200);
+				$('.registerContainer').stop().removeClass('active').css({marginTop:800}).animate({marginTop:0}, 200);
 			else if($(this).attr('data-view')==='signup')
-				registerContainer.stop().addClass('active').css({marginTop:800}).animate({marginTop:0}, 200);
+				$('.registerContainer').stop().addClass('active').css({marginTop:800}).animate({marginTop:0}, 200);
 		$('.page-container').addClass('fixedPage')
-		registerSection.removeClass('hidden').css({opacity:0}).animate({opacity:1});
+		$('#AuthenticationPopUp').removeClass('hidden').css({opacity:0}).animate({opacity:1});
 	});
-	$('.close-AuthenticationPopUp').on('click', function(e){
-		$.when(registerSection.animate({opacity:0}, 100))
+	$(document).on('click', '.close-AuthenticationPopUp',function(e){
+		$.when($('#AuthenticationPopUp').animate({opacity:0}, 100))
 			.done(function(){
-				registerSection.addClass('hidden');
+				$('#AuthenticationPopUp').addClass('hidden');
 				$('.page-container').removeClass('fixedPage')
 			});
 	})
 
-	$('#signupForm').on('submit', function(e) {
+	$(document).on('submit', '#signupForm',function(e) {
 		e.preventDefault();
 		console.log('Supe3');
 		if($('#passwordSignUpConfirm').val() !== $('#passwordSignUp').val()) $('#registerPasswrodError').fadeIn();
@@ -65,7 +65,7 @@ $(document).ready(function() {
 
 	});
 
-	$('#signupFormPage').on('submit', function(e) {
+	$(document).on('submit', '#signupFormPage',function(e) {
 		e.preventDefault();
 		console.log('Supe3');
 		if($('#passwordSignupPageConfirm').val() !== $('#passwordSignupPage').val()) $('#registerPagePasswrodError').fadeIn();

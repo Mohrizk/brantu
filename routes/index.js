@@ -19,15 +19,14 @@ var shared = require('../public/javascripts/helper');
 *******************BEGINING ROUTES***************************
 ***************************************************************/
 var routes = [
-
     [ '/', 'get', [
+        categories.getCategoryTree,
         function(req, res, next) {
             /* if(typeof req.session.favDepartment !== 'undefined'){
             res.redirect(req.session.favDepartment);
         }
         else{*/
             res.render('general', {
-                layout:'no-nav',
                 title :  "Brantu | Jämför och hitta det bästa priset inom mode",
                 description :
                 'Brantu är Sveriges bästa prisjämförelsajt inom mode! ' +
@@ -37,9 +36,7 @@ var routes = [
                     return "home";
                 }
             });
-    } ]
-    ],
-
+    } ]],
     [ '/signup-popup', 'post', [
         function(req, res, next) {
             req.session.signupPopup = true;
@@ -48,31 +45,28 @@ var routes = [
             res.end()
         }]],
     /********SEARCH************/
-    [
-        ['/search', '/s%C3%B6k', '/s%C3%B6k/:department', '/search/:department']
-        ,'get',
-        [
+    [['/search', '/s%C3%B6k', '/s%C3%B6k/:department', '/search/:department'],
+        'get', [
         categories.getCategoryTree,
         categories.getDepartment,
         products.getForSearch,
         products.getAlgoliaProducts,
         function(req, res, next) {
-            console.log('we have the products')
             res.render('general', {
                 generalPartial: function() {
                     return "productNavigation_Back";
                 }
             });
-        } ]],
-
+        }
+        ]],
 
 /*********View Product***************************/
-
     [ '/b%C3%A4sta-pris-f%C3%B6r/:name', 'get',[
         categories.getCategoryTree,
         products.getProductIDfromName,
         products.getProductByID,
         products.checkProductIsFavoured,
+        brands.checkBrandIsFavoured,
         function(req, res, next) {
             res.render('product', {
                 title                   : 'Lägsta priset för '+req.product.name + ' - altid bästa pris inom mode med Brantu',
@@ -83,8 +77,8 @@ var routes = [
                 brand                       : req.brand
             })
         } ]],
- /*********BRAND****************/
 
+/*********BRAND****************/
     [ ['/brand/:name', '/m%C3%A4rken/:name', '/:department/m%C3%A4rken/:name',  '/:department/brand/:name'], 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
@@ -167,7 +161,6 @@ var routes = [
                 }
             });
     }]],
-
     [ '/cookie-policy', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
@@ -188,11 +181,7 @@ var routes = [
             res.end();
         }]],
 
-
-
-
 /*********MAIN PAGE******************************************/
-
     [ ['/:department/:category','/:department/:category/:style'], 'get', [
         categories.getDepartment,
         categories.getCategoryTree,
@@ -205,7 +194,6 @@ var routes = [
                 }
             });
         } ]],
-
     [ ["/:department"], 'get', [
         session.addFavouriteDepartment,
         categories.getCategoryTree,
@@ -226,24 +214,19 @@ var routes = [
             });
         } ]],
 
-
-
-
-
 /*********Internationalization *******************/
     [ '/en', 'get', [ function(req, res, next) {
         res.cookie('brantuLang', 'en');
         res.redirect('/');
-    }]
-    ],
+    }]],
     [ '/sv', 'get', [ function(req, res, next) {
         res.cookie('brantuLang', 'sv');
         res.redirect('/');
-    }]
-    ]
+    }]]
 ];
+
 routes.forEach(function(arr){
-  console.log(arr[1]);
+   //console.log(arr[1]);
    router[arr[1]](arr[0], arr[2]);
 });
 /**************************************************************

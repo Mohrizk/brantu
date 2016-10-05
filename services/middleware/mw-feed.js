@@ -1,4 +1,5 @@
 var Outfits  = require('../models/outfit');
+var async  = require('async');
 var Product  = require('../models/product');
 var webshot = require('webshot');
 var url = require('url');
@@ -168,19 +169,6 @@ var helper = {
             })
             .catch(next);
     },
-    getAllOutfits:function(req, res, next){
-        Outfits.find().lean().exec(function(err,result) {
-            if(err) return next(err);
-            result.map(function(outfit){
-                outfit.url = '/blog/'+shared.helper.urlFriendly(outfit.name)+'-'+outfit._id;
-                console.log(outfit.url)
-            })
-
-            res.locals.feed = result;
-            next();
-        });
-
-    },
     getFeed:function(req,res,next){
         if( res.locals.selectedDepartment == null || typeof res.locals.selectedDepartment == 'undefined')
         return next();
@@ -191,20 +179,21 @@ var helper = {
         var now = new Date();
 
         var query = {
-            gender   : shared.helper.mapGender(res.locals.selectedDepartment),
+            gender   : shared.helper.encodeDepartment(res.locals.selectedDepartment),
             startDate: {"$lt":now}
         }
         var options = {
-            populate: [{path:'styleProduct', populate:{path:'brand'}}, {path:'priceProduct', populate:{path:'brand'}}],
-            sort:     { startDate: -1 },
-            lean:     true,
+            populate:  [{path:'styleProduct', populate:{path:'brand'}}, {path:'priceProduct', populate:{path:'brand'}}],
+            sort:      { startDate: -1 },
+            lean:      true,
             page:      page,
             limit:     6
         };
 
         Outfits.paginate(query, options).then(function(result) {
             result.docs.map(function(outfit){
-                outfit.dateDifference = feed.getDateDifference(outfit.startDate)
+                outfit.dateDifference = feed.getDateDifference(outfit.startDate);
+                outfit.url = '/blog/'+ shared.helper.decodeDepartment(outfit.gender,res.locals.LANG)+'/'+shared.helper.urlFriendly(outfit.name)+'-'+outfit._id;
                 return outfit;
             })
             res.locals.feed = result;
@@ -224,7 +213,7 @@ var helper = {
             console.log(id)
         }
 
-        Outfits.findOne({_id:id}).lean().exec(function(err, outfit){
+        Outfits.findOne({_id:id}).lean().cache('300000s').exec(function(err, outfit){
             if(err) return next(err);
             if(outfit== null) next();
 
@@ -242,7 +231,7 @@ var helper = {
         var oneWeekAgo = new Date();
         oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
         var query = {
-            gender   : category.mapGender(department),
+            gender   : shared.helper.encodeDepartment(department),
             startDate: {"$lt":now, $gt: oneWeekAgo}
         }
         var options = {
@@ -255,6 +244,18 @@ var helper = {
             callback(result.docs)
         });
     },
+    getSitemapBlog:function(req,res,next){
+        Outfits.find().lean().exec(function(err,result) {
+            if(err) return next(err);
+            result.map(function(outfit){
+                outfit.url = '/blog/'+ shared.helper.decodeDepartment(outfit.gender,'sv')+'/'+shared.helper.urlFriendly(outfit.name)+'-'+outfit._id;
+                console.log(outfit.url)
+            })
+
+            res.locals.feed = result;
+            next();
+        });
+     }
 }
 
 module.exports = feed;

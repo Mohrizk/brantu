@@ -13,42 +13,44 @@
 
                             {{#each  productsList}}
                                     <li  class="item" index="{{@index}}" _id="{{{this._id}}}">
-                                        <div class="itemContainer">
-                                            <div class="itemWrapper">
-                                                <div class="row top-xs">
-                                                    <div class="preview-image auto-margin col-xs" style="margin-top: 0;">
-                                                        <img src="{{{this.mainPicture.largeUrl}}}" action="/add-viewed-product-session" class="v-align-top" pic-src="{{{this.mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}" alt="{{../name}}" index="{{@index}}" nb-pic="{{nbImages}}" pic-order="0"  data-product-info="show" _id="{{this._id}}"/>
+                                        <a href="/bästa-pris-för/{{{urlFriendly this.name}}}-{{this._id}}">
+                                            <div class="itemContainer">
+                                                <div class="itemWrapper">
+                                                    <div class="row top-xs">
+                                                        <div class="preview-image auto-margin col-xs" style="margin-top: 0;">
+                                                            <img data-original="{{{this.mainPicture.largeUrl}}}" action="/add-viewed-product-session" class="v-align-top lazy" pic-src="{{{this.mainPicture.largeUrl}}}{{#each auxPictures}}/BREAK/{{{largeUrl}}}{{/each}}" alt="{{../name}}" index="{{@index}}" nb-pic="{{nbImages}}" pic-order="0"  data-product-info="show" _id="{{this._id}}"/>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="item-brand sbold">{{{this.brand.name}}}</div>
-                                                <div class="item-name medium no-overflow-text">{{{this.name}}}</div>
-                                                {{#if sale}}
-                                                    <div class="row">
-                                                        <div class="original-price discounted col-xs text-right">{{{this.originalPrice.formatted}}}</div>
-                                                        <div class="discounted-price col-xs text-left">{{{this.price.formatted}}}</div>
-                                                    </div>
-                                                    <div class="discounted-percentage " style=left:2.4vw;>{{{this.discount}}}%</div>
-                                                    {{else}}
-                                                    <div class="original-price text-center">{{{this.originalPrice.formatted}}}</div>
-                                                    {{/if}}
-                                                <div class="main-options hidden-xs">
-                                                    <ol class="no-style no-overflow-text">
-                                                        {{#each  sizes}}
-                                                            {{#if  @last}}<li class="inline text-pink-darker sbold no-overflow-text">{{this}}</li>
-                                                                {{else}}<li class="inline text-pink-darker sbold no-overflow-text">{{this}} <font class="text-master-light">/</font></li>
-                                                                {{/if}}
-                                                            {{/each}}
+                                                    <div class="item-brand sbold">{{{this.brand.name}}}</div>
+                                                    <div class="item-name medium no-overflow-text">{{{this.name}}}</div>
+                                                    {{#if sale}}
+                                                        <div class="">
+                                                            <div class="original-price discounted col-xs text-right">{{{this.originalPrice.formatted}}}</div>
+                                                            <div class="discounted-price col-xs text-left">{{{this.price.formatted}}}</div>
+                                                        </div>
+                                                        <div class="discounted-percentage favouriteProducts">{{{this.discount}}}%</div>
+                                                        {{else}}
+                                                        <div class="original-price text-center">{{{this.originalPrice.formatted}}}</div>
+                                                        {{/if}}
+                                                    <div class="main-options hidden-xs">
+                                                        <ol class="no-style no-overflow-text">
+                                                            {{#each  sizes}}
+                                                                {{#if  @last}}<li class="inline text-pink-darker sbold no-overflow-text">{{this}}</li>
+                                                                    {{else}}<li class="inline text-pink-darker sbold no-overflow-text">{{this}} <font class="text-master-light">/</font></li>
+                                                                    {{/if}}
+                                                                {{/each}}
+                                                            </ol>
+                                                        </div>
+                                                    <ol class="small-options no-style favouriteProducts">
+                                                        <li class="delete cursor">
+                                                            <a class="removeFavouriteProduct" _id="{{{this._id}}}" action="/favourite-product/remove">
+                                                                <i class="pg-close_line fa-2x"></i>
+                                                                </a></li>
                                                         </ol>
                                                     </div>
-                                                <ol class="small-options no-style" style="right:2.4vw;">
-                                                    <li class="delete cursor">
-                                                        <a class="removeFavouriteProduct" _id="{{{this._id}}}" action="/favourite-product/remove">
-                                                            <i class="pg-close_line fa-2x"></i>
-                                                            </a></li>
-                                                    </ol>
                                                 </div>
-                                            </div>
-                                        </li>
+                                        </a>
+                                    </li>
                 {{/each}}
                         </ol>
                     </div>

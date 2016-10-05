@@ -1,24 +1,21 @@
 
     <!-- START PAGE CONTENT WRAPPER -->
-    <div class="page-content-wrapper">
-    <section class="no-overflow" id="mainSection">
+<div class="page-content-wrapper bg-transparent">
+    <section class="no-header" id="mainSection">
             <!-- START PAGE CONTENT -->
-        <div class="bg-Image " style="background-image: url('/dist/images/home/authenticate.jpg');">
-            <div class="content">
+        <div>
+            <div>
 
-                <div class="registerContainer " style="margin-top: 30px;">
+                <div class="registerContainer" style="margin-top: 30px;">
                     <div class="registerCard text-center">
-                        <h1 class="title text-center">
-                            Login
-                        </h1>
-                       <!-- <div class="button-container padding-1v">
-                            <a  href="/auth/facebook">
-                                <button id="facebookAccess">
-                                    <span> <i class="fa fa-facebook"></i></span>
-                                </button>
+                        <div class="">
+                            <a href="/">
+                            <img src="/dist/images/logo_white.svg" alt="logo"  width="180"/>
                             </a>
                         </div>
-                        <h5 class="text-pink-darker">eller</h5>-->
+                        <h1 class="title text-center all-caps text-spaced-medium bold">
+                            Login
+                        </h1>
                         <div style="margin-top: 30px;">
                             <form id="loginFormPage" role="form" action="/loginUser" method="post">
                                 <div class="input-container">
@@ -36,7 +33,7 @@
                                 {{#if errorMessage}}
                                     {{#if (compareStrings errorMessage 'nouser')}}
                                     <div id="loginError" class="col-sm-12">
-                                        <p  class="text-red text-center" > Ditt konto är inte registrerat <a href="/signup">bli medlem här</a></p>
+                                        <p  class="text-red text-center" > Ditt konto är inte registrerat <a class="light text-white" href="/signup">bli medlem här</a></p>
                                     </div>
                                     {{else}}
                                         <div id="loginError" class="col-sm-12">
@@ -46,15 +43,25 @@
                                 {{/if}}
 
 
-
-                                    <div class="button-container" id="submitLogin">
-                                    <button type="submit"><span>Logga in</span></button>
-                                </div>
-                                <div  style="padding-bottom: 20px; padding-top: 20px;">
-                                    <a class="text-velvet" href="/forget">har du glömt ditt lösenord?</a> <br/>
-                                    <a class="all-caps p-t-10 bold" href="/signup"><u>bli medlem</u></a>
-                                </div>
+                                    <div>
+                                        <a class="text-white sbold" href="/forget"><u>har du glömt ditt lösenord?</u></a>
+                                    </div>
+                                    <div class="button-container p-t-10" id="submitLogin">
+                                         <button type="submit"><span>Logga in</span></button>
+                                    </div>
                             </form>
+                            <div class=" text-center">
+                                <div class="p-t-20">
+                                    <a class="all-caps b-b bold text-white" href="/signup">
+                                        bli medlem
+                                    </a>
+                                </div>
+                                <div class="p-t-20">
+                                    <a class="all-caps  bold text-white" href="/">
+                                        Go to Home
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

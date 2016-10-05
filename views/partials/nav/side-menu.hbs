@@ -20,7 +20,7 @@
     <div class="sidebar-header">
 
         <a  class="inline text-white medium sidebar-header-title cursor all-caps text-spaced {{#if (compareStrings selectedDepartment "Kvinna")}}sbold {{else}} hint-text{{/if}}" href="/kvinna" style="font-size: 18px;">Kvinna</a>
-        <a class="inline p-r-5 p-l-5" style="font-size: 18px;">/</a>
+        <a class="inline p-r-5 p-l-5" style="font-size: 18px;">|</a>
         <a  class="inline text-white medium sidebar-header-title cursor all-caps text-spaced {{#if (compareStrings selectedDepartment "Man")}}sbold {{else}} hint-text{{/if}}" href="/man" style="font-size: 18px;">Man</a>
         <!--<div class="sidebar-header-controls">
             <button type="button" class="btn btn-xs sidebar-slide-toggle btn-link m-l-20 p-t-5" data-pages-toggle="#appMenu">
@@ -57,12 +57,12 @@
                         <!--<span class="details">234 New Updates</span>-->
                     </a>
                  <span class="icon-thumbnail">
-                    <i class="pg-home text-black" style="font-size: 30px"></i>
+                    <i><img src="/images/nav/home.svg" style="width:28px;"/></i>
                  </span>
                 </li>
                  <li class="m-t-10 b-b b-transparent-white open active">
                     <a >
-                        <span class="title all-caps bold text-black" >Explore</span>
+                        <span class="title all-caps bold text-black" >Find</span>
                         <span class="arrow "></span>
                     </a>
                         <span class="icon-thumbnail ">
@@ -92,7 +92,7 @@
                         {{/if}}
                     {{/each}}
                 </li>
-                <li class="m-t-10 relative no-overflow  b-b b-transparent-white">
+                <!--<li class="m-t-10 relative no-overflow  b-b b-transparent-white">
                 <a href="#">
                     <span class="title all-caps bold text-black" >Compare Prices</span>
                 </a>
@@ -100,7 +100,7 @@
                     <img src="/dist/images/nav/search_filled.png"  style="width:52px;"/>
                     </span>
                 <input class="fakeMobileSearchButton bigSquare"/>
-                </li>
+                </li> -->
                 <li class="m-t-10 b-b b-transparent-white">
                     <a href="/favourite-products"><span class="title all-caps bold text-black" >Favourite</span></a>
                     <span class="icon-thumbnail">

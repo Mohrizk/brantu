@@ -1,4 +1,5 @@
 
+
 /****************************
  * INITIALIZATIONNNNNN
  * @type {string}
@@ -39,6 +40,9 @@ var helper = algoliasearchHelper(client, 'test_products',
 	facets:[  'sale', 'price.value', 'compare'],
 	disjunctiveFacets:['color','brand.name','sizes', 'shops', 'discount' , 'style', 'fit', 'material']
 });
+
+
+
 
 var typeVerified = false, departmentVerified= false;
 //INITIALIZE STATES & HELPERS
@@ -90,12 +94,63 @@ if( DEPARTMENT!==null){
  * @return {AlgoliaSearchHelper}
  * @fires
  */
+
 $(document).ready( function() {
-	function lazy(){
-		$('img.lazy').show().lazyload({effect: "fadeIn", threshold:200}).removeClass("lazy");
+
+	$(window).load( function() {
+		if(typeVerified){
+			priceBar();
+		}
+		lazy();
+		initiateAC();
+
+		$('[data-toggle="tooltip"]').tooltip();
+		//GET RELATED PRODUCT IF PRODUCT PAGE
+		if(typeof getRelatedProductsID !== 'undefined'){
+			ajaxSimilarProducts(getRelatedProductsID);
+		}
+		$('.no-background-image').removeClass('no-background-image');
+		page({ dispatch: false, decodeURLComponents:false});
+	});
+
+	/**
+	 *  SWIPER
+	 *  CAROUSEL
+	 * **/
+	var mainPictureSwiperSettings = {
+		preloadImages: false,
+		lazyLoading: true,
+		nextButton: '.next-item',
+		prevButton: '.prev-item',
+		slidesPerView: 3,
+		spaceBetween: 0,
+		loop:true
+	};
+	var mainImageSwiper = new Swiper('#mainJawBoneImageContainer', mainPictureSwiperSettings);
+
+	var swiperSettings = {
+		preloadImages: false,
+		pagination: '.swiper-pagination',
+		nextButton: '.next-item',
+		prevButton: '.prev-item',
+		slidesPerView: 5,
+		paginationClickable: true,
+		lazyLoading: true,
+		spaceBetween: 30,
+		freeMode: true
+	};
+	var mySwiper = new Swiper('.swiper-general', swiperSettings);
+	function updateMainPictureSwiper(){
+		if(typeof mainImageSwiper.destroy !== 'undefined' && mainImageSwiper.destroy !== null){
+			mainImageSwiper.destroy();
+		}
+		mainImageSwiper = new Swiper('#mainJawBoneImageContainer', mainPictureSwiperSettings);
 	}
-	if(typeVerified){
-		priceBar();
+	function updateSwiper(){
+		if(typeof mySwiper.destroy !== 'undefined' && mySwiper.destroy !== null){
+			mySwiper.destroy();
+		}
+		mySwiper = new Swiper('.swiper-general', swiperSettings);
 	}
 
 	//_________AUTCOMPLETE
@@ -104,7 +159,6 @@ $(document).ready( function() {
 	var currentDDHits=[];
 	var currentBrandDDHits=[];
 	var pPcurrentIndex = 100;  // needed for hovering effect
-
 
 	function initiateAC(searchPhrase){
             console.log(searchDepartment, LANG)
@@ -331,71 +385,10 @@ $(document).ready( function() {
 		searchSelector.val(searchPhrase);
 		searchSelector.focus();
 	}
-	initiateAC();
-
-	function loadMainOWl(){
-		owlClothes = $("#owl-clothes")
-		owlClothes .owlCarousel({
-			items :4,
-			itemsDesktop : [1200,4],
-			itemsDesktopSmall : [1024,3],
-			itemsTablet: [600,2],
-			itemsMobile : false,
-			lazyLoad : true
-		});
-
-		owlShoes = $("#owl-shoes")
-		owlShoes.owlCarousel({
-			items :3,
-			itemsDesktop : [1200,2],
-			itemsDesktopSmall : [1024,3],
-			itemsTablet: [600,2],
-			itemsMobile : false,
-			lazyLoad : true
-		});
-
-		owlAccessories = $("#owl-accessories");
-		owlAccessories.owlCarousel({
-			items :3,
-			itemsDesktop : [1200,2],
-			itemsDesktopSmall : [1024,3],
-			itemsTablet: [600,2],
-			itemsMobile : false,
-			lazyLoad : true
-		});
-
-
-		owl = $("#owl-main")
-		owl.owlCarousel({
-			items : 3,
-			itemsDesktop : [1000,2],
-			itemsDesktopSmall : [900,2],
-			lazyLoad : true
-		});
-		$("#owl-main-mobile").owlCarousel({
-			items : 3,
-			itemsDesktopSmall : [900,2],
-			lazyLoad : true
-		});
+	function lazy(){
+		$('img.lazy').show().lazyload({effect: "fadeIn", threshold:400}).removeClass("lazy");
 	}
-	function loadOtherOWl(){
-		$("#owlBrand").owlCarousel({
-			items :5,
-			itemsDesktopSmall : [900,3],
-			itemsTablet: [600,2],
-			itemsMobile : false,
-			lazyLoad : true
-		});
 
-		$("#owlLowerCategory").owlCarousel({
-			items : 5,
-			itemsDesktopSmall : [900,3],
-			itemsTablet: [600,2],
-			itemsMobile : false,
-			lazyLoad : true
-		});
-	}
-	loadMainOWl(); loadOtherOWl();
 
 	var pageContainer = $('.page-container')
 	var mainSection = $('#mainSection');
@@ -415,38 +408,46 @@ $(document).ready( function() {
 	var footer = $('#footer');
 	var loading = $('.loading');
 	var onFab = false;
-
 	var itemScrollindex, returnPath;
 	/****
 	 *
 	 */
 	//DEFINED ROUTES
 	//NAVIGATION
-	page('/jobs/:name', reload)
-	page('/jobs', reload)
-	page('/blog/:name', reload)
-	page('/settings/*', reload)
-	page('/about/*', reload)
-	page('/favourite-products', reload)
+	page('/jobs/:name', reload);
+	page('/jobs', reload);
+	page('/settings/*', reload);
+	page('/settings', reload);
+	page('/about/*', reload);
+	page(['/login','/signup','/forget','/logout' ], reload);
 
-	page('/search/:department', saveLastPath, showLoading , setSearch, closeSidePage, setStateFromUrl, fetchNav, showHeader )
-	page('/sök/:department', saveLastPath, showLoading , setSearch, closeSidePage, setStateFromUrl, fetchNav, showHeader )
-	page('/search/', saveLastPath, showLoading , setSearch, closeSidePage, setStateFromUrl, fetchNav, showHeader )
-	page('/sök/', saveLastPath, showLoading , setSearch, closeSidePage, setStateFromUrl, fetchNav, showHeader )
 
-	page('/brand/:name/',showLoading, saveLastPath,  setBrand,  closeSidePage, setStateFromUrl, fetchNav, showHeader )
-	page('/m%C3%A4rken/:name/',showLoading, saveLastPath,  setBrand,  closeSidePage, setStateFromUrl, fetchNav, showHeader )
-	page('/märken/:name/', showLoading,  saveLastPath, setBrand,  closeSidePage,  setStateFromUrl, fetchNav, showHeader )
+	page('/blog', reload);
+	page('/blog/:department', reload);
+	page('/blog/:department/:name', showLoading,  hideHeader, fetchBlogPost);
 
-	page('/bästa-pris-för/:name', showLoading,  hideHeader,viewProduct,fetchNav, getSimilarProducts, addViewedProduct)
-	page('/view/:id', showLoading,  hideHeader, viewProduct, fetchNav, getSimilarProducts, addViewedProduct)
+	page('/search/:department', saveLastPath, showLoading , setSearch, closeSidePage, setStateFromUrl, fetchNav, showHeader );
+	page('/sök/:department', saveLastPath, showLoading , setSearch, closeSidePage, setStateFromUrl, fetchNav, showHeader );
+	page('/search/', saveLastPath, showLoading , setSearch, closeSidePage, setStateFromUrl, fetchNav, showHeader );
+	page('/sök/', saveLastPath, showLoading , setSearch, closeSidePage, setStateFromUrl, fetchNav, showHeader );
 
-	page('/:department/:category/:style/',showLoading, saveLastPath, setCategory, closeSidePage,  setStateFromUrl, fetchNav, showHeader )
-	page('/:department/:category/' , showLoading,  saveLastPath,  setCategory, closeSidePage, setStateFromUrl, fetchNav, showHeader )
-	page('/:department', showLoading, saveLastPath, setNone, closeSidePage, fetchDepartment, fetchNav, hideLoading)
-	page('/', showLoading, saveLastPath, setNone, removeNav, closeSidePage, fetchHome, hideLoading)
+	page('/brand/:name/',showLoading, saveLastPath,  setBrand,  closeSidePage, setStateFromUrl, fetchNav, showHeader );
+	page('/m%C3%A4rken/:name/',showLoading, saveLastPath,  setBrand,  closeSidePage, setStateFromUrl, fetchNav, showHeader );
+	page('/märken/:name/', showLoading,  saveLastPath, setBrand,  closeSidePage,  setStateFromUrl, fetchNav, showHeader );
 
-	page({ dispatch: false, decodeURLComponents:false});
+	page('/favourite-products', showLoading,  hideHeader, fetchFavProducts);
+	page('/bästa-pris-för/:name', showLoading,  hideHeader ,viewProduct,fetchNav, getSimilarProducts, addViewedProduct);
+	page('/view/:id', showLoading,  hideHeader, viewProduct, fetchNav, getSimilarProducts, addViewedProduct);
+
+
+	page('/:department/:category/:style/',showLoading, saveLastPath, setCategory, closeSidePage,  setStateFromUrl, fetchNav, showHeader );
+	page('/:department/:category/' , showLoading,  saveLastPath,  setCategory, closeSidePage, setStateFromUrl, fetchNav, showHeader );
+	page('/:department', showLoading, saveLastPath, setNone, closeSidePage, fetchDepartment, fetchNav, hideLoading);
+	page('/', showLoading, saveLastPath, setNone, removeNav, closeSidePage, fetchHome, fetchNav, hideLoading);
+
+
+
+
 
 
 	function getUrlFromState(){
@@ -544,13 +545,18 @@ $(document).ready( function() {
 	}
 
 	function fetchNav(context, next){
-		if($('#headerMainContainer').length > 0 && !changeDepartment) return next();
+		if($('#headerMainContainer').length > 0 && !changeDepartment){
+			$('[data-toggle="tooltip"]').tooltip();
+			return next();
+		}
 		changeDepartment = false;
 		$.ajax({
 			type: "get",
 			url: "/api/nav/" + renderHelper.decodeDepartment(DEPARTMENT,LANG),
 		}).success(function(result) {
-			$('#navContainer').html(result);
+			$('#navContainer').html(result.nav);
+			$('#sideMenuContainer').html(result.sideMenu);
+			$('[data-toggle="tooltip"]').tooltip();
 			refreshVariables()
 			initiateAC();
 			next();
@@ -567,8 +573,11 @@ $(document).ready( function() {
 			url: "/api/home",
 		}).success(function(result) {
 			mainSection.html(result);
+			$('.no-background-image').removeClass('no-background-image')
 			$(document).prop('title', 'Brantu | Jämför priser inom mode');
-			initiateAC()
+			initiateAC();
+			changeDepartment = true;
+			updateSwiper();
 			next();
 		});
 	}
@@ -582,10 +591,40 @@ $(document).ready( function() {
 			url: "/api" + context.pathname,
 		}).success(function(result) {
 			mainSection.html(result);
+			$('.no-background-image').removeClass('no-background-image')
 			$(document).prop('title', decodedDepartment+' | Jämför priser inom mode | Brantu');
 			changeDepartment = true;
-			lazy()
+			lazy();
+			updateSwiper()
 			next();
+		});
+	}
+	function fetchFavProducts(context, next){
+		$.ajax({
+			type: "get",
+			url: "/api/favourite-products",
+		}).success(function(result) {
+			mainSection.html(result);
+			$(document).prop('title', 'Favourite products | Brantu');
+			initiateAC()
+			next();
+		});
+	}
+	function fetchBlogPost(context, next){
+		var pathArray = context['pathname'].split('/');
+		console.log('this is sent',pathArray[pathArray.length-1]);
+		$.ajax({
+			type: "get",
+			url: "/api/blog/"+ pathArray[pathArray.length-1]
+		}).success(function(result) {
+			mainSection.html(result);
+			$(document).prop('title', 'Favourite products | Brantu');
+			lazy();
+			$('html, body').scrollTop(0);
+			hideLoading();
+			$(document).prop('title', 'Blog post| Brantu');
+
+			//initiateAC();
 		});
 	}
 
@@ -618,7 +657,8 @@ $(document).ready( function() {
 		refreshVariables()
 		$('.ACSearchProgress').addClass('hidden');
 		var q = searchInput.val();
-		searchInput.blur(); searchInput.val('');
+		searchInput.blur();
+		//searchInput.val('');
 		if(q.length ==  0){return;}
 		currentState.search=true;
 		currentState.brand=false;
@@ -634,7 +674,6 @@ $(document).ready( function() {
 		page(getUrlFromState())
 	}
 
-	var owl;
 	function viewProduct(context, next){
 		if(typeof context.params.name !== 'undefined'){
 			var split = context.params.name.split('-')
@@ -653,6 +692,7 @@ $(document).ready( function() {
 		$.ajax({
 			url: '/api/getProductByID/'+context.state.product,
 		}).success(function(result) {
+			    console.log(result)
 				if(result.product !== null && typeof result.product !== 'undefined'){
 					if(result.product.genders !== null && typeof result.product.genders  !== 'undefined'){
 						if(result.product.genders.length !== 0){
@@ -666,9 +706,8 @@ $(document).ready( function() {
 				}
 				result.lastPath = returnPath;
 				$(document).prop('title', result.product.name)
-				var html = productView(result)
-				mainSection.html(html)
-				loadMainOWl();
+				mainSection.html(productView(result));
+				updateMainPictureSwiper();
 				$('html, body').scrollTop(0);
 				loading.fadeOut('slow');
 			    mainSection.show().css({'opacity':0}).animate({'opacity':1},'slow')
@@ -688,13 +727,34 @@ $(document).ready( function() {
 		}).success(function(result) {
 			$.when($('.relatedProducts').html(productRelated(result)))
 				.done(function(){
-					loadOtherOWl();
-					lazy()
+					if(result.sameCategoryProductsInsight) $('#sameCategoryInsight').html( result.sameCategoryProductsInsight)
+					if(result.sameBrandProductsInsight)$('#sameBrandInsight').html( result.sameBrandProductsInsight)
+					lazy();
+					updateSwiper();
 					$('.relatedProducts').css({'opacity':0}).animate({'opacity':1})
 					callback;
 				})
 		});
 	}
+
+	$(document).on('click','tr.informationList',function(){
+		if(!$(this).hasClass('shown')){
+			$(this).addClass('shown');
+			$(this).next('.row-details').removeClass('hidden');
+		}
+		else{
+			$(this).removeClass('shown');
+			$(this).next('.row-details').addClass('hidden');
+		}
+	});
+	$(document).on('click','#sameCategoryInsight',function(){
+		$('html, body').animate({scrollTop:$('#LowerPriceCategoryProducts').offset().top}, '300');
+	});
+	$(document).on('click','#sameBrandInsight',function(){
+		$('html, body').animate({scrollTop:$('#sameBrandProducts').offset().top}, '300');
+	});
+
+
 
 	function addViewedProduct(context, next){
 		$.ajax({
@@ -739,18 +799,19 @@ $(document).ready( function() {
 	}
 
 
-	//GET RELATED PRODUCT IF PRODUCT PAGE
-	if(typeof getRelatedProductsID !== 'undefined'){
-		ajaxSimilarProducts(getRelatedProductsID);
-	}
+
 	/*
 	 * MAIN RENDER FUNCTION FOR ALL SEARCHES
 	 * AND CATEGORY NAVIGATION
 	 *
 	 * */
 	//*******************************************Filter Actions
-	var body = $('body')
-
+	var body = $('html body')
+	body.on( 'change', ' .sort input:checkbox', function (event) {
+		var value = $(this).attr('value');
+		helper.setIndex(value);
+		page(getUrlFromState())
+	});
 	body.on( eventOnTE , ' .category li a', function (event) {
 		var value = $(this).attr('value');
 		helper.clearRefinements('products').toggleRefinement('products', value);
@@ -762,8 +823,7 @@ $(document).ready( function() {
 		event.stopPropagation();event.preventDefault();
 		page(getUrlFromState())
 	});
-	body.on( 'click', ' .brands input', function (event) {
-
+	body.on( 'click', ' .brands input:checkbox', function (event) {
 		var value = $(this).attr('value');
 		if($(this).prop('checked')){
 			helper.addDisjunctiveFacetRefinement('brand.name', value);
@@ -774,7 +834,7 @@ $(document).ready( function() {
 		page(getUrlFromState())
 	});
 
-	body.on( 'click', ' .style input', function (event) {
+	body.on( 'click', ' .style input:checkbox', function (event) {
 		var value = $(this).attr('value');
 		if($(this).prop('checked')){
 			helper.addDisjunctiveFacetRefinement('style', value);
@@ -785,7 +845,7 @@ $(document).ready( function() {
 		page(getUrlFromState())
 	});
 
-	body.on( 'click', ' .material input', function (event) {
+	body.on( 'click', ' .material input:checkbox', function (event) {
 		var value = $(this).attr('value');
 		if($(this).prop('checked')){
 			helper.addDisjunctiveFacetRefinement('material', value);
@@ -795,7 +855,7 @@ $(document).ready( function() {
 		}
 		page(getUrlFromState())
 	});
-	body.on( 'click', ' .fit input', function (event) {
+	body.on( 'click', ' .fit input:checkbox', function (event) {
 		var value = $(this).attr('value');
 		if($(this).prop('checked')){
 			helper.addDisjunctiveFacetRefinement('fit', value);
@@ -807,7 +867,7 @@ $(document).ready( function() {
 	});
 
 
-	body.on( 'change', ' .sizes input', function (event) {
+	body.on( 'change', ' .sizes input:checkbox', function (event) {
 		var value = $(this).attr('value');
 		if($(this).prop('checked')){
 			helper.addDisjunctiveFacetRefinement('sizes', value);
@@ -817,7 +877,7 @@ $(document).ready( function() {
 		}
 		page(getUrlFromState())
 	});
-	body.on( 'change', ' .discounts input', function (event) {
+	body.on( 'change', ' .discounts input:checkbox', function (event) {
 		var value = $(this).attr('value');
 		if( $(this).prop('checked')){
 			helper.addDisjunctiveFacetRefinement('discount', value);
@@ -827,7 +887,7 @@ $(document).ready( function() {
 		}
 		page(getUrlFromState())
 	});
-	body.on( 'change', '  .colors input', function (event) {
+	body.on( 'change', '  .colors input:checkbox', function (event) {
 		var value = $(this).attr('value');
 
 
@@ -839,7 +899,7 @@ $(document).ready( function() {
 		}
 		page(getUrlFromState())
 	});
-	body.on( 'change', ' .shops input', function (event) {
+	body.on( 'change', ' .shops input:checkbox', function (event) {
 
 		var value = $(this).attr('value');
 		if( $(this).prop('checked')){
@@ -850,7 +910,7 @@ $(document).ready( function() {
 		}
 		page(getUrlFromState())
 	});
-	body.on( 'change', ' .sale input', function (event) {
+	body.on( 'change', ' .sale input:checkbox', function (event) {
 		var value = $(this).attr('value');
 		if( $(this).prop('checked')){
 			helper.addFacetRefinement('sale', value);
@@ -860,7 +920,7 @@ $(document).ready( function() {
 		}
 		page(getUrlFromState())
 	});
-	body.on( 'change', ' .compare input', function (event) {
+	body.on( 'change', ' .compare input:checkbox', function (event) {
 		var value = $(this).attr('value');
 		if( $(this).prop('checked')){
 			helper.addFacetRefinement('compare', value);
@@ -914,53 +974,62 @@ $(document).ready( function() {
 		}
 	});
 
-	/*
-	 * side bar
-	 *
-	 * **/
-	mainSection.on('click','#compareClothes .next-page',function(){
-		owlClothes.trigger('owl.next');
-	})
-	mainSection.on('click','#compareClothes .prev-page',function(){
-		owlClothes.trigger('owl.prev');
-	})
-	mainSection.on('click','#compareShoes .next-page',function(){
-		owlShoes.trigger('owl.next');
-	})
-	mainSection.on('click','#compareShoes .prev-page',function(){
-		owlShoes.trigger('owl.prev');
-	})
+
+	/**
+	 * HORIZONTAL FILTER
+	 * PLUGIN
+	 * ***/
+	mainSection.on('click','.horizontalFilters h5', function(e){
+		e.stopImmediatePropagation(); e.preventDefault();
+		$('.horizontalFilters .listContainer').removeClass('active');
+		$(this).next('.listContainer').addClass('active');
+		$(this).next('.listContainer').find('input[type=text]').focus();
+	});
+	mainSection.on('click', function(){
+		$('.horizontalFilters .listContainer').removeClass('active');
+		$('.horizontalFilters input[type=text]').val('');
+	});
+	mainSection.on('keyup','.horizontalFilters input[type=text], .searchFilters input[type=text]', function(e){
+		var value = new RegExp($(this).val());
+		console.log('are we here', value)
+		$(this).next('ul.list').find('li').each(function(index){
+			var str = $(this).find('.name').text();
+			console.log(value , str, Boolean(str.match(value)))
+			if(Boolean(str.match(value))){
+					$(this).removeClass('hidden');
+			}
+			else {
+				$(this).addClass('hidden');
+			}
+		});
+	});
+
+
 
 
 	/*
     * View Product
     *
     * **/
-	mainSection.on('click','#mainJawBoneImageContainer .next-item',function(){
-		owl.trigger('owl.next');
-	})
-	mainSection.on('click','#mainJawBoneImageContainer .prev-item',function(){
-		owl.trigger('owl.prev');
-	})
 	mainSection.on( eventOnTE,'.jawBone .delete' , function (event) {
-		page($(this).attr('data-path'))
 		event.preventDefault();
-	})
+		page($(this).attr('data-path'));
+	});
 	mainSection.on( eventOnTE,'.jawBone .back' , function (event) {
-		page.back();
 		event.preventDefault();
-	})
+		page.back();
+	});
 
 	/*
 	 * AUTOCOMEPLTE ACTIONS
 	 *
 	 * **/
 	//***************************************SEARCH
-	$(document).on('keyup',function(event){
+	/*$(document).on('keyup',function(event){
 		if(!$('input').is(':focus') && event.keyCode !== 13){
 			$('#search').focus();
 		}
-	});
+	});*/
 	$(document).on('submit','#autocompleteForm', function(event){
 		event.preventDefault();
 		SEARCH($('#search'));
@@ -981,7 +1050,7 @@ $(document).ready( function() {
 		$('#ddProductPreview').hide()
 		$('#ddProductPreviewContainer').html('');
 		$('#ddCol2').show()
-	})
+	});
 	$(document).on( 'mouseover','#dditemList .productsAC' , function (event) {
 		var content;
 		var _id = $(this).attr('data-id');
@@ -1010,19 +1079,19 @@ $(document).ready( function() {
 		if(this.value == ''){
 			$('#containerHintAC').show();
 		}
-	})
+	});
 	$(document).on('blur','#search',function(){
 		$('#logoHome').removeClass("small");
 		$('#h1Home').removeClass("small");
 		$('.searchMainPageOverlay').hide();
 		$('#containerHintAC').hide();
-	})
+	});
 	$(document).on('click','a[search-link]',function(){
 		searchBar.focus();
-	})
+	});
 	$(document).on('focus','a[search-link] input',function(){
 		searchBar.focus();
-	})
+	});
 
 	/*
 	 * MOBILE
@@ -1057,33 +1126,34 @@ $(document).ready( function() {
 			SEARCH($('#searchMobile'))
 		}
 	});
-	$('#mobileContainerAC').on( 'click','#ddsearchMore', function(){
+
+	$(document).on( 'click','#mobileContainerAC #ddsearchMore', function(){
 		SEARCH($('#searchMobile'))
-	})
-	$('.fakeMobileSearchButton').focus(function(e){
+	});
+	$(document).on('focus', '.fakeMobileSearchButton',function(e){
 		e.stopImmediatePropagation();
 		e.preventDefault();
 		e.cancelBubble = true;
 		openMobileSearch();
 	});
-	$('#CloseSearchMobile').on(eventOnTE, function(e){
+	$(document).on(eventOnTE,'#CloseSearchMobile' ,function(e){
 		e.stopImmediatePropagation();
 		e.preventDefault();
 		e.cancelBubble = true;
 		//closeSEARCH()
 		closeMobileSearch();
-	})
+	});
 	//$('.page-container-wrapper').on('click', closeMobileSearch)
 	mobileSearchBar.focus(function(){
 		$('.searchMainPageOverlay').show();
 		if(this.value == ''){
 			$('#mobileContainerHintAC').show();
 		}
-	})
+	});
 	mobileSearchBar.blur(function(){
 		$('.searchMainPageOverlay').hide();
 		$('#mobileContainerHintAC').hide();
-	})
+	});
 
 	/*
 	 * Scrolling ACTIONS
@@ -1230,9 +1300,8 @@ $(document).ready( function() {
 	footer.on('click','#addNewsletterEmail' ,function(){
 		$('#newsletterSignUp').html(newsletterTemplate(HEADERTEXT.newsletter.addForm));
 	})
-	/***
-	 * Add Favourit Product
-	 * **/
+
+	/**********FAVOURITE PRODUCT AJAX*********/
 	function addRemoveFavoriteProduct(action, _id){
 		$.ajax({
 			type: "POST",
@@ -1241,28 +1310,77 @@ $(document).ready( function() {
 		}).success(function(result) {
 			if(result == '0' && window.location.pathname.indexOf('favourite') > -1)location.reload();
 			else
-			    $('.sideBarFavouriteProducts').text(result)
+				$('.sideBarFavouriteProducts').text(result)
 		});
 	}
+	/***
+	 * Add Favourite Product
+	 * PRODUCT THAT USER LIKES AND THEY WANT TO WATCH FOR PRICE DROP
+	 * **/
 	mainSection.on( eventOnTS,'.jawBone .addFavouriteProduct' ,function(e){
+		e.stopImmediatePropagation(); e.preventDefault();
 		addRemoveFavoriteProduct($(this).attr('action'), {_id: $(this).attr('_id')})
 		$(this).removeClass('addFavouriteProduct').addClass('removeFavouriteProduct').attr('action','/favourite-product/remove')
-			.find('i').css({opacity:0}).removeClass('pg-like').addClass('pg-like1').addClass('text-purple').animate({opacity:1});
-		e.stopImmediatePropagation(); e.preventDefault();
-	})
+			.attr('data-original-title','remove item from price watcher');
+		var but = $(this).find('.btn');
+		var oldText = but.text(), newText = but.attr('data-text');
+		but.text(newText).attr('data-text', oldText)
+			.css({opacity:0}).addClass('active').animate({opacity:1});
+	});
 	mainSection.on( eventOnTS,'.jawBone .removeFavouriteProduct' ,function(e){
 		e.stopPropagation(); e.preventDefault();
 		addRemoveFavoriteProduct($(this).attr('action'), {_id: $(this).attr('_id')})
 		$(this).removeClass('removeFavouriteProduct').addClass('addFavouriteProduct').attr('action','/favourite-product/add')
-			.find('i').css({opacity:0}).removeClass('pg-like1').removeClass('text-purple').addClass('pg-like').animate({opacity:1});
-
-	})
+			.attr('data-original-title','add brand to price watcher');
+		var but = $(this).find('.btn');
+		var oldText = but.text(), newText = but.attr('data-text');
+		but.text(newText).attr('data-text', oldText)
+			.css({opacity:0}).removeClass('active').animate({opacity:1});
+	});
 	general.on( 'click','.item .removeFavouriteProduct' ,function(){
 		$(this).closest('.item').fadeOut();
 		addRemoveFavoriteProduct($(this).attr('action'), {_id: $(this).attr('_id')})
-	})
+	});
+	/**********FAVOURITE BRAND AJAX*********/
+	/***
+	 * Add Favourite Brand
+	 * BRANDS THAT USER LIKES AND THEY WANT TO WATCH FOR PRICE DROP
+	 * **/
+	function addRemoveFavoriteBrand(action, brandList){
+		$.ajax({
+			type: "POST",
+			url: action,
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			data: JSON.stringify(brandList)
+		}).success(function(result) {
+			console.log(result)
+		});
+	}
+	mainSection.on( eventOnTS,'a[data-favourite]' ,function(e){
+		e.stopPropagation(); e.preventDefault();
+		console.log($(this).attr('data-favourite'));
+		addRemoveFavoriteBrand(
+			$(this).attr('action'),
+			{brandList:
+				[{id: $(this).attr('id'), name: $(this).attr('name'), key: $(this).attr('key')}]
+			});
 
-	lazy();
+		if($(this).attr('data-favourite') == 'addBrand'){
+			$(this).attr('data-favourite', 'removeBrand').attr('action','/favourite-brands/remove')
+				.find('button').text('following').addClass('active')
+				.css({opacity:0}).animate({opacity:1},400);
+
+		}
+		else if($(this).attr('data-favourite') == 'removeBrand'){
+			$(this).attr('data-favourite', 'addBrand').attr('action','/favourite-brands/add')
+				.find('button').text('follow').removeClass('active')
+				.css({opacity:0}).animate({opacity:1},400)
+				;
+		}
+	});
 });
 
 

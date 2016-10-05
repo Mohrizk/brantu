@@ -87,12 +87,11 @@ var routes = [
         res.writeHead('200', {'Content-Type': 'image/png'});
         res.end(buf,'binary');
     }]
-    ],
-
+    ]
 ];
 
 routes.forEach(function(arr){
-    console.log(arr[1]);
+   // console.log(arr[1]);
     router[arr[1]](arr[0], arr[2]);
 });
 /**************************************************************

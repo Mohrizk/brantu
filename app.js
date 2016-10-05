@@ -26,15 +26,7 @@ const passport = require('passport');
 const ConnectRoles = require('connect-roles');
 
 const i18n = require('i18n-2');//Internationalization
-//FOR ROUTES
-const indexRoutes = require('./routes/index');
-const userRoutes = require('./routes/user');
-const blogRoutes = require('./routes/blog');
-const jobsRoutes = require('./routes/jobs');
-const apiRoutes = require('./routes/api');
-const adminRoutes = require('./routes/admin');
-
-const express = require('express'), sm = require('sitemap');
+const express = require('express');
 const app = express();
 app.use(compression());
 
@@ -92,6 +84,7 @@ hbs = exphbs.create({
             'views/partials/settings/',
             'views/partials/product/',
             'views/partials/blog/',
+            'views/partials/home/',
             'views/shared-templates/'
         ]
     })
@@ -143,100 +136,24 @@ app.use(
     sessionMW.cookieConcession,
     sessionMW.signupPopup,
     function(req, res, next){
-    if(typeof req.session.favProducts !== "undefined"){ res.locals.nbFavProducts = req.session.favProducts.length;}
-        res.locals.url= req.url;
-    res.locals.user = req.user;
     if(req.user){
-        User
-            .findOne({ _id: req.user._id })
-            .populate('brands')
-            .exec(function (err, user) {
-                if (err) return handleError(err);
-                if(user== null) return next();
-                res.locals.user.brands = user.brands;
-            });
+        res.locals.nbFavProducts = req.user.products.length;
+        res.locals.user = req.user;
     }
-
+    res.locals.url= req.url;
     next();
 });
-
-
-
-
-//SITEMAP
-var static_sitemap = sm.createSitemap ({
-    hostname: 'http://www.brantu.com',
-    cacheTime: 600000,        // 600 sec - cache purge period
-    urls: [
-        { url: '/',  changefreq: 'weekly', priority: 1 },
-        { url: '/kvinna/',  changefreq: 'weekly', priority: 1 },
-        { url: '/man/',  changefreq: 'weekly',  priority: 1 },
-        { url: '/signup/',  changefreq: 'monthly',  priority: 0.7 },
-        { url: '/login/',  changefreq: 'monthly',  priority: 0.7 },
-        { url: '/contact-us/',changefreq: 'monthly',  priority: 0.7 },
-        { url: '/about-us/',  changefreq: 'monthly',  priority: 0.7 },
-        { url: '/faq/',  changefreq: 'weekly',  priority: 0.5 },
-        { url: '/privacy-policy/',  changefreq: 'monthly',  priority: 0.5 },
-        { url: '/terms-and-conditions/',  changefreq: 'monthly',  priority: 0.5 },
-        { url: '/cookie-policy/',  changefreq: 'monthly',  priority: 0.5 }
-    ]
-});
-app.get('/static-sitemap.xml',[
-    function(req, res, next) {
-        console.log('uuuuu')
-        static_sitemap.toXML( function (err, xml) {
-           console.log('fuckkk')
-            if (err) {return res.status(500).end();}
-            res.header('Content-Type', 'application/xml');
-            res.send( xml );
-        });
-    }]);
-
-var category_sitemap = sm.createSitemap ({
-    hostname: 'http://www.brantu.com',
-    cacheTime: 600000})
-app.get('/category-sitemap.xml',[
-    require('./services/middleware/mw-categories').getSitemapCategories,
-    function(req, res, next) {
-        for(var s in req.categoryList){
-            category_sitemap.add({url: req.categoryList[s] , changefreq:'weekly', priority: 0.5});
-        }
-        category_sitemap.toXML( function (err, xml) {
-            if (err) {
-                return res.status(500).end();
-            }
-            res.header('Content-Type', 'application/xml');
-            res.send( xml );
-        });
-}]);
-
-var blog_sitemap = sm.createSitemap ({
-    hostname: 'http://www.brantu.com',
-    cacheTime: 600000})
-app.get('/blog-sitemap.xml',[
-    require('./services/middleware/mw-feed').getAllOutfits,
-    function(req, res, next) {
-        for(var b in res.locals.feed){
-            blog_sitemap.add({url: res.locals.feed[b].url , changefreq:'weekly', priority: 0.8});
-        }
-        blog_sitemap.toXML( function (err, xml) {
-            if (err) {return res.status(500).end();}
-            res.header('Content-Type', 'application/xml');
-            res.send( xml );
-        });
-    }]);
-
 
 /***
  * ROUTES
  * ****/
-
-app.use('/api',apiRoutes);
-app.use('/jobs',jobsRoutes);
-app.use('/blog',blogRoutes);
-app.use(adminRoutes);
-app.use(userRoutes);
-app.use(indexRoutes);
+app.use('/api'   ,require('./routes/api'));
+app.use('/jobs'  ,require('./routes/jobs'));
+app.use('/blog'  , require('./routes/blog'));
+app.use(require('./routes/sitemap'));
+app.use(require('./routes/admin'));
+app.use(require('./routes/user'));
+app.use(require('./routes/index'));
 
 
 //SCHEDULE NEWSLETTER

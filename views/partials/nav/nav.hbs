@@ -1,8 +1,36 @@
 <div id="headerMainContainer" data-department="{{encodeDepartment selectedDepartment}}">
     <div class="header" >
-        <div class="bg-white boxshadowed">
+        <div class="bg-black full-width">
+            <div class="container relative">
+                <div class="pull-right">
+                    <div class="text-right p-t-5">
+                        <ul class="no-padding no-margin text-white bold all-caps fs-11 p-r-15">
+                            <li class="inline p-r-10">
+                                <a class="bright">
+                                    How it works
+                                </a>
+                            </li>
+                            <li class="inline p-r-10">
+                                <a class="bright">
+                                    About us
+                                </a>
+                            </li>
+                            <li class="inline">
+                                <a class="bright">
+                                    contact us
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <h6 class="bold text-white all-caps inline">
+                    Compare styles to the best price from all your favourite fashion stores
+                </h6>
+            </div>
+        </div>
+        <div class="bg-white b-b b-grey">
             <div class="container">
-                <div class="mobile">
+                <div class="mobile"r>
                     <div class="top-right" id="menuSearchIcon" style="padding-top: 9px; display: none;">
                         <div class="relative">
                             <div>
@@ -20,7 +48,6 @@
         <line fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" x1="2" y1="23.324" x2="48" y2="23.324"/>
         <line fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" x1="2" y1="35.324" x2="48" y2="35.324"/>
         </svg>
-
                         </div>
                     </div>
                     <div class="top-left bottom-right visible-xs bg-master-lighter  b-t b-r b-l b-grey b-b hidden" id="searchMobileContainer" style="z-index: 200;">
@@ -34,9 +61,9 @@
                                             <div class="p-l-25 p-t-5">
                                                 You can search for
                                                 <ul>
-                                                    <li class="medium text-velvet">Products</li>
-                                                    <li class="medium text-velvet">Brands</li>
-                                                    <li class="medium text-velvet">Styles/category</li>
+                                                    <li class="medium">Products</li>
+                                                    <li class="medium">Brands</li>
+                                                    <li class="medium">Styles/category</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -56,7 +83,7 @@
 
                 </div>
                 <div  id="headerMainWrapper">
-                    <div class=" " id="headerMain" >
+                    <div id="headerMain" >
                         <div class="row relative">
                             <div class="col-sm full-width visible-xs">
                                 <div class=" sm-table">
@@ -72,8 +99,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
                             <div class="inline" id="logoSection">
                                     <div class=" sm-table">
                                         <div class="">
@@ -84,25 +109,12 @@
                                                         </div>
                                                     </a>
                                                 </div>
-                                                <div class="v-align-top  p-t-10 inline">
-                                                    <div class="b-l  p-l-10">
-                                                        <ul class=" no-style ">
-                                                            {{#each categoryTree}}
-                                                                <li class="v-align-top ">
-                                                                    <a class="all-caps text-spaced fs-13  p-r-10 p-l-10  {{#if ../selectedDepartment}}{{#if (compareStrings this.department.name ../selectedDepartment)}}sbold bg-black b-rad-lg text-white {{else}} bold text-purple{{/if}}{{/if}}"  key="{{this.department.key}}" href="/{{this.department.key}}/">
-                                                                        {{this.department.name}}</a>
-                                                                </li>
-                                                            {{/each}}
-                                                        </ul>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div >
                             <div class="inline v-align-top relative" id="searchSection">
                                 <div class=" hidden-xs ">
-                                    {{#if selectedDepartment}}
                                         <div class="auto-margin block relative p-t-5 p-l-40 text-center" >
                                             <form id="autocompleteForm">
                                                 <div class="search-link">
@@ -112,9 +124,9 @@
                                                             <div class="p-l-10 p-t-10 all-caps">
                                                                 You can search for
                                                                 <ul>
-                                                                    <li class="medium text-velvet">Products</li>
-                                                                    <li class="medium text-velvet">Brands</li>
-                                                                    <li class="medium text-velvet">Styles/category</li>
+                                                                    <li class="medium bold">Products</li>
+                                                                    <li class="medium bold">Brands</li>
+                                                                    <li class="medium bold">Styles/category</li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -128,23 +140,23 @@
                                                 </div>
                                             </form>
                                         </div>
-                                    {{/if}}
+
                                 </div>
                             </div>
-
-                            <div class="p-t-5 top-right hidden-xs">
+                            <div class="p-t-5 top-right hidden-xs ">
                                 <!-- START User Info-->
+
                                 {{#if user}}
-                                    <div class="hidden-xs pull-right ">
-                                        <div class="dropdown pull-right" >
-                                            <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class=" pull-right ">
+                                        <div class="dropdown pull-right hidden-xs p-t-5" data-toggle="tooltip" title="user options">
+                                            <button class="profile-dropdown-toggle"  type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 {{#if user.facebook.name}}
-                                                    <span class="thumbnail-wrapper circular d32  bold  inline all-caps" style="font-size:16px; border:2px solid rgba(0,0,0,0.7); color:#e5a3ad; padding-top:4px;" id="avatar">
+                                                    <span class="thumbnail-wrapper circular d32  bold  inline all-caps" style="font-size:16px; border:1px solid white; color:#e5a3ad; padding-top:4px;" id="avatar">
                                                         {{trimForAvatar user.facebook.name}}
                                                     </span>
 
                                                 {{else}}
-                                                    <span class="thumbnail-wrapper circular d32  bold   inline all-caps " style="font-size:16px; border:3px solid rgba(111,111,111,0.7); color:#ffb6c1; padding-top:4px; " id="avatar">
+                                                    <span class="thumbnail-wrapper circular d32  bold   inline all-caps " style="font-size:16px; border:2px solid white; background: #51036d; color:#ffb6c1; padding-top:4px; " id="avatar">
                                                         {{trimForAvatar user.local.email}}
                                                     </span>
                                                 {{/if}}
@@ -176,13 +188,21 @@
                                         </div>
                                     </div>
                                 {{else}}
-                                    <div class="hidden-xs pull-right ">
+                                    <div class="hidden-xs pull-right visible-sm visible-md">
                                         <div class="dropdown pull-right p-t-10 p-b-15">
                                             <button class="profile-dropdown-toggle rotate-90" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="pg-more text-black fa-2x" width="12" style="font-size: 25px;"></i>
                                             </button>
                                             <ul class="dropdown-menu profile-dropdown" role="menu" style="top:102%;right: -25%;
         ">
+                                                <li class="bold authenticate visible-md visible-sm visible-xs" data-view="login"><a  class="bold b-b b-transparent-white text-white">
+                                                    <i style="padding-top: 3px;"><img alt="favourite-navigation-icon" src="/images/nav/login.png" style="width:26px;"/></i>
+                                                    <span class="v-align-middle">Log in</span></a>
+                                                </li>
+                                                <li class="bold authenticate visible-md visible-sm visible-xs" data-view="signup"><a  class="bold b-b b-transparent-white text-white">
+                                                    <i style="padding-top: 3px;"><img alt="favourite-navigation-icon" src="/images/nav/signup.png" style="width:26px;"/></i>
+                                                    <span class="v-align-middle">Sign up</span></a>
+                                                </li>
                                                 <li class="bold visible-sm visible-xs"><a href="/favourite-products"  class="bold b-b b-transparent-white text-white">
                                                     <i style="padding-top: 3px;"><img alt="favourite-navigation-icon" src="/dist/images/nav/favourite.png" style="width:26px;"/></i>
                                                     <span class="v-align-middle">Favourite</span></a>
@@ -198,77 +218,97 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    {{#if selectedDepartment}}
-                                        <div class="hidden-xs pull-right nav-margin-small">
+                                        <div class="hidden-xs hidden-sm hidden-md pull-right nav-margin-small">
                                             <ul class="nav navbar-nav">
                                                 <li data-view="login" class="authenticate no-overflow-text "><a class="dark bold no-overflow-text " >Logga In </a></li>
-                                                <li class="login text-pink-dark p-t-15">|</li>
+                                                <li class="login  p-t-15">|</li>
                                                 <li data-view="signup" class="authenticate no-overflow-text"><a class="dark bold no-overflow-text " >Bli medlem</a></li>
                                             </ul>
                                         </div>
-                                    {{/if}}
                                 {{/if}}
-
-                                {{#if selectedDepartment}}
                                     <div class="visible-lg visible-md pull-right hidden-sm hidden-xs nav-margin p-t-5" >
                                         <ul class="notification-list no-margin  no-style inline">
-                                            <li class="inline relative" >
-                                                <a class="" href="/favourite-products"  id="preference-center" >
-
-                                                    <div class="" id="likedProducts" style="">
-                                                        <i class=" text-black pg-like1"></i>
+                                            <li class="inline relative p-l-25">
+                                                <a {{#if user}} href="/favourite-products" {{else}} data-view="signup" class="authenticate"{{/if}}id="preference-center" >
+                                                    <div id="likedProducts">
+                                                        <i data-toggle="tooltip" data-placement="bottom" title="Price Watcher" class="text-velvet pg-shopping_cart"></i>
                                                     </div>
-                                                    <div class="bubble sideBarFavouriteProducts" id="nbFavoProduct"> <span> {{#if nbFavProducts}}{{nbFavProducts}}{{else}} 0 {{/if}}</span></div>
+                                                    {{#if user}} <div class="bubble sideBarFavouriteProducts" id="nbFavoProduct"> <span> {{#if nbFavProducts}}{{nbFavProducts}}{{else}} 0 {{/if}}</span></div> {{/if}}
                                                 </a>
-
+                                            </li>
                                         </ul>
                                     </div>
-                                {{/if}}
-
-
-
                                 <!-- END User Info-->
                             </div>
                         </div>
-                    </div></div>
+                    </div>
+                </div>
                 <div class="full-width bg-white" id="containerAC"></div>
                 <div class="full-width bg-white" id="mobileContainerAC"></div>
-
+            </div>
+        </div>
+        <div class="b-b b-black bg-white" >
+            <div class="container">
                 <div id="navbarDepartment">
-                    {{#if selectedDepartment}}
-                        <div class="hidden-xs full-width menu   b-grey bg-white" id="navSubCategory" >
-                            <ul class="nav navbar-nav submenu">
-                                <li class=" "><a class="dark all-caps text-spaced-medium fs-11   text-center" href="/{{selectedDepartment}}" data-page><i class="pg-home"></i>home</a></li>
+                    <div class="hidden-xs full-width menu   b-grey bg-white" id="navSubCategory" >
+                        <div class="">
+                            <ul class="nav navbar-nav ">
                                 {{#each categoryTree}}
-                                    {{#if (compareStrings this.department.name ../selectedDepartment)}}
-                                        {{#each categories}}
-                                            <li class=""><a class="dark all-caps text-spaced-medium fs-11  text-center"  expand-key="{{category.key}}">{{andfixer category.name}}</a></li>
-                                        {{/each}}
-                                    {{/if}}
+                                    <li class="" style="padding-left: 0">
+                                        <a class="all-caps text-spaced light
+                                        {{#if (compareStrings this.department.name ../selectedDepartment)}}sbold bg-black text-white {{else}} bold text-purple{{/if}}"  key="{{this.department.key}}" href="/{{this.department.key}}/"
+                                        style="padding-top:8px; padding-bottom: 8px;">
+                                            {{this.department.name}}</a>
+                                    </li>
                                 {{/each}}
                             </ul>
                         </div>
-                    {{/if}}
+                        <ul class="m-l-100 nav navbar-nav submenu">
+                            {{#if (compareStrings selectedDepartment 'kvinna')}}
+                                <li class=" "><a class="dark all-caps text-spaced-medium fs-11   text-center" href="/{{selectedDepartment}}" data-page data-avoid><i class="pg-home"></i>hem</a></li>
+                                {{#each categoryTree}}
+                                    {{#if (compareStrings this.department.name ../selectedDepartment)}}
+                                        {{#each categories}}
+                                            <li class="expand"><a class="dark all-caps text-spaced-medium fs-11  text-center"  data-key="{{category.key}}">{{andfixer category.name}}</a></li>
+                                        {{/each}}
+                                    {{/if}}
+                                {{/each}}
+                            {{else}}
+                                {{#if (compareStrings selectedDepartment 'man')}}
+                                    <li class=" "><a class="dark all-caps text-spaced-medium fs-11 text-center" href="/{{selectedDepartment}}" data-page data-avoid><i class="pg-home"></i>Hem</a></li>
+                                    {{#each categoryTree}}
+                                        {{#if (compareStrings this.department.name ../selectedDepartment)}}
+                                            {{#each categories}}
+                                                <li class="expand"><a class="dark all-caps text-spaced-medium fs-11 expand text-center"  data-key="{{category.key}}">{{andfixer category.name}}</a></li>
+                                            {{/each}}
+                                        {{/if}}
+                                    {{/each}}
+                                {{else}}
+                                    <li class="full-width "><a class="dark all-caps text-spaced-medium fs-11   bold text-center" data-page style="border-bottom: 2px solid transparent !important;"><i class="pg-arrow_left"></i>Please select a department from the above</a></li>
+                                {{/if}}
+                            {{/if}}
+                        </ul>
+                    </div>
+
                 </div>
             </div>
+
         </div>
-        <div class="container">
-            <div id="category-expand-parent" class="hidden" style=" background: transparent;">
-                <div class=" p-l-50 bgBlurEffect  category-expand-wrapper relative" style="opacity:0; box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.2); background: rgba(0,0,0,0.82); width:1000px; height: 250px;">
+        <div id="expandDepartment" class="container">
+            <div id="category-expand-parent" class="hidden " style=" background: transparent;">
+                <div class=" p-l-50 bgBlurEffect  category-expand-wrapper relative b-l b-r b-b" style="opacity:0; background: rgba(255,255,255,0.98); width:1000px; height: 250px;" id="expandDepartmentWrapper">
                     {{#each categoryTree}}
                         {{#if (compareStrings this.department.name ../selectedDepartment)}}
                             {{#each categories}}
                                 <div class="category-expand-container hidden  padding-1v" expand-parentKey="{{category.key}}">
                                     <div class="category-expand">
                                         <div class="">
-                                            <a href="{{{category.url}}}"><h4 class="sbold text-spaced-medium all-caps b-b b-white text-white">{{andfixer category.name}}</h4></a>
+                                            <a href="{{{category.url}}}"><h4 class="sbold text-spaced-medium all-caps b-b b-grey text-black">{{andfixer category.name}}</h4></a>
                                             <div class="inline">
-
                                                 <div class="desktopNavColoumns p-b-20">
                                                     <ul>
-
                                                         {{#each subCategory}}
-                                                            <li class="full-width  b-b m-b-10" style="border-color: rgba(255,255,255,0.1)"><a class=" fs-14  bold"  href="{{{this.url}}}">
+                                                            <li class="full-width b-grey b-b m-b-10" style=""><a class=" fs-14 dark  bold"  href="{{{this.url}}}">
                                                                 {{andfixer this.name}}
                                                             </a></li>
                                                         {{/each}}
@@ -284,7 +324,6 @@
                         {{/if}}
                     {{/each}}
                     {{#if (compareStrings 'kvinna' selectedDepartment)}}
-
                         <div class="bottom-right p-r-40" >
                             <a href="http://ad.zanox.com/ppc/?39585183C1076049580T"><img src="http://ad.zanox.com/ppv/?39585183C1076049580" align="bottom" width="200" height="200" border="0" hspace="1" alt="female_outlet_200x200"></a>
                         </div>
@@ -299,23 +338,23 @@
         </div>
     </div>
 
-    <div class="text-center full-width no-overflow visible-xs bg-master-lighter" id="mobileSubMenu" style="padding-top:40px;">
+    <div class="text-center full-width no-overflow visible-xs" id="mobileSubMenu" style="padding-top:40px;">
         <div class="row b-b">
-            <a class="col-xs  dark light text-center subMenuMobile {{#if (stringContains url "upptack-nya-favoriter")}}active{{/if}}" href="/{{selectedDepartment}}"  data-page>
+            <a class="col-xs-4  dark  text-center subMenuMobile {{#if (stringContains url "upptack-nya-favoriter")}}active{{/if}}" href="/{{selectedDepartment}}"  data-page>
                 <div>
                     <div class="p-t-10">
                         <i class="pg-home" style="font-size: 27px"></i>
                     </div>
                 </div>
             </a>
-            <a class="dark light text-center col-xs b-l b-grey subMenuMobile {{#if (stringContains url "explore")}}active{{/if}}" href="/{{selectedDepartment}}/kläder" data-page="explore">
+            <a class="col-xs-4 dark  text-center  b-l b-grey subMenuMobile {{#if (stringContains url "explore")}}active{{/if}}" href="/{{selectedDepartment}}/kläder" data-page="explore">
                 <div>
                     <div class="p-t-5">
                         <i><img alt="explore-submenu-icon"  src="/dist/images/nav/explore_black.png" style="width:35px;"/></i>
                     </div>
                 </div>
             </a>
-            <a class="col-xs b-l b-grey  dark light text-center relative no-overflow" id="comparePricePageButton">
+            <a class="col-xs-4 b-l b-grey  dark  text-center relative no-overflow" id="comparePricePageButton">
                 <div>
                     <div style="padding-top: 11px"> <i><img alt="search-submenu-icon"  src="/dist/images/nav/search_filled.png" style="width:45px;"/></i></div>
                 </div>

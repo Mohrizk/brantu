@@ -6,20 +6,25 @@
 <circle opacity="0.1" fill="none" stroke="#000000" stroke-width="3" enable-background="new    " cx="25" cy="25" r="20"/>
 <g transform="translate(25,25) rotate(-90)">
 	
-		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="556" y1="-1505.5" x2="577.5033" y2="-1468.2551" gradientTransform="matrix(0 1 1 0 1505.5 -556)">
-		<stop  offset="0" style="stop-color:#5A196E"/>
-		<stop  offset="0.3743" style="stop-color:#BF09AF"/>
-		<stop  offset="0.7153" style="stop-color:#5A196E"/>
-		<stop  offset="0.9442" style="stop-color:#C40880"/>
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-2528" y1="-48" x2="-2507.4966" y2="-12.4872" gradientTransform="matrix(1 0 0 1 2528 48)">
+		<stop  offset="0" style="stop-color:#BA9839"/>
+		<stop  offset="0.3743" style="stop-color:#9E8130"/>
+		<stop  offset="0.7153" style="stop-color:#D1AA40"/>
+		<stop  offset="0.9442" style="stop-color:#9E8130"/>
 	</linearGradient>
+	<circle fill="none" stroke="url(#SVGID_1_)" stroke-linecap="round" stroke-dasharray="110" cx="0" cy="0" r="20">
 	
-		<circle fill="none" stroke="url(#SVGID_1_)" stroke-width="3" stroke-linecap="round" stroke-dasharray="110" cx="0" cy="0" r="20">
-	
-		<animate  fill="freeze" dur="2.2s" keySplines="0.41,0.314,0.8,0.54" begin="0" repeatCount="indefinite" accumulate="none" restart="always" keyTimes="0;1" calcMode="spline" additive="replace" attributeName="stroke-dashoffset" values="360;140">
+		<animate  fill="freeze" additive="replace" begin="0" dur="2.2s" keySplines="0.41,0.314,0.8,0.54" calcMode="spline" attributeName="stroke-dashoffset" keyTimes="0;1" restart="always" values="360;140" repeatCount="indefinite" accumulate="none">
 		</animate>
 	
-		<animateTransform  fill="remove" type="rotate" dur="2.2s" begin="0" repeatCount="indefinite" accumulate="none" restart="always" keyTimes="0;0.74;1" calcMode="linear" additive="replace" attributeName="transform" values="0;274;360">
+		<animateTransform  fill="remove" type="rotate" additive="replace" begin="0" dur="2.2s" calcMode="linear" attributeName="transform" keyTimes="0;0.74;1" restart="always" values="0;274;360" repeatCount="indefinite" accumulate="none">
 		</animateTransform>
 	</circle>
+</g>
+<g>
+	<path d="M16.681,12.368h7.89c5.606,0,8.86,2.493,8.86,7.096c0,2.111-0.934,3.807-2.735,4.879c2.319,1.072,3.634,3.011,3.634,5.78
+		c0,5.019-3.494,7.51-9.102,7.51h-8.547V12.368z M21.491,16.798v5.606h3.08c2.976,0,4.014-1.177,4.014-2.941
+		c0-1.835-1.143-2.666-3.98-2.666H21.491z M21.491,26.904v6.298h3.737c2.804,0,4.258-1.143,4.258-3.184s-0.969-3.114-4.5-3.114
+		H21.491z"/>
 </g>
 </svg>

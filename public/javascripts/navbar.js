@@ -10,35 +10,44 @@ $(document).ready(function() {
 		singleItem:true
 	});
     var navContainer = $('#navContainer')
-	navContainer.on('touchend click', 'li a[expand-key]',function(e){
-		e.preventDefault();
-		$('.category-expand-container').addClass('hidden');
+	var navExpand = false;
 
-		var key = $(this).attr('expand-key');
+	navContainer.on('mouseenter', 'li a[data-key]',function(e){
+		e.preventDefault();
+		navExpand = true;
+		$('#navContainer li').removeClass('active');
+		$(this).parent('li').addClass('active')
+		var key = $(this).attr('data-key');
+
+		$('.category-expand-container').addClass('hidden');
 		$('#category-expand-parent').removeClass('hidden');
 		$('div[expand-parentKey="'+ key +'"]').removeClass('hidden');
-		$('.category-expand-wrapper').animate({opacity:1});
+		$('.category-expand-wrapper').animate({opacity:1},100);
 	});
-	navContainer.on('mouseleave','#navbarDepartment',function(){
-		$.when( $('.category-expand-wrapper').animate({opacity:0})).done( function() {
-			$('.category-expand-container').addClass('hidden');
-			$('#category-expand-parent').addClass('hidden');
-		})
-	});
-	//'.category-expand'
-	navContainer.on('click', '.desktopNavColoumns li a, a h4', function(){
-		$.when( $('.category-expand-wrapper').animate({opacity:0})).done( function() {
-			$('.category-expand-container').addClass('hidden');
-			$('#category-expand-parent').addClass('hidden');
-		})
-	});
-	$('.page-content-wrapper').on('click',function(){
-		if($('.category-expand-container').not('.hidden')){
-			$('.category-expand-container').addClass('hidden');
-			$('.category-expand-wrapper').css({opacity:0});
-		}
 
-	})
+	function closeNav(){
+		$.when( $('.category-expand-wrapper').animate({opacity:0},100)).done( function() {
+			$('#navContainer li').removeClass('active');
+			$('.category-expand-container').addClass('hidden');
+			$('#category-expand-parent').addClass('hidden');
+		})
+	}
+	navContainer.on('mouseenter','li a[data-avoid]',function(){
+		closeNav();
+	});
+	navContainer.on('mouseleave','#expandDepartmentWrapper',function(){
+	    closeNav();
+	});
+	navContainer.on('click', '.desktopNavColoumns li a, a h4', function(){
+		closeNav();
+	});
+	$(document).on('mouseenter',' #headerMainWrapper, .page-content-wrapper',function(){
+		closeNav();
+	});
+
+
+
+
 
 	/*
 	 Mobile Menu
@@ -48,37 +57,37 @@ $(document).ready(function() {
 		$('.fixed-header').removeClass('sidebar-open');
 		$('.page-sidebar-cover').addClass('hidden');
 	}
-	$('#menuBurgerIcon').on('click', function(e) {
+	$(document).on('click','#menuBurgerIcon', function(e) {
 		e.stopImmediatePropagation();  e.preventDefault();e.cancelBubble = true;
 		$('.page-sidebar').addClass('visible').css({opacity:0}).animate({opacity:1}, 300);
 		$('.fixed-header').addClass('sidebar-open');
 		$('.page-sidebar-cover').removeClass('hidden');
          console.log('opening mobile menu')
-	})
+	});
 
-	$('.page-sidebar-cover').on(eventOnTE, function(e) {
+	$(document).on(eventOnTE, '.page-sidebar-cover',function(e) {
 		e.stopImmediatePropagation();  e.preventDefault();
 		console.log('closing mobile menu')
 		closeSidePage()
-	})
+	});
 
-	$('a[data-page]').on(eventOnTE,function(e){
+	$(document).on(eventOnTE,'a[data-page]',function(e){
 		$('a[data-page]').removeClass('active');
 		$(this).addClass('active');
-	})
-	$('a[data-page-ref]').on(eventOnTE,function(e){
+	});
+	$(document).on(eventOnTE,'a[data-page-ref]',function(e){
 		$('a[data-page]').removeClass('active');
 		$('a[data-page="explore"]').addClass('active');
-	})
+	});
 
-	$('.menu-items > li a').click( function() {
+	$(document).on('click','.menu-items > li a', function() {
 		console.log('ges here')
 		if($(this).siblings('ul.sub-menu').length > 0){
 			$(this).closest('li').toggleClass('open').toggleClass('active');
 
 		}
-	})
-	$('.menu-items > .sub-menu li a').click( function(event) {
+	});
+	$(document).on('click','.menu-items > .sub-menu li a', function(event) {
 		event.stopImmediatePropagation()
 		console.log('why the fuck')
 		if($(this).siblings('ul.sub-menu').length > 0){
@@ -86,10 +95,10 @@ $(document).ready(function() {
 		}
 
 
-	})
+	});
 
 
-	$('#departmentMenu').on('click','a',function(){
+	$(document).on('click','#departmentMenu a',function(){
 		var departmentChoose = $(this).attr('data-department');
 		var selector = "div[data-department-toggle='"+departmentChoose+"']"
 		console.log(selector)
@@ -97,7 +106,7 @@ $(document).ready(function() {
 		$('.sidebar-header-title').text(departmentChoose);
 		closesideBarDD();
 		$(selector).removeClass('hidden');
-	})
+	});
 	var previousScroll = 0;
 	function navBarScrollActions(){
 		var navSegment = $('#navbarDepartment');

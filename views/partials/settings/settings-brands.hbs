@@ -6,14 +6,14 @@
         {{#if userBrands}}
             <ul id="brandUser"  class="no-style">
                 {{#each userBrands}}
-                    <li><input class="input value" type="checkbox" id="{{this.key}}userBrand" key="{{this.key}}" name="{{this.name}}" checked/> <label class="label" for="{{this.key}}userBrand"> <div class="name"> {{this.name}} </div> </label></li>
+                    <li><input class="input value" type="checkbox" id="{{this.key}}userBrand" _id="{{this._id}}" key="{{this.key}}"  name="{{this.name}}" checked/> <label class="label" for="{{this.key}}userBrand"> <div class="name"> {{this.name}} </div> </label></li>
                 {{/each}}
             </ul>
 
         <div>
             <div class="clearfix padding-1v" id="removeBrandsFormWrapper" style="display: none;">
                 <div class="pull-right">
-                    <form class="inline" id="removeBrandsForm" action="removeBrands" method="post">
+                    <form class="inline" id="removeBrandsForm" action="/favourite-brands/remove" method="post">
                         <div class="btn btn-info inline" id="removeBrandsCancel">Avbryt</div>
 
                         <div class="btn btn-info inline" id="removeBrandsSubmit">Spara</div>
@@ -21,20 +21,15 @@
 
                 </div>
             </div>
-
         </div>
         {{else}}
             <p>Du följer inga varumärken, kom igång nu!</p>
-
         {{/if}}
         <script>
             var userInitialBrands =  {};
             userInitialBrands.brands = {{{json userBrands}}};
         </script>
-
     </div>
-
-
 
     <div id="brandSelection" class=" text-center padding-1v">
         <h3 class="bold">Välj märken</h3>
@@ -45,8 +40,6 @@
             </ul>
 
             <ul class="list no-style" style="display: none;" id="brandSelectionQuery">
-
-
             </ul>
 
             <div id="brandQueryLoading" style="display: none;">
@@ -66,7 +59,7 @@
                 <div class="inline">
                     <div id="addBrandsFormWrapper"  style="display: none;">
                         <div class="inline m-r-1v inline"><button class=" btn no-border" id="addBrandsCancel"> <i class="fa fa-close"></i> Avbryt</button></div>
-                        <form id="addBrandsForm" action="addBrands" method="post" class="inline">
+                        <form id="addBrandsForm" action="/favourite-brands/add" method="post" class="inline">
                            <div id="addBrandsSubmit"  class="inline m-r-1v btn btn-info">Spara</div>
                         </form>
                     </div>

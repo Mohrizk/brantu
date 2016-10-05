@@ -16,6 +16,7 @@
         $('#loadMoreFeed').on('click', function(){
             var currentPage = parseInt(feedSelector.attr('data-page'));
             var totalPage = parseInt(feedSelector.attr('data-total-pages'));
+            var department = feedSelector.attr('data-department');
             if(currentPage >= totalPage){
                 $('#loadMoreFeed').hide();
                 return;
@@ -23,9 +24,10 @@
             $('#loadMoreFeed').hide();
             $('#moreFeedLoader').fadeIn();
 
+            console.log('/api/getFeed/'+department+'/'+(currentPage+1))
 
             $.ajax({
-                url: '/api/getFeed/'+(currentPage+1),
+                url: '/api/getFeed/'+department+'/'+(currentPage+1),
             }).success(function(result) {
                 var html = feedTemplate({feed: result});
                 feedSelector.attr('data-page', currentPage+1)
@@ -39,42 +41,6 @@
 
             })
         })
-
-        /*$("#owlLanding").owlCarousel({
-
-            slideSpeed : 1000,
-            paginationSpeed : 800,
-            singleItem:true,
-            autoPlay: 3000,
-        });*/
-
-        $(window).scroll(function(){
-
-           /*     var feed = $('.feed');
-
-            if(feed.length !== 0 ){
-                var sideAd = $('#sideBanner')
-                var currentScroll = $(document).scrollTop();
-                var headerHeight = $('.header').height();
-
-                var footer = $('#footer')
-
-                if((currentScroll+headerHeight) > feed.offset().top &&  (currentScroll+headerHeight) < (feed.offset().top+ feed.height())){
-                    sideAd.css('position','fixed').css('top',headerHeight).css('bottom','auto');
-                }
-                if(feed.offset().top > sideAd.offset().top){
-                    sideAd.css('position','relative').css('top','0').css('bottom','auto');
-                }
-
-                if(footer.offset().top < (sideAd.offset().top +sideAd.height() +30)){
-                    sideAd.css('position','absolute').css('top','auto').css('bottom',30);
-                }
-
-            }*/
-
-
-        })
-
     });
 
 })(window.jQuery);

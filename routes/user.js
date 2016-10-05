@@ -45,11 +45,11 @@ var routes = [
         categories.getDepartment,
         function(req, res, next) {
             var passedVariable = req.query.response;
-            res.render('register', { errorMessage: passedVariable});
+            res.render('register', {
+                layout: 'no-nav-no-footer',
+                errorMessage: passedVariable});
         }]
     ],
-
-
 
 /*********LOGIN***************************/
     //LOCAL
@@ -71,7 +71,9 @@ var routes = [
         function(req, res, next) {
             var passedVariable = req.query.response;
             res.locals.title = "Login to Brantu";
-            res.render('login', { errorMessage: passedVariable});
+            res.render('login', {
+                layout: 'no-nav-no-footer',
+                errorMessage: passedVariable});
         }]
     ],
     // LOGIN PAGE
@@ -135,7 +137,6 @@ var routes = [
     /*********Settings***************************/
     //SETTINGS: START
     ['/settings', 'get', [
-        
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
@@ -146,7 +147,7 @@ var routes = [
     ['/settings/brands', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
-        brands.getUserBrands,
+        user.getFavouriteBrands,
         function(req, res, next) {
         if (req.user) {
             res.locals.userBrands = req.userBrands;
@@ -156,25 +157,7 @@ var routes = [
                     }
                 });
         } else res.redirect('/login')
-    } ]
-    ],
-
-    //ADD USER BRANDS
-    ['/settings/addBrands','post',[brands.addUserBrands, function(req, res, next) {
-        res.contentType('application/json');
-        var data = JSON.stringify('/settings/brands')
-        res.header('Content-Length', data.length);
-        res.end(data);
-      }]
-    ],
-    //REMOVE USER BRANDS
-    ['/settings/removeBrands','post',[brands.removeUserBrands, function(req, res, next) {
-        res.contentType('application/json');
-        var data = JSON.stringify('/settings/brands')
-        res.header('Content-Length', data.length);
-        res.end(data);
-    }]
-    ],
+    } ]],
     //SETTINGS: SIZES   FUTURE
     [ '/settings/sizes', 'get', [
         categories.getCategoryTree,
@@ -190,8 +173,7 @@ var routes = [
             );
         }
             else res.redirect('/login')
-    } ]
-    ],
+    } ]],
     //SETTINGS:NOTIFICATION   FUTURE
     [ '/settings/notifications', 'get', [
         categories.getCategoryTree,
@@ -205,14 +187,12 @@ var routes = [
                     }
                 });
         } else res.redirect('/login')
-    } ]
-    ],
+    } ]],
     //SETTINGS:ACCOUNT
     [ '/settings/account/:status', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
-        console.log('The param request is ', req.param('status'));
         if (req.user) {
             res.render('settings', {
                     settingsPartial: function() {
@@ -221,20 +201,17 @@ var routes = [
                 });
         }
         else res.redirect('/login')
-    } ]
-    ],
+    } ]],
     [ '/settings/change/name', 'get', [
         user.changeName,
         function(req, res, next) {
             res.redirect('/settings/account/name-changed')
-        }]
-    ],
+        }]],
     [ '/settings/change/password', 'get', [
         user.changePassword,
         function(req, res, next) {
             res.redirect('/settings/account/'+res.locals.PassMatch)}
-    ]
-    ],
+    ]],
     /*********Newsletter******************************************/
     [ '/newsletter-signup', 'get', [function(req, res, next) {
         newsletter.add(req.query.email,function(err, emailSaved) {
@@ -244,45 +221,60 @@ var routes = [
         })
     } ]
     ],
-    /********* Saving Session ********/
+    /********* Favourite Products ********/
     [ '/favourite-products', 'get', [
-
-        products.getFavouriteProducts,
+        user.getFavouriteProducts,
         categories.getCategoryTree,
         categories.getDepartment,
         function(req, res, next) {
-            res.render('favourite-products');
-        } ]
-    ],
+            res.render('general', {
+                generalPartial: function() {
+                    return "favourite-products";
+                }
+            });
+        }]],
     [ '/favourite-product/add', 'post', [
-        session.addFavouriteProduct,
+        user.addFavouriteProduct,
         function( req, res, next) {
-            res.send(req.session.favProducts.length+'');
+            res.send(res.locals.nbFavProducts.toString());
         }
-    ]
-    ],
+    ]],
     [ '/favourite-product/remove', 'post', [
-        session.removeFavouriteProduct,
+        user.removeFavouriteProduct,
         function( req, res, next) {
-            res.send(req.session.favProducts.length+'');
+            res.send(res.locals.nbFavProducts.toString());
         }
-    ]
-    ],
-    /*********Favourite Products******************************************/
+    ]],
+    /********* Favourite Brands ********/
+    [ '/favourite-brands/add','post',[
+        user.addFavouriteBrands,
+        function(req, res, next) {
+            res.contentType('application/json');
+            var data = req.user.brands.length;
+            res.header('Content-Length', data.length);
+            res.end(data);
+        }
+    ]],
+    [ '/favourite-brands/remove', 'post', [
+        user.removeFavouriteBrands,
+        function(req, res, next) {
+            res.contentType('application/json');
+            var data = req.user.brands.length;
+            res.header('Content-Length', data.length);
+            res.end(data);
+        }
+    ]],
+    /***************************************************/
     [ '/newsletter', 'get', [
         newsletter.sendWeeklyTrial,
         function(req, res, next) {
             res.render('newsletter',{layout: false})
-        }]
-    ],
-
+        }]],
     [ '/add-viewed-product-session', 'post', [
         session.addViewedProduct,
         function( req, res, next) {
         res.send('cool')
-    }]
-    ]
-
+    }]]
 ];
 
 routes.forEach(function(arr){

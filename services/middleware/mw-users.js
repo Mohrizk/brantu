@@ -3,6 +3,7 @@
  */
 var async = require('async');
 var User = require('../models/user');
+var Products = require('../models/product');
 
 module.exports = {
     getNewsletterList:function(department, callback){
@@ -118,5 +119,102 @@ module.exports = {
                 next()
             });
         });
+    },
+    /*
+    * FAVOURITE PRODUCTS
+    **/
+    getFavouriteProducts: function(req, res, next){
+        if(req.user == null || typeof req.user == 'undefined')
+            return next();
+        console.log('USER ', req.user)
+        var query = { "_id": { $in: req.user.products }}
+        Products.find(query).lean().exec(function(err, productList){
+            if(err) return next(err);
+            res.locals.productsList = productList
+            next();
+        });
+    },
+    addFavouriteProduct: function(req, res, next){
+        if(req.user == null || typeof req.user == 'undefined')
+            return next();
+
+        User.findById(req.user._id).exec(function(err,user){
+            if(err) return next(err);
+            if(user == 'null') return next();
+            var found = false;
+            for(var f in user.products)
+                if(user.products[f] == req.body._id)
+                    found = true;
+            if(!found)user.products.push(req.body._id);
+            user.save(function(){
+                res.locals.nbFavProducts = user.products.length;
+                next();
+            })
+        });
+    },
+    removeFavouriteProduct: function(req, res, next){
+        if(req.user == null || typeof req.user == 'undefined')
+            return next();
+
+        User.findById(req.user._id).exec(function(err,user){
+            if(err) return next(err);
+            if(user == 'null') return next();
+
+            user.products = user.products.filter(function(id){
+                console.log(id,req.body._id)
+                return id.toString() !== req.body._id;
+            });
+            user.save(function(){
+                res.locals.nbFavProducts = user.products.length;
+                next()
+            })
+        });
+    },
+    /*
+     * FAVOURITE BRANDS
+     **/
+    //USER RELATED MIDDLEWARE
+    getFavouriteBrands:function  (req, res , next) {
+        if(req.user == null || typeof req.user == 'undefined')
+            return next();
+        req.userBrands = req.user.brands;
+        next();
+    },
+    addFavouriteBrands:function  (req, res , next) {
+        if(typeof req.body.brandList == 'undefined') return  next();
+        var brandList = req.body.brandList;
+        console.log('Brandlist ',brandList )
+        User.findOne({ _id: req.user._id}, function(err, user){
+            if (err) {return next(err);}
+            for(var b in brandList){
+                user.brands.push(brandList[b].id);
+            }
+            user.save(function(err) {
+                if (err) {return next(err); }
+                next();
+            });
+        });
+    },
+    removeFavouriteBrands:function  (req, res , next) {
+        var user = req.user;
+        if(typeof req.body.brandList == 'undefined') return next();
+        var brandList = req.body.brandList;
+        console.log(brandList);
+        if(brandList.length == 0 ) return next();
+        User.findOne({ _id: user._id}, function(err, user){
+            if (err) { return next(err);}
+            for (var j in brandList) {
+                for (var i in user.brands) {
+                    if (user.brands[i].toString() === brandList[j].id.toString()){
+                        user.brands.splice(i, 1);
+                        break;
+                    }
+                }
+            }
+            user.save(function(err){
+                if (err) {return next(err);}
+                next();
+            });
+        });
     }
-}
+};

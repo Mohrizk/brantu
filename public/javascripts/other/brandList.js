@@ -31,7 +31,6 @@ $(document).ready(function() {
         if(!brandObjectSearch(brand.key, array)) {
             array.push(brand);
             console.log(array)
-
         }
     }
     function removeBrand(brand, array){
@@ -43,13 +42,13 @@ $(document).ready(function() {
             }
         }
     }
-
     brandListAlgolia.search();
     /*****************************/
     var UserBrandsKeys = $('#yourBrands').attr('user-brand').split('/BREAK/');
     function submitBrands(list, formSelector){
         var brands ={}
-        brands.brandsList = list ;
+        brands.brandList = list ;
+        console.log(formSelector.attr( "action"))
         $.ajax({
             url: formSelector.attr( "action"),
             type: 'post',
@@ -79,7 +78,7 @@ $(document).ready(function() {
         var html = '';
         brands.forEach(function(brand){
             if(!checkUserHasBrand( brand.key)){
-                html += '<li><input class="input value" type="checkbox" id="'+brand.name+'Selection" key="'+brand.key+'"  name="'+brand.name+'"/> <label class="label" for="'+brand.name+'Selection"> <div class="name"> '+brand.name+'</div> </label></li>';
+                html += '<li><input class="input value" type="checkbox" id="'+brand.name+'Selection" _id="'+brand._id+'" key="'+brand.key+'"  name="'+brand.name+'"/> <label class="label" for="'+brand.name+'Selection"> <div class="name"> '+brand.name+'</div> </label></li>';
             }
         })
         loading.slideUp();
@@ -97,13 +96,13 @@ $(document).ready(function() {
         if(brands.length == 0 ) html+= '<h4>Zero</h4>'
         else {
             brands.forEach(function(brand){
-                html += '<li><input class="input" type="checkbox" id="'+brand.name+'Query" key="'+brand.key+'"  name="'+brand.name+'"/> <label class="label" for="'+brand.name+'Query"> <div class="name"> '+brand.name+'</div> </label></li>';
+                html += '<li><input class="input" type="checkbox" id="'+brand.name+'Query" _id="'+brand._id+'" key="'+brand.key+'"  name="'+brand.name+'"/> <label class="label" for="'+brand.name+'Query"> <div class="name"> '+brand.name+'</div> </label></li>';
             })
         }
         loading.slideUp();
         $('#brandSelectionQuery').html(html);
 
-    })
+    });
     function brandQueryCallback() {
         var q = $('#brandQueryInput').val()
 
@@ -112,7 +111,6 @@ $(document).ready(function() {
         var mainSection = $('#brandSelectionList');
         var searchSection = $('#brandSelectionQuery');
 
-        console.log(q.length);
 
         if(q.length ==  0){
             if(searchSection.is(':visible')) searchSection.hide();
@@ -134,11 +132,10 @@ $(document).ready(function() {
     $('#mainSection').on( 'change', '#brandSelectionQuery input[type=checkbox], #brandSelectionList input[type=checkbox]', function(){
         var selector = $(this);
         if( selector.is(':checked') ){
-
-            addBrand({name: selector.attr('name'),key: selector.attr('key')}, userAddedBrands);
+            addBrand({name: selector.attr('name'),key: selector.attr('key'), id: selector.attr('_id')}, userAddedBrands);
         }
         else{
-            removeBrand({name: selector.attr('name'),key: selector.attr('key')}, userAddedBrands );
+            removeBrand({name: selector.attr('name'),key: selector.attr('key'), id: selector.attr('_id')}, userAddedBrands );
         }
 
         var saveCancelButton =  $('#addBrandsFormWrapper');
@@ -150,10 +147,10 @@ $(document).ready(function() {
     $('#mainSection').on( 'change', '#brandUser input[type=checkbox]', function(){
         var selector = $(this);
         if( selector.is(':checked') ){
-            removeBrand( {name: selector.attr('name'),key: selector.attr('key')} , userRemovedBrands );
+            removeBrand( {name: selector.attr('name'),key: selector.attr('key'), id: selector.attr('_id')} , userRemovedBrands );
         }
         else{
-            addBrand({name: selector.attr('name'),key: selector.attr('key')} , userRemovedBrands );
+            addBrand({name: selector.attr('name'),key: selector.attr('key'), id: selector.attr('_id')} , userRemovedBrands );
         }
         var saveCancelButton =  $('#removeBrandsFormWrapper');
         if(userRemovedBrands.length > 0)
@@ -185,14 +182,11 @@ $(document).ready(function() {
             var s = $(window).scrollTop(),
                 d = $(document).height(),
                 f = $(window).height();
-
             //console.log(s, f, d);
-
             var scrollPercentage = (s / (d-f)) * 100;
             //console.log(scrollPercentage);
             if( !fetching &&  scrollPercentage > 80 )
             {
-
                 if((pageRef + 1) <= totalPages) {
                     loading.slideDown();
                     fetching = true;
@@ -214,7 +208,6 @@ $(document).ready(function() {
             console.log(scrollPercentage)
             if( !fetching &&  scrollPercentage > 70 )
             {
-
                 if((pageRef + 1) <= totalPages) {
                     loading.slideDown();
                     fetching = true;

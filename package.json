@@ -34,6 +34,7 @@
     "mongodb": "^1.4.4",
     "mongoose": "^4.4.12",
     "mongoose-cache": "^0.1.4",
+    "mongoose-cachebox": "^1.2.0",
     "mongoose-deep-populate": "^3.0.0",
     "mongoose-paginate": "^5.0.0",
     "morgan": "~1.6.1",

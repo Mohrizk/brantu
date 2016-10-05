@@ -30,7 +30,8 @@ module.exports = function(passport) {
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-        User.findById(id, function(err, user) {
+        User.findOne({_id:id})
+            .populate('brands', { name: 1, key: 1, _id:1}).exec(function (err, user) {
             done(err, user);
         });
     });

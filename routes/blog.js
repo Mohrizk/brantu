@@ -24,36 +24,54 @@ var routes = [
     [ '/', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
+        function(req, res, next) {
+            res.render('general',{
+                generalPartial:function(){
+                    return 'viewAllBlog';
+                }
+            })
+        } ]],
+
+    [ '/:department', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
         feed.getFeed,
         function(req, res, next) {
-            res.render('blog', {
-                title                      : 'snyggaste '+req.outfit.categoryName+' - ' +req.outfit.name+' | Brantu',
-                description                : req.outfit.description+' - ' +req.outfit.name,
-                outfit                     : req.outfit,
-                blogProductsLink             : req.blogProductsLink,
-            })
-        } ]
-    ],
-    [ '/:name', 'get', [
+            res.render('general', {
+                title :  res.locals.selectedDepartment + " | Jämför och hitta det bästa priset inom mode | Brantu",
+                description :
+                'Brantu är Sveriges bästa prisjämförelsajt inom mode! ' +
+                'Med oss hittar du både relaterade produkter och stilar till det bästa priset. ' +
+                'Använd brantu när du ska köpa dina kläder eller skor online...',
+                generalPartial: function() {
+                    return "blogDepartment";
+                }
+            });
+        } ]],
+
+
+
+    [ '/:department/:name', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
         feed.getOutfit,
         products.getForBlog,
         products.getAlgoliaProducts,
         function(req, res, next) {
-            res.render('blog', {
+            res.render('general', {
                 title                      : 'snyggaste '+req.outfit.categoryName+' - ' +req.outfit.name+' | Brantu',
-                description                : req.outfit.description+' - ' +req.outfit.name,
+                description                : req.outfit.description + ' - ' + req.outfit.name,
                 outfit                     : req.outfit,
                 blogProductsLink             : req.blogProductsLink,
+                generalPartial: function() {
+                    return "viewPost";
+                }
             })
-        } ]
-    ]
+        } ]]
 ];
 
-
 routes.forEach(function(arr){
-    console.log(arr[1]);
+    //console.log(arr[1]);
     router[arr[1]](arr[0], arr[2]);
 });
 /**************************************************************

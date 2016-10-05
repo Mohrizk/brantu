@@ -4,7 +4,7 @@ var options = [];
 var shared = require('../../public/javascripts/helper');
 
 
-var lvl1_cancelOut = ['Premium', 'Sport &amp; träning']
+var lvl1_cancelOut = ['Premium', 'Sport &amp; träning', 'Outlet']
 var lvl2_cancelOut = [
     {lvl0:'Kvinna', lvl1:'Kläder',lvl2:['Sportkläder']},
     {lvl0:'Kvinna', lvl1:'Accessoarer',lvl2:['Paraplyer']},
@@ -21,14 +21,15 @@ var lvl2_cancelOut = [
 
 ]
 category= {
-    departments : ['kvinna', 'man'],
+    departments :{
+        sv: ['kvinna', 'man']
+    } ,
     getSitemapCategories: function (req, res, next)  {
-        Categories.find({}).lean().exec( function(err, categories) {
+        Categories.find({}).lean().cache('300000s').exec( function(err, categories) {
             if (err) return next(err);
-            if (categories.length == 0) return next()
+            if (categories.length == 0) return next();
             req.categoryList = categories.filter(function(category){
                 if(typeof category.numOfProducts == 'undefined') return false;
-
                 if(category.numOfProducts > 0
                     && category.name.toLowerCase()!=='kvinna'
                     && category.name.toLowerCase()!=='man')
@@ -43,10 +44,10 @@ category= {
     },
     getCategoryTree: function (req, res, next) {
         var listOfCategories = [];
-        async.each( category['departments'] , function(category, callback) {
+        async.each( category['departments'][res.locals.LANG] , function(category, callback) {
             async.waterfall([
                 function(callback){
-                    Categories.findOne({key: category}, {'key':1, 'name': 1, breadcrumb: 1}).lean().exec(function (err, mainCategory) {
+                    Categories.findOne({key: category}, {'key':1, 'name': 1, breadcrumb: 1}).lean().cache('300000s').exec(function (err, mainCategory) {
                         if(err) callback(err);
                         else {
                             callback(null, mainCategory)
@@ -56,7 +57,7 @@ category= {
                 function(mainCategory, callback){
                     if(mainCategory != null){
                         Categories.find({"parentKey": mainCategory.key},
-                            {'key': 1, 'name': 1, breadcrumb: 1},{sort:{name: 1}}).lean().exec( function (err, categorylist) {
+                            {'key': 1, 'name': 1, breadcrumb: 1},{sort:{name: 1}}).lean().cache('300000s').exec( function (err, categorylist) {
                             if(err) callback(err);
                             else{
                                 var categorylist = categorylist.filter(function(item)
@@ -81,7 +82,7 @@ category= {
                     var temp = [];
                     if(categorylist != null){
                         async.eachSeries(categorylist, function (category, callback) {
-                            Categories.find({parentKey: category.key}, {key: 1, name: 1, breadcrumb: 1},{sort:{name: 1}}).lean().exec(function (err, subcategory) {
+                            Categories.find({parentKey: category.key}, {key: 1, name: 1, breadcrumb: 1},{sort:{name: 1}}).lean().cache('300000s').exec(function (err, subcategory) {
                                 if (err) {callback(err);}
                                 else {
                                     if (subcategory != null) {

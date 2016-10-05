@@ -1,16 +1,16 @@
 <div class="similarProducts">
 
     \{{#if LowerPriceCategoryProducts}}
-
-        <div class="p-t-20 bg-white p-b-20  full-width ">
+        <div class="p-t-20 bg-white p-b-20  full-width" id="LowerPriceCategoryProducts">
             <h4 class="text-center all-caps ">\{{#if style}}\{{style}} \{{else}} \{{category.name}} \{{/if}} till lägre <b>pris</b></h4>
-            <div id="frameSameCategory" class="auto-margin block">
-                <div class="no-style" id="owlLowerCategory">
+            <div id="frameSameCategory" class="auto-margin block swiper-container swiper-general">
+                <div class="no-style swiper-wrapper">
                     \{{#each LowerPriceCategoryProducts}}
-                    <div class="carousel text-center" >
-
-                        <a _id="\{{{this._id}}}" target="_blank" rel="nofollow"  href="\{{{this.productUrl}}}"><img class="lazyOwl" data-src="\{{{this.mainPicture.largeUrl}}}"/>
-                            <p class="text-center">\{{this.price.formatted}} \{{#if this.isItSaving}}<br/> <span class="text-velvet" style="font-size: 12px;"><i><img src="/images/nav/compare.png" style="width:20px; height:auto;"></i>spara <b>\{{this.saving}}</b> (\{{this.savingPercentage}}%)</span>\{{/if}}</p></a>
+                    <div class="swiper-slide carousel text-center" >
+                        <a _id="\{{{this._id}}}" target="_blank" rel="nofollow"  href="\{{{this.productUrl}}}">
+                            <img class="swiper-lazy" data-src="\{{{this.mainPicture.largeUrl}}}"/>
+                            <div class="swiper-lazy-preloader swiper-lazy-preloader-brantu"></div>
+                            <p class="text-center">\{{this.price.formatted}} \{{#if this.isItSaving}}<br/> <span class="" style="font-size: 12px;">Spara  <font class="text-purple"><b>\{{this.saving}}</b> (\{{this.savingPercentage}}%)</font></span>\{{/if}}</p></a>
                         <div class="CarouselOptions">
                             <div class="">
                                 <a class="btn btn-tag btn-tag-dark" rel="nofollow" target="_blank" href="\{{{this.productUrl}}}">
@@ -18,28 +18,38 @@
                                 </a>
                             </div>
                             <div class="p-t-5">
-                                <a class="text-purple fs-12 bold " href="/bästa-pris-för/\{{{urlFriendly this.name}}}-\{{this._id}}">
-                                    <i class="pg-italic"></i>Mer information
+                                <a class="fs-12 bold " href="\{{{this.url}}}">
+                                    <i class=" pg-plus"></i>Mer information
                                 </a>
                             </div>
                         </div>
                     </div>
                     \{{/each}}
                 </div>
+                <div class="prev-item"></div>
+                <div class="next-item"></div>
             </div>
         </div>
+    \{{else}}
+    <div class="p-t-20 bg-white p-b-20  full-width p-r-10 p-l-10">
+        <h4 class="text-center bold">We haven't found any similar styles at a lower price<br/>
+        </h4>
+        <p class="text-center">Its possible that the product is unique or low in price.</p>
+    </div>
 
     \{{/if}}
 
     \{{#if sameBrandProducts}}
-          <div class="p-t-20 bg-white p-b-20  full-width ">
+          <div class="p-t-20 bg-white p-b-20  full-width " id="sameBrandProducts">
               <h4 class="text-center all-caps">Relaterade Produkter från <b>\{{brand.name}}</b></h4>
-              <div id="frameSameBrand" class="auto-margin block">
-                  <div class="no-style text-center" id="owlBrand">
+              <div id="frameSameBrand" class="auto-margin block swiper-container swiper-general">
+                  <div class="no-style text-center swiper-wrapper">
                       \{{#each sameBrandProducts}}
-                      <div class="carousel text-center no-overflow">
-                          <a _id="\{{{this._id}}}" target="_blank" rel="nofollow" href="\{{{this.productUrl}}}"><img class="lazyOwl" data-src="\{{{this.mainPicture.largeUrl}}}"/>
-                              <p class="text-center">\{{this.price.formatted}} \{{#if this.isItSaving}}<br/> <span class="text-velvet" style="font-size: 12px;"><i><img src="/images/nav/compare.png" style="width:20px; height:auto;"></i>Spara <b>\{{this.saving}}</b> (\{{this.savingPercentage}}%)</span> \{{/if}}</p>
+                      <div class="swiper-slide carousel text-center no-overflow">
+                          <a _id="\{{{this._id}}}" target="_blank" rel="nofollow" href="\{{{this.productUrl}}}">
+                              <img class="swiper-lazy" data-src="\{{{this.mainPicture.largeUrl}}}"/>
+                              <div class="swiper-lazy-preloader swiper-lazy-preloader-brantu"></div>
+                              <p class="text-center">\{{this.price.formatted}} \{{#if this.isItSaving}}<br/> <span class="" style="font-size: 12px;">Spara  <font class="text-purple"><b>\{{this.saving}}</b> (\{{this.savingPercentage}}%)</font></span> \{{/if}}</p>
                           </a>
                           <div class="CarouselOptions">
                               <div class="">
@@ -49,29 +59,38 @@
                               </div>
 
                               <div class="p-t-5">
-                                  <a class="fs-12 text-black bold text-purple"  href="/bästa-pris-för/\{{{urlFriendly this.name}}}-\{{this._id}}">
-                                      <i class="pg-italic"></i>Mer information
+                                  <a class="fs-12 text-black bold"  href="\{{{this.url}}}">
+                                      <i class=" pg-plus"></i>Mer information
                                   </a>
                               </div>
                           </div>
                       </div>
                       \{{/each}}
                   </div>
+                  <div class="prev-item"></div>
+                  <div class="next-item"></div>
               </div>
           </div>
+    \{{else}}
+        <div class="p-t-20 bg-white p-b-20  full-width p-r-10 p-l-10">
+            <h4 class="text-center bold">We haven't found any styles at a better price from the brand<br/>
+            </h4>
+            <p class="text-center">Its possible that the product is low in price. Try a more expensive product.</p>
+        </div>
 
     \{{/if}}
 
+
     \{{#if sameCategoryProducts}}
-        <div class="  bg-white p-b-50">
+        <div class="  bg-white p-b-50" id="sameCategoryProducts">
             <h3 class="p-t-10 p-b-10 text-center all-caps">Relaterade <b>Styles</b></h3>
-            <div id="frameSameCategory" class="auto-margin block">
+            <div id="frameSameCategory" class="auto-margin block ">
                 <div class="text-center no-style" id="owlCategory">
                     \{{#each sameCategoryProducts}}
                         <div class="flow inline p-b-40">
                             <a _id="\{{{this._id}}}" target="_blank" rel="nofollow" href="\{{{this.productUrl}}}"><img class="lazy" data-original="\{{{this.mainPicture.largeUrl}}}"/>
                                 <p class="text-center no-overflow-text">\{{this.name}}</p></a>
-                            <p class="text-center no-overflow-text">\{{this.price.formatted}} \{{#if this.isItSaving}}<br/> <span class="text-velvet" style="font-size: 12px;"><i><img src="/images/nav/compare.png" style="width:20px; height:auto;"></i>spara <b>\{{this.saving}}</b> (\{{this.savingPercentage}}%)</span>\{{/if}}  </p></a>
+                            <p class="text-center no-overflow-text">\{{this.price.formatted}} \{{#if this.isItSaving}}<br/> <span class="text-purple" style="font-size: 12px;">Spara <b>\{{this.saving}}</b> (\{{this.savingPercentage}}%)</span>\{{/if}}  </p></a>
                             <div class="CarouselOptions">
                                 <div class="">
                                     <a class="btn btn-tag btn-tag-dark" rel="nofollow" target="_blank" href="\{{{this.productUrl}}}">
@@ -79,8 +98,8 @@
                                     </a>
                                 </div>
                                 <div class="p-t-5">
-                                    <a class="bold text-purple fs-12 " href="/bästa-pris-för/\{{{urlFriendly this.name}}}-\{{this._id}}">
-                                        <i class="pg-italic"></i>Mer information
+                                    <a class="bold fs-12 " href="\{{{this.url}}}">
+                                        <i class=" pg-plus"></i>Mer information
                                     </a>
                                 </div>
 

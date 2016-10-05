@@ -1,13 +1,12 @@
 
-<div class="navigationWrapper container bg-white">
-        <div class="welcome">
+<div class="navigationWrapper container bg-transparent">
+        <div class="welcome bg-master-blue">
             \{{#if welcome.search}}
-            <h2 class="all-caps text-spaced-medium hidden-xs text-center font-GothamMedium">\{{#if welcome.department}}\{{welcome.department}}/\{{/if}} \{{welcome.name}} <b>"\{{welcome.query}}"</b></h2>
-            <h4 class="all-caps text-spaced-medium visible-xs text-center font-GothamMedium">\{{#if welcome.department}}\{{welcome.department}}/\{{/if}} \{{welcome.name}} <b>"\{{welcome.query}}"</b></h4>
-
+            <h2 class="all-caps text-spaced-medium bold hidden-xs text-center text-black">\{{#if welcome.department}}\{{welcome.department}}/\{{/if}} \{{welcome.name}} <b>"\{{welcome.query}}"</b></h2>
+            <h4 class="all-caps text-spaced-medium  bold visible-xs text-center text-purple-glow">\{{#if welcome.department}}\{{welcome.department}}/\{{/if}} \{{welcome.name}} <b>"\{{welcome.query}}"</b></h4>
             \{{#if welcome.suggestedBrands}}
                     <div class="visible-xs p-b-40">
-                        <h5 class="all-caps text-spaced-medium text-center font-GothamMedium">\{{{nbBrandHits}}}</h5>
+                        <h5 class="all-caps text-spaced-medium text-center">\{{{nbBrandHits}}}</h5>
                         <div class="text-center auto-margin block">
                             \{{#each welcome.suggestedBrands}}
                                 <a class="dark inline p-l-20 bold" href="/brand/\{{{urlFriendly name}}}"><div class="brandsAC text-center">
@@ -17,15 +16,14 @@
                             </div>
                     </div>
                 \{{/if}}
-            <h4 class="all-caps text-spaced-medium text-center font-GothamMedium">\{{{welcome.nbHits}}}</h4>
+            <h4 class="all-caps text-spaced-medium text-center text-purple-glow bold">\{{{welcome.nbHits}}}</h4>
             \{{else}}
-            <h1 class="all-caps text-spaced-medium text-center font-GothamMedium ">\{{welcome.name}} </h1>
-            <h5 class="all-caps text-spaced-medium text-center font-GothamMedium">\{{welcome.department}}\{{#if welcome.subCategory}}/\{{welcome.subCategory}} \{{/if}}</h5>
+            <h1 class="all-caps text-spaced-medium text-center ">\{{welcome.name}} </h1>
+            <h5 class="all-caps text-spaced-medium text-center">\{{welcome.department}}\{{#if welcome.subCategory}}/\{{welcome.subCategory}} \{{/if}}</h5>
             \{{#if welcome.style}}<div class=" auto-margin block text-center p-b-20">
                 <h5 class="all-caps bold  b-b">Styles</h5>
                 \{{#each welcome.style}}<p class="inline text-center p-r-10 p-l-10">\{{this.name}}</p>\{{/each}}</div>\{{/if}}
             \{{/if}}
-
         </div>
         \{{#if products}}
         <div class="resultContainer row" id="productEngine">
@@ -43,8 +41,8 @@
                                      </h5>
                                     <div class="breadcrumb">
                                      \{{#each category.breadCrumb}}
-                                         \{{#if @first}}<li><a class="bold text-velvet" value="\{{path}}" style="margin-left: 0 !important;">\{{name}}</a></li>
-                                             \{{else}}<li><a class="bold text-velvet" value="\{{path}}">\{{name}}</a></li>
+                                         \{{#if @first}}<li><a class="bold text-purple-glow" value="\{{path}}" style="margin-left: 0 !important;">\{{name}}</a></li>
+                                             \{{else}}<li><a class="bold text-purple-glow" value="\{{path}}">\{{name}}</a></li>
                                              \{{/if}}
                                          \{{/each}}
                                      </div>
@@ -56,13 +54,12 @@
                                  </div>
                              </div>
                             <div class="style refinement" >
-
                                 \{{#if style.content}}
                                 <div class="">
                                     <h5>
                                         <span class="bg-white text-left all-caps bold">\{{style.header}}</span>
                                     </h5>
-                                    <div id="listContainer">
+                                    <div class="listContainer">
                                         <ul class="list" style="max-height: 160px; overflow: scroll;">
                                             \{{#each style.content}}
                                             \{{#if (idGenerator this)}}\{{/if}}
@@ -113,7 +110,7 @@
                                         <h5>
                                             <span class="bg-white text-left all-caps bold">\{{discounts.header}}</span>
                                             </h5>
-                                        <div id="listContainer">
+                                        <div class="listContainer">
                                             <ul class="list" style="max-height: 160px; overflow: scroll;">
                                                 \{{#each discounts.content}}
                                                     \{{#if (idGenerator this)}}\{{/if}}
@@ -135,7 +132,7 @@
 
                                         <span class="bg-white text-left all-caps bold">\{{sizes.header}}</span>
                                     </h5>
-                                    <div id="listContainer">
+                                    <div class="listContainer">
                                         <ul class="list" style="max-height: 160px; overflow: scroll;">
                                             \{{#each sizes.content}}
                                                 \{{#if (idGenerator this)}}\{{/if}}
@@ -151,25 +148,25 @@
                             </div>
                             <div class="brands refinement" >
                             \{{#if brands.content}}
-                            <div class="">
+                            <div class="searchFilters">
                             <h5>
                                 <span class="bg-white text-left all-caps bold">\{{brands.header}}</span>
                                 </h5>
-                            <div id="listContainer">
+                            <div class="listContainer">
+                                <input type="text"/>
                                 <ul class="list" style="max-height: 160px; overflow: scroll;">
                                     \{{#each brands.content}}
                                         \{{#if (idGenerator this)}}\{{/if}}
                                             \{{#if this.isRefined}}
-                                                <div><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}" checked/> <label class="label" for="\{{this.theID}}"><span class="name ">\{{this.name}}</span> <span class="count">\{{this.count}}</span></label></div>
+                                               <li> <div><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}" checked/> <label class="label" for="\{{this.theID}}"><span class="name ">\{{this.name}}</span> <span class="count">\{{this.count}}</span></label></div></li>
                                             \{{else}}
-                                                <div><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}"/> <label class="label" for="\{{this.theID}}"><span class="name">\{{this.name}}</span><span class="count">\{{this.count}}</span></label></div>
+                                               <li> <div><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}"/> <label class="label" for="\{{this.theID}}"><span class="name">\{{this.name}}</span><span class="count">\{{this.count}}</span></label></div></li>
                                             \{{/if}}
                                     \{{/each}}
                                 </ul>
                             </div>
                             </div>
                             \{{/if}}
-
                             </div>
                             <div class="colors refinement" >
                                 \{{#if colors.content}}
@@ -193,7 +190,7 @@
                                     <h5>
                                         <span class="bg-white text-left all-caps bold">\{{fit.header}}</span>
                                     </h5>
-                                    <div id="listContainer">
+                                    <div class="listContainer">
                                         <ul class="list" style="max-height: 160px; overflow: scroll;">
                                             \{{#each fit.content}}
                                             \{{#if (idGenerator this)}}\{{/if}}
@@ -214,7 +211,7 @@
                                     <h5>
                                         <span class="bg-white text-left all-caps bold">\{{shops.header}}</span>
                                         </h5>
-                                    <div id="listContainer">
+                                    <div class="listContainer">
                                         <ul class="list" style="max-height: 160px; overflow: scroll;">
                                             \{{#each shops.content}}
                                                 \{{#if (idGenerator this)}}\{{/if}}
@@ -234,23 +231,137 @@
                 </div>
             <div class="productPane">
                 <div class="productPreview">
+                  <div class="bg-master-blue">
+                      <div class="row horizontalFilters" >
+
+                          <div class="col-xs-3">
+                              <div class="brands refinement \{{#unless brands.content}} disabled \{{/unless}}  " >
+                                  <div class="">
+                                      <h5 class="text-center all-caps bold">
+                                          \{{brands.header}}
+                                          <span><i class="pg-arrow_minimize"></i></span>
+                                      </h5>
+                                      \{{#if brands.content}}
+                                      <div class="listContainer">
+                                          <input type="text"/>
+                                          <ul class="list">
+                                              \{{#each brands.content}}
+                                              \{{#if (idGenerator this)}}\{{/if}}
+                                              \{{#if this.isRefined}}
+                                              <li><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}" checked/> <label class="label" for="\{{this.theID}}"><span class="name ">\{{this.name}}</span> <span class="count">\{{this.count}}</span></label></li>
+                                              \{{else}}
+                                              <li><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}"/> <label class="label" for="\{{this.theID}}"><span class="name">\{{this.name}}</span><span class="count">\{{this.count}}</span></label></li>
+                                              \{{/if}}
+                                              \{{/each}}
+                                          </ul>
+                                      </div>
+                                      \{{/if}}
+                                  </div>
+                              </div>
+                          </div>
+
+
+                          <div class="col-xs-3">
+                              <div class="discounts refinement \{{#unless discounts.content}} disabled \{{/unless}}">
+                                  <div class="">
+                                      <h5 class="text-center all-caps bold">
+                                          \{{discounts.header}}
+                                          <span><i class="pg-arrow_minimize"></i></span>
+                                      </h5>
+                                      \{{#if discounts.content}}
+                                      <div class="listContainer">
+                                          <input type="text"/>
+                                          <ul class="list" style="max-height: 160px; overflow: scroll;">
+                                              \{{#each discounts.content}}
+                                              \{{#if (idGenerator this)}}\{{/if}}
+                                              \{{#if this.isRefined}}<li><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}" checked/> <label class="label" for="\{{this.theID}}"><span class="name ">\{{this.name}}</span> <span class="count">\{{this.count}}</span></label></li>
+                                              \{{else}}		  <li><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}"/> <label class="label" for="\{{this.theID}}"><span class="name">\{{this.name}}</span><span class="count">\{{this.count}}</span></label></li>
+                                              \{{/if}}
+                                              \{{/each}}
+                                          </ul>
+                                      </div>
+                                      \{{/if}}
+                                  </div>
+                              </div>
+                          </div>
+
+
+                          <div class="col-xs-3">
+                              <div class="shops refinement \{{#unless shops.content}} disabled \{{/unless}}" >
+                                  <div class="">
+                                      <h5 class="text-center all-caps bold">
+                                         \{{shops.header}}
+                                          <span><i class="pg-arrow_minimize"></i></span>
+                                      </h5>
+                                      \{{#if shops.content}}
+                                        <div class="listContainer">
+                                          <input type="text"/>
+                                          <ul class="list" style="max-height: 160px; overflow: scroll;">
+                                              \{{#each shops.content}}
+                                              \{{#if (idGenerator this)}}\{{/if}}
+                                              \{{#if isRefined}}<li><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}" checked/> <label class="label" for="\{{this.theID}}"><span class="name ">\{{this.name}}</span> <span class="count">\{{this.count}}</span></label></li>
+                                              \{{else}}		  <li><input class="input" type="checkbox" value="\{{this.name}}" id="\{{this.theID}}"/> <label class="label" for="\{{this.theID}}"><span class="name">\{{this.name}}</span><span class="count">\{{this.count}}</span></label></li>
+                                              \{{/if}}
+                                              \{{/each}}
+                                          </ul>
+                                      </div>
+                                      \{{/if}}
+                                  </div>
+
+                              </div>
+                          </div>
+
+
+                          <div class="col-xs-3">
+                              <div class="sort refinement" >
+                                  <div class="">
+                                      <h5 class="text-center all-caps bold">
+                                          \{{sort.header}}
+                                          \{{#each sort.content}}
+                                          \{{#if this.isRefined}}
+                                           <small class="bold text-purple">\{{this.name}}</small>
+                                          \{{/if}}
+                                          \{{/each}}
+                                          <span><i class="pg-arrow_minimize"></i></span>
+                                      </h5>
+                                      <div class="listContainer">
+                                          <ul class="list">
+                                              \{{#each sort.content}}
+                                              \{{#if (idGenerator this)}}\{{/if}}
+                                              \{{#if this.isRefined}}
+                                              <li><input class="input" type="checkbox" value="\{{this.value}}" id="\{{this.theID}}" checked/> <label class="label" for="\{{this.theID}}"><span class="name">\{{this.name}}</span></label></li>
+                                              \{{else}}
+                                              <li><input class="input" type="checkbox" value="\{{this.value}}" id="\{{this.theID}}"/> <label class="label" for="\{{this.theID}}"><span class="name">\{{this.name}}</span></label></li>
+                                              \{{/if}}
+                                              \{{/each}}
+                                          </ul>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+
+                      </div>
+
+                  </div>
+
+
                     <div class="row">
                         <div class="filterTags col-sm-7 col-xs-12">
                             \{{#each tags.facets}}
-                            <div class="inline p-r-5">
-                                <button class="btn btn-tag btn-tag-rounded" style="border:1px solid #ddd;" value="\{{value}}" facet="\{{facet}}" type="\{{type}}"> <font class="sbold">\{{text}}: </font>\{{value}}<i class="pg-close_line p-l-5"></i></button>
+                                <div class="inline p-r-5">
+                                    <button class="btn btn-tag btn-tag-rounded" style="border:1px solid #ddd;" value="\{{value}}" facet="\{{facet}}" type="\{{type}}"> <font class="sbold">\{{text}}: </font>\{{value}}<i class="pg-close_line p-l-5"></i></button>
                                 </div>
                             \{{/each}}
 
                             \{{#each tags.numericFacets}}
-                            <div class="inline p-r-5">
-                                <button class="btn btn-tag  btn-tag-rounded" style="border:1px solid #ddd;"  facet="\{{facet}}" type="\{{type}}"> <font class="sbold">\{{text}}: </font> \{{value}} <i class="pg-close_line p-l-5"></i></button>
+                                <div class="inline p-r-5">
+                                    <button class="btn btn-tag  btn-tag-rounded" style="border:1px solid #ddd;"  facet="\{{facet}}" type="\{{type}}"> <font class="sbold">\{{text}}: </font> \{{value}} <i class="pg-close_line p-l-5"></i></button>
                                 </div>
                             \{{/each}}
-                            </div>
-
                         </div>
-                        <div class="col-xs">
+
+                        <div class="col-xs-12 col-sm-5">
                             <div class="paginate hidden-xs">
                                 \{{#if paginate}}
                                     <div class="clearfix hidden-xs">
@@ -302,7 +413,8 @@
 
                             </div>
                         </div>
-                        </div>
+                    </div>
+
                     <ol class="itemList vertical">
                         \{{#each  products}}
                         <li  class="item" index="\{{@index}}" _id="\{{{this.objectID}}}">
@@ -404,7 +516,7 @@
         \{{/if}}
     </div>
 \{{#if products}}
-    <div id="mobileProductFilter">
+        <div id="mobileProductFilter">
 
         <div class="popout visible-sm visible-xs">
         <div class="fab \{{#if isFab}}  active \{{/if}}">
@@ -473,7 +585,7 @@
                                 <h5>
                                     <span class="bg-white text-left all-caps bold">\{{discounts.header}}</span>
                                 </h5>
-                                <div id="listContainer">
+                                <div class="listContainer">
                                     <ul class="list" style="max-height: 160px; overflow: scroll;">
                                         \{{#each discounts.content}}
                                         \{{#if (idGenerator this)}}\{{/if}}
@@ -495,7 +607,7 @@
 
                                 <span class="bg-white text-left all-caps bold">\{{sizes.header}}</span>
                             </h5>
-                            <div id="listContainer">
+                            <div class="listContainer">
                                 <ul class="list" style="max-height: 160px; overflow: scroll;">
                                     \{{#each sizes.content}}
                                     \{{#if (idGenerator this)}}\{{/if}}
@@ -515,7 +627,8 @@
                             <h5>
                                 <span class="bg-white text-left all-caps bold">\{{brands.header}}</span>
                             </h5>
-                            <div id="listContainer">
+                            <div class="listContainer">
+
                                 <ul class="list" style="max-height: 160px; overflow: scroll;">
                                     \{{#each brands.content}}
                                     \{{#if (idGenerator this)}}\{{/if}}
@@ -554,7 +667,7 @@
                             <h5>
                                 <span class="bg-white text-left all-caps bold">\{{fit.header}}</span>
                             </h5>
-                            <div id="listContainer">
+                            <div class="listContainer">
                                 <ul class="list" style="max-height: 160px; overflow: scroll;">
                                     \{{#each fit.content}}
                                     \{{#if (idGenerator this)}}\{{/if}}
@@ -576,7 +689,7 @@
                             <h5>
                                 <span class="bg-white text-left all-caps bold">\{{shops.header}}</span>
                             </h5>
-                            <div id="listContainer">
+                            <div class="listContainer">
                                 <ul class="list" style="max-height: 160px; overflow: scroll;">
                                     \{{#each shops.content}}
                                     \{{#if (idGenerator this)}}\{{/if}}
@@ -596,3 +709,4 @@
 
     </div>
 \{{/if}}
+</div>

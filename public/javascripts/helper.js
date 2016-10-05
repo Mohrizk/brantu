@@ -191,7 +191,10 @@ var renderHelper = {
                 uri+= '&compare='+ renderHelper.urlFriendly(object.facetsRefinements["compare"][0]);
             }
         }
-
+        //CHECK SORT
+        var index = helper.getIndex();
+        uri+= renderHelper.mapSorting(index, 'toUrl')
+        //Page
         if(helper.getPage() > 0)uri+= '&page='+helper.getPage();
         return uri;
     },
@@ -299,7 +302,10 @@ var renderHelper = {
                         helper.addNumericRefinement('price.value','<', renderHelper.decodeUrlFriendly(qValue));
                         break;
                     case 'page':
-                        helper.setPage(renderHelper.decodeUrlFriendly(qValue))
+                        helper.setPage(renderHelper.decodeUrlFriendly(qValue));
+                        break;
+                    case 'sort':
+                        helper.setIndex(renderHelper.mapSorting(qValue, 'fromUrl'));
                         break;
                     case 'category':
                         var categoryValue = renderHelper.decodeUrlFriendly(qValue).split('.').join(' > ')
@@ -308,6 +314,68 @@ var renderHelper = {
                 }
             })
         }
+    },
+
+
+    mapSorting:function(value, indicator){
+        var returned;
+        if(indicator == 'fromUrl'){
+            switch(value){
+                case 'high_price':
+                    returned =  'test_products_high_price';
+                    break;
+                case 'discount':
+                    returned = 'test_products_discount';
+                    break;
+                default:
+                    returned = 'test_products';
+                    break;
+            }
+        }
+        else{
+            if(indicator == 'toUrl'){
+                switch(value){
+                    case 'test_products_high_price':
+                        returned = '&sort=high_price';
+                        break;
+                    case  'test_products_discount':
+                        returned = '&sort=discount';
+                        break;
+                    case  'test_products':
+                        returned = '';
+                        break;
+                    default:
+                        returned = '';
+                        break;
+                }
+            }
+        }
+        return returned;
+    },
+    getSortingOptions:function(currentIndex){
+        var sort = [
+             {
+                 "name": "low price",
+                 "value": "test_products",
+                 "isRefined": false
+             },
+             {
+                 "name": "high price",
+                 "value": "test_products_high_price",
+                 "isRefined": false
+             },
+             {
+                 "name": "discount",
+                 "value": "test_products_discount",
+                 "isRefined": false
+             }
+         ];
+        for(var x in sort){
+            if(currentIndex == sort[x].value){
+                sort[x].isRefined = true;
+            }
+        }
+        return sort;
     },
 
     mapColor: function (array, values) {
@@ -351,7 +419,7 @@ var renderHelper = {
                         })
                         if (data[c].data == null) {
                             returnArray = data.map(function (da) {
-                                if (data[c].name == da.name)   da.class = 'sbold text-spaced';
+                                if (data[c].name == da.name)   da.class = 'sbold text-spaced active';
                                 else   da.class = '';
                                 return da;
                             })
@@ -415,7 +483,7 @@ var renderHelper = {
             bufferBefore: 2,
             pages: []
         };
-        var cClass = 'sbold text-pink-darker';
+        var cClass = 'sbold bg-black text-purple-glow';
         if(nbHits != 0 ){
             if (currentPage < totalPages - 1) rObject.hasNext = true;
             if (currentPage != 0) rObject.hasPrevious = true;
@@ -500,12 +568,12 @@ var renderHelper = {
                 rObject.search = true;
                 rObject.department = breadcrumb[0]
                 rObject.name = HEADERTEXT.search.header;
-                rObject.nbHits = HEADERTEXT.search.found +' <font class="bold text-pink-dark"> '+content.nbHits+' </font> '+HEADERTEXT.search.product ;
+                rObject.nbHits = HEADERTEXT.search.found +' <font class="bold text-purple-glow"> '+content.nbHits+' </font> '+HEADERTEXT.search.product ;
                 rObject.query = content.query;
                 rObject.closeSearch=true;
                 rObject.suggestedBrands = suggestedBrands;
                 if(suggestedBrands!==null && typeof suggestedBrands !== 'undefined')
-                    rObject.nbBrandHits = HEADERTEXT.search.found +' <font class="bold text-pink-dark"> '+suggestedBrands.length+' </font> '+HEADERTEXT.search.brand ;
+                    rObject.nbBrandHits = HEADERTEXT.search.found +' <font class="bold text-purple-glow"> '+suggestedBrands.length+' </font> '+HEADERTEXT.search.brand ;
         }
 
         else if(currentState.category){
@@ -684,11 +752,12 @@ var renderHelper = {
 
         object.shops= {content: content.getFacetValues('shops', {sortBy: ['name:asc']}),header:   HEADERTEXT.disjunctionFacets.shop.header};
         object.paginate = renderHelper.pagination(content);
+        object.sort = {content: renderHelper.getSortingOptions(helper.getIndex()), header: HEADERTEXT.sort.header};
 
         object.category = renderHelper.categoryRefinement(content.hierarchicalFacets, breadCrumb, HEADERTEXT.hierarchicalFacets.header);
         object.products = content.hits;
 
-        object.colors = {header: HEADERTEXT.disjunctionFacets.color.header , content: renderHelper.mapColor(content.getFacetValues('color', {sortBy: ['name:asc']}),COLORS)}
+        object.colors = {header: HEADERTEXT.disjunctionFacets.color.header , content: renderHelper.mapColor(content.getFacetValues('color', {sortBy: ['name:asc']}),COLORS)};
 
         object.tags = renderHelper.getAllRefinements(helper.getState(['attribute:*']), HEADERTEXT, currentState);
         if(!currentState.brand){
@@ -791,6 +860,7 @@ var COLORS = [
     }
 ]
 var HEADERTEXT = {
+    sort: {header:"sortera"},
     hierarchicalFacets: { header: "Kategorier"},
     disjunctionFacets: {
         color:{header: "Färger", filter:"färg"},
@@ -838,7 +908,6 @@ var HEADERTEXT = {
         }
     }
 }
-
 if (typeof window !== "undefined") {
 
 }
