@@ -183,15 +183,21 @@ module.exports = {
     addFavouriteBrands:function  (req, res , next) {
         if(typeof req.body.brandList == 'undefined') return  next();
         var brandList = req.body.brandList;
-        console.log('Brandlist ',brandList )
+
+        console.log('Brandlist ',brandList );
+
         User.findOne({ _id: req.user._id}, function(err, user){
             if (err) {return next(err);}
+            console.log('sup');
             for(var b in brandList){
-                user.brands.push(brandList[b].id);
+                if(brandList[b].id !== '' &&  brandList[b].id !==null  && typeof  brandList[b].id !== 'undefined')
+                        user.brands.push(brandList[b].id);
             }
+            console.log('we reach here', user.brands)
             user.save(function(err) {
+                console.log(err)
                 if (err) {return next(err); }
-                next();
+                return next();
             });
         });
     },

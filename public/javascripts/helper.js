@@ -355,17 +355,17 @@ var renderHelper = {
     getSortingOptions:function(currentIndex){
         var sort = [
              {
-                 "name": "low price",
+                 "name": "Pris lågt-högt",
                  "value": "test_products",
                  "isRefined": false
              },
              {
-                 "name": "high price",
+                 "name": "Pris högt-lågt",
                  "value": "test_products_high_price",
                  "isRefined": false
              },
              {
-                 "name": "discount",
+                 "name": "Högst rea",
                  "value": "test_products_discount",
                  "isRefined": false
              }

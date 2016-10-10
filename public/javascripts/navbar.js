@@ -44,8 +44,6 @@ $(document).ready(function() {
 	 */
 
 
-
-
 	$(document).on(eventOnTE,'a[data-page]',function(e){
 		$('a[data-page]').removeClass('active');
 		$(this).addClass('active');

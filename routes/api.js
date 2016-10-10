@@ -25,6 +25,7 @@ var routes = [
             hbs.render('views/partials/blog/Outfit.hbs', {
                 outfit                       : req.outfit,
                 blogProductsLink             : req.blogProductsLink,
+                user:req.user
             },
                 {precompiled: true})
                 .then(function (template) {
@@ -63,6 +64,7 @@ var routes = [
                 {
                     productsList: res.locals.productsList,
                     nbFavProducts: res.locals.nbFavProducts,
+                    user:req.user,
                 },
                 {
                     precompiled: true
@@ -89,6 +91,7 @@ var routes = [
         products.GetSimilarCategoryProducts,
         function( req, res, next) {
             res.send({
+                    user:req.user,
                     sameBrandProducts           :req.sameBrandProducts,
                     sameBrandProductsInsight    :req.sameBrandProductsInsight,
                     LowerPriceCategoryProducts   :req.LowerPriceCategoryProducts ,
@@ -125,6 +128,7 @@ var routes = [
         function(req, res, next) {
             hbs.render('views/partials/nav/nav.hbs',
                 {
+                    user:req.user,
                     selectedDepartment: res.locals.selectedDepartment,
                     categoryTree:   res.locals.categoryTree,
                     nbFavProducts: res.locals.nbFavProducts,
@@ -145,6 +149,7 @@ var routes = [
         function(req, res, next) {
             hbs.render('views/partials/home/department.hbs',
                 {
+                    user:req.user,
                     selectedDepartment: res.locals.selectedDepartment,
                     //compareClothes: res.locals.compareClothes,
                     feed: res.locals.feed

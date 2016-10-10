@@ -2,7 +2,7 @@
 
     \{{#if LowerPriceCategoryProducts}}
         <div class="p-t-20 bg-white p-b-20  full-width" id="LowerPriceCategoryProducts">
-            <h4 class="text-center all-caps ">\{{#if style}}\{{style}} \{{else}} \{{category.name}} \{{/if}} till lägre <b>pris</b></h4>
+            <h4 class="text-center all-caps ">\{{#if style}}\{{style}} \{{else}} \{{category.name}} \{{/if}} till ett lägre <b>pris</b></h4>
             <div id="frameSameCategory" class="auto-margin block swiper-container swiper-general">
                 <div class="no-style swiper-wrapper">
                     \{{#each LowerPriceCategoryProducts}}
@@ -14,7 +14,7 @@
                         <div class="CarouselOptions">
                             <div class="">
                                 <a class="btn btn-tag btn-tag-dark" rel="nofollow" target="_blank" href="\{{{this.productUrl}}}">
-                                    Go To Shop
+                                    Gå till butik
                                 </a>
                             </div>
                             <div class="p-t-5">
@@ -32,9 +32,9 @@
         </div>
     \{{else}}
     <div class="p-t-20 bg-white p-b-20  full-width p-r-10 p-l-10">
-        <h4 class="text-center bold">We haven't found any similar styles at a lower price<br/>
+        <h4 class="text-center bold">Vi hittade tyvärr inga liknande stilar till ett lägre pris<br/>
         </h4>
-        <p class="text-center">Its possible that the product is unique or low in price.</p>
+        <p class="text-center">Det finns inga lägre priser.</p>
     </div>
 
     \{{/if}}
@@ -54,7 +54,7 @@
                           <div class="CarouselOptions">
                               <div class="">
                                   <a class="btn btn-tag btn-tag-dark" rel="nofollow" target="_blank" href="\{{{this.productUrl}}}">
-                                      Go To Shop
+                                      Gå till butik
                                   </a>
                               </div>
 
@@ -73,9 +73,10 @@
           </div>
     \{{else}}
         <div class="p-t-20 bg-white p-b-20  full-width p-r-10 p-l-10">
-            <h4 class="text-center bold">We haven't found any styles at a better price from the brand<br/>
+
+            <h4 class="text-center bold">Vi hittade tyvärr inga liknande stilar från <strong>\{{brand.name}}</strong><br/>
             </h4>
-            <p class="text-center">Its possible that the product is low in price. Try a more expensive product.</p>
+            <p class="text-center">Det finns inga lägre priser.</p>
         </div>
 
     \{{/if}}

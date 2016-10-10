@@ -236,6 +236,7 @@ var routes = [
     [ '/favourite-product/add', 'post', [
         user.addFavouriteProduct,
         function( req, res, next) {
+            console.log('all good');
             res.send(res.locals.nbFavProducts.toString());
         }
     ]],
@@ -249,10 +250,13 @@ var routes = [
     [ '/favourite-brands/add','post',[
         user.addFavouriteBrands,
         function(req, res, next) {
+
             res.contentType('application/json');
+            console.log(req.user.brands.length)
             var data = req.user.brands.length;
-            res.header('Content-Length', data.length);
-            res.end(data);
+            console.log('we reach here')
+            res.header('Content-Length', data);
+            res.sendStatus(200);
         }
     ]],
     [ '/favourite-brands/remove', 'post', [
@@ -261,7 +265,7 @@ var routes = [
             res.contentType('application/json');
             var data = req.user.brands.length;
             res.header('Content-Length', data.length);
-            res.end(data);
+            res.sendStatus(200);
         }
     ]],
     /***************************************************/

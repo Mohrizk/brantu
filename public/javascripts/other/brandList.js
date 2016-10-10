@@ -58,7 +58,8 @@ $(document).ready(function() {
             },
             data : JSON.stringify(brands),
             success: function(data) {
-                window.location = data;
+                console.log('we are', data)
+                location.reload();
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log('Weird SHIT!')

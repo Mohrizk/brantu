@@ -7,24 +7,24 @@
                         <ul class="no-padding no-margin text-white bold all-caps fs-11 p-r-15">
                             <li class="inline p-r-10">
                                 <a class="bright" href="/how-it-works">
-                                    How it works
+                                    Hur fungerar det?
                                 </a>
                             </li>
                             <li class="inline p-r-10">
                                 <a class="bright" href="/about-us">
-                                    About us
+                                    om oss
                                 </a>
                             </li>
                             <li class="inline">
                                 <a class="bright" href="/contact-us">
-                                    contact us
+                                    kontakta oss
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <h6 class="bold text-white all-caps inline">
-                    Compare styles to the best price from all your favourite fashion stores
+                    Brantu hjälper dig att jämföra och hitta rätt plagg till rätt pris online
                 </h6>
             </div>
         </div>
@@ -74,11 +74,11 @@
                                     <div class="dropdown" style="padding-top:5px; ">
                                         <div class="dropdown-menu" id="mobileContainerHintAC">
                                             <div class="p-l-25 p-t-5">
-                                                You can search for
+                                                Sök och jämför priser från alla de stora shoppingsiterna inom mode
                                                 <ul>
-                                                    <li class="medium">Products</li>
-                                                    <li class="medium">Brands</li>
-                                                    <li class="medium">Styles/category</li>
+                                                    <li class="medium">Produkter</li>
+                                                    <li class="medium">Märken</li>
+                                                    <li class="medium">Stil eller kategori</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -136,13 +136,13 @@
                                                     <input type="text" placeholder="Sök och jämför priser" id="search"/>
                                                     <div class="dropdown">
                                                         <div class="dropdown-menu styleTip" id="containerHintAC">
-                                                            <div class="p-l-10 p-t-10 all-caps">
-                                                                You can search for
-                                                                <ul>
-                                                                    <li class="medium bold">Products</li>
-                                                                    <li class="medium bold">Brands</li>
-                                                                    <li class="medium bold">Styles/category</li>
-                                                                </ul>
+                                                            <div class="p-l-30 p-t-10 all-caps">
+                                                                    <font class="bold">Sök och jämför priser från alla shoppingsiter</font>
+                                                                    <ul>
+                                                                        <li class="medium">Produkter</li>
+                                                                        <li class="medium">Märken</li>
+                                                                        <li class="medium">Stil eller kategori</li>
+                                                                    </ul>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -163,19 +163,18 @@
 
                                 {{#if user}}
                                     <div class=" pull-right ">
-                                        <div class="dropdown pull-right hidden-xs p-t-5" data-toggle="tooltip" title="user options">
+                                        <div class="dropdown pull-right hidden-xs p-t-5">
                                             <button class="profile-dropdown-toggle"  type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 {{#if user.facebook.name}}
-                                                    <span class="thumbnail-wrapper circular d32  bold  inline all-caps" style="font-size:16px; border:1px solid white; color:#e5a3ad; padding-top:4px;" id="avatar">
+                                                    <span class="thumbnail-wrapper circular d32  bold  inline all-caps" style="font-size:16px; border:1px solid #9E8130; background: #000;  color:#9E8130; padding-top:4px;" id="avatar">
                                                         {{trimForAvatar user.facebook.name}}
                                                     </span>
 
                                                 {{else}}
-                                                    <span class="thumbnail-wrapper circular d32  bold   inline all-caps " style="font-size:16px; border:2px solid white; background: #51036d; color:#ffb6c1; padding-top:4px; " id="avatar">
+                                                    <span class="thumbnail-wrapper circular d32  bold   inline all-caps " style="font-size:16px; border:1px solid #9E8130; background: #000; color:#9E8130; padding-top:4px; " id="avatar">
                                                         {{trimForAvatar user.local.email}}
                                                     </span>
                                                 {{/if}}
-
                                             </button>
                                             <ul class="dropdown-menu profile-dropdown" role="menu">
                                                 <li class="bold visible-sm visible-xs"><a href="/favourite-products"  class="bold b-b b-transparent-white text-white">
@@ -284,22 +283,23 @@
                                 {{#each categoryTree}}
                                     {{#if (compareStrings this.department.name ../selectedDepartment)}}
                                         {{#each categories}}
-                                            <li class="expand"><a class="dark all-caps text-spaced-medium fs-11  text-center"  data-key="{{category.key}}">{{andfixer category.name}}</a></li>
+                                            <li class="expand"><a href="{{{category.url}}}" class="dark all-caps text-spaced-medium fs-11  text-center"  data-key="{{category.key}}">{{andfixer category.name}}</a></li>
                                         {{/each}}
                                     {{/if}}
                                 {{/each}}
                             {{else}}
                                 {{#if (compareStrings selectedDepartment 'man')}}
                                     <li class=" "><a class="dark all-caps text-spaced-medium fs-11 text-center" href="/{{selectedDepartment}}" data-page data-avoid><i class="pg-home"></i>Hem</a></li>
+
                                     {{#each categoryTree}}
                                         {{#if (compareStrings this.department.name ../selectedDepartment)}}
                                             {{#each categories}}
-                                                <li class="expand"><a class="dark all-caps text-spaced-medium fs-11 expand text-center"  data-key="{{category.key}}">{{andfixer category.name}}</a></li>
+                                                <li class="expand"><a href="{{{category.url}}}" class="dark all-caps text-spaced-medium fs-11 expand text-center"  data-key="{{category.key}}">{{andfixer category.name}}</a></li>
                                             {{/each}}
                                         {{/if}}
                                     {{/each}}
                                 {{else}}
-                                    <li class="full-width "><a class="dark all-caps text-spaced-medium fs-11   bold text-center" data-page style="border-bottom: 2px solid transparent !important;"><i class="pg-arrow_left"></i>Please select a department from the above</a></li>
+                                    <li class="full-width "><a  class="dark all-caps text-spaced-medium fs-11   bold text-center" data-page style="border-bottom: 2px solid transparent !important;"><i class="pg-arrow_left"></i>välj MAN eller KVINNA för att börja fynda</a></li>
                                 {{/if}}
                             {{/if}}
                         </ul>

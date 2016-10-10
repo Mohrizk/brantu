@@ -94,19 +94,22 @@ if( DEPARTMENT!==null){
 
 $(document).ready( function() {
 
+
 	$(window).load( function() {
 		if(typeVerified){
 			priceBar();
 		}
 		lazy();
 		initiateAC();
-
+		formValidation();
 		$('[data-toggle="tooltip"]').tooltip();
 		//GET RELATED PRODUCT IF PRODUCT PAGE
 		if(typeof getRelatedProductsID !== 'undefined'){
 			ajaxSimilarProducts(getRelatedProductsID);
 		}
 		$('.no-background-image').removeClass('no-background-image');
+
+
 		page({ dispatch: false, decodeURLComponents:false});
 	});
 
@@ -195,15 +198,18 @@ $(document).ready( function() {
 	var currentBrandDDHits=[];
 	var pPcurrentIndex = 100;  // needed for hovering effect
 
-	function initiateAC(searchPhrase){
+
+
+
+	function initiateAC(searchPhrase, selector){
 		var autocompleteOptions = [
 			{
 				//source: autocomplete.sources.hits(productIndex, {hitsPerPage: 7}),
 				source: function(query, callback) {
 					var index = client.initIndex('test_products');
-					var options = {hitsPerPage: 8}
+					var options = {hitsPerPage: 8};
 					if(searchDepartment == 'WOMEN' || searchDepartment == 'MEN' ){
-						console.log('THAT WHY ',renderHelper.decodeDepartment(searchDepartment, LANG))
+						console.log('THAT WHY ',renderHelper.decodeDepartment(searchDepartment, LANG));
 						options.facetFilters = 'category.lvl0:' + renderHelper.decodeDepartment(searchDepartment,LANG);
 					}
 
@@ -212,7 +218,7 @@ $(document).ready( function() {
 						pPcurrentIndex = 100;
 						$('.ACSearchProgress').addClass('hidden');
 						currentDDHits= answer.hits;
-						$('#ddProductPreview').hide()
+						$('#ddProductPreview').hide();
 						$('#ddProductPreviewContainer').html('');
 						$('#ddCol2').show();
 						if(answer.hits.length > 7){
@@ -295,6 +301,8 @@ $(document).ready( function() {
 				}
 			}
 		];
+
+
 		var autocompleteOptionsMobile = [
 			{
 				//source: autocomplete.sources.hits(productIndex, {hitsPerPage: 7}),
@@ -315,7 +323,7 @@ $(document).ready( function() {
 						$('#ddCol2').show()
 						if(answer.nbHits > 4){
 							answer.hits.splice(3,1,{
-								linkHref:'/search?q='+$('#search').val() +
+								linkHref:'/search?q='+$('#searchMobile').val() +
 											(searchDepartment == 'WOMEN' || searchDepartment == 'MEN'?'&category='+renderHelper.decodeDepartment(searchDepartment,LANG):''),
 								more:true,
 								nbHits:answer.nbHits,
@@ -328,6 +336,7 @@ $(document).ready( function() {
 						callback([]);
 					});
 				},
+				name:'3',
 				displayKey: 'name',
 				templates: {
 					suggestion: function(suggestion) {
@@ -355,6 +364,7 @@ $(document).ready( function() {
 						callback([]);
 					});
 				},
+				name:'4',
 				displayKey: 'name',
 				templates: {
 					suggestion: function(suggestion, answer) {
@@ -368,6 +378,8 @@ $(document).ready( function() {
 		];
 		autocomplete('#search', {
 			dropdownMenuContainer: '#containerAC',
+			openOnFocus:true,
+			keyboardShortcuts: ['s', '/'],
 			hint:true,
 			templates: {
 				dropdownMenu: searchDropDown
@@ -379,22 +391,24 @@ $(document).ready( function() {
 			})
 			.on('autocomplete:shown', function(event, suggestion, dataset) {
 				$('#containerHintAC').hide();
-			})
+			});
 
 		autocomplete('#searchMobile', {
 			dropdownMenuContainer: '#mobileContainerAC',
-			hints:true,
+			openOnFocus:true,
+			//hints:true,
 			templates: {
 				dropdownMenu: searchDropDownMobile
 			}
 		},autocompleteOptionsMobile)
-			.on('autocomplete:selected', function(event, suggestion, dataset) {
-				$('#searchMobile').val('');
-				searchBar.blur();
-			})
-			.on('autocomplete:shown', function(event, suggestion, dataset) {
-				$('#mobileContainerHintAC').hide();
-			});
+		.on('autocomplete:selected', function(event, suggestion, dataset) {
+			$('#searchMobile').val('');
+			searchBar.blur();
+		})
+		.on('autocomplete:shown', function(event, suggestion, dataset) {
+			$('#mobileContainerHintAC').hide();
+		});
+
 		switch(searchDepartment){
 			case'WOMEN':
 				if(!$('input[data-search=WOMEN]').is(':checked')){
@@ -411,14 +425,19 @@ $(document).ready( function() {
 					$('input[data-search=ALL]').attr('checked', 'checked')
 				}
 				break;
-		}
-		if(typeof searchPhrase == 'undefined') return null;
-		var searchSelector= $('#search')
+		};
+
+		if(typeof searchPhrase == 'undefined' || typeof selector == 'undefined') return null;
+		var searchSelector= (selector == 'search'?$('#search'):$('#searchMobile'));
 		searchSelector.val(searchPhrase);
 		searchSelector.focus();
 	}
 	function lazy(){
 		$('img.lazy').show().lazyload({effect: "fadeIn", threshold:400}).removeClass("lazy");
+	}
+	function formValidation(){
+		$('#loginForm').validate();
+		$('#signupForm').validate();
 	}
 
 
@@ -453,7 +472,7 @@ $(document).ready( function() {
 	page('/about/*', reload);
 	page(
 		['/login','/signup','/forget','/logout', '/about-us',
-		'/privacy-policy', '/contact-us', '/terms-and-conditions', '/cookie-policy','/how-it-works', '/faq'], reload);
+		'/privacy-policy', '/contact-us', '/terms-and-conditions', '/cookie-policy','/how-it-works', '/faq' , '/forgot'], reload);
 
 	page('/blog', reload);
 	page('/blog/:department', reload);
@@ -1013,7 +1032,7 @@ $(document).ready( function() {
 	 * HORIZONTAL FILTER
 	 * PLUGIN
 	 * ***/
-	mainSection.on('click','.horizontalFilters h5', function(e){
+	mainSection.on('click','.horizontalFilters div[data-select]', function(e){
 		e.stopImmediatePropagation(); e.preventDefault();
 		$('.horizontalFilters .listContainer').removeClass('active');
 		$(this).next('.listContainer').addClass('active');
@@ -1070,7 +1089,11 @@ $(document).ready( function() {
 	});
 	$(document).on('change','input[type=radio][name=optionSearch]',function() {
 		searchDepartment = $(this).val();
-		initiateAC($('#search').val())
+		initiateAC($('#search').val(), 'search')
+	});
+	$(document).on('change','input[type=radio][name=optionSearchMobile]',function() {
+		searchDepartment = $(this).val();
+		initiateAC($('#search').val(), 'searchMobile')
 	});
 	$(document).on( 'click','#containerAC #ddsearchMore', function(){
 		$('#autocompleteForm').submit()
@@ -1287,16 +1310,21 @@ $(document).ready( function() {
 		e.preventDefault();
 		e.stopImmediatePropagation();openFab()
 	});
+	mainSection.on('click','.horizontalFilters div[data-filter-mobile]', function(e){
+		console.log('we reach here');
+		e.preventDefault();
+		e.stopImmediatePropagation();openFab()
+	});
 	$(document).on(eventOnTS,".panel .close",function(e){
 		e.preventDefault();
 		e.stopImmediatePropagation();closeFab()
 	});
-	$(document).on('click',".popout .panel",function(e) {
+	/*$(document).on('click',".popout .panel",function(e) {
 		e.stopImmediatePropagation();
 	});
 	$(document).on('click',".popout .fab",function(e) {
 		e.stopImmediatePropagation();
-	});
+	});*/
 
 	/*
 	 * Tutorial

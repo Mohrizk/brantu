@@ -22,12 +22,12 @@
                 <form id="loginForm" role="form" action="/loginUser" method="post">
                     <div class="input-container">
                         <input type="email"  name="email"  id="loginEmail" required="required"/>
-                        <label for="Email1">Email</label>
+                        <label data-field for="Email1">Email</label>
                         <div class="bar"></div>
                     </div>
                     <div class="input-container">
                         <input type="password" name="password" id="loginPassword" required="required"/>
-                        <label for="Password">Lösenord</label>
+                        <label data-field for="Password">Lösenord</label>
                         <div class="bar"></div>
                     </div>
                     <div id="loginError" class="col-sm-12" style="display: none;">
@@ -52,20 +52,20 @@
             <form id="signupForm"  role="form" action="/signupUser" method="post">
                 <div class="input-container">
                     <input type="email" name="email" id="emailSignUp" required="required"/>
-                    <label for="emailSignUp">Din e-postadress</label>
+                    <label data-field for="emailSignUp">Din e-postadress</label>
                     <div class="bar"></div>
 
                 </div>
 
                 <div class="input-container">
                     <input type="password" name="password" id="passwordSignUp" required="required"/>
-                    <label for="PasswordSignUp">Lösenord</label>
+                    <label data-field for="PasswordSignUp">Lösenord</label>
                     <div class="bar"></div>
                 </div>
 
                 <div class="input-container" style="margin-bottom: 20px;">
                     <input type="password" id="passwordSignUpConfirm" required="required"/>
-                    <label for="passwordSignUpConfirm">Upprepa lösenord</label>
+                    <label data-field for="passwordSignUpConfirm">Upprepa lösenord</label>
                     <div class="bar"></div>
                 </div>
 
@@ -73,7 +73,7 @@
 
                 <div class="input-radio row">
                     <div class="col-xs-12">
-                        <div class="radio radio-primary block text-center" id="genderSelection">
+                        <div class="radio radio-danger block text-center" id="genderSelection">
                             <input type="radio" class="registration"  value="female"  required name="gender" id="femaleRegistrationPopUp" />
                             <label for="femaleRegistrationPopUp"  class="text-velvet bold relative">Kvinna</label>
                             <input type="radio" class="registration"   value="male" required  name="gender" id="maleRegistrationPopUp" />

@@ -95,6 +95,13 @@
 
     }
     @media (max-width: 768px){
+        .text-section{
+            padding-left:150px;
+        }
+        .text-section h1{
+            font-size: 20px;
+            line-height: 24px;
+        }
         #compareClothes .sideBarCarousel.MEN{
             background-image: url('/images/home/men/sidecarousel_cloth_men_mobile.jpg');
         }
@@ -145,42 +152,42 @@
        <div class="inner bg-image {{encodeDepartment selectedDepartment}}">
            <div class=row>
                <div class="col-md-6 col-sm-6 col-xs-12  hidden-xs full-height relative ">
-                   <div class=" col-xs-12 p-t-20  hidden-xs text-section">
-                       <h1 class=" bold  text-black all-caps text-spaced">Handla kläder du gillar. Bara på Bästa Pris.</h1>
-                       <p>
-                           Compare styles to the best
-                           price from all your favourite
-                           fashion stores
-                       </p>
-                   </div>
-                   <div class="padding-1v col-xs-12 text-center visible-xs text-section">
-                       <h4 class="text-spaced all-caps bold text-black all-caps">Jämför <font class="hidden">priser</font> och hitta det bästa priset inom mode.</h4>
-                   </div>
+
                </div>
-               <div class="col-md-6 col-sm-6 col-xs-12  relative full-height  text-center  " >
-                   <a class="" search-link>
-                       <div style="" class="top-left bottom-right" >
-                           <div class="col-xs-12 p-t-20 text-section no-text-overflow">
-                               <h4 class="text-black light all-caps text-spaced hidden-sm hidden-xs">fynda produkter nu! </h4>
-                               <h2 class="text-spaced light visible-sm visible-xs  text-black all-caps">Jämför <font class=" sbold text-purple">priser</font> <br/> inom <font class="sbold">mode.</font></h2>
-                           </div>
-                           <form id="autocompleteForm " class="hidden-xs">
-                               <div class="m-t-100">
-                                   <div class="search-link landing">
-                                       <form id="searchForm">
-                                           <input type="text" placeholder="sök produkt, märke eller kategori "/>
-                                       </form>
-                                   </div>
+               <div class="col-md-6 col-sm-6 col-xs-12  relative full-height " >
+                       <div>
+                           <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 p-t-20  text-section">
+                               <h1 class="text-left bold  text-black all-caps text-spaced">Hitta och jämför kläder du gillar till bästa priset.</h1>
+                               <p class="text-left text-master hidden-xs ">
+                                   Brantu hjälper dig att jämföra och hitta rätt plagg till rätt pris online. Hitta och jämför kläder du gillar till bästa priset från alla stora shoppingsiter.
+                               </p>
+                               <div class="m-t-30">
+                                   <a search-link>
+                                   <button class="btn btn-velvet inline text-velvet bold">
+                                       Fynda nu
+                                   </button>
+                                   </a>
+                                 {{#unless user}}
+                                 <a class="hidden-xs authenticate" data-view="signup">
+                                   <button class="btn btn-info inline  bold "->
+                                       Bli medlem
+                                   </button>
+                                     </a>
+                                     <div class="visible-xs p-xs-t-10 authenticate" data-view="signup">
+                                         <button class="btn btn-info inline  bold "->
+                                             Bli medlem
+                                         </button>
+                                     </div>
+                                 {{/unless}}
                                </div>
 
-                           </form>
+                           </div>
                        </div>
-                   </a>
                </div>
            </div>
        </div>
    </div>
-    <div class="b-b b-grey p-t-20 p-b-20 hidden-xs" style="background: {{#if (compareStrings selectedDepartment 'kvinna')}}rgb(69,37,51){{else}}#3d5c66{{/if}};">
+    <div class="b-b b-grey p-t-20 p-b-20 hidden-xs" style="background: {{#if (compareStrings selectedDepartment 'kvinna')}}#000{{else}}#000{{/if}};">
         <div class="text-center row p-t-5 p-b-5" style="color:#aaa;">
             <div class=" col-xs-3 fs-16  b-r b-grey medium inline p-r-40">
                 <div>
@@ -199,7 +206,7 @@
                                                 </g>
                                                 </svg>
                         </div>
-                        <div class="inline p-l-5 v-align-top p-t-5">Quick Search</div>
+                        <div class="inline p-l-5 v-align-top p-t-5">Snabb sökning</div>
                     </a>
                 </div>
             </div>
@@ -226,7 +233,7 @@
                                         </g>
                                         </svg>
                     </div>
-                    <div class="inline p-l-5 v-align-top p-t-5">Easy Filter</div>
+                    <div class="inline p-l-5 v-align-top p-t-5">Jämför priser</div>
                 </a>
             </div>
             <div class="col-xs-3 fs-16  b-r b-grey medium inline p-r-40">
@@ -251,7 +258,7 @@
                                         </g>
                                         </svg>
                     </div>
-                    <div class="inline p-l-5 v-align-top p-t-5">Compare Products</div>
+                    <div class="inline p-l-5 v-align-top p-t-5">Jämför stilar</div>
                 </a>
             </div>
             <div class="col-xs-3 fs-16  medium inline">
@@ -271,7 +278,7 @@
                                             </g>
                                             </svg>
                     </div>
-                    <div class="inline p-l-5 v-align-top p-t-5">Compare Styles</div>
+                    <div class="inline p-l-5 v-align-top p-t-5">Filtrera dina sökningar</div>
                 </a>
             </div>
         </div>
@@ -297,15 +304,13 @@
                                                 </svg>
 
                         </div>
-                        <h4 class="modal-title all-caps bold text-purple">Quick Search</h4>
+                        <h4 class="modal-title all-caps bold text-purple">Snabb sökning</h4>
                     </div>
                     <div class="modal-body">
                         <div  style="background-image:url('/images/home/quick-search.jpg'); height:400px;" class="full-width bg-image relative">
                             <div class="pull-bottom v-align-middle p-t-10 p-b-10" style="background: rgba(255,255,255,0.7);">
                                 <p class="fs-16 text-center bold">
-                                    We know how hard it can be to go through all stores to find your style to your budget.
-                                    So now when you view a product and we will find you
-                                    similar styles from all over the stores at a lower price
+                                    Vi vet att det kan vara svårt att gå igenom alla shoppingsajterna för att hitta rätt produkter till rätt pris. Vi hjälper dig därför att snabbt hitta och jämföra din stil från alla de stora shoppingsiterna till det bästa priset online.
 
                                 </p>
                             </div>
@@ -345,16 +350,13 @@
                                         </g>
                                         </svg>
                         </div>
-                        <h4 class="modal-title all-caps bold text-purple">Easy Filter</h4>
+                        <h4 class="modal-title all-caps bold text-purple">Filtrera dina sökningar ner till minsta detalj.</h4>
                     </div>
                     <div class="modal-body">
                         <div  style="background-image:url('/images/home/easy-filter.jpg'); height:400px;" class="full-width bg-image">
                             <div class="pull-bottom p-t-10 p-b-10" style="background: rgba(255,255,255,0.7);">
                                 <p class="fs-16 text-center bold">
-                                    We know how hard it can be to go through all stores to find your style to your budget.
-                                    So now when you view a product and we will find you
-                                    similar styles from all over the stores at a lower price
-
+                                    Hos oss kan du filtrera dina sökningar ner till minsta detalj. Oavsett om det är märket, färgen, priset, materialet, storlek eller hur mycket rea produkten ska ha. Vad du än letar efter gör vi din sökning så smidig som möjligt.
                                 </p>
                             </div>
                         </div>
@@ -392,15 +394,13 @@
                                         </g>
                                         </svg>
                         </div>
-                        <h4 class="modal-title all-caps bold text-purple">Compare Product Prices</h4>
+                        <h4 class="modal-title all-caps bold text-purple">Jämför priser för samma produkt</h4>
                     </div>
                     <div class="modal-body">
                         <div  style="background-image:url('/images/home/compare-products.jpg'); height:400px;" class="full-width bg-image">
                             <div class="pull-bottom p-t-10 p-b-10" style="background: rgba(255,255,255,0.7);">
                                 <p class="fs-16 text-center bold">
-                                    We know how hard it can be to go through all stores to find your style to your budget.
-                                    So now when you view a product and we will find you
-                                    similar styles from all over the stores at a lower price
+                                    Brantu erbjuder dig kläder, skor från alla de stora shoppingsiterna och hjälper dig jämföra och hitta ditt favoritplagg till rätt pris online.
                                 </p>
                             </div>
                         </div>
@@ -433,15 +433,13 @@
                                             </g>
                                             </svg>
                         </div>
-                        <h4 class="modal-title all-caps bold">Compare Styles</h4>
+                        <h4 class="modal-title all-caps bold text-purple">Jämför den stilen du gillar till bästa priset</h4>
                     </div>
                     <div class="modal-body">
                         <div  style="background-image:url('/images/home/compare-styles.jpg'); height:400px;" class="full-width bg-image">
                            <div class="pull-bottom p-t-10 p-b-10" style="background: rgba(255,255,255,0.7);">
                                 <p class="fs-16 text-center bold">
-                                    We know how hard it can be to go through all stores to find your style to your budget.
-                                    So now when you view a product and we will find you
-                                    similar styles from all over the stores at a lower price
+                                    Har du intresse kan du ta reda på vad du verkligen gillar, du kan köpa efter din egen smak och få produkten att passa just din kropp. Du kan ha en klar bild över vilka färg- och mönsterkombinationer du inspireras av oavsett om den är från ASOS eller PRADA. Det finns otaliga exempel där avsändaren och priset på kostymen eller de stentvättade jeansen varit viktigare än den faktiska estetiken.
 
                                 </p>
                            </div>
@@ -458,54 +456,362 @@
     <div id="brands" class="m-t-40">
         <div class="autoHeightSwiper">
             <div class="row no-margin special-border  ">
-                <h2 class="section-title">Find by Brands</h2>
-                <div class="swiper-container swiper-general">
+                <h2 class="section-title">Jämför priset på över 5,000 märken.</h2>
+                <div class="swiper-container swiper-general p-b-30">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide b-a b-grey">
-                            <a href="/brand/filippa-k{{#if (compareStrings selectedDepartment 'kvinna')}}/?&category=kvinna{{else}}/?&category=man{{/if}}">
-                            <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
-                                <div class="top-left bottom-right bg-image no-background-image"
-                                     style="background-image: url('/images/brands/filippa-k-logo.jpg'); background-size: 90%;     background-position: 50% 50%;" >
-                                </div>
-                            </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide b-a b-grey">
-                            <a href="/brand/boss-orange{{#if (compareStrings selectedDepartment 'kvinna')}}/?&category=kvinna{{else}}/?&category=man{{/if}}">
-                            <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
-                                <div class="top-left bottom-right bg-image no-background-image "
-                                     style="background-image: url('/images/brands/hugo-boss-logo.svg.png'); background-size: 50%; background-position: 50% 50%;">
-                                </div>
-                            </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide b-a b-grey">
-                            <a href="/brand/tiger-of-sweden{{#if (compareStrings selectedDepartment 'kvinna')}}/?&category=kvinna{{else}}/?&category=man{{/if}}">
-                            <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
-                                <div class="top-left bottom-right bg-image no-background-image "
-                                     style="background-image: url('/images/brands/tiger-of-sweden-logo.jpg'); background-size: 60%; background-position: center;" >
-                                </div>
-                            </div>
+                        {{#if (compareStrings selectedDepartment 'kvinna')}}
+                            <div class="swiper-slide b-a b-grey">
+
+                                <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
+                                    <a href="/brand/filippa-k/?&category=kvinna">
+                                    <div class="top-left bottom-right bg-image no-background-image"
+                                         style="background-image: url('/images/brands/filippa-k-logo.jpg'); background-size: 90%;     background-position: 50% 50%;" >
+                                    </div>
                                 </a>
-                        </div>
-                        <div class="swiper-slide b-a b-grey">
-                            <a href="/brand/tiger-of-sweden{{#if (compareStrings selectedDepartment 'kvinna')}}/?&category=kvinna{{else}}/?&category=man{{/if}}">
-                                <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
-                                    <div class="top-left bottom-right bg-image no-background-image "
-                                         style="background-image: url('/images/brands/tiger-of-sweden-logo.jpg'); background-size: 60%; background-position: center;" >
+                                    <div class="brand-follow">
+                                        {{#if user}}
+                                            {{#if product.brand.isFavored}}
+                                                <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                   data-toggle="tooltip" data-placement="top" title="unfollow Filippa K price drops, discount and coupons"
+                                                   data-favourite="removeBrand"  id="573a3f8cd24a4c02a412d05c" name="Filippa K" key="F14"
+                                                   action="/favourite-brands/remove">
+                                                    <button class="btn btn-tag btn-follow active"  >följer</button>
+                                                </a>
+                                            {{else}}
+                                                <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                   data-toggle="tooltip" data-placement="top" title="follow Filippa K price drops, discount and coupons"
+                                                   data-favourite="addBrand"  id="573a3f8cd24a4c02a412d05c" name="Filippa K" key="F14"
+                                                   action="/favourite-brands/add">
+                                                    <button class="btn btn-tag btn-follow">följ</button>
+                                                </a>
+                                            {{/if}}
+                                        {{else}}
+                                            <a data-view="signup" class="authenticate" data-toggle="top" data-placement="bottom" title="follow Filippa K price drops, discount and coupons">
+                                                <button class="btn btn-tag btn-follow">följ</button>
+                                            </a>
+                                        {{/if}}
                                     </div>
                                 </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide b-a b-grey">
-                            <a href="/brand/tiger-of-sweden{{#if (compareStrings selectedDepartment 'kvinna')}}/?&category=kvinna{{else}}/?&category=man{{/if}}">
+
+                            </div>
+                            <div class="swiper-slide b-a b-grey">
+
                                 <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
+                                    <a href="/brand/by-malene-birger/?&category=kvinna">
                                     <div class="top-left bottom-right bg-image no-background-image "
-                                         style="background-image: url('/images/brands/tiger-of-sweden-logo.jpg'); background-size: 60%; background-position: center;" >
+                                         style="background-image: url('/images/brands/by-malene-birger-logo.jpg'); background-size: 90%; background-position: 50% 50%;">
+
+                                    </div>
+                                    </a>
+                                    <div class="brand-follow">
+                                        {{#if user}}
+                                            {{#if product.brand.isFavored}}
+                                                <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                   data-toggle="tooltip" data-placement="top" title="unfollow By Malene Birger price drops, discount and coupons"
+                                                   data-favourite="removeBrand"  id="573a3f8cd24a4c02a412ce0b" name="By Malene Birger" key="BY1"
+                                                   action="/favourite-brands/remove">
+                                                    <button class="btn btn-tag btn-follow active"  >följer</button>
+                                                </a>
+                                            {{else}}
+                                                <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                   data-toggle="tooltip" data-placement="top" title="follow By Malene Birger price drops, discount and coupons"
+                                                   data-favourite="addBrand"  id="573a3f8cd24a4c02a412ce0b" name="By Malene Birger" key="BY1"
+                                                   action="/favourite-brands/add">
+                                                    <button class="btn btn-tag btn-follow">följ</button>
+                                                </a>
+                                            {{/if}}
+                                        {{else}}
+                                            <a data-view="signup" class="authenticate" data-toggle="top" data-placement="bottom" title="follow By Malene Birger price drops, discount and coupons">
+                                                <button class="btn btn-tag btn-follow">följ</button>
+                                            </a>
+                                        {{/if}}
                                     </div>
                                 </div>
-                            </a>
-                        </div>
+
+                            </div>
+                            <div class="swiper-slide b-a b-grey">
+
+                                <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
+                                    <a href="/brand/tiger-of-sweden/?&category=kvinna">
+                                    <div class="top-left bottom-right bg-image no-background-image "
+                                         style="background-image: url('/images/brands/tiger-of-sweden-logo.jpg'); background-size: 60%; background-position: center;" >
+
+                                    </div>
+                                </a>
+                                    <div class="brand-follow">
+                                        {{#if user}}
+                                            {{#if product.brand.isFavored}}
+                                                <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                   data-toggle="tooltip" data-placement="top" title="unfollow Tiger of Sweden price drops, discount and coupons"
+                                                   data-favourite="removeBrand"  id="575035d8b59cf29ca324aa35" name="Tiger of Sweden" key="TIGE"
+                                                   action="/favourite-brands/remove">
+                                                    <button class="btn btn-tag btn-follow active"  >följer</button>
+                                                </a>
+                                            {{else}}
+                                                <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                   data-toggle="tooltip" data-placement="top" title="follow Tiger of Sweden price drops, discount and coupons"
+                                                   data-favourite="addBrand"  id="575035d8b59cf29ca324aa35" name="Tiger of Sweden" key="TIGE"
+                                                   action="/favourite-brands/add">
+                                                    <button class="btn btn-tag btn-follow">följ</button>
+                                                </a>
+                                            {{/if}}
+                                        {{else}}
+                                            <a data-view="signup" class="authenticate" data-toggle="top" data-placement="bottom" title="follow Tiger of Sweden price drops, discount and coupons">
+                                                <button class="btn btn-tag btn-follow">följ</button>
+                                            </a>
+                                        {{/if}}
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="swiper-slide b-a b-grey">
+
+                                    <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
+                                        <a href="/brand/michael-michael-kors/?&category=kvinna">
+                                        <div class="top-left bottom-right bg-image no-background-image "
+                                             style="background-image: url('/images/brands/michael-michael-kors.jpg'); background-size: 60%; background-position: center;" >
+
+                                        </div>
+                                        </a>
+                                            <div class="brand-follow">
+                                                {{#if user}}
+                                                    {{#if product.brand.isFavored}}
+                                                        <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                           data-toggle="tooltip" data-placement="top" title="unfollow MICHAEL Michael Kors price drops, discount and coupons"
+                                                           data-favourite="removeBrand"  id="573a3f8cd24a4c02a412cfe1" name="MICHAEL Michael Kors" key="MK1"
+                                                           action="/favourite-brands/remove">
+                                                            <button class="btn btn-tag btn-follow active"  >följer</button>
+                                                        </a>
+                                                    {{else}}
+                                                        <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                           data-toggle="tooltip" data-placement="top" title="follow MICHAEL Michael Kors price drops, discount and coupons"
+                                                           data-favourite="addBrand"  id="573a3f8cd24a4c02a412cfe1" name="MICHAEL Michael Kors" key="MK1"
+                                                           action="/favourite-brands/add">
+                                                            <button class="btn btn-tag btn-follow">följ</button>
+                                                        </a>
+                                                    {{/if}}
+                                                {{else}}
+                                                    <a data-view="signup" class="authenticate" data-toggle="top" data-placement="bottom" title="follow MICHAEL Michael Kors price drops, discount and coupons">
+                                                        <button class="btn btn-tag btn-follow">följ</button>
+                                                    </a>
+                                                {{/if}}
+                                            </div>
+                                    </div>
+
+                            </div>
+                            <div class="swiper-slide b-a b-grey">
+
+                                    <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1">
+                                        <a href="/brand/dagmar/?&category=kvinna">
+                                        <div class="top-left bottom-right bg-image no-background-image "
+                                             style="background-image: url('/images/brands/dagmar-logo.png'); background-size: 60%; background-position: center;" >
+
+                                        </div>
+                                        </a>
+                                        <div class="brand-follow">
+                                            {{#if user}}
+                                                {{#if product.brand.isFavored}}
+                                                    <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                       data-toggle="tooltip" data-placement="top" title="unfollow Dagmar price drops, discount and coupons"
+                                                       data-favourite="removeBrand"  id="573a3f8cd24a4c02a412d0f3" name="Dagmar" key="DG2"
+                                                       action="/favourite-brands/remove">
+                                                        <button class="btn btn-tag btn-follow active"  >följer</button>
+                                                    </a>
+                                                {{else}}
+                                                    <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                       data-toggle="tooltip" data-placement="top" title="follow Dagmar price drops, discount and coupons"
+                                                       data-favourite="addBrand"  id="573a3f8cd24a4c02a412d0f3" name="Dagmar" key="DG2"
+                                                       action="/favourite-brands/add">
+                                                        <button class="btn btn-tag btn-follow">följ</button>
+                                                    </a>
+                                                {{/if}}
+                                            {{else}}
+                                                <a data-view="signup" class="authenticate" data-toggle="top" data-placement="bottom" title="follow Dagmar price drops, discount and coupons">
+                                                    <button class="btn btn-tag btn-follow">följ</button>
+                                                </a>
+                                            {{/if}}
+                                        </div>
+                                    </div>
+
+
+                            </div>
+                        {{else}}
+                            <div class="swiper-slide b-a b-grey">
+                                    <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
+                                        <a href="/brand/tiger-of-sweden/?&category=man">
+                                            <div class="top-left bottom-right bg-image no-background-image "
+                                                 style="background-image: url('/images/brands/tiger-of-sweden-logo.jpg'); background-size: 60%; background-position: center;" >
+
+                                            </div>
+                                        </a>
+                                        <div class="brand-follow">
+                                            {{#if user}}
+                                                {{#if product.brand.isFavored}}
+                                                    <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                       data-toggle="tooltip" data-placement="top" title="unfollow Tiger of Sweden price drops, discount and coupons"
+                                                       data-favourite="removeBrand"  id="575035d8b59cf29ca324aa35" name="Tiger of Sweden" key="TIGE"
+                                                       action="/favourite-brands/remove">
+                                                        <button class="btn btn-tag btn-follow active"  >följer</button>
+                                                    </a>
+                                                {{else}}
+                                                    <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                       data-toggle="tooltip" data-placement="top" title="follow Tiger of Sweden price drops, discount and coupons"
+                                                       data-favourite="addBrand"  id="575035d8b59cf29ca324aa35" name="Tiger of Sweden" key="TIGE"
+                                                       action="/favourite-brands/add">
+                                                        <button class="btn btn-tag btn-follow">följ</button>
+                                                    </a>
+                                                {{/if}}
+                                            {{else}}
+                                                <a data-view="signup" class="authenticate" data-toggle="top" data-placement="bottom" title="follow Tiger of Sweden price drops, discount and coupons">
+                                                    <button class="btn btn-tag btn-follow">följ</button>
+                                                </a>
+                                            {{/if}}
+                                        </div>
+                                    </div>
+
+                            </div>
+                            <div class="swiper-slide b-a b-grey">
+
+                                    <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
+                                        <a href="/brand/adidas-originals/?&category=man">
+                                            <div class="top-left bottom-right bg-image no-background-image"
+                                                 style="background-image: url('/images/brands/adidas-originals-1.jpg'); background-size: 30%;     background-position: 50% 50%;" >
+
+                                            </div>
+                                        </a>
+                                        <div class="brand-follow">
+                                            {{#if user}}
+                                                {{#if product.brand.isFavored}}
+                                                    <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                       data-toggle="tooltip" data-placement="top" title="unfollow adidas Originals price drops, discount and coupons"
+                                                       data-favourite="removeBrand"  id="573a3f8cd24a4c02a412d026" name="adidas Originals" key="AD1"
+                                                       action="/favourite-brands/remove">
+                                                        <button class="btn btn-tag btn-follow active"  >följer</button>
+                                                    </a>
+                                                {{else}}
+                                                    <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                       data-toggle="tooltip" data-placement="top" title="follow adidas Originals price drops, discount and coupons"
+                                                       data-favourite="addBrand"  id="573a3f8cd24a4c02a412d026" name="adidas Originals" key="AD1"
+                                                       action="/favourite-brands/add">
+                                                        <button class="btn btn-tag btn-follow">följ</button>
+                                                    </a>
+                                                {{/if}}
+                                            {{else}}
+                                                <a data-view="signup" class="authenticate" data-toggle="top" data-placement="bottom" title="follow adidas Originals price drops, discount and coupons">
+                                                    <button class="btn btn-tag btn-follow">följ</button>
+                                                </a>
+                                            {{/if}}
+                                        </div>
+
+                                    </div>
+
+                            </div>
+                            <div class="swiper-slide b-a b-grey">
+
+                                    <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
+                                        <a href="/brand/boss-orange/?&category=man">
+                                        <div class="top-left bottom-right bg-image no-background-image "
+                                             style="background-image: url('/images/brands/hugo-boss-logo.svg.png'); background-size: 50%; background-position: 50% 50%;">
+                                        </div>
+                                        </a>
+                                        <div class="brand-follow">
+                                            {{#if user}}
+                                                {{#if product.brand.isFavored}}
+                                                    <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                       data-toggle="tooltip" data-placement="top" title="unfollow BOSS Orange price drops, discount and coupons"
+                                                       data-favourite="removeBrand"  id="573a3f8cd24a4c02a412cf5d" name="BOSS Orange" key="BO1"
+                                                       action="/favourite-brands/remove">
+                                                        <button class="btn btn-tag btn-follow active"  >följer</button>
+                                                    </a>
+                                                {{else}}
+                                                    <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                       data-toggle="tooltip" data-placement="top" title="follow BOSS Orange price drops, discount and coupons"
+                                                       data-favourite="addBrand"  id="573a3f8cd24a4c02a412cf5d" name="BOSS Orange" key="BO1"
+                                                       action="/favourite-brands/add">
+                                                        <button class="btn btn-tag btn-follow">följ</button>
+                                                    </a>
+                                                {{/if}}
+                                            {{else}}
+                                                <a data-view="signup" class="authenticate" data-toggle="top" data-placement="bottom" title="follow BOSS Orange price drops, discount and coupons">
+                                                    <button class="btn btn-tag btn-follow">följ</button>
+                                                </a>
+                                            {{/if}}
+                                        </div>
+                                    </div>
+
+                            </div>
+                            <div class="swiper-slide b-a b-grey">
+
+                                    <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
+                                        <a href="/brand/daniel-wellington/?&category=man">
+                                        <div class="top-left bottom-right bg-image no-background-image "
+                                             style="background-image: url('/images/brands/daniel-wellington-logo.png'); background-size: 60%; background-position: center;" >
+
+                                        </div>
+                                        </a>
+                                        <div class="brand-follow">
+                                            {{#if user}}
+                                                {{#if product.brand.isFavored}}
+                                                    <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                       data-toggle="tooltip" data-placement="top" title="unfollow Daniel Wellington price drops, discount and coupons"
+                                                       data-favourite="removeBrand"  id="573a3f8cd24a4c02a412d00a" name="Daniel Wellington" key="DW2"
+                                                       action="/favourite-brands/remove">
+                                                        <button class="btn btn-tag btn-follow active"  >följer</button>
+                                                    </a>
+                                                {{else}}
+                                                    <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                       data-toggle="tooltip" data-placement="top" title="follow Daniel Wellington price drops, discount and coupons"
+                                                       data-favourite="addBrand"  id="573a3f8cd24a4c02a412d00a" name="Daniel Wellington" key="DW2"
+                                                       action="/favourite-brands/add">
+                                                        <button class="btn btn-tag btn-follow">följ</button>
+                                                    </a>
+                                                {{/if}}
+                                            {{else}}
+                                                <a data-view="signup" class="authenticate" data-toggle="top" data-placement="bottom" title="follow {Daniel Wellington price drops, discount and coupons">
+                                                    <button class="btn btn-tag btn-follow">följ</button>
+                                                </a>
+                                            {{/if}}
+                                        </div>
+                                    </div>
+
+
+                            </div>
+                            <div class="swiper-slide b-a b-grey">
+                                    <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
+                                        <a href="/brand/polo-ralph-lauren/?&category=man">
+                                        <div class="top-left bottom-right bg-image no-background-image "
+                                             style="background-image: url('https://i1.ztat.net/brandxl/po2.jpg'); background-size: 60%; background-position: center;" >
+
+                                        </div>
+                                        </a>
+                                        <div class="brand-follow">
+                                            {{#if user}}
+                                                {{#if product.brand.isFavored}}
+                                                    <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                       data-toggle="tooltip" data-placement="top" title="unfollow Polo Ralph Lauren price drops, discount and coupons"
+                                                       data-favourite="removeBrand"  id="573a3f8cd24a4c02a412cfdf" name="Polo Ralph Lauren" key="PO2"
+                                                       action="/favourite-brands/remove">
+                                                        <button class="btn btn-tag btn-follow active"  >följer</button>
+                                                    </a>
+                                                {{else}}
+                                                    <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                       data-toggle="tooltip" data-placement="top" title="follow Polo Ralph Lauren price drops, discount and coupons"
+                                                       data-favourite="addBrand"  id="573a3f8cd24a4c02a412cfdf" name="Polo Ralph Lauren" key="PO2"
+                                                       action="/favourite-brands/add">
+                                                        <button class="btn btn-tag btn-follow">följ</button>
+                                                    </a>
+                                                {{/if}}
+                                            {{else}}
+                                                <a data-view="signup" class="authenticate" data-toggle="top" data-placement="bottom" title="follow Polo Ralph Lauren price drops, discount and coupons">
+                                                    <button class="btn btn-tag btn-follow">följ</button>
+                                                </a>
+                                            {{/if}}
+                                        </div>
+                                    </div>
+
+                            </div>
+
+                        {{/if}}
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -517,7 +823,7 @@
 
    <div id="categories"  class="m-t-60">
        <div>
-           <h2 class="section-title">Find by categories</h2>
+           <h2 class="section-title">Jämför priset på över 100,0000 produkter.</h2>
           <div class="row no-margin   ">
               <div class="col-sm-4 col-xs-12 special-border-side b-thick b-grey">
                   <a href="/{{selectedDepartment}}/kläder/jackor/">
@@ -530,7 +836,7 @@
                   <div class="col-xs-4 text-left p-t-50  p-l-20 p-b-30 no-overflow-text">
                       <h6 class="bold  no-margin no-padding "> Jämfor priser för</h6>
                       <h4 class="no-margin no-padding all-caps">Jackor</h4>
-                      <a class="bold ">Fynda nu</a>
+
                   </div>
                   </a>
               </div>
@@ -545,14 +851,14 @@
                   </div>
                   <div class="col-xs-4 text-left p-t-50 p-l-20 p-b-30 no-overflow-text">
                       <h6 class="bold text-left no-margin no-padding "> Jämfor priser för</h6>
-                      <h4 class="text-left no-margin no-padding all-caps">Sneakers</h4>
-                      <a class="bold">Fynda nu</a>
+                      <h4 class="text-left no-margin no-padding all-caps">Skor</h4>
+
                   </div>
                   </a>
               </div>
 
               <div class="col-sm-4 col-xs-12special-border-side b-thick b-grey no-overflow-text">
-                  <a href="/{{selectedDepartment}}/accessoarer/väskor/">
+                  <a href="/{{selectedDepartment}}/accessoarer/{{#if (compareStrings selectedDepartment 'kvinna')}}väskor{{else}}solglasögon{{/if}}/">
                   <div class="col-xs-8 no-padding">
                       <div class="gallery-item no-margin bg-white b-a b-grey" data-flex-width="1" data-flex-height="1" >
                           <div class="top-left bottom-right bg-image no-background-image  {{encodeDepartment selectedDepartment}}" data-hover id="compareBoxAccessory">
@@ -561,8 +867,8 @@
                   </div>
                   <div class="col-xs-4 text-left p-t-50  p-l-20 p-b-30 ">
                       <h6 class="bold text-left no-margin no-padding "> Jämfor priser för</h6>
-                      <h4 class="text-left no-margin no-padding all-caps">väskor</h4>
-                      <a class="bold">Fynda nu</a>
+                      <h4 class="text-left no-margin no-padding all-caps">{{#if (compareStrings selectedDepartment 'kvinna')}}väskor{{else}}solgla-<br/>sögon{{/if}}</h4>
+
                   </div>
                   </a>
               </div>
@@ -570,81 +876,9 @@
        </div>
    </div>
 
-   <div id="popularCompareCloth" class="hidden special-border container-fluid no-padding">
-       {{#if compareClothes}}
-           <div class="bg-master-light row" id="compareClothes">
-               <div class=" col-md-4 col-sm-4 col-xs-12 special-border-side v-align-top  col-sm-height bg-image no-background-image sideBarCarousel {{encodeDepartment selectedDepartment}}">
-                   <div>
-                           <div class="full-width" >
-                               <div class="m-xs-b-10 padding-xs-5">
-                                   <div class="">
-                                       <div class="text-section">
-                                           <h2 class="text-spaced light all-caps ">Jämför <font class="sbold text-white">priser</font> <br/> för samma <font class="sbold text-white">produkt.</font></h2>
-
-                                           <h5 class="">Hitta bästa priset för <br/>kläder, skor och mycket mer! </h5>
-                                       </div>
-                                   </div>
-                                   <div class=" ">
-                                       <div class="m-t-10 "><a href="/{{selectedDepartment}}/kläder/?compare=true"><button class="btn fs-16 btn-velvet sbold"> Fynda nu</button></a></div>
-                                   </div>
-                               </div>
-                           </div>
-                   </div>
-               </div>
-               <div class="col-md-8 col-sm-height col-xs-12 col-sm-12 special-border-side hidden-xs bg-white">
-                   <div class="relative ">
-                       <div class=" no-style text-center v-align-bottom p-t-40" >
-                           {{#each compareClothes}}
-                               <div class="col-xs-6 col-sm-4 m-b-50 no-border">
-                                   <div class="mainCompareCarousel gallery-item  bg-white text-center no-overflow" data-flex-width="1" data-height="0">
-                                       <a  href="{{this.productUrl}}"  rel="nofollow"  target="_blank">
-                                           <div class=" relative auto-width">
-                                               <img class="lazy"  data-original="{{{this.mainPicture.largeUrl}}}"/>
-                                               <div class="overlayer bottom-left hidden-xs full-width">
-                                                   <div class="overlayer-wrapper item-info deep-content ">
-                                                       <div class="gradient-white p-l-20 p-r-20 p-t-5 p-b-5">
-                                                           <a  href="{{this.productUrl}}" rel="nofollow" target="_blank">
-                                                               <p class="text-center text-black lh-10  no-margin bold">{{this.brand.name}}
-                                                                   <span class="" style="font-size: 12px;">
-                                                                       <i><img src="/images/nav/compare.png" style="width:20px; height: auto;"></i>
-                                                                       Spara <font class="sbold ">{{this.saving}} %</font>
-                                                                   </span>
-                                                               </p>
-                                                           </a>
-                                                           <div class="p-t-15">
-                                                               <a target="_blank" href="{{this.productUrl}}" rel="nofollow">
-                                                                   <button class="btn btn-info sbold fs-12"> Go to shop</button>
-                                                               </a>
-                                                               <div class="m-t-5">
-                                                                   <a class="light sbold text-black fs-13" href="/bästa-pris-för/{{{urlFriendly this.name}}}-{{this._id}}">
-                                                                       <i class="pg-italic"></i>More information
-                                                                   </a>
-                                                               </div>
-
-                                                           </div>
-                                                       </div>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </a>
-                                       <div class="text-center visible-xs p-t-10">
-                                           <a class="dark sbold fs-10 " href="/bästa-pris-för/{{{urlFriendly this.name}}}-{{this._id}}">
-                                               <i class="pg-italic"></i>More information
-                                           </a>
-                                       </div>
-                                   </div>
-
-                               </div>
-                           {{/each}}
-                       </div>
-                   </div>
-               </div>
-           </div>
-       {{/if}}
-   </div>
 
    <div class="container-fluid no-padding m-t-100">
-       <h2 class="section-title"> Find Trends at the best price</h2>
+       <h2 class="section-title"> SENASTE STILEN TILL BÄSTA PRISET</h2>
         <div class="row m-xs-t-30" >
             <div class="col-md-8 col-xs-12 col-sm-12 no-padding">
                 <div>
@@ -706,7 +940,7 @@
                 </div>
                 <div class="m-t-30 p-t-20 p-b-20 hidden-xs b-a b-grey">
                     <h4 class=" title-borders all-caps m-b-20 gold">
-                        <span class="sbold"> How Brantu works</span>
+                        <span class="sbold"> Hur fungerar Brantu</span>
                     </h4>
                     <ul class="no-style text-left p-l-60">
                         <li class="fs-16 bold ">
@@ -727,7 +961,7 @@
                                     </g>
                                     </svg>
                                 </div>
-                                <div class="inline p-l-20 v-align-top p-t-5">Quick Search</div>
+                                <div class="inline p-l-20 v-align-top p-t-5">Snabb sökning</div>
                             </div>
                         </li>
 
@@ -755,7 +989,7 @@
                             </g>
                             </svg>
                             </div>
-                            <div class="inline p-l-20 v-align-top p-t-5">Easy Filter</div>
+                            <div class="inline p-l-20 v-align-top p-t-5">Filtrera dina sökningar</div>
 
                         </li >
 
@@ -782,7 +1016,7 @@
                             </g>
                             </svg>
                             </div>
-                            <div class="inline p-l-20 v-align-top p-t-5">Compare Products</div>
+                            <div class="inline p-l-20 v-align-top p-t-5">Jämför priser</div>
                         </li >
 
                         <li class="fs-16 bold p-t-20">
@@ -803,7 +1037,7 @@
                                 </g>
                                 </svg>
                             </div>
-                            <div class="inline p-l-20 v-align-top p-t-5">Compare Styles</div>
+                            <div class="inline p-l-20 v-align-top p-t-5">Jämför stilar</div>
                         </li>
                     </ul>
 

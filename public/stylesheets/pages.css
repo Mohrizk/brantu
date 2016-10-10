@@ -590,24 +590,7 @@ top:14%; left:7px;
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
 }
-.page-sidebar a,
-.page-sidebar button {
-  color: #ffffff;
-}
-.page-sidebar a:hover,
-.page-sidebar button:hover,
-.page-sidebar a:active,
-.page-sidebar button:active {
-  color: #ffffff;
-}
-.page-sidebar a:visited,
-.page-sidebar button:visited,
-.page-sidebar a:focus,
-.page-sidebar button:focus {
-  color: #ffffff;
 
- /*color: #788195;*/
-}
 .page-sidebar .scroll-element {
   visibility: hidden;
 }
@@ -3883,13 +3866,13 @@ Rounded buttons
   font-size: 14px;
   text-transform: capatilize;
   margin: 0;
-  background: rgba(54, 48, 64, 0.87);
+  background: rgba(0, 0, 0, 0.87);
 
   min-width: 200px;
-  z-index: 790 !important;
+  z-index: 1000 !important;
 }
 .dropdown-menu .divider {
-  background-color: #e6e6e6;
+  background-color: #9E8130;
   height: 1px;
   margin: 3px 0;
   border-bottom: 0px;
@@ -7809,6 +7792,12 @@ div.cs-skin-slide .cs-options ul li.cs-selected span {
 */
 .table {
   margin-top: 5px;
+}
+
+
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
+  border: none !important;
 }
 
 .table > thead > tr > th:nth-child(1),
@@ -13289,7 +13278,28 @@ Main components
     line-height: 48px;
   }
   .panel .panel-heading {
-    padding-left: 15px;
+    padding-left: 0px;
+  }
+  .panel-group .panel-heading .panel-title > a{
+    padding-left:28px;
+  }
+  .table tbody tr td{
+    padding:13px 8px 0 0 !important;
+  }
+  .table tbody tr td:nth-child(1){
+    padding:10px 5px 5px 5px  !important;
+  }
+
+  .table.table-condensed.table-detailed > tbody > tr > td:first-child:before{
+    margin-right:3px;
+  }
+
+  .panel-group .panel-heading .panel-title > a:before {
+    left:4px;
+  }
+  .panel-group .panel-heading .panel-title > a.collapsed:before{
+     left: 4px;
+
   }
   .panel .panel-body {
     padding: 15px;

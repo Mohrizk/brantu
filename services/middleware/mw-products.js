@@ -1,4 +1,5 @@
 var Products  = require('../models/product');
+var Products  = require('../models/product');
 var Brands  = require('../models/brand');
 var Categories  = require('../models/category');
 var Article  = require('../models/article');
@@ -443,6 +444,6 @@ var helper = {
         //for(var x in products) console.log(products[x]._id, products[x].levenshtein)
         return products;
     }
-}
+};
 
 module.exports = operations;

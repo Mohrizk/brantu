@@ -237,10 +237,12 @@
                           <div class="col-sm-3 col-xs-6">
                               <div class="brands refinement \{{#unless brands.content}} disabled \{{/unless}}  " >
                                   <div class="">
-                                      <h5 class="text-center all-caps bold">
-                                          \{{brands.header}}
-                                          <span><i class="pg-arrow_minimize"></i></span>
-                                      </h5>
+                                      <div data-select>
+                                          <h5 class="text-center all-caps bold" data-select>
+                                              \{{brands.header}}
+                                              <span><i class="pg-arrow_minimize"></i></span>
+                                          </h5>
+                                      </div>
                                       \{{#if brands.content}}
                                       <div class="listContainer">
                                           <input type="text"/>
@@ -264,10 +266,12 @@
                           <div class="col-sm-3 hidden-xs col-xs-6">
                               <div class="discounts refinement \{{#unless discounts.content}} disabled \{{/unless}}">
                                   <div class="">
-                                      <h5 class="text-center all-caps bold">
-                                          \{{discounts.header}}
-                                          <span><i class="pg-arrow_minimize"></i></span>
-                                      </h5>
+                                      <div data-select>
+                                          <h5 class="text-center all-caps bold" data-select>
+                                              \{{discounts.header}}
+                                              <span><i class="pg-arrow_minimize"></i></span>
+                                          </h5>
+                                      </div>
                                       \{{#if discounts.content}}
                                       <div class="listContainer">
                                           <input type="text"/>
@@ -289,10 +293,12 @@
                           <div class="col-sm-3 hidden-xs col-xs-6">
                               <div class="shops refinement \{{#unless shops.content}} disabled \{{/unless}}" >
                                   <div class="">
-                                      <h5 class="text-center all-caps bold">
-                                         \{{shops.header}}
-                                          <span><i class="pg-arrow_minimize"></i></span>
-                                      </h5>
+                                      <div data-select>
+                                          <h5 class="text-center all-caps bold" data-select>
+                                             \{{shops.header}}
+                                              <span><i class="pg-arrow_minimize"></i></span>
+                                          </h5>
+                                      </div>
                                       \{{#if shops.content}}
                                         <div class="listContainer">
                                           <input type="text"/>
@@ -315,15 +321,17 @@
                           <div class="col-sm-3 col-xs-6">
                               <div class="sort refinement" >
                                   <div class="">
-                                      <h5 class="text-center all-caps bold">
-                                          <font class="hidden-xs">\{{sort.header}}</font>
-                                          \{{#each sort.content}}
-                                          \{{#if this.isRefined}}
-                                           <small class="bold text-purple">\{{this.name}}</small>
-                                          \{{/if}}
-                                          \{{/each}}
-                                          <span><i class="pg-arrow_minimize"></i></span>
-                                      </h5>
+                                      <div data-select>
+                                          <h5 class="text-center all-caps bold" >
+                                              <font class="hidden-xs hidden-sm hidden-md">\{{sort.header}}</font>
+                                              \{{#each sort.content}}
+                                              \{{#if this.isRefined}}
+                                               <small class="bold text-purple">\{{this.name}}</small>
+                                              \{{/if}}
+                                              \{{/each}}
+                                              <span><i class="pg-arrow_minimize"></i></span>
+                                          </h5>
+                                      </div>
                                       <div class="listContainer">
                                           <ul class="list">
                                               \{{#each sort.content}}
@@ -342,9 +350,9 @@
 
 
                           <div class="col-sm-3 col-xs-12 visible-xs">
-                              <div class="filters" >
-                                  <div class="">
-                                      <h5 class="text-center all-caps bold">
+                              <div class="filters"  >
+                                  <div class="" data-filter-mobile>
+                                      <h5 class="text-center all-caps bold" data-filter-popup>
                                           mer filter
                                           <span><i class="pg-arrow_minimize"></i></span>
                                       </h5>
@@ -533,7 +541,7 @@
         <div class="popout visible-sm visible-xs">
         <div class="fab \{{#if isFab}}  active \{{/if}}">
             <i class="icon ion-ios-glasses"></i>
-            </div>
+        </div>
         <div class="panel  \{{#if isFab}} active \{{/if}}">
             <div class="panel-header">
                 <h3>Filter <span class="pull-right close p-t-5"> <i class="pg-close_line" style="font-size: 25px;"></i></span></h3>
