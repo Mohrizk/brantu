@@ -5,177 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="319a9c44-cb0a-494b-a470-9e86d210bc29" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/additional-methods.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/additional-methods.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/jquery.validate.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/jquery.validate.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_ar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_ar.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_bg.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_bg.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_ca.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_ca.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_cs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_cs.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_da.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_da.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_de.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_de.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_el.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_el.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_es.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_es.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_es_AR.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_es_AR.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_et.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_et.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_eu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_eu.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_fa.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_fa.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_fi.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_fi.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_fr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_fr.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_gl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_gl.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_he.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_he.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_hr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_hr.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_hu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_hu.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_id.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_id.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_is.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_is.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_it.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_it.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_ja.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_ja.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_ka.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_ka.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_kk.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_kk.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_ko.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_ko.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_lt.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_lt.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_lv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_lv.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_my.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_my.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_nl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_nl.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_no.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_no.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_pl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_pl.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_pt_BR.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_pt_BR.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_pt_PT.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_pt_PT.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_ro.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_ro.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_ru.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_ru.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_si.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_si.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_sk.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_sk.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_sl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_sl.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_sr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_sr.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_sr_lat.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_sr_lat.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_sv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_sv.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_th.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_th.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_tj.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_tj.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_tr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_tr.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_uk.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_uk.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_vi.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_vi.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_zh.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_zh.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_zh_TW.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/messages_zh_TW.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/methods_de.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/methods_de.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/methods_es_CL.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/methods_es_CL.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/methods_fi.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/methods_fi.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/methods_nl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/methods_nl.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/methods_pt.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/plugins/jquery-validation/js/localization/methods_pt.min.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/loading.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/loading.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/loading2.gif" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/images/home/home_women.jpg" afterPath="$PROJECT_DIR$/public/dist/images/home/home_women.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/images/home/men/jumbtron.jpg" afterPath="$PROJECT_DIR$/public/dist/images/home/men/jumbtron.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/images/home/men/samestyle.jpg" afterPath="$PROJECT_DIR$/public/dist/images/home/men/samestyle.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/images/home/women/jumbotron.jpg" afterPath="$PROJECT_DIR$/public/dist/images/home/women/jumbotron.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/images/nav/about.png" afterPath="$PROJECT_DIR$/public/dist/images/nav/about.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/images/nav/contact.png" afterPath="$PROJECT_DIR$/public/dist/images/nav/contact.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/images/nav/favourite.png" afterPath="$PROJECT_DIR$/public/dist/images/nav/favourite.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/images/nav/logout.png" afterPath="$PROJECT_DIR$/public/dist/images/nav/logout.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/images/nav/settings.png" afterPath="$PROJECT_DIR$/public/dist/images/nav/settings.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/home/men/jumbtron.jpg" afterPath="$PROJECT_DIR$/public/images/home/men/jumbtron.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/home/women/jumbotron.jpg" afterPath="$PROJECT_DIR$/public/images/home/women/jumbotron.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/nav/about.png" afterPath="$PROJECT_DIR$/public/images/nav/about.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/nav/contact.png" afterPath="$PROJECT_DIR$/public/images/nav/contact.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/nav/favourite.png" afterPath="$PROJECT_DIR$/public/images/nav/favourite.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/nav/login.png" afterPath="$PROJECT_DIR$/public/images/nav/login.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/nav/logout.png" afterPath="$PROJECT_DIR$/public/images/nav/logout.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/nav/settings.png" afterPath="$PROJECT_DIR$/public/images/nav/settings.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/nav/signup.png" afterPath="$PROJECT_DIR$/public/images/nav/signup.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/images/icons/Bag.svg" afterPath="$PROJECT_DIR$/public/dist/images/icons/Bag.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/images/icons/Error.svg" afterPath="$PROJECT_DIR$/public/dist/images/icons/Error.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/images/icons/Search.svg" afterPath="$PROJECT_DIR$/public/dist/images/icons/Search.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/images/logo.svg" afterPath="$PROJECT_DIR$/public/dist/images/logo.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/images/progress/progress-circle-danger.svg" afterPath="$PROJECT_DIR$/public/dist/images/progress/progress-circle-danger.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/scripts.js" afterPath="$PROJECT_DIR$/public/dist/scripts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/scripts.min.js" afterPath="$PROJECT_DIR$/public/dist/scripts.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/style.css" afterPath="$PROJECT_DIR$/public/dist/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/style.min.css" afterPath="$PROJECT_DIR$/public/dist/style.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/helper.js" afterPath="$PROJECT_DIR$/public/javascripts/helper.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/navbar.js" afterPath="$PROJECT_DIR$/public/javascripts/navbar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/other/brandList.js" afterPath="$PROJECT_DIR$/public/javascripts/other/brandList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/script.js" afterPath="$PROJECT_DIR$/public/javascripts/script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/generic.css" afterPath="$PROJECT_DIR$/public/stylesheets/generic.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/pages.css" afterPath="$PROJECT_DIR$/public/stylesheets/pages.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/register.css" afterPath="$PROJECT_DIR$/public/stylesheets/register.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/api.js" afterPath="$PROJECT_DIR$/routes/api.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/user.js" afterPath="$PROJECT_DIR$/routes/user.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/middleware/mw-products.js" afterPath="$PROJECT_DIR$/services/middleware/mw-products.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/middleware/mw-users.js" afterPath="$PROJECT_DIR$/services/middleware/mw-users.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/features.hbs" afterPath="$PROJECT_DIR$/views/features.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layouts/no-nav-no-footer.hbs" afterPath="$PROJECT_DIR$/views/layouts/no-nav-no-footer.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layouts/single.hbs" afterPath="$PROJECT_DIR$/views/layouts/single.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/home/department.hbs" afterPath="$PROJECT_DIR$/views/partials/home/department.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/home/home.hbs" afterPath="$PROJECT_DIR$/views/partials/home/home.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/information/how-it-works.hbs" afterPath="$PROJECT_DIR$/views/partials/information/how-it-works.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/nav/nav.hbs" afterPath="$PROJECT_DIR$/views/partials/nav/nav.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/nav/side-menu.hbs" afterPath="$PROJECT_DIR$/views/partials/nav/side-menu.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/product/productNavigation_Back.hbs" afterPath="$PROJECT_DIR$/views/partials/product/productNavigation_Back.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/product/productView_Back.hbs" afterPath="$PROJECT_DIR$/views/partials/product/productView_Back.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/register2.hbs" afterPath="$PROJECT_DIR$/views/partials/register2.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/settings/settings-brands.hbs" afterPath="$PROJECT_DIR$/views/partials/settings/settings-brands.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/settings.hbs" afterPath="$PROJECT_DIR$/views/settings.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/shared-templates/productNavigation.hbs" afterPath="$PROJECT_DIR$/views/shared-templates/productNavigation.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/shared-templates/productRelated.hbs" afterPath="$PROJECT_DIR$/views/shared-templates/productRelated.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/shared-templates/productView.hbs" afterPath="$PROJECT_DIR$/views/shared-templates/productView.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/shared-templates/searchDropDown.hbs" afterPath="$PROJECT_DIR$/views/shared-templates/searchDropDown.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/shared-templates/searchDropDownMobile.hbs" afterPath="$PROJECT_DIR$/views/shared-templates/searchDropDownMobile.hbs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/middleware/mw-categories.js" afterPath="$PROJECT_DIR$/services/middleware/mw-categories.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/head.hbs" afterPath="$PROJECT_DIR$/views/partials/head.hbs" />
     </list>
     <ignored path="brantu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -302,11 +133,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="no-nav-no-footer.hbs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="no-nav-no-footer.hbs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/layouts/no-nav-no-footer.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.49452055">
+            <state vertical-scroll-proportion="-13.37037">
               <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mw-categories.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/services/middleware/mw-categories.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="150" column="18" selection-start-line="150" selection-start-column="18" selection-end-line="150" selection-end-column="18" />
+              <folding>
+                <element signature="e#6945#7239#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="footer.hbs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/partials/footer.hbs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.9630157">
+              <caret line="26" column="89" selection-start-line="26" selection-start-column="87" selection-end-line="26" selection-end-column="89" />
               <folding />
             </state>
           </provider>
@@ -322,41 +175,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nodemon.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nodemon.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-7.2972975">
               <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="searchDropDown.hbs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/shared-templates/searchDropDown.hbs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.6086957">
-              <caret line="4" column="67" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="67" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="searchDropDownMobile.hbs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/shared-templates/searchDropDownMobile.hbs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="78" selection-start-line="8" selection-start-column="78" selection-end-line="8" selection-end-column="87" />
               <folding />
             </state>
           </provider>
@@ -378,7 +201,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/services/middleware/mw-categories.js" />
         <option value="$PROJECT_DIR$/views/partials/loading.hbs" />
         <option value="$PROJECT_DIR$/public/plugins/swiper/swiper.css" />
         <option value="$PROJECT_DIR$/public/plugins/zoom/zoom.js" />
@@ -397,7 +219,6 @@
         <option value="$PROJECT_DIR$/views/partials/footer.hbs" />
         <option value="$PROJECT_DIR$/views/layouts/no-nav.hbs" />
         <option value="$PROJECT_DIR$/public/plugins/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css" />
-        <option value="$PROJECT_DIR$/views/partials/head.hbs" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/public/javascripts/navbar.js" />
         <option value="$PROJECT_DIR$/public/stylesheets/pages.css" />
@@ -429,6 +250,8 @@
         <option value="$PROJECT_DIR$/public/stylesheets/register.css" />
         <option value="$PROJECT_DIR$/public/javascripts/script.js" />
         <option value="$PROJECT_DIR$/views/layouts/no-nav-no-footer.hbs" />
+        <option value="$PROJECT_DIR$/services/middleware/mw-categories.js" />
+        <option value="$PROJECT_DIR$/views/partials/head.hbs" />
       </list>
     </option>
   </component>
@@ -533,7 +356,7 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="layouts">
+            <PATH_ELEMENT USER_OBJECT="partials">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -547,7 +370,25 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="routes">
+            <PATH_ELEMENT USER_OBJECT="services">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="brantu">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="services">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="middleware">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -914,13 +755,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/plugins/algolia/algoliasearch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="186.85185">
-          <caret line="5188" column="16" selection-start-line="5188" selection-start-column="9" selection-end-line="5188" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/error.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.73913">
@@ -946,13 +780,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3344671">
           <caret line="39" column="87" selection-start-line="39" selection-start-column="87" selection-end-line="39" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/footer.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4164706">
-          <caret line="97" column="14" selection-start-line="97" selection-start-column="14" selection-end-line="97" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -986,13 +813,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.41604754">
           <caret line="14" column="43" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/head.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7636612">
-          <caret line="88" column="8" selection-start-line="88" selection-start-column="8" selection-end-line="90" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -1433,8 +1253,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/layouts/no-nav-no-footer.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49452055">
+        <state vertical-scroll-proportion="-13.37037">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/middleware/mw-categories.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="150" column="18" selection-start-line="150" selection-start-column="18" selection-end-line="150" selection-end-column="18" />
+          <folding>
+            <element signature="e#6945#7239#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/head.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41820768">
+          <caret line="145" column="102" selection-start-line="145" selection-start-column="102" selection-end-line="145" selection-end-column="102" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/footer.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.9630157">
+          <caret line="26" column="89" selection-start-line="26" selection-start-column="87" selection-end-line="26" selection-end-column="89" />
           <folding />
         </state>
       </provider>

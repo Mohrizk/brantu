@@ -146,9 +146,9 @@ category= {
                 }else{
                     return 0;
                 }
-            })
+            });
             res.locals.categoryTree = listOfCategories;
-            next()
+            return next()
 
         })
 
