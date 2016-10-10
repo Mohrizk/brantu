@@ -573,13 +573,14 @@ $(document).ready( function() {
 		if(priceLimits.change && renderer.price!=null) priceLimits.data = {min: renderer.price.min, max: renderer.price.max, from: renderer.price.min, to:  renderer.price.max}
 		else priceLimits.change= true;
 		mainSection.addClass('content').html(productNavigate(renderer));
-		priceBar()
-		lazy()
+		priceBar();
+		lazy();
 	}
 	helper.on('result', function(content) {
 		RENDER(content);
 		if(itemScrollindex == null)$('html, body').scrollTop(0);
 		else $('html, body').scrollTop(itemScrollindex);
+
 		itemScrollindex = null;
 		loading.fadeOut('slow');
 		general.css({'opacity':0.5}).animate({'opacity':1});
@@ -606,7 +607,7 @@ $(document).ready( function() {
 		}).success(function(result) {
 			$('#navContainer').html(result.nav);
 			$('[data-toggle="tooltip"]').tooltip();
-			refreshVariables()
+			refreshVariables();
 			initiateAC();
 			next();
 		});
@@ -738,8 +739,9 @@ $(document).ready( function() {
 		refreshVariables()
 		$('.resultContainer').fadeOut()
 		$('.itemList img').removeClass('selected');
-		if(currentState.search || currentState.category)itemScrollindex = $(document).scrollTop();
+		if(currentState.search || currentState.brand || currentState.category)itemScrollindex = $(document).scrollTop();
 		else itemScrollindex=null;
+
 		$.ajax({
 			url: '/api/getProductByID/'+context.state.product,
 		}).success(function(result) {
@@ -782,7 +784,7 @@ $(document).ready( function() {
 					lazy();
 					updateSwiper();
 					$('.relatedProducts').css({'opacity':0}).animate({'opacity':1})
-					callback;
+					callback();
 				})
 		});
 	}
