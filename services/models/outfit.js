@@ -30,4 +30,4 @@ var Outfit = mongoose.Schema({
     type:String
 })
 Outfit.plugin(mongoosePaginate);
-module.exports = mongoose.model('Outfit', Outfit, 'outfits');
+module.exports = mongoose.model('Outfit', Outfit, 'staging_outfits');
