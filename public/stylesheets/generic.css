@@ -1,5 +1,6 @@
-
-
+table.dataTable > tbody > tr > th:nth-child(1){
+    width: 150px;
+}
 .header-nav-mobile .toggle-navigation{
     background: transparent;
     border: none;
@@ -1631,6 +1632,9 @@ ul.circle li:hover div{
     .vertical .item .discounted-percentage { top:10px; left:1em;  }
 }
 @media (max-width: 480px){
+    table.dataTable > tbody > tr > th:nth-child(1){
+        width:120px;
+    }
     #selectedItemInformation > .row{
         margin-top: 20px;
     }

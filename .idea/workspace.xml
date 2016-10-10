@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="319a9c44-cb0a-494b-a470-9e86d210bc29" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/script.js" afterPath="$PROJECT_DIR$/public/javascripts/script.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/generic.css" afterPath="$PROJECT_DIR$/public/stylesheets/generic.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/pages.css" afterPath="$PROJECT_DIR$/public/stylesheets/pages.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/home/department.hbs" afterPath="$PROJECT_DIR$/views/partials/home/department.hbs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/shared-templates/productNavigation.hbs" afterPath="$PROJECT_DIR$/views/shared-templates/productNavigation.hbs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/shared-templates/productView.hbs" afterPath="$PROJECT_DIR$/views/shared-templates/productView.hbs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/shared-templates/searchDropDownMobile.hbs" afterPath="$PROJECT_DIR$/views/shared-templates/searchDropDownMobile.hbs" />
     </list>
     <ignored path="brantu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,69 +31,42 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="register2.hbs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/partials/register2.hbs">
+      <file leaf-file-name="generic.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/stylesheets/generic.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.5">
-              <caret line="75" column="54" selection-start-line="75" selection-start-column="54" selection-end-line="75" selection-end-column="54" />
+            <state vertical-scroll-proportion="-2.357143">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/index.js">
+      <file leaf-file-name="pages.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/stylesheets/pages.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="55" selection-start-line="12" selection-start-column="55" selection-end-line="12" selection-end-column="55" />
-              <folding>
-                <element signature="e#1624#1809#0" expanded="false" />
-                <element signature="e#1849#2302#0" expanded="false" />
-                <element signature="e#2624#3151#0" expanded="false" />
-                <element signature="e#3769#4101#0" expanded="false" />
-                <element signature="e#4130#4455#0" expanded="false" />
-                <element signature="e#4838#5155#0" expanded="false" />
-                <element signature="e#5190#5534#0" expanded="false" />
-                <element signature="e#5575#5931#0" expanded="false" />
-                <element signature="e#5965#6302#0" expanded="false" />
-                <element signature="e#6333#6646#0" expanded="false" />
-                <element signature="e#6681#6930#0" expanded="false" />
-                <element signature="e#8424#8498#0" expanded="false" />
-                <element signature="e#8549#8623#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="-3.586207">
+              <caret line="8068" column="19" selection-start-line="8068" selection-start-column="19" selection-end-line="8068" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.hbs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/partials/home/home.hbs">
+      <file leaf-file-name="productNavigation.hbs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/shared-templates/productNavigation.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.3589745">
-              <caret line="203" column="90" selection-start-line="203" selection-start-column="90" selection-end-line="203" selection-end-column="90" />
-              <folding>
-                <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#div#0;n#a#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-                <element signature="n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-                <element signature="n#div#4;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#div#0;n#a#0;n#div#0;n#div#4;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <marker date="1476126998000" expanded="true" signature="24078:26578" placeholder="..." />
-                <marker date="1476126998000" expanded="true" signature="24181:26007" placeholder="..." />
-              </folding>
+            <state vertical-scroll-proportion="54.396225">
+              <caret line="408" column="62" selection-start-line="408" selection-start-column="57" selection-end-line="408" selection-end-column="62" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="department.hbs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/partials/home/department.hbs">
+      <file leaf-file-name="productView.hbs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/shared-templates/productView.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.4150944">
-              <caret line="708" column="28" selection-start-line="708" selection-start-column="28" selection-end-line="741" selection-end-column="34" />
-              <folding>
-                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="false" />
-                <element signature="e#47855#49942#0#Handlebars" expanded="false" />
-                <element signature="n#div#7;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="-2.75">
+              <caret line="116" column="89" selection-start-line="116" selection-start-column="89" selection-end-line="116" selection-end-column="89" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -96,8 +74,8 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/javascripts/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.47353363">
-              <caret line="579" column="24" selection-start-line="579" selection-start-column="24" selection-end-line="579" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.6595136">
+              <caret line="397" column="56" selection-start-line="397" selection-start-column="56" selection-end-line="397" selection-end-column="56" />
               <folding>
                 <element signature="e#3961#4618#0" expanded="false" />
                 <element signature="e#6992#7159#0" expanded="false" />
@@ -114,11 +92,7 @@
                 <element signature="e#18712#19801#0" expanded="false" />
                 <element signature="e#20723#20755#0" expanded="false" />
                 <element signature="e#20793#20821#0" expanded="false" />
-                <element signature="e#20856#21300#0" expanded="false" />
                 <element signature="e#21335#21387#0" expanded="false" />
-                <element signature="e#21527#21851#0" expanded="false" />
-                <element signature="e#22474#22695#0" expanded="false" />
-                <element signature="e#22734#23128#0" expanded="false" />
                 <element signature="e#23162#23264#0" expanded="false" />
                 <element signature="e#23301#23402#0" expanded="false" />
                 <element signature="e#23437#23538#0" expanded="false" />
@@ -178,40 +152,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="head.hbs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/partials/head.hbs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.84375">
-              <caret line="82" column="10" selection-start-line="82" selection-start-column="10" selection-end-line="82" selection-end-column="10" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mw-categories.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/services/middleware/mw-categories.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="150" column="18" selection-start-line="150" selection-start-column="18" selection-end-line="150" selection-end-column="18" />
-              <folding>
-                <element signature="e#6945#7239#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="footer.hbs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/partials/footer.hbs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="13.54">
-              <caret line="26" column="89" selection-start-line="26" selection-start-column="87" selection-end-line="26" selection-end-column="89" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -245,8 +185,6 @@
         <option value="$PROJECT_DIR$/views/layouts/no-nav.hbs" />
         <option value="$PROJECT_DIR$/public/plugins/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css" />
         <option value="$PROJECT_DIR$/public/javascripts/navbar.js" />
-        <option value="$PROJECT_DIR$/public/stylesheets/pages.css" />
-        <option value="$PROJECT_DIR$/views/shared-templates/productNavigation.hbs" />
         <option value="$PROJECT_DIR$/views/features.hbs" />
         <option value="$PROJECT_DIR$/views/partials/information/how-it-works.hbs" />
         <option value="$PROJECT_DIR$/routes/api.js" />
@@ -257,15 +195,11 @@
         <option value="$PROJECT_DIR$/public/javascripts/other/brandList.js" />
         <option value="$PROJECT_DIR$/routes/user.js" />
         <option value="$PROJECT_DIR$/views/partials/nav/side-menu.hbs" />
-        <option value="$PROJECT_DIR$/views/partials/home/department.hbs" />
         <option value="$PROJECT_DIR$/views/partials/product/productNavigation_Back.hbs" />
         <option value="$PROJECT_DIR$/views/shared-templates/productRelated.hbs" />
-        <option value="$PROJECT_DIR$/views/shared-templates/productView.hbs" />
         <option value="$PROJECT_DIR$/views/partials/product/productView_Back.hbs" />
         <option value="$PROJECT_DIR$/views/shared-templates/searchDropDown.hbs" />
-        <option value="$PROJECT_DIR$/views/shared-templates/searchDropDownMobile.hbs" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/public/stylesheets/generic.css" />
         <option value="$PROJECT_DIR$/views/layouts/single.hbs" />
         <option value="$PROJECT_DIR$/views/partials/register2.hbs" />
         <option value="$PROJECT_DIR$/public/stylesheets/register.css" />
@@ -278,6 +212,12 @@
         <option value="$PROJECT_DIR$/public/javascripts/helper.js" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/services/models/outfit.js" />
+        <option value="$PROJECT_DIR$/views/shared-templates/productNavigation.hbs" />
+        <option value="$PROJECT_DIR$/views/shared-templates/searchDropDownMobile.hbs" />
+        <option value="$PROJECT_DIR$/public/stylesheets/generic.css" />
+        <option value="$PROJECT_DIR$/views/partials/home/department.hbs" />
+        <option value="$PROJECT_DIR$/views/shared-templates/productView.hbs" />
+        <option value="$PROJECT_DIR$/public/stylesheets/pages.css" />
         <option value="$PROJECT_DIR$/public/javascripts/script.js" />
       </list>
     </option>
@@ -365,11 +305,7 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="services">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="models">
+            <PATH_ELEMENT USER_OBJECT="views">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -383,7 +319,61 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="services">
+            <PATH_ELEMENT USER_OBJECT="views">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="shared-templates">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="brantu">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="views">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="partials">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="brantu">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="public">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="brantu">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="public">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="javascripts">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -843,13 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/pages.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.3448277">
-          <caret line="592" column="0" selection-start-line="592" selection-start-column="0" selection-end-line="592" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/features.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.864865">
@@ -940,13 +923,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/shared-templates/productView.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3328592">
-          <caret line="189" column="65" selection-start-line="189" selection-start-column="65" selection-end-line="189" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/partials/product/productNavigation_Back.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3328592">
@@ -954,33 +930,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/shared-templates/productNavigation.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.4545455">
-          <caret line="15" column="25" selection-start-line="0" selection-start-column="0" selection-end-line="732" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/partials/nav/nav.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="85" column="64" selection-start-line="85" selection-start-column="48" selection-end-line="85" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/shared-templates/searchDropDownMobile.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="78" selection-start-line="8" selection-start-column="78" selection-end-line="8" selection-end-column="87" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/shared-templates/searchDropDown.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6086957">
-          <caret line="4" column="67" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="67" />
           <folding />
         </state>
       </provider>
@@ -1005,14 +958,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/generic.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-67.454544">
-          <caret line="848" column="0" selection-start-line="848" selection-start-column="0" selection-end-line="848" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1072,7 +1017,7 @@
         <state vertical-scroll-proportion="-10.84375">
           <caret line="82" column="10" selection-start-line="82" selection-start-column="10" selection-end-line="82" selection-end-column="10" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1168,18 +1113,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/home/department.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.4150944">
-          <caret line="708" column="28" selection-start-line="708" selection-start-column="28" selection-end-line="741" selection-end-column="34" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="false" />
-            <element signature="e#47855#49942#0#Handlebars" expanded="false" />
-            <element signature="n#div#7;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/services/models/outfit.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1196,10 +1129,70 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/shared-templates/productNavigation.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="54.396225">
+          <caret line="408" column="62" selection-start-line="408" selection-start-column="57" selection-end-line="408" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/shared-templates/productView.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.75">
+          <caret line="116" column="89" selection-start-line="116" selection-start-column="89" selection-end-line="116" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/generic.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.357143">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/shared-templates/searchDropDownMobile.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.03038674">
+          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/home/department.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.3506494">
+          <caret line="171" column="76" selection-start-line="171" selection-start-column="76" selection-end-line="171" selection-end-column="76" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#7;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/shared-templates/searchDropDown.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10402219">
+          <caret line="3" column="44" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/pages.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.586207">
+          <caret line="8068" column="19" selection-start-line="8068" selection-start-column="19" selection-end-line="8068" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47353363">
-          <caret line="579" column="24" selection-start-line="579" selection-start-column="24" selection-end-line="579" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.6595136">
+          <caret line="397" column="56" selection-start-line="397" selection-start-column="56" selection-end-line="397" selection-end-column="56" />
           <folding>
             <element signature="e#3961#4618#0" expanded="false" />
             <element signature="e#6992#7159#0" expanded="false" />
@@ -1216,11 +1209,7 @@
             <element signature="e#18712#19801#0" expanded="false" />
             <element signature="e#20723#20755#0" expanded="false" />
             <element signature="e#20793#20821#0" expanded="false" />
-            <element signature="e#20856#21300#0" expanded="false" />
             <element signature="e#21335#21387#0" expanded="false" />
-            <element signature="e#21527#21851#0" expanded="false" />
-            <element signature="e#22474#22695#0" expanded="false" />
-            <element signature="e#22734#23128#0" expanded="false" />
             <element signature="e#23162#23264#0" expanded="false" />
             <element signature="e#23301#23402#0" expanded="false" />
             <element signature="e#23437#23538#0" expanded="false" />

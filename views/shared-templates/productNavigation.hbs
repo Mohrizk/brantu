@@ -20,6 +20,7 @@
             \{{else}}
                     <h1 class="all-caps text-center ">\{{welcome.name}} </h1>
                     <h5 class="all-caps text-center">\{{welcome.department}}\{{#if welcome.subCategory}}/\{{welcome.subCategory}} \{{/if}}</h5>
+
                     \{{#if welcome.style}}<div class=" auto-margin block text-center p-b-20">
                         <h5 class="all-caps bold  b-b">Styles</h5>
                         \{{#each welcome.style}}<p class="inline text-center p-r-10 p-l-10">\{{this.name}}</p>\{{/each}}

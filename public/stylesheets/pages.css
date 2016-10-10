@@ -8064,6 +8064,10 @@ div.cs-skin-slide .cs-options ul li.cs-selected span {
   }
 }
 @media (max-width: 480px) {
+  .radio.radio-search-selection  label{
+    margin-bottom: 0;
+    padding: 8px 10px !important;
+  }
   .dataTables_wrapper .dataTables_info,
   .dataTables_paginate.paging_bootstrap.pagination {
     float: none;
