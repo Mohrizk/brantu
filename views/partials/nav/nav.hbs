@@ -1,22 +1,22 @@
 <div id="headerMainContainer" data-department="{{encodeDepartment selectedDepartment}}">
     <div class="header" >
-        <div class="bg-black full-width">
+        <div class="bg-black full-width hidden-xs">
             <div class="container relative">
                 <div class="pull-right">
                     <div class="text-right p-t-5">
                         <ul class="no-padding no-margin text-white bold all-caps fs-11 p-r-15">
                             <li class="inline p-r-10">
-                                <a class="bright">
+                                <a class="bright" href="/how-it-works">
                                     How it works
                                 </a>
                             </li>
                             <li class="inline p-r-10">
-                                <a class="bright">
+                                <a class="bright" href="/about-us">
                                     About us
                                 </a>
                             </li>
                             <li class="inline">
-                                <a class="bright">
+                                <a class="bright" href="/contact-us">
                                     contact us
                                 </a>
                             </li>
@@ -30,24 +30,39 @@
         </div>
         <div class="bg-white b-b b-grey">
             <div class="container">
-                <div class="mobile"r>
-                    <div class="top-right" id="menuSearchIcon" style="padding-top: 9px; display: none;">
-                        <div class="relative">
-                            <div>
-                                <img src="/dist/images/nav/search_filled.png" alt="search-icon" style="width:50px; padding-right: 5px;"/>
-                            </div>
-                            <input class="fakeMobileSearchButton" />
+                <div class="mobile">
+                    <div class="top-right" style="padding-top: 9px; z-index:30;">
+                        <div class="relative visible-xs">
+                            <ul class="no-style">
+                                <li class="inline relative">
+                                    <div>
+                                        <img src="/dist/images/nav/search_filled.png" alt="search-icon" style="width:45px; padding-right: 5px;"/>
+                                    </div>
+                                    <input class="fakeMobileSearchButton" />
+                                </li>
+                                <li class="inline authenticate" data-view="login">
+                                    <div style="padding-right: 5px">
+                                        <img src="/images/nav/login.svg" alt="search-icon" style="width:21px;" />
+                                    </div>
+                                </li>
+                            </ul>
+
                         </div>
 
                     </div>
-                    <div class="top-left p-l-5 visible-xs p-t-10" id="menuBurgerIcon" >
-                        <div>
-                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-             width="50px" height="30px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
-        <line fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" x1="2" y1="11.324" x2="48" y2="11.324"/>
-        <line fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" x1="2" y1="23.324" x2="48" y2="23.324"/>
-        <line fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" x1="2" y1="35.324" x2="48" y2="35.324"/>
-        </svg>
+                    <div class="top-left p-l-5 visible-xs p-t-10 p-r-5 p-l-15" id="menuBurgerIcon" >
+                        <div id="header-nav-mobile" class="header-nav-mobile">
+                            <button type="button" class="toggle-navigation visible-xs">
+                                <span class="sr-only">Navigation</span>
+                                <span class="icon-bar top-bar"></span>
+                                <span class="icon-bar middle-bar"></span>
+                                <span class="icon-bar bottom-bar"></span>
+                            </button>
+                            <ul class="dropdown-menu list-unstyled visible-xs" role="menu" aria-labelledby="dLabel">
+                                <div id="header-push-mobile" class="header-push-mobile">
+                                    {{> side-menu}}
+                                </div>
+                            </ul>
                         </div>
                     </div>
                     <div class="top-left bottom-right visible-xs bg-master-lighter  b-t b-r b-l b-grey b-b hidden" id="searchMobileContainer" style="z-index: 200;">
@@ -292,8 +307,8 @@
 
                 </div>
             </div>
-
         </div>
+
         <div id="expandDepartment" class="container">
             <div id="category-expand-parent" class="hidden " style=" background: transparent;">
                 <div class=" p-l-50 bgBlurEffect  category-expand-wrapper relative b-l b-r b-b" style="opacity:0; background: rgba(255,255,255,0.98); width:1000px; height: 250px;" id="expandDepartmentWrapper">
@@ -338,30 +353,6 @@
         </div>
     </div>
 
-    <div class="text-center full-width no-overflow visible-xs" id="mobileSubMenu" style="padding-top:40px;">
-        <div class="row b-b">
-            <a class="col-xs-4  dark  text-center subMenuMobile {{#if (stringContains url "upptack-nya-favoriter")}}active{{/if}}" href="/{{selectedDepartment}}"  data-page>
-                <div>
-                    <div class="p-t-10">
-                        <i class="pg-home" style="font-size: 27px"></i>
-                    </div>
-                </div>
-            </a>
-            <a class="col-xs-4 dark  text-center  b-l b-grey subMenuMobile {{#if (stringContains url "explore")}}active{{/if}}" href="/{{selectedDepartment}}/kläder" data-page="explore">
-                <div>
-                    <div class="p-t-5">
-                        <i><img alt="explore-submenu-icon"  src="/dist/images/nav/explore_black.png" style="width:35px;"/></i>
-                    </div>
-                </div>
-            </a>
-            <a class="col-xs-4 b-l b-grey  dark  text-center relative no-overflow" id="comparePricePageButton">
-                <div>
-                    <div style="padding-top: 11px"> <i><img alt="search-submenu-icon"  src="/dist/images/nav/search_filled.png" style="width:45px;"/></i></div>
-                </div>
-                <input class="fakeMobileSearchButton bigSquare" />
-            </a>
-        </div>
-    </div>
 </div>
 
 

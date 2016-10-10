@@ -5,18 +5,6 @@
         background: rgba(51,51,51,0) !important;
     }
 
-    #home .ACSearchProgress{
-        top:5px;
-    }
-    #home #containerHintAC{
-        width:100%;
-    }
-    #home #containerAC{
-        position: relative !important;
-    }
-    #home  #h1Home.small{
-        font-size:20px
-    }
     #home .textFind{
         top:100px;
     }
@@ -56,36 +44,29 @@
     }
 
    #home #selectionHome{
-        border-top:2px solid black;
-    }
-    .product-description .modal-body{
-        height:400px;
-    }
-    .product-description .description{
-        margin-top: 100px;;
-    }
-    .product-description .product-description-header{
-
+        border-top:1px solid black;
     }
 
-    .product-description svg path, .product-description svg circle{
-        stroke: #9E8130;
-    }
 
     @media (max-width: 991px){
         #home  #mainContent .search-link{
             width:500px;
         }
     }
+    @media (max-width: 480px){
+        #home .departmentSelector .WOMEN, .departmentSelector .MEN{
+            height:200px;
+        }
+    }
 </style>
 <div class="container" id="home" >
-                   <div class="row no-margin">
-                       <div class="special-border relative no-overflow relative full-width" >
+                   <div class=" no-margin">
+                       <div class=" relative no-overflow relative full-width" >
                            <div class=" relative">
                                <div class="" id="mainContent">
                                    <div class="relative container-fluid" id="selectionHome">
-                                       <div class="row no-margin no-padding"  >
-                                                <div class="col-md-6 col-sm-6 col-xs-6 departmentSelector no-padding" >
+                                       <div class="row no-margin no-padding hidden-xs"  >
+                                                <div class="col-md-6 col-sm-6 col-xs-12 departmentSelector no-padding" >
                                                     <a href="/kvinna">
                                                            <div class="WOMEN bg-image b-a b-thick b-white no-background-image">
                                                            </div>
@@ -112,7 +93,7 @@
                                                            </div>
                                                     </a>
                                            </div>
-                                                <div class="col-md-6 col-sm-6 col-xs-6 departmentSelector bg-image text-left no-padding" >
+                                                <div class="col-md-6 col-sm-6 col-xs-12 departmentSelector bg-image text-left no-padding" >
                                               <a href="/man">
                                                 <div class="Men bg-image no-background-image b-a b-thick b-white">
                                                </div>
@@ -142,199 +123,73 @@
                                            <div class=" p-t-5 relative full-width" id="headerHome">
                                                <div class="">
                                                    <div class="">
-                                                       <h1 id="h1Home" class=" bold text-center  text-black text-spaced all-caps" style="font-size:28px; line-height:30px;">Handla kläder du gillar. <br/>Bara på Bästa Pris.</h1>
+                                                       <h1 id="h1Home" class="text-center  text-black  all-caps">Handla kläder du gillar. <br/>Bara på Bästa Pris.</h1>
                                                        <h5 class="text-black text-center">Compare styles to the best price from all your favourite fashion stores</h5>
                                                    </div>
                                                </div>
                                            </div>
-                                           <div class="bg-master-light ">
-                                               <button class="text-center p-t-20 p-b-20 fs-16 text-purple btn-block btn btn-velvet filled all-caps bold" id="howBrantuWorks">How brantu works</button>
+                                           <div class="bg-master-light hidden-xs">
+                                               <button class="text-center p-t-20 p-b-20 fs-16 text-purple btn-block btn btn-velvet filled all-caps bold" id="howBrantuWorks"> why brantu is it your best fashion desitination?</button>
+                                           </div>
+                                       </div>
+
+                                       <div class="row no-margin no-padding visible-xs"  >
+                                           <div class="col-md-6 col-sm-6 col-xs-12 departmentSelector no-padding" >
+                                               <a href="/kvinna">
+                                                   <div class="WOMEN bg-image b-a b-thick b-white no-background-image">
+                                                   </div>
+                                                   <div class="top-right text-center bottom-left textFind">
+                                                       <h3 class="sbold all-caps">Kvinna</h3>
+                                                   </div>
+                                                   <div class=" hidden b-r b-grey">
+                                                       <div class="row no-margin p-t-20 p-b-20 text-center">
+                                                           <div class="col-xs-4">
+                                                               <a class="dark bold fs-16">
+                                                                   Skor
+                                                               </a>
+
+                                                           </div>
+
+                                                           <div class="col-xs-4">
+                                                               <a class="dark bold fs-16">Kläder</a>
+                                                           </div>
+
+                                                           <div class="col-xs-4">
+                                                               <a class="dark bold fs-16">Accessoarer</a>
+                                                           </div>
+                                                       </div>
+                                                   </div>
+                                               </a>
+                                           </div>
+                                           <div class="col-md-6 col-sm-6 col-xs-12 departmentSelector bg-image text-left no-padding" >
+                                               <a href="/man">
+                                                   <div class="Men bg-image no-background-image b-a b-thick b-white">
+                                                   </div>
+                                                   <div class="top-right text-center bottom-left textFind">
+                                                       <h3 class="sbold all-caps">Man</h3>
+                                                   </div>
+                                                   <div class=" hidden b-l b-grey">
+                                                       <div class="row no-margin p-t-20 p-b-20 text-center">
+                                                           <div class="col-xs-4">
+                                                               <a class="dark bold fs-16">Skor</a>
+                                                           </div>
+
+                                                           <div class="col-xs-4">
+                                                               <a class="dark bold fs-16">Kläder</a>
+                                                           </div>
+
+                                                           <div class="col-xs-4">
+                                                               <a class="dark bold fs-16">Accessoarer</a>
+                                                           </div>
+                                                       </div>
+                                                   </div>
+                                               </a>
                                            </div>
                                        </div>
                                    </div>
-
-                                   <div class="b-b b-grey p-t-20 p-b-20 product-description" >
-                                       <div class="text-center row p-t-5 p-b-5" style="color:#aaa;">
-                                           <div class="col-xs-12 col-sm-12 fs-16  medium inline">
-                                               <div class="row">
-                                                   <div class="col-xs-6">
-                                                       <div class="modal-body ">
-                                                           <div  style="background-image:url('/images/home/quick-search.jpg'); height:400px;" class="full-width bg-image relative">
-
-                                                           </div>
-                                                       </div>
-                                                   </div>
-                                                   <div class="col-xs-6 description">
-                                                       <div class="product-description-header ">
-                                                           <div class="inline v-align-middle">
-                                                               <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 65 63" enable-background="new 0 0 65 63" xml:space="preserve">
-                                                <title>Zoom-out</title>
-                                                <desc>Created with Sketch.</desc>
-                                                <g id="Page-1" sketch:type="MSPage">
-                                                    <g id="Zoom-out" transform="translate(1.000000, 1.000000)" sketch:type="MSLayerGroup">
-                                                        <path id="Shape" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M41.39,32.486L62,53.08L55.081,60
-                                                            L35.188,40.107"></path>
-                                                        <circle id="Oval" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" cx="22.017" cy="22.017" r="22.017">
-                                                        </circle>
-                                                    </g>
-                                                </g>
-                                                </svg>
-                                                           </div>
-                                                           <h4 class="inline p-l-5 v-align-middle p-t-5 text-purple bold">Quick Search</h4>
-                                                       </div>
-                                                       <div class="p-t-10 p-b-10" style="background: rgba(255,255,255,0.7);">
-                                                           <p class="fs-16 text-left text-black bold p-l-10 p-r-10">
-                                                               We know how hard it can be to go through all stores to find your style to your budget.
-                                                               So now when you view a product and we will find you
-                                                               similar styles from all over the stores at a lower price
-                                                           </p>
-                                                       </div>
-
-                                                   </div>
-                                               </div>
-                                           </div>
-                                           <div class="col-xs-12 col-sm-12 fs-16  medium inline m-t-40">
-                                              <div class="row">
-                                                  <div class="col-xs-6 description">
-                                                      <div class="product-description-header">
-                                                          <div class="inline v-align-middle">
-                                                              <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 64 60" enable-background="new 0 0 64 60" xml:space="preserve">
-                                        <title>Balance</title>
-                                        <desc>Created with Sketch.</desc>
-                                        <g id="Page-1" sketch:type="MSPage">
-                                            <g id="Balance" transform="translate(1.000000, 1.000000)" sketch:type="MSLayerGroup">
-                                                <path id="Shape" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M31,6v47"></path>
-                                                <circle id="Oval" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" cx="31" cy="3" r="3">
-                                                </circle>
-                                                <path id="Shape_1_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M7,13h48"></path>
-                                                <path id="Shape_2_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M11,54h40"></path>
-                                                <path id="Shape_3_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M6,58h50"></path>
-                                                <path id="Shape_4_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M0,37v3h14v-3"></path>
-                                                <path id="Shape_5_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M48,37v3h14v-3"></path>
-                                                <path id="Shape_6_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M1,35l6-22l6,22"></path>
-                                                <path id="Shape_7_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M49,35l6-22l6,22"></path>
-                                            </g>
-                                        </g>
-                                        </svg>
-                                                          </div>
-                                                          <h4 class="inline p-l-5 v-align-middle p-t-5 text-purple bold">Compare Product Prices</h4>
-                                                      </div>
-                                                      <div class=" p-t-10 p-b-10 hidden-xs">
-                                                          <p class="fs-16 text-left text-black bold p-l-10 p-r-10">
-                                                              We know how hard it can be to go through all stores to find your style to your budget.
-                                                              So now when you view a product and we will find you
-                                                              similar styles from all over the stores at a lower price
-                                                          </p>
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-xs-6">
-                                                      <div class="modal-body">
-                                                          <div  style="background-image:url('/images/home/compare-products.jpg'); background-position: 50% 10%;height:400px;" class="full-width bg-image relative">
-                                                              <div class="pull-bottom p-t-10 p-b-10 visible-xs" style="background: rgba(255,255,255,0.7);">
-                                                                  <p class="fs-13 text-center text-black bold p-l-10 p-r-10">
-                                                                      We know how hard it can be to go through all stores to find your style to your budget.
-                                                                      So now when you view a product and we will find you
-                                                                      similar styles from all over the stores at a lower price
-                                                                  </p>
-                                                              </div>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                           </div>
-                                           <div class="col-xs-12 col-sm-12 fs-16  medium inline">
-                                               <div class="row">
-                                                   <div class="col-xs-6">
-                                                       <div class="modal-body">
-                                                           <div  style="background-image:url('/images/home/compare-styles.jpg'); background-position: 50% 90%; height:400px;" class="full-width bg-image relative">
-                                                               <div class="pull-bottom p-t-10 p-b-10" style="background: rgba(255,255,255,0.7);">
-                                                                   <p class="fs-13 text-center text-black bold p-l-10 p-r-10 visible-xs">
-                                                                       We know how hard it can be to go through all stores to find your style to your budget.
-                                                                       So now when you view a product and we will find you
-                                                                       similar styles from all over the stores at a lower price
-                                                                   </p>
-                                                               </div>
-                                                           </div>
-                                                       </div>
-                                                   </div>
-
-                                                   <div class="col-xs-6 description">
-                                                       <div class="product-description-header">
-                                                           <div class="inline v-align-middle">
-                                                               <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 64 56" enable-background="new 0 0 64 56" xml:space="preserve">
-                                            <title>T-shirt</title>
-                                            <desc>Created with Sketch.</desc>
-                                            <g id="Page-1" sketch:type="MSPage">
-                                                <g id="T-shirt" transform="translate(1.000000, 1.000000)" sketch:type="MSLayerGroup">
-                                                    <path id="Shape_3_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M52,0H38.931
-                                                        C38.438,3.945,35.078,7,31,7s-7.438-3.055-7.931-7H10H0v15h10v39h42V15h10V0H52L52,0z"></path>
-                                                    <path id="Shape" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M11,50h32"></path>
-                                                    <path id="Shape_1_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M4,1v11"></path>
-                                                    <path id="Shape_2_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2" d="M58,1v11"></path>
-                                                </g>
-                                            </g>
-                                            </svg>
-                                                           </div>
-                                                           <h4 class="inline p-l-5 v-align-middle p-t-5 text-purple bold">Compare Styles</h4>
-                                                       </div>
-                                                       <p class="fs-16 text-left text-black bold p-l-10 p-r-10 hidden-xs">
-                                                           We know how hard it can be to go through all stores to find your style to your budget.
-                                                           So now when you view a product and we will find you
-                                                           similar styles from all over the stores at a lower price
-                                                       </p>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                           <div class="col-xs-12 col-sm-12 fs-16  medium inline">
-                                               <div class="row">
-                                                   <div class="col-xs-6 description">
-                                                       <div class="product-description-header">
-                                                           <div class="inline v-align-middle">
-                                                               <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 56 63" enable-background="new 0 0 56 63" xml:space="preserve">
-                                        <title>Target</title>
-                                        <desc>Created with Sketch.</desc>
-                                        <g id="Page-1" sketch:type="MSPage">
-                                            <g id="Target" transform="translate(1.000000, 0.000000)" sketch:type="MSLayerGroup">
-                                                <circle id="Oval" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2.4091" cx="27" cy="31.5" r="26.5">
-                                                </circle>
-
-                                                    <circle id="Oval_1_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2.4091" cx="27" cy="31.5" r="19.273">
-                                                </circle>
-
-                                                    <circle id="Oval_2_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2.4091" cx="27" cy="31.5" r="10.841">
-                                                </circle>
-
-                                                    <circle id="Oval_3_" sketch:type="MSShapeGroup" fill="none" stroke="#aaaaaa" stroke-width="2.4091" cx="27" cy="31.5" r="3.614">
-                                                </circle>
-                                            </g>
-                                        </g>
-                                        </svg>
-                                                           </div>
-                                                           <h4 class="inline p-l-5 v-align-middle p-t-5 text-purple bold">Easy Filter</h4>
-                                                       </div>
-                                                       <div class=" p-t-10 p-b-10 hidden-xs" style="background: rgba(255,255,255,0.7);">
-                                                           <p class="fs-16 text-left text-black bold p-l-10 p-r-10">
-                                                               We know how hard it can be to go through all stores to find your style to your budget.
-                                                               So now when you view a product and we will find you
-                                                               similar styles from all over the stores at a lower price
-                                                           </p>
-                                                       </div>
-                                                   </div>
-                                                   <div class="col-xs-6">
-                                                       <div class="modal-body">
-                                                           <div  style="background-image:url('/images/home/easy-filter.jpg'); height:400px;" class="full-width bg-image relative">
-                                                               <div class="pull-bottom p-t-10 p-b-10 visible-xs" style="background: rgba(255,255,255,0.7);">
-                                                                   <p class="fs-13 text-center text-black bold p-l-10 p-r-10">
-                                                                       We know how hard it can be to go through all stores to find your style to your budget.
-                                                                       So now when you view a product and we will find you
-                                                                       similar styles from all over the stores at a lower price
-                                                                   </p>
-                                                               </div>
-                                                           </div>
-                                                       </div>
-                                                   </div>
-                                               </div>
-                                           </div>
+                                    <div class="text-center">
+                                       <div class="bg-master-light visible-xs">
+                                           <button class="text-center p-t-20 p-b-20 fs-16  btn-block btn btn-velvet filled all-caps bold" id="howBrantuWorksMobile"> why brantu is it your <br/> best fashion desitination?</button>
                                        </div>
                                    </div>
                                    <div id="brands" class="m-t-40 m-b-40">
@@ -445,29 +300,29 @@
                                                                    <div class="top-left bottom-right bg-image no-background-image "
                                                                         style="background-image: url('/images/brands/tiger-of-sweden-logo.jpg'); background-size: 60%; background-position: center;" >
 
-                                                                      <div class="brand-follow">
-                                                                          {{#if user}}
-                                                                              {{#if product.brand.isFavored}}
-                                                                                  <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
-                                                                                     data-toggle="tooltip" data-placement="top" title="unfollow {{product.brand.name}} price drops, discount and coupons"
-                                                                                     data-favourite="removeBrand"  id="{{product.brand._id}}" name="{{product.brand.name}}" key="{{product.brand.key}}"
-                                                                                     action="/favourite-brands/remove">
-                                                                                      <button class="btn btn-tag btn-follow active"  >following</button>
-                                                                                  </a>
-                                                                              {{else}}
-                                                                                  <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
-                                                                                     data-toggle="tooltip" data-placement="top" title="follow {{product.brand.name}} price drops, discount and coupons"
-                                                                                     data-favourite="addBrand"  id="{{product.brand._id}}" name="{{product.brand.name}}" key="{{product.brand.key}}"
-                                                                                     action="/favourite-brands/add">
-                                                                                      <button class="btn btn-tag btn-follow">follow</button>
-                                                                                  </a>
-                                                                              {{/if}}
-                                                                          {{else}}
-                                                                              <a data-view="signup" class="authenticate" data-toggle="top" data-placement="bottom" title="follow {{product.brand.name}} price drops, discount and coupons">
-                                                                                  <button class="btn btn-tag btn-follow">follow</button>
-                                                                              </a>
-                                                                          {{/if}}
-                                                                      </div>
+                                                                       <div class="brand-follow">
+                                                                           {{#if user}}
+                                                                               {{#if product.brand.isFavored}}
+                                                                                   <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                                                      data-toggle="tooltip" data-placement="top" title="unfollow {{product.brand.name}} price drops, discount and coupons"
+                                                                                      data-favourite="removeBrand"  id="{{product.brand._id}}" name="{{product.brand.name}}" key="{{product.brand.key}}"
+                                                                                      action="/favourite-brands/remove">
+                                                                                       <button class="btn btn-tag btn-follow active"  >following</button>
+                                                                                   </a>
+                                                                               {{else}}
+                                                                                   <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                                                      data-toggle="tooltip" data-placement="top" title="follow {{product.brand.name}} price drops, discount and coupons"
+                                                                                      data-favourite="addBrand"  id="{{product.brand._id}}" name="{{product.brand.name}}" key="{{product.brand.key}}"
+                                                                                      action="/favourite-brands/add">
+                                                                                       <button class="btn btn-tag btn-follow">follow</button>
+                                                                                   </a>
+                                                                               {{/if}}
+                                                                           {{else}}
+                                                                               <a data-view="signup" class="authenticate" data-toggle="top" data-placement="bottom" title="follow {{product.brand.name}} price drops, discount and coupons">
+                                                                                   <button class="btn btn-tag btn-follow">follow</button>
+                                                                               </a>
+                                                                           {{/if}}
+                                                                       </div>
 
                                                                    </div>
                                                                </div>
@@ -511,6 +366,14 @@
                                            </div>
                                        </div>
                                    </div>
+                                   <div class="p-t-40">
+                                       <h2 class=" title-borders all-caps" id="feature-section-title">
+                                           <span class="text-black">
+                                               the best price finder in fashion
+                                           </span>
+                                       </h2>
+                                       {{> how-it-works}}
+                                   </div>
 
                                </div>
                            </div>
@@ -520,8 +383,8 @@
        </div>
 
 <script>
-   $('#howBrantuWorks').on('click', function(){
-       $('html, body').animate({scrollTop:($(this).offset().top - 110)})
+   $('#howBrantuWorks, #howBrantuWorksMobile ').on('click', function(){
+       $('html, body').animate({scrollTop:($('#feature-section-title').offset().top - 110)})
    })
 </script>
 

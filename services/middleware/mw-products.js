@@ -94,42 +94,21 @@ operations = {
                 console.log('getSimilarProductsFromSameBrand', filtered.length);
                 //var sorted = sortbyNearestDescription(req.product, filtered)
                 req.sameBrandProducts = helper.calculateSaving(req.product, filtered);
-                req.sameBrandProductsInsight = '';
-                if(req.sameBrandProducts.length > 0){
-                    req.sameBrandProductsInsight = '<div class="b-a bg-master-light b-thick padding-5">' +
-                        '<a class="option cursor fs-14" data-toggle="tooltip" title="Similar products from the '+ foundProduct.brand.name +'at lower price were found" >'+
-                        '<font class="text-velvet"><i class="pg-shopping_cart"></i>'+
-                        ' Similar Brands</font>'+
-                        '</a></div>';
-                }
-                else req.sameBrandProductsInsight = false;
+                req.sameBrandProductsInsight = (req.sameBrandProducts.length > 0);
                 next();
             })
     },
-
     GetLowerPriceCategoryProducts:function(req,res,next) {
         var foundProduct = req.product;
         helper.GetLowerPriceCategoryProducts(foundProduct,function(err,filtered){
-
             if(err) return next(err);
             if(typeof filtered == 'undefined') return next();
             console.log('GetLowerPriceCategoryProducts', filtered.length)
             //var sort= sortbyNearestDescription(req.product, filtered)
             req.LowerPriceCategoryProducts = helper.calculateSaving(req.product, filtered);
-            if(req.LowerPriceCategoryProducts.length > 0){
-                req.sameCategoryProductsInsight =
-                '<div class="b-a bg-master-light b-thick padding-5">' +
-                '<a class="option cursor fs-14" data-toggle="tooltip" title="Similar style at lower price were found" >'+
-                '<font class="text-velvet"><i class="pg-shopping_cart"></i>'+
-                ' Similar Styles</font>'+
-                '</a></div>';
-            }
-            else {
-                req.sameCategoryProductsInsight = false;
-            }
+            req.sameCategoryProductsInsight = (req.LowerPriceCategoryProducts.length > 0);
             next();
-     })
-
+        });
     },
     GetSimilarCategoryProducts:function(req,res,next){
         var foundProduct = req.product;

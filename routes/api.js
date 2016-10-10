@@ -131,31 +131,22 @@ var routes = [
                     user: res.locals.user
                 },
                 {precompiled: true})
-                .then(function (nav) {
-                    hbs.render('views/partials/nav/side-menu.hbs',
-                        {
-                            selectedDepartment: res.locals.selectedDepartment,
-                            categoryTree:   res.locals.categoryTree,
-                            nbFavProducts: res.locals.nbFavProducts,
-                            user: res.locals.user
-                        },
-                        {precompiled: true})
-                        .then(function(sideMenu){
-                            res.send({nav: nav, sideMenu: sideMenu});
-                            res.end();
-                        });
+                .then(function(nav){
+                    res.send({nav: nav});
+                    res.end();
                 });
+
         } ]],
 
     [ '/:department', 'get', [
         categories.getDepartment,
-        products.getCompare,
+        //products.getCompare,
         feed.getFeed,
         function(req, res, next) {
             hbs.render('views/partials/home/department.hbs',
                 {
                     selectedDepartment: res.locals.selectedDepartment,
-                    compareClothes: res.locals.compareClothes,
+                    //compareClothes: res.locals.compareClothes,
                     feed: res.locals.feed
                 },
                 {

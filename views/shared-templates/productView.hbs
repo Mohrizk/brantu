@@ -1,11 +1,16 @@
 <div class="container">
+    <style>
+        .page-container .page-content-wrapper{
+            background-color: #f5f5f5!important;
+        }
+    </style>
     <div class="jawBoneContent open" id="jawbone">
         <div class="jawBoneOpenContainer">
             <div class="jawBoneFadeInPlaceContainer">
                 <div class="jawBoneContainer">
                     <div class="jawBone" nb-pic="\{{product.numOfImages}}" pic-src="\{{{product.mainPicture.largeUrl}}}\{{#each product.auxPictures}}/BREAK/\{{{this.largeUrl}}}\{{/each}}">
                         <div class="mainWrapper relative row no-margin">
-                            <div class=" jbImageContainer hidden-xs hidden-sm">
+                            <div class=" jbImageContainer">
                                 <div class="selectedItemPictureContainer">
                                     <div class="selectedItemZoomPicture">
                                         <div id="mainJawBoneImageContainer" class="swiper-container" >
@@ -29,12 +34,27 @@
                                 <div style="top:103%; left:0;">
                                     <div class="option wrapper p-t-10">
                                         <div class="row p-t-5">
-                                            <div class="col-xs-6" style="padding-left:0;">
-                                                <div class="text-center" id="sameCategoryInsight">
+                                            <div class="col-xs-12">
+                                                <div class="text-center hidden" id="sameCategoryInsight">
+                                                    <div class="">
+                                                        <a class="" data-toggle="tooltip" data-placement="bottom" title="Similar styles at lower price were found" >
+                                                            <button class="btn btn-block btn-info"><i class="pg-shopping_cart"></i>
+                                                                Similar styles
+                                                            </button>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xs-6" style="padding-right:0;">
-                                                <div class="text-center "  id="sameBrandInsight">
+
+                                            <div class="col-xs-12 p-t-5">
+                                                <div class="text-center hidden"  id="sameBrandInsight">
+                                                    <div class="">
+                                                        <a class="" data-toggle="tooltip" data-placement="bottom" title="Similar brand products at lower price were found" >
+                                                            <button class="btn btn-block btn-info"><i class="pg-shopping_cart"></i>
+                                                                Similar Brands
+                                                            </button>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -56,7 +76,6 @@
                                     </div>
                                 </div>
                             </div>
-
 
                             <div class=" col-lg-7 col-md-8 col-lg-offset-5 col-md-offset-4  col-sm-12 col-xs-12 p-l-20 p-r-20 p-xs-l-5 p-xs-r-5" id="selectedItemInformation">
                                 <div class="row">
@@ -133,14 +152,14 @@
                                             </div>
                                         </div>
                                         <div class="row p-t-5">
-                                            <div class="col-xs-6 p-r-5 p-l-5">
+                                            <div class="col-sm-6 col-xs-12 p-r-5 p-l-5">
                                                     \{{#if user}}
                                                         \{{#if product.isFavored}}
                                                         <a class="removeFavouriteProduct" _id="\{{{product._id}}}"
                                                            action="/favourite-product/remove" data-toggle="tooltip" data-placement="bottom"
                                                            title="remove item from price watcher">
                                                             <button data-text="add products to price watcher" class="btn btn-velvet btn-block active " >
-                                                                Watching product for price drops
+                                                                Watching for price drops
                                                             </button>
                                                         </a>
                                                         \{{else}}
@@ -148,7 +167,7 @@
                                                            action="/favourite-product/add" data-toggle="tooltip"
                                                            data-placement="bottom" title="add item to price watcher">
                                                             <button data-text="Watching product for price drops" class="btn btn-velvet btn-block">
-                                                                add products to price watcher
+                                                                add to price watcher
                                                             </button>
                                                         </a>
                                                         \{{/if}}
@@ -156,12 +175,12 @@
                                                     <a class="authenticate" data-view="signup"
                                                        data-toggle="tooltip" data-placement="bottom" title="add item to price watcher">
                                                         <button data-text="Watching product for price drops" class="btn btn-velvet btn-block">
-                                                            add products to price watcher
+                                                            add to price watcher
                                                         </button>
                                                     </a>
                                                     \{{/if}}
                                             </div>
-                                            <div class="col-xs-6 p-r-5 p-l-5">
+                                            <div class="col-sm-6 col-xs-12 p-r-5 p-l-5">
                                                 <button class="btn btn-velvet filled btn-block">
                                                     go to shop
                                                 </button>
@@ -385,7 +404,7 @@
                                                         <div class="panel-heading bg-white" role="tab" id="headingOne">
                                                             <h4 class="panel-title ">
                                                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="collapsed">
-                                                                   <font class="sbold p-l-30"> Description </font> <br/><div class="descriptionHint ">\{{product.description}}</div>
+                                                                   <font class="sbold"> Description </font> <br/><div class="descriptionHint ">\{{product.description}}</div>
                                                                 </a>
                                                             </h4>
                                                         </div>

@@ -1,5 +1,5 @@
 
-<div class="productFeedTemplate no-padding  col-md-12 col-sm-12 col-xs-12  m-xs-b-5"  >
+<div class="productFeedTemplate no-padding  col-md-12 col-sm-12 col-xs-12  m-xs-b-5  b-b b-grey"  >
         <div class="bg-white full-width special-border p-t-10 p-b-10">
             <div class="row" style="padding: 0px 10px;">
                 <div class="col-xs-12">
@@ -37,7 +37,7 @@
 
                 </div>
                 <div class="col-md-4 col-sm-6 col-xs-6  p-l-20 p-r-20 hidden-xs hidden-sm text-left">
-                    <h5 class="all-caps bold text-spaced-medium text-left p-b-10 p-t-10 p-xs-b-5 p-r-20 b-b b-t b-grey ">{{this.name}} </h5>
+                    <h5 class=" bold text-left p-b-10 p-t-10 p-xs-b-5 p-r-20 b-b b-grey">{{this.name}} </h5>
                     <span class="text-master fs-12">{{this.dateDifference}}  {{#unless this.valid}}<font class="text-red bold"> - SLUTSÅLD</font>{{/unless}}</span>
 
                     <p class="fs-13">{{this.description}}</p>
@@ -70,7 +70,9 @@
             <div class="text-center m-t-5 m-b-5 p-l-40 p-r-40 p-t-5 p-b-15 b-t b-grey visible-xs visible-sm">
                 <p class="">{{this.description}}</p>
                 <div>
-                   <div> <a class="text-velvet b-b bold all-caps p-r-10 fs-11 p-l-10 p-t-5  p-b-5" style="border: 1px solid #AA076B;" href="{{{this.url}}}">MER {{categoryName}}</a></div>
+                   <div> <a  href="{{{this.url}}}">
+                       <button class="btn btn-info text-velvet"> MER {{categoryName}}</button></a>
+                   </div>
                 </div>
             </div>
 

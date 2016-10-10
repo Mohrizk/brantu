@@ -1,28 +1,29 @@
 
 <div class="navigationWrapper container bg-transparent">
-        <div class="welcome bg-master-blue">
+        <div class="welcome bg-master-lighter">
             \{{#if welcome.search}}
-            <h2 class="all-caps text-spaced-medium bold hidden-xs text-center text-black">\{{#if welcome.department}}\{{welcome.department}}/\{{/if}} \{{welcome.name}} <b>"\{{welcome.query}}"</b></h2>
-            <h4 class="all-caps text-spaced-medium  bold visible-xs text-center text-purple-glow">\{{#if welcome.department}}\{{welcome.department}}/\{{/if}} \{{welcome.name}} <b>"\{{welcome.query}}"</b></h4>
-            \{{#if welcome.suggestedBrands}}
-                    <div class="visible-xs p-b-40">
-                        <h5 class="all-caps text-spaced-medium text-center">\{{{nbBrandHits}}}</h5>
-                        <div class="text-center auto-margin block">
-                            \{{#each welcome.suggestedBrands}}
-                                <a class="dark inline p-l-20 bold" href="/brand/\{{{urlFriendly name}}}"><div class="brandsAC text-center">
-                                    <span class="">\{{{ _highlightResult.name.value }}}</span>
-                                    </div></a>
-                                \{{/each}}
+                    <h1 class="all-caps bold hidden-xs text-center text-black">\{{#if welcome.department}}\{{welcome.department}}/\{{/if}} \{{welcome.name}} <b>"\{{welcome.query}}"</b></h1>
+                    <h4 class="all-caps bold visible-xs text-center text-purple-glow">\{{#if welcome.department}}\{{welcome.department}}/\{{/if}} \{{welcome.name}} <b>"\{{welcome.query}}"</b></h4>
+                            \{{#if welcome.suggestedBrands}}
+                            <div class="visible-xs p-b-40">
+                                <h5 class="all-caps text-spaced-medium text-center">\{{{nbBrandHits}}}</h5>
+                                <div class="text-center auto-margin block">
+                                    \{{#each welcome.suggestedBrands}}
+                                        <a class="dark inline p-l-20 bold" href="/brand/\{{{urlFriendly name}}}"><div class="brandsAC text-center">
+                                            <span class="">\{{{ _highlightResult.name.value }}}</span>
+                                            </div></a>
+                                        \{{/each}}
+                                    </div>
                             </div>
-                    </div>
-                \{{/if}}
-            <h4 class="all-caps text-spaced-medium text-center text-purple-glow bold">\{{{welcome.nbHits}}}</h4>
+                        \{{/if}}
+                    <h4 class="all-caps text-spaced-medium text-center text-purple-glow bold">\{{{welcome.nbHits}}}</h4>
             \{{else}}
-            <h1 class="all-caps text-spaced-medium text-center ">\{{welcome.name}} </h1>
-            <h5 class="all-caps text-spaced-medium text-center">\{{welcome.department}}\{{#if welcome.subCategory}}/\{{welcome.subCategory}} \{{/if}}</h5>
-            \{{#if welcome.style}}<div class=" auto-margin block text-center p-b-20">
-                <h5 class="all-caps bold  b-b">Styles</h5>
-                \{{#each welcome.style}}<p class="inline text-center p-r-10 p-l-10">\{{this.name}}</p>\{{/each}}</div>\{{/if}}
+                    <h1 class="all-caps text-center ">\{{welcome.name}} </h1>
+                    <h5 class="all-caps text-center">\{{welcome.department}}\{{#if welcome.subCategory}}/\{{welcome.subCategory}} \{{/if}}</h5>
+                    \{{#if welcome.style}}<div class=" auto-margin block text-center p-b-20">
+                        <h5 class="all-caps bold  b-b">Styles</h5>
+                        \{{#each welcome.style}}<p class="inline text-center p-r-10 p-l-10">\{{this.name}}</p>\{{/each}}
+                    \{{/if}}
             \{{/if}}
         </div>
         \{{#if products}}
@@ -231,10 +232,9 @@
                 </div>
             <div class="productPane">
                 <div class="productPreview">
-                  <div class="bg-master-blue">
+                  <div class="bg-master-lighter">
                       <div class="row horizontalFilters" >
-
-                          <div class="col-xs-3">
+                          <div class="col-sm-3 col-xs-6">
                               <div class="brands refinement \{{#unless brands.content}} disabled \{{/unless}}  " >
                                   <div class="">
                                       <h5 class="text-center all-caps bold">
@@ -261,7 +261,7 @@
                           </div>
 
 
-                          <div class="col-xs-3">
+                          <div class="col-sm-3 hidden-xs col-xs-6">
                               <div class="discounts refinement \{{#unless discounts.content}} disabled \{{/unless}}">
                                   <div class="">
                                       <h5 class="text-center all-caps bold">
@@ -286,7 +286,7 @@
                           </div>
 
 
-                          <div class="col-xs-3">
+                          <div class="col-sm-3 hidden-xs col-xs-6">
                               <div class="shops refinement \{{#unless shops.content}} disabled \{{/unless}}" >
                                   <div class="">
                                       <h5 class="text-center all-caps bold">
@@ -312,11 +312,11 @@
                           </div>
 
 
-                          <div class="col-xs-3">
+                          <div class="col-sm-3 col-xs-6">
                               <div class="sort refinement" >
                                   <div class="">
                                       <h5 class="text-center all-caps bold">
-                                          \{{sort.header}}
+                                          <font class="hidden-xs">\{{sort.header}}</font>
                                           \{{#each sort.content}}
                                           \{{#if this.isRefined}}
                                            <small class="bold text-purple">\{{this.name}}</small>
@@ -336,6 +336,18 @@
                                               \{{/each}}
                                           </ul>
                                       </div>
+                                  </div>
+                              </div>
+                          </div>
+
+
+                          <div class="col-sm-3 col-xs-12 visible-xs">
+                              <div class="filters" >
+                                  <div class="">
+                                      <h5 class="text-center all-caps bold">
+                                          mer filter
+                                          <span><i class="pg-arrow_minimize"></i></span>
+                                      </h5>
                                   </div>
                               </div>
                           </div>

@@ -11,7 +11,7 @@
                                         <div id="mainJawBoneImageContainer" class="swiper-container" >
                                             <div class="swiper-wrapper no-style">
                                                 <div class="swiper-slide">
-                                                    <img  imageorder ="0" class="swiper-lazy" data-src="{{product.mainPicture.largeUrl}}"/>
+                                                    <img  imageorder ="0" class="swiper-lazy cloudzoom" data-src="{{product.mainPicture.largeUrl}}" data-cloudzoom = "zoomImage: '{{product.mainPicture.largeUrl}}'" id="#myImage"/>
                                                     <div class="swiper-lazy-preloader swiper-lazy-preloader-brantu"></div>
                                                 </div>
                                                 {{#each product.auxPictures}}
@@ -385,7 +385,7 @@
                                                             <div class="panel-heading bg-white" role="tab" id="headingOne">
                                                                 <h4 class="panel-title ">
                                                                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="collapsed">
-                                                                        <font class="sbold p-l-30"> Description </font> <br/><div class="descriptionHint ">{{product.description}}</div>
+                                                                        <font class="sbold"> Description </font> <br/><div class="descriptionHint ">{{product.description}}</div>
                                                                     </a>
                                                                 </h4>
                                                             </div>

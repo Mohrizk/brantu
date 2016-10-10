@@ -98,7 +98,7 @@ var routes = [
         categories.getDepartment,
         function(req, res, next) {
             res.locals.title = "Kontakt oss - Brantu";
-            res.render('general', {
+            res.render('information', {
                 generalPartial: function() {
                     return "contact-us";
                 }
@@ -109,9 +109,20 @@ var routes = [
         categories.getDepartment,
         function(req, res, next) {
             res.locals.title = "Om oss - Brantu";
-            res.render('general', {
+            res.render('information', {
                 generalPartial: function() {
                     return "about-us";
+                }
+            });
+        }]],
+    [ '/how-it-works', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        function(req, res, next) {
+            res.locals.title = "Om oss - Brantu";
+            res.render('features', {
+                generalPartial: function() {
+                    return "how-it-works";
                 }
             });
         }]],
@@ -120,7 +131,7 @@ var routes = [
         categories.getDepartment,
         function(req, res, next) {
             res.locals.title = "FAQ - Brantu";
-            res.render('general', {
+            res.render('information', {
                 generalPartial: function() {
                     return "faq";
                 }
@@ -131,9 +142,9 @@ var routes = [
         categories.getDepartment,
         function(req, res, next) {
             res.locals.title = "Privacy policy - Brantu";
-            res.render('general', {
+            res.render('information', {
                 generalPartial: function() {
-                    return "privacy";
+                    return "privacy-policy";
                 }
             });
         }
@@ -143,13 +154,25 @@ var routes = [
         categories.getDepartment,
         function(req, res, next) {
             res.locals.title = "Terms and conditions - Brantu";
-            res.render('general', {
+            res.render('information', {
                 generalPartial: function() {
-                    return "terms";
+                    return "terms-and-conditions";
                 }
             });
         }
     ]],
+    [ '/cookie-policy', 'get', [
+        categories.getCategoryTree,
+        categories.getDepartment,
+        function(req, res, next) {
+            res.locals.title = "Cookie Policy - Brantu";
+            res.render('information', {
+                generalPartial: function() {
+                    return "cookie-policy";
+                }
+            });
+        }]],
+
     [ '/join-shop', 'get', [
         categories.getCategoryTree,
         categories.getDepartment,
@@ -161,17 +184,6 @@ var routes = [
                 }
             });
     }]],
-    [ '/cookie-policy', 'get', [
-        categories.getCategoryTree,
-        categories.getDepartment,
-        function(req, res, next) {
-            res.locals.title = "Cookie Policy - Brantu";
-            res.render('general', {
-                generalPartial: function() {
-                    return "cookie";
-                }
-            });
-        }]],
     [ '/cookie-policy', 'post', [
         function(req, res, next) {
             req.session.cookieConcession = true;
@@ -180,7 +192,6 @@ var routes = [
             res.status(200);
             res.end();
         }]],
-
 /*********MAIN PAGE******************************************/
     [ ['/:department/:category','/:department/:category/:style'], 'get', [
         categories.getDepartment,
@@ -198,7 +209,7 @@ var routes = [
         session.addFavouriteDepartment,
         categories.getCategoryTree,
         categories.getDepartment,
-        products.getCompare,
+        //products.getCompare,
         feed.getFeed,
         function(req, res, next) {
             var department = shared.helper.encodeDepartment(res.locals.selectedDepartment);
@@ -213,7 +224,6 @@ var routes = [
                 }
             });
         } ]],
-
 /*********Internationalization *******************/
     [ '/en', 'get', [ function(req, res, next) {
         res.cookie('brantuLang', 'en');

@@ -1,14 +1,4 @@
 $(document).ready(function() {
-	$('#owlNav').owlCarousel({
-		navigation : false, // Show next and prev buttons
-		autoPlay:  7000,
-		pagination:false,
-		slideSpeed : 0,
-		paginationSpeed : 5000,
-		rewindSpeed:5000,
-		stopOnHover:true,
-		singleItem:true
-	});
     var navContainer = $('#navContainer')
 	var navExpand = false;
 
@@ -52,24 +42,9 @@ $(document).ready(function() {
 	/*
 	 Mobile Menu
 	 */
-	function closeSidePage(){
-		$('.page-sidebar').removeClass('visible');
-		$('.fixed-header').removeClass('sidebar-open');
-		$('.page-sidebar-cover').addClass('hidden');
-	}
-	$(document).on('click','#menuBurgerIcon', function(e) {
-		e.stopImmediatePropagation();  e.preventDefault();e.cancelBubble = true;
-		$('.page-sidebar').addClass('visible').css({opacity:0}).animate({opacity:1}, 300);
-		$('.fixed-header').addClass('sidebar-open');
-		$('.page-sidebar-cover').removeClass('hidden');
-         console.log('opening mobile menu')
-	});
 
-	$(document).on(eventOnTE, '.page-sidebar-cover',function(e) {
-		e.stopImmediatePropagation();  e.preventDefault();
-		console.log('closing mobile menu')
-		closeSidePage()
-	});
+
+
 
 	$(document).on(eventOnTE,'a[data-page]',function(e){
 		$('a[data-page]').removeClass('active');
@@ -108,6 +83,9 @@ $(document).ready(function() {
 		$(selector).removeClass('hidden');
 	});
 	var previousScroll = 0;
+
+
+
 	function navBarScrollActions(){
 		var navSegment = $('#navbarDepartment');
 		var logo = $('.mainLogo');
@@ -142,15 +120,28 @@ $(document).ready(function() {
 			 if(navSegment.is(':visible'))navSegment.slideUp('fast');
 		 }
 	 }
-
-
-		if(isMobile && current> header){
-			$('#menuSearchIcon').fadeIn();
-		}
-		else if(isMobile && current< header){
-			$('#menuSearchIcon').fadeOut('fast');
-		}
 	}
+
+	$(document).on('click','a[data-mobile-nav]', function(){
+		$('a[data-mobile-nav]').removeClass('active');
+		$(this).addClass('active');
+		var value = $(this).attr('data-mobile-nav');
+		console.log(value)
+		$('div[data-mobile-nav-toggle]').addClass('hidden');
+		$('div[data-mobile-nav-toggle = "'+ value +'"]').removeClass('hidden').css({opacity:0}).animate({opacity:1});
+	});
+
+	$(document).on('click', '#header-nav-mobile button', function(){
+		var header = $('#header-nav-mobile');
+		if(header.hasClass('open')){
+			header.removeClass('open');
+		}
+		else{
+			header.addClass('open');
+		}
+
+	});
+
 	$(window).on( 'scroll' ,function(){
 		navBarScrollActions()
 	});

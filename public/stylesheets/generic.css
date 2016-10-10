@@ -1,3 +1,9 @@
+
+
+.header-nav-mobile button{
+    background: transparent;
+    border: none;
+}
 .title-borders{
     position: relative;
     margin-bottom: 15px;
@@ -43,6 +49,22 @@
 }
 .searchMainPageOverlay div{
    z-index:200; top:0; bottom:0;  right: 0; left: 0; background: rgba(51,51,51,0.3);
+}
+
+
+/*****HOW IT WORKS*****/
+.product-description .modal-body{
+    height:400px;
+}
+.product-description .description{
+    margin-top: 100px;;
+}
+.product-description .product-description-header{
+
+}
+
+.product-description svg path, .product-description svg circle{
+    stroke: #9E8130;
 }
 /*FEEEEED*******/
 .productFeedTemplate img{
@@ -195,7 +217,7 @@ input:-webkit-autofill {
     height:50px;
     top:-10px;
     right:0;
-    left: 0;
+    left: -20;
     bottom: 0;
     z-index: 10;
 }
@@ -211,7 +233,7 @@ input:-webkit-autofill {
 }
 #mobileContainerHintAC{
     width:780px !important;
-    left:-10px;
+    left:-10%;
     background: white;
 }
 
@@ -389,7 +411,7 @@ input:-webkit-autofill {
 
 /* landing Page*/
 .mainJumbtron{
-    height:300px;
+    height:420px;
 }
 .mainJumbtron .text-section{
     margin-top:50px;
@@ -525,7 +547,6 @@ ul.circle li:hover div{
 	position:relative;
 	padding-top:30px;
     padding-bottom:30px;
-    background: black;
 }
 .welcome h1,.welcome h2,.welcome h3,.welcome h4,.welcome h5{
     color: #000 !important;
@@ -738,7 +759,7 @@ ul.circle li:hover div{
     left:0;
     right:0;
     bottom:0;
-    background-color:#fff;
+    background-color:#f5f5f5;
     box-shadow: 0 4px 2px -2px rgba(0,0,0,0.16);
     position:relative;
     padding: 0%;
@@ -1155,7 +1176,7 @@ ul.circle li:hover div{
     position: relative;
 }
 
-.horizontalFilters .refinement h5{
+.horizontalFilters .refinement h5, .horizontalFilters .filters h5{
     border:2px solid black;
     margin-left: 5px;
     margin-right: 5px;
@@ -1164,7 +1185,7 @@ ul.circle li:hover div{
     cursor: pointer;
     font-size: 14px;
 }
-.horizontalFilters .refinement h5 span{
+.horizontalFilters .refinement h5 span, .horizontalFilters .filters h5 span{
     color: #9E8130;
 }
 
@@ -1453,7 +1474,7 @@ ul.circle li:hover div{
         margin-right: 5px;
     }
     .mainLogo{
-        width:140px;
+        width:200px;
     }
     .productPane{
         width:100%;
@@ -1481,6 +1502,11 @@ ul.circle li:hover div{
     .list input[type=checkbox] + label{
         padding: 8px 5px;
         margin-bottom: 0;
+    }
+    .list input[type=checkbox] + label span.name{
+        max-width:150px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     .irs-from, .irs-to, .irs-single{
         font-size: 12px !important;
@@ -1530,16 +1556,24 @@ ul.circle li:hover div{
 
 }
 @media (max-width: 767px){
+    .product-description .description{
+        margin-top: 10px;
+        margin-bottom: 50px;
+    }
     #mainSection > .container, #searchSection > .container, #compareSection > .container{
         margin-top:0px;
     }
     .mainLogo{
-        width:140px;
+        width:150px;
+        position: absolute;
+        top:0px;
         height: 39px;
-        margin-top: 0;
+        margin-top: 10px;
+        background-size: 100% ;
     }
     #mainLogoContainter{
         width:140px;
+        padding-right: 5px;
     }
     #CloseSearchMobile i{
         font-size:30px;
@@ -1569,7 +1603,7 @@ ul.circle li:hover div{
         transition-delay: 0.2s;
     }
 
-    #mainSection, #searchSection, #compareSection{  padding-top: 0px;  }
+    #mainSection, #searchSection, #compareSection{  padding-top: 40px;  }
     .page-container .page-content-wrapper .content{  padding: 0;  }
 
     .vertical .item img{ height:40vw; max-width:100%; }
@@ -1580,6 +1614,31 @@ ul.circle li:hover div{
     .vertical .item .discounted-percentage { top:10px; left:1em;  }
 }
 @media (max-width: 480px){
+    #selectedItemInformation > .row{
+        margin-top: 20px;
+    }
+    .next-item, .prev-item,  .jbImageContainer .option{
+        display: none;
+    }
+    .welcome{
+        padding-top:5px;
+        padding-bottom:5px;
+    }
+    .product-description .modal-body{
+        height:300px;
+    }
+    .horizontalFilters .listContainer{
+        left:-20px;
+        max-width: 200px;
+        min-width: 200px;
+    }
+    .section-title, .section-title--catalog {
+        padding: 0 0 5px 10px;
+        text-align: center;
+    }
+    .product-description .description{
+        margin-top: 10px;;
+    }
     .mainJumbtron{
         height:55vw;
     }
@@ -1595,7 +1654,7 @@ ul.circle li:hover div{
     }
     .similarProducts .flow{width:49%; }
     .jawBoneContent.open{
-        padding: 0 10px;
+        padding: 0 0px;
     }
     .selectedItemSave {
         font-size: 32px;
@@ -1627,7 +1686,7 @@ ul.circle li:hover div{
     .selectedItemZoomPicture img {
         max-height: 100%;
         height: auto;
-        max-width: 90%;
+        max-width: 100%;
     }
     .similarProducts div img{
         height: 225px;

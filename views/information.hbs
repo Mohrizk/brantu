@@ -1,0 +1,49 @@
+<style>
+
+    #menuList li{
+        padding: 10px 0 !important;
+    }
+    #menuList li a {
+        text-transform: capitalize !important;
+        font-weight: 500 !important;
+        font-size: 26px;
+    }
+    #menuList li a.active{
+        color: #9E8130 !important;
+        font-weight: bolder !important;
+        font-size: 26px;
+    }
+    #menuListContainer{
+        background-image:url('/images/join-shop/about.jpg'); background-position: center;
+    }
+</style>
+<div class="page-content-wrapper">
+    <section class="general" id="mainSection">
+        <div class="container ">
+            <div class="row no-margin" >
+                <div class="col-md-4  no-margin no-padding" >
+                    <div class="bg-image" id="menuListContainer">
+                        <div class="padding-30 p-b-100  gradient-velvet-opacity" >
+                            <h6 class="text-center text-white medium b-t b-b b-grey p-t-5 p-b-5">Brantu är en modebaserad sökmotor med visionen att erbjuda det bästa priset genom att jämföra och hitta det bästa priset från över 100 000 produkter.</h6>
+                            <ul class="text-center text-white no-style p-t-20" id="menuList">
+                                <li><a class="bright {{#if (compareStrings (generalPartial) 'about-us')}} active {{/if}}" href="/about-us">Om oss</a></li>
+                                <li><a class="bright {{#if (compareStrings (generalPartial) 'faq')}} active {{/if}}" href="/faq">FAQ</a></li>
+                                <li><a class="bright {{#if (compareStrings (generalPartial) 'privacy-policy')}} active {{/if}}" href="/privacy-policy">Integritetspolicy</a></li>
+                                <li><a class="bright {{#if (compareStrings (generalPartial) 'terms-and-conditions')}} active {{/if}}" href="/terms-and-conditions">Medlemsvilkoren</a></li>
+                                <li><a class="bright {{#if (compareStrings (generalPartial) 'cookie-policy')}} active {{/if}}" href="/cookie-policy">Cookie policy</a></li>
+                            </ul>
+                            <div class=" text-center m-t-30 b-t b-b b-grey hidden-xs" >
+                                <h2 class="all-caps text-white ">Kom ihåg</h2>
+                                <p class="text-white">BRANTU.com säljer inte kläderna som visas på sidan, alla frågor som rör produkter, leverans & betalning bör därför ställas direkt till butiken som säljer plagget.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-8 col-xs-12 padding-30">
+                    {{> (generalPartial)}}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

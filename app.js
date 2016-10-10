@@ -14,11 +14,10 @@ const async = require("async");
 const exphbs = require('express-handlebars');//HTML TEMPLATING
 
 const mongoose = require('mongoose');//FOR Database
-var cacheOpts = {
+require('mongoose-cache').install(mongoose, {
     max:50,
     maxAge:1000*60*2
-};
-require('mongoose-cache').install(mongoose, cacheOpts)
+});
 const paginate = require('express-paginate');//Pagination
 
 const User     = require('./services/models/user');
