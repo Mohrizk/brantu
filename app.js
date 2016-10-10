@@ -12,8 +12,10 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const async = require("async");
 const exphbs = require('express-handlebars');//HTML TEMPLATING
-
+const S = require('string'); S.extendPrototype();
+shortid = require('shortid');
 const mongoose = require('mongoose');//FOR Database
+mongoose.Promise = require('bluebird');
 require('mongoose-cache').install(mongoose, {
     max:50,
     maxAge:1000*60*2

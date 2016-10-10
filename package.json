@@ -15,6 +15,7 @@
     "algoliasearch-helper": "^2.11.0",
     "async": "^2.0.0-rc.3",
     "bcrypt-nodejs": "latest",
+    "bluebird": "^3.4.6",
     "body-parser": "~1.13.2",
     "compression": "^1.6.2",
     "connect": "^3.4.1",
@@ -46,7 +47,9 @@
     "request": "^2.73.0",
     "robots.txt": "^1.1.0",
     "serve-favicon": "~2.3.0",
+    "shortid": "^2.2.6",
     "sitemap": "^1.8.1",
+    "string": "^3.3.1",
     "webshot": "^0.18.0",
     "xoauth2": "^1.1.0"
   },
