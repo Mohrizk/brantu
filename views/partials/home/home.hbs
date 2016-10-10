@@ -199,166 +199,175 @@
                                                <div class="swiper-container swiper-general p-b-30">
                                                    <div class="swiper-wrapper">
                                                        <div class="swiper-slide b-a b-grey">
-                                                           <a href="/brand/filippa-k{{#if (compareStrings selectedDepartment 'kvinna')}}/?&category=kvinna{{else}}/?&category=man{{/if}}">
-                                                               <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
-                                                                   <div class="top-left bottom-right bg-image no-background-image"
-                                                                        style="background-image: url('/images/brands/filippa-k-logo.jpg'); background-size: 90%;     background-position: 50% 50%;" >
-                                                                       <div class="brand-follow">
-                                                                           {{#if user}}
-                                                                               {{#if product.brand.isFavored}}
-                                                                                   <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
-                                                                                      data-toggle="tooltip" data-placement="top" title="unfollow {{product.brand.name}} price drops, discount and coupons"
-                                                                                      data-favourite="removeBrand"  id="{{product.brand._id}}" name="{{product.brand.name}}" key="{{product.brand.key}}"
-                                                                                      action="/favourite-brands/remove">
-                                                                                       <button class="btn btn-tag btn-follow active"  >följer</button>
-                                                                                   </a>
-                                                                               {{else}}
-                                                                                   <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
-                                                                                      data-toggle="tooltip" data-placement="top" title="follow {{product.brand.name}} price drops, discount and coupons"
-                                                                                      data-favourite="addBrand"  id="{{product.brand._id}}" name="{{product.brand.name}}" key="{{product.brand.key}}"
-                                                                                      action="/favourite-brands/add">
-                                                                                       <button class="btn btn-tag btn-follow">följ</button>
-                                                                                   </a>
-                                                                               {{/if}}
-                                                                           {{else}}
-                                                                               <a data-view="signup" class="authenticate" data-toggle="top" data-placement="bottom" title="follow {{product.brand.name}} price drops, discount and coupons">
-                                                                                   <button class="btn btn-tag btn-follow">följ</button>
-                                                                               </a>
-                                                                           {{/if}}
-                                                                       </div>
-                                                                   </div>
-                                                               </div>
-                                                           </a>
-                                                       </div>
-                                                       <div class="swiper-slide b-a b-grey">
-                                                           <a href="/brand/boss-orange{{#if (compareStrings selectedDepartment 'kvinna')}}/?&category=kvinna{{else}}/?&category=man{{/if}}">
-                                                               <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
+
+                                                           <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
+                                                               <a href="/brand/boss-orange">
                                                                    <div class="top-left bottom-right bg-image no-background-image "
                                                                         style="background-image: url('/images/brands/hugo-boss-logo.svg.png'); background-size: 50%; background-position: 50% 50%;">
-                                                                       <div class="brand-follow">
-                                                                           {{#if user}}
-                                                                               {{#if product.brand.isFavored}}
-                                                                                   <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
-                                                                                      data-toggle="tooltip" data-placement="top" title="unfollow {{product.brand.name}} price drops, discount and coupons"
-                                                                                      data-favourite="removeBrand"  id="{{product.brand._id}}" name="{{product.brand.name}}" key="{{product.brand.key}}"
-                                                                                      action="/favourite-brands/remove">
-                                                                                       <button class="btn btn-tag btn-follow active"  >följer</button>
-                                                                                   </a>
-                                                                               {{else}}
-                                                                                   <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
-                                                                                      data-toggle="tooltip" data-placement="top" title="follow {{product.brand.name}} price drops, discount and coupons"
-                                                                                      data-favourite="addBrand"  id="{{product.brand._id}}" name="{{product.brand.name}}" key="{{product.brand.key}}"
-                                                                                      action="/favourite-brands/add">
-                                                                                       <button class="btn btn-tag btn-follow">följ</button>
-                                                                                   </a>
-                                                                               {{/if}}
-                                                                           {{else}}
-                                                                               <a data-view="signup" class="authenticate" data-toggle="top" data-placement="bottom" title="follow {{product.brand.name}} price drops, discount and coupons">
-                                                                                   <button class="btn btn-tag btn-follow">följ</button>
-                                                                               </a>
-                                                                           {{/if}}
-                                                                       </div>
                                                                    </div>
+                                                               </a>
+                                                               <div class="brand-follow">
+                                                                   {{#if user}}
+                                                                       {{#if product.brand.isFavored}}
+                                                                           <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                                              data-toggle="tooltip" data-placement="top" title="unfollow BOSS Orange price drops, discount and coupons"
+                                                                              data-favourite="removeBrand"  id="573a3f8cd24a4c02a412cf5d" name="BOSS Orange" key="BO1"
+                                                                              action="/favourite-brands/remove">
+                                                                               <button class="btn btn-tag btn-follow active"  >följer</button>
+                                                                           </a>
+                                                                       {{else}}
+                                                                           <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                                              data-toggle="tooltip" data-placement="top" title="follow BOSS Orange price drops, discount and coupons"
+                                                                              data-favourite="addBrand"  id="573a3f8cd24a4c02a412cf5d" name="BOSS Orange" key="BO1"
+                                                                              action="/favourite-brands/add">
+                                                                               <button class="btn btn-tag btn-follow">följ</button>
+                                                                           </a>
+                                                                       {{/if}}
+                                                                   {{else}}
+                                                                       <a data-view="signup" class="authenticate" data-toggle="top" data-placement="bottom" title="follow BOSS Orange price drops, discount and coupons">
+                                                                           <button class="btn btn-tag btn-follow">följ</button>
+                                                                       </a>
+                                                                   {{/if}}
                                                                </div>
-                                                           </a>
+                                                           </div>
+
                                                        </div>
+
+
                                                        <div class="swiper-slide b-a b-grey">
-                                                           <a href="/brand/tiger-of-sweden{{#if (compareStrings selectedDepartment 'kvinna')}}/?&category=kvinna{{else}}/?&category=man{{/if}}">
-                                                               <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
-                                                                   <div class="top-left bottom-right bg-image no-background-image "
-                                                                        style="background-image: url('/images/brands/tiger-of-sweden-logo.jpg'); background-size: 60%; background-position: center;" >
-                                                                       <div class="brand-follow">
-                                                                           {{#if user}}
-                                                                               {{#if product.brand.isFavored}}
-                                                                                   <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
-                                                                                      data-toggle="tooltip" data-placement="top" title="unfollow {{product.brand.name}} price drops, discount and coupons"
-                                                                                      data-favourite="removeBrand"  id="{{product.brand._id}}" name="{{product.brand.name}}" key="{{product.brand.key}}"
-                                                                                      action="/favourite-brands/remove">
-                                                                                       <button class="btn btn-tag btn-follow active"  >följer</button>
-                                                                                   </a>
-                                                                               {{else}}
-                                                                                   <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
-                                                                                      data-toggle="tooltip" data-placement="top" title="follow {{product.brand.name}} price drops, discount and coupons"
-                                                                                      data-favourite="addBrand"  id="{{product.brand._id}}" name="{{product.brand.name}}" key="{{product.brand.key}}"
-                                                                                      action="/favourite-brands/add">
-                                                                                       <button class="btn btn-tag btn-follow">följ</button>
-                                                                                   </a>
-                                                                               {{/if}}
-                                                                           {{else}}
-                                                                               <a data-view="signup" class="authenticate" data-toggle="top" data-placement="bottom" title="follow {{product.brand.name}} price drops, discount and coupons">
-                                                                                   <button class="btn btn-tag btn-follow">följ</button>
-                                                                               </a>
-                                                                           {{/if}}
-                                                                       </div>
+                                                           <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
+                                                               <a href="/brand/monki">
+                                                                   <div class="top-left bottom-right bg-image no-background-image"
+                                                                        style="background-image: url('/images/brands/monki-logo.png'); background-size: 60%;     background-position: 50% 50%;" >
                                                                    </div>
+                                                               </a>
+                                                               <div class="brand-follow">
+                                                                   {{#if user}}
+                                                                       {{#if product.brand.isFavored}}
+                                                                           <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                                              data-toggle="tooltip" data-placement="top" title="unfollow Monki price drops, discount and coupons"
+                                                                              data-favourite="removeBrand"  id="577e63db86526ac03f37d960" name="Monki" key="MMKKO"
+                                                                              action="/favourite-brands/remove">
+                                                                               <button class="btn btn-tag btn-follow active"  >följer</button>
+                                                                           </a>
+                                                                       {{else}}
+                                                                           <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                                              data-toggle="tooltip" data-placement="top" title="follow Monki price drops, discount and coupons"
+                                                                              data-favourite="addBrand"  id="577e63db86526ac03f37d960" name="Monki" key="MMKKO"
+                                                                              action="/favourite-brands/add">
+                                                                               <button class="btn btn-tag btn-follow">följ</button>
+                                                                           </a>
+                                                                       {{/if}}
+                                                                   {{else}}
+                                                                       <a data-view="signup" class="authenticate" data-toggle="top" data-placement="bottom" title="follow Monki price drops, discount and coupons">
+                                                                           <button class="btn btn-tag btn-follow">följ</button>
+                                                                       </a>
+                                                                   {{/if}}
                                                                </div>
-                                                           </a>
+                                                           </div>
                                                        </div>
+
                                                        <div class="swiper-slide b-a b-grey">
-                                                           <a href="/brand/tiger-of-sweden{{#if (compareStrings selectedDepartment 'kvinna')}}/?&category=kvinna{{else}}/?&category=man{{/if}}">
-                                                               <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
+                                                           <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
+                                                               <a href="/brand/tiger-of-sweden/">
                                                                    <div class="top-left bottom-right bg-image no-background-image "
                                                                         style="background-image: url('/images/brands/tiger-of-sweden-logo.jpg'); background-size: 60%; background-position: center;" >
 
-                                                                       <div class="brand-follow">
-                                                                           {{#if user}}
-                                                                               {{#if product.brand.isFavored}}
-                                                                                   <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
-                                                                                      data-toggle="tooltip" data-placement="top" title="unfollow {{product.brand.name}} price drops, discount and coupons"
-                                                                                      data-favourite="removeBrand"  id="{{product.brand._id}}" name="{{product.brand.name}}" key="{{product.brand.key}}"
-                                                                                      action="/favourite-brands/remove">
-                                                                                       <button class="btn btn-tag btn-follow active"  >följer</button>
-                                                                                   </a>
-                                                                               {{else}}
-                                                                                   <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
-                                                                                      data-toggle="tooltip" data-placement="top" title="follow {{product.brand.name}} price drops, discount and coupons"
-                                                                                      data-favourite="addBrand"  id="{{product.brand._id}}" name="{{product.brand.name}}" key="{{product.brand.key}}"
-                                                                                      action="/favourite-brands/add">
-                                                                                       <button class="btn btn-tag btn-follow">följ</button>
-                                                                                   </a>
-                                                                               {{/if}}
-                                                                           {{else}}
-                                                                               <a data-view="signup" class="authenticate" data-toggle="top" data-placement="bottom" title="follow {{product.brand.name}} price drops, discount and coupons">
-                                                                                   <button class="btn btn-tag btn-follow">följ</button>
-                                                                               </a>
-                                                                           {{/if}}
-                                                                       </div>
-
                                                                    </div>
+                                                               </a>
+                                                               <div class="brand-follow">
+                                                                   {{#if user}}
+                                                                       {{#if product.brand.isFavored}}
+                                                                           <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                                              data-toggle="tooltip" data-placement="top" title="unfollow Tiger of Sweden price drops, discount and coupons"
+                                                                              data-favourite="removeBrand"  id="575035d8b59cf29ca324aa35" name="Tiger of Sweden" key="TIGE"
+                                                                              action="/favourite-brands/remove">
+                                                                               <button class="btn btn-tag btn-follow active"  >följer</button>
+                                                                           </a>
+                                                                       {{else}}
+                                                                           <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                                              data-toggle="tooltip" data-placement="top" title="follow Tiger of Sweden price drops, discount and coupons"
+                                                                              data-favourite="addBrand"  id="575035d8b59cf29ca324aa35" name="Tiger of Sweden" key="TIGE"
+                                                                              action="/favourite-brands/add">
+                                                                               <button class="btn btn-tag btn-follow">följ</button>
+                                                                           </a>
+                                                                       {{/if}}
+                                                                   {{else}}
+                                                                       <a data-view="signup" class="authenticate" data-toggle="top" data-placement="bottom" title="follow Tiger of Sweden price drops, discount and coupons">
+                                                                           <button class="btn btn-tag btn-follow">följ</button>
+                                                                       </a>
+                                                                   {{/if}}
                                                                </div>
-                                                           </a>
+                                                           </div>
+
                                                        </div>
                                                        <div class="swiper-slide b-a b-grey">
-                                                           <a href="/brand/tiger-of-sweden{{#if (compareStrings selectedDepartment 'kvinna')}}/?&category=kvinna{{else}}/?&category=man{{/if}}">
-                                                               <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
-                                                                   <div class="top-left bottom-right bg-image no-background-image "
-                                                                        style="background-image: url('/images/brands/tiger-of-sweden-logo.jpg'); background-size: 60%; background-position: center;" >
-                                                                       <div class="brand-follow">
-                                                                           {{#if user}}
-                                                                               {{#if product.brand.isFavored}}
-                                                                                   <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
-                                                                                      data-toggle="tooltip" data-placement="top" title="unfollow {{product.brand.name}} price drops, discount and coupons"
-                                                                                      data-favourite="removeBrand"  id="{{product.brand._id}}" name="{{product.brand.name}}" key="{{product.brand.key}}"
-                                                                                      action="/favourite-brands/remove">
-                                                                                       <button class="btn btn-tag btn-follow active"  >följer</button>
-                                                                                   </a>
-                                                                               {{else}}
-                                                                                   <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
-                                                                                      data-toggle="tooltip" data-placement="top" title="follow {{product.brand.name}} price drops, discount and coupons"
-                                                                                      data-favourite="addBrand"  id="{{product.brand._id}}" name="{{product.brand.name}}" key="{{product.brand.key}}"
-                                                                                      action="/favourite-brands/add">
-                                                                                       <button class="btn btn-tag btn-follow">följ</button>
-                                                                                   </a>
-                                                                               {{/if}}
-                                                                           {{else}}
-                                                                               <a data-view="signup" class="authenticate" data-toggle="top" data-placement="bottom" title="follow {{product.brand.name}} price drops, discount and coupons">
-                                                                                   <button class="btn btn-tag btn-follow">följ</button>
-                                                                               </a>
-                                                                           {{/if}}
-                                                                       </div>
+                                                           <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
+                                                               <a href="/brand/filippa-k">
+                                                                   <div class="top-left bottom-right bg-image no-background-image"
+                                                                        style="background-image: url('/images/brands/filippa-k-logo.jpg'); background-size: 90%;     background-position: 50% 50%;" >
                                                                    </div>
+                                                               </a>
+                                                               <div class="brand-follow">
+                                                                   {{#if user}}
+                                                                       {{#if product.brand.isFavored}}
+                                                                           <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                                              data-toggle="tooltip" data-placement="top" title="unfollow Filippa K price drops, discount and coupons"
+                                                                              data-favourite="removeBrand"  id="573a3f8cd24a4c02a412d05c" name="Filippa K" key="F14"
+                                                                              action="/favourite-brands/remove">
+                                                                               <button class="btn btn-tag btn-follow active"  >följer</button>
+                                                                           </a>
+                                                                       {{else}}
+                                                                           <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                                              data-toggle="tooltip" data-placement="top" title="follow Filippa K price drops, discount and coupons"
+                                                                              data-favourite="addBrand"  id="573a3f8cd24a4c02a412d05c" name="Filippa K" key="F14"
+                                                                              action="/favourite-brands/add">
+                                                                               <button class="btn btn-tag btn-follow">följ</button>
+                                                                           </a>
+                                                                       {{/if}}
+                                                                   {{else}}
+                                                                       <a data-view="signup" class="authenticate" data-toggle="top" data-placement="bottom" title="follow Filippa K price drops, discount and coupons">
+                                                                           <button class="btn btn-tag btn-follow">följ</button>
+                                                                       </a>
+                                                                   {{/if}}
                                                                </div>
-                                                           </a>
+                                                           </div>
+
+                                                       </div>
+                                                       <div class="swiper-slide b-a b-grey">
+                                                           <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1">
+                                                               <a href="/brand/samsoe-samsoe/">
+                                                                   <div class="top-left bottom-right bg-image no-background-image "
+                                                                        style="background-image: url('/images/brands/samsoe-samsoe-logo.jpg'); background-size: 60%; background-position: center;" >
+
+                                                                   </div>
+                                                               </a>
+                                                               <div class="brand-follow">
+                                                                   {{#if user}}
+                                                                       {{#if product.brand.isFavored}}
+                                                                           <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                                              data-toggle="tooltip" data-placement="top" title="unfollow Samsoe & Samsoe price drops, discount and coupons"
+                                                                              data-favourite="removeBrand"  id="578cb1d3790129d90302606f" name="Samsoe & Samsoe" key="SMSOO"
+                                                                              action="/favourite-brands/remove">
+                                                                               <button class="btn btn-tag btn-follow active"  >följer</button>
+                                                                           </a>
+                                                                       {{else}}
+                                                                           <a class="dark inline fs-16 sbold no-margin no-padding text-spaced-medium text-left"
+                                                                              data-toggle="tooltip" data-placement="top" title="follow Samsoe & Samsoe price drops, discount and coupons"
+                                                                              data-favourite="addBrand"  id="578cb1d3790129d90302606f" name="Samsoe & Samsoe" key="SMSOO"
+                                                                              action="/favourite-brands/add">
+                                                                               <button class="btn btn-tag btn-follow">följ</button>
+                                                                           </a>
+                                                                       {{/if}}
+                                                                   {{else}}
+                                                                       <a data-view="signup" class="authenticate" data-toggle="top" data-placement="bottom" title="follow Samsoe & Samsoe price drops, discount and coupons">
+                                                                           <button class="btn btn-tag btn-follow">följ</button>
+                                                                       </a>
+                                                                   {{/if}}
+                                                               </div>
+                                                           </div>
+
+
                                                        </div>
                                                    </div>
                                                    <div class="swiper-pagination"></div>

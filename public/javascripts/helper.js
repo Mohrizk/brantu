@@ -109,7 +109,6 @@ var renderHelper = {
         path+='/märken/'+ renderHelper.urlFriendly(theState["disjunctiveFacetsRefinements"]['brand.name'][0]) +'/'
         query = renderHelper.stateToUrlQuery(helper, currentState)
         if(query !== '') path+= '?'+query;
-        console.log(path)
         return path;
     },
     stateToUrlSearch:function(helper, currentState){
@@ -181,7 +180,6 @@ var renderHelper = {
         }
 
         if (typeof object['facetsRefinements'] !== 'undefined') {
-            console.log(object['facetsRefinements'])
             if (typeof object['facetsRefinements']['sale'] !== 'undefined') {
                 uri+= '&sale='+ renderHelper.urlFriendly(object.facetsRefinements["sale"][0]);
             }
@@ -220,15 +218,13 @@ var renderHelper = {
         return {currentState : currentState, type: type}
     },
     urlToStateBrand:function(url, helper){
-        helper.clearRefinements().setQuery('');;
+        helper.clearRefinements().setQuery('');
         var splitted = url.split('?'), href = splitted[0], query = splitted[1];
         if(href.charAt(0) =='/')href = href.slice(1, href.length);
-        if(href.charAt(href.length-1) =='/') href = href.slice(0, href.length-1);
-        console.log(href)
+        if(href.charAt(href.length-1) =='/') href = href.slice(0, href.length-1).toLowerCase();
         var path = href.split('/'), currentState, type, category;
-        currentState= {brand: true, category:false, search:false}
+        currentState= {brand: true, category:false, search:false};
         type = "brand";
-        console.log(path[path.length-1])
         helper.addDisjunctiveFacetRefinement('brand.name', renderHelper.decodeUrlFriendly(path[path.length-1]));
 
         if(path.length >2){
@@ -246,7 +242,6 @@ var renderHelper = {
         var path = href.split('/'), currentState, type, category;
         currentState= {brand: false, category:false, search:true}
         type  = "search"
-        console.log('PATH  ',path )
         if(path.length >1){
             helper.toggleRefinement('products', renderHelper.decodeUrlFriendly(path[1]));
         }
@@ -763,6 +758,9 @@ var renderHelper = {
         if(!currentState.brand){
             object.brands={ content: content.getFacetValues('brand.name', {sortBy: ['name:asc']}), header: HEADERTEXT.disjunctionFacets.brand.header}
         }
+        else{
+                object.brands={header: HEADERTEXT.disjunctionFacets.brand.header}
+        };
         //return object
     }
 };

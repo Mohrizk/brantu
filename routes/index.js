@@ -11,8 +11,6 @@ var newsletter = require('../services/middleware/mw-newsletter');
 var session = require('../services/middleware/mw-session');
 var feed = require('../services/middleware/mw-feed');
 var email = require('../services/middleware/mw-email');
-
-
 var shared = require('../public/javascripts/helper');
 
 /**************************************************************
@@ -80,8 +78,8 @@ var routes = [
 
 /*********BRAND****************/
     [ ['/brand/:name', '/m%C3%A4rken/:name', '/:department/m%C3%A4rken/:name',  '/:department/brand/:name'], 'get', [
-        categories.getCategoryTree,
         categories.getDepartment,
+        categories.getCategoryTree,
         products.getForBrands,
         products.getAlgoliaProducts,
         function(req, res, next) {
@@ -116,8 +114,8 @@ var routes = [
             });
         }]],
     [ '/how-it-works', 'get', [
-        categories.getCategoryTree,
         categories.getDepartment,
+        categories.getCategoryTree,
         function(req, res, next) {
             res.locals.title = "Om oss - Brantu";
             res.render('features', {
@@ -205,10 +203,11 @@ var routes = [
                 }
             });
         } ]],
+
     [ ["/:department"], 'get', [
         session.addFavouriteDepartment,
-        categories.getCategoryTree,
         categories.getDepartment,
+        categories.getCategoryTree,
         //products.getCompare,
         feed.getFeed,
         function(req, res, next) {

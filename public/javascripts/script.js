@@ -47,43 +47,46 @@ var helper = algoliasearchHelper(client, 'test_products',
 var typeVerified = false, departmentVerified= false;
 //INITIALIZE STATES & HELPERS
 var currentState= {search:false , brand:false, category:false}
-if(TYPE !=null && TYPE!==''){
-	var loading = $('.loading');
-	typeVerified = true;
-	var initialUrl = (typeof blogProductsLink !== 'undefined'?blogProductsLink: window.location.pathname);
-	switch (TYPE) {
-				case 'category':
-					currentState.category=true;
-					currentState.brand=false;
-					currentState.search=false;
-					helper.setPage(0)
-					renderHelper.urlToStateCategory(initialUrl,helper)
-					break;
-				case 'brand':
-					currentState.brand=true;
-					currentState.category=false;
-					currentState.search=false;
-					helper.setPage(0)
-					renderHelper.urlToStateBrand(initialUrl,helper)
 
-					break;
-				case 'search':
-					currentState.search=true;
-					currentState.brand=false;
-					currentState.category=false;
-					helper.setPage(0)
-					renderHelper.urlToStateSearch(initialUrl,helper)
-					break;
-			}
+	if(TYPE !=null && TYPE!==''){
+		var loading = $('.loading');
+		typeVerified = true;
+		var initialUrl = (typeof blogProductsLink !== 'undefined'?blogProductsLink: window.location.pathname);
+		switch (TYPE) {
+					case 'category':
+						currentState.category=true;
+						currentState.brand=false;
+						currentState.search=false;
+						helper.setPage(0)
+						renderHelper.urlToStateCategory(initialUrl,helper)
+						break;
+					case 'brand':
+						currentState.brand=true;
+						currentState.category=false;
+						currentState.search=false;
+						helper.setPage(0)
+						renderHelper.urlToStateBrand(initialUrl,helper)
+
+						break;
+					case 'search':
+						currentState.search=true;
+						currentState.brand=false;
+						currentState.category=false;
+						helper.setPage(0)
+						renderHelper.urlToStateSearch(initialUrl,helper)
+						break;
+				}
 	}
 
-if( DEPARTMENT!==null){
-	if( DEPARTMENT !== null) {
-		if (DEPARTMENT == 'WOMEN' || DEPARTMENT == 'MEN') {
-			departmentVerified = true;
+
+	if( DEPARTMENT!==null){
+		if( DEPARTMENT !== null) {
+			if (DEPARTMENT == 'WOMEN' || DEPARTMENT == 'MEN') {
+				departmentVerified = true;
+			}
 		}
 	}
-}
+
 
 /**
  * Ensure that a tag is not filtering the results
@@ -182,7 +185,6 @@ $(document).ready( function() {
 		}
 		mainImageSwiper = new Swiper('#mainJawBoneImageContainer', mainPictureSwiperSettings);
 
-		console.log(mainImageSwiper.slides)
 	}
 	function updateSwiper(){
 		if(typeof mySwiper.destroy !== 'undefined' && mySwiper.destroy !== null){
@@ -209,7 +211,6 @@ $(document).ready( function() {
 					var index = client.initIndex('test_products');
 					var options = {hitsPerPage: 8};
 					if(searchDepartment == 'WOMEN' || searchDepartment == 'MEN' ){
-						console.log('THAT WHY ',renderHelper.decodeDepartment(searchDepartment, LANG));
 						options.facetFilters = 'category.lvl0:' + renderHelper.decodeDepartment(searchDepartment,LANG);
 					}
 
@@ -223,7 +224,7 @@ $(document).ready( function() {
 						$('#ddCol2').show();
 						if(answer.hits.length > 7){
 							answer.hits.splice(7,1,{
-								linkHref:'/search?q='+$('#search').val()+'&category=' + renderHelper.decodeDepartment(searchDepartment,LANG),
+								linkHref:'/search?q='+$('#search').val()+(searchDepartment == 'WOMEN' || searchDepartment == 'MEN'?'&category='+renderHelper.decodeDepartment(searchDepartment,LANG):''),
 								more:true,
 								nbHits:answer.nbHits,
 								text:'found search more'
@@ -433,7 +434,7 @@ $(document).ready( function() {
 		searchSelector.focus();
 	}
 	function lazy(){
-		$('img.lazy').show().lazyload({effect: "fadeIn", threshold:400}).removeClass("lazy");
+		$('img.lazy').show().lazyload({effect: "fadeIn", threshold:200}).removeClass("lazy");
 	}
 	function formValidation(){
 		$('#loginForm').validate();
@@ -519,7 +520,6 @@ $(document).ready( function() {
 				renderHelper.urlToStateBrand(string,helper);
 			}
 		}
-		console.log(helper);
 		helper.search();
 		next();
 	}
@@ -664,7 +664,6 @@ $(document).ready( function() {
 	}
 	function fetchBlogPost(context, next){
 		var pathArray = context['pathname'].split('/');
-		console.log('this is sent',pathArray[pathArray.length-1]);
 		$.ajax({
 			type: "get",
 			url: "/api/blog/"+ pathArray[pathArray.length-1]
@@ -744,7 +743,6 @@ $(document).ready( function() {
 		$.ajax({
 			url: '/api/getProductByID/'+context.state.product,
 		}).success(function(result) {
-			    console.log(result)
 				if(result.product !== null && typeof result.product !== 'undefined'){
 					if(result.product.genders !== null && typeof result.product.genders  !== 'undefined'){
 						if(result.product.genders.length !== 0){
@@ -779,7 +777,6 @@ $(document).ready( function() {
 		}).success(function(result) {
 			$.when($('.relatedProducts').html(productRelated(result)))
 				.done(function(){
-					console.log(result.sameCategoryProductsInsight,  result.sameBrandProductsInsight);
 					if(result.sameCategoryProductsInsight) $('#sameCategoryInsight').removeClass('hidden');
 					if(result.sameBrandProductsInsight)$('#sameBrandInsight').removeClass('hidden');
 					lazy();
@@ -1044,10 +1041,8 @@ $(document).ready( function() {
 	});
 	mainSection.on('keyup','.horizontalFilters input[type=text], .searchFilters input[type=text]', function(e){
 		var value = new RegExp($(this).val());
-		console.log('are we here', value)
 		$(this).next('ul.list').find('li').each(function(index){
 			var str = $(this).find('.name').text();
-			console.log(value , str, Boolean(str.match(value)))
 			if(Boolean(str.match(value))){
 					$(this).removeClass('hidden');
 			}
@@ -1311,7 +1306,6 @@ $(document).ready( function() {
 		e.stopImmediatePropagation();openFab()
 	});
 	mainSection.on('click','.horizontalFilters div[data-filter-mobile]', function(e){
-		console.log('we reach here');
 		e.preventDefault();
 		e.stopImmediatePropagation();openFab()
 	});
@@ -1417,12 +1411,10 @@ $(document).ready( function() {
 			},
 			data: JSON.stringify(brandList)
 		}).success(function(result) {
-			console.log(result)
 		});
 	}
 	mainSection.on( eventOnTS,'a[data-favourite]' ,function(e){
 		e.stopPropagation(); e.preventDefault();
-		console.log($(this).attr('data-favourite'));
 		addRemoveFavoriteBrand(
 			$(this).attr('action'),
 			{brandList:

@@ -71,7 +71,6 @@ operations = {
                             req.product.articles.shops[x].bestDiscount = req.product.articles.shops[x].units[y].discount;
                         }
                     }
-                    console.log('DISCOUNT   ',req.product.articles.shops[x].bestDiscount );
                 }
             }
             req.brand = product.brand;
@@ -92,7 +91,6 @@ operations = {
             helper.getSimilarProductsFromSameBrand(foundProduct, function(err,filtered){
                 if(err) return next(err);
                 if(typeof filtered == 'undefined') return next();
-                console.log('getSimilarProductsFromSameBrand', filtered.length);
                 //var sorted = sortbyNearestDescription(req.product, filtered)
                 req.sameBrandProducts = helper.calculateSaving(req.product, filtered);
                 req.sameBrandProductsInsight = (req.sameBrandProducts.length > 0);
@@ -104,7 +102,6 @@ operations = {
         helper.GetLowerPriceCategoryProducts(foundProduct,function(err,filtered){
             if(err) return next(err);
             if(typeof filtered == 'undefined') return next();
-            console.log('GetLowerPriceCategoryProducts', filtered.length)
             //var sort= sortbyNearestDescription(req.product, filtered)
             req.LowerPriceCategoryProducts = helper.calculateSaving(req.product, filtered);
             req.sameCategoryProductsInsight = (req.LowerPriceCategoryProducts.length > 0);
@@ -116,7 +113,6 @@ operations = {
         helper.GetSimilarCategoryProducts(req, foundProduct,function(err,filtered){
             if(err) return next(err);
             if(typeof filtered == 'undefined') return next();
-            console.log('GetSimilarCategoryProducts', filtered.length);
             //req.sameCategoryProducts = sortbyNearestDescription(req.product, filtered)
             req.sameCategoryProducts = helper.calculateSaving(req.product,filtered);
             next();
@@ -158,6 +154,7 @@ operations = {
         var url_parts = url.parse(req.url, true);
         req.currentState  = shared.helper.urlToStateBrand(decodeURI(url_parts.href), AgoliaInstance);
         res.locals.TYPE = 'brand';
+
         next();
     },
     getForCategories:function(req, res, next){
@@ -171,11 +168,10 @@ operations = {
         req.currentState  = shared.helper.urlToStateSearch(decodeURI(url_parts.href), AgoliaInstance);
         res.locals.TYPE = 'search';
         next();
-
     },
     getAlgoliaProducts:function(req, res, next){
         if(typeof req.currentState =='undefined') return next();
-        AgoliaInstance.search()
+        AgoliaInstance.search();
         AgoliaInstance.once('result', function(content){
             shared.helper.getAllFacetValues(
                 res.locals,
@@ -186,12 +182,12 @@ operations = {
                 shared.colors,
                 shared.translation,
                 true);
-            return next()
+            return next();
         }).on('error',function(err){
             return next(err);
         })
-    },
-}
+    }
+};
 
 var helper = {
     getProductUrl:function(product){
