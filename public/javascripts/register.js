@@ -29,6 +29,7 @@ $(document).ready(function() {
 
 		else if($(this).attr('data-view')==='signup')
 			$('.registerContainer').stop().addClass('active').css({marginTop:800}).animate({marginTop:50}, 200);
+
 		$('.page-container').addClass('fixedPage')
 		$('#AuthenticationPopUp').removeClass('hidden').css({opacity:0}).animate({opacity:1});
 	});

@@ -856,7 +856,7 @@ var COLORS = [
         "displayName": "Flerfärgad",
         'hex':'#FFC0CB'
     }
-]
+];
 var HEADERTEXT = {
     sort: {header:"sortera"},
     hierarchicalFacets: { header: "Kategorier"},

@@ -189,23 +189,22 @@
 
 
 {{#unless user}}
-
     <script>
-        console.log('ites read2');
         function sendSignupPopup(){
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (xhttp.readyState == 4 && xhttp.status == 200) {
-                    console.log(xhttp.responseText);
-                    var tutorialSection = $('#tutorialPopup');
-                    tutorialSection.removeClass('hidden').css({opacity:0}).animate({opacity:1}, 500);
+                    //console.log(xhttp.responseText);
+                    $('.registerContainer').stop().addClass('active').css({marginTop:800}).animate({marginTop:50}, 200);
+                    $('.page-container').addClass('fixedPage')
+                    $('#AuthenticationPopUp').removeClass('hidden').css({opacity:0}).animate({opacity:1}, 500);
                 }
             };
             xhttp.open("POST", "/signup-popup", true);
             xhttp.send();
         }
         setTimeout(function(){
-            console.log('sending now')
+            console.log('sending now');
             sendSignupPopup();
         }, 10000)
     </script>

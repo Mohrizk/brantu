@@ -19,7 +19,7 @@ var lvl2_cancelOut = [
     {lvl0:'Man', lvl1:'Kläder',lvl2:[ 'Träningskläder']},
     {lvl0:'Man', lvl1:'Skor',lvl2:[ 'cc.3519.name', 'TOFFLOR & INNESKOR','Outdoorskor', 'Skotillbehör', 'Tofflor & inneskor', 'Tofflor &amp; inneskor','Solprodukter']},
 
-]
+];
 category= {
     departments :{
         sv: ['kvinna', 'man']

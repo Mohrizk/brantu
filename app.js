@@ -148,12 +148,13 @@ app.use(
 /***
  * ROUTES
  * ****/
-app.use('/api'   ,require('./routes/api'));
+
 app.use('/jobs'  ,require('./routes/jobs'));
 app.use('/blog'  , require('./routes/blog'));
 app.use(require('./routes/sitemap'));
 app.use(require('./routes/admin'));
 app.use(require('./routes/user'));
+app.use('/api'   ,require('./routes/api'));
 app.use(require('./routes/index'));
 
 

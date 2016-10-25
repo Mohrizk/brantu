@@ -205,6 +205,13 @@ var routes = [
         } ]],
 
     [ ["/:department"], 'get', [
+        function(req,res,next){
+            var c = req.param.department;
+           if(c == 'kvinna' ||c == 'man'){
+             return next()
+           }
+            else res.redirect('/error');
+        },
         session.addFavouriteDepartment,
         categories.getDepartment,
         categories.getCategoryTree,
