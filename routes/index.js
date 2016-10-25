@@ -206,11 +206,12 @@ var routes = [
 
     [ ["/:department"], 'get', [
         function(req,res,next){
-            var c = req.param.department;
-           if(c == 'kvinna' ||c == 'man'){
-             return next()
+            var c = req.params.department;
+            console.log('===Z ', c);
+           if(c == 'kvinna' || c == 'Kvinna' ||c.toLowerCase() == 'man' || c == 'Man' ){
+             return next();
            }
-            else res.redirect('/error');
+            else return res.redirect('/error');
         },
         session.addFavouriteDepartment,
         categories.getDepartment,
@@ -230,6 +231,17 @@ var routes = [
                 }
             });
         } ]],
+
+
+    [ ["/error"], 'get', [
+        function(req,res,next){
+            var err = new Error('Not Found');
+            err.status = 404;
+            res.render('error', {
+                message: err.message,
+                error: err
+            });
+        }]],
 /*********Internationalization *******************/
     [ '/en', 'get', [ function(req, res, next) {
         res.cookie('brantuLang', 'en');
