@@ -477,7 +477,8 @@ $(document).ready( function() {
 
 	page('/blog', reload);
 	page('/blog/:department', reload);
-	page('/blog/:department/:name', showLoading,  hideHeader, fetchBlogPost);
+	page('/blog/:department/:name', reload);
+	//page('/blog/:department/:name', showLoading,  hideHeader, fetchBlogPost);
 
 	page('/search/:department', saveLastPath, showLoading , setSearch, closeSidePage, setStateFromUrl, fetchNav, showHeader );
 	page('/sök/:department', saveLastPath, showLoading , setSearch, closeSidePage, setStateFromUrl, fetchNav, showHeader );
