@@ -1,5 +1,193 @@
 var renderHelper = {
-    mapGender   :function (string){
+
+    countryAndLangChecker: function (req, res, next) {
+        //res.locals.LANG = req.i18n.getLocale();
+        //console.log(req.session.cart)
+        //req.i18n.setLocaleFromCookie();
+        //next();
+        console.log(req.url);
+        var splitted = req.url.split('/');
+        var country = splitted[1];
+        var lang = splitted[2];
+
+        var countryFound = false;
+        if (!empty(country)) {
+            if (HELPER.helper.getCountries(country)) {
+                res.locals.COUNTRY = country;
+                countryFound = true;
+            }
+        }
+        if (!countryFound) {
+            console.log('country not found bitches');
+            return res.redirect('/error')
+        }
+        var langFound = false;
+        if (!empty(lang)) {
+            if (HELPER.helper.supportedLang(country, lang)){
+                res.locals.LANG = lang;
+                req.i18n.setLocale(lang);
+                langFound= true;
+            }
+        }
+        if(!langFound) {
+            res.locals.LANG = HELPER.helper.getCountriesInitialLanguage(country);
+            if(empty(res.locals.LANG)){
+                res.locals.LANG = req.i18n.getLocale();
+            }
+            splitted[2] = res.locals.LANG;
+            return res.redirect(splitted.join('/'));
+        }
+        //console.log(res.locals.COUNTRY, res.locals.LANG);
+        return next();
+    },
+    SHOPS: {
+        "no": ['skjonnhet'],
+        "sv": ['skonhet'],
+        "en": ['beauty']
+    },
+    GENDER:{
+        "no": ['kvinne', 'mann'],
+        "sv": ['kvinna', 'man'],
+        "en": ['women','man']
+    },
+    COUNTRIES: [
+        {
+            "name": "no",
+            "currency": "NOK",
+            initialLang: 'no',
+            supportedLang: ['no', 'en']
+        },
+        {
+            "name": "se",
+            "currency": "SEK",
+            initialLang: 'sv',
+            supportedLang: ['sv', 'en']
+        },
+        {
+            "name": "uk",
+            "currency": "GBP",
+            initialLang: 'en',
+            supportedLang: ['en']
+        },
+        {
+            "name": "ie",
+            "currency": "€",
+            initialLang: 'en',
+            supportedLang: ['en']
+        }
+    ],
+    LANGUAGES :[
+        {
+            names: ["english", "en", "british", "uk", "american", "australian"],
+            value: "en"
+        } ,
+        {
+            names: ["swedish", "sv", "sweden", "swed", "svensk", "svenska"],
+            value: "sv"
+        }
+    ],
+
+    encodeShop:function(lang, shop){
+        if(empty(lang) || empty(shop)) return null;
+        var l = lang.toLowerCase();
+        var found;
+        renderHelper.SHOPS[l].forEach(function(i){
+            if(new RegExp(shop,'i').test(i)){
+                if(new RegExp(shop,'i').test('skjonnhet skonhet beauty'))
+                  found = 'beauty'
+            }
+        });
+        return found;
+    },
+    checkShop:function(lang, shop){
+        if(empty(lang) || empty(shop)) return null;
+        var l = lang.toLowerCase();
+        var found = false;
+        renderHelper.SHOPS[l].forEach(function(i){
+           if(new RegExp(shop,'i').test(i)){
+               found= true;
+           }
+       });
+        return found;
+    },
+    checkGender:function(lang, gender){
+        if(empty(lang) || empty(gender)) return null;
+        var l = lang.toLowerCase();
+        var found = false;
+        renderHelper.GENDER[l].forEach(function(i){
+            if(new RegExp(gender,'i').test(i)){
+                found= true;
+            }
+        });
+        return found;
+    },
+    getCountries:function(country){
+        var countryFound = false;
+        var countries = [];
+        renderHelper.COUNTRIES.forEach(function(c){
+            countries.push(c.name);
+            if(!empty(country)){
+                if(new RegExp(country,'g').test(c.name)){
+                    countryFound = true;
+                }
+            }
+        });
+
+        if(!empty(country))
+            return countryFound;
+        else{
+            return countries;
+        }
+    },
+    getCountriesInitialLanguage:function(country){
+        if(empty(country))
+            return null;
+        var intialLang;
+        renderHelper.COUNTRIES.forEach(function(c){
+            if(new RegExp(country,'g').test(c.name)){
+                intialLang = c.initialLang;
+            }
+        });
+        return intialLang;
+    },
+    supportedLang:function(country,theLang){
+      if(empty(country))
+          return null;
+
+        var supportedLangs = [];
+        renderHelper.COUNTRIES.forEach(function(c){
+           if(new RegExp(country,'g').test(c.name)){
+               supportedLangs = c.supportedLang;
+           }
+       });
+        if(empty(supportedLangs)) return null;
+        if(empty(theLang)){
+            return supportedLangs;
+        }
+        else{
+            var founded = false;
+            supportedLangs.forEach(function(l){
+                if(new RegExp(theLang,'g').test(l)){
+                    founded =  true;
+                }
+            });
+            return founded;
+        }
+    },
+    getCurrency: function(string){
+        var value = null;
+        if(typeof string == 'undefined') return value;
+        for(var s in helper.COUNTRIES){
+            if((new RegExp(string,'i')).test(helper.COUNTRIES[s].name)){
+                value = helper.COUNTRIES[s].currency;
+                break;
+            }
+        }
+        return value ;
+    },
+
+
+    mapGender  :function (string){
         var str = string.toLowerCase()
         var women = ['kvinna','women','female']
         var men = ['men','man','male']
@@ -906,10 +1094,16 @@ var HEADERTEXT = {
         }
     }
 }
+
 if (typeof window !== "undefined") {
 
 }
 //SERVER
 else {
-    module.exports = {helper:renderHelper, translation:HEADERTEXT, colors:COLORS}
+    module.exports = {
+        helper:renderHelper,
+        translation:HEADERTEXT,
+        colors:COLORS,
+
+    }
 }

@@ -3,9 +3,13 @@
  */
 var async = require('async');
 var User = require('../models/user');
-var Products = require('../models/product');
+var Product = require('../models/product');
+var Shop = require('../models/shop');
+var Article = require('../models/article');
 
-module.exports = {
+
+
+ var users = {
     getNewsletterList:function(department, callback){
         if(department == null || typeof department == 'undefined') return callback();
         var gender = require('./mw-categories').mapGender(department);
@@ -128,7 +132,7 @@ module.exports = {
             return next();
         console.log('USER ', req.user)
         var query = { "_id": { $in: req.user.products }}
-        Products.find(query).lean().exec(function(err, productList){
+        Product.find(query).lean().exec(function(err, productList){
             if(err) return next(err);
             res.locals.productsList = productList
             next();
@@ -222,5 +226,256 @@ module.exports = {
                 next();
             });
         });
+    },
+
+
+    /*
+     * CART
+     cart  :  [{
+                product : {type: mongoose.Schema.Types.ObjectId, ref:'Product'},
+                shops   :[{
+                    shop    : {type: mongoose.Schema.Types.ObjectId, ref:'Shop'},
+                    units   : [{
+                        article : String, //THE ID OF THE Article
+                        shop : String,
+                        unit    : String, //THE ID OF THE UNIT
+                        size    : [String],
+                        nbUnits : Number
+                    }]
+                }]
+            }]
+    */
+    cartProductChecker:function(cart, values, action){
+        /***CHeck if product exisits***/
+        var found = false;
+        cart.forEach(function(c, i){
+            if(c.product == values.product){
+                found = true;
+                if(action == 'add'){
+                    if(empty(c.shops))
+                        c.shops = [];
+                    users.cartShopChecker(c.shops,values, action);
+                }
+
+
+            }
+        });
+
+        if(!found){
+            if(action == 'add'){
+                var newCart= {
+                    product: values.product,
+                    shops:[]
+                };
+                users.cartShopChecker(newCart.shops,values, action);
+                cart.push(newCart);
+            }
+
+        }
+    },
+    cartShopChecker:function(shops, values, action){
+         var found = false;
+         shops.forEach(function(s, i){
+             if(s.shop == values.shop){
+                 found = true;
+                 if(action == 'add') {
+                     users.cartUnitChecker(s.units, values, action);
+                 }
+             }
+         });
+         if(!found){
+             if(action == 'add') {
+                 var newShop = {
+                     shop: values.shop,
+                     units: []
+                 };
+                 users.cartUnitChecker(newShop.units, values, action);
+                 shops.push(newShop);
+             }
+         }
+     },
+    cartUnitChecker:function(units, values, action){
+         var found = false;
+         units.forEach(function(u, i){
+             if(u.unit == values.unit){
+                 found = true;
+                 if(action == 'add'){
+                     if(empty(u.nbUnits))
+                         u.nbUnits = 1;
+                     else{
+                         u.nbUnits ++;
+                     }
+                     if(empty(u.size))
+                         u.size = [];
+                     if(u.size.indexOf(values.size) == -1){
+                         u.size.push(values.size);
+                     }
+                 }
+             }
+         });
+
+         if(!found){
+             if(action == 'add'){
+                 var newUnits= {
+                     article: values.article,
+                     shop: values.shop,
+                     unit: values.unit,
+                     nbUnits : 1
+                 };
+                 if(!empty(values.size))newUnits.size = [values.size];
+                 else newUnits.size = [];
+                 units.push(newUnits);
+             }
+         }
+     },
+    addToCart:function  (req, res , next) {
+
+        console.log('<<<<<<ADDING>>>>>>>>')
+        var product = req.params.productId;
+        var article = req.params.articleId;
+        if(empty(product)) return next();
+        var shop = req.params.shopId;
+        var unit = req.params.unitId;
+        var body = req.body;
+        var size;
+        var nbUnits;
+        body.forEach(function(a){
+            if(a.name == 'size')
+                size = a.value;
+            if(a.name == 'nbUnits')
+                nbUnits = a.value;
+        });
+
+        var cartValue = {};
+        if(!empty(shop))cartValue.product = product;
+        if(!empty(article))cartValue.article = article;
+        if(!empty(shop))cartValue.shop = shop;
+        if(!empty(unit))cartValue.unit = unit;
+        if(!empty(size))cartValue.size = size;
+        console.log(cartValue)
+
+        if(!empty(req.user)){
+            User.findOne({ _id: req.user._id}, function(err, user){
+                if (err) {
+                    return next(err);
+                }
+                if(empty(user.cart)){
+                    user.cart = [];
+                }
+                users.cartProductChecker(user.cart, cartValue, 'add');
+                user.save(function(err){
+                    if (err) {return next(err);}
+                    next();
+                });
+            });
+       }
+       else{
+            if(empty(req.session.cart)){
+                req.session.cart = [];
+            }
+            users.cartProductChecker(req.session.cart, cartValue, 'add');
+            console.log(req.session.cart, '===>');
+            next();
+       }
+    },
+    getCart:function(req,res,next){
+        var temp = (!empty(req.user)? req.user.cart : req.session.cart);
+        var cart = [];
+         temp.forEach(function(s){
+             cart.push(_.clone(s, true));
+         });
+        var options = 'brand category otherColors articles articles.shops.shop';
+        async.each(cart,function(c, callback){
+            Product.findOne({_id: c.product}).deepPopulate(options).lean()
+                .exec(function(err, p){
+                    if(empty(p)){
+                        return callback();
+                    }
+                    c.product = p;
+                    async.each(c.shops, function(s, callback){
+                        Shop.findOne({_id: s.shop}).lean()
+                            .exec(function(err, shop){
+                                if(empty(shop)){
+                                    return callback();
+                                }
+                                s.shop = shop;
+                                s.shop.standardShippingCost =  s.shop.shipping[0].standard.value;
+                                s.shop.standardShippingTime =  s.shop.shipping[0].standard.delivery;
+                                s.shop.freeAfter = s.shop.shipping[0].freeStandard.value;
+                                s.shop.freeReturn = s.shop.shipping[0].return.free;
+                                s.shop.returnPeriod = s.shop.shipping[0].return.period;
+
+                                async.each(s.units, function(u, callback){
+                                    Article.findOne({"_id": u.article})
+                                        .lean().exec(function(err, article){
+                                            if(empty(article)){
+                                                return callback();
+                                            }
+                                            article.shops.forEach(function(as){
+                                                if(as.shop == u.shop) {
+                                                    as.units.forEach(function(su){
+                                                        if(su._id == u.unit)
+                                                            u.newUnit = su;
+                                                    });
+                                                }
+                                            });
+                                            if(!empty(u.newUnit.sizes)){
+                                                u.newUnit.sizes =  u.newUnit.sizes.map(function(size){
+                                                    var found = false;
+                                                    if(u.size.indexOf(size) > -1)
+                                                        found = true;
+                                                    return {value: size, selected: found}
+                                                });
+                                            }
+                                            return callback();
+                                        });
+                            }, function(err){ return callback()});
+
+                    });
+                }, function(err){ return callback()});
+                });
+        }, function(err){
+            var calcShops = [];
+            cart.forEach(function(o){
+                o.shops.forEach(function(y){
+                    var index; var found = false;
+                    calcShops.forEach(function(cs, i){
+                        if(cs.id == y.shop._id.toString()){
+                            found = true;
+                            index = i;
+                        }
+                    });
+                    if(!found) {
+                        var s = {
+                           id : y.shop._id,
+                           freeAfter: y.shop.freeAfter,
+                           isItFree: (y.shop.freeAfter == 0),
+                           totalPriceBefore: 0
+                        };
+                        calcShops.push(s);
+                        index = calcShops.length-1;
+                    }
+                    y.units.forEach(function(f){
+                        calcShops[index].totalPriceBefore  = calcShops[index].totalPriceBefore + f.newUnit.price.value;
+                        calcShops[index].isItFree = ( calcShops[index].totalPriceBefore > calcShops[index].freeAfter);
+                        if(empty(o.totalPrice)) o.totalPrice = 0;
+                        o.totalPrice = o.totalPrice + f.newUnit.price.value;
+                        o.totalPriceCurrency = f.newUnit.price.currency;
+                    });
+
+                    y.shop.isItFree = calcShops[index].isItFree;
+                });
+            });
+            var totalCartPrice = 0, totalCartPriceCurrency = '';
+            cart.forEach(function(o){
+                totalCartPrice = totalCartPrice + o.totalPrice;
+                totalCartPriceCurrency =  o.totalPriceCurrency;
+            });
+            req.userCart = cart;
+            req.totalCartPrice = {price: totalCartPrice ,currency: totalCartPriceCurrency};
+            next();
+        });
+
     }
 };
+module.exports = users;

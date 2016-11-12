@@ -19,4 +19,4 @@ var Shop = mongoose.Schema({
     programID: String
 })
 
-module.exports = mongoose.model('Shop', Shop, 'shops');
+module.exports = mongoose.model('Shop', Shop, 'shops_new');

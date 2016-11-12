@@ -113,8 +113,10 @@ input:-webkit-autofill {
     background: transparent !important;
    
 }
-#mainSection > .container, #searchSection > .container, #compareSection > .container{
-    margin-top:130px;
+#mainSection > .container, #searchSection > .container, #compareSection > .container,
+#mainSection > .container-wrapper, #searchSection > .container-wrapper, #compareSection > .container-wrapper
+{
+    margin-top:140px;
 }
 
 #mainSection > .container.no-header, #searchSection > .container.no-header, #compareSection > .container.no-header{
@@ -364,7 +366,7 @@ input:-webkit-autofill {
  -----------------------------------*/
 
  #likedProducts{
-     width: 20px; font-size:18px; padding-top: 12px;
+     width: 20px; font-size:18px; padding-top: 7px;
  }
 
  #searchBarLoading{

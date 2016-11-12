@@ -241,13 +241,24 @@
                                         </div>
                                 {{/if}}
                                     <div class="visible-lg visible-md pull-right hidden-sm hidden-xs nav-margin p-t-5" >
-                                        <ul class="notification-list no-margin  no-style inline">
+                                        <ul class="notification-list no-margin  no-style inline" id="preference-center" >
                                             <li class="inline relative p-l-25">
-                                                <a {{#if user}} href="/favourite-products" {{else}} data-view="signup" class="authenticate"{{/if}}id="preference-center" >
+                                                <a {{#if user}} href="/favourite-products" {{else}} data-view="signup" class="authenticate"{{/if}}>
                                                     <div id="likedProducts">
-                                                        <i data-toggle="tooltip" data-placement="bottom" title="Price Watcher" class="text-velvet pg-shopping_cart"></i>
+                                                        <i class="pg-shopping_cart" data-toggle="tooltip" data-placement="bottom" title="Price watcher" class="text-velvet">
+
+                                                        </i>
                                                     </div>
                                                     {{#if user}} <div class="bubble sideBarFavouriteProducts" id="nbFavoProduct"> <span> {{#if nbFavProducts}}{{nbFavProducts}}{{else}} 0 {{/if}}</span></div> {{/if}}
+                                                </a>
+                                            </li>
+
+                                            <li class="inline relative p-l-25">
+                                                <a  href="/users/cart" id="cart-center" >
+                                                    <div id="cart">
+                                                        <i data-toggle="tooltip" data-placement="bottom" title="Cart" class="text-velvet pg-bag"></i>
+                                                    </div>
+                                                     <div class="bubble sideBarFavouriteProducts" id="nbFavoProduct"> <span> {{#if nbCart}}{{nbCart}}{{else}} 0 {{/if}}</span></div>
                                                 </a>
                                             </li>
                                         </ul>

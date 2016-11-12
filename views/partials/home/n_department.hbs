@@ -1,0 +1,220 @@
+
+
+
+<style>
+    /*.special-border{border:2px solid #f5f5f5;}
+    .special-border-side{
+        border-left:2px solid #f5f5f5;
+        border-right:2px solid #f5f5f5;
+    }*/
+    .next-category{
+        display: inline;
+    }
+    .prev-category{
+        display: inline;
+    }
+    .prev-category button, .next-category button{
+        margin-top:0!important;
+        font-size:24px;
+    }
+    .building-block{
+        width: 100%;
+        display:flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+    .building-block .block{
+        flex: 0 0 33%;
+        text-align: center;
+    }
+    .building-block .block .gallery-item{
+        margin: auto !important;
+    }
+
+    .mainJumbtron .MEN div[data-gradient]{
+    }
+
+
+
+    .mainCompareCarousel img{
+        width:100%;
+        max-width: 180px;
+    }
+
+    .mainJumbtron .bg-image{
+        height:450px
+    }
+
+
+
+
+
+    #featuresLandingPage div, #featuresLandingPage h4, #featuresLandingPage h5{
+        text-align: center;
+    }
+
+
+
+    @media (max-width: 991px){
+        .sideBarCarouselWrapper{
+            min-height:120px;
+        }
+        .mainCompareCarousel img{
+            width:100%;
+            max-width: 150px;
+        }
+
+
+    }
+    @media (max-width: 768px){
+        .text-section{
+            padding-left:150px;
+        }
+        .text-section h1{
+            font-size: 20px;
+            line-height: 24px;
+        }
+        #compareClothes .sideBarCarousel.MEN{
+            background-image: url('/images/home/men/sidecarousel_cloth_men_mobile.jpg');
+        }
+        #compareClothes .sideBarCarousel.WOMEN{
+            background-image: url('/images/home/women/sidecarousel_cloth_women_mobile.jpg');
+        }
+    }
+
+    @media (max-width: 480px){
+        .sideBarCarouselWrapper{
+            min-height:100px;
+        }
+        .mainCompareCarousel img{
+
+            width:100%;
+            max-width: 160px;
+        }
+        .mainJumbtron.MEN{
+            background-image:url('/images/home/men/jumbtron_mobile.jpg');
+        }
+        .mainJumbtron.WOMEN{
+            background-image:url('/images/home/women/jumbtron_mobile.jpg');
+        }
+        #featuresLandingPage div, #featuresLandingPage h4, #featuresLandingPage h5{
+            text-align: left;
+        }
+        .sideBarCarousel button{
+            font-size:10px;
+            padding:8px 3px;
+        }
+        #shopImage{
+            width: 30px;
+        }
+        .compareTable .price p{
+            font-size:10px;
+        }
+        .compareTable .color p{
+            font-size:10px;
+        }
+        #landingPageContent{
+            padding-top: 0 !important;
+        }
+
+    }
+</style>
+<div class="container-wrapper relative">
+    <div class="swiper-container swiper-category">
+        <div class="swiper-wrapper ">
+            {{#each page}}
+             <div class="swiper-slide" data-hash="{{lookup this.title ../LANG}}" data-page="{{@index}}">
+                <div class="bg-image mainJumbtron special-border relative no-overflow" data-pages="parallax">
+                   <div class="inner bg-image no-padding" style="background-image:url({{this.jumbotron.image}}) ">
+                       <div class="text-center">
+                           <h1 class="text-center p-t-80 all-caps" style="font-size: 45px;">{{this.jumbotron.header}}</h1>
+                           <p class="text-center p-t-80 all-caps">{{lookup this.jumbotron.description ../LANG}}</p>
+                           <a href="{{this.jumbotron.url}}">
+                               <button class="btn btn-info">{{translate "discover button"}}</button>
+                           </a>
+                       </div>
+                   </div>
+               </div>
+                <div class="container">
+                    <div id="brands" class="m-t-40">
+                        <div class="autoHeightSwiper">
+                            <div class="row no-margin special-border  ">
+                                <h2 class="section-title">{{translate "popular brands"}}</h2>
+                                <div class="p-b-30">
+                                    <div class="building-block">
+                                        {{#each brands}}
+                                        <div class="block b-a b-grey">
+                                            <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
+                                                <a href="/{{../../COUNTRY}}/{{../../LANG}}{{lookup this.url ../../LANG}}">
+                                                    <div class="top-left bottom-right bg-image no-background-image"
+                                                         style="background-image: url({{this.image}}); background-size: 90%;     background-position: 50% 50%;" >
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        {{/each}}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="categories"  class="m-t-60 m-b-60">
+                        <div>
+                            <h2 class="section-title">{{translate "top categories"}}</h2>
+                            <div class="row no-margin   ">
+                                {{#each categories}}
+                                    <div class="col-xs-4 special-border-side b-thick b-grey">
+                                        <a href="/{{../../COUNTRY}}/{{../../LANG}}{{lookup this.url ../../LANG}}">
+                                            <div class="col-xs-8 no-padding" >
+                                                <div class="gallery-item bg-white no-margin bg-image relative b-a b-grey" data-flex-width="1" data-flex-height="1"  >
+                                                    <div class="top-left bottom-right bg-image no-background-image" style="background-image: url({{this.image}})" data-hover id="compareBoxCloth" >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4 text-left p-t-50  p-l-20 p-b-30 no-overflow-text">
+                                                <h6 class="bold  no-margin no-padding ">{{translate "compare prices for"}}</h6>
+                                                <h4 class="no-margin no-padding all-caps">{{lookup this.name ../../LANG}}</h4>
+
+                                            </div>
+                                        </a>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="controller top-right" style="top:340px; left: 0; z-index:100;">
+            <div class="bg-black full-width">
+                <div class="container p-t-20 p-b-20">
+                    <div class="inline v-align-middle">
+                        <h4 class="text-pink all-caps bold no-margin"> <span><i class=" pg-arrow_minimize_line"></i></span> {{translate "whats new"}} </h4>
+                    </div>
+                    <div class="inline p-l-30">
+                        <div class="prev-category">
+                            <button class="btn btn-default"><i class=" pg-arrow_left_line_alt"></i></button>
+                        </div>
+                        <div class="next-category">
+                            <button class="btn btn-default" ><i class="pg-arrow_lright_line_alt"></i></button>
+                        </div>
+                    </div>
+                    <div class="inline p-l-30">
+                        {{#each page}}
+                            <a class="inline bright p-r-10 cursor" href="javascript:void(0)" data-switch-page="{{@index}}">
+                                <p class="all-caps fs-16"> {{lookup this.title ../LANG}}</p>
+                            </a>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/javascripts/other/blog.js"> </script>
+
+
+

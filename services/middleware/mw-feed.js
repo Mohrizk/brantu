@@ -1,6 +1,7 @@
 var Outfits  = require('../models/outfit');
 var async  = require('async');
 var Product  = require('../models/product');
+var shopCategoryPages  = require('../models/shopCategoryPages');
 var webshot = require('webshot');
 var url = require('url');
 var shared = require('../../public/javascripts/helper');
@@ -27,9 +28,22 @@ var helper = {
     }
 },
 
-}
+};
 
  var feed = {
+     getShopCategoryPages:function(req,res,next){
+        //if(emtpy(req.params.department)|| empty(req.params.shop) ) {return next();}
+         var encodedShop = HELPER.helper.encodeShop(res.locals.LANG,req.params.shop);
+         if(empty(encodedShop)) return next();
+        var encodedDepartment = HELPER.helper.encodeDepartment(req.params.department);
+        if(empty(encodedDepartment)) return next();
+         shopCategoryPages.findOne({name: encodedShop}).lean().exec(function(err, p){
+             if(empty(p)) return next();
+             req.page = p['content'][encodedDepartment];
+             console.dir(req.page);
+             next()
+         });
+     },
     getDateDifference:function(date){
         var now = new Date()
         //var dif = now.getTime() - date.getTime();

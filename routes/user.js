@@ -278,7 +278,34 @@ var routes = [
         session.addViewedProduct,
         function( req, res, next) {
         res.send('cool')
-    }]]
+    }]],
+
+
+    /********************CART***************************/
+    [ ['/users/cart']
+        , 'get', [
+        categories.getCategoryTree,
+        user.getCart,
+        function( req, res, next) {
+            res.render('general', {
+                userCart:req.userCart,
+                totalCartPrice:req.totalCartPrice,
+                generalPartial: function() {
+                    return "cart";
+                }
+            });
+        }]],
+
+    [ ['/users/cart/add/:productId/:articleId/:shopId/:unitId',
+        '/users/cart/add/:productId/:articleId/:shopId',
+        '/users/cart/add/:productId/:articleId',
+        '/users/cart/add/:productId'
+    ]
+        , 'post', [
+        user.addToCart,
+        function( req, res, next) {
+            res.send('cool')
+        }]]
 ];
 
 routes.forEach(function(arr){

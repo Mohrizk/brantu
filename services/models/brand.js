@@ -15,4 +15,4 @@ var Brand = mongoose.Schema({
     brandVerified: Boolean, //We need to verify if the added brand before displaying it
     alias: [String] //Aliases of the brand name that we check before creating a new brand
 })
-module.exports = mongoose.model('Brand', Brand, 'brands');
+module.exports = mongoose.model('Brand', Brand, 'brands_new');

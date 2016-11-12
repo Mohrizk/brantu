@@ -1,17 +1,10 @@
 {
-    "Hello": "Hello",
-    "Hello %s, how are you today?": "Hello %s, how are you today?",
-    "weekend": "weekend",
-    "Hello %s, how are you today? How was your %s.": "Hello %s, how are you today? How was your %s.",
-    "Hi": "Hi",
-    "Howdy": "Howdy",
-    "%s cat": {
-    "one": "%s cat",
-        "other": "%s cats"
-},
-    "There is one monkey in the %%s": {
-    "one": "There is one monkey in the %%s",
-        "other": "There are %d monkeys in the %%s"
-},
-    "tree": "tree"
+    "home title":"bästa webbplats",
+    "home description" : "Brantu är fantastiskt",
+    "discover button": "Upptäck",
+    "compare prices for":"jämfor priser för Swedish",
+    "popular brands":"bästa brands på över 5,0000 brands. swedish",
+    "top categories":"bästa categories. swedish",
+    "whats new": "What's new Swedish"
+
 }

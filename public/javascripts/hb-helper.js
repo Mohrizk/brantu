@@ -1,5 +1,8 @@
 var register = function(Handlebars) {
     var helpers = {
+        translate:function(string){
+          return  req_i18n.__(string);
+        },
         // put all of your helpers inside this object
         trimForAvatar: function (passedString) {
           return passedString.substring(0,1);

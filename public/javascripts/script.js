@@ -179,6 +179,29 @@ $(document).ready( function() {
 		}
 	};
 	var mySwiper = new Swiper('.swiper-general', swiperSettings);
+
+	var CategorySwiperSettings = {
+		preloadImages: false,
+		pagination: '.swiper-pagination',
+		nextButton: '.next-category',
+		prevButton: '.prev-category',
+		slidesPerView: 1,
+		grabCursor:true,
+		paginationClickable: true,
+		lazyLoading: true,
+		hashnav: true,
+		//spaceBetween: 30,
+		speed: 1000,
+		//effect:'coverflow',
+		loop: true
+	};
+	var categorySwiper = new Swiper('.swiper-category', CategorySwiperSettings);
+
+	$('.controller a[data-switch-page]').on('click',function(){
+		categorySwiper.slideTo($(this).attr('data-switch-page'));
+	});
+
+
 	function updateMainPictureSwiper(){
 		if(typeof mainImageSwiper.destroy !== 'undefined' && mainImageSwiper.destroy !== null){
 			mainImageSwiper.destroy();
@@ -187,6 +210,10 @@ $(document).ready( function() {
 
 	}
 	function updateSwiper(){
+		if(typeof categorySwiper.destroy !== 'undefined' && categorySwiper.destroy !== null){
+			categorySwiper.destroy();
+		}
+		categorySwiper = new Swiper('.swiper-general', swiperSettings);
 		if(typeof mySwiper.destroy !== 'undefined' && mySwiper.destroy !== null){
 			mySwiper.destroy();
 		}
@@ -476,8 +503,8 @@ $(document).ready( function() {
 		'/privacy-policy', '/contact-us', '/terms-and-conditions', '/cookie-policy','/how-it-works', '/faq' , '/forgot'], reload);
 
 	page('/blog', reload);
-	page('/blog/:department', reload);
-	page('/blog/:department/:name', reload);
+	page('/blog/*', reload);
+	page('/users/*', reload);
 	//page('/blog/:department/:name', showLoading,  hideHeader, fetchBlogPost);
 
 	page('/search/:department', saveLastPath, showLoading , setSearch, closeSidePage, setStateFromUrl, fetchNav, showHeader );
@@ -1437,6 +1464,34 @@ $(document).ready( function() {
 				;
 		}
 	});
+
+
+
+	/**********CART AJAX*********/
+	/***
+	 * Add Product
+	 * **/
+	function ajaxServer(action, method, data, callback){
+		$.ajax({
+			       type: method,
+			       url: action,
+			       headers: {
+				       'Accept': 'application/json',
+				       'Content-Type': 'application/json'
+			       },
+			       data: JSON.stringify(data)
+		       }).success(function(result) {
+			    callback(result)
+		});
+	}
+	mainSection.on('click', "a[data-submit=add-cart]", function(e){
+		var selector = $(this).closest('td').closest('tr').find('form');
+		ajaxServer(selector.attr('action'), selector.attr('method'), selector.serializeArray(),
+				function(result){
+		});
+	});
+
+
 });
 
 

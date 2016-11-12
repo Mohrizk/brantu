@@ -16,6 +16,7 @@ var shared = require('../public/javascripts/helper');
 /**************************************************************
 *******************BEGINING ROUTES***************************
 ***************************************************************/
+
 var routes = [
     [ '/', 'get', [
         categories.getCategoryTree,
@@ -25,13 +26,10 @@ var routes = [
         }
         else{*/
             res.render('general', {
-                title :  "Brantu | Jämför och hitta det bästa priset inom mode",
-                description :
-                'Brantu är Sveriges bästa prisjämförelsajt inom mode! ' +
-                'Med oss hittar du både relaterade produkter och stilar till det bästa priset. ' +
-                'Använd brantu när du ska köpa dina kläder eller skor online...',
+                title :  req.i18n.__("home title"),
+                description : req.i18n.__("home description"),
                 generalPartial: function() {
-                    return "home";
+                    return "n_home";
                 }
             });
     } ]],
@@ -191,7 +189,37 @@ var routes = [
             res.end();
         }]],
 /*********MAIN PAGE******************************************/
-    [ ['/:department/:category','/:department/:category/:style'], 'get', [
+    [ ["/shop/:shop/:department"], 'get', [
+        function(req,res,next){
+            if(HELPER.helper.checkShop(res.locals.LANG, req.params.shop)&&
+               HELPER.helper.checkGender(res.locals.LANG, req.params.department)
+            ){
+                next();
+            }
+            else res.redirect(res.locals.COUNTRY+'/'+res.locals.LANG+'/error');
+        },
+        session.addFavouriteDepartment,
+        categories.getDepartment,
+        categories.getCategoryTree,
+        //products.getCompare,
+        //feed.getFeed,
+        feed.getShopCategoryPages,
+        function(req, res, next) {
+            //var department = shared.helper.encodeDepartment(res.locals.selectedDepartment);
+            res.render('general', {
+
+                title :  res.locals.selectedDepartment + " | Jämför och hitta det bästa priset inom mode | Brantu",
+                description :
+                'Brantu är Sveriges bästa prisjämförelsajt inom mode! ' +
+                'Med oss hittar du både relaterade produkter och stilar till det bästa priset. ' +
+                'Använd brantu när du ska köpa dina kläder eller skor online...',
+                page: req.page,
+                generalPartial: function() {
+                    return "n_department";
+                }
+            });
+        } ]],
+    [ ['/:department','/:department/:category','/:department/:category/:style'], 'get', [
         categories.getDepartment,
         categories.getCategoryTree,
         products.getForCategories,
@@ -203,36 +231,6 @@ var routes = [
                 }
             });
         } ]],
-
-    [ ["/:department"], 'get', [
-        function(req,res,next){
-            var c = req.params.department;
-            console.log('===Z ', c);
-           if(c == 'kvinna' || c == 'Kvinna' ||c.toLowerCase() == 'man' || c == 'Man' ){
-             return next();
-           }
-            else return res.redirect('/error');
-        },
-        session.addFavouriteDepartment,
-        categories.getDepartment,
-        categories.getCategoryTree,
-        //products.getCompare,
-        feed.getFeed,
-        function(req, res, next) {
-            var department = shared.helper.encodeDepartment(res.locals.selectedDepartment);
-            res.render('general', {
-                title :  res.locals.selectedDepartment + " | Jämför och hitta det bästa priset inom mode | Brantu",
-                description :
-                'Brantu är Sveriges bästa prisjämförelsajt inom mode! ' +
-                'Med oss hittar du både relaterade produkter och stilar till det bästa priset. ' +
-                'Använd brantu när du ska köpa dina kläder eller skor online...',
-                generalPartial: function() {
-                    return "department";
-                }
-            });
-        } ]],
-
-
     [ ["/error"], 'get', [
         function(req,res,next){
             var err = new Error('Not Found');

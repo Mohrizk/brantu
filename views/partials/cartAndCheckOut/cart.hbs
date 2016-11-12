@@ -1,0 +1,127 @@
+<div class="container" id="home" >
+    <div class=" no-margin">
+        <div class=" relative no-overflow relative" >
+            <div class=" relative">
+                <div id="mainContent">
+                    <div class="bg-white p-t-30 p-b-30 p-l-10">
+                        <h1 class="text-pink all-caps">Your Cart</h1>
+                    </div>
+
+                    <table class="table table-hover b-b b-black table-condensed dataTable" style="margin-bottom: 0; margin-top: 0; border-top:1px solid #000;">
+                        <tbody>
+                        {{#each userCart}}
+                                <tr class="b-b b-grey">
+                                    <td width="200">
+                                        <p class="bold no-padding no-margin">{{this.product.brand.name}}</p>
+                                        <img width="100" src="{{this.product.mainPicture.largeUrl}}"/>
+                                        <p class="no-padding no-margin">{{this.product.name}}</p>
+                                    </td>
+                                    <td width="540">
+                                        <table>
+
+                                            <tbody>
+                                                {{#each this.shops}}
+                                                <tr>
+                                                    <td>
+                                                        <img width="80" src="{{this.shop.logoUrl}}"/>
+                                                        <ol class="no-padding">
+                                                            <li class="fs-11">Free Return:<font class="bold">{{this.shop.freeReturn}}</font> </li>
+                                                            <li class="fs-11">Delivery within: <font class="bold">{{this.shop.standardShippingTime}} days</font></li>
+                                                        </ol>
+                                                    </td>
+                                                    <td class="no-padding">
+                                                        <table>
+                                                            <thead>
+                                                            <th style="padding-bottom: 0;">color</th>
+                                                            <th style="padding-bottom: 0;">size</th>
+                                                            <th style="padding-bottom: 0;">price</th>
+                                                            <th style="padding-bottom: 0;">price <br/>med frakt</th>
+                                                            <th style="padding-bottom: 0;">units</th>
+                                                            </thead>
+                                                            <tbody>
+                                                            {{#each this.units}}
+                                                                <tr>
+                                                                    <td  class="no-border">
+                                                                        <p>{{this.newUnit.color}}</p>
+                                                                    </td>
+                                                                    <td class="no-border">
+                                                                        {{#each this.newUnit.sizes}}
+                                                                            {{#if this.selected}}
+                                                                            <p>{{this.value}}</p>
+                                                                            {{/if}}
+                                                                        {{/each}}
+                                                                    </td>
+                                                                    <td  class="no-border">
+                                                                        <p class="bold">
+                                                                            {{this.newUnit.price.value}}  {{this.newUnit.price.currency}}
+                                                                        </p>
+                                                                    </td>
+                                                                    <td  class="no-border">
+                                                                        <p class="bold ">
+                                                                            {{#if ../this.shop.isItFree}}
+                                                                                {{this.newUnit.price.value}}  {{this.newUnit.price.currency}}
+                                                                            {{else}}
+                                                                                {{indexPlusConstant this.newUnit.price.value ../this.shop.standardShippingCost}}  {{this.newUnit.price.currency}}
+                                                                            {{/if}}
+                                                                        </p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <p class="sbold">
+                                                                            {{this.nbUnits}}
+                                                                            <span class="bg-master-light b-rad-md">
+                                                                                 <a class="b-r b-white" style="padding-right: 3px; padding-left: 5px;"><i class=" pg-plus"></i></a>
+                                                                                 <a style="padding-right: 5px;"><i class=" pg-minus"></i></a>
+                                                                            </span>
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+                                                            {{/each}}
+                                                            </tbody>
+                                                        </table>
+
+
+                                                    </td>
+
+                                                </tr>
+                                            {{/each}}
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td class="v-align-middle ">
+                                        <h4 class="bold text-right">
+                                            {{this.totalPrice}} {{this.totalPriceCurrency}}
+                                        </h4>
+                                    </td>
+                                </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+
+                    <table class="table table-hover table-condensed dataTable no-footer" style="margin-top: 0; border-top:1px solid #000;">
+                        <tbody>
+                            <tr class="b-b b-grey">
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td class="v-align-middle">
+                                    <div>
+                                        <h5 class="text-pink text-right">TOTAL</h5>
+                                        <h4 class=" bold text-right" style="font-size:28px;">
+                                            {{totalCartPrice.price}} {{totalCartPrice.currency}}
+                                        </h4>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-block"> Proceed</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

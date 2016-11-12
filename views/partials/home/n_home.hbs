@@ -1,0 +1,193 @@
+
+<style>
+    .searchMainPageOverlay div{
+        z-index:-1 !important;
+        background: rgba(51,51,51,0) !important;
+    }
+
+    #home .textFind{
+        top:100px;
+    }
+    #home  .textFind h3{
+        margin: auto;
+        width:200px;
+        padding-top:15px;
+        padding-bottom:15px;
+        border:2px solid whitesmoke;
+        color: #9E8130;
+        font-weight: 900;
+    }
+    #home .departmentSelector{
+        background: #000;
+        position: relative;
+        overflow: hidden;
+    }
+    #home .categorySelector{
+        background: #fff;
+        position: relative;
+        overflow: hidden;
+    }
+    #home .departmentSelector .WOMEN, .departmentSelector .MEN, .categorySelector .CATEGORY{
+        border-bottom: 2px solid white;
+        height:100%;
+        height:280px;
+        width:100%;
+        background-position: 50% 70% !important;
+        background-repeat: no-repeat;
+        transition:all 0.2s linear;
+        cursor: pointer;
+    }
+    #home .departmentSelector:hover .WOMEN, .departmentSelector:hover .MEN{
+         opacity: 0.4;
+    }
+    #home .departmentSelector .WOMEN{
+        background-image: url('/images/home/home_women.jpg');
+    }
+    #home .departmentSelector .MEN{
+        background-image: url('/images/home/home_men2.jpg');
+
+    }
+    #home  .section{
+        margin: 50px 0 50px 0;
+    }
+
+   #home #selectionHome{
+        border-top:1px solid black;
+    }
+
+
+    @media (max-width: 991px){
+        #home  #mainContent .search-link{
+            width:500px;
+        }
+    }
+    @media (max-width: 480px){
+        #home .departmentSelector .WOMEN, .departmentSelector .MEN{
+            height:200px;
+        }
+    }
+</style>
+<div class="container" id="home" >
+                   <div class=" no-margin">
+                       <div class=" relative no-overflow relative full-width" >
+                           <div class=" relative">
+                               <div class="" id="mainContent">
+                                   <div class="relative container-fluid" id="selectionHome">
+
+                                       <div class="text-center p-t-30 p-b-30 "  >
+                                           <div class="relative full-width" id="headerHome">
+                                               <div class="">
+                                                   <div class="">
+                                                       <h1 id="h1Home" class="text-center  text-pink  all-caps">HITTA, JÄMFÖR OCH KOPA <br/> TILL BÄSTA PRISET.</h1>
+
+                                                       <div class="row m-t-40">
+                                                           <div class="col-xs-4">
+                                                               <div class="text-center">
+                                                                   <h4 class=" all-caps">
+                                                                    largest product <br/> variety
+                                                                   </h4>
+                                                               </div>
+                                                           </div>
+                                                           <div class="col-xs-4">
+                                                               <div class="text-center">
+                                                                   <h4 class="all-caps">
+                                                                   Find Best <br/> Price
+                                                                   </h4>
+                                                               </div>
+                                                           </div>
+                                                           <div class="col-xs-4">
+                                                               <div class="text-center">
+                                                                   <h4 class="all-caps">
+                                                                   One place to buy <br/> from all shops
+                                                                   </h4>
+                                                               </div>
+                                                           </div>
+
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+
+
+                                       <div class="row section" >
+                                           <div class="col-md-2 col-sm-2 col-xs-12 categorySelector no-padding" >
+                                               <a href="/kvinna">
+                                                   <div class="CATEGORY  ">
+                                                        <h2 class="bold all-caps v-align-middle ">Cosmetics</h2>
+                                                        <p>Indulge your self with the biggest collection of cosmetics from over </p>
+                                                       <ul>
+                                                           <li>50 000 stores</li>
+                                                           <li>600 Brands</li>
+                                                           <li>1000 stores</li>
+                                                           <li>One stop shop</li>
+                                                       </ul>
+                                                   </div>
+                                               </a>
+                                           </div>
+                                           <div class="col-md-5 col-sm-5 col-xs-12 departmentSelector no-padding" >
+                                                    <a href="/kvinna">
+                                                           <div class="WOMEN bg-image b-a b-thick b-white no-background-image">
+                                                           </div>
+                                                           <div class="top-right text-center bottom-left textFind">
+                                                               <h3 class="sbold all-caps">Kvinna</h3>
+                                                           </div>
+                                                           <div class=" hidden b-r b-grey">
+                                                               <div class="row no-margin p-t-20 p-b-20 text-center">
+                                                                  <div class="col-xs-4">
+                                                                      <a class="dark bold fs-16">
+                                                                          Skor
+                                                                      </a>
+
+                                                                  </div>
+
+                                                                   <div class="col-xs-4">
+                                                                       <a class="dark bold fs-16">Kläder</a>
+                                                                   </div>
+
+                                                                   <div class="col-xs-4">
+                                                                       <a class="dark bold fs-16">Accessoarer</a>
+                                                                   </div>
+                                                               </div>
+                                                           </div>
+                                                    </a>
+                                           </div>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 departmentSelector bg-image text-left no-padding" >
+                                              <a href="/man">
+                                                <div class="Men bg-image no-background-image b-a b-thick b-white">
+                                               </div>
+                                                <div class="top-right text-center bottom-left textFind">
+                                                   <h3 class="sbold all-caps">Man</h3>
+                                               </div>
+                                                <div class=" hidden b-l b-grey">
+                                                   <div class="row no-margin p-t-20 p-b-20 text-center">
+                                                       <div class="col-xs-4">
+                                                           <a class="dark bold fs-16">Skor</a>
+                                                       </div>
+
+                                                       <div class="col-xs-4">
+                                                           <a class="dark bold fs-16">Kläder</a>
+                                                       </div>
+
+                                                       <div class="col-xs-4">
+                                                           <a class="dark bold fs-16">Accessoarer</a>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                              </a>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+
+                       </div>
+                   </div>
+       </div>
+
+<script>
+   $('#howBrantuWorks, #howBrantuWorksMobile ').on('click', function(){
+       $('html, body').animate({scrollTop:($('#feature-section-title').offset().top - 110)})
+   })
+</script>
+

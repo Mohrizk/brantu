@@ -18,10 +18,11 @@
                                     <div class="selectedItemZoomPicture">
                                         <div id="mainJawBoneImageContainer" class="swiper-container" >
                                             <div class="swiper-wrapper">
+
                                                 {{#each product.pictures}}
                                                 <div class="swiper-slide">
-                                                    <img  imageorder ="{{indexPlusConstant @index 1}}" class="swiper-lazy" src="{{largeUrl}}" />
-                                                    <!--<div class="swiper-lazy-preloader swiper-lazy-preloader-brantu"></div>-->
+                                                    <img  imageorder ="{{indexPlusConstant @index 1}}" class="swiper-lazy" data-src="{{largeUrl}}" />
+                                                    <div class="swiper-lazy-preloader swiper-lazy-preloader-brantu"></div>
                                                 </div>
                                                 {{/each}}
                                             </div>
@@ -185,7 +186,6 @@
                                             </div>
                                         </div>
                                         <div class="selectedItemDetail full-width ">
-                                             {{#if product.otherColors}}
                                             <div class="panel panel-transparent no-margin">
                                                 <div class="tab-content">
                                                     <div class="tab-pane active" id="tabDetails">
@@ -203,7 +203,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                             {{/if}}
 
                                             <div>
 
@@ -216,124 +215,151 @@
                                                             <table class="table table-hover table-condensed table-detailed dataTable no-footer" role="grid">
                                                                 <thread>
                                                                     <tr role="row">
-                                                                        <th class="sorting fs-12 text-black bold" rowspan="1"  style="width: 220px;">Butik</th>
+                                                                        <th class="sorting fs-12 text-black bold" rowspan="1" width="150">Butik</th>
+                                                                        <th class="sorting fs-12 text-black bold " rowspan="1" colspan="1">Färg</th>
                                                                         <th class="sorting fs-12 text-black bold"  rowspan="1" colspan="1">Bästa priset <small class="text-purple fs-10">{{product.currency}} </small></th>
-                                                                        <th style="width: 10px;"></th>
-                                                                        <th style="width: 10px;"></th>
+                                                                        <th class="sorting  fs-12 text-black bold hidden-xs"  rowspan="1" colspan="1">Rea <small class="text-purple fs-10">%</small></th>
                                                                         <th class="sorting  fs-12 text-black bold hidden-xs"  rowspan="1" colspan="1">Storlekar</th>
                                                                         <th class="sorting  fs-12 text-black bold hidden-xs"  rowspan="1" colspan="1"> Fri retur</th>
-                                                                        <th style="width: 10px;"></th>
+                                                                        <th class="sorting fs-12 text-black bold"  rowspan="1" colspan="1"> </th>
                                                                     </tr>
                                                                 </thread>
                                                                 <tbody class="bg-white">
                                                                 {{#each product.articles.shops}}
-                                                                    <tr class="informationList odd" >
-                                                                        <td class="v-align-middle">
-                                                                            {{#if this.shop.logoUrl}}<img src="{{this.shop.logoUrl}}" />{{/if}}
-                                                                            <span>{{this.shop.name}}</span>
-                                                                        </td>
-                                                                        <td class="v-align-middle p-t-15">
-                                                                            <div>
-                                                                                <p class="text-purple bold">
-                                                                                    {{lowest.price}}
-                                                                                </p>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                        <td class="v-align-middle p-t-15">
-                                                                            <div>
-                                                                                <p class="bold">
-                                                                                    {{#if this.shop.freeReturn}} Ja {{else}} Nej {{/if}}
-                                                                                </p>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="v-align-middle p-t-15 no-padding">
-                                                                            <div class="p-t-5">
-                                                                                <a class="p-l-5 p-r-5 fs-12">Add to cart</a>
-                                                                            </div>
-                                                                        </td>
+                                                                <tr class="informationList odd" >
+                                                                    <td class="v-align-middle">
+                                                                        <img src="{{this.shop.logoUrl}}" />
+                                                                    </td>
+                                                                    <td class="v-align-middle p-t-15">
+                                                                        <div>
+                                                                            <p class="bold">
+                                                                                {{#if this.colorVariation}} flera {{else}} en färg{{/if}}
+                                                                            </p>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="v-align-middle p-t-15">
+                                                                        <div>
+                                                                            <p class="text-purple bold">
+                                                                                {{lowest.price.value}}
+                                                                            </p>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="v-align-middle p-t-15 hidden-xs">
+                                                                        <div>
+                                                                            <p class="bold">
+                                                                                {{{this.bestDiscount}}}
+                                                                            </p>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="v-align-middle p-t-15 hidden-xs">
+                                                                        <div>
+                                                                            <p class="bold">
+                                                                                {{#if this.sizeVariation}} flera {{else}} en storlek{{/if}}
+                                                                            </p>
+                                                                        </div>
+                                                                    </td>
 
-                                                                        <td></td>
-                                                                    </tr>
-                                                                    <tr class="row-details hidden">
-                                                                        <td colspan="7" class="bg-master">
-                                                                            <div class="text-center bg-master-light">
-                                                                                <table class="full-width table-condensed table-detailed">
-                                                                                    <tbody>
-                                                                                    <tr class=" no-style">
-                                                                                        <td class=" bold fs-12 b-b b-grey" rowspan="1" colspan="1"><font class="text-master medium fs-10 lh-10">Fri retur: </font><br/>{{#if this.shop.freeReturn}} Ja {{else}} Nej {{/if}}</td>
-                                                                                        <td class=" bold fs-12 b-b b-grey" rowspan="1" colspan="1"><font class="text-master medium fs-10 lh-10">Öppet köp: </font><br/>{{this.shop.returnPeriod}}</td>
-                                                                                        <td class=" bold fs-12 b-b b-grey" rowspan="1" colspan="1"><font class="text-master medium fs-10 lh-10">Fraktkostnad: </font><br/>{{this.shop.standardShippingCost}}</td>
-                                                                                        <td class=" bold fs-12 b-b b-grey" rowspan="1" colspan="1"><font class="text-master medium fs-10 lh-10">Leveranstid: </font><br/>{{this.shop.standardShippingTime}} dagar</td>
-                                                                                        <td class=" bold fs-12 b-b b-grey" rowspan="1" colspan="1"><font class="text-master medium fs-10 lh-10">Fri frakt efter: </font><br/>{{this.shop.freeAfter}}</td>
-                                                                                        <th class=" fs-12 text-black bold"  rowspan="1" colspan="1"> </th>
-                                                                                        <th class=" fs-12 text-black bold"  rowspan="1" colspan="1"> </th>
-                                                                                    </tr>
-                                                                                    </tbody>
-                                                                                </table>
-                                                                            </div>
-                                                                            <table class="table table-inline">
-                                                                                <thread>
-                                                                                    <tr role="row">
-                                                                                        <th class="sorting fs-12 text-black bold" rowspan="1" colspan="1">Färg</th>
-                                                                                        <th class="sorting  fs-12 text-black bold"  rowspan="1" colspan="1">Priser <small class="text-purple fs-10">{{../product.price.currency}} </small></th>
-                                                                                        <th class="sorting  fs-12 text-black bold"  rowspan="1" colspan="1">Priser med frakt<small class="text-purple fs-10">{{../product.price.currency}} </small></th>
-                                                                                        <th class="sorting  fs-12 text-black bold"  rowspan="1" colspan="1">Rea <small class="text-purple fs-10">% </small></th>
-                                                                                        <th class="sorting  fs-12 text-black bold hidden-xs"  rowspan="1" colspan="1">Storlekar</th>
-                                                                                        <th class="sorting fs-12 text-black bold hidden-xs" rowspan="1" colspan="1"></th>
-                                                                                    </tr>
-                                                                                </thread>
-                                                                                <tbody>
-                                                                                {{#each this.units}}
-                                                                                    <tr>
-                                                                                        <form method="POST" action="/users/cart/add/{{../../product._id}}/{{../../product.articles._id}}/{{../this.shop._id}}/{{this._id}}">
-                                                                                            <td class="v-align-top p-t-10 ">
-                                                                                                <div>
-                                                                                                    <a target="_blank" rel="nofollow" class="no-margin bold" href="{{this.articleUrl}}">
-                                                                                                        {{this.shopName}}
-                                                                                                    </a>
-                                                                                                </div>
-                                                                                            </td>
-                                                                                            <td class="v-align-top p-t-10 ">
-                                                                                                <div>
-                                                                                                    <a target="_blank" class="no-padding no-margin bold" rel="nofollow" href="{{this.articleUrl}}">
-                                                                                                        {{this.price}} {{this.currency}}
-                                                                                                    </a>
-                                                                                                </div>
-                                                                                            </td>
-                                                                                            <td class="v-align-top p-t-10 ">
-                                                                                                <div>
-                                                                                                    <a target="_blank" class="no-padding no-margin bold" rel="nofollow" href="{{this.articleUrl}}">
-                                                                                                        {{this.price}} {{this.currency}}
-                                                                                                    </a>
-                                                                                                </div>
-                                                                                            </td>
-                                                                                            <td class="v-align-top p-t-10">
-                                                                                                <div>
-                                                                                                    <a target="_blank" class="no-padding no-margin" rel="nofollow" href="{{this.articleUrl}}">
-                                                                                                        <font class="bold">{{#if discount}}{{this.discount}} {{else}} 0{{/if}}%</font>
-                                                                                                    </a>
-                                                                                                </div>
-                                                                                            </td>
-
-                                                                                            <td class="v-align-top p-t-10 "></td>
-                                                                                            <td class="v-align-top p-t-10  hidden-xs" >
-                                                                                                <div>
-                                                                                                    <a data-submit="add-cart" class="text-purple-glow" >
-                                                                                                        <button type="button" class="btn btn-primary btn-tag sbold no-padding all-caps b-b no-margin p-r-5 p-l-5 hidden-xs" >
-                                                                                                            <i class="pg-bag"></i> Add to cart
-                                                                                                        </button>
-                                                                                                    </a>
-                                                                                                </div>
-                                                                                            </td>
-                                                                                        </form>
-                                                                                    </tr>
-                                                                                {{/each}}
-                                                                                </tbody>
-                                                                            </table>
-                                                                        </td>
-                                                                    </tr>
+                                                                    <td class="v-align-middle p-t-15">
+                                                                        <div>
+                                                                            <p class="bold">
+                                                                                {{#if this.shop.freeReturn}} Ja {{else}} Nej {{/if}}
+                                                                            </p>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="v-align-middle p-t-15 no-padding">
+                                                                        <div class="p-t-5">
+                                                                           <a class="p-l-5 p-r-5 fs-12">Add to cart</a>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="row-details hidden">
+                                                                    <td colspan="7" class="bg-master">
+                                                                        <div class="text-center bg-master-light">
+                                                                            <table class="full-width table-condensed table-detailed">
+                                                                            <tbody>
+                                                                            <tr class=" no-style">
+                                                                                <td class=" bold fs-12 b-b b-grey" rowspan="1" colspan="1"><font class="text-master medium fs-10 lh-10">Fri retur: </font><br/>{{#if this.shop.freeReturn}} Ja {{else}} Nej {{/if}}</td>
+                                                                                <td class=" bold fs-12 b-b b-grey" rowspan="1" colspan="1"><font class="text-master medium fs-10 lh-10">Öppet köp: </font><br/>{{this.shop.returnPeriod}}</td>
+                                                                                <td class=" bold fs-12 b-b b-grey" rowspan="1" colspan="1"><font class="text-master medium fs-10 lh-10">Fraktkostnad: </font><br/>{{this.shop.standardShippingCost}}</td>
+                                                                                <td class=" bold fs-12 b-b b-grey" rowspan="1" colspan="1"><font class="text-master medium fs-10 lh-10">Leveranstid: </font><br/>{{this.shop.standardShippingTime}} dagar</td>
+                                                                                <td class=" bold fs-12 b-b b-grey" rowspan="1" colspan="1"><font class="text-master medium fs-10 lh-10">Fri frakt efter: </font><br/>{{this.shop.freeAfter}}</td>
+                                                                                <th class=" fs-12 text-black bold"  rowspan="1" colspan="1"> </th>
+                                                                                <th class=" fs-12 text-black bold"  rowspan="1" colspan="1"> </th>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                        </div>
+                                                                        <table class="table table-inline">
+                                                                            <thread>
+                                                                                <tr role="row">
+                                                                                    <th class="sorting fs-12 text-black bold" rowspan="1" colspan="1">Färg</th>
+                                                                                    <th class="sorting  fs-12 text-black bold"  rowspan="1" colspan="1">Priser <small class="text-purple fs-10">{{../product.price.currency}} </small></th>
+                                                                                    <th class="sorting  fs-12 text-black bold"  rowspan="1" colspan="1">Priser med frakt<small class="text-purple fs-10">{{../product.price.currency}} </small></th>
+                                                                                    <th class="sorting  fs-12 text-black bold"  rowspan="1" colspan="1">Rea <small class="text-purple fs-10">% </small></th>
+                                                                                    <th class="sorting  fs-12 text-black bold hidden-xs"  rowspan="1" colspan="1">Storlekar</th>
+                                                                                    <th class="sorting fs-12 text-black bold hidden-xs" rowspan="1" colspan="1"></th>
+                                                                                </tr>
+                                                                            </thread>
+                                                                            <tbody>
+                                                                            {{#each this.units}}
+                                                                                <tr>
+                                                                                    <form method="POST" action="/users/cart/add/{{../../product._id}}/{{../../product.articles._id}}/{{../this.shop._id}}/{{this._id}}">
+                                                                                        <td class="v-align-top p-t-10 ">
+                                                                                            <div>
+                                                                                                <a target="_blank" rel="nofollow" class="no-margin bold" href="{{this.articleUrl}}">
+                                                                                                    {{this.color}}
+                                                                                                </a>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td class="v-align-top p-t-10 ">
+                                                                                            <div>
+                                                                                                <a target="_blank" class="no-padding no-margin bold" rel="nofollow" href="{{this.articleUrl}}">
+                                                                                                    {{this.price.formatted}}
+                                                                                                </a>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td class="v-align-top p-t-10 ">
+                                                                                            <div>
+                                                                                                <a target="_blank" class="no-padding no-margin bold" rel="nofollow" href="{{this.articleUrl}}">
+                                                                                                    {{this.price.formatted}}
+                                                                                                </a>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td class="v-align-top p-t-10">
+                                                                                            <div>
+                                                                                                <a target="_blank" class="no-padding no-margin" rel="nofollow" href="{{this.articleUrl}}">
+                                                                                                     <font class="bold">{{#if discount}}{{this.discount}} {{else}} 0{{/if}}%</font>
+                                                                                                </a>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td class="v-align-top p-t-10 hidden-xs">
+                                                                                            <div>
+                                                                                                {{#if sizes}}
+                                                                                                    <select  name="size" class="fs-11">
+                                                                                                    {{#each this.sizes}}
+                                                                                                        <option class="bold text-purple">{{this}}</option>
+                                                                                                    {{/each}}
+                                                                                                    </select>
+                                                                                                {{/if}}
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td class="v-align-top p-t-10 "></td>
+                                                                                        <td class="v-align-top p-t-10  hidden-xs" >
+                                                                                            <div>
+                                                                                                <a data-submit="add-cart" class="text-purple-glow" >
+                                                                                                    <button type="button" class="btn btn-primary btn-tag sbold no-padding all-caps b-b no-margin p-r-5 p-l-5 hidden-xs" >
+                                                                                                        <i class="pg-bag"></i> Add to cart
+                                                                                                    </button>
+                                                                                                </a>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                    </form>
+                                                                                </tr>
+                                                                            {{/each}}
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
                                                                 {{/each}}
                                                                 </tbody>
                                                             </table>
@@ -342,7 +368,7 @@
                                                 </div>
                                                 </div>
 
-                                                {{#if product.description}}
+
                                                 <div class="">
                                                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                                                         <div class="panel panel-default">
@@ -359,7 +385,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {{/if}}
 
                                             </div>
                                         </div>

@@ -86,9 +86,9 @@ var routes = [
 
     [ '/getSimilarProducts/:id', 'get', [
         products.getProductByID,
-        products.getSimilarProductsFromSameBrand,
-        products.GetLowerPriceCategoryProducts,
-        products.GetSimilarCategoryProducts,
+        //products.getSimilarProductsFromSameBrand,
+        //products.GetLowerPriceCategoryProducts,
+        //products.GetSimilarCategoryProducts,
         function( req, res, next) {
             res.send({
                     user:req.user,
@@ -113,7 +113,7 @@ var routes = [
 
     [ '/home', 'get', [
         function(req, res, next) {
-            hbs.render('views/partials/home/home.hbs', {
+            hbs.render('views/partials/home/n_home.hbs', {
                     precompiled: true
                 })
                 .then(function (template) {
@@ -147,7 +147,7 @@ var routes = [
         //products.getCompare,
         feed.getFeed,
         function(req, res, next) {
-            hbs.render('views/partials/home/department.hbs',
+            hbs.render('views/partials/home/n_department.hbs',
                 {
                     user:req.user,
                     selectedDepartment: res.locals.selectedDepartment,

@@ -54,25 +54,53 @@ operations = {
     getProductByID  :function(req, res, next){
         var _id = req.params.id;
         helper.getProduct(req, _id, function(product){
-            if(product== null || typeof product == 'undefined') return next();
+            if(empty(product)) return next();
             req.product = product;
-            if(typeof product.articles !== 'undefined') req.product.nbShops = product.articles.shops.length;
+
+            var country = (!empty(req.params.country)? req.params.country:'se');
+
+            if(!empty(product.articles)) req.product.nbShops = product.articles.shops.length;
             req.product.colorVariation = false;
-            if(typeof product.articles !== 'undefined'){
+
+            if(!empty(req.product.articles)){
                 for(var x in req.product.articles.shops){
+                    console.log(req.product.articles._id);
+
                     if(req.product.articles.shops[x].units.length > 1){
                         req.product.articles.shops[x].colorVariation = true;
                         req.product.articles.shops[x].sizeVariation = true;
                         req.product.colorVariation = true;
                     }
+                    req.product.articles.shops[x].units.forEach(function(u){
+                        u.country.forEach(function(c){
+                            if(c.name == country){
+                                u.price = c.price;
+                                u.originalPrice = c.originalPrice;
+                                u.currency = c.currency;
+                                u.discount = c.discount;
+                                u.sizes = c.sizes;
+                                u.inStock = c.inStock;
+                            }
+                        });
+                    });
+
                     req.product.articles.shops[x].bestDiscount = 0;
                     for (var y in req.product.articles.shops[x].units){
                         if(req.product.articles.shops[x].units[y].discount > req.product.articles.shops[x].bestDiscount){
                             req.product.articles.shops[x].bestDiscount = req.product.articles.shops[x].units[y].discount;
                         }
                     }
+
                 }
             }
+
+            req.product.articles.shops.sort(function(a,b){
+                //GET LOWER PRICE PER UNIT
+                console.log(a.price, b.price)
+                return a.price - b.price;
+            });
+
+
             req.brand = product.brand;
             req._id = product._id;
             for(var a in product.attributes){
@@ -279,15 +307,53 @@ var helper = {
 
     },
     getProduct: function(req,id, callback){
+        console.log('Sup1')
         var options = 'brand category otherColors articles articles.shops.shop';
-        Products.findOne({"_id":id}).deepPopulate(options).exec(function(err, product){
-                //console.log(product)
+        Products.findOne({"_id":id}).deepPopulate(options).lean().exec(function(err, product){
+
                 if(err) return callback(err);
-                if(product == null) return callback();
-                var x= product.toObject();
-                helper.getLowestPrice(x);
-                helper.getShippingReturn(x, req);
-                callback(x);
+                if(empty(product)) return callback();
+
+                helper.getLowestPrice(product);
+                //helper.getShippingReturn(product, req);
+
+                var selectedColor, selectedIndex= 0 ;
+                if(!empty(req.query.color)){
+                    product.available.forEach(function(color, index){
+                        if(color.color == query.color){
+                            product.selectedColor = color.color;
+                            selectedIndex = index;
+                            product.color = color.color;
+                            product.colorTags = color.colorTags;
+                            product.pictures = color.pictures;
+                        }
+                    });
+                }
+                else{
+                    product.selectedColor = product.available[0].color;
+                    product.color = product.available[0].color;
+                    product.colorTags = product.available[0].colorTags;
+                    product.pictures = product.available[0].pictures;
+                }
+
+                var country = (!empty(req.params.country)? req.params.country:'se');
+                product.available.forEach(function(color, index){
+                    if(selectedIndex == index){
+                        var found = false;
+                       color.country.forEach(function(c){
+                           console.log(c.name)
+                           if(c.name == country){
+                               found = true;
+                               product.sizes = c.sizes;
+                               product.price   = c.price;
+                               product.originalPrice = c.originalPrice;
+                               product.currency    = c.currency;
+                               product.discount= c.discount;
+                           }
+                       });
+                    }
+                });
+                callback(product);
         });
     },
 
@@ -394,7 +460,7 @@ var helper = {
                 lowest = product.articles.shops[s].units[u];
             }
             else{
-                if(product.articles.shops[s].units[u].price.value <  lowest.price.value){
+                if(product.articles.shops[s].units[u].price <  lowest.price){
                     lowest = product.articles.shops[s].units[u];
                 }
             }

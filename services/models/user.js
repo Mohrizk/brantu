@@ -6,6 +6,7 @@ try {
     console.log('crypto support is disabled!');
 }
 var mongoosePaginate = require('mongoose-paginate');
+
 var User = mongoose.Schema({
         local: {
                email    : String,
@@ -20,15 +21,27 @@ var User = mongoose.Schema({
                picture  : String,
                age      : String
         },
-        resetPasswordToken: String,
-        resetPasswordExpires: Date,
-        role:String,
-        newsletter:  Boolean,
-        createDate:  { type: Date, default: Date.now },
-        brands:[{type: mongoose.Schema.Types.ObjectId, ref:'Brand'}],
-        products:[{type: mongoose.Schema.Types.ObjectId, ref:'Product'}],
-        viewedProducts:[{type: mongoose.Schema.Types.ObjectId, ref:'Product'}]
-})
+        resetPasswordToken     : String,
+        resetPasswordExpires   : Date,
+        role                   :  String,
+        newsletter             :  Boolean,
+        createDate             :  { type: Date, default: Date.now },
+        brands                 :  [{type: mongoose.Schema.Types.ObjectId, ref:'Brand'}],
+        products               :  [{type: mongoose.Schema.Types.ObjectId, ref:'Product'}],
+        viewedProducts         :  [{type: mongoose.Schema.Types.ObjectId, ref:'Product'}],
+        cart                   :  [{
+                             product : {type: mongoose.Schema.Types.ObjectId, ref:'Product'},
+                             shops   :[{
+                                 shop    : {type: mongoose.Schema.Types.ObjectId, ref:'Shop'},
+                                 units   : [{
+                                     color   : String,
+                                     size    : [String],
+                                     nbUnits :  Number
+                                 }]
+                             }]
+                       }]
+});
+
 User.plugin(mongoosePaginate);
 // methods =====================
 // generating a hash
