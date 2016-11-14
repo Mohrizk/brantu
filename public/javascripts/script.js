@@ -198,7 +198,7 @@ $(document).ready( function() {
 	var categorySwiper = new Swiper('.swiper-category', CategorySwiperSettings);
 
 	$('.controller a[data-switch-page]').on('click',function(){
-		categorySwiper.slideTo($(this).attr('data-switch-page'));
+		categorySwiper.slideTo($(this).attr('data-switch-page') + 1);
 	});
 
 

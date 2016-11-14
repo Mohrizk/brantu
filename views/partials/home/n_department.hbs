@@ -25,7 +25,7 @@
         justify-content: center;
     }
     .building-block .block{
-        flex: 0 0 33%;
+        flex: 1 1 25%;
         text-align: center;
     }
     .building-block .block .gallery-item{
@@ -84,6 +84,10 @@
     }
 
     @media (max-width: 480px){
+        .building-block .block{
+            flex: 1 1 100%;
+            text-align: center;
+        }
         .sideBarCarouselWrapper{
             min-height:100px;
         }
@@ -123,12 +127,26 @@
 <div class="container-wrapper relative">
     <div class="swiper-container swiper-category">
         <div class="swiper-wrapper ">
+            <style>
+                {{#each page}}
+                #jumbotron_background_{{@index}}{
+                    background-image:url({{this.jumbotron.image.desktop}});
+                }
+                @media only screen and (max-width: 480px){
+                    #jumbotron_background_{{@index}}{
+                        background-image:url({{this.jumbotron.image.mobile}});
+                    }
+                }
+                {{/each}}
+            </style>
+
+
             {{#each page}}
              <div class="swiper-slide" data-hash="{{lookup this.title ../LANG}}" data-page="{{@index}}">
                 <div class="bg-image mainJumbtron special-border relative no-overflow" data-pages="parallax">
-                   <div class="inner bg-image no-padding" style="background-image:url({{this.jumbotron.image}}) ">
+                   <div class="inner bg-image no-padding" id="jumbotron_background_{{@index}}">
                        <div class="text-center">
-                           <h1 class="text-center p-t-80 all-caps" style="font-size: 45px;">{{this.jumbotron.header}}</h1>
+                           <h1 class="text-center p-t-80 all-caps" style="font-size: 45px;">{{lookup this.jumbotron.header ../LANG}}</h1>
                            <p class="text-center p-t-80 all-caps">{{lookup this.jumbotron.description ../LANG}}</p>
                            <a href="{{this.jumbotron.url}}">
                                <button class="btn btn-info">{{translate "discover button"}}</button>
@@ -137,6 +155,43 @@
                    </div>
                </div>
                 <div class="container">
+
+                    <style>
+                            {{#each categories}}
+                            #categories_background_{{@index}}{
+                                background-image:url({{this.image.desktop}});
+                            }
+                            @media only screen and (max-width: 480px){
+                                #categories_background_{{@index}}{
+                                    background-image:url({{this.image.mobile}});
+                                }
+                            }
+                            {{/each}}
+                    </style>
+
+                    <div id="categories"  class="m-t-60 m-b-60">
+                        <div>
+                            <h2 class="section-title">{{translate "top categories"}}</h2>
+                            <div class="building-block no-margin   ">
+                                {{#each categories}}
+                                    <div class="block special-border-side b-thick b-grey p-t-20">
+                                        <a href="/{{../../COUNTRY}}/{{../../LANG}}{{lookup this.url ../../LANG}}">
+                                            <div class="col-xs-12 no-padding text-center" >
+                                                <div class="gallery-item  bg-white auto-margin bg-image relative" data-width="100" data-height="100"  >
+                                                    <div class="top-left bottom-right bg-image no-background-image" data-hover id="categories_background_{{@index}}" >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 text-center p-t-5 no-overflow-text">
+                                                <h5 class="no-margin bold no-padding all-caps">{{lookup this.name ../../LANG}}</h5>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+
                     <div id="brands" class="m-t-40">
                         <div class="autoHeightSwiper">
                             <div class="row no-margin special-border  ">
@@ -144,43 +199,19 @@
                                 <div class="p-b-30">
                                     <div class="building-block">
                                         {{#each brands}}
-                                        <div class="block b-a b-grey">
-                                            <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
-                                                <a href="/{{../../COUNTRY}}/{{../../LANG}}{{lookup this.url ../../LANG}}">
-                                                    <div class="top-left bottom-right bg-image no-background-image"
-                                                         style="background-image: url({{this.image}}); background-size: 90%;     background-position: 50% 50%;" >
-                                                    </div>
-                                                </a>
+                                            <div class="block b-a b-grey">
+                                                <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
+                                                    <a href="/{{../../COUNTRY}}/{{../../LANG}}{{lookup this.url ../../LANG}}">
+                                                        <div class="top-left bottom-right bg-image no-background-image"
+                                                             style="background-image: url({{this.image}}); background-size: 90%;     background-position: 50% 50%;" >
+                                                        </div>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
                                         {{/each}}
                                     </div>
 
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="categories"  class="m-t-60 m-b-60">
-                        <div>
-                            <h2 class="section-title">{{translate "top categories"}}</h2>
-                            <div class="row no-margin   ">
-                                {{#each categories}}
-                                    <div class="col-xs-4 special-border-side b-thick b-grey">
-                                        <a href="/{{../../COUNTRY}}/{{../../LANG}}{{lookup this.url ../../LANG}}">
-                                            <div class="col-xs-8 no-padding" >
-                                                <div class="gallery-item bg-white no-margin bg-image relative b-a b-grey" data-flex-width="1" data-flex-height="1"  >
-                                                    <div class="top-left bottom-right bg-image no-background-image" style="background-image: url({{this.image}})" data-hover id="compareBoxCloth" >
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 text-left p-t-50  p-l-20 p-b-30 no-overflow-text">
-                                                <h6 class="bold  no-margin no-padding ">{{translate "compare prices for"}}</h6>
-                                                <h4 class="no-margin no-padding all-caps">{{lookup this.name ../../LANG}}</h4>
-
-                                            </div>
-                                        </a>
-                                    </div>
-                                {{/each}}
                             </div>
                         </div>
                     </div>

@@ -10134,6 +10134,20 @@ Main components
 .gallery-item[data-height="2"] {
   height: 490px;
 }
+
+.gallery-item[data-width="300"] {
+  width: 300px;
+}
+.gallery-item[data-height="300"] {
+  height: 300px;
+}
+.gallery-item[data-width="100"] {
+  width: 100px;
+}
+.gallery-item[data-height="100"] {
+  height: 100px;
+}
+
 .gallery-item img, .gallery-item div[data-hover] {
   opacity: 1;
   -webkit-transition: opacity 0.35s;

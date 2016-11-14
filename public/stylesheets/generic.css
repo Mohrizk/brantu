@@ -1580,7 +1580,8 @@ ul.circle li:hover div{
         margin-top: 10px;
         margin-bottom: 50px;
     }
-    #mainSection > .container, #searchSection > .container, #compareSection > .container{
+    #mainSection > .container, #searchSection > .container, #compareSection > .container,
+    #mainSection > .container-wrapper, #searchSection > .container-wrapper, #compareSection > .container-wrapper{
         margin-top:0px;
     }
     .mainLogo{
