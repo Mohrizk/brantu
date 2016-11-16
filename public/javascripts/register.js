@@ -80,6 +80,27 @@ $(document).ready(function() {
 
 	});
 
+
+
+
+
+	$(document).on('submit', '#launchForm',function(e) {
+		e.preventDefault();
+		console.log('Supe3');
+		var e = $(this);
+		var email = e.find('input[name=email]').val();
+		if(typeof email == 'undefined') return false;
+		if(email =='' && !/@/i.test(email) )return false;
+
+		$(this).fadeOut(100);
+		$('#launchFormThankyou').fadeIn(100);
+
+		$.ajax({url:'/register-to-launch', data: {email:email}});
+
+
+	});
+
+
 });
 
 

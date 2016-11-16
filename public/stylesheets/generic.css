@@ -169,10 +169,10 @@ input:-webkit-autofill {
 
 }
 .glassViolet{
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.96),  rgba(0, 0, 0, 0.96));
-    background: -webkit-linear-gradient(to top, rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.96));
-    background: -moz-linear-gradient(to top, rgba(0, 0, 0, 0.96),  rgba(0, 0, 0, 0.96));
-    background: -o-linear-gradient(to top, rgba(0, 0, 0, 0.96),  rgba(0, 0, 0, 0.96));
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.96),  rgba(0, 0, 0, 0.97));
+    background: -webkit-linear-gradient(to top, rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.97));
+    background: -moz-linear-gradient(to top, rgba(0, 0, 0, 0.96),  rgba(0, 0, 0,0.97));
+    background: -o-linear-gradient(to top, rgba(0, 0, 0, 0.96),  rgba(0, 0, 0, 0.97));
 }
 
 .boxShadowed{

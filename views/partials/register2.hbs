@@ -1,15 +1,12 @@
-<style>
 
-</style>
-<div id="AuthenticationPopUp" class="hidden authenticationPopUp bg-Image registerGradient relative glassViolet" style="overflow-y: scroll;" >
-    <div class="registerContainer " style="margin-top: 50px;padding-bottom: 500px; overflow: scroll;">
+<div id="AuthenticationPopUp" class="authenticationPopUp bg-Image registerGradient relative glassViolet" style="overflow-y: scroll;" >
+    <div class="registerContainer active" style="margin-top: 50px;padding-bottom: 500px; overflow: scroll;">
         <div class="registerCard">
             <h2 class="title text-center all-caps text-spaced-medium bold">
                 <div class="">
                     <img src="/dist/images/logo_white.svg" alt="logo" class="authenticateLogo" />
                 </div>
                 Logga in
-                <div class="close close-AuthenticationPopUp"></div>
             </h2>
            <!-- <div class="button-container padding-1v">
                 <a  href="/auth/facebook">
@@ -41,63 +38,25 @@
             </div>
         </div>
         <div class="registerCard alt">
-            <div class="toggle"></div>
+
             <div class="fs-12 title text-center relative">
-                <img src="/dist/images/logo_white.svg" alt="logo" class="authenticateLogo"/>
-                <div class="close close-AuthenticationPopUp"></div>
-                <h5 class=" bold text-spaced-medium all-caps text-center text-white">
-                    <font class="text-pink"> Testversion</font>
+                <img src="/dist/images/logo_white.svg" width="190" alt="logo"/>
+                <h3 class=" bold text-spaced-medium all-caps text-center text-white">
+                    <font class="text-pink"> REMEMBER REMEMBER THE <font style="font-size:40px;">7TH</font> OF DECEMBER</font>
                     <br/>
-                    Sidan är under uppbyggnad och kommer att vara klar inom kort
-                </h5>
-                <p>
-                    Registrera dig och ta del utav det senaste inom mode så snart vi lanserar.
-                </p>
+                </h3>
+
             </div>
-            <form id="signupForm"  role="form" action="/signupUser" method="post">
+            <h5 class="text-white text-center">
+                Our website is under construnction. Registrer now and find out about our revolutionary product that will save you time and money while shopping
+            </h5>
+            <form id="launchForm"  role="form" class="p-t-10" action="/launchUser" method="post">
                 <div class="input-container">
                     <input type="email" name="email" id="emailSignUp" required="required"/>
-                    <label data-field for="emailSignUp">Din e-postadress</label>
-                    <div class="bar"></div>
-
-                </div>
-
-                <div class="input-container">
-                    <input type="password" name="password" id="passwordSignUp" required="required"/>
-                    <label data-field for="PasswordSignUp">Lösenord</label>
+                    <label data-field for="emailSignUp">Email</label>
                     <div class="bar"></div>
                 </div>
 
-                <div class="input-container" style="margin-bottom: 20px;">
-                    <input type="password" id="passwordSignUpConfirm" required="required"/>
-                    <label data-field for="passwordSignUpConfirm">Upprepa lösenord</label>
-                    <div class="bar"></div>
-                </div>
-
-
-
-                <div class="input-radio row">
-                    <div class="col-xs-12">
-                        <div class="radio radio-danger block text-center" id="genderSelection">
-                            <input type="radio" class="registration"  value="female"  required name="gender" id="femaleRegistrationPopUp" />
-                            <label for="femaleRegistrationPopUp"  class="text-velvet bold relative">Kvinna</label>
-                            <input type="radio" class="registration"   value="male" required  name="gender" id="maleRegistrationPopUp" />
-                            <label for="maleRegistrationPopUp"  class=" text-velvet bold relative">Man</label>
-                        </div>
-                    </div>
-                </div>
-                    <div class="col-sm-10 col-sm-offset-1">
-                        <div class="row">
-                            <div class="col-xs-1">
-                                <div class="full-width">
-                                    <input class="pull-right" type="checkbox" name="concent" id="concent" required/>
-                                </div>
-                            </div>
-                            <div class="col-xs-11">
-                                <label  for="concent" class="text-white fs-11">Jag godkänner medlemsvillkoren och att mina personuppgifter behandlas enligt ovan, medlemsvillkoren samt Brantus <a class="text-velvet" target="_blank" href="/privacy-policy">Integritetspolicy</a>.</label>
-                            </div>
-                        </div>
-                    </div>
 
                 <div id="registerError" class="col-sm-12" style="display:none;">
                     <p  class="text-red all-caps text-center" > du är redan medlem<a href="/login" class="p-l-10 bold all-caps">Logga in</a></p>
@@ -107,10 +66,12 @@
                 </div>
 
                 <div class="button-container">
-                    <button type="submit" id="submitRegistration"><span class="text-velvet">Välkommen In</span></button>
+                    <button type="submit" id="submitRegistration"><span class="text-velvet">Notify me</span></button>
                 </div>
             </form>
-            <div class="full-width text-center" id="fromSignUpToLogin"><button class=" no-border bold btn  btn-default"><u>Logga In</u></button></div>
+            <div id="launchFormThankyou" style="display: none;">
+                <h4 class="text-white">Thank you and you will here from us soon!</h4>
+            </div>
         </div>
     </div>
     <div class="registerLoading fixed" style="display: none; top:0; bottom:0; right:0; left:0; z-index:1500;">

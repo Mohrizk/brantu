@@ -149,6 +149,16 @@ app.use(
  * ROUTES
  * ****/
 
+app.get('/register-to-launch',function(req,res,next){
+   var LAUNCH = require('./services/models/launch');
+    if(typeof req.query.email == 'undefined')
+        return res.sendStatus(404);
+    var c = new LAUNCH({email: req.query.email});
+    c.save(function(err){
+        res.sendStatus(200)
+    });
+});
+
 app.use('/jobs'  ,require('./routes/jobs'));
 app.use('/blog'  , require('./routes/blog'));
 app.use(require('./routes/sitemap'));
