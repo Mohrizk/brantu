@@ -280,7 +280,13 @@ var routes = [
         res.send('cool')
     }]],
 
-
+    /***********CHROME EXTENTION*******/
+    [ '/users/isAuthenticated/chrome/:chromeId', 'get', [
+        user.isChromeAuthenticated,
+        function( req, res, next) {
+            res.send({isAuthenticated: req.isAuthenticated});
+            res.end();
+        }]],
     /********************CART***************************/
     [ ['/users/cart']
         , 'get', [

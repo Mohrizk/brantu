@@ -228,7 +228,6 @@ var Article = require('../models/article');
         });
     },
 
-
     /*
      * CART
      cart  :  [{
@@ -476,6 +475,19 @@ var Article = require('../models/article');
             next();
         });
 
-    }
+    },
+
+
+     /*
+      * CHROME USER ID
+      **/
+     isChromeAuthenticated:function(req,res,next){
+         if(empty(req.params.chromeId)) return next();
+         User.findOne({chromeId: req.params.chromeId})
+             .exec(function(err, product){
+                 req.isAuthenticated = (!empty(product));
+                 return next();
+         });
+     }
 };
 module.exports = users;

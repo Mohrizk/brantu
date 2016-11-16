@@ -1,6 +1,4 @@
 
-
-
 <style>
     /*.special-border{border:2px solid #f5f5f5;}
     .special-border-side{
@@ -157,28 +155,31 @@
                 <div class="container">
 
                     <style>
-                            {{#each categories}}
-                            #categories_background_{{@index}}{
+                            {{#each this.categories}}
+                            #categories_background_{{lookup this.name ../../LANG}}_{{@index}}{
                                 background-image:url({{this.image.desktop}});
                             }
+                            {{/each}}
                             @media only screen and (max-width: 480px){
-                                #categories_background_{{@index}}{
+                                {{#each this.categories}}
+                                #categories_background_{{lookup this.name ../../LANG}}_{{@index}} {
                                     background-image:url({{this.image.mobile}});
                                 }
+                                {{/each}}
                             }
-                            {{/each}}
+
                     </style>
 
                     <div id="categories"  class="m-t-60 m-b-60">
                         <div>
                             <h2 class="section-title">{{translate "top categories"}}</h2>
                             <div class="building-block no-margin   ">
-                                {{#each categories}}
+                                {{#each this.categories}}
                                     <div class="block special-border-side b-thick b-grey p-t-20">
                                         <a href="/{{../../COUNTRY}}/{{../../LANG}}{{lookup this.url ../../LANG}}">
                                             <div class="col-xs-12 no-padding text-center" >
                                                 <div class="gallery-item  bg-white auto-margin bg-image relative" data-width="100" data-height="100"  >
-                                                    <div class="top-left bottom-right bg-image no-background-image" data-hover id="categories_background_{{@index}}" >
+                                                    <div class="top-left bottom-right bg-image no-background-image" data-hover id="categories_background_{{lookup this.name ../../LANG}}_{{@index}}" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -198,7 +199,7 @@
                                 <h2 class="section-title">{{translate "popular brands"}}</h2>
                                 <div class="p-b-30">
                                     <div class="building-block">
-                                        {{#each brands}}
+                                        {{#each this.brands}}
                                             <div class="block b-a b-grey">
                                                 <div class="gallery-item bg-white no-margin bg-image relative" data-flex-width="1" data-flex-height="1"  >
                                                     <a href="/{{../../COUNTRY}}/{{../../LANG}}{{lookup this.url ../../LANG}}">

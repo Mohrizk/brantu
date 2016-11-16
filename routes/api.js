@@ -17,6 +17,33 @@ var feed = require('../services/middleware/mw-feed');
  *******************BEGINING ROUTES***************************
  ***************************************************************/
 var routes = [
+    /********API AUTHENTICATION USED FOR CHROME & SAFARY ENTENTION******/
+    ['/user/signup/:extention/:userId','post',[function(req, res, next) {
+        req.body.role = 'user';
+        passport.authenticate('local-signup',function(err, user, info) {
+            if (err) { return next(err) }
+            if (!user) {
+                var theString = encodeURIComponent(info.message);
+                //return res.redirect('/login?response=' + string);
+                return res.send({authentication: 'failed', type:"signup", message: theString});
+            }
+            else
+                return res.send({authentication: 'success',type:"signup"});
+        })(req, res, next)
+    }]],
+    ['/user/login/:extention/:userId', 'post', [ function(req, res, next) {
+        passport.authenticate('local-login',function(err, user, info) {
+            if (err) { return next(err) }
+            if (!user) {
+                var theString = encodeURIComponent(info.message);
+                //return res.redirect('/login?response=' + string);
+                return res.send({authentication: 'failed', type:"login", message: theString});
+            }
+            else
+                return res.send({authentication: 'success', type:"login"});
+        })(req, res, next)
+    }]],
+    /*********END OF API AUTHENTICATION*****/
     [ '/blog/:name', 'get', [
         feed.getOutfit,
         products.getForBlog,

@@ -66,6 +66,17 @@ module.exports = function(passport) {
                 newUser.gender   = req.body.gender;
                 newUser.local.email   = email;
                 newUser.local.password = newUser.generateHash(password);
+                newUser.chromeId = (!empty(newUser.chromeId)? newUser.chromeId: []);
+                if(!empty(req.params.extention) && !empty(req.params.userId)){
+                    switch(req.params.extention){
+                        case 'chrome':
+                            newUser.chromeId.push(req.params.userId);
+                            break;
+                        case 'safari':
+                            newUser.chromeId.push(req.params.userId);
+                            break;
+                    }
+                }
                 if(!req.body.role) newUser.role = req.body.role;
                 newUser.newsletter = true;
                 // save the user
@@ -95,7 +106,6 @@ module.exports = function(passport) {
     function(req, email, password, done) { // callback with email and password from our form
         // find a user whose email is the same as the forms email
         // we are checking to see if the user trying to login already exists
-        console.log('do we come here' , email , password)
         User.findOne({ 'local.email' :  email }, function(err, user) {
 
             // if there are any errors, return the error before anything else
@@ -106,11 +116,27 @@ module.exports = function(passport) {
             if (!user)
                 return done(null, false, {message:'nouser'}); // req.flash is the way to set flashdata using connect-flash
             // if the user is found but the password is wrong
+
             if (!user.validPassword(password))
                 return done(null, false, {message:'nopass'}); // create the loginMessage and save it to session as flashdata
 
+
+            if(!empty(req.params.extention) && !empty(req.params.userId)){
+                switch(req.params.extention){
+                    case 'chrome':
+                        (user.chromeId.indexOf(req.params.userId) == -1?
+                            user.chromeId.push(req.params.userId): false);
+                    case 'safari':
+                        extentionId =  user.chromeId;
+                        (user.safariId.indexOf(req.params.userId) == -1?
+                            user.safariId.push(req.params.userId): false);
+                }
+            }
+
+            user.save(function(err){
+                return done(null, user);
+            });
             // all is well, return successful user
-            return done(null, user);
         });
 
     }));
@@ -128,7 +154,7 @@ module.exports = function(passport) {
       // facebook will send back the token and profile
      function(token, refreshToken, profile, done) {
        // asynchronous
-         console.log(token, refreshToken)
+         console.log(token, refreshToken);
         process.nextTick(function() {
           // find the user in the database based on their facebook id
                 User.findOne({ 'facebook.id' : profile.id }, function(err, user) {

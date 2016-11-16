@@ -23,6 +23,8 @@ var User = mongoose.Schema({
         },
         resetPasswordToken     : String,
         resetPasswordExpires   : Date,
+        chromeId               : [String],
+        safariId               : [String],
         role                   :  String,
         newsletter             :  Boolean,
         createDate             :  { type: Date, default: Date.now },

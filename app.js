@@ -179,14 +179,15 @@ app.use(
         next();
     });
 
-app.use(HELPER.helper.countryAndLangChecker);
-
-app.use('/:country/:lang/jobs'  ,require('./routes/jobs'));
-app.use('/:country/:lang/blog'  , require('./routes/blog'));
 app.use(require('./routes/sitemap'));
 app.use(require('./routes/admin'));
 app.use(require('./routes/user'));
 app.use('/api'   ,require('./routes/api'));
+
+app.use(HELPER.helper.countryAndLangChecker);
+
+app.use('/:country/:lang/jobs'  ,require('./routes/jobs'));
+app.use('/:country/:lang/blog'  , require('./routes/blog'));
 app.use('/:country/:lang',require('./routes/index'));
 
 
