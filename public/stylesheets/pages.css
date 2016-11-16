@@ -10147,6 +10147,12 @@ Main components
 .gallery-item[data-height="100"] {
   height: 100px;
 }
+.gallery-item[data-width="200"] {
+  width: 200px;
+}
+.gallery-item[data-height="200"] {
+  height: 200px;
+}
 
 .gallery-item img, .gallery-item div[data-hover] {
   opacity: 1;

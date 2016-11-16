@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="319a9c44-cb0a-494b-a470-9e86d210bc29" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/hb-helper.js" afterPath="$PROJECT_DIR$/public/javascripts/hb-helper.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/pages.css" afterPath="$PROJECT_DIR$/public/stylesheets/pages.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/home/n_department.hbs" afterPath="$PROJECT_DIR$/views/partials/home/n_department.hbs" />
     </list>
     <ignored path="brantu.iws" />
@@ -42,13 +41,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="n_department.hbs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="n_department.hbs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/partials/home/n_department.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.805668">
-              <caret line="181" column="203" selection-start-line="181" selection-start-column="203" selection-end-line="181" selection-end-column="203" />
+            <state vertical-scroll-proportion="-2.677966">
+              <caret line="180" column="60" selection-start-line="180" selection-start-column="60" selection-end-line="180" selection-end-column="72" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -97,6 +97,16 @@
                 <element signature="e#9162#9298#0" expanded="false" />
                 <element signature="e#9346#9449#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pages.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/stylesheets/pages.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.20810056">
+              <caret line="10150" column="10" selection-start-line="10150" selection-start-column="10" selection-end-line="10150" selection-end-column="10" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -242,7 +252,6 @@
         <option value="$PROJECT_DIR$/views/partials/home/n_home.hbs" />
         <option value="$PROJECT_DIR$/public/javascripts/script.js" />
         <option value="$PROJECT_DIR$/public/stylesheets/generic.css" />
-        <option value="$PROJECT_DIR$/public/stylesheets/pages.css" />
         <option value="$PROJECT_DIR$/routes/user.js" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/services/models/user.js" />
@@ -251,6 +260,7 @@
         <option value="$PROJECT_DIR$/services/middleware/mw-users.js" />
         <option value="$PROJECT_DIR$/public/javascripts/hb-helper.js" />
         <option value="$PROJECT_DIR$/views/partials/home/n_department.hbs" />
+        <option value="$PROJECT_DIR$/public/stylesheets/pages.css" />
       </list>
     </option>
   </component>
@@ -365,7 +375,7 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="javascripts">
+            <PATH_ELEMENT USER_OBJECT="stylesheets">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -1125,13 +1135,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/pages.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14184397">
-          <caret line="2222" column="19" selection-start-line="2222" selection-start-column="19" selection-end-line="2222" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/register.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.020491803">
@@ -1278,11 +1281,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/partials/home/n_department.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.805668">
-          <caret line="181" column="203" selection-start-line="181" selection-start-column="203" selection-end-line="181" selection-end-column="203" />
+        <state vertical-scroll-proportion="-2.677966">
+          <caret line="180" column="60" selection-start-line="180" selection-start-column="60" selection-end-line="180" selection-end-column="72" />
           <folding>
             <element signature="n#style#0;n#div#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/pages.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20810056">
+          <caret line="10150" column="10" selection-start-line="10150" selection-start-column="10" selection-end-line="10150" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
