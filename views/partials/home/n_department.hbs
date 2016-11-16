@@ -156,13 +156,13 @@
 
                     <style>
                             {{#each this.categories}}
-                            #categories_background_{{lookup this.name ../../LANG}}_{{@index}}{
-                                background-image:url({{this.image.desktop}});
-                            }
+                                #categories_background_{{categoryIdGenerate (lookup this.name ../../LANG)}}_{{@index}}{
+                                    background-image:url({{this.image.desktop}});
+                                }
                             {{/each}}
                             @media only screen and (max-width: 480px){
                                 {{#each this.categories}}
-                                #categories_background_{{lookup this.name ../../LANG}}_{{@index}} {
+                                #categories_background_{{categoryIdGenerate (lookup this.name ../../LANG)}}_{{@index}} {
                                     background-image:url({{this.image.mobile}});
                                 }
                                 {{/each}}
@@ -173,13 +173,13 @@
                     <div id="categories"  class="m-t-60 m-b-60">
                         <div>
                             <h2 class="section-title">{{translate "top categories"}}</h2>
-                            <div class="building-block no-margin   ">
+                            <div class="building-block no-margin">
                                 {{#each this.categories}}
                                     <div class="block special-border-side b-thick b-grey p-t-20">
                                         <a href="/{{../../COUNTRY}}/{{../../LANG}}{{lookup this.url ../../LANG}}">
                                             <div class="col-xs-12 no-padding text-center" >
                                                 <div class="gallery-item  bg-white auto-margin bg-image relative" data-width="100" data-height="100"  >
-                                                    <div class="top-left bottom-right bg-image no-background-image" data-hover id="categories_background_{{lookup this.name ../../LANG}}_{{@index}}" >
+                                                    <div class="top-left bottom-right bg-image no-background-image" data-hover id="categories_background_{{categoryIdGenerate (lookup this.name ../../LANG)}}_{{@index}}" >
                                                     </div>
                                                 </div>
                                             </div>

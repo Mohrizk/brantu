@@ -17,6 +17,9 @@ var register = function(Handlebars) {
                 console.log(optionalValue);
             }
         },
+        categoryIdGenerate: function(str) {
+            return str.substring(0, 2) + str.substring(str.length-3 , str.length-1);
+        },
         andfixer: function(passedString) {
             if(passedString!=null){
                 if(passedString.indexOf('&amp;') ){
