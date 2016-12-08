@@ -48,7 +48,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 /*******************BEGINING Session**********************/
 app.use(session({
@@ -139,12 +139,14 @@ require('./config/passport.js')(passport);
 app.set('json spaces', 2);//ONLY DEVELOPMENT
 var sessionMW = require('./services/middleware/mw-session');
 
-
+app.get('/*', function(req,res,next){
+   res.redirect('http://extension.brantu.com/se/en')
+});
 /***
  *
  * ROUTES
  * ****/
-app.get('/',function(req,res,next){
+/*app.get('/',function(req,res,next){
     var url = 'http://freegeoip.net/json/' + req.ip;
     var data;
     request(url, function(error, response, body){
@@ -165,7 +167,7 @@ app.get('/',function(req,res,next){
             res.redirect('/se/en');
         }
     })
-});
+});*/
 app.use(
     sessionMW.cookieConcession,
     sessionMW.signupPopup,
@@ -184,11 +186,11 @@ app.use(require('./routes/admin'));
 app.use(require('./routes/user'));
 app.use('/api'   ,require('./routes/api'));
 
-app.use(HELPER.helper.countryAndLangChecker);
-
-app.use('/:country/:lang/jobs'  ,require('./routes/jobs'));
-app.use('/:country/:lang/blog'  , require('./routes/blog'));
-app.use('/:country/:lang',require('./routes/index'));
+//app.use(HELPER.helper.countryAndLangChecker);
+//:country/:lang
+app.use('/jobs'  ,require('./routes/jobs'));
+app.use('/blog'  , require('./routes/blog'));
+app.use(require('./routes/index'));
 
 
 //SCHEDULE NEWSLETTER

@@ -281,9 +281,10 @@ var routes = [
     }]],
 
     /***********CHROME EXTENTION*******/
-    [ '/users/isAuthenticated/chrome/:chromeId', 'get', [
-        user.isChromeAuthenticated,
+    [ ['/users/isAuthenticated/extension/:extension/:userId'], 'get', [
+        user.isExtensionAuthenticated,
         function( req, res, next) {
+            console.log('2');
             res.send({isAuthenticated: req.isAuthenticated});
             res.end();
         }]],

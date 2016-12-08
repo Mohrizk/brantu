@@ -17,7 +17,7 @@ else{
 }
 
 module.exports = function(passport) {
-  // =========================================================================
+    // =========================================================================
     // passport session setup ==================================================
     // =========================================================================
     // required for persistent login sessions
@@ -42,55 +42,61 @@ module.exports = function(passport) {
     // we are using named strategies since we have one for login and one for signup
     // by default, if there was no name, it would just be called 'local'
     passport.use('local-signup', new LocalStrategy({
-        // by default, local strategy uses username and password, we will override with email
-        usernameField : 'email',
-        passwordField : 'password',
-        passReqToCallback : true // allows us to pass back the entire request to the callback
-    },
-    function(req, email, password, done) {
-        console.log('alright then!-------', email, password)
-        // asynchronous User.findOne wont fire unless data is sent back
-        process.nextTick(function() {
-        // find a user whose email is the same as the forms email we are checking to see if the user trying to login already exists
-        User.findOne({ 'local.email' :  email }, function(err, user) {
-            // if there are any errors, return the error
-            if (err)
-                return done(err);
-
-            // check to see if theres already a user with that email
-            if (user) {
-                return done(null, false, {message: 'invalid email or password' });
-            } else {
-                var newUser = new User();
-                //newUser.local.gender   = req.body.gender;
-                newUser.gender   = req.body.gender;
-                newUser.local.email   = email;
-                newUser.local.password = newUser.generateHash(password);
-                newUser.chromeId = (!empty(newUser.chromeId)? newUser.chromeId: []);
-                if(!empty(req.params.extention) && !empty(req.params.userId)){
-                    switch(req.params.extention){
-                        case 'chrome':
-                            newUser.chromeId.push(req.params.userId);
-                            break;
-                        case 'safari':
-                            newUser.chromeId.push(req.params.userId);
-                            break;
-                    }
-                }
-                if(!req.body.role) newUser.role = req.body.role;
-                newUser.newsletter = true;
-                // save the user
-                newUser.save(function(err) {
+            // by default, local strategy uses username and password, we will override with email
+            usernameField : 'email',
+            passwordField : 'password',
+            passReqToCallback : true // allows us to pass back the entire request to the callback
+        },
+        function(req, email, password, done) {
+            console.log('alright then!-------', email, password)
+            // asynchronous User.findOne wont fire unless data is sent back
+            process.nextTick(function() {
+                // find a user whose email is the same as the forms email we are checking to see if the user trying to login already exists
+                User.findOne({ 'local.email' :  email }, function(err, user) {
+                    // if there are any errors, return the error
                     if (err)
-                        throw err;
-                    return done(null, newUser);
+                        return done(err);
+
+                    // check to see if theres already a user with that email
+                    if (user) {
+                        return done(null, false, {message: 'invalid email or password' });
+                    } else {
+                        var newUser = new User();
+                        console.log(req.body);
+                        //newUser.local.gender   = req.body.gender;
+                        newUser.gender   = req.body.gender;
+                        newUser.local.email   = email;
+                        newUser.local.password = newUser.generateHash(password);
+                        newUser.chromeId = (!empty(newUser.chromeId)? newUser.chromeId: []);
+                        newUser.safariId = (!empty(newUser.safariId)? newUser.safariId: []);
+                        if(!empty(req.params.extension) && !empty(req.params.userId)){
+                            switch(req.params.extension){
+                                case 'chrome':
+                                    newUser.chromeId.push(req.params.userId);
+                                    newUser.chromeOnBoardDate = Date.now();
+                                    newUser.chromeOnBoardVersion = req.params.version;
+                                    break;
+                                case 'safari':
+                                    newUser.safariId.push(req.params.userId);
+                                    newUser.safariOnBoardDate = Date.now();
+                                    newUser.safariOnBoardVersion = req.params.version;
+                                    break;
+                            }
+                        }
+                        if(!req.body.role) newUser.role = req.body.role;
+                        newUser.newsletter = true;
+                        // save the user
+                        newUser.save(function(err) {
+                            if (err)
+                                throw err;
+                            return done(null, newUser);
+                        });
+                    }
+
                 });
-            }
 
-        });
-
-        })
-    }));
+            })
+        }));
     // =========================================================================
     // LOCAL LOGIN =============================================================
     // =========================================================================
@@ -98,65 +104,65 @@ module.exports = function(passport) {
     // by default, if there was no name, it would just be called 'local'
 
     passport.use('local-login', new LocalStrategy({
-        // by default, local strategy uses username and password, we will override with email
-        usernameField : 'email',
-        passwordField : 'password',
-        passReqToCallback : true // allows us to pass back the entire request to the callback
-    },
-    function(req, email, password, done) { // callback with email and password from our form
-        // find a user whose email is the same as the forms email
-        // we are checking to see if the user trying to login already exists
-        User.findOne({ 'local.email' :  email }, function(err, user) {
+            // by default, local strategy uses username and password, we will override with email
+            usernameField : 'email',
+            passwordField : 'password',
+            passReqToCallback : true // allows us to pass back the entire request to the callback
+        },
+        function(req, email, password, done) { // callback with email and password from our form
+            // find a user whose email is the same as the forms email
+            // we are checking to see if the user trying to login already exists
+            User.findOne({ 'local.email' :  email }, function(err, user) {
 
-            // if there are any errors, return the error before anything else
-            if (err)
-                return done(err);
+                // if there are any errors, return the error before anything else
+                if (err)
+                    return done(err);
 
-            // if no user is found, return the message
-            if (!user)
-                return done(null, false, {message:'nouser'}); // req.flash is the way to set flashdata using connect-flash
-            // if the user is found but the password is wrong
+                // if no user is found, return the message
+                if (!user)
+                    return done(null, false, {message:'nouser'}); // req.flash is the way to set flashdata using connect-flash
+                // if the user is found but the password is wrong
 
-            if (!user.validPassword(password))
-                return done(null, false, {message:'nopass'}); // create the loginMessage and save it to session as flashdata
+                if (!user.validPassword(password))
+                    return done(null, false, {message:'nopass'}); // create the loginMessage and save it to session as flashdata
 
 
-            if(!empty(req.params.extention) && !empty(req.params.userId)){
-                switch(req.params.extention){
-                    case 'chrome':
-                        (user.chromeId.indexOf(req.params.userId) == -1?
-                            user.chromeId.push(req.params.userId): false);
-                    case 'safari':
-                        extentionId =  user.chromeId;
-                        (user.safariId.indexOf(req.params.userId) == -1?
-                            user.safariId.push(req.params.userId): false);
+                if(!empty(req.params.extention) && !empty(req.params.userId)){
+                    switch(req.params.extention){
+                        case 'chrome':
+                            (user.chromeId.indexOf(req.params.userId) == -1?
+                                user.chromeId.push(req.params.userId): false);
+                        case 'safari':
+                            extentionId =  user.chromeId;
+                            (user.safariId.indexOf(req.params.userId) == -1?
+                                user.safariId.push(req.params.userId): false);
+                    }
                 }
-            }
 
-            user.save(function(err){
-                return done(null, user);
+                user.save(function(err){
+                    return done(null, user);
+                });
+                // all is well, return successful user
             });
-            // all is well, return successful user
-        });
 
-    }));
+        }));
 
-  // =========================================================================
-  // FACEBOOK ================================================================
-  // =========================================================================
-  passport.use(new FacebookStrategy({
-          // pull in our services id and secret from our auth.js file
-          clientID        : configAuth.facebookAuth.clientID,
-          clientSecret    : configAuth.facebookAuth.clientSecret,
-          callbackURL     : configAuth.facebookAuth.callbackURL
+    // =========================================================================
+    // FACEBOOK ================================================================
+    // =========================================================================
+    passport.use(new FacebookStrategy({
+            // pull in our services id and secret from our auth.js file
+            clientID        : configAuth.facebookAuth.clientID,
+            clientSecret    : configAuth.facebookAuth.clientSecret,
+            callbackURL     : configAuth.facebookAuth.callbackURL
 
-      },
-      // facebook will send back the token and profile
-     function(token, refreshToken, profile, done) {
-       // asynchronous
-         console.log(token, refreshToken);
-        process.nextTick(function() {
-          // find the user in the database based on their facebook id
+        },
+        // facebook will send back the token and profile
+        function(token, refreshToken, profile, done) {
+            // asynchronous
+            console.log(token, refreshToken);
+            process.nextTick(function() {
+                // find the user in the database based on their facebook id
                 User.findOne({ 'facebook.id' : profile.id }, function(err, user) {
 
                     // if there is an error, stop everything and return that
@@ -166,12 +172,12 @@ module.exports = function(passport) {
 
                     // if the user is found, then log them in
                     if (user) {
-                         console.log('User already signed up', user);
+                        console.log('User already signed up', user);
                         return done(null, user); // user found, return that user
                     } else {
                         // if there is no user found with that facebook id, create them
                         var newUser = new User();
-                         console.log(profile);
+                        console.log(profile);
                         // set all of the facebook information in our user model
                         newUser.facebook.id    = profile.id; // set the users facebook id
                         newUser.facebook.token = token; // we will save the token that facebook provides to the user

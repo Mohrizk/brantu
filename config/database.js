@@ -1,7 +1,7 @@
 // config/database.js
 module.exports = {
     'local' : 'mongodb://localhost:27017/brantu',
-    'remote' : 'mongodb://brantu:brantubrantu@mongo.brantu.com/brantu'
+    'remote' : 'mongodb://brantu:brantubrantu@82.196.5.30:27017/brantu'
 };
 //mongodb://brantu:brantubrantu@mongo.brantu.com/brantu
 //mongodb://brantu:brantu@ds011472.mlab.com:11472/brantu

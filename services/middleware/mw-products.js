@@ -1,4 +1,4 @@
-var Products  = require('../models/product');
+
 var Products  = require('../models/product');
 var Brands  = require('../models/brand');
 var Categories  = require('../models/category');

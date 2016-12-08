@@ -481,9 +481,25 @@ var Article = require('../models/article');
      /*
       * CHROME USER ID
       **/
-     isChromeAuthenticated:function(req,res,next){
-         if(empty(req.params.chromeId)) return next();
-         User.findOne({chromeId: req.params.chromeId})
+     isExtensionAuthenticated:function(req,res,next){
+         if(empty(req.params.extension) || empty(req.params.userId)) return next();
+         var q;
+         switch(req.params.extension){
+             case 'chrome':
+                 q={
+                     chromeId : req.params.userId
+                 };
+                 break;
+             case 'safari':
+                 q={
+                     safariId : req.params.userId
+                 };
+                 break;
+             default:
+                 return next();
+                 break;
+         }
+         User.findOne(q)
              .exec(function(err, product){
                  req.isAuthenticated = (!empty(product));
                  return next();

@@ -5,7 +5,6 @@ try {
 } catch (err) {
     console.log('crypto support is disabled!');
 }
-var mongoosePaginate = require('mongoose-paginate');
 
 var User = mongoose.Schema({
         local: {
@@ -44,7 +43,7 @@ var User = mongoose.Schema({
                        }]
 });
 
-User.plugin(mongoosePaginate);
+
 // methods =====================
 // generating a hash
 User.methods.generateHash = function(password) {
