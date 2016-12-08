@@ -139,9 +139,7 @@ require('./config/passport.js')(passport);
 app.set('json spaces', 2);//ONLY DEVELOPMENT
 var sessionMW = require('./services/middleware/mw-session');
 
-app.get('/*', function(req,res,next){
-   res.redirect('http://extension.brantu.com/se/en')
-});
+
 /***
  *
  * ROUTES
@@ -180,8 +178,16 @@ app.use(
         req_i18n = req.i18n;
         next();
     });
-
+app.get('/robots.txt', function(req,res,next){
+    res.send('../robots_production.txt');
+});
 app.use(require('./routes/sitemap'));
+
+
+app.get('/*', function(req,res,next){
+    res.redirect('http://extension.brantu.com/se/en')
+});
+
 app.use(require('./routes/admin'));
 app.use(require('./routes/user'));
 app.use('/api'   ,require('./routes/api'));
